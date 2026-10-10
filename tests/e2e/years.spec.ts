@@ -1,6 +1,6 @@
 import { existsSync } from 'node:fs';
 import { test, expect } from '@playwright/test';
-import historical from '../../src/data/packs/historical.json';
+import historical from '../../src/data/packs/historical.json' with { type: 'json' };
 const key='care-manager-quest:v1';
 for(const year of [2020,2021,2022,2023,2024]) {
  test(`${year}: year filter, text UI, exact grading, original image, reload and history`,async({page})=>{
