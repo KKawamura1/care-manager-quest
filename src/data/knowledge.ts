@@ -1,4 +1,5 @@
 import type { Category, Concept } from '../domain/models';
+import classification from './packs/2025/classifications.json';
 export const categories: Category[] = [
  {id:'A',label:'制度マネジメント',description:'地域全体を支える仕組み',available:true},
  {id:'A0',parentId:'A',label:'制度の理念・保険者',description:'何のために、誰が運営するか',available:true},
@@ -12,11 +13,11 @@ export const categories: Category[] = [
  {id:'B3',parentId:'B',label:'アセスメント・ケアプラン',description:'希望を支援の計画につなぐ',available:true},
  {id:'B4',parentId:'B',label:'サービス提供・連携',description:'計画を暮らしの中で実行する',available:true},
  {id:'B5',parentId:'B',label:'モニタリング・再評価',description:'変化を見て、見直す',available:true},
- {id:'C',label:'保健医療・福祉の専門知識',description:'今後追加する探索領域',available:false},
- ...['疾病・身体機能','認知症・精神機能','医療・看護・リハビリ','生活支援・福祉','権利擁護・終末期ケア'].map((label,i)=>({id:`C${i+1}`,parentId:'C',label,description:'問題パック追加予定',available:false})),
+ {id:'C',label:'保健医療・福祉の専門知識',description:'認知症施策から専門知識へ',available:true},
+ ...['疾病・身体機能','認知症・精神機能','医療・看護・リハビリ','生活支援・福祉','権利擁護・終末期ケア'].map((label,i)=>({id:`C${i+1}`,parentId:'C',label,description:i===1?'2025年度の認知症施策':'問題パック追加予定',available:i===1})),
 ];
 const c = (id:string,categoryId:string,label:string,summary:string,relatedIds:string[]):Concept=>({id,categoryId,label,summary,relatedIds});
-export const concepts: Concept[] = [
+const baseConcepts: Concept[] = [
  c('insurer','A0','保険者','市町村・特別区が介護保険を運営する。',['planning','certification']),
  c('dignity','A0','尊厳と自立','できることを活かして、その人の暮らしを支える。',['assessment','choice']),
  c('planning','A1','介護保険事業計画','市町村は3年を一期に、地域の需要を見通して計画する。',['premium','supply']),
@@ -41,3 +42,9 @@ export const concepts: Concept[] = [
  c('neutrality','B4','公正中立','本人の立場に立ち、特定の事業者へ不当に偏らない。',['choice','dignity']),
  c('monitoring','B5','モニタリング','実施状況と変化を把握し、必要な計画変更や連絡調整を行う。',['assessment','reassessment']),
 ];
+
+export const concepts: Concept[] = [...baseConcepts,...Object.values(classification).map(c=>({
+ id:c.primaryConceptId,categoryId:c.primaryCategory,label:c.title,
+ summary:'2025年度の過去問で扱う論点です。分類は暫定で、現行法との適合性は未確認です。',
+ relatedIds:c.relatedConceptIds,
+}))];

@@ -19,3 +19,11 @@ MVPは5問を快適に遊べることを優先します。将来機能は以下�
 - [#5 AI解説・分類](https://github.com/KKawamura1/care-manager-quest/issues/5)
 - [#6 同期・大容量・競合解消](https://github.com/KKawamura1/care-manager-quest/issues/6)
 - [#7 継続デプロイ](https://github.com/KKawamura1/care-manager-quest/issues/7)
+
+## 2025年度公式問題への切り替え後
+
+- [#9 逐語校正・再校正](https://github.com/KKawamura1/care-manager-quest/issues/9)
+- [#10 検証済み独自解説](https://github.com/KKawamura1/care-manager-quest/issues/10)
+- [#11 現行法への適合性](https://github.com/KKawamura1/care-manager-quest/issues/11)
+
+試験センターの教育目的の利用条件を確認し、2025年度の公式25問を静的Providerへ取り込み済み。原文を保持し、権利者と独自分類の無関係性を表示。2018〜2024年度も年次パック・当時の正答・校正状態を分けて追加する。

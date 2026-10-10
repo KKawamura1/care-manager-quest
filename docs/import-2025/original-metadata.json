@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "dataset_id": "care-manager-2025-support-25-image-backed",
+  "source_credits": "令和7年度（第28回）介護支援専門員実務研修受講試験／公益財団法人社会福祉振興・試験センター（東京都掲載の公式問題冊子）",
+  "official_problem_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r7shikenmondai",
+  "official_answer_image_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r7seitoubangou1-25",
+  "reuse_guidance_url": "https://www.sssc.or.jp/pastissues/index.html",
+  "notes": [
+    "2025年度（第28回）介護支援分野全25問：ステム・選択肢5件をOCR補助で転記済み。",
+    "各問に公式PDFの原本画像を添付し、問題文の確実な表示は画像を優先する。",
+    "転記テキストは校正済みを保証しない。アプリでテキスト表示を正式採用する前に原本との逐語照合が必要。",
+    "正答番号は前回作成した公式正答表照合済み索引を引き継いだ。今回の添付PDFに正答表は含まれていない。",
+    "解説は未作成。法改正による現行制度との適合性は未確認。",
+    "主分類および関連分類はアシスタントによる暫定分類。",
+    "著作権は試験センターに帰属。教育目的等の利用条件に従い、原文を改変しない。"
+  ],
+  "licensing": {
+    "owner": "公益財団法人社会福祉振興・試験センター",
+    "guidance_url": "https://www.sssc.or.jp/pastissues/index.html",
+    "conditions_summary": "教育目的など試験制度の意義に反しない利用。過去問題本文の改変禁止。独自解説はセンターとの無関係を明示。",
+    "usage": "条件付き利用許諾であり、パブリックドメインではない"
+  },
+  "package_layout": {
+    "data": "data/care_manager_2025_support.json",
+    "question_images": "assets/questions/2025/qNN.png"
+  }
+}

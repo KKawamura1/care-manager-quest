@@ -1,17 +1,19 @@
 import { describe, expect, it } from 'vitest';
+import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { categories, concepts } from '../src/data/knowledge';
-import { questions } from '../src/data/provider';
+import { questions, legacyQuestions } from '../src/data/provider';
 import { sources } from '../src/data/sources';
 import { advance, awardXp, buildSession, conceptStatus, emptyPlayer, isCorrect, levelInfo, reflect, submitAnswer, totalXp } from '../src/domain/game';
 import { loadPlayer, MAX_IMPORT_BYTES, parsePlayer, savePlayer, validExternalUrl } from '../src/domain/storage';
 import type { PlayerState } from '../src/domain/models';
 const date='2026-10-10T10:00:00.000Z';
 function ready() {const p=emptyPlayer();p.session=buildSession(questions,[],'session-1',()=>0);return p;}
-function answered(p:PlayerState,correct=true) { const q=questions.find(q=>q.id===p.session!.questionIds[p.session!.index])!;p={...p,session:{...p.session!,selectedIds:correct?q.answerIds:q.options.filter(o=>!q.answerIds.includes(o.id)).slice(0,q.selectionCount).map(o=>o.id)}};return submitAnswer(p,questions,date);}
+function answered(p:PlayerState,correct=true) { const q=questions.find(q=>q.id===p.session!.questionIds[p.session!.index])!;p={...p,session:{...p.session!,selectedIds:correct?q.answerIds:[...q.answerIds.slice(1),q.options.find(o=>!q.answerIds.includes(o.id))!.id]}};return submitAnswer(p,questions,date);}
 describe('question pack contract',()=>{
- it('contains 25 original, cited five-option questions with valid map references',()=>{
+ it('contains 25 official, image-backed questions with stable numbering and provisional map references',()=>{
   expect(questions).toHaveLength(25);expect(new Set(questions.map(q=>q.id)).size).toBe(25);
-  for(const q of questions){expect(q.options).toHaveLength(5);expect([2,3]).toContain(q.selectionCount);expect(q.answerIds).toHaveLength(q.selectionCount);expect(new Set(q.answerIds).size).toBe(q.selectionCount);expect(q.answerIds.every(id=>q.options.some(o=>o.id===id))).toBe(true);expect(categories.some(c=>c.id===q.primaryCategory&&c.parentId&&c.available)).toBe(true);expect(q.conceptIds.length).toBeGreaterThan(1);expect(q.conceptIds.every(id=>concepts.some(c=>c.id===id))).toBe(true);expect(q.provenance.kind).toBe('original');expect(q.provenance.verifiedAt).toBe('2026-10-10');expect(q.provenance.sources.length).toBeGreaterThan(0);for(const s of q.provenance.sources){expect(sources.some(source=>source.id===s.sourceId)).toBe(true);expect(s.locator).not.toBe('');}}
+  for(const q of questions){expect(q.options).toHaveLength(5);expect([2,3]).toContain(q.selectionCount);expect(q.answerIds).toHaveLength(q.selectionCount);expect(new Set(q.answerIds).size).toBe(q.selectionCount);expect(q.answerIds.every(id=>q.options.some(o=>o.id===id))).toBe(true);expect(categories.some(c=>c.id===q.primaryCategory&&c.parentId&&c.available)).toBe(true);expect(q.conceptIds.length).toBeGreaterThan(1);expect(q.conceptIds.every(id=>concepts.some(c=>c.id===id))).toBe(true);expect(q.provenance.kind).toBe('official');expect(q.id).toMatch(/^2025-\d{2}$/);expect(q.original?.year).toBe(2025);expect(q.explanation).toBe('');expect(q.original?.imagePath).toBe(`/assets/questions/2025/q${q.id.split('-')[1]}.png`);expect(createHash('sha256').update(readFileSync(new URL(`../public${q.original!.imagePath}`,import.meta.url))).digest('hex')).toBe(q.original?.imageSha256);expect(q.provenance.verifiedAt).toBe('2026-10-10');expect(q.provenance.sources.length).toBeGreaterThan(0);for(const s of q.provenance.sources){expect(sources.some(source=>source.id===s.sourceId)).toBe(true);expect(s.locator).not.toBe('');}}
   for(const c of concepts)expect(c.relatedIds.every(id=>concepts.some(c=>c.id===id))).toBe(true);
  });
 });
@@ -41,7 +43,7 @@ describe('portable history',()=>{
  });
  it.each(['{','{}','{"schemaVersion":2}'])('rejects malformed/unknown schema without replacing history (%s)',s=>expect(()=>parsePlayer(s)).toThrow());
  it('rejects manipulated XP, evidence, stale question versions, duplicate attempts and broken sessions',()=>{
-  const p=answered(ready());for(const mutate of [(x:PlayerState)=>x.attempts[0].xp=999,(x:PlayerState)=>x.attempts[0].questionVersion=99,(x:PlayerState)=>x.attempts.push(x.attempts[0]),(x:PlayerState)=>x.session!.index=4,(x:PlayerState)=>x.concepts.insurer.correctQuestionIds.push('cmq-025')]){const copy=structuredClone(p);mutate(copy);expect(()=>parsePlayer(JSON.stringify(copy))).toThrow();}
+  const p=answered(ready());for(const mutate of [(x:PlayerState)=>x.attempts[0].xp=999,(x:PlayerState)=>x.attempts[0].questionVersion=99,(x:PlayerState)=>x.attempts.push(x.attempts[0]),(x:PlayerState)=>x.session!.index=4,(x:PlayerState)=>x.concepts[x.attempts[0].conceptIds[0]].correctQuestionIds.push('2025-25')]){const copy=structuredClone(p);mutate(copy);expect(()=>parsePlayer(JSON.stringify(copy))).toThrow();}
   expect(()=>parsePlayer(' '.repeat(MAX_IMPORT_BYTES+1))).toThrow(/2MB/);
  });
  it('rejects unsafe or noncanonical external links',()=>{
@@ -50,5 +52,43 @@ describe('portable history',()=>{
  });
  it('keeps corrupt raw data for recovery and reports unavailable storage',()=>{
   expect(loadPlayer({getItem:()=>'{broken'})).toMatchObject({raw:'{broken',error:expect.any(String)});expect(savePlayer({setItem:()=>{throw new Error('quota');}},emptyPlayer())).toMatch(/保存/);
+ });
+});
+
+describe('official answers and stable history',()=>{
+ it('scores every valid two/three-number combination for all 25 questions by exact set equality',()=>{
+  for(const q of questions)for(let mask=0;mask<32;mask++){
+   const ids=q.options.filter((_,i)=>mask&(1<<i)).map(o=>o.id);
+   const expected=JSON.stringify([...ids].sort())===JSON.stringify([...q.answerIds].sort());
+   expect(isCorrect(q,ids),`${q.id}: ${ids}`).toBe(expected);
+  }
+ });
+ it('can exhaust the official pack in five quests without ever selecting legacy questions',()=>{
+  let p=emptyPlayer();const ids:string[]=[];
+  for(let n=0;n<5;n++){
+   p.session=buildSession(questions,p.attempts,`all-${n}`,()=>0);
+   ids.push(...p.session.questionIds);
+   for(let i=0;i<5;i++)p=advance(answered(p));
+  }
+  expect(new Set(ids).size).toBe(25);expect(ids.every(id=>id.startsWith('2025-'))).toBe(true);
+ });
+ it('migrates schema 1, retains legacy XP/reflection/external records, and retires its active session',()=>{
+  let p=emptyPlayer();p.session=buildSession(legacyQuestions,[],'legacy',()=>0);
+  const q=legacyQuestions.find(q=>q.id===p.session!.questionIds[0])!;p.session.selectedIds=q.answerIds;
+  p=reflect(submitAnswer(p,legacyQuestions,date),q.conceptIds);
+  const old={...p,schemaVersion:1,attempts:p.attempts.map(({conceptIds,classificationRevision,difficulty,...a})=>a)};
+  const migrated=parsePlayer(JSON.stringify(old));
+  expect(migrated.schemaVersion).toBe(2);expect(totalXp(migrated)).toBe(totalXp(p));expect(migrated.concepts).toEqual(p.concepts);expect(migrated.session).toBeUndefined();
+  expect(parsePlayer(JSON.stringify(migrated))).toEqual(migrated);
+ });
+ it('classification and difficulty revisions cannot invalidate recorded attempts or change XP',()=>{
+  const p=answered(ready());const q=questions.find(q=>q.id===p.attempts[0].questionId)!;
+  const original={conceptIds:q.conceptIds,classificationRevision:q.classificationRevision,difficulty:q.difficulty};
+  try {q.conceptIds=['changed.classification'];q.classificationRevision=99;q.difficulty=3;expect(parsePlayer(JSON.stringify(p))).toEqual(p);}
+  finally {Object.assign(q,original);}
+ });
+ it('stores pending text only as image-backed questions and never injects an independent explanation',()=>{
+  expect(questions.filter(q=>q.original?.textStatus==='pending').map(q=>q.id)).toEqual(['2025-24','2025-25']);
+  expect(questions.every(q=>!q.explanation&&!q.reasoning&&q.options.every(o=>!o.explanation))).toBe(true);
  });
 });

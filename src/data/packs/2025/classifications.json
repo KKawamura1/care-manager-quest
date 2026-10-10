@@ -1,0 +1,444 @@
+{
+  "2025-01": {
+    "revision": 1,
+    "title": "社会保障の基本的な仕組み",
+    "primaryCategory": "A2",
+    "primaryConceptId": "A2.social_insurance",
+    "relatedConceptIds": [
+      "eligibility"
+    ],
+    "difficulty": 1,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "A2",
+      "related": [
+        "B1"
+      ]
+    }
+  },
+  "2025-02": {
+    "revision": 1,
+    "title": "認知症基本法と共生社会",
+    "primaryCategory": "C2",
+    "primaryConceptId": "C.dementia_policy",
+    "relatedConceptIds": [
+      "planning"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "C",
+      "related": [
+        "A1"
+      ]
+    }
+  },
+  "2025-03": {
+    "revision": 1,
+    "title": "介護保険法上の国民の努力義務",
+    "primaryCategory": "A3",
+    "primaryConceptId": "A3.preventive_principles",
+    "relatedConceptIds": [
+      "monitoring"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "A3",
+      "related": [
+        "B5"
+      ]
+    }
+  },
+  "2025-04": {
+    "revision": 1,
+    "title": "市町村の保険者事務",
+    "primaryCategory": "A4",
+    "primaryConceptId": "A4.municipal_administration",
+    "relatedConceptIds": [
+      "insured",
+      "premium"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "A4",
+      "related": [
+        "A2"
+      ]
+    }
+  },
+  "2025-05": {
+    "revision": 1,
+    "title": "介護支援専門員証と登録手続",
+    "primaryCategory": "A3",
+    "primaryConceptId": "A3.workforce_credentials",
+    "relatedConceptIds": [
+      "assessment",
+      "choice"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "A3",
+      "related": [
+        "B3"
+      ]
+    }
+  },
+  "2025-06": {
+    "revision": 1,
+    "title": "地域密着型サービス事業者の指定・監督",
+    "primaryCategory": "A3",
+    "primaryConceptId": "A3.provider_designation",
+    "relatedConceptIds": [
+      "benefits",
+      "appeal"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "A3",
+      "related": [
+        "A4"
+      ]
+    }
+  },
+  "2025-07": {
+    "revision": 1,
+    "title": "特定入所者介護サービス費・補足給付",
+    "primaryCategory": "A4",
+    "primaryConceptId": "A4.supplementary_benefits",
+    "relatedConceptIds": [
+      "insured",
+      "premium"
+    ],
+    "difficulty": 1,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "A4",
+      "related": [
+        "A2"
+      ]
+    }
+  },
+  "2025-08": {
+    "revision": 1,
+    "title": "都道府県介護保険事業支援計画",
+    "primaryCategory": "A1",
+    "primaryConceptId": "A1.prefectural_plan",
+    "relatedConceptIds": [
+      "supply",
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "A1",
+      "related": [
+        "A3"
+      ]
+    }
+  },
+  "2025-09": {
+    "revision": 1,
+    "title": "第1号被保険者の介護保険料",
+    "primaryCategory": "A2",
+    "primaryConceptId": "A2.premiums_first",
+    "relatedConceptIds": [
+      "eligibility"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "A2",
+      "related": [
+        "B1"
+      ]
+    }
+  },
+  "2025-10": {
+    "revision": 1,
+    "title": "第2号被保険者の加入資格と給付",
+    "primaryCategory": "B1",
+    "primaryConceptId": "B1.insured_second",
+    "relatedConceptIds": [
+      "insured",
+      "premium"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "B1",
+      "related": [
+        "A2"
+      ]
+    }
+  },
+  "2025-11": {
+    "revision": 1,
+    "title": "財政安定化基金",
+    "primaryCategory": "A2",
+    "primaryConceptId": "A2.fiscal_stabilization",
+    "relatedConceptIds": [
+      "planning"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "A2",
+      "related": [
+        "A1"
+      ]
+    }
+  },
+  "2025-12": {
+    "revision": 1,
+    "title": "介護予防・日常生活支援総合事業",
+    "primaryCategory": "A3",
+    "primaryConceptId": "A3.community_support",
+    "relatedConceptIds": [
+      "coordination"
+    ],
+    "difficulty": 1,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "A3",
+      "related": [
+        "B4"
+      ]
+    }
+  },
+  "2025-13": {
+    "revision": 1,
+    "title": "介護サービス情報公表制度",
+    "primaryCategory": "A4",
+    "primaryConceptId": "A4.disclosure",
+    "relatedConceptIds": [
+      "supply",
+      "community"
+    ],
+    "difficulty": 3,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "A4",
+      "related": [
+        "A3"
+      ]
+    }
+  },
+  "2025-14": {
+    "revision": 1,
+    "title": "介護保険審査会・不服審査",
+    "primaryCategory": "A4",
+    "primaryConceptId": "A4.appeal_review",
+    "relatedConceptIds": [
+      "certification"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "A4",
+      "related": [
+        "B2"
+      ]
+    }
+  },
+  "2025-15": {
+    "revision": 1,
+    "title": "国民健康保険団体連合会の業務",
+    "primaryCategory": "A4",
+    "primaryConceptId": "A4.claims_processing",
+    "relatedConceptIds": [
+      "insured",
+      "premium"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "A4",
+      "related": [
+        "A2"
+      ]
+    }
+  },
+  "2025-16": {
+    "revision": 1,
+    "title": "新規・更新認定の認定調査",
+    "primaryCategory": "B2",
+    "primaryConceptId": "B2.assessment_investigation",
+    "relatedConceptIds": [
+      "benefits",
+      "appeal"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "B2",
+      "related": [
+        "A4"
+      ]
+    }
+  },
+  "2025-17": {
+    "revision": 1,
+    "title": "要介護認定の有効期間",
+    "primaryCategory": "B2",
+    "primaryConceptId": "B6.certification_validity",
+    "relatedConceptIds": [
+      "certification"
+    ],
+    "difficulty": 1,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "B6",
+      "related": [
+        "B2"
+      ]
+    }
+  },
+  "2025-18": {
+    "revision": 1,
+    "title": "介護認定審査会の権限",
+    "primaryCategory": "B2",
+    "primaryConceptId": "B2.certification_board",
+    "relatedConceptIds": [
+      "benefits",
+      "appeal"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "B2",
+      "related": [
+        "A4"
+      ]
+    }
+  },
+  "2025-19": {
+    "revision": 1,
+    "title": "課題分析標準項目",
+    "primaryCategory": "B3",
+    "primaryConceptId": "B3.needs_assessment",
+    "relatedConceptIds": [
+      "C.dementia_policy"
+    ],
+    "difficulty": 1,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "B3",
+      "related": [
+        "C"
+      ]
+    }
+  },
+  "2025-20": {
+    "revision": 1,
+    "title": "サービス担当者会議",
+    "primaryCategory": "B3",
+    "primaryConceptId": "B3.care_team_meeting",
+    "relatedConceptIds": [
+      "coordination"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "B3",
+      "related": [
+        "B4"
+      ]
+    }
+  },
+  "2025-21": {
+    "revision": 1,
+    "title": "居宅介護支援の基本的取扱方針",
+    "primaryCategory": "B3",
+    "primaryConceptId": "B3.care_plan_principles",
+    "relatedConceptIds": [
+      "supply",
+      "community"
+    ],
+    "difficulty": 3,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "B3",
+      "related": [
+        "A3"
+      ]
+    }
+  },
+  "2025-22": {
+    "revision": 1,
+    "title": "総合事業の基本チェックリスト",
+    "primaryCategory": "B1",
+    "primaryConceptId": "B1.basic_checklist",
+    "relatedConceptIds": [
+      "supply",
+      "community"
+    ],
+    "difficulty": 1,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "B1",
+      "related": [
+        "A3"
+      ]
+    }
+  },
+  "2025-23": {
+    "revision": 1,
+    "title": "老健の施設ケアマネの業務",
+    "primaryCategory": "B3",
+    "primaryConceptId": "B3.institutional_care_plan",
+    "relatedConceptIds": [
+      "coordination"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "B3",
+      "related": [
+        "B4"
+      ]
+    }
+  },
+  "2025-24": {
+    "revision": 1,
+    "title": "低所得の高齢者と家族への支援",
+    "primaryCategory": "B3",
+    "primaryConceptId": "B3.economic_support",
+    "relatedConceptIds": [
+      "insured",
+      "premium",
+      "C.dementia_policy"
+    ],
+    "difficulty": 3,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "B3",
+      "related": [
+        "A2",
+        "C"
+      ]
+    }
+  },
+  "2025-25": {
+    "revision": 1,
+    "title": "本人の意思尊重と家族介護負担",
+    "primaryCategory": "B3",
+    "primaryConceptId": "B3.person_centered_care",
+    "relatedConceptIds": [
+      "coordination",
+      "C.dementia_policy"
+    ],
+    "difficulty": 3,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "B3",
+      "related": [
+        "B4",
+        "C"
+      ]
+    }
+  }
+}
