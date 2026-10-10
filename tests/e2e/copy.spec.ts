@@ -1,5 +1,8 @@
 import { test, expect } from '@playwright/test';
-import { questions } from '../../src/data/provider';
+import { readFileSync } from 'node:fs';
+const raw = JSON.parse(readFileSync(new URL('../../src/data/packs/2025/questions.json', import.meta.url), 'utf8')) as { id: string; number: number; stem: string }[];
+const answers = JSON.parse(readFileSync(new URL('../../src/data/packs/2025/answers.json', import.meta.url), 'utf8')) as Record<string, { correctChoices: number[] }>;
+const questions = raw.map(question => ({ ...question, title: `2025年度 問${question.number}｜`, answerIds: answers[question.id].correctChoices.map(String) }));
 const key = 'care-manager-quest:v1';
 
 test('copies the current question before answering, then includes answer and choices in feedback and details', async ({ page }) => {
