@@ -13,8 +13,8 @@ describe('published historical exam packs',()=>{
     expect(pastExamTexts).toHaveLength(900);
     expect(past).toHaveLength(899);
     expect(excludedPastExamIds).toEqual(['2005-28']);
-    expect(availableYears).toEqual([2025,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007,2006,2005]);
-    expect(new Set(questions.map(q=>q.id)).size).toBe(959);
+    expect(availableYears).toEqual(Array.from({length:21},(_,i)=>2025-i));
+    expect(new Set(questions.map(q=>q.id)).size).toBe(1259);
     for(let year=2005;year<=2019;year++){
       expect(pastExamTexts.filter(q=>q.year===year).map(q=>q.number).sort((a,b)=>a-b)).toEqual(Array.from({length:60},(_,i)=>i+1));
     }

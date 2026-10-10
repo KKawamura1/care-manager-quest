@@ -1,0 +1,76 @@
+Care Manager Quest - 2024 extraction verification
+==========================================
+PDF pages: 35
+Question count: 60
+Domain counts: 介護支援 25 / 保健医療 20 / 福祉 15
+Per-question PNG images: 60 / 60, sha256 verified
+Question stems with 5 parsed choices: 60 / 60 (OCR-only; no proofreading)
+Official answer keys imported from pre-existing 2024 key: 60 / 60
+Every question has 2 or 3 correct answers and required_choices matches: YES
+2024 official answer PDF was not independently re-downloaded or rechecked in this pass.
+All transcribed texts require checking against image before declaring exact wording.
+Image crops were visually sampled, not manually read line-by-line for all 60.
+OCR selection instruction unreadable or garbled: [10, 38, 39, 43, 44, 51, 59, 60]
+OCR selection count mismatch with answer key: []
+OCR printed question-number misreads: [(48, 49)]
+Options with fewer than 2 characters: []
+Q01: page=03, image=OK, stem=OCR, choices=5, answers=[2, 3, 4], choice_number_repairs=0
+Q02: page=03, image=OK, stem=OCR, choices=5, answers=[3, 4], choice_number_repairs=0
+Q03: page=04, image=OK, stem=OCR, choices=5, answers=[2, 3], choice_number_repairs=0
+Q04: page=04, image=OK, stem=OCR, choices=5, answers=[2, 4], choice_number_repairs=0
+Q05: page=05, image=OK, stem=OCR, choices=5, answers=[1, 3], choice_number_repairs=2
+Q06: page=05, image=OK, stem=OCR, choices=5, answers=[1, 2, 4], choice_number_repairs=0
+Q07: page=06, image=OK, stem=OCR, choices=5, answers=[1, 3, 5], choice_number_repairs=1
+Q08: page=06, image=OK, stem=OCR, choices=5, answers=[1, 4, 5], choice_number_repairs=0
+Q09: page=07, image=OK, stem=OCR, choices=5, answers=[1, 5], choice_number_repairs=1
+Q10: page=07, image=OK, stem=OCR, choices=5, answers=[1, 2, 4], choice_number_repairs=0
+Q11: page=08, image=OK, stem=OCR, choices=5, answers=[2, 3, 5], choice_number_repairs=1
+Q12: page=08, image=OK, stem=OCR, choices=5, answers=[1, 3, 4], choice_number_repairs=1
+Q13: page=09, image=OK, stem=OCR, choices=5, answers=[2, 3, 4], choice_number_repairs=0
+Q14: page=09, image=OK, stem=OCR, choices=5, answers=[4, 5], choice_number_repairs=1
+Q15: page=10, image=OK, stem=OCR, choices=5, answers=[2, 5], choice_number_repairs=0
+Q16: page=10, image=OK, stem=OCR, choices=5, answers=[1, 3], choice_number_repairs=0
+Q17: page=11, image=OK, stem=OCR, choices=5, answers=[1, 2, 5], choice_number_repairs=0
+Q18: page=11, image=OK, stem=OCR, choices=5, answers=[1, 3], choice_number_repairs=0
+Q19: page=12, image=OK, stem=OCR, choices=5, answers=[1, 2, 3], choice_number_repairs=1
+Q20: page=12, image=OK, stem=OCR, choices=5, answers=[1, 2, 5], choice_number_repairs=1
+Q21: page=13, image=OK, stem=OCR, choices=5, answers=[1, 4, 5], choice_number_repairs=1
+Q22: page=13, image=OK, stem=OCR, choices=5, answers=[1, 4, 5], choice_number_repairs=0
+Q23: page=14, image=OK, stem=OCR, choices=5, answers=[1, 3, 4], choice_number_repairs=0
+Q24: page=14, image=OK, stem=OCR, choices=5, answers=[2, 4], choice_number_repairs=1
+Q25: page=15, image=OK, stem=OCR, choices=5, answers=[2, 3, 5], choice_number_repairs=2
+Q26: page=17, image=OK, stem=OCR, choices=5, answers=[1, 2, 4], choice_number_repairs=1
+Q27: page=17, image=OK, stem=OCR, choices=5, answers=[1, 2, 3], choice_number_repairs=1
+Q28: page=18, image=OK, stem=OCR, choices=5, answers=[1, 4, 5], choice_number_repairs=0
+Q29: page=18, image=OK, stem=OCR, choices=5, answers=[1, 2, 5], choice_number_repairs=0
+Q30: page=19, image=OK, stem=OCR, choices=5, answers=[1, 3, 5], choice_number_repairs=0
+Q31: page=19, image=OK, stem=OCR, choices=5, answers=[1, 3, 5], choice_number_repairs=2
+Q32: page=20, image=OK, stem=OCR, choices=5, answers=[1, 3, 5], choice_number_repairs=1
+Q33: page=20, image=OK, stem=OCR, choices=5, answers=[1, 2, 4], choice_number_repairs=0
+Q34: page=21, image=OK, stem=OCR, choices=5, answers=[1, 3, 4], choice_number_repairs=0
+Q35: page=21, image=OK, stem=OCR, choices=5, answers=[1, 3, 4], choice_number_repairs=0
+Q36: page=22, image=OK, stem=OCR, choices=5, answers=[1, 2, 5], choice_number_repairs=0
+Q37: page=22, image=OK, stem=OCR, choices=5, answers=[1, 2, 3], choice_number_repairs=0
+Q38: page=23, image=OK, stem=OCR, choices=5, answers=[2, 4, 5], choice_number_repairs=0
+Q39: page=23, image=OK, stem=OCR, choices=5, answers=[3, 4], choice_number_repairs=0
+Q40: page=24, image=OK, stem=OCR, choices=5, answers=[2, 3, 4], choice_number_repairs=1
+Q41: page=24, image=OK, stem=OCR, choices=5, answers=[1, 2, 3], choice_number_repairs=0
+Q42: page=25, image=OK, stem=OCR, choices=5, answers=[2, 5], choice_number_repairs=1
+Q43: page=25, image=OK, stem=OCR, choices=5, answers=[1, 5], choice_number_repairs=0
+Q44: page=26, image=OK, stem=OCR, choices=5, answers=[1, 3, 5], choice_number_repairs=0
+Q45: page=26, image=OK, stem=OCR, choices=5, answers=[2, 3, 4], choice_number_repairs=0
+Q46: page=28, image=OK, stem=OCR, choices=5, answers=[2, 3, 4], choice_number_repairs=1
+Q47: page=28, image=OK, stem=OCR, choices=5, answers=[1, 3, 4], choice_number_repairs=0
+Q48: page=29, image=OK, stem=OCR, choices=5, answers=[1, 3, 5], choice_number_repairs=0
+Q49: page=29, image=OK, stem=OCR, choices=5, answers=[2, 3, 4], choice_number_repairs=0
+Q50: page=30, image=OK, stem=OCR, choices=5, answers=[2, 3, 5], choice_number_repairs=0
+Q51: page=30, image=OK, stem=OCR, choices=5, answers=[2, 4, 5], choice_number_repairs=0
+Q52: page=31, image=OK, stem=OCR, choices=5, answers=[1, 3, 4], choice_number_repairs=0
+Q53: page=31, image=OK, stem=OCR, choices=5, answers=[3, 4, 5], choice_number_repairs=0
+Q54: page=32, image=OK, stem=OCR, choices=5, answers=[1, 2, 5], choice_number_repairs=1
+Q55: page=32, image=OK, stem=OCR, choices=5, answers=[1, 3], choice_number_repairs=2
+Q56: page=33, image=OK, stem=OCR, choices=5, answers=[1, 3, 5], choice_number_repairs=0
+Q57: page=33, image=OK, stem=OCR, choices=5, answers=[2, 4, 5], choice_number_repairs=0
+Q58: page=34, image=OK, stem=OCR, choices=5, answers=[1, 4, 5], choice_number_repairs=1
+Q59: page=34, image=OK, stem=OCR, choices=5, answers=[2, 3, 5], choice_number_repairs=0
+Q60: page=35, image=OK, stem=OCR, choices=5, answers=[2, 3, 4], choice_number_repairs=0

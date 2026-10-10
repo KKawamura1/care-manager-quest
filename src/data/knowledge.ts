@@ -3,7 +3,10 @@ import { pastConcepts } from './past-concepts';
 import classification from './packs/2025/classifications.json';
 import classification2018 from './packs/2018/classifications.json';
 import concepts2019 from './packs/2019/new_concepts.json';
+import historical from './packs/historical.json';
 export const categories: Category[] = [
+ {id:'U',label:'分類待ち',description:'原データの知識分類が未完成の問題',available:true},
+ {id:'U1',parentId:'U',label:'知識分類待ち',description:'問題は演習できます。分類は今後整理します。',available:true},
  {id:'A',label:'制度マネジメント',description:'地域全体を支える仕組み',available:true},
  {id:'A0',parentId:'A',label:'制度の理念・保険者',description:'何のために、誰が運営するか',available:true},
  {id:'A1',parentId:'A',label:'需要予測・行政計画',description:'必要なサービスを見通す',available:true},
@@ -50,9 +53,19 @@ const concepts2018:Concept[] = [...new Map(Object.values(classification2018).fil
  id:c.primaryConceptId,categoryId:c.primaryCategory,label:c.title,
  summary:'2018年度の過去問で扱う論点です。分類は暫定で、現行法との適合性は未確認です。',relatedIds:c.relatedConceptIds,
 }])).values()];
-export const concepts: Concept[] = [...baseConcepts,...pastConcepts,...concepts2018,...concepts2019,...Object.values(classification).map(c=>({
+const publishedConcepts: Concept[] = [...baseConcepts,...pastConcepts,...concepts2018,...concepts2019,...Object.values(classification).map(c=>({
  id:c.primaryConceptId,categoryId:c.primaryCategory,label:c.title,
  summary:'2025年度の過去問で扱う論点です。分類は暫定で、現行法との適合性は未確認です。',
  relatedIds:c.relatedConceptIds,
 }))];
 
+export const concepts: Concept[] = publishedConcepts.filter((c,i,all)=>all.findIndex(other=>other.id===c.id)===i);
+
+// Separate imported concept identities avoid overwriting 2025 progress during taxonomy review.
+const knownIds = new Set(concepts.map(c=>c.id));
+for (const q of historical) {
+ const id=q.conceptIds[0];
+ if (knownIds.has(id)) continue;
+ knownIds.add(id);
+ concepts.push({id,categoryId:q.primaryCategory,label:q.importedClassification.title??`${q.original.year}年度 問${q.original.number}（分類待ち）`,summary:q.classificationStatus==='pending'?'知識分類は未完了です。':'添付データの暫定分類です。既存マップとの対応は再確認待ちです。',relatedIds:q.conceptIds.slice(1)});
+}

@@ -10,6 +10,7 @@ import { Modal } from './components/Modal';
 import { Emblem } from './components/Emblem';
 import { OriginalImage } from './components/OriginalImage';
 import { CopyQuestion } from './components/CopyQuestion';
+import { filterQuestions, parseYearFilter, YEAR_STORAGE_KEY, type YearFilter } from './domain/questionFilter';
 const DOMAIN_OPTIONS = [
   {value:'介護支援分野',label:'介護支援'},
   {value:'保健医療サービスの知識等',label:'保健医療'},
@@ -17,7 +18,6 @@ const DOMAIN_OPTIONS = [
   {value:'all',label:'全分野'},
 ] as const;
 type DomainFilter = typeof DOMAIN_OPTIONS[number]['value'];
-const YEAR_STORAGE_KEY = 'care-manager-quest:year-filter';
 const DOMAIN_STORAGE_KEY = 'care-manager-quest:domain-filter';
 const statusLabel = { unexplored: '未探索', learning: '学習中', mastered: '習得済み' };
 function download(text: string, name: string) {
@@ -41,12 +41,9 @@ export default function App() {
     try {const stored=window.localStorage.getItem(DOMAIN_STORAGE_KEY); return DOMAIN_OPTIONS.some(option=>option.value===stored)?stored as DomainFilter:'介護支援分野';}
     catch {return '介護支援分野';}
   });
-  const [yearFilter,setYearFilter] = useState<string>(()=>{
-    try {const stored=window.localStorage.getItem(YEAR_STORAGE_KEY);return stored==='all'||availableYears.some(year=>String(year)===stored)?stored!:'2025';}
-    catch {return '2025';}
-  });
-  const changeYear = (next:string) => {setYearFilter(next);try{window.localStorage.setItem(YEAR_STORAGE_KEY,next);}catch{/* continue without persistence */}};
-  const activeQuestions = questions.filter(question=>(yearFilter==='all'||String(question.original?.year)===yearFilter)&&(domainFilter==='all'||question.domain===domainFilter));
+  const [yearFilter,setYearFilter] = useState<YearFilter>(()=>{try{return parseYearFilter(window.localStorage.getItem(YEAR_STORAGE_KEY));}catch{return 2025;}});
+  const activeQuestions = filterQuestions(questions,yearFilter,domainFilter);
+  const changeYear=(next:YearFilter)=>{setYearFilter(next);try{window.localStorage.setItem(YEAR_STORAGE_KEY,String(next));}catch{/* continue without persistence */}};
   const changeDomain = (next: DomainFilter) => {setDomainFilter(next);try{window.localStorage.setItem(DOMAIN_STORAGE_KEY,next);}catch{/* continue without persistence */}};
   const [initial] = useState(initiallyLoad);
   const [player, setPlayer] = useState<PlayerState>(initial.player);
@@ -114,7 +111,7 @@ export default function App() {
     <main>
       {route === 'home' && <>
         <section className="hero"><div className="eyebrow"><span className="live-dot"/> THE KNOWLEDGE ADVENTURE</div><div className="hero-art"><Emblem/></div><h1>推理が、<br/><span>知識に変わる。</span></h1><p>推理して、介護保険の世界をつなげる。</p><div className="hero-meta"><span>過去問 {questions.length}問</span><span>現在の出題：{activeQuestions.length}問</span></div></section>
-        <section className="mission-card"><div className="section-kicker">YOUR NEXT QUEST <span>5 QUESTIONS</span></div><h2>介護保険の世界へ</h2><p>年度と分野を選んで、5問ずつ挑戦できます。</p><label className="year-picker">出題する年度<select aria-label="出題する年度" value={yearFilter} onChange={e=>changeYear(e.target.value)}><option value="all">収録された全年度</option>{availableYears.map(year=><option key={year} value={year}>{year}年度</option>)}</select></label><fieldset className="domain-picker"><legend>出題する分野</legend>{DOMAIN_OPTIONS.map(option=><label key={option.value}><input type="radio" name="quest-domain" checked={domainFilter===option.value} onChange={()=>changeDomain(option.value)}/><span>{option.label}（{questions.filter(q=>(yearFilter==='all'||String(q.original?.year)===yearFilter)&&(option.value==='all'||q.domain===option.value)).length}問）</span></label>)}</fieldset>{session&&!session.completed&&<p className="mission-note">年度・分野の変更は次の新しいクエストから反映します。進行中の5問はそのまま再開できます。</p>}<div className="quest-path">{['入口','探索','難問','ひと息','応用'].map((x,i)=><div key={x} className={i===2?'boss':''}><span>{i===2?'✦':i+1}</span><small>{x}</small></div>)}</div><button className="primary" disabled={blocked||activeQuestions.length<5} onClick={session&&!session.completed?()=>go('play'):start}>{session&&!session.completed?`第${session.index+1}問から再開`:'5問のクエストを始める'}<span>→</span></button><div className="mission-note">1回5問 · 複数選択 · 途中でも自動保存</div></section>
+        <section className="mission-card"><div className="section-kicker">YOUR NEXT QUEST <span>5 QUESTIONS</span></div><h2>介護保険の世界へ</h2><p>年度と分野を選んで、5問ずつ挑戦できます。</p><label className="year-picker">出題する年度<select aria-label="出題する年度" value={yearFilter} onChange={e=>changeYear(parseYearFilter(e.target.value))}><option value="all">収録された全年度</option>{availableYears.map(year=><option key={year} value={year}>{year}年度</option>)}</select></label><fieldset className="domain-picker"><legend>出題する分野</legend>{DOMAIN_OPTIONS.map(option=><label key={option.value}><input type="radio" name="quest-domain" checked={domainFilter===option.value} onChange={()=>changeDomain(option.value)}/><span>{option.label}（{questions.filter(q=>(yearFilter==='all'||q.original?.year===yearFilter)&&(option.value==='all'||q.domain===option.value)).length}問）</span></label>)}</fieldset>{session&&!session.completed&&<p className="mission-note">年度・分野の変更は次の新しいクエストから反映します。進行中の5問はそのまま再開できます。</p>}<div className="quest-path">{['入口','探索','難問','ひと息','応用'].map((x,i)=><div key={x} className={i===2?'boss':''}><span>{i===2?'✦':i+1}</span><small>{x}</small></div>)}</div><button className="primary" disabled={blocked||activeQuestions.length<5} onClick={session&&!session.completed?()=>go('play'):start}>{session&&!session.completed?`第${session.index+1}問から再開`:'5問のクエストを始める'}<span>→</span></button><div className="mission-note">1回5問 · 複数選択 · 途中でも自動保存</div></section>
         <section className="discovery"><div><span className="section-kicker">YOUR DISCOVERIES</span><h2>知識の地図を広げよう</h2><p>{explored} / {concepts.length} 概念を探索 · {mastered} 習得済み</p></div><button aria-label="知識マップを見る" onClick={()=>go('map')}>↗</button></section>
         <div className="home-tip"><span>✦</span><p>初見正解で <b>+20 XP</b>。<br/>原本と正答を確かめて、知識マップへ。</p></div>
       </>}
@@ -123,7 +120,7 @@ export default function App() {
         <div className="question-progress">{session.questionIds.map((id,i)=>{const a=inSession[i];return <span key={id} className={i===session.index?'current':a?a.correct?'won':'lost':''}>{a?(a.correct?'✓':'·'):i+1}</span>;})}</div>
         <div className="question-meta"><span className={`difficulty d${current.difficulty}`}>{['','ENTRY','TACTICAL','CHALLENGE'][current.difficulty]} {'◆'.repeat(current.difficulty)}</span><span>{categories.find(c=>c.id===current.primaryCategory)?.label}</span></div>
         <h1 className="question-title">{current.title}</h1><p className="question-stem">{current.stem}</p>{current.original?.textStatus==='pending'&&<p className="proofreading-note">{current.original.imagePath?'原本との独立した二重校正は未実施です。疑義があれば原本を確認してください。':'原文の独立した二重校正・現行法の確認は未完了です。疑義があれば掲載元を確認してください。'}</p>}
-        {current.original&&<div className="question-tools">{current.original.imagePath?<button className="text-button" onClick={()=>setOriginalQuestion(current)}>原本画像を見る ↗</button>:<a href={current.provenance.pastExamUrl} target="_blank" rel="noopener noreferrer">掲載元で問題を確認 ↗</a>}<span>{current.original.year}年度当時の正答で採点</span></div>}
+        {current.original&&<div className="question-tools">{current.original.imagePath?<button className="text-button" onClick={()=>setOriginalQuestion(current)}>原本画像を見る ↗</button>:<a href={current.provenance.pastExamUrl??current.original.sourceUrl} target="_blank" rel="noopener noreferrer">掲載元で問題を確認 ↗</a>}<span>{current.original.year}年度当時の正答で採点</span></div>}
         {!attempt&&<CopyQuestion key={current.id} question={current}/>}
         <div className="question-concepts" aria-label="この問題の知識マップ">{current.conceptIds.map(id=><button key={id} onClick={()=>setConceptId(id)}>⌘ {concepts.find(c=>c.id===id)?.label??id}</button>)}</div>
         <div className="selection-instruction"><b>{current.selectionCount}つ選択</b><span>{attempt?'解答済み':`${selected.length} / ${current.selectionCount} 選択中`}</span></div>

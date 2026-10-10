@@ -29,7 +29,7 @@ export const pastProvider:QuestionProvider = {
       id:q.id,version:q.version,domain:q.domain,title:`${q.year}年度 問${q.number}｜${c.title}`,stem:q.stem+(q.note?`\n${q.note}`:''),
       options:q.choices.map((text,i)=>({id:String(i+1),text,explanation:''})),
       answerIds:a.correctChoices.map(String),answerVariants:a.answerVariants?.map(ids=>ids.map(String)),selectionCount:a.selectionCount,
-      explanation:'',reasoning:'',difficulty:c.difficulty,primaryCategory:c.primaryCategory,conceptIds:[c.primaryConceptId,...c.relatedConceptIds],classificationRevision:c.revision,
+      explanation:'',reasoning:'',difficulty:c.difficulty,primaryCategory:c.primaryCategory,conceptIds:[...new Set([c.primaryConceptId,...c.relatedConceptIds])],classificationRevision:c.revision,
       original:{year:q.year,number:q.number,textStatus:'pending',lawStatus:'not_reviewed'},
       provenance:{kind:'official',author:'公益財団法人 社会福祉振興・試験センター',verifiedAt:a.verifiedAt,pastExamUrl:q.sourceUrl,sources:[{sourceId:q.sourceId,locator:`${q.year}年度 第${q.year-1997}回 問${q.number}（${q.year===2018?`公式PDFの文字起こし、PDF ${q.sourcePageIndex!+1}ページ`:q.year===2019?'提供された原本PDFの文字起こし・民間掲載文との照合':'民間掲載テキストから収集'}）`},{sourceId:a.sourceId,locator:`試験当時の正答：${(a.answerVariants??[a.correctChoices]).map(ids=>ids.join('・')).join(' または ')}`},...(q.year===2019?[{sourceId:'2019-answer-key-secondary',locator:'民間掲載正答との照合'}]:[]),...(q.secondarySourceUrl?[{sourceId:q.sourceId+'-comparison',locator:'文字差の照合・フィールド採用元'}]:[])]},
     } satisfies Question;

@@ -1,0 +1,3028 @@
+{
+  "schema_version": "1.0",
+  "dataset_id": "care-manager-2024-all-60-image-backed",
+  "source_credits": "令和6年度（第27回）介護支援専門員実務研修受講試験／公益財団法人社会福祉振興・試験センター（東京都福祉局公表資料）",
+  "official_problem_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+  "official_answer_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+  "reuse_guidance_url": "https://www.sssc.or.jp/pastissues/index.html",
+  "notes": [
+    "2024年度（第27回）全60問。原本画像・2024年度公式正答番号を保持。",
+    "テキストは日本語OCR自動抽出。逐語校正は未実施なので問題表示では原本画像を優先。",
+    "原文を改変しないこと。2024年時点の法令に基づく問題。2026年現在の法改正確認・独自解説は未実施。",
+    "分類は未実施。初期フィルタは介護支援分野（問1〜25）を推奨。"
+  ],
+  "questions": [
+    {
+      "id": "2024-01",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "介護支援分野",
+      "number": 1,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 2,
+        "pdf_page_label": 1
+      },
+      "correct_choices": [
+        2,
+        3,
+        4
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "わが国の近年の介護を取り巻く状況の説明として適切なものはどれか。 3 つ選べ。",
+      "choices": [
+        "介護を要する高齢者を同大している高齢者が介護する「老老介護」は, 減少傾向に ある。",
+        "育児と介護を同時に担う|ダブルケア」が課題となっている。",
+        "「ヤングケアラー」への支援が課題となっている。",
+        "介護者が仕事と介護を両立できるよう, 法律により介護休暇及び介護休業が制度 化きれている。                           。",
+        "特別姜護老人ホームなどの老人ホームでの死亡者数は, 減少傾向にある。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q01.png",
+      "image_sha256": "cd676895e5536f0fb830e0ae774b2a6009941c0af87fa2365b2eeb4f18d9fd49",
+      "ocr_raw_path": "ocr/questions/2024/q01.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    },
+    {
+      "id": "2024-02",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "介護支援分野",
+      "number": 2,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 2,
+        "pdf_page_label": 1
+      },
+      "correct_choices": [
+        3,
+        4
+      ],
+      "required_choices": 2,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "2021(令和 3 )年度示における全国の要介護(疲支援)認定者数の状況として 正しいもるのはどれか。 2 つ選べ。",
+      "choices": [
+        "要介護(要支援)認定者のうち, 第2号被保険者の占める割合は, 30 %を超えて いる。",
+        "第1号被保険者に占める要介護(要支援)認定者の割合は, 40 %を超えている。",
+        "85歳以上の被保険者のうち, 要介護(要支援)超定者の占める割合は, 50 %を超 えている。",
+        "要介護(要支援)認定者数は, 男性より女性の方が多い。",
+        "要介護(要支援)状態区分別でみると, 認定者数が最も多いのは, 要介護5である。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q02.png",
+      "image_sha256": "601a8c3ac1a0bd44272a264c24528073718a054de0e85113536044c25bf1f86b",
+      "ocr_raw_path": "ocr/questions/2024/q02.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    },
+    {
+      "id": "2024-03",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "介護支援分野",
+      "number": 3,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 3,
+        "pdf_page_label": 2
+      },
+      "correct_choices": [
+        2,
+        3
+      ],
+      "required_choices": 2,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "介護保険法に定める医療保険者の事務として正しいものはどれか。 2 つ選べ。",
+      "choices": [
+        "第1号彼保険者の保険料の特別後収を行う。",
+        "第2号技保険者の保険料を徴収する。",
+        "社会保険診療報酬支払基金に対し, 介護給付費・地域支援事業支援納付金を納付 する。",
+        "市町村に対し, 介護給付費交付金を交付する。",
+        "市町村に対し, 地域壇援事業支援交付金を交付する。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q03.png",
+      "image_sha256": "e4037fb1540ccee33202cdaa7fa5a4f59e526216980725c8d9c929fd3a51b5c4",
+      "ocr_raw_path": "ocr/questions/2024/q03.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    },
+    {
+      "id": "2024-04",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "介護支援分野",
+      "number": 4,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 3,
+        "pdf_page_label": 2
+      },
+      "correct_choices": [
+        2,
+        4
+      ],
+      "required_choices": 2,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "介護保険法に定める都道府県の責務として正しいもるのはどれか。 2 つ選べ。",
+      "choices": [
+        "介護報酬の算定基準を適切に設定しなければならない。",
+        "介護保険事業の運営が健金かつ円滑に行われるように, 必要な助言及び適切な援 助をしなければならない。              ーー",
+        "介護保険事業が効率的に行われるように, 年金保険者を指導・監督しなければな らない。",
+        "認知症に関する知識の普及及び啓玩に災めなければならない。",
+        "高齢者が経済活動に参加ることを促さなければならない。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q04.png",
+      "image_sha256": "d709f15bf51a126310e7d1b26f208a0f6ea30d25fc5477b41e5a8fc58b5319eb",
+      "ocr_raw_path": "ocr/questions/2024/q04.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    },
+    {
+      "id": "2024-05",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "介護支援分野",
+      "number": 5,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 4,
+        "pdf_page_label": 3
+      },
+      "correct_choices": [
+        1,
+        3
+      ],
+      "required_choices": 2,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "介護保険の第1号被保険者について正しいもるのはどれか。 2 つ選べ。",
+      "choices": [
+        "市町村の区域内に住所を有する 65 歳以上の者をいう。",
+        "保険給付の対象となるのは, 特定疾滴を原因として要支援・要介護状態になった 者に限られる。",
+        "保険料は, 地域支援事業の任意事業の財源に充当される。",
+        "居住する市町村から転出した場合は, その翌月から転出先の市町村の被保険者と なる。",
+        "医療保険加入者でなくなった日から, 第1 号被保険者の資格を裏失する。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q05.png",
+      "image_sha256": "e9a699ce94387a77f51859262cd8edf046182c3b4759a9ffbf678b6e606676ff",
+      "ocr_raw_path": "ocr/questions/2024/q05.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": [
+        {
+          "choice": 1,
+          "kind": "renumber_ocr",
+          "line": "。 1 市町村の区域内に住所を有する 65 歳以上の者をいう。"
+        },
+        {
+          "choice": 3,
+          "kind": "renumber_ocr",
+          "line": "- 3 保険料は, 地域支援事業の任意事業の財源に充当される。"
+        }
+      ]
+    },
+    {
+      "id": "2024-06",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "介護支援分野",
+      "number": 6,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 4,
+        "pdf_page_label": 3
+      },
+      "correct_choices": [
+        1,
+        2,
+        4
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "区分支給限度基準額が適用きれるサービスとして正しいものはどれか。 3 つ選べ。",
+      "choices": [
+        "訪問介護",
+        "地域密着型通所介談                                          ]",
+        "選宅療養管理指導",
+        "認知症対応型通所介護",
+        "地域害型介護老人福祉施設入所者生活介護"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q06.png",
+      "image_sha256": "e9b0b98e81e389fe8a1a5de54645f8ea0e59bac38a2af6475cd045b73db4e633",
+      "ocr_raw_path": "ocr/questions/2024/q06.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    },
+    {
+      "id": "2024-07",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "介護支援分野",
+      "number": 7,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 5,
+        "pdf_page_label": 4
+      },
+      "correct_choices": [
+        1,
+        3,
+        5
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "市町村長が指定する事業者が行うサービスとして正しいもるのはどれか。 3 つ選べ。",
+      "choices": [
+        "居宅介護支援",
+        "通所介護",
+        "認知症対応弄共同生活介護",
+        "介庶巴防短期入所生活介護",
+        "介護予防支援"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q07.png",
+      "image_sha256": "f67316fd65b83daad4ec241393cbff6d2af791285743d40eaf8165c6974f0577",
+      "ocr_raw_path": "ocr/questions/2024/q07.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": [
+        {
+          "choice": 3,
+          "kind": "renumber_ocr",
+          "line": "8 認知症対応弄共同生活介護"
+        }
+      ]
+    },
+    {
+      "id": "2024-08",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "介護支援分野",
+      "number": 8,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 5,
+        "pdf_page_label": 4
+      },
+      "correct_choices": [
+        1,
+        4,
+        5
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "介護保険制度の給付と利用者負担について正しいものはどれか。 3 つ選べ。",
+      "choices": [
+        "被保険者が災害により住宅に著しい損害を受けた場合には, 市町村は, 定率の利 用者負担を減免することができる。",
+        "施設介護サービス旨に係る利用者負担は. 一律2 割の定率負担となっている。",
+        "区分支給限度基準額を超えてサービスを利用した場合には, その吉えた部分は 3 ・ 割負担となる。",
+        "介護保険施設入所者の理美容代は, 保険給付の対象とならない。",
+        "居宅介護サービス計画費については, 利用者負担はない。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q08.png",
+      "image_sha256": "da6e2cd01c0d6232766a4d616c0f6665e94d3d29a112f62cd449b6033ccd0de8",
+      "ocr_raw_path": "ocr/questions/2024/q08.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    },
+    {
+      "id": "2024-09",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "介護支援分野",
+      "number": 9,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 6,
+        "pdf_page_label": 5
+      },
+      "correct_choices": [
+        1,
+        5
+      ],
+      "required_choices": 2,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "高額介謎サービス費について正しいゃのはどれか。 2 つ選べ。",
+      "choices": [
+        "世匠単倍で算定きれる。",
+        "地域窒着型サービスの利用に係る利用者負担額は, 支給の対象とならない。",
+        "同一世帯に住民税が課税きれている者がいる場合には, 支給の対象とならない。",
+        "利用者の負担上限額は, 6月単位で設定されている。",
+        "利用者の負担上限額は, 所得によって異なる。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q09.png",
+      "image_sha256": "a550b15baa445fa221fe23b3870238216d1b5c44e8fe5ef0182cbec575484f85",
+      "ocr_raw_path": "ocr/questions/2024/q09.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": [
+        {
+          "choice": 1,
+          "kind": "renumber_ocr",
+          "line": "。 1 世匠単倍で算定きれる。"
+        }
+      ]
+    },
+    {
+      "id": "2024-10",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "介護支援分野",
+      "number": 10,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 6,
+        "pdf_page_label": 5
+      },
+      "correct_choices": [
+        1,
+        2,
+        4
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "介護保険法に定める市町村介護保険事業計画について正しいものはどれか。 8つ選べ。 “",
+      "choices": [
+        "市町村老人福祉計画と一体のものとして作成されなければならない。",
+        "市町村地域福祉計画と調和が保たれたものでなければならない。",
+        "介談保険施設の種類ごとの必要入所定員総数の見込みを定めなければならない。",
+        "各年度における地域支援事業の量の見込みを定めるものとする。",
+        "計画期間は, 5年を1期とする。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q10.png",
+      "image_sha256": "5522c18123d60c4b3212d353c8e59e85dc3023ed86af654a7aad08866512635a",
+      "ocr_raw_path": "ocr/questions/2024/q10.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    },
+    {
+      "id": "2024-11",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "介護支援分野",
+      "number": 11,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 7,
+        "pdf_page_label": 6
+      },
+      "correct_choices": [
+        2,
+        3,
+        5
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "介護保険の財政について正しいものはどれか。 3 つ選べ。",
+      "choices": [
+        "施設等給付の公費負担割合は, 国 30 %, 都道府県 10 %, 市町村 10 %である。",
+        "調整交付金の総額は, 介護給付及び予防給付に要する費用の絵額の 5 %に相当す る額である。",
+        "介護給付及び予防給付に要する費用は, 公費と保険料によりそれぞれ 50 %ずつ 賭われる。",
+        "第1号被保険者と第 2 号被保険者の保険料負担の接分割合は, 制度施行以来変 わっていない。",
+        "市町村特別給付に要する費用は, その市町村の第 1 号入保険者の保険料により財 われる。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q11.png",
+      "image_sha256": "cbab97da6cc396a9bfe56a7f2e484cc8ef507db54f3a7059aea4414f8e64568c",
+      "ocr_raw_path": "ocr/questions/2024/q11.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": [
+        {
+          "choice": 2,
+          "kind": "renumber_ocr",
+          "line": "-2 調整交付金の総額は, 介護給付及び予防給付に要する費用の絵額の 5 %に相当す"
+        }
+      ]
+    },
+    {
+      "id": "2024-12",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "介護支援分野",
+      "number": 12,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 7,
+        "pdf_page_label": 6
+      },
+      "correct_choices": [
+        1,
+        3,
+        4
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "介護保険における第2号被保険者の保険料について正しいものはどれか。 3 つ選べ。",
+      "choices": [
+        "介護予防・日常生活支援総合事業の細用にも充てられる。",
+        "所得段階別定額保験料である。",
+        "被用者保険の被保険者の場合には, 事業主負担がある。",
+        "拉用者保険の披保険者である生活保護受給者は, 保険料を支払う。",
+        "外用著保険の被保険者の保険料は, 市町村が条例で定める。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q12.png",
+      "image_sha256": "9d29122c3a1fd8d1c846928209c3104904d365ea52e851bf64c0bb793f260fc1",
+      "ocr_raw_path": "ocr/questions/2024/q12.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": [
+        {
+          "choice": 1,
+          "kind": "renumber_ocr",
+          "line": "] 介護予防・日常生活支援総合事業の細用にも充てられる。"
+        }
+      ]
+    },
+    {
+      "id": "2024-13",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "介護支援分野",
+      "number": 13,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 8,
+        "pdf_page_label": 7
+      },
+      "correct_choices": [
+        2,
+        3,
+        4
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "認知症総合支援事業において配周の対象とされているものとして正しいも のはどれか。 3 つ選べ。",
+      "choices": [
+        "福祉用具専門相談員         -",
+        "認知症地域支援推進上",
+        "チームオレンジコーディネーター",
+        "認知症初期集中支援チーム",
+        "介護サービス相談員"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q13.png",
+      "image_sha256": "915d6a0a60d5873d680ef8cae59cbd9435b3992eb7e6ba048fb0c12953f77897",
+      "ocr_raw_path": "ocr/questions/2024/q13.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    },
+    {
+      "id": "2024-14",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "介護支援分野",
+      "number": 14,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 8,
+        "pdf_page_label": 7
+      },
+      "correct_choices": [
+        4,
+        5
+      ],
+      "required_choices": 2,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "介護予防ケアマネジメント(第1号介護予防支援事業)について正しいもの はどれか。 2 つ選べ。",
+      "choices": [
+        "事業の受託者への費用の審査及び支払に係る事務は, 国民健康保険団体連合会に 委託できない。",
+        "介護予防ケアマネジメントの利用者負担は, 1 割又は2割である。",
+        "医療機関が行わなければならない。",
+        "住所地特例適用被保険者については, 入所又は入居する施設が所在する市町村が",
+        "要支援者は, 対象である。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q14.png",
+      "image_sha256": "289dd81a122968c5ab975e1b1f80a41551a45326c01533988d54cd0c1fc65401",
+      "ocr_raw_path": "ocr/questions/2024/q14.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": [
+        {
+          "choice": 1,
+          "kind": "renumber_ocr",
+          "line": "] 事業の受託者への費用の審査及び支払に係る事務は, 国民健康保険団体連合会に"
+        }
+      ]
+    },
+    {
+      "id": "2024-15",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "介護支援分野",
+      "number": 15,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 9,
+        "pdf_page_label": 8
+      },
+      "correct_choices": [
+        2,
+        5
+      ],
+      "required_choices": 2,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "旬談保険審査会について正しいものはどれか。 2 つ選べ。",
+      "choices": [
+        "市町村に設置される。",
+        "委員には, 被保険者を代表する者が含まれる。          .",
+        "介護報酬の審査・支払についての不服は, 審査請求の対象となる。",
+        "指定介護老人福祉施設の指定についての不服は, 審査請求の対象となる。",
+        "保険料の滞納処分についての不服は, 審査請求の対象となる。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q15.png",
+      "image_sha256": "10651080124c3b1ee3dc4ee696227cc91a7412237b38939beb2c0c33a2228678",
+      "ocr_raw_path": "ocr/questions/2024/q15.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    },
+    {
+      "id": "2024-16",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "介護支援分野",
+      "number": 16,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 9,
+        "pdf_page_label": 8
+      },
+      "correct_choices": [
+        1,
+        3
+      ],
+      "required_choices": 2,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "介護保険に関して市町村が有する権限について正しいもゃのはどれか。 2 つ 選べ。       *",
+      "choices": [
+        "援保険者に対する義齢等年金給付の支給状況について, 年金保険者に対し資料の 提供を求める。",
+        "要介護認定に関する審査請求事件について, 医療保険者に対し必要な報告を求める。",
+        "被保険者の保険料に関し, 械保険者の収入について調査する。",
+        "介護サービス情報の公表制度に係る報告に関し, 指定大宅サービス事業者を調査 する。",
+        "不正の手段により登録を受けた介護支援専門員の登録を消除する。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q16.png",
+      "image_sha256": "bc2aa55a91681bfc3eec035257f39fbfa64b77c3b33112196471bf2f27fb274e",
+      "ocr_raw_path": "ocr/questions/2024/q16.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    },
+    {
+      "id": "2024-17",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "介護支援分野",
+      "number": 17,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 10,
+        "pdf_page_label": 9
+      },
+      "correct_choices": [
+        1,
+        2,
+        5
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "要介護認定の認定調査票(基本調査)に含まれる項目として正しいゃのはど れか。 3 つ選べ。",
+      "choices": [
+        "座位保持",
+        "整業",
+        "預貯金の額",
+        "学歴",
+        "買い物"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q17.png",
+      "image_sha256": "f53c5c97befe02539a20e3a959733492f91625b6f32e59f53bf3795ae0664eae",
+      "ocr_raw_path": "ocr/questions/2024/q17.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    },
+    {
+      "id": "2024-18",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "介護支援分野",
+      "number": 18,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 10,
+        "pdf_page_label": 9
+      },
+      "correct_choices": [
+        1,
+        3
+      ],
+      "required_choices": 2,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "要介談認定の一次判定について正しいもゃのはどれか。 2 つ選べ。",
+      "choices": [
+        "要介談認定等基準時間は, 1日当たりの時間として推計される。",
+        "相介設認定等基準時間は, 実際に居宅等で行わんている介護時間そのものである。",
+        "金剛共通の基準に基づき行われる。",
+        "都和府県が行わなければならない。",
+        "一次判定の結果は, 申請した技保険者に対し通知きまれなければならない。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q18.png",
+      "image_sha256": "cd48dba04e27fb74876b2a37f561a85c0b43c22f8af3b9fac530a4033b6598c8",
+      "ocr_raw_path": "ocr/questions/2024/q18.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    },
+    {
+      "id": "2024-19",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "介護支援分野",
+      "number": 19,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 11,
+        "pdf_page_label": 10
+      },
+      "correct_choices": [
+        1,
+        2,
+        3
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "要介護認定に係る主治医意見書の項目として正しいものはどれか。 3 つ選べ。",
+      "choices": [
+        "栄養・食生活",
+        "感染症の有無",
+        "医学的管理の必要性                            .",
+        "趣味       ・",
+        "職歴"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q19.png",
+      "image_sha256": "18e0d092e6e8a135e8f53b944bc6ed543070480a679d2272577bfdf3f948d6e9",
+      "ocr_raw_path": "ocr/questions/2024/q19.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": [
+        {
+          "choice": 1,
+          "kind": "renumber_ocr",
+          "line": "- 1 栄養・食生活"
+        }
+      ]
+    },
+    {
+      "id": "2024-20",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "介護支援分野",
+      "number": 20,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 11,
+        "pdf_page_label": 10
+      },
+      "correct_choices": [
+        1,
+        2,
+        5
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "指定居宅介護文援におけるケアマネジメント業務として, より奥切なもの はどれか。 3 つ選べ。",
+      "choices": [
+        "課題分析標準項目に基づくアセスメントの実施",
+        "利用者によるサービスの選択に資するための情報提供",
+        "地域ケア会議の主催 .、",
+        "住民による自発的活動の開発",
+        "モニタリングの実施"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q20.png",
+      "image_sha256": "e0194f931e4b774190979029d2fa4d70d2980350ebf5449afdb0a7e86d8d1426",
+      "ocr_raw_path": "ocr/questions/2024/q20.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": [
+        {
+          "choice": 1,
+          "kind": "renumber_ocr",
+          "line": "] 課題分析標準項目に基づくアセスメントの実施"
+        }
+      ]
+    },
+    {
+      "id": "2024-21",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "介護支援分野",
+      "number": 21,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 12,
+        "pdf_page_label": 11
+      },
+      "correct_choices": [
+        1,
+        4,
+        5
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "居宅サービス計画の作成について正しいものはどれか。 3 つ選べ。",
+      "choices": [
+        "被保険者証に認定審恋会意見の記載がある場合には, 利用者にその趣旨を説明し. 理解を得た上で, その内容に治って作成しなければならない。",
+        "地域着型通所介談を位置付ける場合には, 認知定の専門医の意見を求めをけれ ばならない。",
+        "厚生労働大臣が定める回数以上の訪問介護は, 位置付けることができない。",
+        "短期入所生活介談を位置付ける場合には, 原則として利用する日数が正人談認定 の有効期間のおおむね半数を超えないようにしなければならない。",
+        "福祉用具貸与を位置付ける場合には, その利用の妥当性を核討し. 必要な理由を 記載しなければならない。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q21.png",
+      "image_sha256": "4f102d80ecac38a9e4521c0481ecd83ac0d300d083fe6e1e33b20eb4737cbbac",
+      "ocr_raw_path": "ocr/questions/2024/q21.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": [
+        {
+          "choice": 3,
+          "kind": "renumber_ocr",
+          "line": "、 3 厚生労働大臣が定める回数以上の訪問介護は, 位置付けることができない。"
+        }
+      ]
+    },
+    {
+      "id": "2024-22",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "介護支援分野",
+      "number": 22,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 12,
+        "pdf_page_label": 11
+      },
+      "correct_choices": [
+        1,
+        4,
+        5
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "指守居宅介護支援事業者の記録について正しいものはどれか。 3 つ選べ。",
+      "choices": [
+        "居宅介設支援経過は, 時系列で誰もが理解できるように記載する。",
+        "サービス担当者会議の記録は, 支援が完結すればその時点で廃棄してもよい。",
+        "自ら提供した指定居宅介支接とは明らかに関係がない普情を受け付けた場合で も, すべて記録し保存しなければならない。",
+        "指定居宅介談壇援の提供により発生した事攻の状況及び事故に際して採った処叶 について, 記録しなければならない。                ーー",
+        "不正の行為によって保険給付を受けた利用者については, 市町村に遅癌なく通知 するとともに., その記録を散備しなければならない。    ーー"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q22.png",
+      "image_sha256": "06d79dc9c1707537d6f6cdaa581cc5d9229256a47f02a75b721784fdf89454e9",
+      "ocr_raw_path": "ocr/questions/2024/q22.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    },
+    {
+      "id": "2024-23",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "介護支援分野",
+      "number": 23,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 13,
+        "pdf_page_label": 12
+      },
+      "correct_choices": [
+        1,
+        3,
+        4
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "指定介護予防支援について適切なもるのはどれか。 3 つ選べ。",
+      "choices": [
+        "地域支援事業及び介護給付と連続性及び一貫竹を持った支援を行うように配慮する。",
+        "介護予防通所リハビリテーションを介護予防サービス計画に位置付ける場合には, 当該サービスに係る主治の医師の指示は必要ない。",
+        "介護予防サービス計画の策定に当たっては, 利用者の個別性を重家した効果的な ものとする。",
+        "利用者による主体的な取組を支援し, 常に利用者の生活機能の向上に対する意欲 を高めるよう支援する。",
+        "介護福祉士を配寺しなければならない。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q23.png",
+      "image_sha256": "b187480eb949cd0658df8bab149e4bc00ebc66780c9c1228a63aa355035f0633",
+      "ocr_raw_path": "ocr/questions/2024/q23.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    },
+    {
+      "id": "2024-24",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "介護支援分野",
+      "number": 24,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 13,
+        "pdf_page_label": 12
+      },
+      "correct_choices": [
+        2,
+        4
+      ],
+      "required_choices": 2,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "Aさん(80歳, 女性, 要介護2, 認知機能は低下していない)は, 長男と 二人人募らしで, 通所介護を利用している。 その通所介談事業所の職員から, 入浴時 にAさんの体に直径3cm くらいのあざが数か所あることを見つけ, Aさんが[長 男に怒鳴られて, 町かれた」と話していたことについての相談があった。 高齢者護         - 待防止法を踏まえた介護支援専門員の対応として, より適切なものはどれか。 2 つ 選べ。",
+      "choices": [
+        "一時的なものと考えん, しばらく様子を見ることにする。",
+        "如やかに市町村に通報する。",
+        "直ちにAさんが長期問開設を受けるために必要となる居室を確保するための措恒 を決める。                                                                    .",
+        "長男がいない場で. Aさんと今後の介護サービス や対応について話をする機会を 設ける。",
+        "長男に対し, なぜ鳴ったり叩いたりしたのかを厳しく問いただす。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q24.png",
+      "image_sha256": "66ae79824e63e373a7b9f5fafc55d76340b1cacc6d4b45e5dfeb9ff39c48244e",
+      "ocr_raw_path": "ocr/questions/2024/q24.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": [
+        {
+          "choice": 2,
+          "kind": "renumber_ocr",
+          "line": "-2 如やかに市町村に通報する。"
+        }
+      ]
+    },
+    {
+      "id": "2024-25",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "介護支援分野",
+      "number": 25,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 14,
+        "pdf_page_label": 13
+      },
+      "correct_choices": [
+        2,
+        3,
+        5
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "Aさん(85歳女性)は, 長女と二人暮らしである。 Aさんは自宅で転倒 して脱槍を圧追骨折し, 1か月入院した。 退院後。 筋力低下が著しく, 要支援2 の 認定を受けた。介護支援専門員が訪問したところ, Aきんは以前のように自分で家 事や入浴をしたいと希望しているが, 長女は転倒を心配してデイサービスでの入浴 、 介助を希望していて折り合わない。自立支援・重度化防止の観点に立った介護支援 専門員の対応として, より適切なものはどれか。 3 つ選べ。",
+      "choices": [
+        "長女の希望だけに沿ったケアプランを作成する。",
+        "筋力低下の原因や回復方法等の確認のため, 医師. 理学療法士, 管理栄養士など に相談ずる。",
+        "自宅での転倒リスクを軽減し, できるだけ自宅での自立した生活を営めるように, 生活環境全般を把握する。",
+        "様子を見るため, あえて目標や期間を定めずに介護予防通所リハビリテーション . の利用を位置付ける。",
+        "Aさんと長女を交えて, 自立支援・重度化防止に向けた話し合いの場を設ける。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q25.png",
+      "image_sha256": "6160250c6d4c965006470e54494e7d7348aa38aa42026227068df92407fa2369",
+      "ocr_raw_path": "ocr/questions/2024/q25.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": [
+        {
+          "choice": 1,
+          "kind": "renumber_ocr",
+          "line": "] 長女の希望だけに沿ったケアプランを作成する。"
+        },
+        {
+          "choice": 3,
+          "kind": "renumber_ocr",
+          "line": "、 8 自宅での転倒リスクを軽減し, できるだけ自宅での自立した生活を営めるように,"
+        }
+      ]
+    },
+    {
+      "id": "2024-26",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "保健医療サービスの知識等",
+      "number": 26,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 16,
+        "pdf_page_label": 15
+      },
+      "correct_choices": [
+        1,
+        2,
+        4
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "せん妻に関する次の記述のうち適切なかものはどれか。 3 つ選べ。",
+      "choices": [
+        "日常生活における活動性が低下することがある。",
+        "認知症を有する人は, せん夫を起こしやすい。",
+        "治療は, 誘因にかかわらず薬物治療を最優先とする。",
+        "せん究の程度は, 時間の経過とともに変化することがある。",
+        "夜間にせん妄を起こす高齢者には, 日中の睡眠を十分にとらせる。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q26.png",
+      "image_sha256": "2762abe8b80274c3ad38328f95e0e81d44625f2d8810487aa6ce7f675c5c38af",
+      "ocr_raw_path": "ocr/questions/2024/q26.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": [
+        {
+          "choice": 3,
+          "kind": "renumber_ocr",
+          "line": "8 治療は, 誘因にかかわらず薬物治療を最優先とする。"
+        }
+      ]
+    },
+    {
+      "id": "2024-27",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "保健医療サービスの知識等",
+      "number": 27,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 16,
+        "pdf_page_label": 15
+      },
+      "correct_choices": [
+        1,
+        2,
+        3
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "パイタルサインについて適切なものはどれか。 3 つ選べ。    ーー",
+      "choices": [
+        "生命の維持にかかわる最も基本的な情報である。",
+        "感染症にかかっても, 発幸しないことがある。",
+        "やせているため体温計を腰下部(朋の下)に密着できない場合には, 正確に体温を 測定できないことがある。",
+        "不整央の有病率は, 年齢用が高くなるにつれて減少する。 -",
+        "医師や衝師が血圧を測定すると低価になることが多い。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q27.png",
+      "image_sha256": "ed99fad86a405188ccd0f9a52ee07b80612864d57ab69f106604b78ebdd50e4e",
+      "ocr_raw_path": "ocr/questions/2024/q27.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": [
+        {
+          "choice": 1,
+          "kind": "renumber_ocr",
+          "line": "] 生命の維持にかかわる最も基本的な情報である。"
+        }
+      ]
+    },
+    {
+      "id": "2024-28",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "保健医療サービスの知識等",
+      "number": 28,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 17,
+        "pdf_page_label": 16
+      },
+      "correct_choices": [
+        1,
+        4,
+        5
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "口腔のケアについて適切なものはどれか。 3 つ選べ。",
+      "choices": [
+        "口腔内・口腔周囲を動かすことは, 口腔機能の維持・向上に資する。              .",
+        "胃ろうによる経管栄養を行っている高齢者では 口腔のケアは必要ない。  ・",
+        "寝たきりで片麻痺がある人の場合には,  誤只を防 ぐため, 麻痺側を下にして口腔 のケアを行う。",
+        "食後は義をはずして口腔内を清掃し,  義歯はブラシを使用して流水で洗う。:",
+        "高齢者では嘘液の分泌量が減り, う人や歯周病が起こりやすい。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q28.png",
+      "image_sha256": "3ff1472f6ee7728a2c907bb3b3af943ca1027b8a695a8e7a3ad64f73a701c72e",
+      "ocr_raw_path": "ocr/questions/2024/q28.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    },
+    {
+      "id": "2024-29",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "保健医療サービスの知識等",
+      "number": 29,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 17,
+        "pdf_page_label": 16
+      },
+      "correct_choices": [
+        1,
+        2,
+        5
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "リハビリテーションについて適切なものはどれか。 3 つ選べ。",
+      "choices": [
+        "利用者の残存能力をできる限り活かす。",
+        "急性期及び回復期に獲得された機能をできるだけ長く維持することも重要である。",
+        "廃用による筋力低下や筋先縮の予防には, 趣味や余暇活動への参加は効果がない。",
+        "本人が普痛を感じなければ, 同じ姿勢で安静山床を続けることが望ましい。",
+        "変形性膝関節症は, 歩行障害の原因となることがある。                   ーー"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q29.png",
+      "image_sha256": "bafef2a259f9e338348ccca8619f3334730f6e7d2d65c2529a0c18666005449a",
+      "ocr_raw_path": "ocr/questions/2024/q29.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    },
+    {
+      "id": "2024-30",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "保健医療サービスの知識等",
+      "number": 30,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 18,
+        "pdf_page_label": 17
+      },
+      "correct_choices": [
+        1,
+        3,
+        5
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "高齢者の精神疾患について, より適切な ものはどれか。 3 つ選べ。",
+      "choices": [
+        "要因の一つに, 脳の加齢性変化がある。",
+        "うつ病では, 自殺リスクはない。",
+        "配偶者や近親者の死が,  うつ病の要因となることがある。",
+        "アルコール依存症は, うつ病を合併するこ とはない。",
+        "精神症状が定型的でなく, 訴えは多彩かつ曖味であるこ とがある。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q30.png",
+      "image_sha256": "23301566d9b144ef3e3de2b02bcce7d65ba91f3011c0c1fd2c3275d086b34752",
+      "ocr_raw_path": "ocr/questions/2024/q30.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    },
+    {
+      "id": "2024-31",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "保健医療サービスの知識等",
+      "number": 31,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 18,
+        "pdf_page_label": 17
+      },
+      "correct_choices": [
+        1,
+        3,
+        5
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "次の記述のうち, より適切なものはどれか。 3 つ選べ。",
+      "choices": [
+        "入院中から刀院後の生活に向けた準備を進めることが望ましい。",
+        "退院前カンファレンスには, 利用者・家族は出席できない。",
+        "修租支接専門貞には, 退院前カンファレンスにおいて, 病院関係者と在宅支援の 関係者の橋渡し役になることが求められる。",
+        "介談支援専門員は, 常に医学的立場に立って治療法について助言すべきである。",
+        "明院後の利用者を担当する介護支援専門員は, 退院人後の状況を入院していた将 に報告することが望ましい。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q31.png",
+      "image_sha256": "23e836d57e305f6204ff3cde7e0e9b7329de2b1f99619e0dd0558ae9f66c6db5",
+      "ocr_raw_path": "ocr/questions/2024/q31.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": [
+        {
+          "choice": 1,
+          "kind": "renumber_ocr",
+          "line": "] 入院中から刀院後の生活に向けた準備を進めることが望ましい。"
+        },
+        {
+          "choice": 5,
+          "kind": "renumber_ocr",
+          "line": "』 明院後の利用者を担当する介護支援専門員は, 退院人後の状況を入院していた将"
+        }
+      ]
+    },
+    {
+      "id": "2024-32",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "保健医療サービスの知識等",
+      "number": 32,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 19,
+        "pdf_page_label": 18
+      },
+      "correct_choices": [
+        1,
+        3,
+        5
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "栄養と食事について適切なものはどれか。 3 つ選べ。",
+      "choices": [
+        "体重測定は, 栄状状態を把揮するために有用である。",
+        "低栄養を予防するためには, 摂取するエネルギー量を減らす。",
+        "水を飲んでむせる場合は, 汁物やお共に適度なとろみをつけることも一つのの方法 である。",
+        "スプーンはできるだけ深く大きいものとし, 1 回量を多くすることで食事の所要 時間を短くする。",
+        "配食サービスは, 栄養改善の且的だけでなく, 一人募らし高齢者の見守りとして も活用できる。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q32.png",
+      "image_sha256": "c0a2e2fd98fadcb042fdacec085fbac16af837b347ffb3799de8518c50ab8843",
+      "ocr_raw_path": "ocr/questions/2024/q32.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": [
+        {
+          "choice": 1,
+          "kind": "renumber_ocr",
+          "line": "、 1 体重測定は, 栄状状態を把揮するために有用である。"
+        }
+      ]
+    },
+    {
+      "id": "2024-33",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "保健医療サービスの知識等",
+      "number": 33,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 19,
+        "pdf_page_label": 18
+      },
+      "correct_choices": [
+        1,
+        2,
+        4
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "次の記述のうち適功なるのはどれか。 3 つ選べ。",
+      "choices": [
+        "精尿病の治療法の一つとして, インスリンの在宅自己注射がある。",
+        "人工作折は, 腎臓の働きを補うために行う。",
+        "中心静脈栄養法では, 必ず腕や手の細い静須から点滴する。",
+        "経管栄養法では, 胃や腸に管を用いて栄券を注入する。",
+        "人工呼吸療法は, 体内への二酸化談素の取り込みを促すために行う。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q33.png",
+      "image_sha256": "73f4a286bc7a3afce91684f5336bd500143428d32992858f269c0cf8d71130d8",
+      "ocr_raw_path": "ocr/questions/2024/q33.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    },
+    {
+      "id": "2024-34",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "保健医療サービスの知識等",
+      "number": 34,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 20,
+        "pdf_page_label": 19
+      },
+      "correct_choices": [
+        1,
+        3,
+        4
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "感朱予防について適功なものはどれか。 3 つ選べ。    .",
+      "choices": [
+        "すべての人が感柴症の演原体を保有している可能性があると考え, 感朱予防に色 める。",
+        "高齢者には, 肺炎球ウクチンの拉種を毎年 1 回受けることが推龍されでいる。",
+        "高齢者における結核の初期症状としては, 食欲不振 全身催意, 体重減少なども - ある。            -",
+        "手洗いでは, 指先、指の間, 親指. 手首も沈い忘れないようにする。",
+        "ノロウイルスの消毒には, 低濃度のエタノールを用いる。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q34.png",
+      "image_sha256": "1898f9b89417c976ffeb87e61f62c3f65278b0dcb497bf1353c4f24ab236798e",
+      "ocr_raw_path": "ocr/questions/2024/q34.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    },
+    {
+      "id": "2024-35",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "保健医療サービスの知識等",
+      "number": 35,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 20,
+        "pdf_page_label": 19
+      },
+      "correct_choices": [
+        1,
+        3,
+        4
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "次の記述のうち適切なものはどれか。 3 つ選べ。   -",
+      "choices": [
+        "パルスオキシメーターは, 一般に手や足の指先に装着する。",
+        "自己導尿に用いるカテーテルの消毒は不要である。           -",
+        "ネプライザーは, 薬剤の投与や気道の加湿のために使われる。    ・",
+        "在宅本案療法では, 携帯用琶案ボポンべを使用して外出することができる。",
+        "ストーマとは, 気管切開品のことである。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q35.png",
+      "image_sha256": "e92aeb72bb713e51f90d1813c0e28128296da867d4d961a0b7d89c812d266889",
+      "ocr_raw_path": "ocr/questions/2024/q35.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    },
+    {
+      "id": "2024-36",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "保健医療サービスの知識等",
+      "number": 36,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 21,
+        "pdf_page_label": 20
+      },
+      "correct_choices": [
+        1,
+        2,
+        5
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "次の記述のうち, より遊切なものはどれか。 3 つ選べ。",
+      "choices": [
+        "倒れている高齢者を発見したときは, 意識の有無を確認する。",
+        "吐物を処理する場合は, 使い捨て手袋を使用し協素系の消毒剤を使用する。",
+        "止血した腕は, 心臓より低い位置で保持する。",
+        "心肺区生時の胸骨圧辿は, うつ伏せにして行う。",
+        "高齢者が発英したときは, .全身状態の変化も併せて観察する。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q36.png",
+      "image_sha256": "0182885d2ecf81e1bb48a68dceaf36084ca3061fcc51d8b2d80a8c5c867d2d23",
+      "ocr_raw_path": "ocr/questions/2024/q36.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    },
+    {
+      "id": "2024-37",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "保健医療サービスの知識等",
+      "number": 37,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 21,
+        "pdf_page_label": 20
+      },
+      "correct_choices": [
+        1,
+        2,
+        3
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "次の記述のうち適功なもるのはどれか。 3 つ選べ。",
+      "choices": [
+        "後期高齢者に対する健康診査では, フレイル状態のチェックも重要である。",
+        "握力の低下は, サルコペニア (筋肉減層症)の目安となる。",
+        "宴性開作肺疾思(COPD) を有する高齢者では, 禁煙が重要である。",
+        "吊は. 心筋梗塞の危険因子ではない。",
+        "多量の飲酒習慣は, 脳府中のリスクとは無関係である。 ・"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q37.png",
+      "image_sha256": "e1d1564ac54975118edb422ca7c9ec0d597b395baaef84e3c3fd372aa04848af",
+      "ocr_raw_path": "ocr/questions/2024/q37.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    },
+    {
+      "id": "2024-38",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "保健医療サービスの知識等",
+      "number": 38,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 22,
+        "pdf_page_label": 21
+      },
+      "correct_choices": [
+        2,
+        4,
+        5
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "次の記述のうち. より適切なものはどれか。 3 つ違べ。",
+      "choices": [
+        "皮脂欠乏症では,愚部を清潔に保つことが悪化予陣になることから, ナオイロンタ オルなどを使ってよく洗う。                   ー   ーー",
+        "めまいやふらつきの原因となる疾患のーつに脆酸塞がある。       「」",
+        "精尿病の治療で薬を飲んでいる場合は, 食事に気を付ける必要はない。",
+        "関侵リウマチの軸者には 身体に負担をかけないためにベッドの使用が鹿ましい。",
+        "高齢者の大用骨頭部骨折は, 寝たきりの原因となりやすい。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q38.png",
+      "image_sha256": "3eb2373949ac695a0afbc9dea5d3a8f84e701b36d9aa5aecae4f0fe81946b479",
+      "ocr_raw_path": "ocr/questions/2024/q38.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    },
+    {
+      "id": "2024-39",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "保健医療サービスの知識等",
+      "number": 39,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 22,
+        "pdf_page_label": 21
+      },
+      "correct_choices": [
+        3,
+        4
+      ],
+      "required_choices": 2,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "死亡診断書を交付することができる資格として正しいもゃのはどれか。 2 つ     _ 選べ。",
+      "choices": [
+        "介炎支援専門員",
+        "介護福祉",
+        "医師         ーー              :",
+        "歯科医師",
+        "草人                       ーー"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q39.png",
+      "image_sha256": "5d0562622ac99525aae9d10382a59e47a1080e9aa5d022b4ce0817e760293b49",
+      "ocr_raw_path": "ocr/questions/2024/q39.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    },
+    {
+      "id": "2024-40",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "保健医療サービスの知識等",
+      "number": 40,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 23,
+        "pdf_page_label": 22
+      },
+      "correct_choices": [
+        2,
+        3,
+        4
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "指定訪問着護ステーションについて正しいものはどれか。 3 つ選べ。",
+      "choices": [
+        "管理者は, 医師でなければならない。",
+        "主治の医師に, 訪問看護計画春及び訪問邊護報告書を提出しなければならない。",
+        "理学梓法寺を且置することができる。",
+        "訪問鼻護は, 利用者の心身の機能の維持回復を図るよう妥当問切に行う。",
+        "護職員は, すべて常勤で配置しなはければならない。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q40.png",
+      "image_sha256": "ba8c2ab2769987fa9638e75698fbd6bde0cb720ca302033630bea00f54cda5ff",
+      "ocr_raw_path": "ocr/questions/2024/q40.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": [
+        {
+          "choice": 1,
+          "kind": "renumber_ocr",
+          "line": "] 管理者は, 医師でなければならない。"
+        }
+      ]
+    },
+    {
+      "id": "2024-41",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "保健医療サービスの知識等",
+      "number": 41,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 23,
+        "pdf_page_label": 22
+      },
+      "correct_choices": [
+        1,
+        2,
+        3
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "指定往半リハビリテーションについて正しいものはどれか。 3 つ選べ。",
+      "choices": [
+        "サービス提供には, 医師の指示が必要である。",
+        "理学療法, 作業療法その他必要なリハビリテーションを行うことにより, 利用者 の心身の機能の維持回復を図あものでなければならない。",
+        "事業者は, 従業者, 設備, 備品及び会計に関する諸記録を義備しておかなければ ならない。",
+        "特定の研修を受けた介座握祉士でわれば, サービスを提供することができる。",
+        "訪問逢護ステーションの言本聴覚士がサービスを提供した場合は, 訪問リハビリ テーション爵が算定きれる。      ーー"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q41.png",
+      "image_sha256": "315494bc5cd5496b5917966c9dab8d226637a7c813834ca4970c4def5c1b1a3a",
+      "ocr_raw_path": "ocr/questions/2024/q41.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    },
+    {
+      "id": "2024-42",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "保健医療サービスの知識等",
+      "number": 42,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 24,
+        "pdf_page_label": 23
+      },
+      "correct_choices": [
+        2,
+        5
+      ],
+      "required_choices": 2,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "指定短期入所療姜介設について適切なものはどれか。 2 つ選べ。",
+      "choices": [
+        "家族の疾病を理由とした利用はできない。",
+        "短期入所療差介護計画は, おおむね4日以上連続して利用する場合に作成する必 要がある。",
+        "要介護1 又は要介設 2 と認定された者は, 利用できない。       -",
+        "介護老人福福施設で提供きれる。                     .",
+        "酸素療法を必要とするなど医療ニーズが高い要介護者も利用できる。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q42.png",
+      "image_sha256": "402335d79b759bfeca5966534cf1cc48a70f6e8c4a22423643bdf937b1335b3d",
+      "ocr_raw_path": "ocr/questions/2024/q42.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": [
+        {
+          "choice": 3,
+          "kind": "renumber_ocr",
+          "line": "8 要介護1 又は要介設 2 と認定された者は, 利用できない。       -"
+        }
+      ]
+    },
+    {
+      "id": "2024-43",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "保健医療サービスの知識等",
+      "number": 43,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 24,
+        "pdf_page_label": 23
+      },
+      "correct_choices": [
+        1,
+        5
+      ],
+      "required_choices": 2,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "指定定期巡回・随時対応型訪開介座秒談について適切なものはどれか。 2 つ提べ。",
+      "choices": [
+        "要支援者は利用できない。",
+        "利用者の心身の状況にかかわらず, 毎日, 訪問しなければならない。",
+        "訪問逢護サービスの提供の開始に際し, 主治の医師による指示を口頭で受ければ よい。",
+        "日常生活上の紫急時の対応は想定きれていない。",
+        "自らその提供するサービスの質の評価を行い, 症果を公表しなければならない。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q43.png",
+      "image_sha256": "044d741638e7ffeebaaa135d994e449bcddfff733575c6c0a51d58034edd79f4",
+      "ocr_raw_path": "ocr/questions/2024/q43.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    },
+    {
+      "id": "2024-44",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "保健医療サービスの知識等",
+      "number": 44,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 25,
+        "pdf_page_label": 24
+      },
+      "correct_choices": [
+        1,
+        3,
+        5
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "介護孝人保健施設について適釣なものはどれか。 3つ有選べ。",
+      "choices": [
+        "入所者の在宅復帰を目指すことが差本方針として定められている。",
+        "社会福祉法人は, 開設できない。  .",
+        "若年性認知症を有する要介護者は, 入所することができる。",
+        "介支援専門員以外の者でも施設サービス計画を作成することができる。",
+        "所得の多笑を理由にサービスの提供を担否することは禁じられている。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q44.png",
+      "image_sha256": "b9dba89f44c1d1f494a627b9a63ebfd3f88a270ef61e08b3701d4e3127e69df1",
+      "ocr_raw_path": "ocr/questions/2024/q44.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    },
+    {
+      "id": "2024-45",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "保健医療サービスの知識等",
+      "number": 45,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 25,
+        "pdf_page_label": 24
+      },
+      "correct_choices": [
+        2,
+        3,
+        4
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "介護医療院について適切なもるのはどれか。 3 つ選べ。",
+      "choices": [
+        "主として短期交な療差が必要な者を対象とすることが基本方針として定められて いる。",
+        "要支援者は, 入所することができない。",
+        "適切なリハビリテーションを計画的に行わなければならない。",
+        "診療所に併設できる場合がある。",
+        "1つの療養室の定員は, 2人以下としなければならない。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q45.png",
+      "image_sha256": "c04481f2a811b3a815eb1e512ff07a4a5cee449044a2bab7f2d2df24b75e33fa",
+      "ocr_raw_path": "ocr/questions/2024/q45.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    },
+    {
+      "id": "2024-46",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "福祉サービスの知識等",
+      "number": 46,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 27,
+        "pdf_page_label": 26
+      },
+      "correct_choices": [
+        2,
+        3,
+        4
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "面接場面におけるコミュニケーション技術について適切なものはどれか。 3 つ選べ。",
+      "choices": [
+        "明稚化とは, 相談援助者がクライエントの利益を考えで, クライエントの代わり に意遇決定することである。    -",
+        "アセスメントには, クライエントの開題状況の把握, 情報の収集と分析が含まれる。",
+        "オープンクエスチョンとは, クライエントが自らの選択や決定により. 符えを見 つけることを促す質問である。 .       ー          .",
+        "面接技術には. ジェスチャー, 表情, 声の抑揚が含まれる。",
+        "林線やクライエント との距離について配慮する ことは施けるべきである。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q46.png",
+      "image_sha256": "e1cb7e0787dc2a7585c44b79b17655adadf4c07e17f32547057371a2139c335a",
+      "ocr_raw_path": "ocr/questions/2024/q46.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": [
+        {
+          "choice": 5,
+          "kind": "renumber_ocr",
+          "line": "\"5 林線やクライエント との距離について配慮する ことは施けるべきである。"
+        }
+      ]
+    },
+    {
+      "id": "2024-47",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "福祉サービスの知識等",
+      "number": 47,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 27,
+        "pdf_page_label": 26
+      },
+      "correct_choices": [
+        1,
+        3,
+        4
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "ソーシャルワークに関する次の記述のうち, より適切なものはどれか。 3 つ選べ。",
+      "choices": [
+        "クライエントと相談授助者が目標達成に向けて取り組むことは, 重要である。",
+        "支援計画は, 具体的に立てるよりは, できる限り抽象的に立てることが望ましい。",
+        "支援を終結する際は、 終結に伴うクライエントの不安に十分尋慮することが重要 である。",
+        "スーパービジョンの主な目的は, クライエントへの支援の向上とサービスの質の 確保のための相談援助者の養成である。                                   -",
+        "アウトリーチとは, 個人情報を導切に管理・保護することである。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q47.png",
+      "image_sha256": "54761436476206ee8f7bfc7318c0aeaf913b4011c91e5d70b909d30f3f5f8ebb",
+      "ocr_raw_path": "ocr/questions/2024/q47.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    },
+    {
+      "id": "2024-48",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "福祉サービスの知識等",
+      "number": 48,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 28,
+        "pdf_page_label": 27
+      },
+      "correct_choices": [
+        1,
+        3,
+        5
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "ソーシャルワークの視点から, 支援囲牙事例に関する記述として, より向 切なものはどれか。 3 つ選べ。",
+      "choices": [
+        "高齢者の家族が支援内容に対して何度も不満を訴えたため, 担当の介設支援専門 員が地域包括支援センターへ相談する。",
+        "独居のクライエントが屋外までごみがあふれている家屋に住んでいるので, 直ち に警察へ介入を依頼する。 「",
+        "認知症のために判断能力が著しく低下したクライエントに対して, 成年後見制度 の利用を検討する。       -",
+        "セルフ・ネグレクトには, 配偶者からの身体的虐待が含まれる。      -",
+        "関係する専門職。 関係機関, 地域住民などがチームを組んでアプローチすること が誤ましい。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q48.png",
+      "image_sha256": "092ccac33127fcb7b55a2740732fa7b378a8138fcabaac4212102082e5c82641",
+      "ocr_raw_path": "ocr/questions/2024/q48.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    },
+    {
+      "id": "2024-49",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "福祉サービスの知識等",
+      "number": 49,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 28,
+        "pdf_page_label": 27
+      },
+      "correct_choices": [
+        2,
+        3,
+        4
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "ソーシャルワークにおける地域提助として, より適切なものはどれか。 3 つ選べ。",
+      "choices": [
+        "保健医療・福守等の専門職のみによる地域の課是への対応",
+        "地域の商店とNPOの協働による認知症カフェの設置・運党",
+        "地域の高齢者が福祉サービスにアクセスしやすくなるための自治体への働きかけ",
+        "梓災者に対する支援のなためのボランティアの組織化",
+        "住民を交えたグループ活動における本人の耳燥を得なたいままの参加者の氏名や顔 写真の公表      -            -"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q49.png",
+      "image_sha256": "6adab7b0ae84f04de35ae7f6c0b15254b07acf2bf9b8fda2cbe6bc8750fdf9c3",
+      "ocr_raw_path": "ocr/questions/2024/q49.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    },
+    {
+      "id": "2024-50",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "福祉サービスの知識等",
+      "number": 50,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 29,
+        "pdf_page_label": 28
+      },
+      "correct_choices": [
+        2,
+        3,
+        5
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "介座保険における訪問介護について正しいものはどれか。 3 つ選べ。",
+      "choices": [
+        "指定訪問介護事業所の管理者は, 介護福祉士でなければならない。",
+        "サービス提供資任者は, 利用者のサービスに関する意向を定期的に把握するもの とする。                                                ・",
+        "指定訪問介護事業者は, サービス提供中に事故が発生した場合は, 市町村, 利用 者の家族 担当の居宅介護支援事業者等に連絡を行わなければならない。",
+        "居宅サービス計画にないサービスでも, 利用者の要塵があった場合には, 訪問介 護員は直ちに提供しなければならない。",
+        "指定訪問介談事業者は, 定期的に薬継続計画の見直しを行い, 必要に応じて業 務継続計画の変更を行うちのとする。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q50.png",
+      "image_sha256": "39adbc27491eeddad3b184f8de36b3eff43adec1a7bbba566a9fef6a641af4da",
+      "ocr_raw_path": "ocr/questions/2024/q50.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    },
+    {
+      "id": "2024-51",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "福祉サービスの知識等",
+      "number": 51,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 29,
+        "pdf_page_label": 28
+      },
+      "correct_choices": [
+        2,
+        4,
+        5
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "-介護保険における通所介護について正しいものはどれか。 3 つ理べ。・",
+      "choices": [
+        "サービスの所要時間が同じ区分の利用者に対しては, サービス提供開始時刻を同. じにしなければならない。                    .",
+        "指定通所介護事業所の設備を利用し, 宿泊サービスを提供する場合には, その開   - 始前に指定権者に届け出る必要がある。",
+        "通所介護旨の算定の基伏となる所要時間には, 送名に要する時間も含まれる。",
+        "通所介談計画は. サービスの提供に関わる従業者が共同して個々の利用者どとに 作成するものである。                  ーー",
+        "あらかじめ人通所介護計画に位置付けられ, 効果的な機能訓練等のサービスが提供 できる場合は: 事業所の屋外でサービスを提供することができる。  .      ・"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q51.png",
+      "image_sha256": "aa98fb7f2048c5fd496ecaeed03cba37b553b25d1dad780585f3ae67e93fe389",
+      "ocr_raw_path": "ocr/questions/2024/q51.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    },
+    {
+      "id": "2024-52",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "福祉サービスの知識等",
+      "number": 52,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 30,
+        "pdf_page_label": 29
+      },
+      "correct_choices": [
+        1,
+        3,
+        4
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "介護保険における訪問入浴介護について正しいゃのはどれか。 3 つ選べ。",
+      "choices": [
+        "1回の訪問につき, 看護職員 1 人及び介護職員 2 人で行った場合, これらの者の うち 1 人を当該サービスの提供の資任者とする。",
+        "利用者が短期入所生活介談を利用している間も, その必要性が居宅サービス計画 に記載されていれば, 訪問入浴介護費を算定できる。",
+        "心身の状況により, 訪問時に金身入浴が難しい場合, 利用者の希望によって, 清 拭や部分浴に変更することができる。",
+        "利用者の自宅に浴室があっても, 乱問入浴介護を利用することができる。",
+        "終末期にある者は, 利用するととができない。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q52.png",
+      "image_sha256": "524e241b6ebac1fda8191b70199d2c0757ace588e53e3b64db444a632719efe6",
+      "ocr_raw_path": "ocr/questions/2024/q52.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    },
+    {
+      "id": "2024-53",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "福祉サービスの知識等",
+      "number": 53,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 30,
+        "pdf_page_label": 29
+      },
+      "correct_choices": [
+        3,
+        4,
+        5
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "介有保険における短期入所生活介護について正しいものはどれか。 3 つ選べ。.",
+      "choices": [
+        "短期入所生活介座計画は, 居宅サービス計画を作成した介護支援専門員が作成し なければならない。",
+        "いかなる場合でも, 静状室において指定短期入所生活介設を行うことはできない。",
+        "利用定員が20 人未満の併設事業所の場合. 生活相談員は非常勤でもよい。",
+        "食事内容は, 当該事業者の医師又は栄差士を含む会議で検討が加えられなければ ならない。                                               ]",
+        "協力医療機関は 此急時等に速やかに対応できるよう, 指定短期入所生活介談事 業所から近試離にあることが型ましいものである。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q53.png",
+      "image_sha256": "481f8a81bafacc572bce6cbc3bd6be20bf5da1fb09b51ba1c225920a12e77da6",
+      "ocr_raw_path": "ocr/questions/2024/q53.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    },
+    {
+      "id": "2024-54",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "福祉サービスの知識等",
+      "number": 54,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 31,
+        "pdf_page_label": 30
+      },
+      "correct_choices": [
+        1,
+        2,
+        5
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "介護保険における福祉用具について正しいものはどれか。 3 つ選べ。",
+      "choices": [
+        "福祉用具の使用目的には, 利用者の自立した日常生活の支援と介護者の負担軽減 が含まれる。",
+        "浴村内いすなどの入浴補助用具は, 特定福祉用上販売の対象となる。",
+        "利用者の身体を王らせるスライディングボードは, 特定福祉用具販売の対象とをなる。 ′・.",
+        "人識気式双は折りたたみ式の簡貞浴植は, 福祉用具貸与の対象となる。     ーー",
+        "エアマットなどの床ずれ防止用具は, 福祉用具貸与の対象となる。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q54.png",
+      "image_sha256": "8c4a439fd7b981751c76a6b788b776705b1b235e381a583a85ee70a6ec8bd57d",
+      "ocr_raw_path": "ocr/questions/2024/q54.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": [
+        {
+          "choice": 2,
+          "kind": "renumber_ocr",
+          "line": "、 2 浴村内いすなどの入浴補助用具は, 特定福祉用上販売の対象となる。"
+        }
+      ]
+    },
+    {
+      "id": "2024-55",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "福祉サービスの知識等",
+      "number": 55,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 31,
+        "pdf_page_label": 30
+      },
+      "correct_choices": [
+        1,
+        3
+      ],
+      "required_choices": 2,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "介護保険における認知症対応型共同生活介設について正しいものはどれか。 2 つ選べ。",
+      "choices": [
+        "指定認知対応弄共同生活介護事業所の共同生活住居数は, 1 以上 3 以下である。",
+        "1つの共同生活住居の入居定員は, 15 人以上 20 人以下である。",
+        "認知症対応型共同生添当度を利用している場合福祉用大貸与費を算定できない。",
+        "計画作成担当者は. 1つの共同生活住拓ごとに量かなければならない。",
+        "サテライト型指定認知症対応型共同生活介計事業所の管理者は, 管理上支隊がな - い場合であっても, 本体事業所の管理者が務することはできない。         -"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q55.png",
+      "image_sha256": "5909e9ef49e1fa33c99820bd390b24383e37fec06a6d6d65ed7c61985325a644",
+      "ocr_raw_path": "ocr/questions/2024/q55.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": [
+        {
+          "choice": 1,
+          "kind": "renumber_ocr",
+          "line": "] 指定認知対応弄共同生活介護事業所の共同生活住居数は, 1 以上 3 以下である。"
+        },
+        {
+          "choice": 5,
+          "kind": "renumber_ocr",
+          "line": ". 5サテライト型指定認知症対応型共同生活介計事業所の管理者は, 管理上支隊がな"
+        }
+      ]
+    },
+    {
+      "id": "2024-56",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "福祉サービスの知識等",
+      "number": 56,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 32,
+        "pdf_page_label": 31
+      },
+      "correct_choices": [
+        1,
+        3,
+        5
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "介護保険における小規模多機能型居宅介護について正しいものはどれか。 3 つ選べ。",
+      "choices": [
+        "通いを中心として, 利用者の様態や希望に応じて, 須時訪問や宿泊を組み合わせ 。 . てサービスを提供するものである。     ーー",
+        "利用者は, 同時に複数の指定小規模多機能江居宅介護事業所に登録することがで きる。",
+        "1つの本体事業所に係るサテライト事業所の数は 2 か所までとする。",
+        "小規模多機能弄居宅介護従業者として, 理学療法士駐は作業療法士を置かなけれ ばならない。              ーー",
+        "介談支援専門員は, 利用者の処周に支障がない場合は, 管理者と務することが でき る。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q56.png",
+      "image_sha256": "c9814e9373e731d3ddebc797753e23e37bde611162fd95ee0bb8f192a4b54398",
+      "ocr_raw_path": "ocr/questions/2024/q56.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    },
+    {
+      "id": "2024-57",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "福祉サービスの知識等",
+      "number": 57,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 32,
+        "pdf_page_label": 31
+      },
+      "correct_choices": [
+        2,
+        4,
+        5
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "指定介護老人福祉施設について正しいものはどれか。 3 つ選べ。    ーー",
+      "choices": [
+        "第三者による施設サービスの質の評価を受けることが, 義務付けられている。",
+        "身体抱束等の適正化のための対策を徐討する委員会を. 3 か月に1 回以上開催し なければならない。",
+        "入所者の処過に支障がな場合, 配時される介護支援専門員は非常勤でもよい。",
+        "看護職員については, 常勤の者を 1 人以上配置しなければならない。",
+        "計画担当旬設壇援専門員は, 特段の事情のない限り, 定期的にモニタリングの結 果を記録しをければならない。     ."
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q57.png",
+      "image_sha256": "cdeb69d2014c20820bca31b4c5977e606b87db8d83aea785484f536549be4c48",
+      "ocr_raw_path": "ocr/questions/2024/q57.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    },
+    {
+      "id": "2024-58",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "福祉サービスの知識等",
+      "number": 58,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 33,
+        "pdf_page_label": 32
+      },
+      "correct_choices": [
+        1,
+        4,
+        5
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "生活保談制度について正しいものはどれか。 3 つ選べ。",
+      "choices": [
+        "65蔵以上の投保護者の介談保険料は, 生活保護から給付される。",
+        "補足性の原理により, 生活保護の介護扶助は, 介護保険の保険給付よりも優先し て給付きれる。",
+        "生活保護の要可判定は, 家庭裁判所が行う。 。",
+        "幕祭扶助には, 火葬又は埋間に必要な連用が含まれる。",
+        "介談予防支援計画に基づいて行われる介記防サービスは, 介酸捧助の対象となる。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q58.png",
+      "image_sha256": "77c23e14962666eb1eebf9f7fc85e114c430a0b745ac60323257e6c1d91fb6d1",
+      "ocr_raw_path": "ocr/questions/2024/q58.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": [
+        {
+          "choice": 3,
+          "kind": "renumber_ocr",
+          "line": "8 生活保護の要可判定は, 家庭裁判所が行う。 。"
+        }
+      ]
+    },
+    {
+      "id": "2024-59",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "福祉サービスの知識等",
+      "number": 59,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 33,
+        "pdf_page_label": 32
+      },
+      "correct_choices": [
+        2,
+        3,
+        5
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "成年後見抽度について正しいものはどれか。 3 つ有選べ。",
+      "choices": [
+        "親族は, 成年後見人になることができない。              。",
+        "後見開始の審判は, 本人も請求することができる。         、",
+        "法人も, 成年後見人に選任されることがある。",
+        "身上保護(遇上務護)とは, 本人に代わって財産を管理することをいう。",
+        "成年邊後見人の法律行為は, 原則として, 取り消すことができる。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q59.png",
+      "image_sha256": "c1ed8d2db09d44fdefdffbc16a9c1c663bb0967ef8385d0ed24848f7b54fd7c9",
+      "ocr_raw_path": "ocr/questions/2024/q59.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    },
+    {
+      "id": "2024-60",
+      "exam_year": 2024,
+      "exam_number": 27,
+      "domain": "福祉サービスの知識等",
+      "number": 60,
+      "source": {
+        "publisher": "公益財団法人 社会福祉振興・試験センター",
+        "mirror": "東京都福祉局",
+        "url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6shikenmondai-pdf",
+        "pdf_page_index": 34,
+        "pdf_page_label": 33
+      },
+      "correct_choices": [
+        2,
+        3,
+        4
+      ],
+      "required_choices": 3,
+      "topic_title": null,
+      "primary_group": null,
+      "primary_concept_id": null,
+      "related_groups": [],
+      "stem": "後期計者医療制度について正しいものはどれか。3う選ぶべ。",
+      "choices": [
+        "保険料は, 厚生労竹省令で定める。",
+        "生活保談受給者は, 被保険者にならない。 、 ・",
+        "梓保険者には, 65歳以上 75歳未満であって. 後期高齢者医療広域連合の障害認 定を受けた者も含まれる。",
+        "後期高齢者医療広域連合は, 特別の理由がある者に対し, 保険料を減免すること ができる。",
+        "訪問番療差費の支給は 給付に含まれない。"
+      ],
+      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "answer_status": "verified_against_2024_official_answer_table",
+      "classification_status": "not_classified",
+      "current_law_status": "not_reviewed",
+      "independent_explanation": null,
+      "image_path": "assets/questions/2024/q60.png",
+      "image_sha256": "d10c4595f25a3c5e70f374941eacfe11f9a75ffba44b166407f04a8b05aaf3a2",
+      "ocr_raw_path": "ocr/questions/2024/q60.txt",
+      "preferred_rendering": "original_image_until_text_proofread",
+      "data_origin": {
+        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "answer": "prior_created_2024_official_answer_key",
+        "concepts": "unclassified"
+      },
+      "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
+      "ocr_structural_repairs": []
+    }
+  ]
+}

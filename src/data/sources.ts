@@ -1,7 +1,9 @@
+import historicalSources from './packs/historical-sources.json';
 import pastSources from './past-sources.json';
 import type { Source } from '../domain/models';
 export const sources: Source[] = [
  ...pastSources,
+ ...historicalSources,
  {id:'official-2018',title:'2018年度 公式問題冊子（山梨県掲載）',url:'https://www.pref.yamanashi.jp/documents/75801/sikenmondai30.pdf'},
  {id:'official-2018-answers',title:'2018年度 公式正答番号（山梨県掲載）',url:'https://www.pref.yamanashi.jp/documents/75801/seitoubangou30.pdf'},
  {id:'official-2019',title:'2019年度 本試験の問題掲載・照合元（ケアニュース）',url:'https://www.care-news.jp/kakomon/22/all_test.html'},

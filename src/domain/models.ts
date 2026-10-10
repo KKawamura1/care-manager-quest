@@ -6,7 +6,9 @@ export interface Question {
   answerIds: string[]; answerVariants?: string[][]; selectionCount: number; explanation: string;
   reasoning: string; difficulty: Difficulty; primaryCategory: string;
   conceptIds: string[]; classificationRevision?: number;
-  original?: { year:number; number:number; imagePath?:string; imageSha256?:string; textStatus:'proofread'|'pending'; lawStatus:'not_reviewed'; sourcePageIndex?:number };
+  classificationStatus?: 'provisional'|'pending';
+  importedClassification?: { primaryGroup:string|null; primaryConceptId:string|null; relatedGroups:string[]; title:string|null };
+  original?: { year:number; number:number; imagePath?:string; imageSha256?:string; textStatus:'proofread'|'pending'; lawStatus:'not_reviewed'; sourcePageIndex?:number; sourceUrl?:string };
   provenance: { kind: 'original' | 'licensed' | 'official'; author: string; verifiedAt: string; sources: { sourceId: string; locator: string }[]; pastExamUrl?: string };
 }
 export interface Concept { id: string; categoryId: string; label: string; summary: string; relatedIds: string[]; }

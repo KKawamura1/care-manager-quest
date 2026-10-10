@@ -56,7 +56,8 @@ export function parsePlayer(text: string): PlayerState {
   for (const [id, raw] of Object.entries(evidence)) {
     if (!validConceptId(id)) fail();
     const e = record(raw), p = player.concepts[id];
-    const seen = strings(e.seenQuestionIds,250), correct = strings(e.correctQuestionIds,250);
+    // Evidence can include every supported question, including archived history.
+    const seen = strings(e.seenQuestionIds,historyQuestions.length), correct = strings(e.correctQuestionIds,historyQuestions.length);
     if (!p || seen.length !== p.seenQuestionIds.length || correct.length !== p.correctQuestionIds.length || seen.some(x => !p.seenQuestionIds.includes(x)) || correct.some(x => !p.correctQuestionIds.includes(x))) fail();
     p.reflected = bool(e.reflected);
   }

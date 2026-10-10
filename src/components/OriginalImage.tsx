@@ -4,7 +4,7 @@ export function OriginalImage({question, expanded=false}:{question:Question;expa
  const [zoom,setZoom]=useState(expanded),[failed,setFailed]=useState(false);
  if(!question.original?.imagePath)return null;
  const o=question.original;
- const sourcePdf='https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r7shikenmondai';
+ const sourcePdf=o.sourceUrl??'https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r7shikenmondai';
  return <div className="original-reader">
    <div className="image-toolbar"><span>{o.year}年度 問{o.number} · 原本</span><button type="button" onClick={()=>setZoom(v=>!v)}>{zoom?'全体を表示':'拡大して読む'}</button></div>
    <p className="image-hint">{zoom?'画像を上下・左右に動かして読めます。':'拡大ボタン、または画像を別画面で開いて読めます。'}</p>
