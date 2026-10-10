@@ -1,4 +1,5 @@
 import type { Category, Concept } from '../domain/models';
+import { pastConcepts } from './past-concepts';
 import classification from './packs/2025/classifications.json';
 export const categories: Category[] = [
  {id:'A',label:'制度マネジメント',description:'地域全体を支える仕組み',available:true},
@@ -14,7 +15,7 @@ export const categories: Category[] = [
  {id:'B4',parentId:'B',label:'サービス提供・連携',description:'計画を暮らしの中で実行する',available:true},
  {id:'B5',parentId:'B',label:'モニタリング・再評価',description:'変化を見て、見直す',available:true},
  {id:'C',label:'保健医療・福祉の専門知識',description:'認知症施策から専門知識へ',available:true},
- ...['疾病・身体機能','認知症・精神機能','医療・看護・リハビリ','生活支援・福祉','権利擁護・終末期ケア'].map((label,i)=>({id:`C${i+1}`,parentId:'C',label,description:'2025年度の公式過去問で扱う領域',available:true})),
+ ...['疾病・身体機能','認知症・精神機能','医療・看護・リハビリ','生活支援・福祉','権利擁護・終末期ケア'].map((label,i)=>({id:`C${i+1}`,parentId:'C',label,description:'過去問で扱う専門知識',available:true})),
 ];
 const c = (id:string,categoryId:string,label:string,summary:string,relatedIds:string[]):Concept=>({id,categoryId,label,summary,relatedIds});
 const baseConcepts: Concept[] = [
@@ -43,8 +44,9 @@ const baseConcepts: Concept[] = [
  c('monitoring','B5','モニタリング','実施状況と変化を把握し、必要な計画変更や連絡調整を行う。',['assessment','reassessment']),
 ];
 
-export const concepts: Concept[] = [...baseConcepts,...Object.values(classification).map(c=>({
+export const concepts: Concept[] = [...baseConcepts,...pastConcepts,...Object.values(classification).map(c=>({
  id:c.primaryConceptId,categoryId:c.primaryCategory,label:c.title,
  summary:'2025年度の過去問で扱う論点です。分類は暫定で、現行法との適合性は未確認です。',
  relatedIds:c.relatedConceptIds,
 }))];
+

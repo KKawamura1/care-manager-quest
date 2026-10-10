@@ -13,3 +13,7 @@
 .domain-picker label {display:flex;align-items:center;gap:8px;min-width:0;padding:10px 8px;border:1px solid var(--border, #d5dbdf);border-radius:10px;cursor:pointer;font-size:13px;line-height:1.4}
 .domain-picker input {accent-color: #13866a;flex-shrink:0}
 @media(max-width:360px){.domain-picker{grid-template-columns:1fr}}
+
+
+.year-picker { display: grid; gap: .5rem; margin: 1rem 0; }
+.year-picker select { color: inherit; background: #172838; border: 1px solid #5e7686; border-radius: .5rem; padding: .75rem; font: inherit; width: 100%; }

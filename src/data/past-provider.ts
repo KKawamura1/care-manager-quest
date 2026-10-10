@@ -1,0 +1,33 @@
+import type { Question, QuestionProvider } from '../domain/models';
+import { sources } from './sources';
+interface TextRow { id:string; version:number; year:number; number:number; domain:string; stem:string; choices:string[]; sourceId:string; sourceUrl:string; secondarySourceUrl?:string }
+interface Answer { correctChoices:number[]; selectionCount:number; sourceId:string; verifiedAt:string; answerVariants?:number[][] }
+interface Classification { revision:number; title:string; primaryCategory:string; primaryConceptId:string; relatedConceptIds:string[]; difficulty:1|2|3 }
+interface Quality { excluded:boolean; exclusionReason?:string; textStatus:string; lawStatus:string }
+const texts = import.meta.glob<TextRow[]>('./packs/pre2018/*/questions.json', {eager:true,import:'default'});
+const answerPacks = import.meta.glob<Record<string,Answer>>('./packs/pre2018/*/answers.json', {eager:true,import:'default'});
+const classificationPacks = import.meta.glob<Record<string,Classification>>('./packs/pre2018/*/classifications.json', {eager:true,import:'default'});
+const qualityPacks = import.meta.glob<Record<string,Quality>>('./packs/pre2018/*/quality.json', {eager:true,import:'default'});
+const answers = Object.assign({},...Object.values(answerPacks)) as Record<string,Answer>;
+const classifications = Object.assign({},...Object.values(classificationPacks)) as Record<string,Classification>;
+const quality = Object.assign({},...Object.values(qualityPacks)) as Record<string,Quality>;
+export const pastExamTexts = Object.values(texts).flat();
+export const excludedPastExamIds = pastExamTexts.filter(q=>quality[q.id]?.excluded).map(q=>q.id);
+export const pastProvider:QuestionProvider = {
+  id:'official-pre2018-published-text',
+  list:()=>pastExamTexts.filter(q=>!quality[q.id]?.excluded).map(q=>{
+    const a=answers[q.id],c=classifications[q.id];
+    return {
+      id:q.id,version:q.version,domain:q.domain,title:`${q.year}年度 問${q.number}｜${c.title}`,stem:q.stem,
+      options:q.choices.map((text,i)=>({id:String(i+1),text,explanation:''})),
+      answerIds:a.correctChoices.map(String),answerVariants:a.answerVariants?.map(ids=>ids.map(String)),selectionCount:a.selectionCount,
+      explanation:'',reasoning:'',difficulty:c.difficulty,primaryCategory:c.primaryCategory,conceptIds:[c.primaryConceptId,...c.relatedConceptIds],classificationRevision:c.revision,
+      original:{year:q.year,number:q.number,textStatus:'pending',lawStatus:'not_reviewed'},
+      provenance:{kind:'official',author:'公益財団法人 社会福祉振興・試験センター',verifiedAt:a.verifiedAt,pastExamUrl:q.sourceUrl,sources:[{sourceId:q.sourceId,locator:`${q.year}年度 第${q.year-1997}回 問${q.number}（民間掲載テキストから収集）`},{sourceId:a.sourceId,locator:`試験当時の正答：${(a.answerVariants??[a.correctChoices]).map(ids=>ids.join('・')).join(' または ')}`},...(q.secondarySourceUrl?[{sourceId:q.sourceId+'-comparison',locator:'文字差の照合・フィールド採用元'}]:[])]},
+    } satisfies Question;
+  }),
+};
+// URLs are part of the imported question provenance; no publisher explanations or site assets are bundled.
+for (const q of pastExamTexts) if (!sources.some(s=>s.id===q.sourceId)) sources.push({id:q.sourceId,title:`${q.year}年度 問${q.number}の掲載元`,url:q.sourceUrl});
+for (const q of pastExamTexts) if (q.secondarySourceUrl) sources.push({id:q.sourceId+'-comparison',title:`${q.year}年度 問${q.number}の文字照合元`,url:q.secondarySourceUrl});
+for (const a of Object.values(answers)) if (!sources.some(s=>s.id===a.sourceId)) throw new Error(`Missing answer source: ${a.sourceId}`);

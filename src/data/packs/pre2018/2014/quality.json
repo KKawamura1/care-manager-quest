@@ -1,0 +1,907 @@
+{
+  "2014-01": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "403ce2abd2080f74d32920629ef7491b9782bfe8e715f5692c1116f49fbbb585",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17413",
+      "fieldsAgree": true,
+      "amendmentNote": false
+    }
+  },
+  "2014-02": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "7c246f4264efae340dfdd7cdacd45d344e370862b01e2e4dac311b18b2db1b10",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17414",
+      "fieldsAgree": false,
+      "amendmentNote": false
+    }
+  },
+  "2014-03": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "d2af18516a920a65501df34ee0cc21c27098b772e1e5f2a50377d4d58f37db3b",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17415",
+      "fieldsAgree": true,
+      "amendmentNote": false
+    }
+  },
+  "2014-04": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "8fe0fde3d83846b93769b7e362f2b8de085ec9700b7f446d3bf4f3d4a1b51f49",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17416",
+      "fieldsAgree": false,
+      "amendmentNote": false
+    }
+  },
+  "2014-05": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "4bc9f16c9d438b4d3883bab12931a3f608ea990f668b0be8bbce9ad5ba297e2f",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17417",
+      "fieldsAgree": true,
+      "amendmentNote": false
+    }
+  },
+  "2014-06": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "5dbb77ad1d63f5844abd7331a9372d39ba1b28542e6274dc44524f5514ab48d6",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17418",
+      "fieldsAgree": true,
+      "amendmentNote": false
+    }
+  },
+  "2014-07": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "099823da0c46a5c385344a42b3d1523098d62839b21317d2215665e9bb313f9e",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17419",
+      "fieldsAgree": false,
+      "amendmentNote": false
+    }
+  },
+  "2014-08": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "094fd5493543ef6c144f3c48dca4ece3bc820061e3a4fe293c44ac3c5bb44bd2",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17420",
+      "fieldsAgree": true,
+      "amendmentNote": false
+    }
+  },
+  "2014-09": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "55872c13f02df23fbc160d62f1c952b7195b2711a3f490a7abb25d45acd1b280",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17421",
+      "fieldsAgree": true,
+      "amendmentNote": false
+    }
+  },
+  "2014-10": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "820d05ddbeb24cf837ea45d7ed30b1d5617eb690760f0fca1ca954812cec4027",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17422",
+      "fieldsAgree": true,
+      "amendmentNote": false
+    }
+  },
+  "2014-11": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "15f4586b091ba4beae65a3d0b802553efd6b1553dc61999b323007555ead4382",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17423",
+      "fieldsAgree": true,
+      "amendmentNote": false
+    }
+  },
+  "2014-12": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "18ddee8c25b6fcf6dc718e922ef896abd9d905c025321ade8c4cf6255483f823",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17424",
+      "fieldsAgree": true,
+      "amendmentNote": false
+    }
+  },
+  "2014-13": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "a959073cd0b1e56ac3c8ff33cab89f8924353fcb3e8ea5af85dd533b2402574c",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17425",
+      "fieldsAgree": false,
+      "amendmentNote": false
+    }
+  },
+  "2014-14": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "719480a09950ba60e0a31dd321f85f41291054014c74ae6cca1399f0ce2fc295",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17426",
+      "fieldsAgree": false,
+      "amendmentNote": false
+    }
+  },
+  "2014-15": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "54e4b85b2faf38fc8d4570813ebacf590a57e36520e86521b6cb4b81c989f910",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17427",
+      "fieldsAgree": false,
+      "amendmentNote": false
+    }
+  },
+  "2014-16": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "1954a058a7af20d8cc8a2c69eb80aad0213e802416c0ea9e8d5f09bb5312d4ec",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17428",
+      "fieldsAgree": true,
+      "amendmentNote": false
+    }
+  },
+  "2014-17": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "0e40cf0c57a4ac4c9ac612647415d697d193dbdb04c59016c19ef3807b4eb7c4",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17429",
+      "fieldsAgree": true,
+      "amendmentNote": false
+    }
+  },
+  "2014-18": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "453162a978ff575e62144ff952f3b8eb59d1c5d981cbed457e46224e4b2a0e1b",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17430",
+      "fieldsAgree": false,
+      "amendmentNote": false
+    }
+  },
+  "2014-19": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "eb5ec6590e9458534b84012af9573e7b98e64954b2cba3256b803330eab88e33",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17431",
+      "fieldsAgree": true,
+      "amendmentNote": false
+    }
+  },
+  "2014-20": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "e74b9d488401f237b58f8fcc4070e0cdc68f37b404d602ec848c68b1b22e8304",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17432",
+      "fieldsAgree": true,
+      "amendmentNote": false
+    }
+  },
+  "2014-21": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "fe178b65374dddbd9d78a16344e3da6eee2e4a29f97c0312e20a30f2c50d2e83",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17433",
+      "fieldsAgree": false,
+      "amendmentNote": false
+    },
+    "sourceAdoptionReason": "掲載元間の文字差を照合し、欠字・誤記・混入があるフィールドは別掲載元の試験文を採用。推測による書換えはしない。"
+  },
+  "2014-22": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "f6eaa443d61caba59fc440b5a1d297414cce1d3a6fa37eed566fc45cd1539c83",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17434",
+      "fieldsAgree": false,
+      "amendmentNote": false
+    }
+  },
+  "2014-23": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "ff48b14a013f61a29b244aebee33e38a5c565970b1a2233951b182db32b9c920",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17435",
+      "fieldsAgree": true,
+      "amendmentNote": false
+    }
+  },
+  "2014-24": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "b4d4ac6924e3d33a1c5ed4259a38e72a9a9bd52d2d363115368ecda3991bb2e2",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17436",
+      "fieldsAgree": false,
+      "amendmentNote": false
+    },
+    "sourceAdoptionReason": "掲載元間の文字差を照合し、欠字・誤記・混入があるフィールドは別掲載元の試験文を採用。推測による書換えはしない。"
+  },
+  "2014-25": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "562807419d1b8722bd693bff9ab5b2b1586166b26407a3ca1bb1a8a431ed406e",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17437",
+      "fieldsAgree": false,
+      "amendmentNote": false
+    }
+  },
+  "2014-26": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "a79090ea918a73e2813d82a5a1c4b0599635d7e2f95e0ff5a27f9e1b016365c1",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17438",
+      "fieldsAgree": false,
+      "amendmentNote": false
+    }
+  },
+  "2014-27": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "7b22f646abd68e122b4d83023a1a0fc9086bcc39fa1f1c782dc0a3a52cb4dee3",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17439",
+      "fieldsAgree": false,
+      "amendmentNote": false
+    },
+    "sourceAdoptionReason": "掲載元間の文字差を照合し、欠字・誤記・混入があるフィールドは別掲載元の試験文を採用。推測による書換えはしない。"
+  },
+  "2014-28": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "09974c2eb0d52c329e0c8fb7f1e6615ffdde1e1035d9e7b9cf0fca3a36ff38f0",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17440",
+      "fieldsAgree": false,
+      "amendmentNote": false
+    },
+    "sourceAdoptionReason": "同じ掲載元で連続して重複している設問見出しを1回だけ採用。設問末尾の注記は保持。"
+  },
+  "2014-29": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "399c6ba4913b8ff5da024173f3311a8e72353f42c98af28fdd7ed32b7a9cf9f7",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17441",
+      "fieldsAgree": true,
+      "amendmentNote": false
+    }
+  },
+  "2014-30": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "787166755c466fed3aac9c255af7f5fa0c69e33e9a58f7e2c22fca147dfa9e00",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17442",
+      "fieldsAgree": false,
+      "amendmentNote": false
+    },
+    "sourceAdoptionReason": "掲載元間の文字差を照合し、欠字・誤記・混入があるフィールドは別掲載元の試験文を採用。推測による書換えはしない。"
+  },
+  "2014-31": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "81accb6cee543cb680e68f2ef4b865b9ac4fb32cb70a517c4fb17edfb248995b",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17443",
+      "fieldsAgree": true,
+      "amendmentNote": false
+    }
+  },
+  "2014-32": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "b8792812d8a4ad4485eead2009ea899600f062370a2210fa3e90234b65397086",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17444",
+      "fieldsAgree": false,
+      "amendmentNote": false
+    }
+  },
+  "2014-33": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "f733dec074208ffba9997faed7ca74d5c9dedc7a9c37ac3df1e77800da65b81f",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17445",
+      "fieldsAgree": true,
+      "amendmentNote": false
+    }
+  },
+  "2014-34": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "dfefde0fdf7b93b080be9719dbefaf6ba066074e970aebe035e331d53651e0bf",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17446",
+      "fieldsAgree": true,
+      "amendmentNote": false
+    }
+  },
+  "2014-35": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "7be127b69b64ec2dd55e824f30b34f6fefd9105039142ff4a6a57a609218b056",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17447",
+      "fieldsAgree": false,
+      "amendmentNote": false
+    }
+  },
+  "2014-36": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "96054c4e29b3c2bde2921a059bfcd41c5e8b681a55d9db0b942a788628c844a9",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17448",
+      "fieldsAgree": false,
+      "amendmentNote": false
+    }
+  },
+  "2014-37": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "d456f98d8ca03d621dc1309269976d096c98b6f28d3b4976f9850f7e22cb57c1",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17449",
+      "fieldsAgree": false,
+      "amendmentNote": false
+    }
+  },
+  "2014-38": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "a0d565fcf75dd77512b58a0f5f2ecc9e545b98d8ad4bf22ad2a2f95d986c3562",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17450",
+      "fieldsAgree": false,
+      "amendmentNote": false
+    }
+  },
+  "2014-39": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "23711c0941d0d241c186f417b95a4f6f63e5d01307d7301986fc3b16ee9229c6",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17451",
+      "fieldsAgree": false,
+      "amendmentNote": false
+    }
+  },
+  "2014-40": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "2cb1767ecf0a510b242d967cbc9425358395cecfda65bcc4d2ab9f6e78430b7b",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17452",
+      "fieldsAgree": true,
+      "amendmentNote": false
+    }
+  },
+  "2014-41": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "33c3bff239f8e0ca238b3b5e0d3ed8962614ef79da9b1f69ab038f779bd7b203",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17453",
+      "fieldsAgree": false,
+      "amendmentNote": false
+    }
+  },
+  "2014-42": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "5c882563d23c2a521877a366d76cf39690bb12aeb24b0bdd3b7d3a04a3fb85c9",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17454",
+      "fieldsAgree": false,
+      "amendmentNote": false
+    }
+  },
+  "2014-43": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "b5026dfbad034969a63f466b6b29f3f61a87dfa4805e5e3b855d72bc2d0bfd9e",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17455",
+      "fieldsAgree": true,
+      "amendmentNote": false
+    }
+  },
+  "2014-44": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "473051467abcbe57b54249386c2f49b7d3c63b93f618695387ae8e09f52293ea",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17456",
+      "fieldsAgree": true,
+      "amendmentNote": false
+    }
+  },
+  "2014-45": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "a6abcfda182e25c70d4c17f67756260c8b5a762e131aac3cf182aa58eec710ab",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17457",
+      "fieldsAgree": false,
+      "amendmentNote": false
+    }
+  },
+  "2014-46": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "edf71940d8d4394aaf782cfee23c4c24c1e986fae0925b0141ae9e2a66a98939",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17458",
+      "fieldsAgree": true,
+      "amendmentNote": false
+    }
+  },
+  "2014-47": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "22e376e60421cf526339df3b1178ae21134e993761fef9afb65993af4bca4800",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17459",
+      "fieldsAgree": false,
+      "amendmentNote": false
+    }
+  },
+  "2014-48": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "96802ce44889e0b70832b131cf075700d508681b0509f470e15131b0ee76c85c",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17460",
+      "fieldsAgree": false,
+      "amendmentNote": false
+    }
+  },
+  "2014-49": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "06eb84e701223998fdc7b4520044d5ee30c1e37eb48f45374f67f83ff8273f67",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17461",
+      "fieldsAgree": true,
+      "amendmentNote": false
+    }
+  },
+  "2014-50": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "b18f42d96459135d363a883ce164f37f08c5e2f703586134d62fa819fe6e9ddd",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17462",
+      "fieldsAgree": true,
+      "amendmentNote": false
+    }
+  },
+  "2014-51": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "097d4b00e195962f53182618917bd3f7040d4f2bf7077afa2afd9dfb9ffcf8ac",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17463",
+      "fieldsAgree": true,
+      "amendmentNote": false
+    }
+  },
+  "2014-52": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "b8093c6967bdf9afbe083fa5b82d49267bcd359382c1f5536168da9b0bb517b3",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17464",
+      "fieldsAgree": true,
+      "amendmentNote": false
+    }
+  },
+  "2014-53": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "2e4e411209ccb5df7f2fa92c1b0fcf88899592d12c91d9d82216b2ce708bd9c5",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17465",
+      "fieldsAgree": true,
+      "amendmentNote": false
+    }
+  },
+  "2014-54": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "6b19ebbe303ca834b53b0af81ce0491313e674fe3b23729c50662811440578f7",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17466",
+      "fieldsAgree": true,
+      "amendmentNote": false
+    }
+  },
+  "2014-55": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "26a0e9bddaa5769109dc75b9d0fb457b40548d46b64bfcf9d6c984e3fc83fb6f",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17467",
+      "fieldsAgree": false,
+      "amendmentNote": false
+    }
+  },
+  "2014-56": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "a81537d6b2f89036956cacf0f35358ae9c8606356b37b7394db07e32a36aba51",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17468",
+      "fieldsAgree": false,
+      "amendmentNote": false
+    }
+  },
+  "2014-57": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "0efb4a05a4ab7f1b328d9e9d02ea9519278ffcf078c7299b8605570bf37137e0",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17469",
+      "fieldsAgree": true,
+      "amendmentNote": false
+    }
+  },
+  "2014-58": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "e440ebb795f30075e7180f2355280a6f14f62b10a5bc12e2ea54f67be0e97b28",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17470",
+      "fieldsAgree": true,
+      "amendmentNote": false
+    }
+  },
+  "2014-59": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "b06413f93dce63ee1cfc7ef03befff1fd88937b11ff403b481f58c3dadc0d79e",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17471",
+      "fieldsAgree": false,
+      "amendmentNote": false
+    }
+  },
+  "2014-60": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "answerStatus": "official_key_verified",
+    "excluded": false,
+    "textSource": "published_web_text",
+    "textSha256": "949d6ab26883305bfd07535b98f473bc5805bdf929e91bc2b0dc8631c9ad36ba",
+    "comparison": {
+      "url": "https://keamane.kakomonn.com/questions/17472",
+      "fieldsAgree": false,
+      "amendmentNote": false
+    }
+  }
+}

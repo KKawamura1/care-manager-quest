@@ -2,12 +2,13 @@ import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { categories, concepts } from '../src/data/knowledge';
-import { questions, legacyQuestions } from '../src/data/provider';
+import { officialProvider, legacyQuestions } from '../src/data/provider';
 import { sources } from '../src/data/sources';
 import { advance, awardXp, buildSession, conceptStatus, emptyPlayer, isCorrect, levelInfo, reflect, submitAnswer, totalXp } from '../src/domain/game';
 import { loadPlayer, MAX_IMPORT_BYTES, parsePlayer, savePlayer, validExternalUrl } from '../src/domain/storage';
 import type { PlayerState } from '../src/domain/models';
 const date='2026-10-10T10:00:00.000Z';
+const questions=officialProvider.list();
 function ready() {const p=emptyPlayer();p.session=buildSession(questions,[],'session-1',()=>0);return p;}
 function answered(p:PlayerState,correct=true) { const q=questions.find(q=>q.id===p.session!.questionIds[p.session!.index])!;p={...p,session:{...p.session!,selectedIds:correct?q.answerIds:[...q.answerIds.slice(1),q.options.find(o=>!q.answerIds.includes(o.id))!.id]}};return submitAnswer(p,questions,date);}
 describe('question pack contract',()=>{
@@ -92,3 +93,4 @@ describe('official answers and stable history',()=>{
   expect(questions.every(q=>!q.explanation&&!q.reasoning&&q.options.every(o=>!o.explanation))).toBe(true);
  });
 });
+

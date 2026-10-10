@@ -1,0 +1,585 @@
+{
+  "2015-01": {
+    "correctChoices": [
+      1,
+      2,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-02": {
+    "correctChoices": [
+      1,
+      3
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-03": {
+    "correctChoices": [
+      1,
+      2,
+      3
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-04": {
+    "correctChoices": [
+      2,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-05": {
+    "correctChoices": [
+      3,
+      4
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-06": {
+    "correctChoices": [
+      1,
+      2,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-07": {
+    "correctChoices": [
+      4,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-08": {
+    "correctChoices": [
+      2,
+      3,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-09": {
+    "correctChoices": [
+      2,
+      3,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-10": {
+    "correctChoices": [
+      2,
+      3
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-11": {
+    "correctChoices": [
+      1,
+      3,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-12": {
+    "correctChoices": [
+      1,
+      3
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-13": {
+    "correctChoices": [
+      2,
+      4
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-14": {
+    "correctChoices": [
+      2,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-15": {
+    "correctChoices": [
+      2,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-16": {
+    "correctChoices": [
+      1,
+      2,
+      3
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-17": {
+    "correctChoices": [
+      1,
+      2,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-18": {
+    "correctChoices": [
+      2,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-19": {
+    "correctChoices": [
+      1,
+      3,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-20": {
+    "correctChoices": [
+      2,
+      3,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-21": {
+    "correctChoices": [
+      1,
+      3,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-22": {
+    "correctChoices": [
+      4,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-23": {
+    "correctChoices": [
+      3,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-24": {
+    "correctChoices": [
+      3,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-25": {
+    "correctChoices": [
+      1,
+      2,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-26": {
+    "correctChoices": [
+      1,
+      2,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-27": {
+    "correctChoices": [
+      1,
+      3,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-28": {
+    "correctChoices": [
+      1,
+      4
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-29": {
+    "correctChoices": [
+      1,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-30": {
+    "correctChoices": [
+      1,
+      2,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-31": {
+    "correctChoices": [
+      1,
+      2,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-32": {
+    "correctChoices": [
+      2,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-33": {
+    "correctChoices": [
+      1,
+      3,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-34": {
+    "correctChoices": [
+      1,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-35": {
+    "correctChoices": [
+      1,
+      2,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-36": {
+    "correctChoices": [
+      1,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-37": {
+    "correctChoices": [
+      1,
+      2,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-38": {
+    "correctChoices": [
+      2,
+      3,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-39": {
+    "correctChoices": [
+      1,
+      2,
+      3
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-40": {
+    "correctChoices": [
+      2,
+      4
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-41": {
+    "correctChoices": [
+      1,
+      3,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-42": {
+    "correctChoices": [
+      2,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-43": {
+    "correctChoices": [
+      2,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-44": {
+    "correctChoices": [
+      1,
+      3,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-45": {
+    "correctChoices": [
+      1,
+      2,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-46": {
+    "correctChoices": [
+      1,
+      3,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-47": {
+    "correctChoices": [
+      1,
+      2,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-48": {
+    "correctChoices": [
+      4,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-49": {
+    "correctChoices": [
+      1,
+      2,
+      3
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-50": {
+    "correctChoices": [
+      3,
+      4
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-51": {
+    "correctChoices": [
+      4,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-52": {
+    "correctChoices": [
+      2,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-53": {
+    "correctChoices": [
+      1,
+      2,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-54": {
+    "correctChoices": [
+      1,
+      3,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-55": {
+    "correctChoices": [
+      3,
+      4
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-56": {
+    "correctChoices": [
+      3,
+      4
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-57": {
+    "correctChoices": [
+      2,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-58": {
+    "correctChoices": [
+      3,
+      4
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-59": {
+    "correctChoices": [
+      1,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2015-60": {
+    "correctChoices": [
+      1,
+      2,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2015-answers",
+    "verifiedAt": "2026-10-10"
+  }
+}

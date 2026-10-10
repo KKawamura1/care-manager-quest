@@ -1,0 +1,698 @@
+{
+  "2009-01": {
+    "revision": 1,
+    "title": "介護保険制度以前の高齢者保健福祉サービス",
+    "primaryCategory": "A0",
+    "primaryConceptId": "dignity",
+    "relatedConceptIds": [
+      "insurer"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-02": {
+    "revision": 1,
+    "title": "需要予測・行政計画",
+    "primaryCategory": "A1",
+    "primaryConceptId": "planning",
+    "relatedConceptIds": [
+      "supply"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-03": {
+    "revision": 1,
+    "title": "社会保障",
+    "primaryCategory": "A0",
+    "primaryConceptId": "dignity",
+    "relatedConceptIds": [
+      "insurer"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-04": {
+    "revision": 1,
+    "title": "介護保険制度の創設",
+    "primaryCategory": "A0",
+    "primaryConceptId": "dignity",
+    "relatedConceptIds": [
+      "insurer"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-05": {
+    "revision": 1,
+    "title": "介護保険の給付に優先するもの",
+    "primaryCategory": "A4",
+    "primaryConceptId": "benefits",
+    "relatedConceptIds": [
+      "appeal"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-06": {
+    "revision": 1,
+    "title": "介護保険給付",
+    "primaryCategory": "A4",
+    "primaryConceptId": "benefits",
+    "relatedConceptIds": [
+      "appeal"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-07": {
+    "revision": 1,
+    "title": "介護保険事業計画",
+    "primaryCategory": "A1",
+    "primaryConceptId": "planning",
+    "relatedConceptIds": [
+      "supply"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-08": {
+    "revision": 1,
+    "title": "介護保険の第 2 号被保険者に係る保険料で負担するもの",
+    "primaryCategory": "A2",
+    "primaryConceptId": "insured",
+    "relatedConceptIds": [
+      "premium"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-09": {
+    "revision": 1,
+    "title": "地域支援事業",
+    "primaryCategory": "A3",
+    "primaryConceptId": "supply",
+    "relatedConceptIds": [
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-10": {
+    "revision": 1,
+    "title": "地域包括支援センター",
+    "primaryCategory": "A3",
+    "primaryConceptId": "supply",
+    "relatedConceptIds": [
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-11": {
+    "revision": 1,
+    "title": "介護サービス情報の公開制度",
+    "primaryCategory": "A3",
+    "primaryConceptId": "supply",
+    "relatedConceptIds": [
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-12": {
+    "revision": 1,
+    "title": "国民健康保険団体連合会",
+    "primaryCategory": "A4",
+    "primaryConceptId": "benefits",
+    "relatedConceptIds": [
+      "appeal"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-13": {
+    "revision": 1,
+    "title": "苦情処理",
+    "primaryCategory": "A4",
+    "primaryConceptId": "benefits",
+    "relatedConceptIds": [
+      "appeal"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-14": {
+    "revision": 1,
+    "title": "要介護認定",
+    "primaryCategory": "B2",
+    "primaryConceptId": "certification",
+    "relatedConceptIds": [
+      "medical-opinion"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-15": {
+    "revision": 1,
+    "title": "要介護認定",
+    "primaryCategory": "B2",
+    "primaryConceptId": "certification",
+    "relatedConceptIds": [
+      "medical-opinion"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-16": {
+    "revision": 1,
+    "title": "居宅介護支援の内容",
+    "primaryCategory": "B3",
+    "primaryConceptId": "assessment",
+    "relatedConceptIds": [
+      "choice"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-17": {
+    "revision": 1,
+    "title": "介護支援専門員の基本姿勢",
+    "primaryCategory": "B4",
+    "primaryConceptId": "coordination",
+    "relatedConceptIds": [
+      "neutrality"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-18": {
+    "revision": 1,
+    "title": "ケアマネジメント",
+    "primaryCategory": "B3",
+    "primaryConceptId": "assessment",
+    "relatedConceptIds": [
+      "choice"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-19": {
+    "revision": 1,
+    "title": "指定居宅介護支援事業者",
+    "primaryCategory": "B4",
+    "primaryConceptId": "coordination",
+    "relatedConceptIds": [
+      "neutrality"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-20": {
+    "revision": 1,
+    "title": "居宅介護支援",
+    "primaryCategory": "B3",
+    "primaryConceptId": "assessment",
+    "relatedConceptIds": [
+      "choice"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-21": {
+    "revision": 1,
+    "title": "介護予防支援",
+    "primaryCategory": "B3",
+    "primaryConceptId": "assessment",
+    "relatedConceptIds": [
+      "choice"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-22": {
+    "revision": 1,
+    "title": "地域密着型サービス",
+    "primaryCategory": "B3",
+    "primaryConceptId": "assessment",
+    "relatedConceptIds": [
+      "choice"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-23": {
+    "revision": 1,
+    "title": "サービス提供・連携",
+    "primaryCategory": "B4",
+    "primaryConceptId": "coordination",
+    "relatedConceptIds": [
+      "neutrality"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-24": {
+    "revision": 1,
+    "title": "サービス提供・連携",
+    "primaryCategory": "B4",
+    "primaryConceptId": "coordination",
+    "relatedConceptIds": [
+      "neutrality"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-25": {
+    "revision": 1,
+    "title": "権利擁護・終末期ケア",
+    "primaryCategory": "C5",
+    "primaryConceptId": "past.rights",
+    "relatedConceptIds": [
+      "dignity",
+      "consent"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-26": {
+    "revision": 1,
+    "title": "検査結果と病態との組合せ",
+    "primaryCategory": "C1",
+    "primaryConceptId": "past.disease",
+    "relatedConceptIds": [
+      "medical-opinion",
+      "assessment"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-27": {
+    "revision": 1,
+    "title": "疾病とその病態や症状との組合せ",
+    "primaryCategory": "C1",
+    "primaryConceptId": "past.disease",
+    "relatedConceptIds": [
+      "medical-opinion",
+      "assessment"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-28": {
+    "revision": 1,
+    "title": "高齢者に多く見られる疾病とその病態や症状との組合せ",
+    "primaryCategory": "C1",
+    "primaryConceptId": "past.disease",
+    "relatedConceptIds": [
+      "medical-opinion",
+      "assessment"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-29": {
+    "revision": 1,
+    "title": "高齢者の疾病等",
+    "primaryCategory": "C1",
+    "primaryConceptId": "past.disease",
+    "relatedConceptIds": [
+      "medical-opinion",
+      "assessment"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-30": {
+    "revision": 1,
+    "title": "栄養",
+    "primaryCategory": "C1",
+    "primaryConceptId": "past.disease",
+    "relatedConceptIds": [
+      "medical-opinion",
+      "assessment"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-31": {
+    "revision": 1,
+    "title": "疾病・身体機能",
+    "primaryCategory": "C1",
+    "primaryConceptId": "past.disease",
+    "relatedConceptIds": [
+      "medical-opinion",
+      "assessment"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-32": {
+    "revision": 1,
+    "title": "褥瘡",
+    "primaryCategory": "C1",
+    "primaryConceptId": "past.disease",
+    "relatedConceptIds": [
+      "medical-opinion",
+      "assessment"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-33": {
+    "revision": 1,
+    "title": "服薬に関し，より適切なものはどれか。2 つ選べ。",
+    "primaryCategory": "C3",
+    "primaryConceptId": "past.clinical",
+    "relatedConceptIds": [
+      "medical-opinion",
+      "coordination"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-34": {
+    "revision": 1,
+    "title": "終末期",
+    "primaryCategory": "C5",
+    "primaryConceptId": "past.rights",
+    "relatedConceptIds": [
+      "dignity",
+      "consent"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-35": {
+    "revision": 1,
+    "title": "四肢麻痺のある要介護者に対する訪問介護の身体介護",
+    "primaryCategory": "C3",
+    "primaryConceptId": "past.clinical",
+    "relatedConceptIds": [
+      "medical-opinion",
+      "coordination"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-36": {
+    "revision": 1,
+    "title": "介護保険の訪問看護",
+    "primaryCategory": "C3",
+    "primaryConceptId": "past.clinical",
+    "relatedConceptIds": [
+      "medical-opinion",
+      "coordination"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-37": {
+    "revision": 1,
+    "title": "居宅療養管理指導",
+    "primaryCategory": "C3",
+    "primaryConceptId": "past.clinical",
+    "relatedConceptIds": [
+      "medical-opinion",
+      "coordination"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-38": {
+    "revision": 1,
+    "title": "疾病・身体機能",
+    "primaryCategory": "C1",
+    "primaryConceptId": "past.disease",
+    "relatedConceptIds": [
+      "medical-opinion",
+      "assessment"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-39": {
+    "revision": 1,
+    "title": "疾病・身体機能",
+    "primaryCategory": "C1",
+    "primaryConceptId": "past.disease",
+    "relatedConceptIds": [
+      "medical-opinion",
+      "assessment"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-40": {
+    "revision": 1,
+    "title": "介護保険施設の施設サービス費",
+    "primaryCategory": "C1",
+    "primaryConceptId": "past.disease",
+    "relatedConceptIds": [
+      "medical-opinion",
+      "assessment"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-41": {
+    "revision": 1,
+    "title": "疾病・身体機能",
+    "primaryCategory": "C1",
+    "primaryConceptId": "past.disease",
+    "relatedConceptIds": [
+      "medical-opinion",
+      "assessment"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-42": {
+    "revision": 1,
+    "title": "疾病・身体機能",
+    "primaryCategory": "C1",
+    "primaryConceptId": "past.disease",
+    "relatedConceptIds": [
+      "medical-opinion",
+      "assessment"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-43": {
+    "revision": 1,
+    "title": "認知機能に関して適切なものはどれか。3 つ選べ。",
+    "primaryCategory": "C1",
+    "primaryConceptId": "past.disease",
+    "relatedConceptIds": [
+      "medical-opinion",
+      "assessment"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-44": {
+    "revision": 1,
+    "title": "医療・看護・リハビリ",
+    "primaryCategory": "C3",
+    "primaryConceptId": "past.clinical",
+    "relatedConceptIds": [
+      "medical-opinion",
+      "coordination"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-45": {
+    "revision": 1,
+    "title": "疾病・身体機能",
+    "primaryCategory": "C1",
+    "primaryConceptId": "past.disease",
+    "relatedConceptIds": [
+      "medical-opinion",
+      "assessment"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-46": {
+    "revision": 1,
+    "title": "面接場面",
+    "primaryCategory": "C4",
+    "primaryConceptId": "past.social",
+    "relatedConceptIds": [
+      "choice",
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-47": {
+    "revision": 1,
+    "title": "介護支援専門員が行うソーシャルワーク",
+    "primaryCategory": "C4",
+    "primaryConceptId": "past.social",
+    "relatedConceptIds": [
+      "choice",
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-48": {
+    "revision": 1,
+    "title": "集団援助技術（ソーシャルグループワーク）",
+    "primaryCategory": "C4",
+    "primaryConceptId": "past.social",
+    "relatedConceptIds": [
+      "choice",
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-49": {
+    "revision": 1,
+    "title": "援助困難事例への対応方法",
+    "primaryCategory": "C4",
+    "primaryConceptId": "past.social",
+    "relatedConceptIds": [
+      "choice",
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-50": {
+    "revision": 1,
+    "title": "介護保険の給付対象となる福祉用具",
+    "primaryCategory": "C4",
+    "primaryConceptId": "past.social",
+    "relatedConceptIds": [
+      "choice",
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-51": {
+    "revision": 1,
+    "title": "訪問介護",
+    "primaryCategory": "C4",
+    "primaryConceptId": "past.social",
+    "relatedConceptIds": [
+      "choice",
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-52": {
+    "revision": 1,
+    "title": "訪問入浴介護",
+    "primaryCategory": "C4",
+    "primaryConceptId": "past.social",
+    "relatedConceptIds": [
+      "choice",
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-53": {
+    "revision": 1,
+    "title": "短期入所生活介護",
+    "primaryCategory": "C4",
+    "primaryConceptId": "past.social",
+    "relatedConceptIds": [
+      "choice",
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-54": {
+    "revision": 1,
+    "title": "認知症対応型共同生活介護",
+    "primaryCategory": "C4",
+    "primaryConceptId": "past.social",
+    "relatedConceptIds": [
+      "choice",
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-55": {
+    "revision": 1,
+    "title": "小規模多機能型居宅介護",
+    "primaryCategory": "C4",
+    "primaryConceptId": "past.social",
+    "relatedConceptIds": [
+      "choice",
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-56": {
+    "revision": 1,
+    "title": "生活支援・福祉",
+    "primaryCategory": "C4",
+    "primaryConceptId": "past.social",
+    "relatedConceptIds": [
+      "choice",
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-57": {
+    "revision": 1,
+    "title": "日常生活自立支援事業（（旧）地域福祉権利擁護事業）",
+    "primaryCategory": "C5",
+    "primaryConceptId": "past.rights",
+    "relatedConceptIds": [
+      "dignity",
+      "consent"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-58": {
+    "revision": 1,
+    "title": "成年後見制度",
+    "primaryCategory": "C5",
+    "primaryConceptId": "past.rights",
+    "relatedConceptIds": [
+      "dignity",
+      "consent"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-59": {
+    "revision": 1,
+    "title": "生活保護",
+    "primaryCategory": "C4",
+    "primaryConceptId": "past.social",
+    "relatedConceptIds": [
+      "choice",
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2009-60": {
+    "revision": 1,
+    "title": "「高齢者虐待の防止，高齢者の養護者に対する支援等",
+    "primaryCategory": "C5",
+    "primaryConceptId": "past.rights",
+    "relatedConceptIds": [
+      "dignity",
+      "consent"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  }
+}

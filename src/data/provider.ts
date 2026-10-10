@@ -1,3 +1,4 @@
+import { pastProvider } from './past-provider';
 import legacy from './legacy-questions.json';
 import text from './packs/2025/questions.json';
 import keys from './packs/2025/answers.json';
@@ -26,6 +27,8 @@ export const officialProvider: QuestionProvider = {
 };
 // Archived originals are retained only to read pre-existing history; never feed them into a quest.
 export const legacyQuestions = legacy as Question[];
-export const questions = officialProvider.list();
+export const questions = [...officialProvider.list(),...pastProvider.list()];
+export const availableYears = [...new Set(questions.map(q=>q.original!.year))].sort((a,b)=>b-a);
 export const historyQuestions = [...questions,...legacyQuestions];
 export const questionById = (id:string) => historyQuestions.find(q=>q.id===id);
+
