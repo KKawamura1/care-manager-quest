@@ -1,4 +1,5 @@
 import legacy from './legacy-questions.json';
+import historical from './packs/historical.json';
 import text from './packs/2025/questions.json';
 import keys from './packs/2025/answers.json';
 import classification from './packs/2025/classifications.json';
@@ -26,6 +27,6 @@ export const officialProvider: QuestionProvider = {
 };
 // Archived originals are retained only to read pre-existing history; never feed them into a quest.
 export const legacyQuestions = legacy as Question[];
-export const questions = officialProvider.list();
+export const questions: readonly Question[] = [...officialProvider.list(),...historical as Question[]];
 export const historyQuestions = [...questions,...legacyQuestions];
 export const questionById = (id:string) => historyQuestions.find(q=>q.id===id);

@@ -1,5 +1,7 @@
+import historicalSources from './packs/historical-sources.json';
 import type { Source } from '../domain/models';
 export const sources: Source[] = [
+ ...historicalSources,
  {id:'official-2025',title:'2025年度 公式問題冊子（東京都掲載）',url:'https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r7shikenmondai'},
  {id:'official-2025-answers',title:'2025年度 正答番号の公表（東京都）',url:'https://www.fukushi.metro.tokyo.lg.jp/kourei/shikaku/r7_seitoukijyun'},
  {id:'reuse-guidance',title:'試験センターの過去問題利用条件',url:'https://www.sssc.or.jp/pastissues/index.html'},

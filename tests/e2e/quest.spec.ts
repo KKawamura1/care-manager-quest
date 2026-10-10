@@ -84,7 +84,7 @@ test('existing schema 1 history is backed up and retained while old questions le
 
 test('domain setting offers all 60 as text while preserving the existing history',async({page})=>{
  await page.goto('/');
- await expect(page.getByText('2025年度・全60問の公式過去問。出題分野を選んで5問ずつ挑戦できます。')).toBeVisible();
+ await expect(page.getByText('2020〜2025年度・全360問の公式過去問。年度と分野を選んで5問ずつ挑戦できます。')).toBeVisible();
  await page.getByRole('radio',{name:'保健医療（20問）'}).check();
  await page.getByRole('button',{name:'5問のクエストを始める'}).click();
  let id=await page.evaluate(k=>JSON.parse(localStorage.getItem(k)!).session.questionIds[0],key);

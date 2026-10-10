@@ -10,7 +10,7 @@
     "test": "vitest run",
     "test:e2e": "playwright test",
     "preview": "vite preview --host 0.0.0.0",
-    "prepare:questions": "node scripts/import-2025.mjs",
+    "prepare:questions": "node scripts/import-2025.mjs && node scripts/import-history.mjs",
     "predev": "npm run prepare:questions",
     "prebuild": "npm run prepare:questions",
     "pretypecheck": "npm run prepare:questions",
