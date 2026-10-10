@@ -7,13 +7,13 @@ import type { Question, QuestionProvider } from '../domain/models';
 export const classifications = classification;
 const answers = keys as Record<string, { correctChoices: number[]; selectionCount: number; sourceId: string; verifiedAt: string }>;
 const mapping = classification as Record<string, { revision: number; title: string; primaryCategory: string; primaryConceptId: string; relatedConceptIds: string[]; difficulty: 1|2|3 }>;
-const review = quality as Record<string, { textStatus: string; reviewedAt: string; independentExplanation: string|null; lawStatus: string }>;
+const review = quality as Record<string, { textStatus: string; reviewedAt?: string; independentExplanation: string|null; lawStatus: string }>;
 export const officialProvider: QuestionProvider = {
-  id: 'official-2025-support',
+  id: 'official-2025-all60',
   list: () => text.map(q => {
     const a=answers[q.id], c=mapping[q.id], r=review[q.id];
     return {
-      id:q.id, version:q.version, title:`2025年度 問${q.number}｜${c.title}`, stem:q.stem,
+      id:q.id, version:q.version, domain:q.domain, title:`2025年度 問${q.number}｜${c.title}`, stem:q.stem,
       options:q.choices.map((text,i)=>({id:String(i+1),text,explanation:''})),
       answerIds:a.correctChoices.map(String), selectionCount:a.selectionCount,
       explanation:r.independentExplanation??'', reasoning:'', difficulty:c.difficulty,

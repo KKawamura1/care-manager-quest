@@ -9,7 +9,13 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:e2e": "playwright test",
-    "preview": "vite preview --host 0.0.0.0"
+    "preview": "vite preview --host 0.0.0.0",
+    "prepare:questions": "node scripts/import-2025.mjs",
+    "predev": "npm run prepare:questions",
+    "prebuild": "npm run prepare:questions",
+    "pretypecheck": "npm run prepare:questions",
+    "pretest": "npm run prepare:questions",
+    "pretest:e2e": "npm run prepare:questions"
   },
   "dependencies": {
     "react": "^19.2.0",

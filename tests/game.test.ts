@@ -11,9 +11,9 @@ const date='2026-10-10T10:00:00.000Z';
 function ready() {const p=emptyPlayer();p.session=buildSession(questions,[],'session-1',()=>0);return p;}
 function answered(p:PlayerState,correct=true) { const q=questions.find(q=>q.id===p.session!.questionIds[p.session!.index])!;p={...p,session:{...p.session!,selectedIds:correct?q.answerIds:[...q.answerIds.slice(1),q.options.find(o=>!q.answerIds.includes(o.id))!.id]}};return submitAnswer(p,questions,date);}
 describe('question pack contract',()=>{
- it('contains 25 official, image-backed questions with stable numbering and provisional map references',()=>{
-  expect(questions).toHaveLength(25);expect(new Set(questions.map(q=>q.id)).size).toBe(25);
-  for(const q of questions){expect(q.options).toHaveLength(5);expect([2,3]).toContain(q.selectionCount);expect(q.answerIds).toHaveLength(q.selectionCount);expect(new Set(q.answerIds).size).toBe(q.selectionCount);expect(q.answerIds.every(id=>q.options.some(o=>o.id===id))).toBe(true);expect(categories.some(c=>c.id===q.primaryCategory&&c.parentId&&c.available)).toBe(true);expect(q.conceptIds.length).toBeGreaterThan(1);expect(q.conceptIds.every(id=>concepts.some(c=>c.id===id))).toBe(true);expect(q.provenance.kind).toBe('official');expect(q.id).toMatch(/^2025-\d{2}$/);expect(q.original?.year).toBe(2025);expect(q.explanation).toBe('');expect(q.original?.imagePath).toBe(`/assets/questions/2025/q${q.id.split('-')[1]}.png`);expect(createHash('sha256').update(readFileSync(new URL(`../public${q.original!.imagePath}`,import.meta.url))).digest('hex')).toBe(q.original?.imageSha256);expect(q.provenance.verifiedAt).toBe('2026-10-10');expect(q.provenance.sources.length).toBeGreaterThan(0);for(const s of q.provenance.sources){expect(sources.some(source=>source.id===s.sourceId)).toBe(true);expect(s.locator).not.toBe('');}}
+ it('contains 60 official, text-backed questions with stable numbering and provisional map references',()=>{
+  expect(questions).toHaveLength(60);expect(new Set(questions.map(q=>q.id)).size).toBe(60);expect(questions.filter(q=>q.domain==='介護支援分野')).toHaveLength(25);expect(questions.filter(q=>q.domain==='保健医療サービスの知識等')).toHaveLength(20);expect(questions.filter(q=>q.domain==='福祉サービスの知識等')).toHaveLength(15);
+  for(const q of questions){expect(q.options).toHaveLength(5);expect([2,3]).toContain(q.selectionCount);expect(q.answerIds).toHaveLength(q.selectionCount);expect(new Set(q.answerIds).size).toBe(q.selectionCount);expect(q.answerIds.every(id=>q.options.some(o=>o.id===id))).toBe(true);expect(categories.some(c=>c.id===q.primaryCategory&&c.parentId&&c.available)).toBe(true);expect(q.conceptIds.length).toBeGreaterThan(1);expect(q.conceptIds.every(id=>concepts.some(c=>c.id===id))).toBe(true);expect(q.provenance.kind).toBe('official');expect(q.id).toMatch(/^2025-\d{2}$/);expect(q.original?.year).toBe(2025);expect(q.explanation).toBe('');expect(q.original?.imagePath).toBe(`/assets/questions/2025/q${q.id.split('-')[1]}.png`);if (Number(q.id.split('-')[1])<=25) expect(createHash('sha256').update(readFileSync(new URL(`../public${q.original!.imagePath}`,import.meta.url))).digest('hex')).toBe(q.original?.imageSha256);expect(q.provenance.verifiedAt).toBe('2026-10-10');expect(q.provenance.sources.length).toBeGreaterThan(0);for(const s of q.provenance.sources){expect(sources.some(source=>source.id===s.sourceId)).toBe(true);expect(s.locator).not.toBe('');}}
   for(const c of concepts)expect(c.relatedIds.every(id=>concepts.some(c=>c.id===id))).toBe(true);
  });
 });
@@ -56,7 +56,7 @@ describe('portable history',()=>{
 });
 
 describe('official answers and stable history',()=>{
- it('scores every valid two/three-number combination for all 25 questions by exact set equality',()=>{
+ it('scores every valid two/three-number combination for all 60 questions by exact set equality',()=>{
   for(const q of questions)for(let mask=0;mask<32;mask++){
    const ids=q.options.filter((_,i)=>mask&(1<<i)).map(o=>o.id);
    const expected=JSON.stringify([...ids].sort())===JSON.stringify([...q.answerIds].sort());
@@ -65,12 +65,12 @@ describe('official answers and stable history',()=>{
  });
  it('can exhaust the official pack in five quests without ever selecting legacy questions',()=>{
   let p=emptyPlayer();const ids:string[]=[];
-  for(let n=0;n<5;n++){
+  for(let n=0;n<12;n++){
    p.session=buildSession(questions,p.attempts,`all-${n}`,()=>0);
    ids.push(...p.session.questionIds);
    for(let i=0;i<5;i++)p=advance(answered(p));
   }
-  expect(new Set(ids).size).toBe(25);expect(ids.every(id=>id.startsWith('2025-'))).toBe(true);
+  expect(new Set(ids).size).toBe(60);expect(ids.every(id=>id.startsWith('2025-'))).toBe(true);
  });
  it('migrates schema 1, retains legacy XP/reflection/external records, and retires its active session',()=>{
   let p=emptyPlayer();p.session=buildSession(legacyQuestions,[],'legacy',()=>0);
@@ -88,7 +88,7 @@ describe('official answers and stable history',()=>{
   finally {Object.assign(q,original);}
  });
  it('stores pending text only as image-backed questions and never injects an independent explanation',()=>{
-  expect(questions.filter(q=>q.original?.textStatus==='pending').map(q=>q.id)).toEqual(['2025-24','2025-25']);
+  expect(questions.filter(q=>q.original?.textStatus==='pending')).toHaveLength(60);expect(questions.every(q=>q.stem.trim()&&q.options.every(o=>o.text.trim()))).toBe(true);
   expect(questions.every(q=>!q.explanation&&!q.reasoning&&q.options.every(o=>!o.explanation))).toBe(true);
  });
 });
