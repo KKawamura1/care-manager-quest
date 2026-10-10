@@ -51,3 +51,15 @@ test('accepted alternative answer selections have consistent option feedback',as
   await expect(options.nth(0)).toContainText('他の正答の組合せに含まれる');
   await page.reload();await expect(page.locator('#feedback')).toContainText('正解！');
 });
+
+test('2018 and 2019 are selectable as text-only sixty-question years',async({page})=>{
+  await page.goto('/');
+  for(const year of ['2018','2019']){
+    await page.getByRole('combobox',{name:'出題する年度'}).selectOption(year);
+    await expect(page.getByRole('radio',{name:'全分野（60問）'})).toBeVisible();
+    await page.getByRole('button',{name:'5問のクエストを始める'}).click();
+    await expect(page.locator('.question-title')).toContainText(`${year}年度`);
+    await expect(page.getByRole('button',{name:'原本画像を見る ↗'})).toHaveCount(0);
+    await page.getByRole('button',{name:'中断してホーム'}).click();
+  }
+});

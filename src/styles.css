@@ -17,3 +17,5 @@
 
 .year-picker { display: grid; gap: .5rem; margin: 1rem 0; }
 .year-picker select { color: inherit; background: #172838; border: 1px solid #5e7686; border-radius: .5rem; padding: .75rem; font: inherit; width: 100%; }
+
+.question-stem{white-space:pre-line}

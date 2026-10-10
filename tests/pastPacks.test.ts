@@ -10,12 +10,12 @@ import { questionCopyText } from '../src/domain/questionCopy';
 const past=pastProvider.list();
 describe('published historical exam packs',()=>{
   it('retains 60 items per year, excludes the cancelled question, and resolves every classification and source',()=>{
-    expect(pastExamTexts).toHaveLength(780);
-    expect(past).toHaveLength(779);
+    expect(pastExamTexts).toHaveLength(900);
+    expect(past).toHaveLength(899);
     expect(excludedPastExamIds).toEqual(['2005-28']);
-    expect(availableYears).toEqual([2025,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007,2006,2005]);
-    expect(new Set(questions.map(q=>q.id)).size).toBe(839);
-    for(let year=2005;year<=2017;year++){
+    expect(availableYears).toEqual([2025,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007,2006,2005]);
+    expect(new Set(questions.map(q=>q.id)).size).toBe(959);
+    for(let year=2005;year<=2019;year++){
       expect(pastExamTexts.filter(q=>q.year===year).map(q=>q.number).sort((a,b)=>a-b)).toEqual(Array.from({length:60},(_,i)=>i+1));
     }
     for(const q of past){
@@ -32,6 +32,13 @@ describe('published historical exam packs',()=>{
       for(const s of q.provenance.sources)expect(sources.find(source=>source.id===s.sourceId)?.url).toMatch(/^https:\/\//);
       expect(q.explanation).toBe('');
     }
+  });
+  it('keeps the 2018 annotation and 2019 October examination distinct from the retest, with both answer keys',()=>{
+    expect(past.find(q=>q.id==='2018-43')?.stem).toContain('（注）SPDCAとは');
+    expect(past.find(q=>q.id==='2018-01')?.answerIds).toEqual(['3','4']);
+    expect(past.find(q=>q.id==='2019-01')?.stem).toContain('2017（平成29）年の介護保険制度改正');
+    expect(past.find(q=>q.id==='2019-01')?.answerIds).toEqual(['1','2','4']);
+    expect(past.find(q=>q.id==='2019-01')?.provenance.sources.map(s=>s.sourceId)).toContain('2019-answer-key-secondary');
   });
   it('scores all option subsets and all officially accepted variants, rejecting duplicate selections',()=>{
     expect(past.find(q=>q.id==='2006-19')?.answerVariants).toEqual([['1','3'],['1','5'],['3','5']]);

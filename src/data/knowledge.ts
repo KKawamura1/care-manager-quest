@@ -1,6 +1,8 @@
 import type { Category, Concept } from '../domain/models';
 import { pastConcepts } from './past-concepts';
 import classification from './packs/2025/classifications.json';
+import classification2018 from './packs/2018/classifications.json';
+import concepts2019 from './packs/2019/new_concepts.json';
 export const categories: Category[] = [
  {id:'A',label:'制度マネジメント',description:'地域全体を支える仕組み',available:true},
  {id:'A0',parentId:'A',label:'制度の理念・保険者',description:'何のために、誰が運営するか',available:true},
@@ -44,7 +46,11 @@ const baseConcepts: Concept[] = [
  c('monitoring','B5','モニタリング','実施状況と変化を把握し、必要な計画変更や連絡調整を行う。',['assessment','reassessment']),
 ];
 
-export const concepts: Concept[] = [...baseConcepts,...pastConcepts,...Object.values(classification).map(c=>({
+const concepts2018:Concept[] = [...new Map(Object.values(classification2018).filter(c=>c.primaryConceptId.includes('.exam2018_')).map(c=>[c.primaryConceptId,{
+ id:c.primaryConceptId,categoryId:c.primaryCategory,label:c.title,
+ summary:'2018年度の過去問で扱う論点です。分類は暫定で、現行法との適合性は未確認です。',relatedIds:c.relatedConceptIds,
+}])).values()];
+export const concepts: Concept[] = [...baseConcepts,...pastConcepts,...concepts2018,...concepts2019,...Object.values(classification).map(c=>({
  id:c.primaryConceptId,categoryId:c.primaryCategory,label:c.title,
  summary:'2025年度の過去問で扱う論点です。分類は暫定で、現行法との適合性は未確認です。',
  relatedIds:c.relatedConceptIds,
