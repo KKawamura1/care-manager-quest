@@ -1,0 +1,27 @@
+name: Validate taxonomy metadata
+on:
+  pull_request:
+    paths:
+      - 'data/taxonomy/**'
+      - 'docs/taxonomy/**'
+      - 'scripts/validate-taxonomy.py'
+      - '.github/workflows/taxonomy.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'data/taxonomy/**'
+      - 'docs/taxonomy/**'
+      - 'scripts/validate-taxonomy.py'
+      - '.github/workflows/taxonomy.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate-taxonomy:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/validate-taxonomy.py

@@ -1,0 +1,1293 @@
+{
+  "schemaVersion": 1,
+  "id": "care-manager-knowledge",
+  "version": "multi-year-v2-draft",
+  "status": "curated_taxonomy_manual_question_assignments_provisional",
+  "officialExamDomains": [
+    "介護支援分野",
+    "保健医療サービスの知識等",
+    "福祉サービスの知識等"
+  ],
+  "classificationAxes": {
+    "primary": "問題の正誤判定に必要な知識上の中心論点",
+    "related": "選択肢や制度理解に実質的に関係する論点",
+    "examDomain": "元の公式試験区分。知識分類と別に保持"
+  },
+  "categories": [
+    {
+      "id": "A",
+      "parentId": null,
+      "label": "制度マネジメント",
+      "guidingQuestion": "社会全体で介護保障を継続可能にするには？"
+    },
+    {
+      "id": "A0",
+      "parentId": "A",
+      "label": "制度の理念・ガバナンス",
+      "guidingQuestion": "何のために、誰が、どんな責任を負うか？"
+    },
+    {
+      "id": "A1",
+      "parentId": "A",
+      "label": "需要予測・政策計画",
+      "guidingQuestion": "将来の必要量を誰がどの計画で見通すか？"
+    },
+    {
+      "id": "A2",
+      "parentId": "A",
+      "label": "保険財政・負担",
+      "guidingQuestion": "制度を誰が支え、どう財源を安定させるか？"
+    },
+    {
+      "id": "A3",
+      "parentId": "A",
+      "label": "サービス供給体制",
+      "guidingQuestion": "誰に参入を認め、どのような供給を整えるか？"
+    },
+    {
+      "id": "A4",
+      "parentId": "A",
+      "label": "給付・請求・監督・救済",
+      "guidingQuestion": "どう払って検証し、異議や権利を守るか？"
+    },
+    {
+      "id": "B",
+      "parentId": null,
+      "label": "個別ケアマネジメント",
+      "guidingQuestion": "一人の生活上の必要を支援に変えるには？"
+    },
+    {
+      "id": "B1",
+      "parentId": "B",
+      "label": "利用資格・サービスの入口",
+      "guidingQuestion": "この人は何を利用できるか？"
+    },
+    {
+      "id": "B2",
+      "parentId": "B",
+      "label": "要介護認定",
+      "guidingQuestion": "どの程度の介護が必要だと公的に判定するか？"
+    },
+    {
+      "id": "B3",
+      "parentId": "B",
+      "label": "アセスメント・計画・調整",
+      "guidingQuestion": "本人・家族の課題をどう支援計画にするか？"
+    },
+    {
+      "id": "B4",
+      "parentId": "B",
+      "label": "サービスの設計・実施",
+      "guidingQuestion": "どこで誰がどんな支援を届けるか？"
+    },
+    {
+      "id": "B5",
+      "parentId": "B",
+      "label": "モニタリング・再評価",
+      "guidingQuestion": "成果や状態変化をどう把握・反映するか？"
+    },
+    {
+      "id": "C",
+      "parentId": null,
+      "label": "保健医療・福祉の専門知識",
+      "guidingQuestion": "具体的に何を観察し、どう支援するか？"
+    },
+    {
+      "id": "C1",
+      "parentId": "C",
+      "label": "加齢・疾病・機能障害",
+      "guidingQuestion": "身体の状態や病気をどう理解するか？"
+    },
+    {
+      "id": "C2",
+      "parentId": "C",
+      "label": "認知症・精神機能",
+      "guidingQuestion": "認知・精神面の状態やケアをどう理解するか？"
+    },
+    {
+      "id": "C3",
+      "parentId": "C",
+      "label": "診療・在宅医療・看護・リハビリ",
+      "guidingQuestion": "医療的な介入・安全確保に何が必要か？"
+    },
+    {
+      "id": "C4",
+      "parentId": "C",
+      "label": "日常生活・予防ケア",
+      "guidingQuestion": "食事・移動・清潔・皮膚などの生活をどう支えるか？"
+    },
+    {
+      "id": "C5",
+      "parentId": "C",
+      "label": "ソーシャルワーク・権利・公的扶助",
+      "guidingQuestion": "本人の生活と権利を社会資源でどう支えるか？"
+    },
+    {
+      "id": "C6",
+      "parentId": "C",
+      "label": "終末期・ACP",
+      "guidingQuestion": "最終段階の意思と生活をどう尊重するか？"
+    }
+  ],
+  "concepts": [
+    {
+      "id": "A0.roles",
+      "categoryId": "A0",
+      "label": "保険者と行政主体の権限",
+      "parentConceptId": null,
+      "summary": "誰が運営・計画・監督するかの権限分担"
+    },
+    {
+      "id": "A0.public_duties",
+      "categoryId": "A0",
+      "label": "国民の努力と介護保険の理念",
+      "parentConceptId": null,
+      "summary": "予防・能力維持・公平な費用負担という基本原則"
+    },
+    {
+      "id": "A1.planning",
+      "categoryId": "A1",
+      "label": "行政計画の階層",
+      "parentConceptId": null,
+      "summary": "国・都道府県・市町村の計画を区別する"
+    },
+    {
+      "id": "A1.dementia_policy",
+      "categoryId": "A1",
+      "label": "認知症基本法・認知症施策推進計画",
+      "parentConceptId": "A1.planning",
+      "summary": "理念と自治体の責務・計画の整合関係"
+    },
+    {
+      "id": "A1.prefecture_plan",
+      "categoryId": "A1",
+      "label": "都道府県介護保険事業支援計画",
+      "parentConceptId": "A1.planning",
+      "summary": "広域の施設・人材と医療計画の整合"
+    },
+    {
+      "id": "A1.municipal_plan",
+      "categoryId": "A1",
+      "label": "市町村介護保険事業計画",
+      "parentConceptId": "A1.planning",
+      "summary": "3年周期の必要量見込みと地域の供給"
+    },
+    {
+      "id": "A2.social_insurance",
+      "categoryId": "A2",
+      "label": "社会保険の仕組み",
+      "parentConceptId": null,
+      "summary": "保険方式・税方式・公的扶助の違い"
+    },
+    {
+      "id": "A2.insurance_premiums",
+      "categoryId": "A2",
+      "label": "第1号保険料と徴収",
+      "parentConceptId": null,
+      "summary": "所得段階・条例・普通/特別徴収"
+    },
+    {
+      "id": "A2.financing",
+      "categoryId": "A2",
+      "label": "介護保険の財源構造",
+      "parentConceptId": null,
+      "summary": "保険料と公費、調整交付金"
+    },
+    {
+      "id": "A2.stabilization",
+      "categoryId": "A2",
+      "label": "財政安定化基金",
+      "parentConceptId": "A2.financing",
+      "summary": "基金の設置、拠出、交付、貸付"
+    },
+    {
+      "id": "A3.provider_entry",
+      "categoryId": "A3",
+      "label": "事業者指定と監督権限",
+      "parentConceptId": null,
+      "summary": "誰が指定し、いつ更新し、何を条例で定めるか"
+    },
+    {
+      "id": "A3.care_manager_qualification",
+      "categoryId": "A3",
+      "label": "介護支援専門員の資格・登録",
+      "parentConceptId": null,
+      "summary": "専門員証、登録、移転、提示、返納"
+    },
+    {
+      "id": "A3.community_projects",
+      "categoryId": "A3",
+      "label": "地域支援事業・総合事業",
+      "parentConceptId": null,
+      "summary": "一般介護予防事業とその他の地域支援事業"
+    },
+    {
+      "id": "A3.service_types",
+      "categoryId": "A3",
+      "label": "サービス類型と地域密着型",
+      "parentConceptId": null,
+      "summary": "給付・予防・総合事業、居宅・施設・地域密着型"
+    },
+    {
+      "id": "A3.staffing_standards",
+      "categoryId": "A3",
+      "label": "指定基準・人員設備運営",
+      "parentConceptId": null,
+      "summary": "事業者の人員・設備・運営の最低基準"
+    },
+    {
+      "id": "A4.benefit_rules",
+      "categoryId": "A4",
+      "label": "給付・利用者負担の基本",
+      "parentConceptId": null,
+      "summary": "支給限度額、保険給付と自己負担"
+    },
+    {
+      "id": "A4.supplementary_benefits",
+      "categoryId": "A4",
+      "label": "補足給付（特定入所者介護サービス費）",
+      "parentConceptId": "A4.benefit_rules",
+      "summary": "食費・居住費の負担軽減と対象サービス"
+    },
+    {
+      "id": "A4.municipal_administration",
+      "categoryId": "A4",
+      "label": "市町村の保険者事務",
+      "parentConceptId": null,
+      "summary": "保険特別会計・条例・委託事務"
+    },
+    {
+      "id": "A4.service_disclosure",
+      "categoryId": "A4",
+      "label": "介護サービス情報公表制度",
+      "parentConceptId": null,
+      "summary": "利用者が事業所を選ぶための情報の公開"
+    },
+    {
+      "id": "A4.appeals",
+      "categoryId": "A4",
+      "label": "介護保険審査会と不服申立て",
+      "parentConceptId": null,
+      "summary": "都道府県の審査会、審査請求と手続"
+    },
+    {
+      "id": "A4.claims_review",
+      "categoryId": "A4",
+      "label": "国保連と請求審査・支払",
+      "parentConceptId": null,
+      "summary": "審査委員会、第三者行為求償、苦情"
+    },
+    {
+      "id": "B1.second_insured",
+      "categoryId": "B1",
+      "label": "第2号被保険者の資格・給付",
+      "parentConceptId": null,
+      "summary": "40～64歳、医療保険、特定疾病"
+    },
+    {
+      "id": "B1.first_insured",
+      "categoryId": "B1",
+      "label": "第1号被保険者の資格・給付",
+      "parentConceptId": null,
+      "summary": "65歳以上と資格の成立"
+    },
+    {
+      "id": "B1.basic_checklist",
+      "categoryId": "B1",
+      "label": "事業対象者と基本チェックリスト",
+      "parentConceptId": null,
+      "summary": "要介護認定とは別の総合事業入口"
+    },
+    {
+      "id": "B2.certification_process",
+      "categoryId": "B2",
+      "label": "認定の手続",
+      "parentConceptId": null,
+      "summary": "認定申請から市町村の決定まで"
+    },
+    {
+      "id": "B2.investigation",
+      "categoryId": "B2",
+      "label": "認定調査・委託先",
+      "parentConceptId": "B2.certification_process",
+      "summary": "新規と更新の調査主体・委託の違い"
+    },
+    {
+      "id": "B2.judgement",
+      "categoryId": "B2",
+      "label": "一次判定・認定審査会",
+      "parentConceptId": "B2.certification_process",
+      "summary": "主治医意見書、審査判定と市町村認定"
+    },
+    {
+      "id": "B2.certification_periods",
+      "categoryId": "B2",
+      "label": "認定有効期間・区分変更",
+      "parentConceptId": "B2.certification_process",
+      "summary": "新規・更新・区分変更の原則と上下限"
+    },
+    {
+      "id": "B3.assessment",
+      "categoryId": "B3",
+      "label": "課題分析・アセスメント",
+      "parentConceptId": null,
+      "summary": "健康状態・ADL/IADL・環境・希望を把握"
+    },
+    {
+      "id": "B3.case_conference",
+      "categoryId": "B3",
+      "label": "サービス担当者会議",
+      "parentConceptId": null,
+      "summary": "多職種意見、本人参加、会議形式、記録"
+    },
+    {
+      "id": "B3.care_plan",
+      "categoryId": "B3",
+      "label": "居宅ケアプランの作成と運用",
+      "parentConceptId": null,
+      "summary": "計画手順、保険外支援、説明同意"
+    },
+    {
+      "id": "B3.institutional_careplan",
+      "categoryId": "B3",
+      "label": "施設のケアマネジメント",
+      "parentConceptId": null,
+      "summary": "施設計画と在宅移行、関係機関との連携"
+    },
+    {
+      "id": "B3.financial_casework",
+      "categoryId": "B3",
+      "label": "経済的困りごとへの相談援助",
+      "parentConceptId": null,
+      "summary": "収入把握と利用者負担軽減の制度説明"
+    },
+    {
+      "id": "B3.family_preferences",
+      "categoryId": "B3",
+      "label": "本人意思と家族負担の両立",
+      "parentConceptId": null,
+      "summary": "本人の希望・家族負担・多職種連携"
+    },
+    {
+      "id": "B3.interview_skills",
+      "categoryId": "B3",
+      "label": "面接・コミュニケーション",
+      "parentConceptId": null,
+      "summary": "質問、傾聴、共感、非言語情報"
+    },
+    {
+      "id": "B5.monitoring",
+      "categoryId": "B5",
+      "label": "モニタリングと支援計画の再評価",
+      "parentConceptId": null,
+      "summary": "サービス実施と状態変化の継続確認"
+    },
+    {
+      "id": "B4.visiting_services",
+      "categoryId": "B4",
+      "label": "訪問系サービス",
+      "parentConceptId": null,
+      "summary": "自宅へ訪問して提供する支援"
+    },
+    {
+      "id": "B4.visiting_nursing",
+      "categoryId": "B4",
+      "label": "訪問看護",
+      "parentConceptId": "B4.visiting_services",
+      "summary": "看護職員、計画・同意・指示、訪問看護"
+    },
+    {
+      "id": "B4.home_help",
+      "categoryId": "B4",
+      "label": "訪問介護",
+      "parentConceptId": "B4.visiting_services",
+      "summary": "身体介護・生活援助・訪問介護計画"
+    },
+    {
+      "id": "B4.visiting_bath",
+      "categoryId": "B4",
+      "label": "訪問入浴介護",
+      "parentConceptId": "B4.visiting_services",
+      "summary": "浴槽を持ち込む入浴支援と指定基準"
+    },
+    {
+      "id": "B4.day_services",
+      "categoryId": "B4",
+      "label": "通所系サービス",
+      "parentConceptId": null,
+      "summary": "通所により機能維持・生活支援を行う"
+    },
+    {
+      "id": "B4.day_rehabilitation",
+      "categoryId": "B4",
+      "label": "通所リハビリテーション",
+      "parentConceptId": "B4.day_services",
+      "summary": "リハ会議、通所リハ計画、運営基準"
+    },
+    {
+      "id": "B4.day_care",
+      "categoryId": "B4",
+      "label": "通所介護",
+      "parentConceptId": "B4.day_services",
+      "summary": "生活支援、機能訓練、家族負担軽減"
+    },
+    {
+      "id": "B4.dementia_daycare",
+      "categoryId": "B4",
+      "label": "認知症対応型通所介護",
+      "parentConceptId": "B4.day_services",
+      "summary": "認知症特性に応じた通所支援"
+    },
+    {
+      "id": "B4.multi_services",
+      "categoryId": "B4",
+      "label": "通い・訪問・泊まりの複合サービス",
+      "parentConceptId": null,
+      "summary": "小規模多機能型等、登録制の柔軟な支援"
+    },
+    {
+      "id": "B4.small_multifunctional",
+      "categoryId": "B4",
+      "label": "小規模多機能型居宅介護",
+      "parentConceptId": "B4.multi_services",
+      "summary": "通い・訪問・宿泊の組合せ"
+    },
+    {
+      "id": "B4.nursing_multifunctional",
+      "categoryId": "B4",
+      "label": "看護小規模多機能型居宅介護",
+      "parentConceptId": "B4.multi_services",
+      "summary": "看護と小規模多機能の組合せ"
+    },
+    {
+      "id": "B4.residential_services",
+      "categoryId": "B4",
+      "label": "短期入所・施設サービス",
+      "parentConceptId": null,
+      "summary": "泊まる・住む場所で提供される介護"
+    },
+    {
+      "id": "B4.short_stay_life",
+      "categoryId": "B4",
+      "label": "短期入所生活介護",
+      "parentConceptId": "B4.residential_services",
+      "summary": "ショートステイの提供基準・計画"
+    },
+    {
+      "id": "B4.medical_facility",
+      "categoryId": "B4",
+      "label": "介護医療院",
+      "parentConceptId": "B4.residential_services",
+      "summary": "長期の医療・生活介護"
+    },
+    {
+      "id": "B4.special_nursing_home",
+      "categoryId": "B4",
+      "label": "介護老人福祉施設（特養）",
+      "parentConceptId": "B4.residential_services",
+      "summary": "生活支援、入所判定、介護職員配置"
+    },
+    {
+      "id": "B4.home_environment",
+      "categoryId": "B4",
+      "label": "住環境・福祉用具支援",
+      "parentConceptId": null,
+      "summary": "生活環境改善と福祉用具"
+    },
+    {
+      "id": "B4.home_modification",
+      "categoryId": "B4",
+      "label": "住宅改修",
+      "parentConceptId": "B4.home_environment",
+      "summary": "住宅改修費の対象工事と申請"
+    },
+    {
+      "id": "C1.frailty",
+      "categoryId": "C1",
+      "label": "フレイル・サルコペニア",
+      "parentConceptId": null,
+      "summary": "身体・心理・社会的フレイルと可逆性"
+    },
+    {
+      "id": "C1.musculoskeletal",
+      "categoryId": "C1",
+      "label": "運動器疾患と転倒",
+      "parentConceptId": null,
+      "summary": "骨折・関節疾患・運動器障害の理解"
+    },
+    {
+      "id": "C2.dementia",
+      "categoryId": "C2",
+      "label": "MCI・認知症とケア",
+      "parentConceptId": null,
+      "summary": "中核症状、MCI、本人中心ケア"
+    },
+    {
+      "id": "C2.mental_symptoms",
+      "categoryId": "C2",
+      "label": "せん妄・精神症状",
+      "parentConceptId": null,
+      "summary": "せん妄、うつ、薬物の影響、幻覚"
+    },
+    {
+      "id": "C3.rehabilitation",
+      "categoryId": "C3",
+      "label": "リハビリテーションの考え方",
+      "parentConceptId": null,
+      "summary": "退院時情報、移乗、歩行支援"
+    },
+    {
+      "id": "C3.clinical_decision",
+      "categoryId": "C3",
+      "label": "診断・検査・治療の基礎",
+      "parentConceptId": null,
+      "summary": "根拠・予後・同意・患者負担"
+    },
+    {
+      "id": "C3.home_medical",
+      "categoryId": "C3",
+      "label": "在宅医療の基本",
+      "parentConceptId": null,
+      "summary": "医療連携・在宅療養と医療機器"
+    },
+    {
+      "id": "C3.medical_devices",
+      "categoryId": "C3",
+      "label": "在宅医療機器・医療的ケア",
+      "parentConceptId": "C3.home_medical",
+      "summary": "胃ろう・人工呼吸器・ストーマ等"
+    },
+    {
+      "id": "C3.infection_control",
+      "categoryId": "C3",
+      "label": "感染症と標準予防策",
+      "parentConceptId": null,
+      "summary": "感染予防、ワクチン、消毒、防護具"
+    },
+    {
+      "id": "C3.emergency",
+      "categoryId": "C3",
+      "label": "急変・救急時の対応",
+      "parentConceptId": null,
+      "summary": "出血・転倒・脱水・呼吸や循環の異常"
+    },
+    {
+      "id": "C3.medication",
+      "categoryId": "C3",
+      "label": "服薬管理・薬剤リスク",
+      "parentConceptId": null,
+      "summary": "服薬介助、副作用、お薬手帳"
+    },
+    {
+      "id": "C4.daily_living",
+      "categoryId": "C4",
+      "label": "日常生活動作・介護技術",
+      "parentConceptId": null,
+      "summary": "入浴・口腔・排泄・移動・睡眠"
+    },
+    {
+      "id": "C4.pressure_ulcer",
+      "categoryId": "C4",
+      "label": "褥瘡の危険因子と予防",
+      "parentConceptId": "C4.daily_living",
+      "summary": "湿潤・栄養・体位・感染"
+    },
+    {
+      "id": "C4.nutrition_swallow",
+      "categoryId": "C4",
+      "label": "栄養・摂食嚥下・口腔",
+      "parentConceptId": "C4.daily_living",
+      "summary": "低栄養と誤嚥・食事支援"
+    },
+    {
+      "id": "C5.social_work",
+      "categoryId": "C5",
+      "label": "ソーシャルワークの方法",
+      "parentConceptId": null,
+      "summary": "価値、人権、相談援助、他職種協働"
+    },
+    {
+      "id": "C5.consultation_ethics",
+      "categoryId": "C5",
+      "label": "相談援助の基本姿勢",
+      "parentConceptId": "C5.social_work",
+      "summary": "自己決定、守秘、差別禁止、目標設定"
+    },
+    {
+      "id": "C5.community_work",
+      "categoryId": "C5",
+      "label": "地域援助と資源開発",
+      "parentConceptId": "C5.social_work",
+      "summary": "地域アセスメント、孤立予防、見守り"
+    },
+    {
+      "id": "C5.public_assistance",
+      "categoryId": "C5",
+      "label": "生活保護・介護扶助",
+      "parentConceptId": null,
+      "summary": "扶助の種類と原則、収入認定"
+    },
+    {
+      "id": "C5.guardianship",
+      "categoryId": "C5",
+      "label": "成年後見・意思決定支援",
+      "parentConceptId": null,
+      "summary": "法定/任意後見と後見監督"
+    },
+    {
+      "id": "C5.elder_abuse",
+      "categoryId": "C5",
+      "label": "高齢者虐待防止・通報",
+      "parentConceptId": null,
+      "summary": "虐待類型、早期発見、行政の責務"
+    },
+    {
+      "id": "C6.dying_process",
+      "categoryId": "C6",
+      "label": "臨死期の身体的徴候",
+      "parentConceptId": null,
+      "summary": "呼吸、意識、末梢循環などの変化"
+    },
+    {
+      "id": "C6.acp",
+      "categoryId": "C6",
+      "label": "ACP・人生の最終段階の意思決定",
+      "parentConceptId": null,
+      "summary": "繰り返しの話し合いと本人意思の尊重"
+    },
+    {
+      "id": "A0.reform_history",
+      "categoryId": "A0",
+      "label": "介護保険の成立・法改正と沿革",
+      "guidingQuestion": "介護保険の成立・法改正と沿革に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "A0.legal_duties",
+      "categoryId": "A0",
+      "label": "国・地方公共団体・国民の役割",
+      "guidingQuestion": "国・地方公共団体・国民の役割に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "A0.regional_welfare",
+      "categoryId": "A0",
+      "label": "地域共生社会と地域福祉",
+      "guidingQuestion": "地域共生社会と地域福祉に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "A0.local_ordinances",
+      "categoryId": "A0",
+      "label": "自治体の条例・権限の配分",
+      "guidingQuestion": "自治体の条例・権限の配分に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "A1.demography",
+      "categoryId": "A1",
+      "label": "高齢化・世帯・介護需要の統計",
+      "guidingQuestion": "高齢化・世帯・介護需要の統計に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "A1.benefit_statistics",
+      "categoryId": "A1",
+      "label": "介護給付・認定者数などの統計",
+      "guidingQuestion": "介護給付・認定者数などの統計に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "A1.national_guidelines",
+      "categoryId": "A1",
+      "label": "国の基本指針と計画間の関係",
+      "guidingQuestion": "国の基本指針と計画間の関係に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "A1.integrated_fund",
+      "categoryId": "A1",
+      "label": "地域医療介護総合確保基金",
+      "guidingQuestion": "地域医療介護総合確保基金に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "A1.community_care_meeting",
+      "categoryId": "A1",
+      "label": "地域ケア会議",
+      "guidingQuestion": "地域ケア会議に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "A1.multilayer_support",
+      "categoryId": "A1",
+      "label": "重層的支援体制・地域共生",
+      "guidingQuestion": "重層的支援体制・地域共生に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "A1.community_network",
+      "categoryId": "A1",
+      "label": "生活支援体制整備・地域資源",
+      "guidingQuestion": "生活支援体制整備・地域資源に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "A2.second_premiums",
+      "categoryId": "A2",
+      "label": "第2号被保険者の保険料・医療保険者",
+      "guidingQuestion": "第2号被保険者の保険料・医療保険者に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "A2.payment_fund",
+      "categoryId": "A2",
+      "label": "社会保険診療報酬支払基金",
+      "guidingQuestion": "社会保険診療報酬支払基金に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "A2.arrears",
+      "categoryId": "A2",
+      "label": "保険料滞納・徴収・時効",
+      "guidingQuestion": "保険料滞納・徴収・時効に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "A2.financial_support",
+      "categoryId": "A2",
+      "label": "交付金・自治体間財政調整",
+      "guidingQuestion": "交付金・自治体間財政調整に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "A3.local_authorities",
+      "categoryId": "A3",
+      "label": "都道府県・市町村の指定・許認可",
+      "guidingQuestion": "都道府県・市町村の指定・許認可に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "A3.facility_standards",
+      "categoryId": "A3",
+      "label": "介護保険施設の類型と基準",
+      "guidingQuestion": "介護保険施設の類型と基準に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "A3.care_manager_registry",
+      "categoryId": "A3",
+      "label": "介護支援専門員の登録・義務・研修",
+      "guidingQuestion": "介護支援専門員の登録・義務・研修に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "A3.integrated_services",
+      "categoryId": "A3",
+      "label": "共生型サービス・他制度連携",
+      "guidingQuestion": "共生型サービス・他制度連携に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "A3.support_center",
+      "categoryId": "A3",
+      "label": "地域包括支援センター",
+      "guidingQuestion": "地域包括支援センターに関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "A3.preventive_programs",
+      "categoryId": "A3",
+      "label": "地域支援事業の介護予防・包括的支援・任意事業",
+      "guidingQuestion": "地域支援事業の介護予防・包括的支援・任意事業に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "A3.community_information",
+      "categoryId": "A3",
+      "label": "介護サービス情報公表・事業者評価",
+      "guidingQuestion": "介護サービス情報公表・事業者評価に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "A4.service_ceiling",
+      "categoryId": "A4",
+      "label": "区分支給限度基準額と限度額対象外",
+      "guidingQuestion": "区分支給限度基準額と限度額対象外に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "A4.user_copay",
+      "categoryId": "A4",
+      "label": "定率負担・減免・償還払い",
+      "guidingQuestion": "定率負担・減免・償還払いに関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "A4.high_cost",
+      "categoryId": "A4",
+      "label": "高額介護サービス費",
+      "guidingQuestion": "高額介護サービス費に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "A4.residential_support",
+      "categoryId": "A4",
+      "label": "食費・居住費の補足給付",
+      "guidingQuestion": "食費・居住費の補足給付に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "A4.coordination_with_other_insurance",
+      "categoryId": "A4",
+      "label": "他制度との給付調整",
+      "guidingQuestion": "他制度との給付調整に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "A4.benefit_exemption",
+      "categoryId": "A4",
+      "label": "適用除外・給付制限",
+      "guidingQuestion": "適用除外・給付制限に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "A4.resident_exception",
+      "categoryId": "A4",
+      "label": "住所地特例",
+      "guidingQuestion": "住所地特例に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "A4.complaint",
+      "categoryId": "A4",
+      "label": "苦情処理と指導監督",
+      "guidingQuestion": "苦情処理と指導監督に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "A4.claim_statute",
+      "categoryId": "A4",
+      "label": "給付請求権の時効・返還",
+      "guidingQuestion": "給付請求権の時効・返還に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "A4.data_governance",
+      "categoryId": "A4",
+      "label": "介護保険情報の利活用・個人情報",
+      "guidingQuestion": "介護保険情報の利活用・個人情報に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "B1.qualification",
+      "categoryId": "B1",
+      "label": "被保険者の資格取得・喪失",
+      "guidingQuestion": "被保険者の資格取得・喪失に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "B1.special_diseases",
+      "categoryId": "B1",
+      "label": "第2号被保険者と特定疾病",
+      "guidingQuestion": "第2号被保険者と特定疾病に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "B1.service_eligibility",
+      "categoryId": "B1",
+      "label": "給付とサービス利用資格の整理",
+      "guidingQuestion": "給付とサービス利用資格の整理に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "B2.primary_judgement",
+      "categoryId": "B2",
+      "label": "一次判定・基準時間",
+      "guidingQuestion": "一次判定・基準時間に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "B2.physician_opinion",
+      "categoryId": "B2",
+      "label": "主治医意見書と記載内容",
+      "guidingQuestion": "主治医意見書と記載内容に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "B2.review_board",
+      "categoryId": "B2",
+      "label": "介護認定審査会の権限",
+      "guidingQuestion": "介護認定審査会の権限に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "B2.revocation",
+      "categoryId": "B2",
+      "label": "認定取消し・状態変化",
+      "guidingQuestion": "認定取消し・状態変化に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "B3.records",
+      "categoryId": "B3",
+      "label": "介護支援の記録・書面・情報共有",
+      "guidingQuestion": "介護支援の記録・書面・情報共有に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "B3.professional_ethics",
+      "categoryId": "B3",
+      "label": "ケアマネの基本姿勢と公正中立",
+      "guidingQuestion": "ケアマネの基本姿勢と公正中立に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "B3.preventive_plan",
+      "categoryId": "B3",
+      "label": "介護予防サービス計画・介護予防ケアマネジメント",
+      "guidingQuestion": "介護予防サービス計画・介護予防ケアマネジメントに関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "B3.discharge_support",
+      "categoryId": "B3",
+      "label": "入退院連携とケア移行",
+      "guidingQuestion": "入退院連携とケア移行に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "B3.consent",
+      "categoryId": "B3",
+      "label": "本人の意思・説明同意・意思決定支援",
+      "guidingQuestion": "本人の意思・説明同意・意思決定支援に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "B3.structured_assessment",
+      "categoryId": "B3",
+      "label": "課題分析標準項目とADL/IADL",
+      "guidingQuestion": "課題分析標準項目とADL/IADLに関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "B3.difficult_cases",
+      "categoryId": "B3",
+      "label": "困難事例・家族関係と対応",
+      "guidingQuestion": "困難事例・家族関係と対応に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "B4.rental_equipment",
+      "categoryId": "B4",
+      "label": "福祉用具貸与・特定福祉用具販売",
+      "guidingQuestion": "福祉用具貸与・特定福祉用具販売に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "B4.short_stay_medical",
+      "categoryId": "B4",
+      "label": "短期入所療養介護",
+      "guidingQuestion": "短期入所療養介護に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "B4.nursing_home",
+      "categoryId": "B4",
+      "label": "介護老人保健施設",
+      "guidingQuestion": "介護老人保健施設に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "B4.group_home",
+      "categoryId": "B4",
+      "label": "認知症対応型共同生活介護",
+      "guidingQuestion": "認知症対応型共同生活介護に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "B4.night_home_help",
+      "categoryId": "B4",
+      "label": "夜間対応型訪問介護",
+      "guidingQuestion": "夜間対応型訪問介護に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "B4.round_the_clock",
+      "categoryId": "B4",
+      "label": "定期巡回・随時対応型訪問介護看護",
+      "guidingQuestion": "定期巡回・随時対応型訪問介護看護に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "B4.home_medical_management",
+      "categoryId": "B4",
+      "label": "居宅療養管理指導",
+      "guidingQuestion": "居宅療養管理指導に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "B4.visiting_rehab",
+      "categoryId": "B4",
+      "label": "訪問リハビリテーション",
+      "guidingQuestion": "訪問リハビリテーションに関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "B4.community_daycare",
+      "categoryId": "B4",
+      "label": "地域密着型通所介護",
+      "guidingQuestion": "地域密着型通所介護に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "B4.residential_home",
+      "categoryId": "B4",
+      "label": "特定施設入居者生活介護",
+      "guidingQuestion": "特定施設入居者生活介護に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "B4.preventive_services",
+      "categoryId": "B4",
+      "label": "予防給付のサービス体系",
+      "guidingQuestion": "予防給付のサービス体系に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "B4.disability_coexistence",
+      "categoryId": "B4",
+      "label": "障害福祉と介護の共生サービス",
+      "guidingQuestion": "障害福祉と介護の共生サービスに関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "B5.care_plan_review",
+      "categoryId": "B5",
+      "label": "計画変更・サービスの継続的調整",
+      "guidingQuestion": "計画変更・サービスの継続的調整に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "B5.follow_up",
+      "categoryId": "B5",
+      "label": "モニタリング実施要件・記録",
+      "guidingQuestion": "モニタリング実施要件・記録に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C1.vital_signs",
+      "categoryId": "C1",
+      "label": "バイタルサイン・全身状態の観察",
+      "guidingQuestion": "バイタルサイン・全身状態の観察に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C1.cardiovascular",
+      "categoryId": "C1",
+      "label": "循環器疾患・脳血管疾患",
+      "guidingQuestion": "循環器疾患・脳血管疾患に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C1.respiratory",
+      "categoryId": "C1",
+      "label": "呼吸器疾患・呼吸困難",
+      "guidingQuestion": "呼吸器疾患・呼吸困難に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C1.endocrine",
+      "categoryId": "C1",
+      "label": "糖尿病・内分泌代謝疾患",
+      "guidingQuestion": "糖尿病・内分泌代謝疾患に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C1.neurology",
+      "categoryId": "C1",
+      "label": "神経難病・神経症状",
+      "guidingQuestion": "神経難病・神経症状に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C1.geriatric_syndromes",
+      "categoryId": "C1",
+      "label": "老年症候群・脱水・虚弱",
+      "guidingQuestion": "老年症候群・脱水・虚弱に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C1.musculoskeletal_detail",
+      "categoryId": "C1",
+      "label": "骨折・骨粗鬆症・運動器疾患",
+      "guidingQuestion": "骨折・骨粗鬆症・運動器疾患に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C1.skin_diseases",
+      "categoryId": "C1",
+      "label": "皮膚疾患・皮膚機能",
+      "guidingQuestion": "皮膚疾患・皮膚機能に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C1.renal_urinary",
+      "categoryId": "C1",
+      "label": "腎疾患・排尿障害",
+      "guidingQuestion": "腎疾患・排尿障害に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C1.pain_symptoms",
+      "categoryId": "C1",
+      "label": "痛み・めまい・失神と観察",
+      "guidingQuestion": "痛み・めまい・失神と観察に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C2.dementia_types",
+      "categoryId": "C2",
+      "label": "認知症の原因・病型・症状",
+      "guidingQuestion": "認知症の原因・病型・症状に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C2.bpsd",
+      "categoryId": "C2",
+      "label": "認知症の行動・心理症状と支援",
+      "guidingQuestion": "認知症の行動・心理症状と支援に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C2.depression",
+      "categoryId": "C2",
+      "label": "高齢者のうつ・精神疾患",
+      "guidingQuestion": "高齢者のうつ・精神疾患に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C2.delirium",
+      "categoryId": "C2",
+      "label": "せん妄と認知症との区別",
+      "guidingQuestion": "せん妄と認知症との区別に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C2.young_onset",
+      "categoryId": "C2",
+      "label": "若年性認知症と社会生活",
+      "guidingQuestion": "若年性認知症と社会生活に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C3.lab_tests",
+      "categoryId": "C3",
+      "label": "検査・検査値の読み方",
+      "guidingQuestion": "検査・検査値の読み方に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C3.treatment_choice",
+      "categoryId": "C3",
+      "label": "治療・診察・インフォームドコンセント",
+      "guidingQuestion": "治療・診察・インフォームドコンセントに関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C3.home_oxygen",
+      "categoryId": "C3",
+      "label": "在宅酸素療法・呼吸器管理",
+      "guidingQuestion": "在宅酸素療法・呼吸器管理に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C3.nutrition_therapy",
+      "categoryId": "C3",
+      "label": "人工栄養・経管栄養・透析",
+      "guidingQuestion": "人工栄養・経管栄養・透析に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C3.rehab_team",
+      "categoryId": "C3",
+      "label": "リハビリテーション職種と連携",
+      "guidingQuestion": "リハビリテーション職種と連携に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C3.polypharmacy",
+      "categoryId": "C3",
+      "label": "多剤併用・副作用・服薬管理",
+      "guidingQuestion": "多剤併用・副作用・服薬管理に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C3.clinical_collaboration",
+      "categoryId": "C3",
+      "label": "多職種連携・退院調整",
+      "guidingQuestion": "多職種連携・退院調整に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C3.emergency_measures",
+      "categoryId": "C3",
+      "label": "救急時の初期対応・蘇生",
+      "guidingQuestion": "救急時の初期対応・蘇生に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C3.infection_modes",
+      "categoryId": "C3",
+      "label": "感染経路・感染予防・消毒",
+      "guidingQuestion": "感染経路・感染予防・消毒に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C4.oral_care",
+      "categoryId": "C4",
+      "label": "口腔機能・口腔ケア",
+      "guidingQuestion": "口腔機能・口腔ケアに関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C4.dysphagia",
+      "categoryId": "C4",
+      "label": "摂食嚥下・誤嚥予防",
+      "guidingQuestion": "摂食嚥下・誤嚥予防に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C4.nutrition_assessment",
+      "categoryId": "C4",
+      "label": "低栄養・栄養アセスメント",
+      "guidingQuestion": "低栄養・栄養アセスメントに関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C4.hydration",
+      "categoryId": "C4",
+      "label": "脱水予防・水分管理",
+      "guidingQuestion": "脱水予防・水分管理に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C4.elimination",
+      "categoryId": "C4",
+      "label": "排泄・失禁と介護",
+      "guidingQuestion": "排泄・失禁と介護に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C4.sleep",
+      "categoryId": "C4",
+      "label": "睡眠・休息の支援",
+      "guidingQuestion": "睡眠・休息の支援に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C4.falls",
+      "categoryId": "C4",
+      "label": "転倒予防と環境調整",
+      "guidingQuestion": "転倒予防と環境調整に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C4.skin_care",
+      "categoryId": "C4",
+      "label": "皮膚ケアと褥瘡予防",
+      "guidingQuestion": "皮膚ケアと褥瘡予防に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C4.frail_prevention",
+      "categoryId": "C4",
+      "label": "介護予防・運動・健康維持",
+      "guidingQuestion": "介護予防・運動・健康維持に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C5.social_groupwork",
+      "categoryId": "C5",
+      "label": "集団援助・グループワーク",
+      "guidingQuestion": "集団援助・グループワークに関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C5.social_casework",
+      "categoryId": "C5",
+      "label": "個別援助・面接・インテーク",
+      "guidingQuestion": "個別援助・面接・インテークに関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C5.social_community",
+      "categoryId": "C5",
+      "label": "地域援助・コミュニティワーク",
+      "guidingQuestion": "地域援助・コミュニティワークに関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C5.disability_welfare",
+      "categoryId": "C5",
+      "label": "障害者総合支援法と関連制度",
+      "guidingQuestion": "障害者総合支援法と関連制度に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C5.livelihood_support",
+      "categoryId": "C5",
+      "label": "生活困窮者自立支援制度",
+      "guidingQuestion": "生活困窮者自立支援制度に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C5.daily_life_rights",
+      "categoryId": "C5",
+      "label": "日常生活自立支援事業",
+      "guidingQuestion": "日常生活自立支援事業に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C5.health_insurance_elderly",
+      "categoryId": "C5",
+      "label": "後期高齢者医療制度",
+      "guidingQuestion": "後期高齢者医療制度に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C5.protection_measures",
+      "categoryId": "C5",
+      "label": "老人福祉・養護老人ホーム・措置制度",
+      "guidingQuestion": "老人福祉・養護老人ホーム・措置制度に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C5.rights_advocacy",
+      "categoryId": "C5",
+      "label": "本人の権利と倫理・虐待対応",
+      "guidingQuestion": "本人の権利と倫理・虐待対応に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C6.end_of_life_care",
+      "categoryId": "C6",
+      "label": "緩和ケア・看取り・家族支援",
+      "guidingQuestion": "緩和ケア・看取り・家族支援に関する制度・判断を説明できるか？"
+    },
+    {
+      "id": "C6.death_certification",
+      "categoryId": "C6",
+      "label": "死亡診断・死亡確認と法的手続",
+      "guidingQuestion": "死亡診断・死亡確認と法的手続に関する制度・判断を説明できるか？"
+    }
+  ],
+  "maintenanceNotes": [
+    "固有の過去問番号をカテゴリ名にしない。複数年度で共通する概念を使い回す。",
+    "上位概念は下位概念の学習状況から集計可能だが、正答だけで習得判定を確定しない。",
+    "分類変更は問題本文・正答・学習履歴に影響させない。",
+    "法令の現行適合性・本文校正・正答の正しさを分類作業で再保証しない。",
+    "v2は2005〜2025年の登録済み問題（2018・2019年欠落）を横断して設計した。2020〜2025の問題対応付けは表題・選択肢を参考に暫定分類。",
+    "2005〜2017年の既存分類は年度ごとに60問を約12〜14概念にまとめた粗分類のため、細分類として扱わない。",
+    "2024年度には明白な文字化けが見られ、問題文・正答の品質確認と知識分類を独立管理する。",
+    "分類は実験的な語義・テーマ付与であり選択肢単位の厳格な全件レビューではない。"
+  ]
+}
