@@ -1,0 +1,1460 @@
+[
+  {
+    "id": "cmq-001",
+    "version": 1,
+    "title": "制度の司令塔",
+    "stem": "介護保険の保険者と会計について、正しいものを2つ選んでください。",
+    "options": [
+      {
+        "id": "1",
+        "text": "市町村は介護保険の保険者である。",
+        "explanation": "第3条は市町村と特別区を保険者としています。"
+      },
+      {
+        "id": "2",
+        "text": "都道府県が各住民の介護保険の保険者となる。",
+        "explanation": "都道府県は助言・援助等を担います。保険者は市町村・特別区です。"
+      },
+      {
+        "id": "3",
+        "text": "介護保険の収入と支出は一般会計だけで管理する。",
+        "explanation": "介護保険について特別会計を設ける必要があります。"
+      },
+      {
+        "id": "4",
+        "text": "特別区も介護保険の保険者となる。",
+        "explanation": "第3条には特別区も明記されています。"
+      },
+      {
+        "id": "5",
+        "text": "国が各住民の要介護認定を行う。",
+        "explanation": "要介護認定を行うのは市町村です。国の役割と区別しましょう。"
+      }
+    ],
+    "answerIds": [
+      "1",
+      "4"
+    ],
+    "selectionCount": 2,
+    "explanation": "保険者は市町村・特別区。介護保険の収支は特別会計で扱います。",
+    "reasoning": "「身近な行政が運営する」と「国が制度を支える」を分けると整理できます。",
+    "difficulty": 1,
+    "primaryCategory": "A0",
+    "conceptIds": [
+      "insurer",
+      "supply"
+    ],
+    "provenance": {
+      "kind": "original",
+      "author": "Care Manager Quest",
+      "verifiedAt": "2026-10-10",
+      "sources": [
+        {
+          "sourceId": "law",
+          "locator": "第3条・第5条・第27条第7項"
+        }
+      ]
+    }
+  },
+  {
+    "id": "cmq-002",
+    "version": 1,
+    "title": "加入の境界線",
+    "stem": "日本の市町村に住所があり、適用除外に当たらない人について、正しいものを3つ選んでください。",
+    "options": [
+      {
+        "id": "1",
+        "text": "68歳の人は第1号被保険者となる。",
+        "explanation": "65歳以上なので第1号です。"
+      },
+      {
+        "id": "2",
+        "text": "45歳の医療保険加入者は第2号被保険者となる。",
+        "explanation": "40歳以上65歳未満の医療保険加入者が第2号です。"
+      },
+      {
+        "id": "3",
+        "text": "38歳の医療保険加入者は第2号被保険者となる。",
+        "explanation": "介護保険の第2号は40歳からです。"
+      },
+      {
+        "id": "4",
+        "text": "第1号被保険者となるには、先に要介護認定が必要である。",
+        "explanation": "加入資格に要介護認定は必要ありません。"
+      },
+      {
+        "id": "5",
+        "text": "第2号被保険者の要件には、医療保険への加入が含まれる。",
+        "explanation": "年齢だけでなく医療保険加入の要件があります。"
+      }
+    ],
+    "answerIds": [
+      "1",
+      "2",
+      "5"
+    ],
+    "selectionCount": 3,
+    "explanation": "65歳以上は第1号。40〜64歳は医療保険への加入が条件です。",
+    "reasoning": "「被保険者であること」と「給付を受けること」は別の段階です。",
+    "difficulty": 1,
+    "primaryCategory": "A2",
+    "conceptIds": [
+      "insured",
+      "eligibility"
+    ],
+    "provenance": {
+      "kind": "original",
+      "author": "Care Manager Quest",
+      "verifiedAt": "2026-10-10",
+      "sources": [
+        {
+          "sourceId": "law",
+          "locator": "第9条"
+        }
+      ]
+    }
+  },
+  {
+    "id": "cmq-003",
+    "version": 1,
+    "title": "年齢と原因を切り分ける",
+    "stem": "全員が介護保険の被保険者であるとします。介護給付の受給要件について、正しいものを2つ選んでください。",
+    "options": [
+      {
+        "id": "1",
+        "text": "50歳で交通事故が原因の要介護状態なら、特定疾病でなくても介護給付の対象となる。",
+        "explanation": "第2号では特定疾病が原因である要件が必要です。"
+      },
+      {
+        "id": "2",
+        "text": "70歳で交通事故が原因の要介護状態でも、市町村の要介護認定を受ければ介護給付の対象となる。",
+        "explanation": "第1号には原因を特定疾病に限定する要件がありません。"
+      },
+      {
+        "id": "3",
+        "text": "55歳では、特定疾病の診断を受ければ要介護認定なしで介護給付を受けられる。",
+        "explanation": "診断だけではなく、要介護状態の市町村による認定も必要です。"
+      },
+      {
+        "id": "4",
+        "text": "55歳で特定疾病による要介護状態にあり、要介護認定を受けた人は介護給付の対象となる。",
+        "explanation": "第2号の年齢・原因・認定という要件を満たす事例です。"
+      },
+      {
+        "id": "5",
+        "text": "65歳以上でも要介護状態の原因は特定疾病である必要がある。",
+        "explanation": "特定疾病の原因要件は第2号についてのものです。"
+      }
+    ],
+    "answerIds": [
+      "2",
+      "4"
+    ],
+    "selectionCount": 2,
+    "explanation": "第1号は原因を問わず、第2号は特定疾病に起因する要介護状態であることが必要です。",
+    "reasoning": "年齢→原因→認定の順に条件をたどると、似た事例を切り分けられます。",
+    "difficulty": 3,
+    "primaryCategory": "B1",
+    "conceptIds": [
+      "eligibility",
+      "insured",
+      "certification"
+    ],
+    "provenance": {
+      "kind": "original",
+      "author": "Care Manager Quest",
+      "verifiedAt": "2026-10-10",
+      "sources": [
+        {
+          "sourceId": "law",
+          "locator": "第7条第3項・第19条第1項"
+        }
+      ]
+    }
+  },
+  {
+    "id": "cmq-004",
+    "version": 1,
+    "title": "支援はどちらの給付？",
+    "stem": "介護保険の給付の区分について、正しいものを2つ選んでください。",
+    "options": [
+      {
+        "id": "1",
+        "text": "介護給付は要介護者に対する保険給付である。",
+        "explanation": "第18条は介護給付をこのように区分しています。"
+      },
+      {
+        "id": "2",
+        "text": "要支援者に対する保険給付は介護給付と呼ばれる。",
+        "explanation": "要支援者に対する給付は予防給付です。"
+      },
+      {
+        "id": "3",
+        "text": "予防給付は要支援者に対する保険給付である。",
+        "explanation": "予防給付も介護保険の保険給付に含まれます。"
+      },
+      {
+        "id": "4",
+        "text": "要介護認定を受けると、予防給付の対象になる。",
+        "explanation": "要介護者は介護給付、要支援者は予防給付です。"
+      },
+      {
+        "id": "5",
+        "text": "市町村特別給付は国の省令だけで内容を決める。",
+        "explanation": "市町村特別給付は条例で定める給付です。"
+      }
+    ],
+    "answerIds": [
+      "1",
+      "3"
+    ],
+    "selectionCount": 2,
+    "explanation": "要介護者への介護給付と、要支援者への予防給付を区別します。",
+    "reasoning": "予防給付も「介護保険の給付」です。「予防＝保険の外」と考えないのがポイント。",
+    "difficulty": 1,
+    "primaryCategory": "A4",
+    "conceptIds": [
+      "benefits",
+      "prevention",
+      "eligibility"
+    ],
+    "provenance": {
+      "kind": "original",
+      "author": "Care Manager Quest",
+      "verifiedAt": "2026-10-10",
+      "sources": [
+        {
+          "sourceId": "law",
+          "locator": "第18条・第19条・第62条"
+        }
+      ]
+    }
+  },
+  {
+    "id": "cmq-005",
+    "version": 1,
+    "title": "地域の未来を設計する",
+    "stem": "市町村介護保険事業計画について、正しいものを3つ選んでください。",
+    "options": [
+      {
+        "id": "1",
+        "text": "3年を一期とする。",
+        "explanation": "市町村介護保険事業計画は3年を一期とします。"
+      },
+      {
+        "id": "2",
+        "text": "主治医が個々の患者ごとに作成する計画である。",
+        "explanation": "地域の保険事業に関する市町村の計画です。"
+      },
+      {
+        "id": "3",
+        "text": "各年度のサービスの種類ごとの量の見込みを定める。",
+        "explanation": "見込量は計画に定める事項です。"
+      },
+      {
+        "id": "4",
+        "text": "市町村老人福祉計画とは別々に作成し、相互の調整は不要である。",
+        "explanation": "老人福祉計画と一体のものとして作成します。"
+      },
+      {
+        "id": "5",
+        "text": "人口構造の変化の見通しや要介護者等の人数を勘案する。",
+        "explanation": "人口とニーズを踏まえた計画が求められます。"
+      }
+    ],
+    "answerIds": [
+      "1",
+      "3",
+      "5"
+    ],
+    "selectionCount": 3,
+    "explanation": "計画は3年を一期とし、サービスの見込量や人口構造の変化を踏まえます。",
+    "reasoning": "地域の需要を見通す計画と、個人のケアプランは、対象と時間軸が違います。",
+    "difficulty": 2,
+    "primaryCategory": "A1",
+    "conceptIds": [
+      "planning",
+      "premium",
+      "supply"
+    ],
+    "provenance": {
+      "kind": "original",
+      "author": "Care Manager Quest",
+      "verifiedAt": "2026-10-10",
+      "sources": [
+        {
+          "sourceId": "law",
+          "locator": "第117条第1項・第2項・第4項・第7項"
+        }
+      ]
+    }
+  },
+  {
+    "id": "cmq-006",
+    "version": 1,
+    "title": "地域と保険料のつながり",
+    "stem": "第1号被保険者の保険料について、正しいものを2つ選んでください。",
+    "options": [
+      {
+        "id": "1",
+        "text": "全国の市町村が同じ保険料額を一律に課す。",
+        "explanation": "市町村の条例に基づくため、全国一律ではありません。"
+      },
+      {
+        "id": "2",
+        "text": "市町村は介護保険事業の費用に充てるために保険料を徴収する。",
+        "explanation": "第129条第1項に規定されています。"
+      },
+      {
+        "id": "3",
+        "text": "保険料率の算定では被保険者の所得の分布状況は考慮しない。",
+        "explanation": "所得分布とその見通しも算定で考慮します。"
+      },
+      {
+        "id": "4",
+        "text": "保険料率は、おおむね3年を通じ財政の均衡を保てるものとする。",
+        "explanation": "計画の期間に対応する財政均衡が求められます。"
+      },
+      {
+        "id": "5",
+        "text": "第1号の保険料率は指定居宅介護支援事業者が決定する。",
+        "explanation": "政令の基準に従い、市町村の条例で定めます。"
+      }
+    ],
+    "answerIds": [
+      "2",
+      "4"
+    ],
+    "selectionCount": 2,
+    "explanation": "第1号の保険料は条例に基づき、見込費用や所得分布等を踏まえます。",
+    "reasoning": "サービス需要の予測が財政に、財政が保険料につながります。",
+    "difficulty": 2,
+    "primaryCategory": "A2",
+    "conceptIds": [
+      "premium",
+      "planning",
+      "insurer"
+    ],
+    "provenance": {
+      "kind": "original",
+      "author": "Care Manager Quest",
+      "verifiedAt": "2026-10-10",
+      "sources": [
+        {
+          "sourceId": "law",
+          "locator": "第129条第1項〜第3項"
+        }
+      ]
+    }
+  },
+  {
+    "id": "cmq-007",
+    "version": 1,
+    "title": "国・県・市町村の分業",
+    "stem": "介護保険に関する役割について、正しいものを2つ選んでください。",
+    "options": [
+      {
+        "id": "1",
+        "text": "国は、サービス提供体制の確保に関する施策等の必要な措置を講じる。",
+        "explanation": "国には制度の健全・円滑な運営のための責務があります。"
+      },
+      {
+        "id": "2",
+        "text": "都道府県は介護保険の運営に関して助言を行わない。",
+        "explanation": "必要な助言と適切な援助を行う責務があります。"
+      },
+      {
+        "id": "3",
+        "text": "市町村は介護保険の保険者ではなく、相談窓口だけを担当する。",
+        "explanation": "市町村は保険者です。"
+      },
+      {
+        "id": "4",
+        "text": "国が各市町村の介護保険特別会計を直接設置する。",
+        "explanation": "特別会計を設けるのは市町村・特別区です。"
+      },
+      {
+        "id": "5",
+        "text": "都道府県は健全で円滑な運営のため必要な助言と適切な援助を行う。",
+        "explanation": "第5条第2項が定める都道府県の役割です。"
+      }
+    ],
+    "answerIds": [
+      "1",
+      "5"
+    ],
+    "selectionCount": 2,
+    "explanation": "国は必要な施策を講じ、都道府県は助言・援助をします。保険者は市町村・特別区です。",
+    "reasoning": "「運営する人」と「運営を支える人」を分けて考えます。",
+    "difficulty": 2,
+    "primaryCategory": "A3",
+    "conceptIds": [
+      "supply",
+      "insurer"
+    ],
+    "provenance": {
+      "kind": "original",
+      "author": "Care Manager Quest",
+      "verifiedAt": "2026-10-10",
+      "sources": [
+        {
+          "sourceId": "law",
+          "locator": "第3条・第5条第1項・第2項"
+        }
+      ]
+    }
+  },
+  {
+    "id": "cmq-008",
+    "version": 1,
+    "title": "認定への入口",
+    "stem": "要介護認定の申請と調査について、正しいものを3つ選んでください。",
+    "options": [
+      {
+        "id": "1",
+        "text": "要介護認定の申請先は市町村である。",
+        "explanation": "法第27条の申請先は市町村です。"
+      },
+      {
+        "id": "2",
+        "text": "市町村は、原則として主治医に疾病や負傷の状況等の意見を求める。",
+        "explanation": "主治医意見書の根拠となる規定です。"
+      },
+      {
+        "id": "3",
+        "text": "認定調査では、本人の心身の状況を調べる必要はない。",
+        "explanation": "心身の状況や置かれた環境等を調べます。"
+      },
+      {
+        "id": "4",
+        "text": "所定の指定居宅介護支援事業者等に、申請手続を代わって行わせることができる。",
+        "explanation": "法令の要件に従い、申請手続の代行が可能です。"
+      },
+      {
+        "id": "5",
+        "text": "主治医がいない場合は、要介護認定を申請できない。",
+        "explanation": "市町村が指定する医師等の診断を受けるよう命じる仕組みがあります。"
+      }
+    ],
+    "answerIds": [
+      "1",
+      "2",
+      "4"
+    ],
+    "selectionCount": 3,
+    "explanation": "市町村へ申請し、生活の調査と主治医の意見を合わせて認定へ進みます。",
+    "reasoning": "身体の診断だけでなく「どんな生活で、どんな介護が必要か」が問われます。",
+    "difficulty": 1,
+    "primaryCategory": "B2",
+    "conceptIds": [
+      "application",
+      "certification",
+      "medical-opinion"
+    ],
+    "provenance": {
+      "kind": "original",
+      "author": "Care Manager Quest",
+      "verifiedAt": "2026-10-10",
+      "sources": [
+        {
+          "sourceId": "law",
+          "locator": "第27条第1項〜第3項"
+        }
+      ]
+    }
+  },
+  {
+    "id": "cmq-009",
+    "version": 1,
+    "title": "審査する人、認定する人",
+    "stem": "要介護認定の役割分担について、正しいものを2つ選んでください。",
+    "options": [
+      {
+        "id": "1",
+        "text": "主治医が要介護状態区分を最終的に認定する。",
+        "explanation": "主治医は意見を示し、最終的な認定は市町村が行います。"
+      },
+      {
+        "id": "2",
+        "text": "介護認定審査会は、国の基準に従い審査・判定を行う。",
+        "explanation": "審査判定の基準は厚生労働大臣が定めます。"
+      },
+      {
+        "id": "3",
+        "text": "市町村は審査会の結果に基づき認定し、本人へ結果を通知する。",
+        "explanation": "法第27条第7項の役割です。"
+      },
+      {
+        "id": "4",
+        "text": "介護認定審査会は、市町村ではなく本人に認定結果を直接通知する。",
+        "explanation": "審査判定の結果は市町村に通知し、市町村が本人へ認定結果を通知します。"
+      },
+      {
+        "id": "5",
+        "text": "ケアマネジャーの作成したケアプランが、そのまま要介護認定となる。",
+        "explanation": "ケアプランと認定は別の仕組みです。"
+      }
+    ],
+    "answerIds": [
+      "2",
+      "3"
+    ],
+    "selectionCount": 2,
+    "explanation": "介護認定審査会が審査判定し、その結果に基づいて市町村が認定します。",
+    "reasoning": "審査会の「判定」と市町村の「認定・通知」を区別しましょう。",
+    "difficulty": 2,
+    "primaryCategory": "B2",
+    "conceptIds": [
+      "certification",
+      "insurer",
+      "medical-opinion"
+    ],
+    "provenance": {
+      "kind": "original",
+      "author": "Care Manager Quest",
+      "verifiedAt": "2026-10-10",
+      "sources": [
+        {
+          "sourceId": "law",
+          "locator": "第27条第4項・第5項・第7項"
+        }
+      ]
+    }
+  },
+  {
+    "id": "cmq-010",
+    "version": 1,
+    "title": "申請日から時計が動く",
+    "stem": "要介護認定の効力と処理期限について、正しいものを2つ選んでください。",
+    "options": [
+      {
+        "id": "1",
+        "text": "認定は、申請があった日に遡って効力を生じる。",
+        "explanation": "通知日からだけではなく、申請日に遡ります。"
+      },
+      {
+        "id": "2",
+        "text": "認定の効力は、認定通知の翌日からしか生じない。",
+        "explanation": "申請日に遡って効力が生じます。"
+      },
+      {
+        "id": "3",
+        "text": "処理期限は、どのような事情があっても延期できない。",
+        "explanation": "調査に時間を要する等の特別な理由があれば所定の通知による延期が可能です。"
+      },
+      {
+        "id": "4",
+        "text": "原則30日以内に処分するが、特別な理由がある場合は見込期間と理由を通知して延期できる。",
+        "explanation": "延期する場合も申請日から30日以内に通知する必要があります。"
+      },
+      {
+        "id": "5",
+        "text": "申請の翌月末が法定の処理期限である。",
+        "explanation": "期限は原則として申請があった日から30日以内です。"
+      }
+    ],
+    "answerIds": [
+      "1",
+      "4"
+    ],
+    "selectionCount": 2,
+    "explanation": "認定は申請日に遡って有効。処分は原則30日以内ですが、理由等を通知して延期できます。",
+    "reasoning": "「原則の期限」と「例外の手続」をセットで覚えると、強い断定に惑わされません。",
+    "difficulty": 3,
+    "primaryCategory": "B2",
+    "conceptIds": [
+      "application",
+      "certification"
+    ],
+    "provenance": {
+      "kind": "original",
+      "author": "Care Manager Quest",
+      "verifiedAt": "2026-10-10",
+      "sources": [
+        {
+          "sourceId": "law",
+          "locator": "第27条第8項・第11項"
+        }
+      ]
+    }
+  },
+  {
+    "id": "cmq-011",
+    "version": 1,
+    "title": "状態が変わったら",
+    "stem": "要介護状態区分の変更と計画の見直しについて、正しいものを2つ選んでください。",
+    "options": [
+      {
+        "id": "1",
+        "text": "区分変更は、有効期間が終わるまで申請できない。",
+        "explanation": "別の要介護状態区分に該当すると認めるとき、有効期間の途中でも申請できます。"
+      },
+      {
+        "id": "2",
+        "text": "現在の認定区分以外の要介護状態区分に該当すると認めるとき、市町村に区分変更を申請できる。",
+        "explanation": "状態変化に対応するための区分変更申請です。"
+      },
+      {
+        "id": "3",
+        "text": "ケアマネジャーが認定区分を直接書き換える。",
+        "explanation": "認定区分は市町村の認定によって変更されます。"
+      },
+      {
+        "id": "4",
+        "text": "区分変更の認定を受けても、ケアプランの変更の必要性は検討しない。",
+        "explanation": "担当者から専門的意見を求め、変更の必要性を検討します。"
+      },
+      {
+        "id": "5",
+        "text": "区分変更の認定後は、担当者会議等で計画変更の必要性に関する意見を求める。",
+        "explanation": "やむを得ない理由があれば照会等によることも可能です。"
+      }
+    ],
+    "answerIds": [
+      "2",
+      "5"
+    ],
+    "selectionCount": 2,
+    "explanation": "状態が変われば区分変更を申請でき、変更認定後は計画変更の必要性を検討します。",
+    "reasoning": "認定の変更とケアプランの変更は別の作業ですが、連動しています。",
+    "difficulty": 2,
+    "primaryCategory": "B5",
+    "conceptIds": [
+      "reassessment",
+      "application",
+      "monitoring"
+    ],
+    "provenance": {
+      "kind": "original",
+      "author": "Care Manager Quest",
+      "verifiedAt": "2026-10-10",
+      "sources": [
+        {
+          "sourceId": "law",
+          "locator": "第29条第1項"
+        },
+        {
+          "sourceId": "care",
+          "locator": "第13条第15号"
+        }
+      ]
+    }
+  },
+  {
+    "id": "cmq-012",
+    "version": 1,
+    "title": "何を取り戻すための支援？",
+    "stem": "介護保険の基本理念について、正しいものを3つ選んでください。",
+    "options": [
+      {
+        "id": "1",
+        "text": "尊厳を保持し、能力に応じた自立した日常生活を支える。",
+        "explanation": "介護保険法の目的に含まれます。"
+      },
+      {
+        "id": "2",
+        "text": "本人の能力に関係なく、生活動作はすべて支援者が代行することが目的である。",
+        "explanation": "能力を活かした自立を支えます。全面代行が目的ではありません。"
+      },
+      {
+        "id": "3",
+        "text": "要介護状態等の軽減や悪化の防止に資する給付を行う。",
+        "explanation": "第2条第2項に定められています。"
+      },
+      {
+        "id": "4",
+        "text": "本人の選択に基づき、適切なサービスが総合的に提供されるよう配慮する。",
+        "explanation": "選択の尊重と総合的なサービス提供が基本です。"
+      },
+      {
+        "id": "5",
+        "text": "要介護状態になれば、居宅での生活への配慮は不要となる。",
+        "explanation": "可能な限り居宅で自立した日常生活が送れるよう配慮します。"
+      }
+    ],
+    "answerIds": [
+      "1",
+      "3",
+      "4"
+    ],
+    "selectionCount": 3,
+    "explanation": "尊厳、自立、本人の選択。サービスを増やすこと自体が目的ではありません。",
+    "reasoning": "「本人の暮らしがどう変わるか」から考えると、制度の目的が見えてきます。",
+    "difficulty": 1,
+    "primaryCategory": "A0",
+    "conceptIds": [
+      "dignity",
+      "choice",
+      "benefits"
+    ],
+    "provenance": {
+      "kind": "original",
+      "author": "Care Manager Quest",
+      "verifiedAt": "2026-10-10",
+      "sources": [
+        {
+          "sourceId": "law",
+          "locator": "第1条・第2条第2項〜第4項"
+        }
+      ]
+    }
+  },
+  {
+    "id": "cmq-013",
+    "version": 1,
+    "title": "計画より先に、生活を見る",
+    "stem": "居宅介護支援のアセスメントについて、正しいものを2つ選んでください。",
+    "options": [
+      {
+        "id": "1",
+        "text": "アセスメントは、利用する事業者を決めた後に省略してよい。",
+        "explanation": "課題を把握するアセスメントが計画の土台です。"
+      },
+      {
+        "id": "2",
+        "text": "本人の能力や置かれた環境等を評価し、解決すべき課題を把握する。",
+        "explanation": "病名だけでなく生活全体を把握します。"
+      },
+      {
+        "id": "3",
+        "text": "初回アセスメントは、家族からの電話だけで完結させることが原則である。",
+        "explanation": "居宅を訪問し本人及び家族に面接して行います。"
+      },
+      {
+        "id": "4",
+        "text": "面接の趣旨を本人と家族に説明し、理解を得る。",
+        "explanation": "アセスメントの面接に関する明文の規定です。"
+      },
+      {
+        "id": "5",
+        "text": "本人にできることは、アセスメントの対象から除く。",
+        "explanation": "有する能力の評価も重要です。"
+      }
+    ],
+    "answerIds": [
+      "2",
+      "4"
+    ],
+    "selectionCount": 2,
+    "explanation": "能力・環境・課題を把握し、居宅で本人と家族に面接して計画の土台を作ります。",
+    "reasoning": "使うサービスを先に決めるより、何が生活の支障なのかを先に明らかにします。",
+    "difficulty": 2,
+    "primaryCategory": "B3",
+    "conceptIds": [
+      "assessment",
+      "dignity",
+      "choice"
+    ],
+    "provenance": {
+      "kind": "original",
+      "author": "Care Manager Quest",
+      "verifiedAt": "2026-10-10",
+      "sources": [
+        {
+          "sourceId": "care",
+          "locator": "第13条第6号・第7号"
+        }
+      ]
+    }
+  },
+  {
+    "id": "cmq-014",
+    "version": 1,
+    "title": "本人の納得を計画にする",
+    "stem": "居宅サービス計画の原案と交付について、正しいものを2つ選んでください。",
+    "options": [
+      {
+        "id": "1",
+        "text": "原案の内容について説明し、文書により本人の同意を得る。",
+        "explanation": "説明の相手は本人又は家族ですが、同意を得るのは本人です。"
+      },
+      {
+        "id": "2",
+        "text": "保険給付対象と対象外のサービスを区分する必要はない。",
+        "explanation": "原案では給付対象かどうかを区分します。"
+      },
+      {
+        "id": "3",
+        "text": "本人の口頭同意だけで、文書による同意の手続は不要になる。",
+        "explanation": "文書により本人の同意を得る規定です。"
+      },
+      {
+        "id": "4",
+        "text": "計画は担当者だけに交付すればよい。",
+        "explanation": "利用者と担当者の双方に交付します。"
+      },
+      {
+        "id": "5",
+        "text": "作成した居宅サービス計画を本人と担当者に交付する。",
+        "explanation": "サービスを共通の計画に基づいて進めるための手続です。"
+      }
+    ],
+    "answerIds": [
+      "1",
+      "5"
+    ],
+    "selectionCount": 2,
+    "explanation": "原案を説明して文書で本人の同意を得て、作成した計画を本人と担当者へ交付します。",
+    "reasoning": "「説明→同意→交付」は、本人の選択を実際の計画へつなぐ手続です。",
+    "difficulty": 2,
+    "primaryCategory": "B3",
+    "conceptIds": [
+      "consent",
+      "choice",
+      "coordination"
+    ],
+    "provenance": {
+      "kind": "original",
+      "author": "Care Manager Quest",
+      "verifiedAt": "2026-10-10",
+      "sources": [
+        {
+          "sourceId": "care",
+          "locator": "第13条第10号・第11号"
+        }
+      ]
+    }
+  },
+  {
+    "id": "cmq-015",
+    "version": 1,
+    "title": "専門家の知識をつなぐ",
+    "stem": "居宅サービス計画の作成時のサービス担当者会議について、正しいものを3つ選んでください。",
+    "options": [
+      {
+        "id": "1",
+        "text": "本人と家族の参加を基本とする。",
+        "explanation": "当事者の参加を基本に担当者を招集します。"
+      },
+      {
+        "id": "2",
+        "text": "本人・家族は会議の参加対象から除く。",
+        "explanation": "本人・家族の参加を基本とする規定に反します。"
+      },
+      {
+        "id": "3",
+        "text": "担当者と本人の状況等を共有し、原案に対する専門的意見を求める。",
+        "explanation": "情報共有と専門的意見が会議の目的です。"
+      },
+      {
+        "id": "4",
+        "text": "やむを得ない理由があっても、担当者への照会で意見を求めることはできない。",
+        "explanation": "やむを得ない理由があれば照会等によることが可能です。"
+      },
+      {
+        "id": "5",
+        "text": "本人等が参加するテレビ電話等の会議では、その活用について本人等の同意が必要である。",
+        "explanation": "情報通信機器を使う場合の同意が規定されています。"
+      }
+    ],
+    "answerIds": [
+      "1",
+      "3",
+      "5"
+    ],
+    "selectionCount": 3,
+    "explanation": "本人・家族の参加を基本に、担当者で情報を共有し、専門的な意見を集めます。",
+    "reasoning": "会議は書類を承認する儀式ではなく、支援をつなぐための場です。",
+    "difficulty": 2,
+    "primaryCategory": "B4",
+    "conceptIds": [
+      "coordination",
+      "choice",
+      "consent"
+    ],
+    "provenance": {
+      "kind": "original",
+      "author": "Care Manager Quest",
+      "verifiedAt": "2026-10-10",
+      "sources": [
+        {
+          "sourceId": "care",
+          "locator": "第13条第9号"
+        }
+      ]
+    }
+  },
+  {
+    "id": "cmq-016",
+    "version": 1,
+    "title": "画面越しの面接は使える？",
+    "stem": "居宅介護支援のモニタリングについて、正しいものを2つ選んでください。特段の事情はないものとします。",
+    "options": [
+      {
+        "id": "1",
+        "text": "本人が電話を持っていれば、音声通話だけで毎月の面接に代えられる。",
+        "explanation": "規定はテレビ電話等による面接で、条件も必要です。"
+      },
+      {
+        "id": "2",
+        "text": "少なくとも月1回、モニタリングの結果を記録する。",
+        "explanation": "面接だけでなく月1回以上の結果記録が求められます。"
+      },
+      {
+        "id": "3",
+        "text": "本人が希望すれば、居宅訪問を恒久的に省略できる。",
+        "explanation": "要件を満たしても少なくとも2月に1回の居宅訪問が必要です。"
+      },
+      {
+        "id": "4",
+        "text": "文書同意と関係者の合意等の要件を満たし、少なくとも2月に1回訪問すれば、訪問しない月にテレビ電話等で面接できる。",
+        "explanation": "状態の安定、意思疎通、担当者による情報提供等も合意事項です。"
+      },
+      {
+        "id": "5",
+        "text": "テレビ電話等で面接する場合は、関係者との合意は不要である。",
+        "explanation": "主治医、担当者等による所定の合意が必要です。"
+      }
+    ],
+    "answerIds": [
+      "2",
+      "4"
+    ],
+    "selectionCount": 2,
+    "explanation": "月1回の面接と記録が基本。条件を満たせば、訪問しない月にテレビ電話等を使えます。",
+    "reasoning": "「月1回面接」と「毎月必ず訪問」は同じではありません。例外には複数の条件があります。",
+    "difficulty": 3,
+    "primaryCategory": "B5",
+    "conceptIds": [
+      "monitoring",
+      "consent",
+      "coordination"
+    ],
+    "provenance": {
+      "kind": "original",
+      "author": "Care Manager Quest",
+      "verifiedAt": "2026-10-10",
+      "sources": [
+        {
+          "sourceId": "care",
+          "locator": "第13条第14号"
+        }
+      ]
+    }
+  },
+  {
+    "id": "cmq-017",
+    "version": 1,
+    "title": "事業者選びのものさし",
+    "stem": "居宅介護支援の公正中立と本人の選択について、正しいものを2つ選んでください。",
+    "options": [
+      {
+        "id": "1",
+        "text": "特定の種類のサービスや事業者に不当に偏らないようにする。",
+        "explanation": "公正中立の原則です。"
+      },
+      {
+        "id": "2",
+        "text": "同じ法人のサービスを優先することを本人の希望より上位に置く。",
+        "explanation": "本人の立場と公正中立の原則に反します。"
+      },
+      {
+        "id": "3",
+        "text": "地域の事業者のサービス内容や利用料の情報を適正に示す。",
+        "explanation": "選択に資する情報提供が求められます。"
+      },
+      {
+        "id": "4",
+        "text": "選択肢の説明は、本人が自分で調べた場合だけ行う。",
+        "explanation": "計画作成の開始に当たり情報を提供します。"
+      },
+      {
+        "id": "5",
+        "text": "本人の選択より事業所の収益を優先する。",
+        "explanation": "本人の立場に立つ基本方針に反します。"
+      }
+    ],
+    "answerIds": [
+      "1",
+      "3"
+    ],
+    "selectionCount": 2,
+    "explanation": "本人の立場に立ち、特定の事業者へ不当に偏らず、選択に必要な情報を示します。",
+    "reasoning": "運営法人の都合ではなく、本人の課題と希望を判断の中心に置きます。",
+    "difficulty": 1,
+    "primaryCategory": "B4",
+    "conceptIds": [
+      "neutrality",
+      "choice",
+      "dignity"
+    ],
+    "provenance": {
+      "kind": "original",
+      "author": "Care Manager Quest",
+      "verifiedAt": "2026-10-10",
+      "sources": [
+        {
+          "sourceId": "care",
+          "locator": "第1条の2第3項／第13条第5号"
+        }
+      ]
+    }
+  },
+  {
+    "id": "cmq-018",
+    "version": 1,
+    "title": "保険の外も、暮らしの中",
+    "stem": "居宅サービス計画に位置付ける支援について、正しいものを2つ選んでください。",
+    "options": [
+      {
+        "id": "1",
+        "text": "保険給付対象ではない支援は、計画に記載できない。",
+        "explanation": "給付対象以外のサービスも位置付けるよう努めます。"
+      },
+      {
+        "id": "2",
+        "text": "地域住民の自発的活動によるサービスの利用も計画に位置付けるよう努める。",
+        "explanation": "生活全般を支えるための規定です。"
+      },
+      {
+        "id": "3",
+        "text": "保険外サービスを計画に書くと、その費用は自動的に保険給付になる。",
+        "explanation": "計画への記載と給付対象かどうかは別です。"
+      },
+      {
+        "id": "4",
+        "text": "計画原案では、本人の希望を考慮する必要はない。",
+        "explanation": "本人の希望とアセスメント結果に基づいて原案を作成します。"
+      },
+      {
+        "id": "5",
+        "text": "本人の希望と課題をもとに、適切なサービスの組合せを検討する。",
+        "explanation": "家族の希望や地域の提供体制も勘案します。"
+      }
+    ],
+    "answerIds": [
+      "2",
+      "5"
+    ],
+    "selectionCount": 2,
+    "explanation": "計画には保険給付以外のサービスや地域の自発的活動も含めるよう努めます。",
+    "reasoning": "ケアプランの範囲は、介護保険の請求書の範囲より広いと考えると理解できます。",
+    "difficulty": 2,
+    "primaryCategory": "B4",
+    "conceptIds": [
+      "informal",
+      "choice",
+      "community"
+    ],
+    "provenance": {
+      "kind": "original",
+      "author": "Care Manager Quest",
+      "verifiedAt": "2026-10-10",
+      "sources": [
+        {
+          "sourceId": "care",
+          "locator": "第13条第4号・第8号"
+        }
+      ]
+    }
+  },
+  {
+    "id": "cmq-019",
+    "version": 1,
+    "title": "地域の相談拠点",
+    "stem": "地域包括支援センターに関して、正しいものを2つ選んでください。",
+    "options": [
+      {
+        "id": "1",
+        "text": "地域の高齢者等への総合相談支援を担う。",
+        "explanation": "包括的支援事業の総合相談支援です。"
+      },
+      {
+        "id": "2",
+        "text": "要介護認定の最終処分を行う機関である。",
+        "explanation": "最終的な認定は市町村が行います。"
+      },
+      {
+        "id": "3",
+        "text": "介護保険料率を条例で定める機関である。",
+        "explanation": "保険料率は市町村の条例で定めます。"
+      },
+      {
+        "id": "4",
+        "text": "高齢者の権利擁護や、介護支援専門員への支援を担う。",
+        "explanation": "権利擁護と包括的・継続的ケアマネジメント支援を含みます。"
+      },
+      {
+        "id": "5",
+        "text": "保険給付の不服申立てを裁決する機関である。",
+        "explanation": "審査請求は介護保険審査会が扱います。"
+      }
+    ],
+    "answerIds": [
+      "1",
+      "4"
+    ],
+    "selectionCount": 2,
+    "explanation": "地域包括支援センターは総合相談や権利擁護、ケアマネジャーへの支援等を担います。",
+    "reasoning": "個人への直接支援と、支援する人への支援の両方を担う拠点です。",
+    "difficulty": 2,
+    "primaryCategory": "A3",
+    "conceptIds": [
+      "community",
+      "coordination",
+      "dignity"
+    ],
+    "provenance": {
+      "kind": "original",
+      "author": "Care Manager Quest",
+      "verifiedAt": "2026-10-10",
+      "sources": [
+        {
+          "sourceId": "law",
+          "locator": "第115条の45第2項第1号〜第3号／第115条の46第1項"
+        }
+      ]
+    }
+  },
+  {
+    "id": "cmq-020",
+    "version": 1,
+    "title": "納得できない認定の行き先",
+    "stem": "要介護認定などへの不服申立てについて、正しいものを2つ選んでください。",
+    "options": [
+      {
+        "id": "1",
+        "text": "要介護認定への審査請求は、サービス担当者会議が裁決する。",
+        "explanation": "担当者会議はケアプランの検討をする場です。"
+      },
+      {
+        "id": "2",
+        "text": "要介護認定の処分に不服がある者は、介護保険審査会に審査請求できる。",
+        "explanation": "第183条には認定の処分も含まれます。"
+      },
+      {
+        "id": "3",
+        "text": "介護保険審査会は各市町村の事業所ごとに置かれる。",
+        "explanation": "各都道府県に置かれます。"
+      },
+      {
+        "id": "4",
+        "text": "保険料に関する処分は審査請求の対象に含まれない。",
+        "explanation": "保険料等の徴収金に関する処分も対象に含まれます。"
+      },
+      {
+        "id": "5",
+        "text": "介護保険審査会は各都道府県に置かれる。",
+        "explanation": "認定審査会と区別しましょう。"
+      }
+    ],
+    "answerIds": [
+      "2",
+      "5"
+    ],
+    "selectionCount": 2,
+    "explanation": "処分への審査請求は、各都道府県に置かれる介護保険審査会へ行えます。",
+    "reasoning": "「介護認定審査会」と「介護保険審査会」は名前が似ていても役割が違います。",
+    "difficulty": 3,
+    "primaryCategory": "A4",
+    "conceptIds": [
+      "appeal",
+      "certification",
+      "insurer"
+    ],
+    "provenance": {
+      "kind": "original",
+      "author": "Care Manager Quest",
+      "verifiedAt": "2026-10-10",
+      "sources": [
+        {
+          "sourceId": "law",
+          "locator": "第183条第1項・第184条"
+        }
+      ]
+    }
+  },
+  {
+    "id": "cmq-021",
+    "version": 1,
+    "title": "暮らしを支える権利を守る",
+    "stem": "保険給付を受ける権利の保護について、正しいものを3つ選んでください。",
+    "options": [
+      {
+        "id": "1",
+        "text": "給付を受ける権利を他人へ譲り渡すことはできない。",
+        "explanation": "受給権の譲渡は禁止されています。"
+      },
+      {
+        "id": "2",
+        "text": "借金の担保として給付を受ける権利を設定できる。",
+        "explanation": "受給権を担保に供することはできません。"
+      },
+      {
+        "id": "3",
+        "text": "給付を受ける権利を差し押さえることはできない。",
+        "explanation": "受給権の差押えは禁止されています。"
+      },
+      {
+        "id": "4",
+        "text": "給付を受ける権利を担保に供することはできない。",
+        "explanation": "生活保障の受給権を保護する規定です。"
+      },
+      {
+        "id": "5",
+        "text": "本人が同意すれば、給付を受ける権利を売却できる。",
+        "explanation": "本人の同意があっても受給権の譲渡はできません。"
+      }
+    ],
+    "answerIds": [
+      "1",
+      "3",
+      "4"
+    ],
+    "selectionCount": 3,
+    "explanation": "給付を受ける権利は、譲渡・担保・差押えの対象にできません。",
+    "reasoning": "生活保障の権利を、一般の財産のように自由に処分できない仕組みです。",
+    "difficulty": 2,
+    "primaryCategory": "A4",
+    "conceptIds": [
+      "protection",
+      "benefits",
+      "dignity"
+    ],
+    "provenance": {
+      "kind": "original",
+      "author": "Care Manager Quest",
+      "verifiedAt": "2026-10-10",
+      "sources": [
+        {
+          "sourceId": "law",
+          "locator": "第25条"
+        }
+      ]
+    }
+  },
+  {
+    "id": "cmq-022",
+    "version": 1,
+    "title": "プランは完成してからも続く",
+    "stem": "居宅サービス計画作成後の対応について、正しいものを2つ選んでください。",
+    "options": [
+      {
+        "id": "1",
+        "text": "計画が完成した後は、本人への継続的なアセスメントは行わない。",
+        "explanation": "実施状況の把握には継続的なアセスメントも含まれます。"
+      },
+      {
+        "id": "2",
+        "text": "実施状況を把握し、必要に応じて計画変更や事業者との連絡調整を行う。",
+        "explanation": "モニタリングから必要な対応につなげます。"
+      },
+      {
+        "id": "3",
+        "text": "計画の変更は、認定の有効期間が終了した後に限られる。",
+        "explanation": "生活の変化等に応じ、必要な計画変更を行います。"
+      },
+      {
+        "id": "4",
+        "text": "必要な服薬等の情報を主治医等や薬剤師へ提供するときは、本人の同意を得る。",
+        "explanation": "第13号の2の情報提供に関する規定です。"
+      },
+      {
+        "id": "5",
+        "text": "事業者からの情報は、モニタリングに用いない。",
+        "explanation": "事業者等との継続的な連絡はモニタリングの一部です。"
+      }
+    ],
+    "answerIds": [
+      "2",
+      "4"
+    ],
+    "selectionCount": 2,
+    "explanation": "作成後も実施状況と生活の変化を把握し、必要な変更や連絡調整を行います。",
+    "reasoning": "計画はゴールではなく、実行→確認→見直しという循環の出発点です。",
+    "difficulty": 1,
+    "primaryCategory": "B5",
+    "conceptIds": [
+      "monitoring",
+      "reassessment",
+      "assessment"
+    ],
+    "provenance": {
+      "kind": "original",
+      "author": "Care Manager Quest",
+      "verifiedAt": "2026-10-10",
+      "sources": [
+        {
+          "sourceId": "care",
+          "locator": "第13条第13号・第13号の2"
+        }
+      ]
+    }
+  },
+  {
+    "id": "cmq-023",
+    "version": 1,
+    "title": "サービスとプランの費用",
+    "stem": "居宅介護サービス計画費について、正しいものを2つ選んでください。保険給付の対象となる指定居宅介護支援を前提とします。",
+    "options": [
+      {
+        "id": "1",
+        "text": "指定居宅介護支援を受けた場合、市町村は居宅介護サービス計画費を支給する。",
+        "explanation": "第46条第1項の給付です。"
+      },
+      {
+        "id": "2",
+        "text": "居宅介護サービス計画費は、法定基準額の9割に限定される。",
+        "explanation": "第46条第2項は基準により算定した費用の額を規定します。9割という割合ではありません。"
+      },
+      {
+        "id": "3",
+        "text": "給付額は基準がなく、事業者が自由に決めた額がそのまま支給される。",
+        "explanation": "厚生労働大臣の定める基準で算定されます。"
+      },
+      {
+        "id": "4",
+        "text": "同じ市町村の長が指定した事業者からの支援にしか支給できない。",
+        "explanation": "他の市町村の長の指定を受けた事業者も規定に含まれます。"
+      },
+      {
+        "id": "5",
+        "text": "基準算定額が現に要した費用を超える場合、現に要した費用の額が給付額となる。",
+        "explanation": "実際の費用を超える給付にはなりません。"
+      }
+    ],
+    "answerIds": [
+      "1",
+      "5"
+    ],
+    "selectionCount": 2,
+    "explanation": "給付対象の指定居宅介護支援の費用は、法定基準で算定した額が給付されます。",
+    "reasoning": "訪問介護等の利用者負担と、ケアプラン作成等の居宅介護支援の給付を混同しないこと。",
+    "difficulty": 3,
+    "primaryCategory": "A4",
+    "conceptIds": [
+      "benefits",
+      "choice",
+      "insurer"
+    ],
+    "provenance": {
+      "kind": "original",
+      "author": "Care Manager Quest",
+      "verifiedAt": "2026-10-10",
+      "sources": [
+        {
+          "sourceId": "law",
+          "locator": "第46条第1項・第2項"
+        }
+      ]
+    }
+  },
+  {
+    "id": "cmq-024",
+    "version": 1,
+    "title": "予防給付の対象を見分ける",
+    "stem": "予防給付とその認定について、正しいものを2つ選んでください。",
+    "options": [
+      {
+        "id": "1",
+        "text": "予防給付は、要介護者に対する保険給付の別名である。",
+        "explanation": "要支援者に対する保険給付です。"
+      },
+      {
+        "id": "2",
+        "text": "予防給付を受けるには、要支援者であること等の市町村の認定が必要である。",
+        "explanation": "法第19条第2項に規定されています。"
+      },
+      {
+        "id": "3",
+        "text": "介護予防サービス計画費は予防給付に含まれる。",
+        "explanation": "第52条の予防給付の種類に含まれます。"
+      },
+      {
+        "id": "4",
+        "text": "65歳以上なら、要支援状態でなくても予防給付を受けられる。",
+        "explanation": "年齢だけではなく、要支援の認定等の要件が必要です。"
+      },
+      {
+        "id": "5",
+        "text": "予防給付の認定は、ケアマネジャーだけが行う。",
+        "explanation": "認定を行うのは市町村です。"
+      }
+    ],
+    "answerIds": [
+      "2",
+      "3"
+    ],
+    "selectionCount": 2,
+    "explanation": "要支援者への予防給付にも市町村の認定が必要です。介護予防支援も予防給付に含まれます。",
+    "reasoning": "「予防」は元気な人向けだけの意味ではなく、要支援状態への給付区分にも使われます。",
+    "difficulty": 2,
+    "primaryCategory": "B1",
+    "conceptIds": [
+      "prevention",
+      "benefits",
+      "certification"
+    ],
+    "provenance": {
+      "kind": "original",
+      "author": "Care Manager Quest",
+      "verifiedAt": "2026-10-10",
+      "sources": [
+        {
+          "sourceId": "law",
+          "locator": "第18条第2号・第19条第2項・第52条第7号"
+        }
+      ]
+    }
+  },
+  {
+    "id": "cmq-025",
+    "version": 1,
+    "title": "希望と課題を編み合わせる",
+    "stem": "居宅サービス計画原案の作成について、正しいものを3つ選んでください。",
+    "options": [
+      {
+        "id": "1",
+        "text": "本人の希望とアセスメントの結果に基づいて作成する。",
+        "explanation": "本人の希望と生活課題が土台です。"
+      },
+      {
+        "id": "2",
+        "text": "地域でサービスが提供される体制は考慮しなくてよい。",
+        "explanation": "地域のサービス提供体制も勘案します。"
+      },
+      {
+        "id": "3",
+        "text": "家族の希望も勘案し、適切なサービスの組合せを検討する。",
+        "explanation": "本人の希望とアセスメントを基礎に、家族の希望も踏まえます。"
+      },
+      {
+        "id": "4",
+        "text": "原案に目標の達成時期を記載する必要はない。",
+        "explanation": "サービスの目標と達成時期等を記載します。"
+      },
+      {
+        "id": "5",
+        "text": "サービスの目標・達成時期・種類・内容・利用料等を記載する。",
+        "explanation": "支援内容を具体的にする事項が規定されています。"
+      }
+    ],
+    "answerIds": [
+      "1",
+      "3",
+      "5"
+    ],
+    "selectionCount": 3,
+    "explanation": "本人の希望とアセスメントを軸に、家族の希望や地域の体制を踏まえて計画します。",
+    "reasoning": "希望だけでも制度だけでもなく、課題・希望・使える支援をつなぎます。",
+    "difficulty": 2,
+    "primaryCategory": "B3",
+    "conceptIds": [
+      "assessment",
+      "choice",
+      "informal",
+      "coordination"
+    ],
+    "provenance": {
+      "kind": "original",
+      "author": "Care Manager Quest",
+      "verifiedAt": "2026-10-10",
+      "sources": [
+        {
+          "sourceId": "care",
+          "locator": "第13条第8号"
+        }
+      ]
+    }
+  }
+]
