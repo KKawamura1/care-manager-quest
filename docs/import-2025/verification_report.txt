@@ -1,0 +1,31 @@
+2025年度 介護支援分野 (25問) データ検証
+全問題に問題文／5選択肢／正答番号／問題画像あり
+問題画像は添付PDFから直接切り出し (問題文の改変なし)
+文字データはOCR補助の手動修正。逐語校正・正答原典の再照合は未完了
+法改正と独自解説の検証は未完了
+
+問01: 答[3, 4] / A2 / assets/questions/2025/q01.png
+問02: 答[1, 2, 3] / C / assets/questions/2025/q02.png
+問03: 答[2, 3, 4] / A3 / assets/questions/2025/q03.png
+問04: 答[3, 4, 5] / A4 / assets/questions/2025/q04.png
+問05: 答[2, 3, 5] / A3 / assets/questions/2025/q05.png
+問06: 答[1, 2, 3] / A3 / assets/questions/2025/q06.png
+問07: 答[4, 5] / A4 / assets/questions/2025/q07.png
+問08: 答[1, 2, 4] / A1 / assets/questions/2025/q08.png
+問09: 答[2, 3, 4] / A2 / assets/questions/2025/q09.png
+問10: 答[2, 5] / B1 / assets/questions/2025/q10.png
+問11: 答[1, 2, 4] / A2 / assets/questions/2025/q11.png
+問12: 答[2, 5] / A3 / assets/questions/2025/q12.png
+問13: 答[1, 3, 5] / A4 / assets/questions/2025/q13.png
+問14: 答[1, 3, 4] / A4 / assets/questions/2025/q14.png
+問15: 答[1, 2, 4] / A4 / assets/questions/2025/q15.png
+問16: 答[1, 2] / B2 / assets/questions/2025/q16.png
+問17: 答[1, 2, 3] / B6 / assets/questions/2025/q17.png
+問18: 答[1, 2, 5] / B2 / assets/questions/2025/q18.png
+問19: 答[1, 2, 3] / B3 / assets/questions/2025/q19.png
+問20: 答[2, 3, 4] / B3 / assets/questions/2025/q20.png
+問21: 答[1, 2, 3] / B3 / assets/questions/2025/q21.png
+問22: 答[1, 3, 5] / B1 / assets/questions/2025/q22.png
+問23: 答[1, 2, 3] / B3 / assets/questions/2025/q23.png
+問24: 答[2, 3] / B3 / assets/questions/2025/q24.png
+問25: 答[1, 3, 5] / B3 / assets/questions/2025/q25.png

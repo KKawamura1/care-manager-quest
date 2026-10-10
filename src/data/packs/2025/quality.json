@@ -1,0 +1,252 @@
+{
+  "2025-01": {
+    "textStatus": "proofread",
+    "reviewedAt": "2026-10-10",
+    "reviewer": "single-pass-image-comparison",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "354f602f2d2bb2742cbd29d46d9bf25a35608095a6e0fe3ee799c088ac6b0a74",
+    "imageReview": "question_number_and_five_options_checked"
+  },
+  "2025-02": {
+    "textStatus": "proofread",
+    "reviewedAt": "2026-10-10",
+    "reviewer": "single-pass-image-comparison",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "329c7d9c353c9943f364b1aa0008462d33b3afa5d2b7368c7c8c2b6353283f61",
+    "imageReview": "question_number_and_five_options_checked"
+  },
+  "2025-03": {
+    "textStatus": "proofread",
+    "reviewedAt": "2026-10-10",
+    "reviewer": "single-pass-image-comparison",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "8cf100415ee53cc0b34ae03af665bea69df2fc05045a7ed8cbd4a7ea92d194f1",
+    "imageReview": "question_number_and_five_options_checked"
+  },
+  "2025-04": {
+    "textStatus": "proofread",
+    "reviewedAt": "2026-10-10",
+    "reviewer": "single-pass-image-comparison",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "8af1f157ced600f901aedecb2edd3006115d13e20b18a5680be3c6296c7bfcdc",
+    "imageReview": "question_number_and_five_options_checked"
+  },
+  "2025-05": {
+    "textStatus": "proofread",
+    "reviewedAt": "2026-10-10",
+    "reviewer": "single-pass-image-comparison",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "1df82e12ac558d0676f7cc1776b7b86d78f2a8003ef09963e45af0861d7e4c1d",
+    "imageReview": "question_number_and_five_options_checked"
+  },
+  "2025-06": {
+    "textStatus": "proofread",
+    "reviewedAt": "2026-10-10",
+    "reviewer": "single-pass-image-comparison",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "1e24f097ab4e6f6b94cbffecd36f328a73cc735effc6909a459d282cdd9cc890",
+    "imageReview": "question_number_and_five_options_checked"
+  },
+  "2025-07": {
+    "textStatus": "proofread",
+    "reviewedAt": "2026-10-10",
+    "reviewer": "single-pass-image-comparison",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "60882db47d3ef4085b1d4a2a426ab9a4ba35b121ff2dc1c7f99145712f528319",
+    "imageReview": "question_number_and_five_options_checked"
+  },
+  "2025-08": {
+    "textStatus": "proofread",
+    "reviewedAt": "2026-10-10",
+    "reviewer": "single-pass-image-comparison",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "60dcaa4176580110e42f2fd5632455cd15852e83d0e3d7e83325e84d1efc84f6",
+    "imageReview": "question_number_and_five_options_checked"
+  },
+  "2025-09": {
+    "textStatus": "proofread",
+    "reviewedAt": "2026-10-10",
+    "reviewer": "single-pass-image-comparison",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "1bfed08b571a23d0ae30c2cf067984410cd21da57f3d37f187f86ec924a62098",
+    "imageReview": "question_number_and_five_options_checked"
+  },
+  "2025-10": {
+    "textStatus": "proofread",
+    "reviewedAt": "2026-10-10",
+    "reviewer": "single-pass-image-comparison",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "64646192bb9a2133c63f612d403987302cc933f470ae2942fb5a14fae27a67a4",
+    "imageReview": "question_number_and_five_options_checked"
+  },
+  "2025-11": {
+    "textStatus": "proofread",
+    "reviewedAt": "2026-10-10",
+    "reviewer": "single-pass-image-comparison",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "adfb063310712addee96f9272c4bc3ce21c69123db0b20df4c6523a58a94fb7c",
+    "imageReview": "question_number_and_five_options_checked"
+  },
+  "2025-12": {
+    "textStatus": "proofread",
+    "reviewedAt": "2026-10-10",
+    "reviewer": "single-pass-image-comparison",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "2ee2854e0c792748572362f70c7ee0a14640c17f3e7470393b69af94bdc10fcf",
+    "imageReview": "question_number_and_five_options_checked"
+  },
+  "2025-13": {
+    "textStatus": "proofread",
+    "reviewedAt": "2026-10-10",
+    "reviewer": "single-pass-image-comparison",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "abcc3ddc6ef33d0d94f8c852e561afdf4e51818a460e14805b50bbaf6a21d02d",
+    "imageReview": "question_number_and_five_options_checked"
+  },
+  "2025-14": {
+    "textStatus": "proofread",
+    "reviewedAt": "2026-10-10",
+    "reviewer": "single-pass-image-comparison",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "5c84f2edc7a20bde74bedd33e4cd6acd0faecae70b17e6f53760554f44dfc77f",
+    "imageReview": "question_number_and_five_options_checked"
+  },
+  "2025-15": {
+    "textStatus": "proofread",
+    "reviewedAt": "2026-10-10",
+    "reviewer": "single-pass-image-comparison",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "85a64b4e60ddd6a119bfe3a32387c505920c4e4da75553a48549e89b4c30af02",
+    "imageReview": "question_number_and_five_options_checked"
+  },
+  "2025-16": {
+    "textStatus": "proofread",
+    "reviewedAt": "2026-10-10",
+    "reviewer": "single-pass-image-comparison",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "dd710bbaba53ea13a1f3db12e0fe68043df71bebb65ccff9b8d0177eb6cc2b21",
+    "imageReview": "reextracted_missing_last_line_from_official_pdf"
+  },
+  "2025-17": {
+    "textStatus": "proofread",
+    "reviewedAt": "2026-10-10",
+    "reviewer": "single-pass-image-comparison",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "2e0d0073396b8d397c0645803e59d416a94bbd6364776fa4f34750972994798d",
+    "imageReview": "question_number_and_five_options_checked"
+  },
+  "2025-18": {
+    "textStatus": "proofread",
+    "reviewedAt": "2026-10-10",
+    "reviewer": "single-pass-image-comparison",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "ee7086260e4ad7a72c35bc337c8208729ccadb4ca81e7ca3640da12f48e7f299",
+    "imageReview": "question_number_and_five_options_checked"
+  },
+  "2025-19": {
+    "textStatus": "proofread",
+    "reviewedAt": "2026-10-10",
+    "reviewer": "single-pass-image-comparison",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "1760e922df8f834bc3274e306d29ea0a0b1e2c811545ed981f28bf4a4117d5cc",
+    "imageReview": "question_number_and_five_options_checked"
+  },
+  "2025-20": {
+    "textStatus": "proofread",
+    "reviewedAt": "2026-10-10",
+    "reviewer": "single-pass-image-comparison",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "9fac4489a762e5fabf6016760ca5058534750f0e260fa70398a27bea0658bd9f",
+    "imageReview": "question_number_and_five_options_checked"
+  },
+  "2025-21": {
+    "textStatus": "proofread",
+    "reviewedAt": "2026-10-10",
+    "reviewer": "single-pass-image-comparison",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "f31f3b8a7d2916137e25389d4eca990dd1d5ac0c51605b2c1917bf36b50d0e90",
+    "imageReview": "question_number_and_five_options_checked"
+  },
+  "2025-22": {
+    "textStatus": "proofread",
+    "reviewedAt": "2026-10-10",
+    "reviewer": "single-pass-image-comparison",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "5eb5d613e09ec38d34bf5ffeb2ec27fa75b81070eb6877b49ce2d2b9dd985b2e",
+    "imageReview": "question_number_and_five_options_checked"
+  },
+  "2025-23": {
+    "textStatus": "proofread",
+    "reviewedAt": "2026-10-10",
+    "reviewer": "single-pass-image-comparison",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "44e5d4c634d33d5f6f9634a8847a2b464cccd0c9b39d569b3ac60411e85c821c",
+    "imageReview": "question_number_and_five_options_checked"
+  },
+  "2025-24": {
+    "textStatus": "pending",
+    "reviewedAt": "2026-10-10",
+    "reviewer": "single-pass-image-comparison",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "7ec4efdc8a2ffaaebb2b27e95344cb05591be75397534f580f3b14990034ba71",
+    "imageReview": "question_number_and_five_options_checked"
+  },
+  "2025-25": {
+    "textStatus": "pending",
+    "reviewedAt": "2026-10-10",
+    "reviewer": "single-pass-image-comparison",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "0377d39dc1bf1d96c017071dac914a18eaf425fe8ee456f54292f326da6378ec",
+    "imageReview": "question_number_and_five_options_checked"
+  }
+}
