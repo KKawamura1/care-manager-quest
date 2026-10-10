@@ -14,7 +14,7 @@ export const categories: Category[] = [
  {id:'B4',parentId:'B',label:'サービス提供・連携',description:'計画を暮らしの中で実行する',available:true},
  {id:'B5',parentId:'B',label:'モニタリング・再評価',description:'変化を見て、見直す',available:true},
  {id:'C',label:'保健医療・福祉の専門知識',description:'認知症施策から専門知識へ',available:true},
- ...['疾病・身体機能','認知症・精神機能','医療・看護・リハビリ','生活支援・福祉','権利擁護・終末期ケア'].map((label,i)=>({id:`C${i+1}`,parentId:'C',label,description:i===1?'2025年度の認知症施策':'問題パック追加予定',available:i===1})),
+ ...['疾病・身体機能','認知症・精神機能','医療・看護・リハビリ','生活支援・福祉','権利擁護・終末期ケア'].map((label,i)=>({id:`C${i+1}`,parentId:'C',label,description:'2025年度の公式過去問で扱う領域',available:true})),
 ];
 const c = (id:string,categoryId:string,label:string,summary:string,relatedIds:string[]):Concept=>({id,categoryId,label,summary,relatedIds});
 const baseConcepts: Concept[] = [

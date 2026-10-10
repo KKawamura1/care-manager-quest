@@ -1,7 +1,7 @@
 export type Difficulty = 1 | 2 | 3;
 export interface Source { id: string; title: string; url: string; }
 export interface Question {
-  id: string; version: number; title: string; stem: string;
+  id: string; version: number; domain?: string; title: string; stem: string;
   options: { id: string; text: string; explanation: string }[];
   answerIds: string[]; selectionCount: number; explanation: string;
   reasoning: string; difficulty: Difficulty; primaryCategory: string;
