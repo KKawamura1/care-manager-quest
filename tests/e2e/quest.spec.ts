@@ -52,9 +52,8 @@ test('all 25 official questions play across five quests, each original image map
    const id=await page.evaluate(k=>{const p=JSON.parse(localStorage.getItem(k)!);return p.session.questionIds[p.session.index] as string},key);seen.push(id);
    await expect(page.locator('.question-title')).toContainText(`問${Number(id.split('-')[1])}｜`);
    if(['2025-24','2025-25'].includes(id)){
-    await expect(page.getByText('この問題は文字校正中のため、原本画像で出題します。')).toBeVisible();
-    await expect(page.getByRole('group',{name:'解答の選択肢'}).getByRole('button').first()).toContainText('選択肢 1');
-    await page.screenshot({path:`test-results/${test.info().project.name}-image-${id}.png`,fullPage:true});
+    await expect(page.locator('.question-stem')).not.toBeEmpty();
+    await expect(page.getByRole('group',{name:'解答の選択肢'}).getByRole('button').first()).not.toContainText('選択肢 1');
    }
    await page.getByRole('button',{name:'原本画像を見る ↗'}).click();const img=page.getByRole('dialog').locator('img');
    await expect(img).toHaveAttribute('src',`/assets/questions/2025/q${id.split('-')[1]}.png`);await expect(img).toBeVisible();
@@ -80,4 +79,25 @@ test('existing schema 1 history is backed up and retained while old questions le
  expect(await page.evaluate(k=>JSON.parse(localStorage.getItem(k+':before-official')!).attempts[0].questionId,key)).toBe(q.id);
  await page.getByRole('button',{name:'5問のクエストを始める'}).click();expect(await page.evaluate(k=>JSON.parse(localStorage.getItem(k)!).session.questionIds.every((id:string)=>id.startsWith('2025-')),key)).toBe(true);
  await page.getByRole('button',{name:'記録',exact:true}).click();await expect(page.locator('.record-stats')).toContainText('60');
+});
+
+
+test('domain setting offers all 60 as text while preserving the existing history',async({page})=>{
+ await page.goto('/');
+ await expect(page.getByText('2025年度 公式過去問60問')).toBeVisible();
+ await page.getByRole('radio',{name:'保健医療（20問）'}).check();
+ await page.getByRole('button',{name:'5問のクエストを始める'}).click();
+ let id=await page.evaluate(k=>JSON.parse(localStorage.getItem(k)!).session.questionIds[0],key);
+ expect(Number(id.split('-')[1])).toBeGreaterThanOrEqual(26);
+ expect(Number(id.split('-')[1])).toBeLessThanOrEqual(45);
+ await expect(page.locator('.question-stem')).not.toBeEmpty();
+ await expect(page.getByRole('group',{name:'解答の選択肢'}).getByRole('button')).toHaveCount(5);
+ await chooseAnswer(page);
+ await page.getByRole('button',{name:'中断してホーム'}).click();
+ await page.getByRole('radio',{name:'福祉（15問）'}).check();
+ await expect(page.getByRole('button',{name:/第1問から再開/})).toBeVisible();
+ await page.reload();
+ await expect(page.getByRole('radio',{name:'福祉（15問）'})).toBeChecked();
+ await page.getByRole('button',{name:/第1問から再開/}).click();
+ await expect(page.locator('.question-title')).toContainText('問'+Number(id.split('-')[1]));
 });
