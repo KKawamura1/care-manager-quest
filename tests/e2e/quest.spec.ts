@@ -84,7 +84,7 @@ test('existing schema 1 history is backed up and retained while old questions le
 
 test('domain setting offers all 60 as text while preserving the existing history',async({page})=>{
  await page.goto('/');
- await expect(page.getByText('2025年度 公式過去問60問')).toBeVisible();
+ await expect(page.getByText('2025年度・全60問の公式過去問。出題分野を選んで5問ずつ挑戦できます。')).toBeVisible();
  await page.getByRole('radio',{name:'保健医療（20問）'}).check();
  await page.getByRole('button',{name:'5問のクエストを始める'}).click();
  let id=await page.evaluate(k=>JSON.parse(localStorage.getItem(k)!).session.questionIds[0],key);
@@ -92,6 +92,8 @@ test('domain setting offers all 60 as text while preserving the existing history
  expect(Number(id.split('-')[1])).toBeLessThanOrEqual(45);
  await expect(page.locator('.question-stem')).not.toBeEmpty();
  await expect(page.getByRole('group',{name:'解答の選択肢'}).getByRole('button')).toHaveCount(5);
+ const firstOptionWidth=(await page.getByRole('group',{name:'解答の選択肢'}).getByRole('button').first().boundingBox())?.width;
+ expect(firstOptionWidth).toBeGreaterThan(230);
  await chooseAnswer(page);
  await page.getByRole('button',{name:'中断してホーム'}).click();
  await page.getByRole('radio',{name:'福祉（15問）'}).check();
