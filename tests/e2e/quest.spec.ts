@@ -99,6 +99,8 @@ test('domain setting offers all 60 as text while preserving the existing history
  await page.getByRole('radio',{name:'福祉（15問）'}).check();
  await expect(page.getByRole('button',{name:/第1問から再開/})).toBeVisible();
  await page.reload();
+ // An in-progress session opens straight in play after reload; go home to inspect the persisted domain setting.
+ await page.getByRole('button',{name:'中断してホーム'}).click();
  await expect(page.getByRole('radio',{name:'福祉（15問）'})).toBeChecked();
  await page.getByRole('button',{name:/第1問から再開/}).click();
  await expect(page.locator('.question-title')).toContainText('問'+Number(id.split('-')[1]));
