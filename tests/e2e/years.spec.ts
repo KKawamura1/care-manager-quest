@@ -30,7 +30,7 @@ for(const year of [2020,2021,2022,2023,2024]) {
   await page.getByLabel('出題する年度').selectOption('2025');
   await page.reload();
   await expect(page.locator('.question-title')).toContainText(`${year}年度`);
-  expect(await page.evaluate(k=>localStorage.getItem(k),key)).toBe(before);
+  expect(JSON.parse(await page.evaluate(k=>localStorage.getItem(k),key)!)).toEqual(JSON.parse(before!));
   await page.getByRole('button',{name:'中断してホーム'}).click();
   await expect(page.getByLabel('出題する年度')).toHaveValue('2025');
  });
