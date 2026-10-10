@@ -25,7 +25,7 @@ test('five questions, feedback, deep dive, persistence, result and knowledge map
  const before=await page.evaluate(k=>JSON.parse(localStorage.getItem(k)!).attempts.length,key);expect(before).toBe(1);
  for(let i=1;i<5;i++){await page.getByRole('button',{name:'次の問題へ'}).click();await chooseAnswer(page,i===2);}
  await page.getByRole('button',{name:'リザルトを見る'}).click();await expect(page.getByText('探索、おつかれさま。', {exact:true})).toBeVisible();await page.screenshot({path:`test-results/${test.info().project.name}-result.png`,fullPage:true});
- await page.getByRole('button',{name:'広がった知識マップを見る'}).click();await expect(page.getByRole('heading',{name:'知識マップ',exact:true})).toBeVisible();await page.screenshot({path:`test-results/${test.info().project.name}-map.png`,fullPage:true});
+ await page.getByRole('button',{name:'広がった知識マップを見る'}).click();await expect(page.getByRole('heading',{name:'知識マップ',exact:true})).toBeVisible();await page.screenshot({path:`test-results/${test.info().project.name}-map.png`,fullPage:false});
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);expect(errors).toEqual([]);
 });
 test('selection limit, pause and reload before answering',async({page})=>{
@@ -84,7 +84,7 @@ test('existing schema 1 history is backed up and retained while old questions le
 
 test('domain setting offers all 60 as text while preserving the existing history',async({page})=>{
  await page.goto('/');
- await expect(page.getByText('2025年度・全60問の公式過去問。出題分野を選んで5問ずつ挑戦できます。')).toBeVisible();
+ await expect(page.getByText('2020〜2025年度・全360問の公式過去問。年度と分野を選んで5問ずつ挑戦できます。')).toBeVisible();
  await page.getByRole('radio',{name:'保健医療（20問）'}).check();
  await page.getByRole('button',{name:'5問のクエストを始める'}).click();
  let id=await page.evaluate(k=>JSON.parse(localStorage.getItem(k)!).session.questionIds[0],key);
