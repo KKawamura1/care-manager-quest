@@ -7,7 +7,7 @@ import type { Question, QuestionProvider } from '../domain/models';
 export const classifications = classification;
 const answers = keys as Record<string, { correctChoices: number[]; selectionCount: number; sourceId: string; verifiedAt: string }>;
 const mapping = classification as Record<string, { revision: number; title: string; primaryCategory: string; primaryConceptId: string; relatedConceptIds: string[]; difficulty: 1|2|3 }>;
-const review = quality as Record<string, { textStatus: string; reviewedAt: string; independentExplanation: string|null; lawStatus: string }>;
+const review = quality as Record<string, { textStatus: string; reviewedAt?: string; independentExplanation: string|null; lawStatus: string }>;
 export const officialProvider: QuestionProvider = {
   id: 'official-2025-all60',
   list: () => text.map(q => {

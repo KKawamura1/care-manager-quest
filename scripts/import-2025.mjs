@@ -31,7 +31,8 @@ for (const q of rows) {
  if (![2,3].includes(q.required_choices)||!Array.isArray(q.correct_choices)||q.correct_choices.length!==q.required_choices||new Set(q.correct_choices).size!==q.required_choices||q.correct_choices.some(n=>!Number.isInteger(n)||n<1||n>5)) throw Error('Answers invalid: '+q.id);
  const oldAnswer=oldAnswers[q.id];
  if (oldAnswer && (oldAnswer.selectionCount!==q.required_choices || oldAnswer.correctChoices.join(',')!==q.correct_choices.join(','))) throw Error('Answer changed vs prior pack: '+q.id);
- texts.push({id:q.id,version:1,number:q.number,year:2025,domain:q.domain,sourceId:'official-2025',stem:q.stem,choices:q.choices,imagePath:'/assets/questions/2025/q'+String(q.number).padStart(2,'0')+'.png',imageSha256:q.image_sha256,sourcePageIndex:q.sourcePageIndex});
+ // The ZIP Q16 crop omits the final characters; retain the complete official-PDF recrop already checked into the repository.
+ texts.push({id:q.id,version:1,number:q.number,year:2025,domain:q.domain,sourceId:'official-2025',stem:q.stem,choices:q.choices,imagePath:'/assets/questions/2025/q'+String(q.number).padStart(2,'0')+'.png',imageSha256:q.number===16?'3c26abb2931b6104c3aa9bce238a882b93e492e65933eb99f0482488702665d1':q.image_sha256,sourcePageIndex:q.sourcePageIndex});
  answers[q.id]=oldAnswer??{correctChoices:q.correct_choices,selectionCount:q.required_choices,sourceId:'official-2025-answers',verifiedAt:'2026-10-10'};
  // Existing classifications, their revisions and historical IDs must not change.
  const category=q.primary_group==='B4'?'B4':q.primary_group==='B3'?'B3':q.domain==='保健医療サービスの知識等'?'C3':q.topic_title.includes('虐待')?'C5':'C4';

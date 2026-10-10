@@ -10,3 +10,5 @@
 
 原典: https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r7shikenmondai
 利用条件: https://www.sssc.or.jp/pastissues/index.html
+
+**問16画像差分:** 新ZIPの q16.png は SHA-256 `dd710bbaba53ea13a1f3db12e0fe68043df71bebb65ccff9b8d0177eb6cc2b21`、既存リポジトリの公式PDF再切り出し版は `3c26abb2931b6104c3aa9bce238a882b93e492e65933eb99f0482488702665d1`。旧PRではZIPの問16画像が末尾欠落していたため再切り出していました。本PRでは**より完全な既存画像を採用**し、原本の再確認作業としてIssueに記録します。本文・選択肢の転記はZIPの正本をそのまま採用し、内容は変更しません。
