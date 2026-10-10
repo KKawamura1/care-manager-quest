@@ -1,0 +1,583 @@
+{
+  "2019-01": {
+    "correctChoices": [
+      1,
+      2,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-02": {
+    "correctChoices": [
+      4,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-03": {
+    "correctChoices": [
+      2,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-04": {
+    "correctChoices": [
+      1,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-05": {
+    "correctChoices": [
+      2,
+      3,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-06": {
+    "correctChoices": [
+      1,
+      2
+    ],
+    "selectionCount": 2,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-07": {
+    "correctChoices": [
+      2,
+      3,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-08": {
+    "correctChoices": [
+      2,
+      3,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-09": {
+    "correctChoices": [
+      2,
+      4
+    ],
+    "selectionCount": 2,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-10": {
+    "correctChoices": [
+      1,
+      3,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-11": {
+    "correctChoices": [
+      1,
+      3
+    ],
+    "selectionCount": 2,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-12": {
+    "correctChoices": [
+      1,
+      3,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-13": {
+    "correctChoices": [
+      1,
+      3,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-14": {
+    "correctChoices": [
+      1,
+      2,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-15": {
+    "correctChoices": [
+      3,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-16": {
+    "correctChoices": [
+      3,
+      4
+    ],
+    "selectionCount": 2,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-17": {
+    "correctChoices": [
+      2,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-18": {
+    "correctChoices": [
+      1,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-19": {
+    "correctChoices": [
+      3,
+      4
+    ],
+    "selectionCount": 2,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-20": {
+    "correctChoices": [
+      1,
+      3,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-21": {
+    "correctChoices": [
+      2,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-22": {
+    "correctChoices": [
+      3,
+      4
+    ],
+    "selectionCount": 2,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-23": {
+    "correctChoices": [
+      2,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-24": {
+    "correctChoices": [
+      3,
+      4
+    ],
+    "selectionCount": 2,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-25": {
+    "correctChoices": [
+      1,
+      2,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-26": {
+    "correctChoices": [
+      2,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-27": {
+    "correctChoices": [
+      3,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-28": {
+    "correctChoices": [
+      3,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-29": {
+    "correctChoices": [
+      1,
+      2,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-30": {
+    "correctChoices": [
+      1,
+      3,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-31": {
+    "correctChoices": [
+      1,
+      2,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-32": {
+    "correctChoices": [
+      1,
+      3,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-33": {
+    "correctChoices": [
+      1,
+      3,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-34": {
+    "correctChoices": [
+      2,
+      3,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-35": {
+    "correctChoices": [
+      1,
+      3,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-36": {
+    "correctChoices": [
+      1,
+      2,
+      3
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-37": {
+    "correctChoices": [
+      2,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-38": {
+    "correctChoices": [
+      3,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-39": {
+    "correctChoices": [
+      1,
+      4
+    ],
+    "selectionCount": 2,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-40": {
+    "correctChoices": [
+      1,
+      3,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-41": {
+    "correctChoices": [
+      1,
+      3
+    ],
+    "selectionCount": 2,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-42": {
+    "correctChoices": [
+      2,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-43": {
+    "correctChoices": [
+      2,
+      3,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-44": {
+    "correctChoices": [
+      1,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-45": {
+    "correctChoices": [
+      2,
+      4
+    ],
+    "selectionCount": 2,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-46": {
+    "correctChoices": [
+      1,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-47": {
+    "correctChoices": [
+      3,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-48": {
+    "correctChoices": [
+      1,
+      3
+    ],
+    "selectionCount": 2,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-49": {
+    "correctChoices": [
+      1,
+      3,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-50": {
+    "correctChoices": [
+      1,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-51": {
+    "correctChoices": [
+      2,
+      3
+    ],
+    "selectionCount": 2,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-52": {
+    "correctChoices": [
+      2,
+      3,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-53": {
+    "correctChoices": [
+      3,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-54": {
+    "correctChoices": [
+      1,
+      3,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-55": {
+    "correctChoices": [
+      2,
+      3,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-56": {
+    "correctChoices": [
+      3,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-57": {
+    "correctChoices": [
+      1,
+      2,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-58": {
+    "correctChoices": [
+      1,
+      3,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-59": {
+    "correctChoices": [
+      1,
+      2,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  },
+  "2019-60": {
+    "correctChoices": [
+      2,
+      3,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "2019-answer-key-crosschecked",
+    "verifiedAt": "2026-10-10"
+  }
+}

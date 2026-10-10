@@ -1,0 +1,573 @@
+{
+  "2007-01": {
+    "correctChoices": [
+      2,
+      3,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-02": {
+    "correctChoices": [
+      3,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-03": {
+    "correctChoices": [
+      3,
+      4
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-04": {
+    "correctChoices": [
+      4,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-05": {
+    "correctChoices": [
+      3,
+      4
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-06": {
+    "correctChoices": [
+      1,
+      2,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-07": {
+    "correctChoices": [
+      1,
+      2,
+      3
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-08": {
+    "correctChoices": [
+      2,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-09": {
+    "correctChoices": [
+      1,
+      3,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-10": {
+    "correctChoices": [
+      2,
+      3,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-11": {
+    "correctChoices": [
+      3,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-12": {
+    "correctChoices": [
+      2,
+      3,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-13": {
+    "correctChoices": [
+      4,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-14": {
+    "correctChoices": [
+      2,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-15": {
+    "correctChoices": [
+      1,
+      3,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-16": {
+    "correctChoices": [
+      2,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-17": {
+    "correctChoices": [
+      2,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-18": {
+    "correctChoices": [
+      1,
+      3,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-19": {
+    "correctChoices": [
+      4,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-20": {
+    "correctChoices": [
+      4,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-21": {
+    "correctChoices": [
+      1,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-22": {
+    "correctChoices": [
+      2,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-23": {
+    "correctChoices": [
+      3,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-24": {
+    "correctChoices": [
+      1,
+      3,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-25": {
+    "correctChoices": [
+      2,
+      4
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-26": {
+    "correctChoices": [
+      2,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-27": {
+    "correctChoices": [
+      1,
+      3,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-28": {
+    "correctChoices": [
+      2,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-29": {
+    "correctChoices": [
+      2,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-30": {
+    "correctChoices": [
+      1,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-31": {
+    "correctChoices": [
+      3,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-32": {
+    "correctChoices": [
+      2,
+      3
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-33": {
+    "correctChoices": [
+      1,
+      3,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-34": {
+    "correctChoices": [
+      3,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-35": {
+    "correctChoices": [
+      1,
+      3,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-36": {
+    "correctChoices": [
+      1,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-37": {
+    "correctChoices": [
+      2,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-38": {
+    "correctChoices": [
+      1,
+      2,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-39": {
+    "correctChoices": [
+      1,
+      3,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-40": {
+    "correctChoices": [
+      4,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-41": {
+    "correctChoices": [
+      1,
+      3,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-42": {
+    "correctChoices": [
+      1,
+      2
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-43": {
+    "correctChoices": [
+      4,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-44": {
+    "correctChoices": [
+      2,
+      4
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-45": {
+    "correctChoices": [
+      1,
+      3,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-46": {
+    "correctChoices": [
+      1,
+      3
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-47": {
+    "correctChoices": [
+      1,
+      2,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-48": {
+    "correctChoices": [
+      1,
+      3,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-49": {
+    "correctChoices": [
+      2,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-50": {
+    "correctChoices": [
+      2,
+      3,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-51": {
+    "correctChoices": [
+      1,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-52": {
+    "correctChoices": [
+      1,
+      3,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-53": {
+    "correctChoices": [
+      2,
+      4
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-54": {
+    "correctChoices": [
+      1,
+      4
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-55": {
+    "correctChoices": [
+      2,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-56": {
+    "correctChoices": [
+      2,
+      3,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-57": {
+    "correctChoices": [
+      2,
+      3
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-58": {
+    "correctChoices": [
+      1,
+      2,
+      3
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-59": {
+    "correctChoices": [
+      2,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  },
+  "2007-60": {
+    "correctChoices": [
+      1,
+      2,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2007-answers",
+    "verifiedAt": "2026-10-10"
+  }
+}

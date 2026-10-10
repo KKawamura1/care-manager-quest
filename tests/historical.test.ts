@@ -10,10 +10,10 @@ import { parsePlayer } from '../src/domain/storage';
 import { questionCopyText } from '../src/domain/questionCopy';
 describe('2020–2024 import',()=>{
  it('retains all 300 uploaded IDs, every character, answer number and original image',()=>{
-  expect(questions).toHaveLength(360);
-  expect(new Set(questions.map(q=>q.id)).size).toBe(360);
+  expect(questions).toHaveLength(1259);
+  expect(new Set(questions.map(q=>q.id)).size).toBe(1259);
   expect(new Set(concepts.map(c=>c.id)).size).toBe(concepts.length);
-  for(const year of EXAM_YEARS.filter(y=>y!==2025)) {
+  for(const year of EXAM_YEARS.filter(y=>y>=2020&&y!==2025)) {
    const document=JSON.parse(readFileSync(new URL(`../imports/${year}/questions.json`,import.meta.url),'utf8'));
    const rows=document.questions??document;
    expect(filterQuestions(questions,year,'all')).toHaveLength(60);
@@ -43,10 +43,10 @@ describe('2020–2024 import',()=>{
    }
   }
  });
- it('offers 150 support questions or 360 across all years, and defaults invalid preferences to 2025',()=>{
-  expect(filterQuestions(questions,'all','介護支援分野')).toHaveLength(150);
-  expect(filterQuestions(questions,'all','all')).toHaveLength(360);
-  for(const value of [null,'','2019','broken'])expect(parseYearFilter(value)).toBe(2025);
+ it('offers 525 support questions or 1259 across all years, and defaults invalid preferences to 2025',()=>{
+  expect(filterQuestions(questions,'all','介護支援分野')).toHaveLength(525);
+  expect(filterQuestions(questions,'all','all')).toHaveLength(1259);
+  for(const value of [null,'','2004','2026','broken'])expect(parseYearFilter(value)).toBe(2025);
   expect(parseYearFilter('2024')).toBe(2024);expect(parseYearFilter('all')).toBe('all');
  });
  it('keeps old 2025 answers, XP and in-progress session valid while newer sessions use another year',()=>{

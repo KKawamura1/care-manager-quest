@@ -1,5 +1,6 @@
 import type { Question } from './models';
-export const EXAM_YEARS = [2025,2024,2023,2022,2021,2020] as const;
+import { availableYears } from '../data/provider';
+export const EXAM_YEARS = availableYears;
 export type YearFilter = typeof EXAM_YEARS[number] | 'all';
 export const YEAR_STORAGE_KEY = 'care-manager-quest:year-filter';
 export function parseYearFilter(value: string|null): YearFilter {

@@ -1,0 +1,580 @@
+{
+  "2012-01": {
+    "correctChoices": [
+      1,
+      2,
+      3
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2012-1",
+    "verifiedAt": ""
+  },
+  "2012-02": {
+    "correctChoices": [
+      1,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2012-2",
+    "verifiedAt": ""
+  },
+  "2012-03": {
+    "correctChoices": [
+      1,
+      2,
+      3
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2012-3",
+    "verifiedAt": ""
+  },
+  "2012-04": {
+    "correctChoices": [
+      2,
+      4
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2012-4",
+    "verifiedAt": ""
+  },
+  "2012-05": {
+    "correctChoices": [
+      3,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2012-5",
+    "verifiedAt": ""
+  },
+  "2012-06": {
+    "correctChoices": [
+      2,
+      3,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2012-6",
+    "verifiedAt": ""
+  },
+  "2012-07": {
+    "correctChoices": [
+      4,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2012-7",
+    "verifiedAt": ""
+  },
+  "2012-08": {
+    "correctChoices": [
+      1,
+      3,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2012-8",
+    "verifiedAt": ""
+  },
+  "2012-09": {
+    "correctChoices": [
+      2,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2012-9",
+    "verifiedAt": ""
+  },
+  "2012-10": {
+    "correctChoices": [
+      1,
+      2,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2012-10",
+    "verifiedAt": ""
+  },
+  "2012-11": {
+    "correctChoices": [
+      3,
+      4
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2012-11",
+    "verifiedAt": ""
+  },
+  "2012-12": {
+    "correctChoices": [
+      2,
+      3
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2012-12",
+    "verifiedAt": ""
+  },
+  "2012-13": {
+    "correctChoices": [
+      2,
+      3,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2012-13",
+    "verifiedAt": ""
+  },
+  "2012-14": {
+    "correctChoices": [
+      2,
+      3
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2012-14",
+    "verifiedAt": ""
+  },
+  "2012-15": {
+    "correctChoices": [
+      3,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2012-15",
+    "verifiedAt": ""
+  },
+  "2012-16": {
+    "correctChoices": [
+      4,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2012-16",
+    "verifiedAt": ""
+  },
+  "2012-17": {
+    "correctChoices": [
+      1,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2012-17",
+    "verifiedAt": ""
+  },
+  "2012-18": {
+    "correctChoices": [
+      1,
+      3,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2012-18",
+    "verifiedAt": ""
+  },
+  "2012-19": {
+    "correctChoices": [
+      1,
+      3,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2012-19",
+    "verifiedAt": ""
+  },
+  "2012-20": {
+    "correctChoices": [
+      1,
+      4
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2012-20",
+    "verifiedAt": ""
+  },
+  "2012-21": {
+    "correctChoices": [
+      1,
+      2,
+      3
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2012-21",
+    "verifiedAt": ""
+  },
+  "2012-22": {
+    "correctChoices": [
+      3,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2012-22",
+    "verifiedAt": ""
+  },
+  "2012-23": {
+    "correctChoices": [
+      3,
+      4
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2012-23",
+    "verifiedAt": ""
+  },
+  "2012-24": {
+    "correctChoices": [
+      2,
+      3,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2012-24",
+    "verifiedAt": ""
+  },
+  "2012-25": {
+    "correctChoices": [
+      2,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2012-25",
+    "verifiedAt": ""
+  },
+  "2012-26": {
+    "correctChoices": [
+      2,
+      3,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2012-26",
+    "verifiedAt": ""
+  },
+  "2012-27": {
+    "correctChoices": [
+      2,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2012-27",
+    "verifiedAt": ""
+  },
+  "2012-28": {
+    "correctChoices": [
+      2,
+      3,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2012-28",
+    "verifiedAt": ""
+  },
+  "2012-29": {
+    "correctChoices": [
+      1,
+      2,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2012-29",
+    "verifiedAt": ""
+  },
+  "2012-30": {
+    "correctChoices": [
+      1,
+      2,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2012-30",
+    "verifiedAt": ""
+  },
+  "2012-31": {
+    "correctChoices": [
+      1,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2012-31",
+    "verifiedAt": ""
+  },
+  "2012-32": {
+    "correctChoices": [
+      2,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2012-32",
+    "verifiedAt": ""
+  },
+  "2012-33": {
+    "correctChoices": [
+      1,
+      3,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2012-33",
+    "verifiedAt": ""
+  },
+  "2012-34": {
+    "correctChoices": [
+      1,
+      2,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2012-34",
+    "verifiedAt": ""
+  },
+  "2012-35": {
+    "correctChoices": [
+      1,
+      3,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2012-35",
+    "verifiedAt": ""
+  },
+  "2012-36": {
+    "correctChoices": [
+      1,
+      3,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2012-36",
+    "verifiedAt": ""
+  },
+  "2012-37": {
+    "correctChoices": [
+      3,
+      4
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2012-37",
+    "verifiedAt": ""
+  },
+  "2012-38": {
+    "correctChoices": [
+      1,
+      2,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2012-38",
+    "verifiedAt": ""
+  },
+  "2012-39": {
+    "correctChoices": [
+      2,
+      4
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2012-39",
+    "verifiedAt": ""
+  },
+  "2012-40": {
+    "correctChoices": [
+      2,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2012-40",
+    "verifiedAt": ""
+  },
+  "2012-41": {
+    "correctChoices": [
+      1,
+      3,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2012-41",
+    "verifiedAt": ""
+  },
+  "2012-42": {
+    "correctChoices": [
+      1,
+      3,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2012-42",
+    "verifiedAt": ""
+  },
+  "2012-43": {
+    "correctChoices": [
+      3,
+      4
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2012-43",
+    "verifiedAt": ""
+  },
+  "2012-44": {
+    "correctChoices": [
+      1,
+      3,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2012-44",
+    "verifiedAt": ""
+  },
+  "2012-45": {
+    "correctChoices": [
+      2,
+      3,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2012-45",
+    "verifiedAt": ""
+  },
+  "2012-46": {
+    "correctChoices": [
+      1,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2012-46",
+    "verifiedAt": ""
+  },
+  "2012-47": {
+    "correctChoices": [
+      2,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2012-47",
+    "verifiedAt": ""
+  },
+  "2012-48": {
+    "correctChoices": [
+      2,
+      4
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2012-48",
+    "verifiedAt": ""
+  },
+  "2012-49": {
+    "correctChoices": [
+      4,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2012-49",
+    "verifiedAt": ""
+  },
+  "2012-50": {
+    "correctChoices": [
+      1,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2012-50",
+    "verifiedAt": ""
+  },
+  "2012-51": {
+    "correctChoices": [
+      1,
+      4
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2012-51",
+    "verifiedAt": ""
+  },
+  "2012-52": {
+    "correctChoices": [
+      1,
+      3
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2012-52",
+    "verifiedAt": ""
+  },
+  "2012-53": {
+    "correctChoices": [
+      1,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2012-53",
+    "verifiedAt": ""
+  },
+  "2012-54": {
+    "correctChoices": [
+      2,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2012-54",
+    "verifiedAt": ""
+  },
+  "2012-55": {
+    "correctChoices": [
+      1,
+      3,
+      4
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2012-55",
+    "verifiedAt": ""
+  },
+  "2012-56": {
+    "correctChoices": [
+      1,
+      2,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2012-56",
+    "verifiedAt": ""
+  },
+  "2012-57": {
+    "correctChoices": [
+      1,
+      4,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2012-57",
+    "verifiedAt": ""
+  },
+  "2012-58": {
+    "correctChoices": [
+      4,
+      5
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2012-58",
+    "verifiedAt": ""
+  },
+  "2012-59": {
+    "correctChoices": [
+      2,
+      4
+    ],
+    "selectionCount": 2,
+    "sourceId": "published-2012-59",
+    "verifiedAt": ""
+  },
+  "2012-60": {
+    "correctChoices": [
+      2,
+      3,
+      5
+    ],
+    "selectionCount": 3,
+    "sourceId": "published-2012-60",
+    "verifiedAt": ""
+  }
+}

@@ -1,0 +1,697 @@
+{
+  "2015-01": {
+    "revision": 1,
+    "title": "介護保険法に定める保健福祉事業",
+    "primaryCategory": "A3",
+    "primaryConceptId": "supply",
+    "relatedConceptIds": [
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-02": {
+    "revision": 1,
+    "title": "介護保険法",
+    "primaryCategory": "A3",
+    "primaryConceptId": "supply",
+    "relatedConceptIds": [
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-03": {
+    "revision": 1,
+    "title": "指定介護老人福祉施設",
+    "primaryCategory": "A3",
+    "primaryConceptId": "supply",
+    "relatedConceptIds": [
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-04": {
+    "revision": 1,
+    "title": "一般介護予防事業の種類",
+    "primaryCategory": "A3",
+    "primaryConceptId": "supply",
+    "relatedConceptIds": [
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-05": {
+    "revision": 1,
+    "title": "介護予防・日常生活支援総合事業",
+    "primaryCategory": "A3",
+    "primaryConceptId": "supply",
+    "relatedConceptIds": [
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-06": {
+    "revision": 1,
+    "title": "包括的支援事業の事業",
+    "primaryCategory": "A3",
+    "primaryConceptId": "supply",
+    "relatedConceptIds": [
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-07": {
+    "revision": 1,
+    "title": "介護サービス情報の公表制度",
+    "primaryCategory": "A3",
+    "primaryConceptId": "supply",
+    "relatedConceptIds": [
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-08": {
+    "revision": 1,
+    "title": "国民健康保険団体連合会の業務",
+    "primaryCategory": "A4",
+    "primaryConceptId": "benefits",
+    "relatedConceptIds": [
+      "appeal"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-09": {
+    "revision": 1,
+    "title": "介護保険法",
+    "primaryCategory": "A4",
+    "primaryConceptId": "benefits",
+    "relatedConceptIds": [
+      "appeal"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-10": {
+    "revision": 1,
+    "title": "制度の理念・保険者",
+    "primaryCategory": "A0",
+    "primaryConceptId": "dignity",
+    "relatedConceptIds": [
+      "insurer"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-11": {
+    "revision": 1,
+    "title": "介護保険",
+    "primaryCategory": "A0",
+    "primaryConceptId": "dignity",
+    "relatedConceptIds": [
+      "insurer"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-12": {
+    "revision": 1,
+    "title": "介護保険給付が優先するもの",
+    "primaryCategory": "A4",
+    "primaryConceptId": "benefits",
+    "relatedConceptIds": [
+      "appeal"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-13": {
+    "revision": 1,
+    "title": "介護保険制度の利用者負担",
+    "primaryCategory": "A4",
+    "primaryConceptId": "benefits",
+    "relatedConceptIds": [
+      "appeal"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-14": {
+    "revision": 1,
+    "title": "包括的支援事業の事業",
+    "primaryCategory": "A3",
+    "primaryConceptId": "supply",
+    "relatedConceptIds": [
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-15": {
+    "revision": 1,
+    "title": "社会保険診療報酬支払基金の介護保険関係業務",
+    "primaryCategory": "A2",
+    "primaryConceptId": "insured",
+    "relatedConceptIds": [
+      "premium"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-16": {
+    "revision": 1,
+    "title": "要介護認定",
+    "primaryCategory": "B2",
+    "primaryConceptId": "certification",
+    "relatedConceptIds": [
+      "medical-opinion"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-17": {
+    "revision": 1,
+    "title": "要介護認定",
+    "primaryCategory": "B2",
+    "primaryConceptId": "certification",
+    "relatedConceptIds": [
+      "medical-opinion"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-18": {
+    "revision": 1,
+    "title": "要介護認定",
+    "primaryCategory": "B2",
+    "primaryConceptId": "certification",
+    "relatedConceptIds": [
+      "medical-opinion"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-19": {
+    "revision": 1,
+    "title": "サービス提供・連携",
+    "primaryCategory": "B4",
+    "primaryConceptId": "coordination",
+    "relatedConceptIds": [
+      "neutrality"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-20": {
+    "revision": 1,
+    "title": "医師が行う指定居宅療養管理指導の具体的取扱方針",
+    "primaryCategory": "B4",
+    "primaryConceptId": "coordination",
+    "relatedConceptIds": [
+      "neutrality"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-21": {
+    "revision": 1,
+    "title": "サービス供給体制",
+    "primaryCategory": "A3",
+    "primaryConceptId": "supply",
+    "relatedConceptIds": [
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-22": {
+    "revision": 1,
+    "title": "介護予防支援事業",
+    "primaryCategory": "A3",
+    "primaryConceptId": "supply",
+    "relatedConceptIds": [
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-23": {
+    "revision": 1,
+    "title": "モニタリング・再評価",
+    "primaryCategory": "B5",
+    "primaryConceptId": "monitoring",
+    "relatedConceptIds": [
+      "reassessment"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-24": {
+    "revision": 1,
+    "title": "モニタリング・再評価",
+    "primaryCategory": "B5",
+    "primaryConceptId": "monitoring",
+    "relatedConceptIds": [
+      "reassessment"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-25": {
+    "revision": 1,
+    "title": "サービス提供・連携",
+    "primaryCategory": "B4",
+    "primaryConceptId": "coordination",
+    "relatedConceptIds": [
+      "neutrality"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-26": {
+    "revision": 1,
+    "title": "疾病・身体機能",
+    "primaryCategory": "C1",
+    "primaryConceptId": "past.disease",
+    "relatedConceptIds": [
+      "medical-opinion",
+      "assessment"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-27": {
+    "revision": 1,
+    "title": "低栄養",
+    "primaryCategory": "C1",
+    "primaryConceptId": "past.disease",
+    "relatedConceptIds": [
+      "medical-opinion",
+      "assessment"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-28": {
+    "revision": 1,
+    "title": "嚥下や口腔ケア",
+    "primaryCategory": "C1",
+    "primaryConceptId": "past.disease",
+    "relatedConceptIds": [
+      "medical-opinion",
+      "assessment"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-29": {
+    "revision": 1,
+    "title": "薬剤",
+    "primaryCategory": "C3",
+    "primaryConceptId": "past.clinical",
+    "relatedConceptIds": [
+      "medical-opinion",
+      "coordination"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-30": {
+    "revision": 1,
+    "title": "介護保険施設",
+    "primaryCategory": "C2",
+    "primaryConceptId": "past.mental",
+    "relatedConceptIds": [
+      "dignity",
+      "assessment"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-31": {
+    "revision": 1,
+    "title": "胃ろう",
+    "primaryCategory": "C3",
+    "primaryConceptId": "past.clinical",
+    "relatedConceptIds": [
+      "medical-opinion",
+      "coordination"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-32": {
+    "revision": 1,
+    "title": "疾病・身体機能",
+    "primaryCategory": "C1",
+    "primaryConceptId": "past.disease",
+    "relatedConceptIds": [
+      "medical-opinion",
+      "assessment"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-33": {
+    "revision": 1,
+    "title": "排泄",
+    "primaryCategory": "C1",
+    "primaryConceptId": "past.disease",
+    "relatedConceptIds": [
+      "medical-opinion",
+      "assessment"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-34": {
+    "revision": 1,
+    "title": "終末期のケア",
+    "primaryCategory": "C5",
+    "primaryConceptId": "past.rights",
+    "relatedConceptIds": [
+      "dignity",
+      "consent"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-35": {
+    "revision": 1,
+    "title": "認知症・精神機能",
+    "primaryCategory": "C2",
+    "primaryConceptId": "past.mental",
+    "relatedConceptIds": [
+      "dignity",
+      "assessment"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-36": {
+    "revision": 1,
+    "title": "疾病・身体機能",
+    "primaryCategory": "C1",
+    "primaryConceptId": "past.disease",
+    "relatedConceptIds": [
+      "medical-opinion",
+      "assessment"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-37": {
+    "revision": 1,
+    "title": "難病",
+    "primaryCategory": "C1",
+    "primaryConceptId": "past.disease",
+    "relatedConceptIds": [
+      "medical-opinion",
+      "assessment"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-38": {
+    "revision": 1,
+    "title": "疾病・身体機能",
+    "primaryCategory": "C1",
+    "primaryConceptId": "past.disease",
+    "relatedConceptIds": [
+      "medical-opinion",
+      "assessment"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-39": {
+    "revision": 1,
+    "title": "感染予防",
+    "primaryCategory": "C1",
+    "primaryConceptId": "past.disease",
+    "relatedConceptIds": [
+      "medical-opinion",
+      "assessment"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-40": {
+    "revision": 1,
+    "title": "短期入所療養介護",
+    "primaryCategory": "C3",
+    "primaryConceptId": "past.clinical",
+    "relatedConceptIds": [
+      "medical-opinion",
+      "coordination"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-41": {
+    "revision": 1,
+    "title": "バイタルサイン",
+    "primaryCategory": "C1",
+    "primaryConceptId": "past.disease",
+    "relatedConceptIds": [
+      "medical-opinion",
+      "assessment"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-42": {
+    "revision": 1,
+    "title": "訪問看護",
+    "primaryCategory": "C3",
+    "primaryConceptId": "past.clinical",
+    "relatedConceptIds": [
+      "medical-opinion",
+      "coordination"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-43": {
+    "revision": 1,
+    "title": "認知症",
+    "primaryCategory": "C2",
+    "primaryConceptId": "past.mental",
+    "relatedConceptIds": [
+      "dignity",
+      "assessment"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-44": {
+    "revision": 1,
+    "title": "リハビリテーション",
+    "primaryCategory": "C3",
+    "primaryConceptId": "past.clinical",
+    "relatedConceptIds": [
+      "medical-opinion",
+      "coordination"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-45": {
+    "revision": 1,
+    "title": "居宅療養管理指導",
+    "primaryCategory": "C3",
+    "primaryConceptId": "past.clinical",
+    "relatedConceptIds": [
+      "medical-opinion",
+      "coordination"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-46": {
+    "revision": 1,
+    "title": "生活支援・福祉",
+    "primaryCategory": "C4",
+    "primaryConceptId": "past.social",
+    "relatedConceptIds": [
+      "choice",
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-47": {
+    "revision": 1,
+    "title": "面接場面",
+    "primaryCategory": "C4",
+    "primaryConceptId": "past.social",
+    "relatedConceptIds": [
+      "choice",
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-48": {
+    "revision": 1,
+    "title": "生活支援・福祉",
+    "primaryCategory": "C4",
+    "primaryConceptId": "past.social",
+    "relatedConceptIds": [
+      "choice",
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-49": {
+    "revision": 1,
+    "title": "支援困難事例への基本的アプローチ",
+    "primaryCategory": "C4",
+    "primaryConceptId": "past.social",
+    "relatedConceptIds": [
+      "choice",
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-50": {
+    "revision": 1,
+    "title": "介護保険",
+    "primaryCategory": "C4",
+    "primaryConceptId": "past.social",
+    "relatedConceptIds": [
+      "choice",
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-51": {
+    "revision": 1,
+    "title": "介護保険",
+    "primaryCategory": "C4",
+    "primaryConceptId": "past.social",
+    "relatedConceptIds": [
+      "choice",
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-52": {
+    "revision": 1,
+    "title": "短期入所生活介護",
+    "primaryCategory": "C4",
+    "primaryConceptId": "past.social",
+    "relatedConceptIds": [
+      "choice",
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-53": {
+    "revision": 1,
+    "title": "特定施設入居者生活介護",
+    "primaryCategory": "C4",
+    "primaryConceptId": "past.social",
+    "relatedConceptIds": [
+      "choice",
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-54": {
+    "revision": 1,
+    "title": "介護保険",
+    "primaryCategory": "C4",
+    "primaryConceptId": "past.social",
+    "relatedConceptIds": [
+      "choice",
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-55": {
+    "revision": 1,
+    "title": "介護保険",
+    "primaryCategory": "C4",
+    "primaryConceptId": "past.social",
+    "relatedConceptIds": [
+      "choice",
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-56": {
+    "revision": 1,
+    "title": "小規模多機能型居宅介護",
+    "primaryCategory": "C4",
+    "primaryConceptId": "past.social",
+    "relatedConceptIds": [
+      "choice",
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-57": {
+    "revision": 1,
+    "title": "指定介護老人福祉施設",
+    "primaryCategory": "C4",
+    "primaryConceptId": "past.social",
+    "relatedConceptIds": [
+      "choice",
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-58": {
+    "revision": 1,
+    "title": "生活保護制度",
+    "primaryCategory": "C4",
+    "primaryConceptId": "past.social",
+    "relatedConceptIds": [
+      "choice",
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-59": {
+    "revision": 1,
+    "title": "成年後見制度",
+    "primaryCategory": "C5",
+    "primaryConceptId": "past.rights",
+    "relatedConceptIds": [
+      "dignity",
+      "consent"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  },
+  "2015-60": {
+    "revision": 1,
+    "title": "障害者の日常生活及び社会生活を総合的に支援するための法律",
+    "primaryCategory": "C4",
+    "primaryConceptId": "past.social",
+    "relatedConceptIds": [
+      "choice",
+      "community"
+    ],
+    "difficulty": 2,
+    "status": "provisional"
+  }
+}

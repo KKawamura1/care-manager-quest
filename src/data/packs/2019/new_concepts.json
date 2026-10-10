@@ -1,0 +1,367 @@
+[
+  {
+    "id": "A0.2017_reform",
+    "categoryId": "A0",
+    "label": "介護保険制度改正",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "benefits",
+      "supply"
+    ]
+  },
+  {
+    "id": "B1.specific_diseases",
+    "categoryId": "B1",
+    "label": "介護保険の特定疾病",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "eligibility"
+    ]
+  },
+  {
+    "id": "A2.adjustment_grant",
+    "categoryId": "A2",
+    "label": "介護保険の調整交付金",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "premium"
+    ]
+  },
+  {
+    "id": "A2.payment_fund",
+    "categoryId": "A2",
+    "label": "支払基金と介護給付費交付金",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "premium"
+    ]
+  },
+  {
+    "id": "B3.preventive_care_management",
+    "categoryId": "B3",
+    "label": "指定介護予防支援",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "monitoring",
+      "coordination"
+    ]
+  },
+  {
+    "id": "C1.respiration",
+    "categoryId": "C1",
+    "label": "呼吸状態の観察",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "assessment"
+    ]
+  },
+  {
+    "id": "C1.swallowing",
+    "categoryId": "C1",
+    "label": "摂食・嚥下と食事支援",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "assessment"
+    ]
+  },
+  {
+    "id": "C1.sleep",
+    "categoryId": "C1",
+    "label": "睡眠障害と生活リズム",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "assessment"
+    ]
+  },
+  {
+    "id": "C1.oral_health",
+    "categoryId": "C1",
+    "label": "口腔機能・口腔ケア",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "assessment"
+    ]
+  },
+  {
+    "id": "C2.dementia_assessment",
+    "categoryId": "C2",
+    "label": "認知症の評価・薬物治療",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "C.dementia_policy"
+    ]
+  },
+  {
+    "id": "C1.frailty_disease",
+    "categoryId": "C1",
+    "label": "フレイルと高齢者の疾病",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "assessment"
+    ]
+  },
+  {
+    "id": "C3.emergency_medication",
+    "categoryId": "C3",
+    "label": "緊急対応と薬剤の基礎",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "coordination"
+    ]
+  },
+  {
+    "id": "C3.first_aid",
+    "categoryId": "C3",
+    "label": "急変時の応急処置",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "coordination"
+    ]
+  },
+  {
+    "id": "C3.home_medical_care",
+    "categoryId": "C3",
+    "label": "在宅医療管理",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "coordination"
+    ]
+  },
+  {
+    "id": "C2.depression",
+    "categoryId": "C2",
+    "label": "老年期うつ病",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "assessment"
+    ]
+  },
+  {
+    "id": "C1.vital_signs",
+    "categoryId": "C1",
+    "label": "バイタルサインの観察",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "assessment"
+    ]
+  },
+  {
+    "id": "C1.examinations",
+    "categoryId": "C1",
+    "label": "検査値と検査の理解",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "assessment"
+    ]
+  },
+  {
+    "id": "C3.hospital_coordination",
+    "categoryId": "C3",
+    "label": "入院時連携と説明・同意",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "coordination",
+      "consent"
+    ]
+  },
+  {
+    "id": "C3.infection_control",
+    "categoryId": "C3",
+    "label": "感染症・感染予防",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "coordination"
+    ]
+  },
+  {
+    "id": "C1.geriatric_disease",
+    "categoryId": "C1",
+    "label": "高齢者の疾病の特徴",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "assessment"
+    ]
+  },
+  {
+    "id": "C5.advance_care_planning",
+    "categoryId": "C5",
+    "label": "アドバンス・ケア・プランニング",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "dignity",
+      "consent"
+    ]
+  },
+  {
+    "id": "C3.short_stay_medical",
+    "categoryId": "C3",
+    "label": "短期入所療養介護",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "benefits"
+    ]
+  },
+  {
+    "id": "C3.nursing_small_scale",
+    "categoryId": "C3",
+    "label": "看護小規模多機能型居宅介護",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "coordination"
+    ]
+  },
+  {
+    "id": "C3.home_medical_guidance",
+    "categoryId": "C3",
+    "label": "居宅療養管理指導",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "coordination"
+    ]
+  },
+  {
+    "id": "C3.care_medical_institution",
+    "categoryId": "C3",
+    "label": "介護医療院",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "benefits"
+    ]
+  },
+  {
+    "id": "C4.interview_communication",
+    "categoryId": "C4",
+    "label": "面接のコミュニケーション技術",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "dignity"
+    ]
+  },
+  {
+    "id": "C4.social_work",
+    "categoryId": "C4",
+    "label": "ソーシャルワークの過程",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "assessment"
+    ]
+  },
+  {
+    "id": "C4.casework",
+    "categoryId": "C4",
+    "label": "個別援助技術",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "community"
+    ]
+  },
+  {
+    "id": "C4.community_work",
+    "categoryId": "C4",
+    "label": "地域援助技術",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "community"
+    ]
+  },
+  {
+    "id": "C4.home_help",
+    "categoryId": "C4",
+    "label": "訪問介護のサービス内容",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "benefits"
+    ]
+  },
+  {
+    "id": "C4.day_care",
+    "categoryId": "C4",
+    "label": "通所介護の加算",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "benefits"
+    ]
+  },
+  {
+    "id": "C4.home_bathing",
+    "categoryId": "C4",
+    "label": "訪問入浴介護",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "benefits"
+    ]
+  },
+  {
+    "id": "C4.short_stay_life",
+    "categoryId": "C4",
+    "label": "短期入所生活介護",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "benefits"
+    ]
+  },
+  {
+    "id": "C4.home_adaptation",
+    "categoryId": "C4",
+    "label": "住宅改修",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "benefits"
+    ]
+  },
+  {
+    "id": "C4.dementia_day_care",
+    "categoryId": "C4",
+    "label": "認知症対応型通所介護",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "C.dementia_policy"
+    ]
+  },
+  {
+    "id": "C4.night_home_help",
+    "categoryId": "C4",
+    "label": "夜間対応型訪問介護",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "benefits"
+    ]
+  },
+  {
+    "id": "C4.special_nursing_home",
+    "categoryId": "C4",
+    "label": "介護老人福祉施設の運営",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "benefits"
+    ]
+  },
+  {
+    "id": "C4.poverty_support",
+    "categoryId": "C4",
+    "label": "生活困窮者自立支援制度",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "community"
+    ]
+  },
+  {
+    "id": "C4.public_assistance",
+    "categoryId": "C4",
+    "label": "生活保護制度と介護扶助",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "benefits"
+    ]
+  },
+  {
+    "id": "C5.guardianship",
+    "categoryId": "C5",
+    "label": "成年後見制度",
+    "summary": "2019年度の出題内容から暫定的に作成した論点です。現行法との適合性は未確認です。",
+    "relatedIds": [
+      "dignity",
+      "community"
+    ]
+  }
+]

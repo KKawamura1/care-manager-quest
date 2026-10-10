@@ -4,7 +4,8 @@ export const totalXp = (p: PlayerState) => p.attempts.reduce((sum, a) => sum + a
 export const levelInfo = (xp: number) => ({ level: Math.floor(xp / 200) + 1, current: xp % 200, next: 200 - xp % 200 });
 export const conceptStatus = (p?: ConceptProgress): 'unexplored' | 'learning' | 'mastered' => !p?.seenQuestionIds.length ? 'unexplored' : p.reflected && p.correctQuestionIds.length >= 2 ? 'mastered' : 'learning';
 export function isCorrect(q: Question, ids: readonly string[]): boolean {
-  return ids.length === q.selectionCount && new Set(ids).size === ids.length && q.answerIds.every(id => ids.includes(id));
+  const keys = q.answerVariants ?? [q.answerIds];
+  return ids.length === q.selectionCount && new Set(ids).size === ids.length && keys.some(key => key.length === ids.length && key.every(id => ids.includes(id)));
 }
 export function awardXp(q: Question, correct: boolean, first: boolean, combo: number): number {
   return correct ? 30 + q.difficulty * 10 + (first ? 20 : 0) + Math.min(Math.max(combo - 1, 0), 4) * 10 : 10;
@@ -60,3 +61,4 @@ export function reflect(p: PlayerState, conceptIds: string[]): PlayerState {
   for (const id of conceptIds) if (evidence[id]) evidence[id] = { ...evidence[id], reflected: true };
   return { ...p, concepts: evidence };
 }
+
