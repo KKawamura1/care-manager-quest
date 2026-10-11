@@ -5,6 +5,9 @@ on:
       - 'data/taxonomy/**'
       - 'docs/taxonomy/**'
       - 'scripts/validate-taxonomy.py'
+      - 'scripts/*issue32*.mjs'
+      - 'imports/**'
+      - 'src/data/packs/**/questions.json'
       - '.github/workflows/taxonomy.yml'
   push:
     branches: [main]
@@ -12,10 +15,16 @@ on:
       - 'data/taxonomy/**'
       - 'docs/taxonomy/**'
       - 'scripts/validate-taxonomy.py'
+      - 'scripts/*issue32*.mjs'
+      - 'imports/**'
+      - 'src/data/packs/**/questions.json'
       - '.github/workflows/taxonomy.yml'
   workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: taxonomy-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   validate-taxonomy:
     runs-on: ubuntu-24.04
@@ -25,3 +34,31 @@ jobs:
         with:
           python-version: '3.12'
       - run: python scripts/validate-taxonomy.py
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify annual canonical data, summaries and checksums
+        run: node scripts/consolidate-issue32-revisions.mjs --check
+      - name: Verify repository source text synchronization
+        run: node scripts/sync-issue32-sources.mjs --check
+      - name: Test consolidation and synchronization regressions
+        run: node scripts/test-issue32-consolidation.mjs
+      - run: node scripts/validate-issue32-classifications.mjs
+      - run: node scripts/validate-issue32-revisions.mjs
+      - run: node scripts/test-issue32-ids.mjs
+      - run: node scripts/test-issue32-drawers.mjs
+      - run: node scripts/normalize-issue32-ids.mjs --output-dir=./issue32-normalized-output
+      - uses: actions/upload-artifact@v4
+        with:
+          name: issue32-normalized-drawers
+          path: issue32-normalized-output/
+          retention-days: 30
+      - run: node scripts/validate-issue32-knowledge-target.mjs
+      - run: node scripts/validate-issue32-knowledge-target-all.mjs
+      - run: node scripts/report-issue32-knowledge-suspects.mjs --json --limit=5 > /tmp/issue32-suspects-smoke.json
+      - run: node scripts/audit-issue32-all-propositions.mjs --output-dir=./issue32-audit-output
+      - uses: actions/upload-artifact@v4
+        with:
+          name: issue32-full-classification-screen
+          path: issue32-audit-output/
+          retention-days: 30
