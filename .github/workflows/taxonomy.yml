@@ -34,3 +34,4 @@ jobs:
       - run: node scripts/validate-issue32-revisions.mjs
       - run: node scripts/validate-issue32-knowledge-target.mjs
       - run: node scripts/validate-issue32-knowledge-target-all.mjs
+      - run: node scripts/report-issue32-knowledge-suspects.mjs --json --limit=5 > /tmp/issue32-suspects-smoke.json
