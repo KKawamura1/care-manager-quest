@@ -818,15 +818,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "介護保険に関して市町村が有する権限について正しいもゃのはどれか。 2 つ 選べ。       *",
+      "stem": "介護保険に関して市町村が有する権限について正しいものはどれか。2つ選べ。",
       "choices": [
-        "援保険者に対する義齢等年金給付の支給状況について, 年金保険者に対し資料の 提供を求める。",
-        "要介護認定に関する審査請求事件について, 医療保険者に対し必要な報告を求める。",
-        "被保険者の保険料に関し, 械保険者の収入について調査する。",
-        "介護サービス情報の公表制度に係る報告に関し, 指定大宅サービス事業者を調査 する。",
+        "被保険者に対する老齢等年金給付の支給状況について、年金保険者に対し資料の提供を求める。",
+        "要介護認定に関する審査請求事件について、医療保険者に対し必要な報告を求める。",
+        "被保険者の保険料に関し、被保険者の収入について調査する。",
+        "介護サービス情報の公表制度に係る報告に関し、指定居宅サービス事業者を調査する。",
         "不正の手段により登録を受けた介護支援専門員の登録を消除する。"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -841,7 +841,9 @@
         "concepts": "unclassified"
       },
       "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
-      "ocr_structural_repairs": []
+      "ocr_structural_repairs": [],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-17",
@@ -866,15 +868,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "要介護認定の認定調査票(基本調査)に含まれる項目として正しいゃのはど れか。 3 つ選べ。",
+      "stem": "要介護認定の認定調査票（基本調査）に含まれる項目として正しいものはどれか。3つ選べ。",
       "choices": [
         "座位保持",
-        "整業",
+        "整髮",
         "預貯金の額",
         "学歴",
         "買い物"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -889,7 +891,9 @@
         "concepts": "unclassified"
       },
       "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
-      "ocr_structural_repairs": []
+      "ocr_structural_repairs": [],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-18",
@@ -913,15 +917,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "要介談認定の一次判定について正しいもゃのはどれか。 2 つ選べ。",
+      "stem": "要介護認定の一次判定について正しいものはどれか。2つ選べ。",
       "choices": [
-        "要介談認定等基準時間は, 1日当たりの時間として推計される。",
-        "相介設認定等基準時間は, 実際に居宅等で行わんている介護時間そのものである。",
-        "金剛共通の基準に基づき行われる。",
-        "都和府県が行わなければならない。",
-        "一次判定の結果は, 申請した技保険者に対し通知きまれなければならない。"
+        "要介護認定等基準時間は、1日当たりの時間として推計される。",
+        "要介護認定等基準時間は、実際に居宅等で行われている介護時間そのものである。",
+        "全国共通の基準に基づき行われる。",
+        "都道府県が行わなければならない。",
+        "一次判定の結果は、申請した被保険者に対し通知されなければならない。"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -936,7 +940,9 @@
         "concepts": "unclassified"
       },
       "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
-      "ocr_structural_repairs": []
+      "ocr_structural_repairs": [],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-19",
@@ -961,15 +967,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "要介護認定に係る主治医意見書の項目として正しいものはどれか。 3 つ選べ。",
+      "stem": "要介護認定に係る主治医意見書の項目として正しいものはどれか。3つ選べ。",
       "choices": [
         "栄養・食生活",
         "感染症の有無",
-        "医学的管理の必要性                            .",
-        "趣味       ・",
+        "医学的管理の必要性",
+        "趣味",
         "職歴"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -990,7 +996,9 @@
           "kind": "renumber_ocr",
           "line": "- 1 栄養・食生活"
         }
-      ]
+      ],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-20",
@@ -1015,15 +1023,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "指定居宅介護文援におけるケアマネジメント業務として, より奥切なもの はどれか。 3 つ選べ。",
+      "stem": "指定居宅介護支援におけるケアマネジメント業務として、より適切なものはどれか。3つ選べ。",
       "choices": [
         "課題分析標準項目に基づくアセスメントの実施",
         "利用者によるサービスの選択に資するための情報提供",
-        "地域ケア会議の主催 .、",
+        "地域ケア会議の主催",
         "住民による自発的活動の開発",
         "モニタリングの実施"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -1044,7 +1052,9 @@
           "kind": "renumber_ocr",
           "line": "] 課題分析標準項目に基づくアセスメントの実施"
         }
-      ]
+      ],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-21",
@@ -1069,15 +1079,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "居宅サービス計画の作成について正しいものはどれか。 3 つ選べ。",
+      "stem": "居宅サービス計画の作成について正しいものはどれか。3つ選べ。",
       "choices": [
-        "被保険者証に認定審恋会意見の記載がある場合には, 利用者にその趣旨を説明し. 理解を得た上で, その内容に治って作成しなければならない。",
-        "地域着型通所介談を位置付ける場合には, 認知定の専門医の意見を求めをけれ ばならない。",
-        "厚生労働大臣が定める回数以上の訪問介護は, 位置付けることができない。",
-        "短期入所生活介談を位置付ける場合には, 原則として利用する日数が正人談認定 の有効期間のおおむね半数を超えないようにしなければならない。",
-        "福祉用具貸与を位置付ける場合には, その利用の妥当性を核討し. 必要な理由を 記載しなければならない。"
+        "被保険者証に認定審査会意見の記載がある場合には、利用者にその趣旨を説明し、理解を得た上で、その内容に沿って作成しなければならない。",
+        "地域密着型通所介護を位置付ける場合には、認知症の専門医の意見を求めなければならない。",
+        "厚生労働大臣が定める回数以上の訪問介護は、位置付けることができない。",
+        "短期入所生活介護を位置付ける場合には、原則として利用する日数が要介護認定の有効期間のおおむね半数を超えないようにしなければならない。",
+        "福祉用具貸与を位置付ける場合には、その利用の妥当性を検討し、必要な理由を記載しなければならない。"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -1098,7 +1108,9 @@
           "kind": "renumber_ocr",
           "line": "、 3 厚生労働大臣が定める回数以上の訪問介護は, 位置付けることができない。"
         }
-      ]
+      ],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-22",
@@ -1123,15 +1135,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "指守居宅介護支援事業者の記録について正しいものはどれか。 3 つ選べ。",
+      "stem": "指定居宅介護支援事業者の記録について正しいものはどれか。3つ選べ。",
       "choices": [
-        "居宅介設支援経過は, 時系列で誰もが理解できるように記載する。",
-        "サービス担当者会議の記録は, 支援が完結すればその時点で廃棄してもよい。",
-        "自ら提供した指定居宅介支接とは明らかに関係がない普情を受け付けた場合で も, すべて記録し保存しなければならない。",
-        "指定居宅介談壇援の提供により発生した事攻の状況及び事故に際して採った処叶 について, 記録しなければならない。                ーー",
-        "不正の行為によって保険給付を受けた利用者については, 市町村に遅癌なく通知 するとともに., その記録を散備しなければならない。    ーー"
+        "居宅介護支援経過は、時系列で誰もが理解できるように記載する。",
+        "サービス担当者会議の記録は、支援が完結すればその時点で廃棄してもよい。",
+        "自ら提供した指定居宅介護支援とは明らかに関係がない苦情を受け付けた場合でも、すべて記録し保存しなければならない。",
+        "指定居宅介護支援の提供により発生した事故の状況及び事故に際して採った処置について、記録しなければならない。",
+        "不正の行為によって保険給付を受けた利用者については、市町村に遅滞なく通知するとともに、その記録を整備しなければならない。"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -1146,7 +1158,9 @@
         "concepts": "unclassified"
       },
       "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
-      "ocr_structural_repairs": []
+      "ocr_structural_repairs": [],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-23",
@@ -1171,15 +1185,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "指定介護予防支援について適切なもるのはどれか。 3 つ選べ。",
+      "stem": "指定介護予防支援について適切なものはどれか。3つ選べ。",
       "choices": [
-        "地域支援事業及び介護給付と連続性及び一貫竹を持った支援を行うように配慮する。",
-        "介護予防通所リハビリテーションを介護予防サービス計画に位置付ける場合には, 当該サービスに係る主治の医師の指示は必要ない。",
-        "介護予防サービス計画の策定に当たっては, 利用者の個別性を重家した効果的な ものとする。",
-        "利用者による主体的な取組を支援し, 常に利用者の生活機能の向上に対する意欲 を高めるよう支援する。",
-        "介護福祉士を配寺しなければならない。"
+        "地域支援事業及び介護給付と連続性及び一貫性を持った支援を行うように配慮する。",
+        "介護予防通所リハビリテーションを介護予防サービス計画に位置付ける場合には、当該サービスに係る主治の医師の指示は必要ない。",
+        "介護予防サービス計画の策定に当たっては、利用者の個別性を重視した効果的なものとする。",
+        "利用者による主体的な取組を支援し、常に利用者の生活機能の向上に対する意欲を高めるよう支援する。",
+        "介護福祉士を配置しなければならない。"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -1194,7 +1208,9 @@
         "concepts": "unclassified"
       },
       "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
-      "ocr_structural_repairs": []
+      "ocr_structural_repairs": [],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-24",
@@ -1218,15 +1234,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "Aさん(80歳, 女性, 要介護2, 認知機能は低下していない)は, 長男と 二人人募らしで, 通所介護を利用している。 その通所介談事業所の職員から, 入浴時 にAさんの体に直径3cm くらいのあざが数か所あることを見つけ, Aさんが[長 男に怒鳴られて, 町かれた」と話していたことについての相談があった。 高齢者護         - 待防止法を踏まえた介護支援専門員の対応として, より適切なものはどれか。 2 つ 選べ。",
+      "stem": "Aさん（80歳、女性、要介護2、認知機能は低下していない）は、長男と二人暮らしで、通所介護を利用している。その通所介護事業所の職員から、入浴時にAさんの体に直径3cmくらいのあざが数か所あることを見つけ、Aさんが「長男に怒鳴られて、叩かれた」と話していたことについての相談があった。高齢者虐待防止法を踏まえた介護支援専門員の対応として、より適切なものはどれか。2つ選べ。",
       "choices": [
-        "一時的なものと考えん, しばらく様子を見ることにする。",
-        "如やかに市町村に通報する。",
-        "直ちにAさんが長期問開設を受けるために必要となる居室を確保するための措恒 を決める。                                                                    .",
-        "長男がいない場で. Aさんと今後の介護サービス や対応について話をする機会を 設ける。",
-        "長男に対し, なぜ鳴ったり叩いたりしたのかを厳しく問いただす。"
+        "一時的なものと考え、しばらく様子を見ることにする。",
+        "速やかに市町村に通報する。",
+        "直ちにAさんが長期間養護を受けるために必要となる居室を確保するための措置を決める。",
+        "長男がいない場で、Aさんと今後の介護サービスや対応について話をする機会を設ける。",
+        "長男に対し、なぜ怒鳴ったり叩いたりしたのかを厳しく問いただす。"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -1247,7 +1263,9 @@
           "kind": "renumber_ocr",
           "line": "-2 如やかに市町村に通報する。"
         }
-      ]
+      ],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-25",
@@ -1272,15 +1290,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "Aさん(85歳女性)は, 長女と二人暮らしである。 Aさんは自宅で転倒 して脱槍を圧追骨折し, 1か月入院した。 退院後。 筋力低下が著しく, 要支援2 の 認定を受けた。介護支援専門員が訪問したところ, Aきんは以前のように自分で家 事や入浴をしたいと希望しているが, 長女は転倒を心配してデイサービスでの入浴 、 介助を希望していて折り合わない。自立支援・重度化防止の観点に立った介護支援 専門員の対応として, より適切なものはどれか。 3 つ選べ。",
+      "stem": "Aさん（85歳、女性）は、長女と二人暮らしである。Aさんは自宅で転倒して腰椎を圧迫骨折し、1か月入院した。退院後、筋力低下が著しく、要支援2の認定を受けた。介護支援専門員が訪問したところ、Aさんは以前のように自分で家事や入浴をしたいと希望しているが、長女は転倒を心配してデイサービスでの入浴介助を希望していて折り合わない。自立支援・重度化防止の観点に立った介護支援専門員の対応として、より適切なものはどれか。3つ選べ。",
       "choices": [
         "長女の希望だけに沿ったケアプランを作成する。",
-        "筋力低下の原因や回復方法等の確認のため, 医師. 理学療法士, 管理栄養士など に相談ずる。",
-        "自宅での転倒リスクを軽減し, できるだけ自宅での自立した生活を営めるように, 生活環境全般を把握する。",
-        "様子を見るため, あえて目標や期間を定めずに介護予防通所リハビリテーション . の利用を位置付ける。",
-        "Aさんと長女を交えて, 自立支援・重度化防止に向けた話し合いの場を設ける。"
+        "筋力低下の原因や回復方法等の確認のため、医師、理学療法士、管理栄養士などに相談する。",
+        "自宅での転倒リスクを軽減し、できるだけ自宅での自立した生活を営めるように、生活環境全般を把握する。",
+        "様子を見るため、あえて目標や期間を定めずに介護予防通所リハビリテーションの利用を位置付ける。",
+        "Aさんと長女を交えて、自立支援・重度化防止に向けた話し合いの場を設ける。"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -1306,7 +1324,9 @@
           "kind": "renumber_ocr",
           "line": "、 8 自宅での転倒リスクを軽減し, できるだけ自宅での自立した生活を営めるように,"
         }
-      ]
+      ],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-26",
@@ -1331,15 +1351,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "せん妻に関する次の記述のうち適切なかものはどれか。 3 つ選べ。",
+      "stem": "せん妄に関する次の記述のうち適切なものはどれか。3つ選べ。",
       "choices": [
         "日常生活における活動性が低下することがある。",
-        "認知症を有する人は, せん夫を起こしやすい。",
-        "治療は, 誘因にかかわらず薬物治療を最優先とする。",
-        "せん究の程度は, 時間の経過とともに変化することがある。",
-        "夜間にせん妄を起こす高齢者には, 日中の睡眠を十分にとらせる。"
+        "認知症を有する人は、せん妄を起こしやすい。",
+        "治療は、誘因にかかわらず薬物治療を最優先とする。",
+        "せん妄の程度は、時間の経過とともに変化することがある。",
+        "夜間にせん妄を起こす高齢者には、日中の睡眠を十分にとらせる。"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -1360,7 +1380,9 @@
           "kind": "renumber_ocr",
           "line": "8 治療は, 誘因にかかわらず薬物治療を最優先とする。"
         }
-      ]
+      ],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-27",
@@ -1385,15 +1407,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "パイタルサインについて適切なものはどれか。 3 つ選べ。    ーー",
+      "stem": "バイタルサインについて適切なものはどれか。3つ選べ。",
       "choices": [
         "生命の維持にかかわる最も基本的な情報である。",
-        "感染症にかかっても, 発幸しないことがある。",
-        "やせているため体温計を腰下部(朋の下)に密着できない場合には, 正確に体温を 測定できないことがある。",
-        "不整央の有病率は, 年齢用が高くなるにつれて減少する。 -",
-        "医師や衝師が血圧を測定すると低価になることが多い。"
+        "感染症にかかっても、発熱しないことがある。",
+        "やせているため体温計を腋下部（腋の下）に密着できない場合には、正確に体温を測定できないことがある。",
+        "不整脈の有病率は、年齢層が高くなるにつれて減少する。",
+        "医師や看護師が血圧を測定すると低値になることが多い。"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -1414,7 +1436,9 @@
           "kind": "renumber_ocr",
           "line": "] 生命の維持にかかわる最も基本的な情報である。"
         }
-      ]
+      ],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-28",
@@ -1439,15 +1463,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "口腔のケアについて適切なものはどれか。 3 つ選べ。",
+      "stem": "口腔のケアについて適切なものはどれか。3つ選べ。",
       "choices": [
-        "口腔内・口腔周囲を動かすことは, 口腔機能の維持・向上に資する。              .",
-        "胃ろうによる経管栄養を行っている高齢者では 口腔のケアは必要ない。  ・",
-        "寝たきりで片麻痺がある人の場合には,  誤只を防 ぐため, 麻痺側を下にして口腔 のケアを行う。",
-        "食後は義をはずして口腔内を清掃し,  義歯はブラシを使用して流水で洗う。:",
-        "高齢者では嘘液の分泌量が減り, う人や歯周病が起こりやすい。"
+        "口腔内・口腔周囲を動かすことは、口腔機能の維持・向上に資する。",
+        "胃ろうによる経管栄養を行っている高齢者では、口腔のケアは必要ない。",
+        "寝たきりで片麻痺がある人の場合には、誤嚥を防ぐため、麻痺側を下にして口腔のケアを行う。",
+        "食後は義歯をはずして口腔内を清掃し、義歯はブラシを使用して流水で洗う。",
+        "高齢者では唾液の分泌量が減り、う蝕や歯周病が起こりやすい。"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -1462,7 +1486,9 @@
         "concepts": "unclassified"
       },
       "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
-      "ocr_structural_repairs": []
+      "ocr_structural_repairs": [],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-29",
@@ -1487,15 +1513,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "リハビリテーションについて適切なものはどれか。 3 つ選べ。",
+      "stem": "リハビリテーションについて適切なものはどれか。3つ選べ。",
       "choices": [
         "利用者の残存能力をできる限り活かす。",
         "急性期及び回復期に獲得された機能をできるだけ長く維持することも重要である。",
-        "廃用による筋力低下や筋先縮の予防には, 趣味や余暇活動への参加は効果がない。",
-        "本人が普痛を感じなければ, 同じ姿勢で安静山床を続けることが望ましい。",
-        "変形性膝関節症は, 歩行障害の原因となることがある。                   ーー"
+        "廃用による筋力低下や筋委縮の予防には、趣味や余暇活動への参加は効果がない。",
+        "本人が苦痛を感じなければ、同じ姿勢で安静臥床を続けることが望ましい。",
+        "変形性膝関節症は、歩行障害の原因となることがある。"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -1510,7 +1536,9 @@
         "concepts": "unclassified"
       },
       "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
-      "ocr_structural_repairs": []
+      "ocr_structural_repairs": [],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-30",
@@ -1535,15 +1563,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "高齢者の精神疾患について, より適切な ものはどれか。 3 つ選べ。",
+      "stem": "高齢者の精神疾患について、より適切なものはどれか。3つ選べ。",
       "choices": [
-        "要因の一つに, 脳の加齢性変化がある。",
-        "うつ病では, 自殺リスクはない。",
-        "配偶者や近親者の死が,  うつ病の要因となることがある。",
-        "アルコール依存症は, うつ病を合併するこ とはない。",
-        "精神症状が定型的でなく, 訴えは多彩かつ曖味であるこ とがある。"
+        "要因の一つに、脳の加齢性変化がある。",
+        "うつ病では、自殺リスクはない。",
+        "配偶者や近親者の死が、うつ病の要因となることがある。",
+        "アルコール依存症は、うつ病を合併することはない。",
+        "精神症状が定型的でなく、訴えは多彩かつ曖昧であることがある。"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -1558,7 +1586,9 @@
         "concepts": "unclassified"
       },
       "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
-      "ocr_structural_repairs": []
+      "ocr_structural_repairs": [],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-31",
