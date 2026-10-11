@@ -1,0 +1,500 @@
+{
+  "taxonomy_version": "hypothesis-v1.0",
+  "source_issue": "KKawamura1/care-manager-quest#32",
+  "coverage": {
+    "years": [
+      2005,
+      2025
+    ],
+    "question_count": 1260,
+    "choice_count": 6300,
+    "proposition_record_count": 6335,
+    "choices_split_into_multiple_propositions": 31,
+    "additional_proposition_records_from_splits": 35,
+    "difficult_case_count": 96,
+    "status_counts": {
+      "assigned": 6239,
+      "ambiguous": 96,
+      "unmapped": 0,
+      "needs_source_review": 0
+    },
+    "primary_root_counts": {
+      "人の健康と生活": 1240,
+      "支援の考え方と方法": 1281,
+      "支援の提供体制": 1931,
+      "社会保障の仕組み": 1787
+    }
+  },
+  "validation": {
+    "all_years_have_60_questions_and_300_choices": true,
+    "duplicate_proposition_keys": 0,
+    "known_source_choice_records_exact": 3600,
+    "known_source_choice_mismatches": 0,
+    "proposition_indices_consecutive": true,
+    "ambiguous_rows_have_at_least_two_distinct_candidate_paths": true,
+    "unmapped_rows_have_no_assigned_path": true
+  },
+  "source_notes": {
+    "2005-2016": "Question text compared against repository question pack files.",
+    "2017-2024": "Existing source/status metadata retained in each record.",
+    "2025": "Full 60-question compressed source reconstructed by scripts/import-2025.mjs; SHA-256 badd92f316d751be0eb8414cfb4139f533e57a8186a0f53ab07302017de8161a. The 2025 source pack has no option-level classifications."
+  },
+  "status_definitions": {
+    "assigned": "A single primary path was selected; this records topical classification, not answer truth.",
+    "ambiguous": "Two or more plausible primary paths remain; no primary_path is selected.",
+    "unmapped": "No current path fits; no primary_path is selected.",
+    "needs_source_review": "Source/context is too uncertain to choose a path; ordinary OCR, historical-law, and review flags are tracked separately."
+  },
+  "yearly_coverage": [
+    {
+      "year": 2005,
+      "question_count": 60,
+      "choice_count": 300,
+      "proposition_record_count": 302,
+      "status_counts": {
+        "assigned": 295,
+        "ambiguous": 7,
+        "unmapped": 0,
+        "needs_source_review": 0
+      },
+      "primary_root_counts": {
+        "人の健康と生活": 54,
+        "支援の考え方と方法": 86,
+        "支援の提供体制": 67,
+        "社会保障の仕組み": 88
+      },
+      "ambiguous_candidate_root_counts": {
+        "人の健康と生活": 1,
+        "支援の考え方と方法": 5,
+        "支援の提供体制": 7,
+        "社会保障の仕組み": 1
+      }
+    },
+    {
+      "year": 2006,
+      "question_count": 60,
+      "choice_count": 300,
+      "proposition_record_count": 300,
+      "status_counts": {
+        "assigned": 296,
+        "ambiguous": 4,
+        "unmapped": 0,
+        "needs_source_review": 0
+      },
+      "primary_root_counts": {
+        "人の健康と生活": 50,
+        "支援の考え方と方法": 72,
+        "支援の提供体制": 73,
+        "社会保障の仕組み": 101
+      },
+      "ambiguous_candidate_root_counts": {
+        "支援の考え方と方法": 4,
+        "支援の提供体制": 4
+      }
+    },
+    {
+      "year": 2007,
+      "question_count": 60,
+      "choice_count": 300,
+      "proposition_record_count": 300,
+      "status_counts": {
+        "assigned": 290,
+        "ambiguous": 10,
+        "unmapped": 0,
+        "needs_source_review": 0
+      },
+      "primary_root_counts": {
+        "人の健康と生活": 49,
+        "支援の考え方と方法": 70,
+        "支援の提供体制": 68,
+        "社会保障の仕組み": 103
+      },
+      "ambiguous_candidate_root_counts": {
+        "人の健康と生活": 7,
+        "支援の考え方と方法": 5,
+        "支援の提供体制": 7,
+        "社会保障の仕組み": 1
+      }
+    },
+    {
+      "year": 2008,
+      "question_count": 60,
+      "choice_count": 300,
+      "proposition_record_count": 300,
+      "status_counts": {
+        "assigned": 295,
+        "ambiguous": 5,
+        "unmapped": 0,
+        "needs_source_review": 0
+      },
+      "primary_root_counts": {
+        "人の健康と生活": 76,
+        "支援の考え方と方法": 52,
+        "支援の提供体制": 64,
+        "社会保障の仕組み": 103
+      },
+      "ambiguous_candidate_root_counts": {
+        "人の健康と生活": 2,
+        "支援の考え方と方法": 3,
+        "支援の提供体制": 3,
+        "社会保障の仕組み": 2
+      }
+    },
+    {
+      "year": 2009,
+      "question_count": 60,
+      "choice_count": 300,
+      "proposition_record_count": 301,
+      "status_counts": {
+        "assigned": 281,
+        "ambiguous": 20,
+        "unmapped": 0,
+        "needs_source_review": 0
+      },
+      "primary_root_counts": {
+        "人の健康と生活": 54,
+        "支援の考え方と方法": 59,
+        "支援の提供体制": 112,
+        "社会保障の仕組み": 56
+      },
+      "ambiguous_candidate_root_counts": {
+        "人の健康と生活": 30,
+        "社会保障の仕組み": 10
+      }
+    },
+    {
+      "year": 2010,
+      "question_count": 60,
+      "choice_count": 300,
+      "proposition_record_count": 306,
+      "status_counts": {
+        "assigned": 306,
+        "ambiguous": 0,
+        "unmapped": 0,
+        "needs_source_review": 0
+      },
+      "primary_root_counts": {
+        "人の健康と生活": 59,
+        "支援の考え方と方法": 76,
+        "支援の提供体制": 111,
+        "社会保障の仕組み": 60
+      },
+      "ambiguous_candidate_root_counts": {}
+    },
+    {
+      "year": 2011,
+      "question_count": 60,
+      "choice_count": 300,
+      "proposition_record_count": 309,
+      "status_counts": {
+        "assigned": 304,
+        "ambiguous": 5,
+        "unmapped": 0,
+        "needs_source_review": 0
+      },
+      "primary_root_counts": {
+        "人の健康と生活": 68,
+        "支援の考え方と方法": 63,
+        "支援の提供体制": 119,
+        "社会保障の仕組み": 54
+      },
+      "ambiguous_candidate_root_counts": {
+        "人の健康と生活": 10
+      }
+    },
+    {
+      "year": 2012,
+      "question_count": 60,
+      "choice_count": 300,
+      "proposition_record_count": 304,
+      "status_counts": {
+        "assigned": 304,
+        "ambiguous": 0,
+        "unmapped": 0,
+        "needs_source_review": 0
+      },
+      "primary_root_counts": {
+        "人の健康と生活": 68,
+        "支援の考え方と方法": 54,
+        "支援の提供体制": 131,
+        "社会保障の仕組み": 51
+      },
+      "ambiguous_candidate_root_counts": {}
+    },
+    {
+      "year": 2013,
+      "question_count": 60,
+      "choice_count": 300,
+      "proposition_record_count": 303,
+      "status_counts": {
+        "assigned": 301,
+        "ambiguous": 2,
+        "unmapped": 0,
+        "needs_source_review": 0
+      },
+      "primary_root_counts": {
+        "人の健康と生活": 67,
+        "支援の考え方と方法": 70,
+        "支援の提供体制": 75,
+        "社会保障の仕組み": 89
+      },
+      "ambiguous_candidate_root_counts": {
+        "支援の考え方と方法": 3,
+        "支援の提供体制": 1
+      }
+    },
+    {
+      "year": 2014,
+      "question_count": 60,
+      "choice_count": 300,
+      "proposition_record_count": 301,
+      "status_counts": {
+        "assigned": 296,
+        "ambiguous": 5,
+        "unmapped": 0,
+        "needs_source_review": 0
+      },
+      "primary_root_counts": {
+        "人の健康と生活": 41,
+        "支援の考え方と方法": 79,
+        "支援の提供体制": 76,
+        "社会保障の仕組み": 100
+      },
+      "ambiguous_candidate_root_counts": {
+        "支援の考え方と方法": 5,
+        "支援の提供体制": 5
+      }
+    },
+    {
+      "year": 2015,
+      "question_count": 60,
+      "choice_count": 300,
+      "proposition_record_count": 302,
+      "status_counts": {
+        "assigned": 299,
+        "ambiguous": 3,
+        "unmapped": 0,
+        "needs_source_review": 0
+      },
+      "primary_root_counts": {
+        "人の健康と生活": 51,
+        "支援の考え方と方法": 75,
+        "支援の提供体制": 75,
+        "社会保障の仕組み": 98
+      },
+      "ambiguous_candidate_root_counts": {
+        "支援の考え方と方法": 3,
+        "支援の提供体制": 3
+      }
+    },
+    {
+      "year": 2016,
+      "question_count": 60,
+      "choice_count": 300,
+      "proposition_record_count": 301,
+      "status_counts": {
+        "assigned": 291,
+        "ambiguous": 10,
+        "unmapped": 0,
+        "needs_source_review": 0
+      },
+      "primary_root_counts": {
+        "人の健康と生活": 52,
+        "支援の考え方と方法": 76,
+        "支援の提供体制": 87,
+        "社会保障の仕組み": 76
+      },
+      "ambiguous_candidate_root_counts": {
+        "支援の考え方と方法": 10,
+        "支援の提供体制": 10
+      }
+    },
+    {
+      "year": 2017,
+      "question_count": 60,
+      "choice_count": 300,
+      "proposition_record_count": 305,
+      "status_counts": {
+        "assigned": 300,
+        "ambiguous": 5,
+        "unmapped": 0,
+        "needs_source_review": 0
+      },
+      "primary_root_counts": {
+        "人の健康と生活": 70,
+        "支援の考え方と方法": 34,
+        "支援の提供体制": 124,
+        "社会保障の仕組み": 72
+      },
+      "ambiguous_candidate_root_counts": {
+        "支援の提供体制": 5,
+        "社会保障の仕組み": 5
+      }
+    },
+    {
+      "year": 2018,
+      "question_count": 60,
+      "choice_count": 300,
+      "proposition_record_count": 300,
+      "status_counts": {
+        "assigned": 296,
+        "ambiguous": 4,
+        "unmapped": 0,
+        "needs_source_review": 0
+      },
+      "primary_root_counts": {
+        "人の健康と生活": 55,
+        "支援の考え方と方法": 40,
+        "支援の提供体制": 120,
+        "社会保障の仕組み": 81
+      },
+      "ambiguous_candidate_root_counts": {
+        "支援の提供体制": 4,
+        "社会保障の仕組み": 4
+      }
+    },
+    {
+      "year": 2019,
+      "question_count": 60,
+      "choice_count": 300,
+      "proposition_record_count": 300,
+      "status_counts": {
+        "assigned": 294,
+        "ambiguous": 6,
+        "unmapped": 0,
+        "needs_source_review": 0
+      },
+      "primary_root_counts": {
+        "人の健康と生活": 71,
+        "支援の考え方と方法": 46,
+        "支援の提供体制": 105,
+        "社会保障の仕組み": 72
+      },
+      "ambiguous_candidate_root_counts": {
+        "支援の提供体制": 6,
+        "社会保障の仕組み": 6
+      }
+    },
+    {
+      "year": 2020,
+      "question_count": 60,
+      "choice_count": 300,
+      "proposition_record_count": 301,
+      "status_counts": {
+        "assigned": 295,
+        "ambiguous": 6,
+        "unmapped": 0,
+        "needs_source_review": 0
+      },
+      "primary_root_counts": {
+        "人の健康と生活": 58,
+        "支援の考え方と方法": 36,
+        "支援の提供体制": 112,
+        "社会保障の仕組み": 89
+      },
+      "ambiguous_candidate_root_counts": {
+        "人の健康と生活": 5,
+        "支援の提供体制": 1,
+        "社会保障の仕組み": 6
+      }
+    },
+    {
+      "year": 2021,
+      "question_count": 60,
+      "choice_count": 300,
+      "proposition_record_count": 300,
+      "status_counts": {
+        "assigned": 300,
+        "ambiguous": 0,
+        "unmapped": 0,
+        "needs_source_review": 0
+      },
+      "primary_root_counts": {
+        "人の健康と生活": 52,
+        "支援の考え方と方法": 69,
+        "支援の提供体制": 84,
+        "社会保障の仕組み": 95
+      },
+      "ambiguous_candidate_root_counts": {}
+    },
+    {
+      "year": 2022,
+      "question_count": 60,
+      "choice_count": 300,
+      "proposition_record_count": 300,
+      "status_counts": {
+        "assigned": 300,
+        "ambiguous": 0,
+        "unmapped": 0,
+        "needs_source_review": 0
+      },
+      "primary_root_counts": {
+        "人の健康と生活": 54,
+        "支援の考え方と方法": 53,
+        "支援の提供体制": 98,
+        "社会保障の仕組み": 95
+      },
+      "ambiguous_candidate_root_counts": {}
+    },
+    {
+      "year": 2023,
+      "question_count": 60,
+      "choice_count": 300,
+      "proposition_record_count": 300,
+      "status_counts": {
+        "assigned": 300,
+        "ambiguous": 0,
+        "unmapped": 0,
+        "needs_source_review": 0
+      },
+      "primary_root_counts": {
+        "人の健康と生活": 56,
+        "支援の考え方と方法": 61,
+        "支援の提供体制": 83,
+        "社会保障の仕組み": 100
+      },
+      "ambiguous_candidate_root_counts": {}
+    },
+    {
+      "year": 2024,
+      "question_count": 60,
+      "choice_count": 300,
+      "proposition_record_count": 300,
+      "status_counts": {
+        "assigned": 300,
+        "ambiguous": 0,
+        "unmapped": 0,
+        "needs_source_review": 0
+      },
+      "primary_root_counts": {
+        "人の健康と生活": 77,
+        "支援の考え方と方法": 53,
+        "支援の提供体制": 60,
+        "社会保障の仕組み": 110
+      },
+      "ambiguous_candidate_root_counts": {}
+    },
+    {
+      "year": 2025,
+      "question_count": 60,
+      "choice_count": 300,
+      "proposition_record_count": 300,
+      "status_counts": {
+        "assigned": 296,
+        "ambiguous": 4,
+        "unmapped": 0,
+        "needs_source_review": 0
+      },
+      "primary_root_counts": {
+        "人の健康と生活": 58,
+        "支援の考え方と方法": 57,
+        "支援の提供体制": 87,
+        "社会保障の仕組み": 94
+      },
+      "ambiguous_candidate_root_counts": {
+        "支援の考え方と方法": 5,
+        "社会保障の仕組み": 3
+      }
+    }
+  ]
+}
