@@ -34,3 +34,19 @@ jobs:
       - run: node scripts/validate-issue32-revisions.mjs
       - run: node scripts/normalize-issue32-ids.mjs --check
       - run: node scripts/test-issue32-ids.mjs
+      - run: node scripts/test-issue32-drawers.mjs
+      - name: Generate reusable knowledge drawers and review report
+        run: |
+          mkdir -p build/issue32
+          node scripts/normalize-issue32-ids.mjs --jsonl > build/issue32/proposition-drawer-index.jsonl
+          node scripts/normalize-issue32-ids.mjs --drawers > build/issue32/knowledge-drawers.jsonl
+          node scripts/normalize-issue32-ids.mjs --path-drawers > build/issue32/original-path-to-drawers.jsonl
+          node scripts/normalize-issue32-ids.mjs --review > build/issue32/review-required-drawers.jsonl
+          node scripts/normalize-issue32-ids.mjs --aliases > build/issue32/question-id-aliases.json
+          node scripts/normalize-issue32-ids.mjs --report > build/issue32/normalization-report.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: issue32-normalized-drawers
+          path: build/issue32/
+          if-no-files-found: error
+          retention-days: 14
