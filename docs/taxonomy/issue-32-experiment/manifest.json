@@ -11,18 +11,18 @@
     "proposition_record_count": 6337,
     "choices_split_into_multiple_propositions": 33,
     "additional_proposition_records_from_splits": 37,
-    "difficult_case_count": 92,
+    "difficult_case_count": 86,
     "status_counts": {
-      "assigned": 6245,
-      "ambiguous": 92,
+      "assigned": 6251,
+      "ambiguous": 86,
       "unmapped": 0,
       "needs_source_review": 0
     },
     "primary_root_counts": {
-      "人の健康と生活": 1214,
-      "支援の考え方と方法": 1294,
-      "支援の提供体制": 1921,
-      "社会保障の仕組み": 1816
+      "人の健康と生活": 1192,
+      "支援の考え方と方法": 1315,
+      "支援の提供体制": 1899,
+      "社会保障の仕組み": 1845
     }
   },
   "validation": {
@@ -359,21 +359,18 @@
       "choice_count": 300,
       "proposition_record_count": 300,
       "status_counts": {
-        "assigned": 294,
-        "ambiguous": 6,
+        "assigned": 300,
+        "ambiguous": 0,
         "unmapped": 0,
         "needs_source_review": 0
       },
       "primary_root_counts": {
-        "人の健康と生活": 71,
-        "支援の考え方と方法": 46,
-        "支援の提供体制": 105,
-        "社会保障の仕組み": 72
+        "人の健康と生活": 49,
+        "支援の考え方と方法": 67,
+        "支援の提供体制": 83,
+        "社会保障の仕組み": 101
       },
-      "ambiguous_candidate_root_counts": {
-        "支援の提供体制": 6,
-        "社会保障の仕組み": 6
-      }
+      "ambiguous_candidate_root_counts": {}
     },
     {
       "year": 2020,
@@ -496,13 +493,14 @@
   ],
   "classification_quality_review": {
     "reviewed_on": "2026-10-11",
-    "reclassified_records": 407,
+    "reclassified_records": 707,
     "reviewed_years": {
       "2018": 2,
+      "2019": 300,
       "2024": 105,
-      "2025": 300
+      "2025": 302
     },
-    "remaining_without_semantic_review": 5928,
+    "remaining_without_semantic_review": 5628,
     "scope": "分類の主語・属性のみ。正誤・法令時点・原文校正は未確認。assignedは品質保証ではない。",
     "crosswalk": "初回分類から作られた履歴スナップショットであり、修正後の経路件数を反映していない。"
   },
@@ -516,7 +514,7 @@
       2010,
       2025
     ],
-    "total_records": 6335,
+    "total_records": 6337,
     "scope": "incremental semantic review; 2025 fine-grained paths are preserved from newer PR33 base; no OCR or historical-law verification"
   }
 }
