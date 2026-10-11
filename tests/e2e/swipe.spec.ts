@@ -95,6 +95,7 @@ test('20-card recall, backup preview/cancel/import and invalid input keep review
   await expect(page.getByRole('status')).toContainText('20枚中 20枚正解');
   const raw = await page.evaluate(k => localStorage.getItem(k)!, key);
   expect(Object.keys(await progress(page))).toHaveLength(20);
+  await page.getByText('○×履歴', {exact:true}).click();
   const download = page.waitForEvent('download'); await page.getByRole('button', { name: '○×履歴を書き出す', exact: true }).click();
   expect((await download).suggestedFilename()).toBe('care-manager-swipe-history.json');
   const file = page.locator('.swipe-screen input[type=file]');

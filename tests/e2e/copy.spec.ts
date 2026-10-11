@@ -17,7 +17,7 @@ test('copies the current question before answering, then includes answer and cho
   const question = questions.find(question => question.id === id)!;
   const copyButton = page.getByRole('button', { name: '問題をコピー', exact: true });
   await copyButton.click();
-  await expect(page.getByText('コピーしました。ChatGPTに貼り付けて質問できます。')).toBeVisible();
+  await expect(page.getByText('コピーしました')).toBeVisible();
   const copied = () => page.evaluate(() => (window as unknown as { copied: string }).copied);
   expect(await copied()).toContain(question.stem);
   expect(await copied()).not.toContain('【試験当時の公式正答】');
@@ -31,7 +31,7 @@ test('copies the current question before answering, then includes answer and cho
   await expect(page.getByRole('dialog')).toContainText('コピーしました');
   await page.getByRole('button', { name: '元の画面へ戻る' }).click();
   await page.getByRole('button', { name: '次の問題へ' }).click();
-  await expect(page.getByText('コピーしました。ChatGPTに貼り付けて質問できます。')).toHaveCount(0);
+  await expect(page.getByText('コピーしました')).toHaveCount(0);
   await copyButton.click();
   expect(await copied()).not.toContain('【試験当時の公式正答】');
   expect(await copied()).not.toContain(question.title);

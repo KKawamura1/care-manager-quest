@@ -42,10 +42,10 @@ export function AppExplanation({ target }: { target: ExplanationTarget }) {
     } catch { setError('解説を削除できません。'); }
   }
   return <section className="app-explanation" aria-label="アプリ用の短い解説">
-    {saved && <><h3>アプリ用の短い解説</h3><p className="saved-explanation">{saved.explanation}</p><p className="fine-print">自分で登録した解説</p></>}
+    {saved && <><h3>解説</h3><p className="saved-explanation">{saved.explanation}</p></>}
     <button type="button" className="secondary" onClick={() => { setEditing(!editing); setMessage(''); }}>{editing ? '貼り付けを閉じる' : saved ? '短い解説を貼り替える' : '短い解説を貼り付ける'}</button>
     {editing && <div className="manual-copy">
-      <p className="fine-print">ChatGPTが返した「アプリ用の短い解説」のブロックをコピーして貼り付けてください。{target.choiceId && `選択肢${target.choiceId}の解説です。`}保存先はこのブラウザです。</p>
+      <p className="fine-print">ChatGPTの解説ブロックを貼り付けてください。</p>
       <label htmlFor={inputId}>アプリ用の短い解説を貼り付け</label>
       <textarea id={inputId} value={draft} maxLength={16_000} onChange={e => setDraft(e.target.value)} />
       <button type="button" className="primary" disabled={!draft.trim()} onClick={save}>短い解説を保存</button>

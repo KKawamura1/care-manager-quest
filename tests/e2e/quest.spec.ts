@@ -14,7 +14,7 @@ async function chooseAnswer(page: import('@playwright/test').Page, wrong=false) 
  return q;
 }
 test('five questions, feedback, deep dive, persistence, result and knowledge map',async({page})=>{
- const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('/');await expect(page.getByRole('heading',{name:'推理が、 知識に変わる。'})).toBeVisible();
+ const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('/');await expect(page.getByRole('heading',{name:'5択クエスト',exact:true})).toBeVisible();
  await page.screenshot({path:`test-results/${test.info().project.name}-home.png`,fullPage:false});
  await page.getByRole('button',{name:'5問のクエストを始める'}).click();await expect(page.getByRole('button',{name:/あと.*選んでください/})).toBeDisabled();
  const first=await chooseAnswer(page);await expect(page.getByText('✦ 初見突破 +20')).toBeVisible();
@@ -24,7 +24,7 @@ test('five questions, feedback, deep dive, persistence, result and knowledge map
  await expect(page.locator('.question-title')).toContainText(`問${Number(first.id.split('-')[1])}｜`);await page.reload();await expect(page.getByRole('button',{name:'次の問題へ'})).toBeVisible();
  const before=await page.evaluate(k=>JSON.parse(localStorage.getItem(k)!).attempts.length,key);expect(before).toBe(1);
  for(let i=1;i<5;i++){await page.getByRole('button',{name:'次の問題へ'}).click();await chooseAnswer(page,i===2);}
- await page.getByRole('button',{name:'リザルトを見る'}).click();await expect(page.getByText('探索、おつかれさま。', {exact:true})).toBeVisible();await page.screenshot({path:`test-results/${test.info().project.name}-result.png`,fullPage:true});
+ await page.getByRole('button',{name:'リザルトを見る'}).click();await expect(page.getByText('クエスト完了', {exact:true})).toBeVisible();await page.screenshot({path:`test-results/${test.info().project.name}-result.png`,fullPage:true});
  await page.getByRole('button',{name:'広がった知識マップを見る'}).click();await expect(page.getByRole('heading',{name:'知識マップ',exact:true})).toBeVisible();await page.screenshot({path:`test-results/${test.info().project.name}-map.png`,fullPage:false});
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);expect(errors).toEqual([]);
 });
@@ -59,7 +59,7 @@ test('all 25 official questions play across five quests, each original image map
    await expect(img).toHaveAttribute('src',`/assets/questions/2025/q${id.split('-')[1]}.png`);await expect(img).toBeVisible();
    expect(await img.evaluate((e:HTMLImageElement)=>e.complete&&e.naturalWidth>0)).toBe(true);
    await page.getByRole('button',{name:'元の画面へ戻る'}).click();await chooseAnswer(page);
-   await expect(page.locator('#feedback')).toContainText('独自解説はまだ登録されていません');
+   await expect(page.locator('#feedback')).toContainText('解説未登録');
    if(index<4)await page.getByRole('button',{name:'次の問題へ'}).click();
   }
   await page.getByRole('button',{name:'リザルトを見る'}).click();await expect(page.getByText('完全攻略！',{exact:true})).toBeVisible();
@@ -84,7 +84,7 @@ test('existing schema 1 history is backed up and retained while old questions le
 
 test('domain setting offers all 60 as text while preserving the existing history',async({page})=>{
  await page.goto('/');
- await expect(page.getByText('年度と分野を選んで、5問ずつ挑戦できます。')).toBeVisible();
+ await expect(page.getByRole('heading',{name:'5択クエスト',exact:true})).toBeVisible();
  await page.getByRole('radio',{name:'保健医療（20問）'}).check();
  await page.getByRole('button',{name:'5問のクエストを始める'}).click();
  let id=await page.evaluate(k=>JSON.parse(localStorage.getItem(k)!).session.questionIds[0],key);
