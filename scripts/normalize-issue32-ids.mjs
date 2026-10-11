@@ -146,6 +146,9 @@ export function buildIndex() {
     exact_v1_1_path_count: 0,
     normalized_drawer_count: 0,
     concept_count: 0,
+    unresolved_attribute_drawers: 0,
+    provisional_concept_drawers: 0,
+    proposition_inferred_drawers: 0,
     reviewed_rule_drawer_count: 0,
     normalization_review_required_drawers: 0,
     normalization_review_required_propositions: 0,
@@ -171,6 +174,12 @@ export function buildIndex() {
           ...drawer, proposition_count: 0, original_path_ids: new Set(), examples: [], source_subjects: new Set(),
         });
         const group = drawers.get(drawer.id);
+        // An existing drawer can be reached by many years and by rules with
+        // different confidence. Aggregate conservatively: one uncertain
+        // occurrence makes the shared drawer a review target.
+        group.review_required ||= drawer.review_required;
+        if (group.attribute_resolution !== drawer.attribute_resolution) group.attribute_resolution = 'mixed';
+        if (group.concept_resolution !== drawer.concept_resolution) group.concept_resolution = 'mixed';
         group.proposition_count++;
         group.original_path_ids.add(pathId);
         group.source_subjects.add(row.subject_concept);
@@ -215,6 +224,12 @@ export function buildIndex() {
   summary.exact_v1_1_path_count = v11Exact.size;
   summary.normalized_drawer_count = drawers.size;
   summary.concept_count = concepts.size;
+  summary.unresolved_attribute_drawers = [...drawers.values()]
+    .filter((d) => ['unresolved','mixed'].includes(d.attribute_resolution)).length;
+  summary.provisional_concept_drawers = [...drawers.values()]
+    .filter((d) => ['provisional','mixed','unresolved'].includes(d.concept_resolution)).length;
+  summary.proposition_inferred_drawers = [...drawers.values()]
+    .filter((d) => d.attribute_evidence === 'proposition_keyword' || d.concept_evidence === 'one_named_disease').length;
   summary.reviewed_rule_drawer_count = [...drawers.values()].filter((d) => !d.review_required).length;
   summary.normalization_review_required_drawers = drawers.size - summary.reviewed_rule_drawer_count;
   summary.collapsed_original_path_count = [...drawers.values()]
