@@ -148,6 +148,18 @@ const attributeDefinitions = [
   ['services','提供内容', /提供内容|提供サービス|サービス内容|支援内容|サービス提供内容|食事支援|食事介助/],
   ['principles','目的・理念・基本方針', /基本理念|制度の目的|基本方針|目的・理念|原則・倫理/],
   ['description','定義・仕組み', /定義|概念|制度構造|制度の仕組み|法定の位置付け/],
+  ['interview','面接・傾聴・援助関係', /面接|傾聴|援助関係|コミュニケーション|ラポール|質問・観察|対人援助関係/],
+  ['ethical','倫理・守秘義務', /権利擁護|倫理|守秘義務|秘密保持|自立支援・尊厳|利用者本位/],
+  ['support_relationship','相談援助の関係形成', /援助関係|関係形成|信頼関係|面接の進め方/],
+  ['support_process','相談援助過程', /援助過程|インテーク|終結後のフォロー|相談援助の過程/],
+  ['support_network','社会資源の調整', /社会資源の選択・調整|関係機関との連携|多職種連携|ネットワークづくり/],
+  ['care_needs','生活課題・ニーズの把握', /ニーズの把握|生活課題|主訴|課題の把握/],
+  ['nursing','介護・療養上の注意', /介護上の注意|ケアの注意点|生活上の留意点|リスク対応/],
+  ['definition_scope','定義・目的・基本方針', /定義・目的|基本方針|目的・制度の構造/],
+  ['documentation','記録・情報管理', /記録の作成|記録の保存|支援記録|情報共有|記載事項|文書交付/],
+  ['training','研修・人材育成', /研修|教育・研修|資格取得のための研修/],
+  ['reporting','統計・推移', /統計|人口|人数|推移|動向|増減|割合の推移/],
+  ['components','事業構成・実施内容', /事業構成|構成事業|事業内容|事業の種類/],
 ];
 const genericSubjects = new Set(['介護保険制度','加齢・疾病・病態','高齢者の健康状態','健康状態・生活機能','ケアマネジメント','具体的な支援技術','支援技術','行政・制度運営','介護保険給付']);
 const pathConceptHints = [
@@ -230,7 +242,8 @@ function attributeFor(row, path, concept) {
     return {id:'operations',label:'運営基準',resolution:'curated'};
   // Prefer an informative attribute with a known category; otherwise use
   // the most specific conceptual path evidence.
-  const clues = [row.attribute,...hints.slice(-4).reverse()];
+  const mixed = /申請・調査・審査判定・有効期間|アセスメント・計画・調整・評価|対象・人員・提供・運営|疾病・症状・検査・治療|給付の対象・条件・限度・負担|支援の原則・ケアマネジメント・相談援助|対象・提供内容・運営基準|目的・主体・対象・手続|人員・運営・提供責任者・利用対象/;
+  const clues = [row.attribute,...hints.slice(-4).reverse()].filter(item=>!mixed.test(String(item??'')));
   for (const item of clues) {
     const normalized = norm(item);
     if (!normalized || normalized===subject || normalized===label) continue;
