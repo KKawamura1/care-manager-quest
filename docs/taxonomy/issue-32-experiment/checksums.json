@@ -1,13 +1,13 @@
 [
   {
     "path": "README.md",
-    "bytes": 9711,
-    "sha256": "e2d6fd3a125dfb357e24697ba45ce98af1e721d61a9c8f824eaf6d4ef6ee9f21"
+    "bytes": 12946,
+    "sha256": "eead186f9bf1b7a698d38ea49a0a04961baf1e036b784f011d63e577aca77c56"
   },
   {
     "path": "difficult-cases.jsonl",
-    "bytes": 190183,
-    "sha256": "c9d45858b73f51db885547bd3ff1e55b50c98cbed7eeaa972459926068795e7f"
+    "bytes": 176399,
+    "sha256": "6285c14be33077fa6a9393f4a60bbd8f5d7e1dbf3f9b4b32934480b0f9879cf7"
   },
   {
     "path": "existing-concept-crosswalk.csv",
@@ -16,8 +16,8 @@
   },
   {
     "path": "manifest.json",
-    "bytes": 15276,
-    "sha256": "8cc65452f7889da0a590bef9f07e39c7785f5cd635ac2a247ca0dc19d1c4b452"
+    "bytes": 15208,
+    "sha256": "4001233db7b68688d60b8376135b312e6fd664d8fdfae6107dbadc55e904df82"
   },
   {
     "path": "propositions/2005.jsonl",
@@ -91,8 +91,8 @@
   },
   {
     "path": "propositions/2019.jsonl",
-    "bytes": 542773,
-    "sha256": "35bd0e634be0c1c1e164154b6d7bcdb40d1f6f92eb142b7b06f359cfe45fb51d"
+    "bytes": 747239,
+    "sha256": "b98195f1d73fef3f314ceef2a1e099088a27ac473f92945bf61779ab85049311"
   },
   {
     "path": "propositions/2020.jsonl",
@@ -121,7 +121,7 @@
   },
   {
     "path": "propositions/2025.jsonl",
-    "bytes": 747430,
-    "sha256": "1f6737b895f71c5e8e2289b80a7d807b3461048c29f6f24c51baf239a80f13ab"
+    "bytes": 801650,
+    "sha256": "b8c355ed3d87e27c4e3afb0967ce9f2a659a6e9bcc9b5b0e8a923bcf5bfa0b10"
   }
 ]
