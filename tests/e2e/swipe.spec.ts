@@ -101,3 +101,17 @@ test('native mobile touch swipes still answer',async({page,browserName})=>{
   await client.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
   await expect(page.locator('.swipe-verdict')).toContainText('あなた：○');
 });
+
+test('repeating a card on the same day is available but does not grant XP twice',async({page})=>{
+  await page.goto('/');await start(page);
+  const correct=await currentTruth(page);
+  await page.getByRole('button',{name:correct?'○と答える':'×と答える',exact:true}).click();
+  expect((await ledger(page))[0].xp).toBe(10);
+  await page.getByRole('button',{name:'同じカードを再練習（XPなし）'}).click();
+  await page.getByRole('button',{name:correct?'×と答える':'○と答える',exact:true}).click();
+  const events=await ledger(page);
+  expect(events).toHaveLength(2);
+  expect(events[1].xp).toBe(0);
+  expect(events[0].xp).toBe(10);
+  await expect(page.locator('.feedback')).toContainText('+0 XP');
+});

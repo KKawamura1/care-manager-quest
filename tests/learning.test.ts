@@ -60,3 +60,12 @@ describe('single shared choice evaluation', () => {
     expect(Date.parse(scheduling.progress[a.id].dueAt)-start).toBe(3*86_400_000);
   });
 });
+
+describe('revision preservation', () => {
+  it('does not transfer mastery to a revised truth label', () => {
+    const events=recordLearning([], [{card:a,answer:a.truth}],onDay(11),'swipe');
+    const revised={...a, truth:!a.truth,revision:a.revision+':changed'};
+    expect(learningLevel(events,revised)).toBe(0);
+    expect(learningLevel(events,a)).toBeCloseTo(5/15);
+  });
+});

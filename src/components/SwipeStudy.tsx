@@ -61,6 +61,22 @@ export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAn
     requestAnimationFrame(() => cardRef.current?.focus({ preventScroll: true }));
     window.scrollTo({ top: 0, behavior: 'instant' });
   };
+  const practice = () => {
+    if (blocked) return;
+    const alreadyStudied = candidates.filter(candidate => progressFor(state, candidate));
+    if (!alreadyStudied.length) return;
+    const nextCard = alreadyStudied[Math.floor(Math.random() * alreadyStudied.length)];
+    locked.current = false;
+    setCard(nextCard); setResult(undefined); setOriginal(false);
+    onStart();
+  };
+  const retry = () => {
+    if (!result) return;
+    locked.current = false;
+    setResult(undefined); setOriginal(false); setDrag({x:0,y:0});
+    requestAnimationFrame(() => cardRef.current?.focus({preventScroll:true}));
+    window.scrollTo({top:0,behavior:'instant'});
+  };
   const start = () => {
     if (blocked) return;
     const nextCard = reviewQueue(candidates, state, Date.now())[0];
@@ -103,7 +119,8 @@ export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAn
         </select></label>
         <p className="swipe-home-stats">{candidates.length}枚対象 · {reviewed}枚学習済み · {due}枚復習待ち</p>
         <button className="primary" aria-label={card ? '○×学習を再開する' : '○×学習を始める'} disabled={blocked || (!card && !available.length)} onClick={() => { if (card) onStart(); else start(); }}>{card ? '学習を再開する' : 'はじめる'}<span aria-hidden="true">→</span></button>
-        {!available.length && !card && <p role="status">今の条件で出せるカードはありません。{nextDue !== undefined && <>次の出題：{new Date(nextDue).toLocaleString('ja-JP')}</>} 年度・分野を変えると学習を続けられます。</p>}
+        {!available.length && !card && reviewed > 0 && <button className="secondary" disabled={blocked} onClick={practice}>解いたカードを再練習（XPなし）</button>}
+         {!available.length && !card && <p role="status">今の条件で出せるカードはありません。{nextDue !== undefined && <>次の出題：{new Date(nextDue).toLocaleString('ja-JP')}</>} 年度・分野を変えると学習を続けられます。</p>}
       </div>
       <details className="swipe-home-detail"><summary>使い方</summary><p>右で○、左で×、上で「わからない」。解説を読んだら、もう一度スワイプで次へ。</p>
         <p>正誤評価とXPはカードごとに日本時間で1日最初の回答だけを採用します。要復習度は直近5学習日の初回回答と経過日数から計算します。</p>
@@ -132,6 +149,7 @@ export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAn
           <p>{card.explanation || '解説未登録'}</p>
         </div>
         <button className="primary" ref={nextRef} onClick={next}>次のカードへ<span aria-hidden="true">→</span></button>
+         <button className="secondary" onClick={retry}>同じカードを再練習（XPなし）</button>
       </>}
       </div>
       {questionById(card.questionId) && <CopyText key={`${card.id}:${Boolean(result)}`} text={swipeCopyText(questionById(card.questionId)!, card, Boolean(result), result?.answer)} includeAnswer={Boolean(result)}/>}

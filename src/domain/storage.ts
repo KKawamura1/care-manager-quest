@@ -58,7 +58,10 @@ export function parsePlayer(text: string): PlayerState {
   player.learningEvents = events.map(raw => {
     const event = record(raw), cardId = str(event.cardId, 100), card = swipeCardById.get(cardId);
     const revision = str(event.revision, 100), at = date(event.at);
-    if (!card || card.revision !== revision || !Number.isFinite(Date.parse(at))) fail();
+    // A later truth/version correction invalidates mastery, not the archived event.
+    // Removed cards can remain in the ledger for past XP and backup restoration.
+    if (!/^[A-Za-z0-9_.:#-]+$/.test(cardId) || !revision || !Number.isFinite(Date.parse(at))) fail();
+    void card;
     const mode = event.mode;
     if (mode !== 'swipe' && mode !== 'five-choice') fail();
     const answer = event.answer === null ? null : bool(event.answer);
