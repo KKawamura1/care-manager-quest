@@ -4,7 +4,7 @@ const truth = JSON.parse(readFileSync(new URL('../../data/choice-tf/choice-answe
 const key = 'care-manager-quest:swipe:v1';
 const playerKey = 'care-manager-quest:v1';
 async function open(page: Page) {
-  await page.goto('/'); await page.getByRole('button', { name: '○×学習', exact: true }).click();
+  await page.goto('/');
 }
 async function start(page: Page) { await page.getByRole('button', { name: '○×学習を始める', exact: true }).click(); }
 async function currentTruth(page: Page) {
@@ -19,6 +19,24 @@ async function drag(page: Page, dx: number, dy = 0, feedback = false) {
   const x = box.x + box.width / 2, y = box.y + box.height / 2;
   await page.mouse.move(x, y); await page.mouse.down(); await page.mouse.move(x + dx, y + dy, { steps: 8 }); await page.mouse.up();
 }
+test('○× filters are on the same home screen as five-choice and launch the first card directly', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.getByRole('heading', { name: '5択クエスト', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: '○×学習', exact: true })).toBeVisible();
+  await expect(page.getByLabel('○×の年度')).toBeVisible();
+  await expect(page.getByLabel('学ぶ知識分野')).toBeVisible();
+  await expect(page.getByRole('button', { name: '○×学習を始める', exact: true })).toBeEnabled();
+  await page.getByLabel('○×の年度').selectOption('2020');
+  await page.getByRole('button', { name: '○×学習を始める', exact: true }).click();
+  await expect(page.getByRole('group', { name: '○×カード', exact: true })).toBeVisible();
+  await expect(page.locator('.swipe-screen .question-meta')).toContainText('2020年度');
+  await expect(page.locator('.swipe-home-card')).toHaveCount(0);
+  await page.getByRole('button', { name: '分野選択に戻る' }).click();
+  await expect(page.getByLabel('○×の年度')).toHaveValue('2020');
+  await expect(page.getByRole('heading', { name: '5択クエスト', exact: true })).toBeVisible();
+  await expect(page.getByRole('button', { name: '○×学習を始める', exact: true })).toBeVisible();
+});
+
 test('right/left swipe, feedback, duplicate guard and navigation preserve five-choice session and XP', async ({ page }) => {
   const errors: string[] = []; page.on('pageerror', e => errors.push(e.message));
   await page.goto('/'); await page.getByRole('button', { name: '5問のクエストを始める' }).click();
@@ -37,6 +55,7 @@ test('right/left swipe, feedback, duplicate guard and navigation preserve five-c
   await expect(page.locator('.swipe-verdict')).toContainText('あなた：×');
   await page.getByRole('button', { name: '冒険', exact: true }).click();
   await page.getByRole('button', { name: '○×学習', exact: true }).click();
+  await page.getByRole('button', { name: '○×学習を再開する', exact: true }).click();
   await expect(page.locator('.swipe-verdict')).toContainText('あなた：×');
   expect(await page.evaluate(k => localStorage.getItem(k), playerKey)).toBe(original);
   await page.reload(); await expect(page.getByRole('group', { name: '解答の選択肢' }).getByRole('button').first()).toHaveAttribute('aria-pressed', 'true');
@@ -104,7 +123,7 @@ test('continuous ○× learning beyond 20 cards, backup preview/cancel/import an
   await page.getByText('○×履歴', {exact:true}).click();
   const download = page.waitForEvent('download'); await page.getByRole('button', { name: '○×履歴を書き出す', exact: true }).click();
   expect((await download).suggestedFilename()).toBe('care-manager-swipe-history.json');
-  const file = page.locator('.swipe-screen input[type=file]');
+  const file = page.locator('.swipe-home-card input[type=file]');
   await file.setInputFiles({ name: 'bad.json', mimeType: 'application/json', buffer: Buffer.from('{}') });
   await expect(page.getByRole('status').filter({ hasText: '形式が不正' })).toBeVisible();
   expect(await page.evaluate(k => localStorage.getItem(k), key)).toBe(raw);
@@ -147,7 +166,7 @@ test('denied storage access does not crash the app or overwrite unknown swipe hi
   const errors: string[] = []; page.on('pageerror', e => errors.push(e.message));
   await page.addInitScript(() => Object.defineProperty(window, 'localStorage', { get() { throw new Error('storage denied'); } }));
   await open(page);
-  await expect(page.locator('.swipe-screen [role=alert]')).toContainText('保存領域を利用できません');
+  await expect(page.locator('.swipe-home-card [role=alert]')).toContainText('保存領域を利用できません');
   await expect(page.getByRole('button', { name: '○×学習を始める', exact: true })).toBeDisabled();
   expect(errors).toEqual([]);
 });

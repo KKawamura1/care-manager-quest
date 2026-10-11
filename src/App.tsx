@@ -113,10 +113,10 @@ export default function App() {
     {saveError && <div className="warning" role="alert"><p>{saveError}</p>{blocked && <><button onClick={()=>download(('raw' in initial && initial.raw) || '', 'care-manager-quest-recovery.json')}>元のデータを書き出す</button><button onClick={()=>{setBlocked(false);setPlayer(emptyPlayer());setSaveError(undefined);}}>新しい履歴で始める</button></>}</div>}
     {notice && <p className="notice" role="status">{notice}</p>}
     <main>
-      <SwipeStudy active={route === 'swipe'}/>
+      <SwipeStudy active={route === 'swipe'} home={route === 'home'} onStart={()=>go('swipe')} onBack={()=>go('home')}/>
       {route === 'home' && <>
         <section className="home-screen">
-          <button className="mode-entry" aria-label="○×スワイプ学習へ" onClick={()=>go('swipe')}><span className="mode-icon" aria-hidden="true">○×</span><strong>○×学習</strong><span aria-hidden="true">→</span></button>
+          <section className="mission-card swipe-home-card" id="swipe-home-setup" aria-label="○×学習の設定"/>
           <section className="mission-card">
             <h2>5択クエスト</h2>
             <label className="year-picker">年度<select aria-label="出題する年度" value={yearFilter} onChange={e=>changeYear(parseYearFilter(e.target.value))}><option value="all">全年度</option>{availableYears.map(year=><option key={year} value={year}>{year}年度</option>)}</select></label>
@@ -153,7 +153,7 @@ export default function App() {
         <section className="panel"><h2>最近の探索</h2>{player.attempts.length===0?<p>まだ記録はありません。</p>:<div className="log-list">{player.attempts.slice(-10).reverse().map(a=><button key={a.id} onClick={()=>setDetail(questionById(a.questionId))}><span className={a.correct?'mint':'coral'}>{a.correct?'✓':'×'}</span><span>{questionById(a.questionId)?.title}</span><small>+{a.xp} XP</small></button>)}</div>}</section><details className="help-details"><summary>このアプリについて</summary><p>{officialNotice}</p><p>各年度の試験当時の正答で採点します。現行法・文字の再校正は確認未了、知識分類は暫定です。</p><a href="https://www.sssc.or.jp/pastissues/index.html" target="_blank" rel="noopener noreferrer">過去問題の利用条件 ↗</a></details>
       </section>}
     </main>
-    <nav className="bottom-nav" aria-label="メインメニュー">{([['home','◇','冒険'],['swipe','○×','○×学習'],['map','⌘','知識マップ'],['records','≡','記録']] as const).map(([key,icon,label])=><button key={key} aria-label={label} className={(route===key||(key==='home'&&route==='play'))?'active':''} aria-current={(route===key||(key==='home'&&route==='play'))?'page':undefined} onClick={()=>go(key)}><span>{icon}</span>{label}</button>)}</nav>
+    <nav className="bottom-nav" aria-label="メインメニュー">{([['home','◇','冒険'],['swipe','○×','○×学習'],['map','⌘','知識マップ'],['records','≡','記録']] as const).map(([key,icon,label])=><button key={key} aria-label={label} className={(route===key||(key==='home'&&route==='play'))?'active':''} aria-current={(route===key||(key==='home'&&route==='play'))?'page':undefined} onClick={()=>{ if(key==='swipe') { if(route!=='swipe'){ go('home'); requestAnimationFrame(()=>document.getElementById('swipe-home-setup')?.scrollIntoView({block:'start',behavior:'instant'})); } } else go(key); }}><span>{icon}</span>{label}</button>)}</nav>
     {burst && <div className={`burst ${burst}`} aria-hidden="true">{Array.from({length:18},(_,i)=><i key={i} style={{'--angle':`${i*20}deg`,'--distance':`${70+(i%4)*27}px`,'--delay':`${(i%3)*25}ms`} as React.CSSProperties}/>)}<span>{burst==='level'?'LEVEL UP':burst==='correct'?'CLEAR!':'DISCOVER'}</span></div>}
     {detail&&<Modal title="詳しく見る" onClose={()=>setDetail(undefined)}><div className="detail-content"><h3>{detail.title}</h3>
       <CopyQuestion key={detail.id} question={detail} includeAnswer selectedIds={player.attempts.slice().reverse().find(a=>a.questionId===detail.id)?.selectedIds}/>
