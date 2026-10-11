@@ -94,11 +94,20 @@ export function validateYearRows(year, rows) {
 function verifyRevision(year, number, original, changed) {
   assert.ok(changed.length >= 5, year + '/' + number + ': empty or incomplete revision');
   const first = original[0];
-  const sources = new Map(original.map((r) => [r.choice_index, r]));
+  // The original may contain several independent propositions per choice.
+  // Compare matching proposition metadata instead of accidentally using the last
+  // proposition in the choice as the baseline for every other proposition.
+  const originalByProposition = new Map(original.map((r) =>
+    [r.choice_index + '/' + r.proposition_index, r]));
+  const originalByChoice = new Map();
+  for (const row of original) {
+    if (!originalByChoice.has(row.choice_index)) originalByChoice.set(row.choice_index, row);
+  }
   for (const row of changed) {
     assert.ok(!(row.question_id === '2024-24' && row.choice_index === 2 && row.proposition_index === 1 && !row.attribute),
       '2024-24/2/1 must fix the known blank attribute when this question is revised');
-    const old = sources.get(row.choice_index);
+    const old = originalByProposition.get(row.choice_index + '/' + row.proposition_index)
+      ?? originalByChoice.get(row.choice_index);
     assert.ok(old, 'new choice index: ' + year + '/' + number + '/' + row.choice_index);
     assert.equal(row.year, year, 'year changed');
     assert.equal(row.question_number, number, 'question number changed');
