@@ -19,10 +19,10 @@
       "needs_source_review": 0
     },
     "primary_root_counts": {
-      "人の健康と生活": 1210,
-      "支援の考え方と方法": 1296,
+      "人の健康と生活": 1193,
+      "支援の考え方と方法": 1315,
       "支援の提供体制": 1921,
-      "社会保障の仕組み": 1816
+      "社会保障の仕組み": 1814
     }
   },
   "validation": {
@@ -429,10 +429,10 @@
         "needs_source_review": 0
       },
       "primary_root_counts": {
-        "人の健康と生活": 54,
-        "支援の考え方と方法": 53,
+        "人の健康と生活": 37,
+        "支援の考え方と方法": 72,
         "支援の提供体制": 98,
-        "社会保障の仕組み": 95
+        "社会保障の仕組み": 93
       },
       "ambiguous_candidate_root_counts": {}
     },
@@ -496,14 +496,15 @@
   ],
   "classification_quality_review": {
     "reviewed_on": "2026-10-11",
-    "reclassified_records": 407,
+    "reclassified_records": 707,
     "reviewed_years": {
       "2018": 2,
+      "2022": 300,
       "2024": 105,
       "2025": 300
     },
-    "remaining_without_semantic_review": 5928,
-    "scope": "分類の主語・属性のみ。正誤・法令時点・原文校正は未確認。assignedは品質保証ではない。",
+    "remaining_without_semantic_review": 5628,
+    "scope": "意味レビュー済の年度・レコードのみ。2022年は全300選択肢の主語・属性をレビューしたが、原文OCR・真偽・当時法令は未確認。assignedは品質保証を意味しない。",
     "crosswalk": "初回分類から作られた履歴スナップショットであり、修正後の経路件数を反映していない。"
   },
   "classification_review_overlay": {
