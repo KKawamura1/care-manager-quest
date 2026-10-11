@@ -54,7 +54,7 @@ const conceptDefinitions = [
   ['3','3.1.home.welfare_equipment','福祉用具貸与','福祉用具貸与'],
   ['3','3.1.home.welfare_sale','特定福祉用具販売','特定福祉用具販売'],
   ['3','3.1.community.night','夜間対応型訪問介護','夜間対応型訪問介護'],
-  ['3','3.1.community.regular巡回','定期巡回・随時対応型訪問介護看護','定期巡回・随時対応型訪問介護看護'],
+  ['3','3.1.community.regular_round','定期巡回・随時対応型訪問介護看護','定期巡回・随時対応型訪問介護看護'],
   ['3','3.1.community.small_multi','小規模多機能型居宅介護','小規模多機能型居宅介護'],
   ['3','3.1.community.nursing_multi','看護小規模多機能型居宅介護','看護小規模多機能型居宅介護'],
   ['3','3.1.community.group_home','認知症対応型共同生活介護','認知症対応型共同生活介護|認知症対応型共同生活介護(グループホーム)'],
@@ -130,19 +130,19 @@ const attributeDefinitions = [
   ['procedures','申請・手続', /申請手続|審査請求|申請・調査|届出|申請代行|手続/],
   ['term','期限・有効期間', /有効期間|保存期間|時効|有効期限|期限|更新期間/],
   ['operations','運営基準', /運営基準|具体的取扱方針|指定基準|運営上の義務|提供拒否|記録の作成|記録の保存|秘密保持|法定義務/],
-  ['registration','登録・更新', /登録・更新|登録の移転|登録要件|専門員証|資格要件|更新研修|資格登録/],
+  ['registration','登録・更新', /登録・更新|登録の移転|登録要件|資格要件|更新研修|資格登録/],
   ['care_plan','計画作成', /計画作成|ケアプラン|サービス計画|計画の策定|計画策定|計画の記載|計画書/],
   ['assessment','アセスメント', /アセスメント|課題分析|認定調査票|基本チェックリスト/],
   ['monitoring','モニタリング', /モニタリング|再アセスメント/],
   ['coordination','連携・調整', /給付調整|優先関係|資源調整|支援調整|意向調整|退院支援/],
-  ['authority','役割・権限・責務', /権限|責務|実施主体|主体・権限|役割|職務|業務範囲|業務権限/],
+  ['authority','役割・権限・責務', /権限|責務|実施主体|主体・権限|役割|職務|業務範囲|業務権限|業務・責務/],
   ['benefits','給付内容・条件', /給付の対象|給付の条件|保険給付|補足給付|限度基準額|支給限度|給付方法/],
   ['financing','保険料・財源', /保険料|財源|財政調整|徴収|公費負担/],
   ['symptoms','症状・徴候', /症状|徴候|BPSD|身体所見|臨死期の徴候/],
   ['tests','検査・評価', /検査値|検査・診断|検査項目|検査・評価|診断|判定基準/],
   ['treatment','治療・ケア', /治療|ケア上の注意|疾病固有の介護|服薬管理|療養上の注意/],
   ['prevention','予防', /感染予防|介護予防|予防の方法|予防策/],
-  ['services','提供内容', /提供内容|提供サービス|サービス内容|支援内容|サービス提供内容/],
+  ['services','提供内容', /提供内容|提供サービス|サービス内容|支援内容|サービス提供内容|食事支援|食事介助/],
   ['principles','目的・理念・基本方針', /基本理念|制度の目的|基本方針|目的・理念|原則・倫理/],
   ['description','定義・仕組み', /定義|概念|制度構造|制度の仕組み|法定の位置付け/],
 ];
@@ -204,6 +204,15 @@ function attributeFor(row, path, concept) {
   let explicit = norm(row.attribute);
   // In recent reviews a single assertion value is sometimes stored in
   // attribute. Use the path's "applicable services" level instead.
+  const allClues = [row.attribute, ...hints].join(' > ');
+  if (concept.id==='4.1.benefits.home_renovation' && /支給対象性|対象工事|支給対象工事|対象となる工事/.test(allClues))
+    return {id:'eligible_work',label:'支給対象となる工事',resolution:'curated'};
+  if (concept.id==='4.1.benefits.home_renovation' && /支給限度額|支給上限額/.test(allClues))
+    return {id:'limit',label:'支給限度額',resolution:'curated'};
+  if (concept.root==='3' && /人員配置|管理者(の)?資格|提供責任者(の)?資格|職員.*資格|勤務形態|常勤要件|常勤配置|夜勤.*配置/.test(allClues))
+    return {id:'staffing',label:'人員配置',resolution:'curated'};
+  if (concept.root==='3' && /設備基準|廊下幅|食堂・機能訓練室|居室の定員/.test(allClues))
+    return {id:'equipment',label:'設備基準',resolution:'curated'};
   const hasApplicable = hints.some(x=>/適用サービス|対象サービス/.test(x));
   if (hasApplicable) return {id:'applicable_services',label:'適用サービス',resolution:'curated'};
   // Prefer an informative attribute with a known category; otherwise use
