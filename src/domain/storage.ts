@@ -63,7 +63,7 @@ export function parsePlayer(text: string): PlayerState {
     if (mode !== 'swipe' && mode !== 'five-choice') fail();
     const answer = event.answer === null ? null : bool(event.answer);
     learningDay(at);
-    return { cardId, revision, at, mode, answer, xp: integer(event.xp,0,10), bonusXp: integer(event.bonusXp,0,20) };
+    return { cardId, revision, at, mode: mode as 'swipe' | 'five-choice', answer, xp: integer(event.xp,0,10), bonusXp: integer(event.bonusXp,0,20) };
   });
   // XP is a projection of the unified option-event ledger.
   if (learningXp(player.learningEvents) > 1_000_000) fail();
