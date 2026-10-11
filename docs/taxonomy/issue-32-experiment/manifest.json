@@ -20,9 +20,9 @@
     },
     "primary_root_counts": {
       "人の健康と生活": 1210,
-      "支援の考え方と方法": 1298,
+      "支援の考え方と方法": 1296,
       "支援の提供体制": 1921,
-      "社会保障の仕組み": 1814
+      "社会保障の仕組み": 1816
     }
   },
   "validation": {
@@ -175,9 +175,9 @@
       },
       "primary_root_counts": {
         "人の健康と生活": 59,
-        "支援の考え方と方法": 76,
+        "支援の考え方と方法": 74,
         "支援の提供体制": 111,
-        "社会保障の仕組み": 60
+        "社会保障の仕組み": 62
       },
       "ambiguous_candidate_root_counts": {}
     },
@@ -505,5 +505,18 @@
     "remaining_without_semantic_review": 5928,
     "scope": "分類の主語・属性のみ。正誤・法令時点・原文校正は未確認。assignedは品質保証ではない。",
     "crosswalk": "初回分類から作られた履歴スナップショットであり、修正後の経路件数を反映していない。"
+  },
+  "classification_review_overlay": {
+    "version": "hypothesis-v1.1",
+    "source_issue": 36,
+    "reviewed_records": 21,
+    "reclassified_records": 5,
+    "previously_reclassified_on_base": 16,
+    "years": [
+      2010,
+      2025
+    ],
+    "total_records": 6335,
+    "scope": "incremental semantic review; 2025 fine-grained paths are preserved from newer PR33 base; no OCR or historical-law verification"
   }
 }

@@ -16,8 +16,8 @@
   },
   {
     "path": "manifest.json",
-    "bytes": 14523,
-    "sha256": "31a4b0b98d8ba8066fa8dda795d437e25381c03ba2353a965b32c839ed59a20e"
+    "bytes": 14939,
+    "sha256": "c728b0ff31c46f39f8a41a14f3993bf329cbd1b6b2ba05655620bdc08eb70d30"
   },
   {
     "path": "propositions/2005.jsonl",
@@ -46,8 +46,8 @@
   },
   {
     "path": "propositions/2010.jsonl",
-    "bytes": 581544,
-    "sha256": "ae1ec0c642371b8eb83e73aa15a5c1cd987761a4635e5c0e93ca96f72c6396ee"
+    "bytes": 583117,
+    "sha256": "096895b59fed27c04b60346b6bfd220eec264ee168209491affd933273a46528"
   },
   {
     "path": "propositions/2011.jsonl",
@@ -121,7 +121,7 @@
   },
   {
     "path": "propositions/2025.jsonl",
-    "bytes": 743326,
-    "sha256": "e4f1eb9271d9c960ca364576e6ee37c3801b0631bd4c1f51dd8e6cb33f389688"
+    "bytes": 747430,
+    "sha256": "1f6737b895f71c5e8e2289b80a7d807b3461048c29f6f24c51baf239a80f13ab"
   }
 ]
