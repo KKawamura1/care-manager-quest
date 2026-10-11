@@ -17,5 +17,37 @@
 
 .year-picker { display: grid; gap: .5rem; margin: 1rem 0; }
 .year-picker select { color: inherit; background: #172838; border: 1px solid #5e7686; border-radius: .5rem; padding: .75rem; font: inherit; width: 100%; }
+.bottom-nav { display: grid; grid-template-columns: repeat(4, 1fr); }
+.bottom-nav button { min-width: 0; }
+.swipe-screen { padding-top: 28px; overflow-x: clip; }
+.swipe-screen h1 { font-size: 27px; margin: 10px 0; }
+.swipe-screen .panel { margin: 20px 0; }
+.swipe-settings label { display: block; margin-bottom: 14px; font-size: 13px; }
+.swipe-settings select { display: block; width: 100%; min-width: 0; color: inherit; background: #172838; border: 1px solid #5e7686; border-radius: 8px; padding: 12px; font: inherit; margin-top: 6px; }
+select:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+.swipe-settings .record-stats { margin: 20px 0; }
+.swipe-topic { color: var(--gold); font-size: 13px; margin: 12px 0; }
+.swipe-context { background: var(--panel); border-radius: 10px; padding: 14px; font-size: 13px; line-height: 1.8; margin: 16px 0 10px; }
+.swipe-context b { color: var(--muted); font-size: 11px; }
+.swipe-context p { margin-top: 4px; }
+.swipe-card { position: relative; border: 1px solid var(--line); border-radius: 18px; padding: 24px; margin: 16px 0 20px; min-height: 170px; display: flex; flex-direction: column; justify-content: center; background: #203342; touch-action: pan-y; user-select: none; cursor: grab; }
+.swipe-card p { font-size: 19px; font-weight: 600; line-height: 1.8; margin-top: 14px; overflow-wrap: anywhere; }
+.swipe-correct { border-color: var(--mint); }
+.swipe-wrong { border-color: var(--coral); }
+.swipe-stamp { position: absolute; top: 8px; right: 16px; font-size: 46px; font-weight: 800; }
+.swipe-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
+.swipe-actions button { min-height: 64px; font-size: 25px; margin: 0; justify-content: center; }
+.swipe-no { color: var(--coral); border-color: var(--coral); }
+.swipe-screen .feedback { margin: 18px 0; }
+.swipe-verdict { font-size: 18px; }
+.swipe-screen li { margin-bottom: 10px; font-size: 13px; }
+.swipe-screen summary { cursor: pointer; font-size: 14px; }
+.swipe-screen details p { margin-top: 12px; font-size: 13px; }
+.swipe-screen .primary, .swipe-screen .secondary { width: 100%; }
+.swipe-screen input[hidden] { display: none; }
+.app-shell:has(.swipe-card) .app-header, .app-shell:has(.swipe-card) .player-bar { display: none; }
+.swipe-screen:has(.swipe-card) { padding-top: 14px; }
+.swipe-screen:has(.swipe-card) h1 { font-size: 22px; }
+.swipe-screen:has(.swipe-card) .quest-heading { margin-top: 15px; }
 
 .question-stem{white-space:pre-line}
