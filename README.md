@@ -52,7 +52,7 @@ GitHubがソースの正本です。mainへのマージは手動です。Cloudfl
 
 ## 開発
 
-Node.js 22以上、npm。サーバー・DB・APIキー・LLM APIは不要です。
+Node.js 22.18以上、npm（分類用TypeScriptモジュールの標準実行に必要）。サーバー・DB・APIキー・LLM APIは不要です。
 
 ```sh
 npm ci

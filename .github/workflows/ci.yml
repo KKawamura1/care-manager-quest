@@ -2,9 +2,6 @@ name: Validate MVP
 on:
   pull_request:
   workflow_dispatch:
-concurrency:
-  group: validate-mvp-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
 permissions:
   contents: read
 concurrency:
