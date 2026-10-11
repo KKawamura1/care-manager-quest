@@ -127,7 +127,8 @@ export function normalizeIds(row) {
     candidate_v1_1_anchor_ids: candidates.map((c) => c.taxonomy_v1_1_anchor_id),
     primary_drawer_id: drawer?.id ?? null,
     candidate_drawer_ids: candidateDrawers.map((d) => d.id),
-    drawer_review_required: drawer?.review_required ?? candidateDrawers.some((d) => d.review_required),
+    drawer_review_required: row.classification_status !== 'assigned' ||
+      (drawer?.review_required ?? candidateDrawers.some((d) => d.review_required)),
   };
 }
 
@@ -177,7 +178,7 @@ export function buildIndex() {
         // An existing drawer can be reached by many years and by rules with
         // different confidence. Aggregate conservatively: one uncertain
         // occurrence makes the shared drawer a review target.
-        group.review_required ||= drawer.review_required;
+        group.review_required ||= drawer.review_required || row.classification_status !== 'assigned';
         if (group.attribute_resolution !== drawer.attribute_resolution) group.attribute_resolution = 'mixed';
         if (group.concept_resolution !== drawer.concept_resolution) group.concept_resolution = 'mixed';
         group.proposition_count++;
