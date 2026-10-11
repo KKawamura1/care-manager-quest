@@ -4,7 +4,7 @@ import type { Question } from '../../src/domain/models';
 const raw = JSON.parse(readFileSync(new URL('../../src/data/packs/2025/questions.json', import.meta.url), 'utf8'));
 const answers=JSON.parse(readFileSync(new URL('../../src/data/packs/2025/answers.json', import.meta.url), 'utf8'));
 const questions=raw.map((q:{id:string;choices:string[]})=>({id:q.id,answerIds:answers[q.id].correctChoices.map(String),selectionCount:answers[q.id].selectionCount,options:q.choices.map((text:string,i:number)=>({id:String(i+1),text}))})) as Question[];
-const key='care-manager-quest:v1';
+const key='care-manager-quest:learning:v3';
 async function chooseAnswer(page: import('@playwright/test').Page, wrong=false) {
  const p=await page.evaluate(k=>JSON.parse(localStorage.getItem(k)!),key);
  const q=questions.find(q=>q.id===p.session.questionIds[p.session.index])!;
@@ -17,10 +17,10 @@ test('five questions, feedback, deep dive, persistence, result and knowledge map
  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('/');await expect(page.getByRole('heading',{name:'5択クエスト',exact:true})).toBeVisible();
  await page.screenshot({path:`test-results/${test.info().project.name}-home.png`,fullPage:false});
  await page.getByRole('button',{name:'5問のクエストを始める'}).click();await expect(page.getByRole('button',{name:/あと.*選んでください/})).toBeDisabled();
- const first=await chooseAnswer(page);await expect(page.getByText('✦ 初見突破 +20')).toBeVisible();
+ const first=await chooseAnswer(page);await expect(page.getByText('✦ 5択完全正解ボーナス +20')).toBeVisible();
   await expect(page.locator('#feedback > p').first()).toBeInViewport();
   await page.screenshot({path:`test-results/${test.info().project.name}-feedback-viewport.png`});await page.screenshot({path:`test-results/${test.info().project.name}-feedback.png`,fullPage:true});
- await page.getByRole('button',{name:'詳しく見る'}).click();await expect(page.getByRole('dialog')).toBeVisible();await page.getByRole('button',{name:'理解を記録する',exact:true}).click();await page.getByRole('dialog').locator('.related-list button').first().click();await expect(page.getByRole('dialog').locator('.status-pill')).toBeVisible();await page.getByRole('button',{name:'閉じる'}).click();await expect(page.getByRole('dialog')).toContainText('2025年度試験当時の正答');await page.getByRole('button',{name:'元の画面へ戻る'}).click();
+ await page.getByRole('button',{name:'詳しく見る'}).click();await expect(page.getByRole('dialog')).toBeVisible();await page.getByRole('dialog').locator('.related-list button').first().click();await expect(page.getByRole('dialog').locator('.status-pill')).toBeVisible();await page.getByRole('button',{name:'閉じる'}).click();await expect(page.getByRole('dialog')).toContainText('2025年度試験当時の正答');await page.getByRole('button',{name:'元の画面へ戻る'}).click();
  await expect(page.locator('.question-title')).toContainText(`問${Number(first.id.split('-')[1])}｜`);await page.reload();await expect(page.getByRole('button',{name:'次の問題へ'})).toBeVisible();
  const before=await page.evaluate(k=>JSON.parse(localStorage.getItem(k)!).attempts.length,key);expect(before).toBe(1);
  for(let i=1;i<5;i++){await page.getByRole('button',{name:'次の問題へ'}).click();await chooseAnswer(page,i===2);}
@@ -70,17 +70,12 @@ test('all 25 official questions play across five quests, each original image map
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
 });
 
-test('existing schema 1 history is backed up and retained while old questions leave the active pool',async({page})=>{
- const legacy=JSON.parse(readFileSync(new URL('../../src/data/legacy-questions.json',import.meta.url),'utf8')) as Question[];
- const q=legacy[0];const concepts=Object.fromEntries(q.conceptIds.map(id=>[id,{seenQuestionIds:[q.id],correctQuestionIds:[q.id],reflected:true}]));
- const old={schemaVersion:1,attempts:[{id:'legacy:0',sessionId:'legacy',questionId:q.id,questionVersion:q.version,selectedIds:q.answerIds,correct:true,firstSeen:true,combo:1,xp:60,at:'2026-10-10T10:00:00.000Z'}],concepts,session:{id:'legacy',questionIds:legacy.slice(0,5).map(q=>q.id),index:0,selectedIds:q.answerIds,completed:false},externalRecords:[],settings:{sound:false}};
- await page.addInitScript(({key,old})=>{localStorage.setItem(key,JSON.stringify(old))},{key,old});await page.goto('/');await expect(page.getByRole('status')).toContainText('以前の履歴・XPを引き継ぎました');
- expect(await page.evaluate(k=>JSON.parse(localStorage.getItem(k)!).schemaVersion,key)).toBe(2);
- expect(await page.evaluate(k=>JSON.parse(localStorage.getItem(k+':before-official')!).attempts[0].questionId,key)).toBe(q.id);
- await page.getByRole('button',{name:'5問のクエストを始める'}).click();expect(await page.evaluate(k=>JSON.parse(localStorage.getItem(k)!).session.questionIds.every((id:string)=>id.startsWith('2025-')),key)).toBe(true);
- await page.getByRole('button',{name:'記録',exact:true}).click();await expect(page.locator('.record-stats')).toContainText('60');
+test('old history is intentionally ignored under the new storage key',async({page})=>{
+  await page.addInitScript(()=>localStorage.setItem('care-manager-quest:v1','{"old":true}'));
+  await page.goto('/');
+  await page.getByRole('button',{name:'5問のクエストを始める'}).click();
+  expect(await page.evaluate(k=>JSON.parse(localStorage.getItem(k)!).schemaVersion,key)).toBe(3);
 });
-
 
 test('domain setting offers all 60 as text while preserving the existing history',async({page})=>{
  await page.goto('/');

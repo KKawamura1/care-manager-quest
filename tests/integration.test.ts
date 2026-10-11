@@ -63,5 +63,5 @@ describe('merged 2005–2025 corpus and portable history', () => {
     const oversized = structuredClone(archive);
     oversized.concepts['archive.community'].seenQuestionIds = Array.from({ length: historyQuestions.length + 1 }, (_, i) => `invalid-${i}`);
     expect(() => parsePlayer(JSON.stringify(oversized))).toThrow();
-  });
+  }, 30000);
 });

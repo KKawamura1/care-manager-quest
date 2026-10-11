@@ -42,11 +42,15 @@ small { font-size: 12px; }
 .home-screen, .map-screen, .records-screen, .swipe-screen { padding-top: 26px; }
 .home-screen { padding-top: 18px; }
 .home-screen h1 { margin-bottom: 16px; }
-.mode-entry { display: flex; align-items: center; gap: 16px; width: 100%; padding: 16px 20px; border: 1px solid var(--line); background: var(--panel); border-radius: 14px; text-align: left; }
-.mode-entry strong { font-size: 20px; }
-.mode-entry > span:last-child { margin-left: auto; color: var(--muted); }
-.mode-icon { color: var(--mint); font-size: 26px; }
 .mission-card { background: var(--panel); padding: 18px 20px; margin-top: 16px; border: 1px solid var(--line); border-radius: 14px; }
+.swipe-home-controls .swipe-settings { margin-top: 16px; }
+.swipe-home-stats { margin: 0 0 16px; color: var(--muted); font-size: 11px; }
+.swipe-home-controls .primary + .swipe-home-stats { margin: 12px 0; }
+.swipe-home-detail { padding-top: 12px; margin-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+.swipe-home-detail summary { cursor: pointer; }
+.swipe-home-detail p { margin-top: 12px; font-size: 12px; }
+.swipe-empty { display: grid; gap: 16px; padding: 16px 0; }
+
 .year-picker { display: grid; gap: 6px; margin: 16px 0; color: var(--muted); font-size: 12px; }
 select { width: 100%; min-width: 0; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 12px; color: #edf1f5; font-size: 16px; }
 fieldset { border: 0; padding: 0; margin: 16px 0; display: flex; gap: 16px; min-width: 0; }
