@@ -35,6 +35,18 @@ try {
   }
   run('consolidate-issue32-revisions.mjs', ['--check']);
   run('sync-issue32-sources.mjs', ['--check']);
+  // Annual validation catches a stale inline review even when primary-path
+  // normalization would otherwise skip a non-assigned record.
+  changeFile(data + '/propositions/2025.jsonl', (text) => {
+    const rows = text.trim().split('\n').map(JSON.parse);
+    rows[0].attribute += '変更';
+    return rows.map(JSON.stringify).join('\n') + '\n';
+  }, () => run('consolidate-issue32-revisions.mjs', ['--check'], false, /stale drawer decision/));
+  changeFile(data + '/propositions/2025.jsonl', (text) => {
+    const rows = text.trim().split('\n').map(JSON.parse);
+    rows[0].classification_status = 'unmapped'; rows[0].primary_path = [];
+    return rows.map(JSON.stringify).join('\n') + '\n';
+  }, () => run('validate-issue32-revisions.mjs', [], false, /requires assigned classification/));
   const before = snapshot();
   run('consolidate-issue32-revisions.mjs');
   run('sync-issue32-sources.mjs');
@@ -82,5 +94,27 @@ try {
   }
   run('consolidate-issue32-revisions.mjs', ['--check']);
   run('sync-issue32-sources.mjs', ['--check']);
+  // One question revision contains both classification and normalization data.
+  // Consolidation preserves the full decision and regeneration uses its new ID.
+  const question = readFileSync(join(fixture, data, 'propositions/2025.jsonl'), 'utf8')
+    .trim().split('\n').map(JSON.parse).filter(row => row.question_number === 1);
+  const target = question[0];
+  target.drawer_assignment = {...target.drawer_assignment, attribute_id:'principles',
+    attribute_label:'目的・理念・基本方針', reason:'fixture: inline revision decision',
+    history:[{previous:{...target.drawer_assignment}}]};
+  mkdirSync(dirname(revision), {recursive:true});
+  writeFileSync(revision, question.map(JSON.stringify).join('\n') + '\n');
+  run('consolidate-issue32-revisions.mjs');
+  run('consolidate-issue32-revisions.mjs', ['--check']);
+  const persisted = readFileSync(join(fixture, data, 'propositions/2025.jsonl'), 'utf8')
+    .trim().split('\n').map(JSON.parse).find(row => row.question_number === 1 && row.choice_index === 1);
+  assert.deepEqual(persisted, target, 'inline review or history lost during consolidation');
+  assert.ok(!readdirSync(join(fixture, data)).includes('reviewed-drawer-assignments.jsonl'));
+  run('normalize-issue32-ids.mjs', ['--output-dir=' + join(fixture, 'normalized')]);
+  const normalized = readFileSync(join(fixture, 'normalized/proposition-drawer-index.jsonl'), 'utf8')
+    .trim().split('\n').map(JSON.parse).find(row => row.proposition_id === target.drawer_assignment.proposition_id);
+  assert.ok(normalized.drawer_assignment_reviewed);
+  assert.match(normalized.primary_drawer_id, /#principles$/);
+  assert.equal(normalized.drawer_review_reason, target.drawer_assignment.reason);
   console.log('Consolidation/source regressions OK: idempotence, later-year overlays, counts, README, checksum inventory, OCR drift and split preservation.');
 } finally { rmSync(fixture, { recursive: true, force: true }); }

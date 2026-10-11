@@ -124,6 +124,7 @@ const summaryBlock = [
   '## 現在の正本と集計',
   '',
   '`propositions/YYYY.jsonl`（2005〜2025年度）が唯一の分類正本です。設問別修正は全年度で統合し、`revisions/`には残していません。',
+  '個別の概念ID・属性ID・レビュー状態・理由・入力フィンガープリントは、同じ命題内の `drawer_assignment` に保持します。分類と引き出し判断を別ファイルへ二重に記録する必要はありません。',
   '',
   `- ${manifest.coverage.question_count.toLocaleString('en-US')}問・${manifest.coverage.choice_count.toLocaleString('en-US')}選択肢・${total.toLocaleString('en-US')}命題。assigned ${statusTotals.assigned.toLocaleString('en-US')}件、ambiguous ${statusTotals.ambiguous}件、unmapped ${statusTotals.unmapped}件。`,
   `- 判定知識の個別レビュー：${judgmentReviewed.toLocaleString('en-US')}命題。未レビュー：${(total - judgmentReviewed).toLocaleString('en-US')}命題。`,

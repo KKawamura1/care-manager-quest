@@ -7,9 +7,28 @@
 現在 `revisions/` に設問別修正は残っていません。現在の件数は [README](README.md) と `manifest.json` を参照してください。
 
 `classification_revision`・`knowledge_target_review` は過去の分類判断を保持します。
+個別引き出し判断は同じ命題の `drawer_assignment` に保持します。別の割当ファイルは使いません。
 原文同期の旧設問文・旧選択肢・旧命題は `source_text_revisions` に保持します。
 OCRで読めなかった分類ラベルの校正は `source_label_revisions` に保持します。
 旧方式を含む分類レビュー履歴と、判定知識による個別意味レビューは別々に集計します。
+
+### 個別引き出し判断の編集
+
+`drawer_assignment` は `concept_id`・`attribute_id`・`attribute_label`・`reason`、
+`review_status: "reviewed"`、`proposition_id`、`source_fingerprint` を持ちます。
+既存の `reviewed_at`・`review_batch` も保持します。未レビューの命題にはこのフィールドを付けず、従来の正規化規則で暫定配置します。
+`knowledge_target_review` の判定知識レビューと、引き出し割当のレビューは別の確認なので、互いのレビュー済み件数を増やしません。
+
+分類を直すときは同じ命題レコード内の判定知識・概念ID・属性ID・理由を確認します。
+割当を再レビューした場合は、変更前の `drawer_assignment` を新しい割当の
+`history` 配列へ `{ previous: 変更前の割当, reviewed_at: 確認日 }` として追加し、既存履歴を保持します。
+フィンガープリントは `scripts/issue32-reviewed-drawers.mts` の `drawerSourceFingerprint(row)` で計算します。
+対象は設問文・命題・概念ラベル・属性ラベル・主分類パスで、割当やその履歴自体は含めません。
+入力変更後は判断を再確認して更新します。指紋だけの自動更新はレビューの代わりになりません。
+
+検証は入力の指紋、命題IDの一致、assigned状態、概念IDのルート、必須ID・ラベル・理由を確認します。
+正規化では登録済み概念IDも確認し、主分類だけに個別判断を適用します。
+候補分類と他の命題へレビュー済み状態を引き継ぎません。
 
 ## 設問別に作業する場合
 
@@ -18,7 +37,7 @@ OCRで読めなかった分類ラベルの校正は `source_label_revisions` に
 
 1. PR33の最新ブランチ（マージ後はmain）をベースにする。
 2. `node scripts/create-issue32-revision.mjs 2005 01` で一設問を作成する。
-3. `revisions/2005/01.jsonl` の命題・分類・判断理由・履歴を修正する。設問文と `source_text`、ID、採点・出典メタデータは保持する。
+3. `revisions/2005/01.jsonl` の命題・分類・判定知識・`drawer_assignment`・判断理由・履歴を同じレコードで修正する。設問文と `source_text`、ID、採点・出典メタデータは保持する。
 4. `node scripts/validate-issue32-revisions.mjs` と判定知識の検証スクリプトで実効データを確認する。
 5. 全レビューを集め、下記の統合・同期・再生成を実行する。
 
@@ -57,6 +76,7 @@ PR39で保持された公式原文との二重校正未完了・当時法令未�
 - 難例一覧・READMEの現況・年度表の同期漏れ。
 - 収録ファイル一覧、サイズ、SHA-256の不一致（READMEも対象）。
 - リポジトリ原文入力と全1,260問・6,300選択肢の不一致、原文入力の指紋の変化。
+- 個別引き出し判断と同じレコードの入力指紋・命題ID・分類状態の不一致。
 
 これらはデータの構造と同期状態の検査です。意味分類・正答・法令の正しさを全件証明するものではありません。
 旧 `existing-concept-crosswalk.csv` は初回分類時点の履歴スナップショットで、現在の経路共起表ではありません。

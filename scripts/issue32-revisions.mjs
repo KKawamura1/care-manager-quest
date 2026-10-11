@@ -6,6 +6,7 @@ import assert from 'node:assert/strict';
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { validateDrawerAssignment } from './issue32-reviewed-drawers.mts';
 
 export const dataDir = join(dirname(dirname(fileURLToPath(import.meta.url))), 'docs/taxonomy/issue-32-experiment');
 export const FIRST_YEAR = 2005;
@@ -37,6 +38,7 @@ function groupByQuestion(rows) {
 }
 
 function validateRecord(row, year) {
+  validateDrawerAssignment(row);
   const key = [row.question_id, row.choice_index, row.proposition_index].join('/');
   assert.equal(row.year, year, 'wrong year ' + key);
   assert.ok(typeof row.question_id === 'string' && row.question_id, key);

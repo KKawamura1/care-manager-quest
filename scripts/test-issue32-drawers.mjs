@@ -119,6 +119,28 @@ assert.match(drawer('2013-16',1),/#committee$/,'committee establishment must not
 assert.match(drawer('2011-14',3),/3\.1\.preventive_support#designation$/);
 const reviewed=loadYear(2014).find(r=>r.question_number===14&&r.choice_index===1);
 assert.throws(()=>identifyDrawer({...reviewed,proposition:reviewed.proposition+'変更'},reviewed.primary_path),/stale drawer decision/);
+// Decisions travel with the row: editing a revision for the same ID takes effect
+// immediately, without updating a global sidecar or approving other occurrences.
+assert.equal(reviewed.drawer_assignment.review_status,'reviewed');
+const changedDecision={...reviewed,drawer_assignment:{...reviewed.drawer_assignment,
+  attribute_id:'application',attribute_label:'認定申請・変更手続',reason:'fixture: reviewed a different attribute'}};
+assert.match(identifyDrawer(changedDecision,changedDecision.primary_path).id,/#application$/);
+assert.match(identifyDrawer(reviewed,reviewed.primary_path).id,/#survey$/);
+const {drawer_assignment:omittedDecision,...withoutReview}=reviewed;
+assert.equal(identifyDrawer(withoutReview,withoutReview.primary_path).individually_reviewed,false);
+assert.equal(identifyDrawer(reviewed,['4','社会保障の仕組み','別候補']).individually_reviewed,false);
+for(const field of ['question_stem','subject_concept','attribute']) {
+  assert.throws(()=>identifyDrawer({...reviewed,[field]:reviewed[field]+'変更'},reviewed.primary_path),/stale drawer decision/);
+}
+const changedPath={...reviewed,primary_path:[...reviewed.primary_path,'変更']};
+assert.throws(()=>identifyDrawer(changedPath,changedPath.primary_path),/stale drawer decision/);
+assert.throws(()=>identifyDrawer({...reviewed,classification_status:'ambiguous'},reviewed.primary_path),/requires assigned classification/);
+assert.throws(()=>identifyDrawer({...reviewed,choice_index:5},reviewed.primary_path),/belongs to another proposition/);
+for(const [field,value,pattern]of [
+  ['reason','',/reason missing/],['attribute_id','',/attribute_id missing/],
+  ['attribute_label','',/attribute_label missing/],['review_status','pending',/invalid drawer review status/],
+  ['concept_id','4.unknown_concept',/unknown reviewed concept/],
+]) assert.throws(()=>identifyDrawer({...reviewed,drawer_assignment:{...reviewed.drawer_assignment,[field]:value}},reviewed.primary_path),pattern);
 const semanticReviewCount=Array.from({length:21},(_,i)=>loadYear(2005+i)).flat()
   .filter(r=>r.knowledge_target_review?.principle==='judgment_knowledge_over_context').length;
 assert.equal(summary.classification_semantically_reviewed_propositions,semanticReviewCount,
