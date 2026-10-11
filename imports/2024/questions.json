@@ -35,15 +35,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "わが国の近年の介護を取り巻く状況の説明として適切なものはどれか。 3 つ選べ。",
+      "stem": "わが国の近年の介護を取り巻く状況の説明として適切なものはどれか。3つ選べ。",
       "choices": [
-        "介護を要する高齢者を同大している高齢者が介護する「老老介護」は, 減少傾向に ある。",
-        "育児と介護を同時に担う|ダブルケア」が課題となっている。",
+        "介護を要する高齢者を同居している高齢者が介護する「老老介護」は、減少傾向にある。",
+        "育児と介護を同時に担う「ダブルケア」が課題となっている。",
         "「ヤングケアラー」への支援が課題となっている。",
-        "介護者が仕事と介護を両立できるよう, 法律により介護休暇及び介護休業が制度 化きれている。                           。",
-        "特別姜護老人ホームなどの老人ホームでの死亡者数は, 減少傾向にある。"
+        "介護者が仕事と介護を両立できるよう、法律により介護休暇及び介護休業が制度化されている。",
+        "特別養護老人ホームなどの老人ホームでの死亡者数は、減少傾向にある。"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -58,7 +58,9 @@
         "concepts": "unclassified"
       },
       "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
-      "ocr_structural_repairs": []
+      "ocr_structural_repairs": [],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-02",
@@ -82,15 +84,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "2021(令和 3 )年度示における全国の要介護(疲支援)認定者数の状況として 正しいもるのはどれか。 2 つ選べ。",
+      "stem": "2021（令和3）年度末における全国の要介護（要支援）認定者数の状況として正しいものはどれか。2つ選べ。",
       "choices": [
-        "要介護(要支援)認定者のうち, 第2号被保険者の占める割合は, 30 %を超えて いる。",
-        "第1号被保険者に占める要介護(要支援)認定者の割合は, 40 %を超えている。",
-        "85歳以上の被保険者のうち, 要介護(要支援)超定者の占める割合は, 50 %を超 えている。",
-        "要介護(要支援)認定者数は, 男性より女性の方が多い。",
-        "要介護(要支援)状態区分別でみると, 認定者数が最も多いのは, 要介護5である。"
+        "要介護（要支援）認定者のうち、第2号被保険者の占める割合は、30%を超えている。",
+        "第1号被保険者に占める要介護（要支援）認定者の割合は、40%を超えている。",
+        "85歳以上の被保険者のうち、要介護（要支援）認定者の占める割合は、50%を超えている。",
+        "要介護（要支援）認定者数は、男性より女性の方が多い。",
+        "要介護（要支援）状態区分別でみると、認定者数が最も多いのは、要介護5である。"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -105,7 +107,9 @@
         "concepts": "unclassified"
       },
       "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
-      "ocr_structural_repairs": []
+      "ocr_structural_repairs": [],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-03",
@@ -129,15 +133,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "介護保険法に定める医療保険者の事務として正しいものはどれか。 2 つ選べ。",
+      "stem": "介護保険法に定める医療保険者の事務として正しいものはどれか。2つ選べ。",
       "choices": [
-        "第1号彼保険者の保険料の特別後収を行う。",
-        "第2号技保険者の保険料を徴収する。",
-        "社会保険診療報酬支払基金に対し, 介護給付費・地域支援事業支援納付金を納付 する。",
-        "市町村に対し, 介護給付費交付金を交付する。",
-        "市町村に対し, 地域壇援事業支援交付金を交付する。"
+        "第1号被保険者の保険料の特別徴収を行う。",
+        "第2号被保険者の保険料を徴収する。",
+        "社会保険診療報酬支払基金に対し、介護給付費、地域支援事業支援納付金を納付する。",
+        "市町村に対し、介護給付費交付金を交付する。",
+        "市町村に対し、地域支援事業支援交付金を交付する。"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -152,7 +156,9 @@
         "concepts": "unclassified"
       },
       "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
-      "ocr_structural_repairs": []
+      "ocr_structural_repairs": [],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-04",
@@ -176,15 +182,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "介護保険法に定める都道府県の責務として正しいもるのはどれか。 2 つ選べ。",
+      "stem": "介護保険法に定める都道府県の責務として正しいものはどれか。2つ選べ。",
       "choices": [
         "介護報酬の算定基準を適切に設定しなければならない。",
-        "介護保険事業の運営が健金かつ円滑に行われるように, 必要な助言及び適切な援 助をしなければならない。              ーー",
-        "介護保険事業が効率的に行われるように, 年金保険者を指導・監督しなければな らない。",
-        "認知症に関する知識の普及及び啓玩に災めなければならない。",
-        "高齢者が経済活動に参加ることを促さなければならない。"
+        "介護保険事業の運営が健全かつ円滑に行われるように、必要な助言及び適切な援助をしなければならない。",
+        "介護保険事業が効率的に行われるように、年金保険者を指導・監督しなければならない。",
+        "認知症に関する知識の普及及び啓発に努めなければならない。",
+        "高齢者が経済活動に参加することを促さなければならない。"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -199,7 +205,9 @@
         "concepts": "unclassified"
       },
       "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
-      "ocr_structural_repairs": []
+      "ocr_structural_repairs": [],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-05",
@@ -223,15 +231,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "介護保険の第1号被保険者について正しいもるのはどれか。 2 つ選べ。",
+      "stem": "介護保険の第1号被保険者について正しいものはどれか。2つ選べ。",
       "choices": [
-        "市町村の区域内に住所を有する 65 歳以上の者をいう。",
-        "保険給付の対象となるのは, 特定疾滴を原因として要支援・要介護状態になった 者に限られる。",
-        "保険料は, 地域支援事業の任意事業の財源に充当される。",
-        "居住する市町村から転出した場合は, その翌月から転出先の市町村の被保険者と なる。",
-        "医療保険加入者でなくなった日から, 第1 号被保険者の資格を裏失する。"
+        "市町村の区域内に住所を有する65歳以上の者をいう。",
+        "保険給付の対象となるのは、特定疾病を原因として要支援・要介護状態になった者に限られる。",
+        "保険料は、地域支援事業の任意事業の財源に充当される。",
+        "居住する市町村から転出した場合は、その翌月から転出先の市町村の被保険者となる。",
+        "医療保険加入者でなくなった日から、第1号被保険者の資格を喪失する。"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -257,7 +265,9 @@
           "kind": "renumber_ocr",
           "line": "- 3 保険料は, 地域支援事業の任意事業の財源に充当される。"
         }
-      ]
+      ],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-06",
@@ -282,15 +292,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "区分支給限度基準額が適用きれるサービスとして正しいものはどれか。 3 つ選べ。",
+      "stem": "区分支給限度基準額が適用されるサービスとして正しいものはどれか。3つ選べ。",
       "choices": [
         "訪問介護",
-        "地域密着型通所介談                                          ]",
-        "選宅療養管理指導",
+        "地域密着型通所介護",
+        "居宅療養管理指導",
         "認知症対応型通所介護",
-        "地域害型介護老人福祉施設入所者生活介護"
+        "地域密着型介護老人福祉施設入所者生活介護"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -305,7 +315,9 @@
         "concepts": "unclassified"
       },
       "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
-      "ocr_structural_repairs": []
+      "ocr_structural_repairs": [],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-07",
@@ -330,15 +342,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "市町村長が指定する事業者が行うサービスとして正しいもるのはどれか。 3 つ選べ。",
+      "stem": "市町村長が指定する事業者が行うサービスとして正しいものはどれか。3つ選べ。",
       "choices": [
         "居宅介護支援",
         "通所介護",
-        "認知症対応弄共同生活介護",
-        "介庶巴防短期入所生活介護",
+        "認知症対応型共同生活介護",
+        "介護予防短期入所生活介護",
         "介護予防支援"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -359,7 +371,9 @@
           "kind": "renumber_ocr",
           "line": "8 認知症対応弄共同生活介護"
         }
-      ]
+      ],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-08",
@@ -384,15 +398,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "介護保険制度の給付と利用者負担について正しいものはどれか。 3 つ選べ。",
+      "stem": "介護保険制度の給付と利用者負担について正しいものはどれか。3つ選べ。",
       "choices": [
-        "被保険者が災害により住宅に著しい損害を受けた場合には, 市町村は, 定率の利 用者負担を減免することができる。",
-        "施設介護サービス旨に係る利用者負担は. 一律2 割の定率負担となっている。",
-        "区分支給限度基準額を超えてサービスを利用した場合には, その吉えた部分は 3 ・ 割負担となる。",
-        "介護保険施設入所者の理美容代は, 保険給付の対象とならない。",
-        "居宅介護サービス計画費については, 利用者負担はない。"
+        "被保険者が災害により住宅に著しい損害を受けた場合には、市町村は、定率の利用者負担を減免することができる。",
+        "施設介護サービス費に係る利用者負担は、一律2割の定率負担となっている。",
+        "区分支給限度基準額を超えてサービスを利用した場合には、その超えた部分は3割負担となる。",
+        "介護保険施設入所者の理美容代は、保険給付の対象とならない。",
+        "居宅介護サービス計画費については、利用者負担はない。"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -407,7 +421,9 @@
         "concepts": "unclassified"
       },
       "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
-      "ocr_structural_repairs": []
+      "ocr_structural_repairs": [],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-09",
@@ -431,15 +447,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "高額介謎サービス費について正しいゃのはどれか。 2 つ選べ。",
+      "stem": "高額介護サービス費について正しいものはどれか。2つ選べ。",
       "choices": [
-        "世匠単倍で算定きれる。",
-        "地域窒着型サービスの利用に係る利用者負担額は, 支給の対象とならない。",
-        "同一世帯に住民税が課税きれている者がいる場合には, 支給の対象とならない。",
-        "利用者の負担上限額は, 6月単位で設定されている。",
-        "利用者の負担上限額は, 所得によって異なる。"
+        "世帯単位で算定される。",
+        "地域密着型サービスの利用に係る利用者負担額は、支給の対象とならない。",
+        "同一世帯に住民税が課税されている者がいる場合には、支給の対象とならない。",
+        "利用者の負担上限額は、6月単位で設定されている。",
+        "利用者の負担上限額は、所得によって異なる。"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -460,7 +476,9 @@
           "kind": "renumber_ocr",
           "line": "。 1 世匠単倍で算定きれる。"
         }
-      ]
+      ],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-10",
@@ -485,15 +503,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "介護保険法に定める市町村介護保険事業計画について正しいものはどれか。 8つ選べ。 “",
+      "stem": "介護保険法に定める市町村介護保険事業計画について正しいものはどれか。3つ選べ。",
       "choices": [
         "市町村老人福祉計画と一体のものとして作成されなければならない。",
         "市町村地域福祉計画と調和が保たれたものでなければならない。",
-        "介談保険施設の種類ごとの必要入所定員総数の見込みを定めなければならない。",
+        "介護保険施設の種類ごとの必要入所定員総数の見込みを定めなければならない。",
         "各年度における地域支援事業の量の見込みを定めるものとする。",
-        "計画期間は, 5年を1期とする。"
+        "計画期間は、5年を1期とする。"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -508,7 +526,9 @@
         "concepts": "unclassified"
       },
       "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
-      "ocr_structural_repairs": []
+      "ocr_structural_repairs": [],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-11",
@@ -533,15 +553,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "介護保険の財政について正しいものはどれか。 3 つ選べ。",
+      "stem": "介護保険の財政について正しいものはどれか。3つ選べ。",
       "choices": [
-        "施設等給付の公費負担割合は, 国 30 %, 都道府県 10 %, 市町村 10 %である。",
-        "調整交付金の総額は, 介護給付及び予防給付に要する費用の絵額の 5 %に相当す る額である。",
-        "介護給付及び予防給付に要する費用は, 公費と保険料によりそれぞれ 50 %ずつ 賭われる。",
-        "第1号被保険者と第 2 号被保険者の保険料負担の接分割合は, 制度施行以来変 わっていない。",
-        "市町村特別給付に要する費用は, その市町村の第 1 号入保険者の保険料により財 われる。"
+        "施設等給付の公費負担割合は、国30%、都道府県10%、市町村10%である。",
+        "調整交付金の総額は、介護給付及び予防給付に要する費用の総額の5%に相当する額である。",
+        "介護給付及び予防給付に要する費用は、公費と保険料によりそれぞれ50%ずつ賄われる。",
+        "第1号被保険者と第2号被保険者の保険料負担の按分割合は、制度施行以来変わっていない。",
+        "市町村特別給付に要する費用は、その市町村の第1号被保険者の保険料により賄われる。"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -562,7 +582,9 @@
           "kind": "renumber_ocr",
           "line": "-2 調整交付金の総額は, 介護給付及び予防給付に要する費用の絵額の 5 %に相当す"
         }
-      ]
+      ],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-12",
@@ -587,15 +609,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "介護保険における第2号被保険者の保険料について正しいものはどれか。 3 つ選べ。",
+      "stem": "介護保険における第2号被保険者の保険料について正しいものはどれか。3つ選べ。",
       "choices": [
-        "介護予防・日常生活支援総合事業の細用にも充てられる。",
-        "所得段階別定額保験料である。",
-        "被用者保険の被保険者の場合には, 事業主負担がある。",
-        "拉用者保険の披保険者である生活保護受給者は, 保険料を支払う。",
-        "外用著保険の被保険者の保険料は, 市町村が条例で定める。"
+        "介護予防・日常生活支援総合事業の費用にも充てられる。",
+        "所得段階別定額保険料である。",
+        "被用者保険の被保険者の場合には、事業主負担がある。",
+        "被用者保険の被保険者である生活保護受給者は、保険料を支払う。",
+        "被用者保険の被保険者の保険料は、市町村が条例で定める。"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -616,7 +638,9 @@
           "kind": "renumber_ocr",
           "line": "] 介護予防・日常生活支援総合事業の細用にも充てられる。"
         }
-      ]
+      ],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-13",
@@ -641,15 +665,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "認知症総合支援事業において配周の対象とされているものとして正しいも のはどれか。 3 つ選べ。",
+      "stem": "認知症総合支援事業において配置の対象とされているものとして正しいものはどれか。3つ選べ。",
       "choices": [
-        "福祉用具専門相談員         -",
-        "認知症地域支援推進上",
+        "福祉用具専門相談員",
+        "認知症地域支援推進員",
         "チームオレンジコーディネーター",
         "認知症初期集中支援チーム",
         "介護サービス相談員"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -664,7 +688,9 @@
         "concepts": "unclassified"
       },
       "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
-      "ocr_structural_repairs": []
+      "ocr_structural_repairs": [],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-14",
@@ -688,15 +714,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "介護予防ケアマネジメント(第1号介護予防支援事業)について正しいもの はどれか。 2 つ選べ。",
+      "stem": "介護予防ケアマネジメント（第1号介護予防支援事業）について正しいものはどれか。2つ選べ。",
       "choices": [
-        "事業の受託者への費用の審査及び支払に係る事務は, 国民健康保険団体連合会に 委託できない。",
-        "介護予防ケアマネジメントの利用者負担は, 1 割又は2割である。",
+        "事業の受託者への費用の審査及び支払に係る事務は、国民健康保険団体連合会に委託できない。",
+        "介護予防ケアマネジメントの利用者負担は、1割又は2割である。",
         "医療機関が行わなければならない。",
-        "住所地特例適用被保険者については, 入所又は入居する施設が所在する市町村が",
-        "要支援者は, 対象である。"
+        "住所地特例適用被保険者については、入所又は入居する施設が所在する市町村が行う。",
+        "要支援者は、対象である。"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -717,7 +743,9 @@
           "kind": "renumber_ocr",
           "line": "] 事業の受託者への費用の審査及び支払に係る事務は, 国民健康保険団体連合会に"
         }
-      ]
+      ],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-15",
@@ -741,15 +769,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "旬談保険審査会について正しいものはどれか。 2 つ選べ。",
+      "stem": "介護保険審査会について正しいものはどれか。2つ選べ。",
       "choices": [
         "市町村に設置される。",
-        "委員には, 被保険者を代表する者が含まれる。          .",
-        "介護報酬の審査・支払についての不服は, 審査請求の対象となる。",
-        "指定介護老人福祉施設の指定についての不服は, 審査請求の対象となる。",
-        "保険料の滞納処分についての不服は, 審査請求の対象となる。"
+        "委員には、被保険者を代表する者が含まれる。",
+        "介護報酬の審査・支払についての不服は、審査請求の対象となる。",
+        "指定介護老人福祉施設の指定についての不服は、審査請求の対象となる。",
+        "保険料の滞納処分についての不服は、審査請求の対象となる。"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -764,7 +792,9 @@
         "concepts": "unclassified"
       },
       "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
-      "ocr_structural_repairs": []
+      "ocr_structural_repairs": [],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-16",
