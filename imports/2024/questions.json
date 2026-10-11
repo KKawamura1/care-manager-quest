@@ -53,7 +53,7 @@
       "ocr_raw_path": "ocr/questions/2024/q01.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -102,7 +102,7 @@
       "ocr_raw_path": "ocr/questions/2024/q02.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -151,7 +151,7 @@
       "ocr_raw_path": "ocr/questions/2024/q03.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -200,7 +200,7 @@
       "ocr_raw_path": "ocr/questions/2024/q04.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -249,7 +249,7 @@
       "ocr_raw_path": "ocr/questions/2024/q05.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -310,7 +310,7 @@
       "ocr_raw_path": "ocr/questions/2024/q06.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -360,7 +360,7 @@
       "ocr_raw_path": "ocr/questions/2024/q07.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -416,7 +416,7 @@
       "ocr_raw_path": "ocr/questions/2024/q08.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -465,7 +465,7 @@
       "ocr_raw_path": "ocr/questions/2024/q09.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -521,7 +521,7 @@
       "ocr_raw_path": "ocr/questions/2024/q10.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -571,7 +571,7 @@
       "ocr_raw_path": "ocr/questions/2024/q11.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -627,7 +627,7 @@
       "ocr_raw_path": "ocr/questions/2024/q12.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -683,7 +683,7 @@
       "ocr_raw_path": "ocr/questions/2024/q13.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -732,7 +732,7 @@
       "ocr_raw_path": "ocr/questions/2024/q14.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -787,7 +787,7 @@
       "ocr_raw_path": "ocr/questions/2024/q15.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -836,7 +836,7 @@
       "ocr_raw_path": "ocr/questions/2024/q16.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -886,7 +886,7 @@
       "ocr_raw_path": "ocr/questions/2024/q17.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -935,7 +935,7 @@
       "ocr_raw_path": "ocr/questions/2024/q18.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -985,7 +985,7 @@
       "ocr_raw_path": "ocr/questions/2024/q19.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -1041,7 +1041,7 @@
       "ocr_raw_path": "ocr/questions/2024/q20.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -1097,7 +1097,7 @@
       "ocr_raw_path": "ocr/questions/2024/q21.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -1153,7 +1153,7 @@
       "ocr_raw_path": "ocr/questions/2024/q22.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -1203,7 +1203,7 @@
       "ocr_raw_path": "ocr/questions/2024/q23.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -1252,7 +1252,7 @@
       "ocr_raw_path": "ocr/questions/2024/q24.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -1308,7 +1308,7 @@
       "ocr_raw_path": "ocr/questions/2024/q25.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -1369,7 +1369,7 @@
       "ocr_raw_path": "ocr/questions/2024/q26.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -1425,7 +1425,7 @@
       "ocr_raw_path": "ocr/questions/2024/q27.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -1481,7 +1481,7 @@
       "ocr_raw_path": "ocr/questions/2024/q28.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -1531,7 +1531,7 @@
       "ocr_raw_path": "ocr/questions/2024/q29.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -1581,7 +1581,7 @@
       "ocr_raw_path": "ocr/questions/2024/q30.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -1631,7 +1631,7 @@
       "ocr_raw_path": "ocr/questions/2024/q31.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -1692,7 +1692,7 @@
       "ocr_raw_path": "ocr/questions/2024/q32.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -1748,7 +1748,7 @@
       "ocr_raw_path": "ocr/questions/2024/q33.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -1798,7 +1798,7 @@
       "ocr_raw_path": "ocr/questions/2024/q34.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -1848,7 +1848,7 @@
       "ocr_raw_path": "ocr/questions/2024/q35.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -1898,7 +1898,7 @@
       "ocr_raw_path": "ocr/questions/2024/q36.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -1948,7 +1948,7 @@
       "ocr_raw_path": "ocr/questions/2024/q37.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -1998,7 +1998,7 @@
       "ocr_raw_path": "ocr/questions/2024/q38.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -2047,7 +2047,7 @@
       "ocr_raw_path": "ocr/questions/2024/q39.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -2097,7 +2097,7 @@
       "ocr_raw_path": "ocr/questions/2024/q40.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -2153,7 +2153,7 @@
       "ocr_raw_path": "ocr/questions/2024/q41.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -2202,7 +2202,7 @@
       "ocr_raw_path": "ocr/questions/2024/q42.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -2257,7 +2257,7 @@
       "ocr_raw_path": "ocr/questions/2024/q43.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -2307,7 +2307,7 @@
       "ocr_raw_path": "ocr/questions/2024/q44.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -2357,7 +2357,7 @@
       "ocr_raw_path": "ocr/questions/2024/q45.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -2407,7 +2407,7 @@
       "ocr_raw_path": "ocr/questions/2024/q46.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -2463,7 +2463,7 @@
       "ocr_raw_path": "ocr/questions/2024/q47.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -2513,7 +2513,7 @@
       "ocr_raw_path": "ocr/questions/2024/q48.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -2563,7 +2563,7 @@
       "ocr_raw_path": "ocr/questions/2024/q49.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -2613,7 +2613,7 @@
       "ocr_raw_path": "ocr/questions/2024/q50.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -2663,7 +2663,7 @@
       "ocr_raw_path": "ocr/questions/2024/q51.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -2713,7 +2713,7 @@
       "ocr_raw_path": "ocr/questions/2024/q52.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -2763,7 +2763,7 @@
       "ocr_raw_path": "ocr/questions/2024/q53.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -2813,7 +2813,7 @@
       "ocr_raw_path": "ocr/questions/2024/q54.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -2868,7 +2868,7 @@
       "ocr_raw_path": "ocr/questions/2024/q55.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -2929,7 +2929,7 @@
       "ocr_raw_path": "ocr/questions/2024/q56.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -2979,7 +2979,7 @@
       "ocr_raw_path": "ocr/questions/2024/q57.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -3029,7 +3029,7 @@
       "ocr_raw_path": "ocr/questions/2024/q58.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -3085,7 +3085,7 @@
       "ocr_raw_path": "ocr/questions/2024/q59.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
@@ -3135,7 +3135,7 @@
       "ocr_raw_path": "ocr/questions/2024/q60.txt",
       "preferred_rendering": "original_image_until_text_proofread",
       "data_origin": {
-        "question_text": "official_pdf_scanned_image_local_japanese_ocr_unproofread",
+        "question_text": "secondary_published_question_text_corrected_from_ocr_official_proofread_pending",
         "answer": "prior_created_2024_official_answer_key",
         "concepts": "unclassified"
       },
