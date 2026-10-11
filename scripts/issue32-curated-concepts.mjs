@@ -636,8 +636,8 @@ export const additionalConceptDefinitions = [
   ],
   [
     "3",
-    "3.3.care_manager",
-    "介護支援専門員",
+    "3.1.home_support",
+    "居宅介護支援",
     "ケアマネジメント"
   ],
   [
