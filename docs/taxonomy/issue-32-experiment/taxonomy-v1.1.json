@@ -1,0 +1,481 @@
+{
+  "taxonomy_version": "hypothesis-v1.1",
+  "status": "experimental",
+  "source_issue": 35,
+  "base_version": "hypothesis-v1.0",
+  "notes": [
+    "Stable root IDs 1-4 and old root labels are retained for backward compatibility.",
+    "Nodes are representative; additions require review in #35.",
+    "Only explicitly reviewed proposition records may be marked classification_review."
+  ],
+  "nodes": [
+    {
+      "id": "1",
+      "parent_id": null,
+      "label": "人の健康と生活",
+      "kind": "category"
+    },
+    {
+      "id": "1.1",
+      "parent_id": "1",
+      "label": "加齢・疾病・病態",
+      "kind": "category"
+    },
+    {
+      "id": "1.1.dementia",
+      "parent_id": "1.1",
+      "label": "認知症",
+      "kind": "disease"
+    },
+    {
+      "id": "1.1.dementia.symptoms",
+      "parent_id": "1.1.dementia",
+      "label": "症状・BPSD",
+      "kind": "attribute"
+    },
+    {
+      "id": "1.2",
+      "parent_id": "1",
+      "label": "症状・徴候・検査",
+      "kind": "category"
+    },
+    {
+      "id": "1.2.lab",
+      "parent_id": "1.2",
+      "label": "検査項目・検査値の意味",
+      "kind": "category"
+    },
+    {
+      "id": "1.3",
+      "parent_id": "1",
+      "label": "生活機能",
+      "kind": "category"
+    },
+    {
+      "id": "1.4",
+      "parent_id": "1",
+      "label": "生活背景",
+      "kind": "category"
+    },
+    {
+      "id": "2",
+      "parent_id": null,
+      "label": "支援の考え方と方法",
+      "kind": "category"
+    },
+    {
+      "id": "2.1",
+      "parent_id": "2",
+      "label": "支援原則・倫理",
+      "kind": "category"
+    },
+    {
+      "id": "2.2",
+      "parent_id": "2",
+      "label": "相談援助",
+      "kind": "category"
+    },
+    {
+      "id": "2.3",
+      "parent_id": "2",
+      "label": "ケアマネジメント",
+      "kind": "category"
+    },
+    {
+      "id": "2.3.assessment",
+      "parent_id": "2.3",
+      "label": "アセスメント",
+      "kind": "category"
+    },
+    {
+      "id": "2.3.care_plan",
+      "parent_id": "2.3",
+      "label": "ケアプラン",
+      "kind": "category"
+    },
+    {
+      "id": "2.3.resources",
+      "parent_id": "2.3",
+      "label": "社会資源の選択・調整",
+      "kind": "category"
+    },
+    {
+      "id": "2.3.service_meeting",
+      "parent_id": "2.3",
+      "label": "サービス担当者会議",
+      "kind": "category"
+    },
+    {
+      "id": "2.3.monitoring",
+      "parent_id": "2.3",
+      "label": "モニタリング",
+      "kind": "category"
+    },
+    {
+      "id": "2.4",
+      "parent_id": "2",
+      "label": "支援技術",
+      "kind": "category"
+    },
+    {
+      "id": "2.4.home_environment",
+      "parent_id": "2.4",
+      "label": "住環境の調整",
+      "kind": "category"
+    },
+    {
+      "id": "2.4.family_support",
+      "parent_id": "2.4",
+      "label": "家族支援",
+      "kind": "category"
+    },
+    {
+      "id": "3",
+      "parent_id": null,
+      "label": "支援の提供体制",
+      "kind": "category"
+    },
+    {
+      "id": "3.1",
+      "parent_id": "3",
+      "label": "介護保険サービス・施設",
+      "kind": "category"
+    },
+    {
+      "id": "3.1.home",
+      "parent_id": "3.1",
+      "label": "居宅サービス",
+      "kind": "category"
+    },
+    {
+      "id": "3.1.home.visiting_nurse",
+      "parent_id": "3.1.home",
+      "label": "訪問看護",
+      "kind": "service"
+    },
+    {
+      "id": "3.1.home.welfare_equipment",
+      "parent_id": "3.1.home",
+      "label": "福祉用具貸与・販売",
+      "kind": "category"
+    },
+    {
+      "id": "3.1.community",
+      "parent_id": "3.1",
+      "label": "地域密着型サービス",
+      "kind": "category"
+    },
+    {
+      "id": "3.1.community.group_home",
+      "parent_id": "3.1.community",
+      "label": "認知症対応型共同生活介護",
+      "kind": "service"
+    },
+    {
+      "id": "3.1.facilities",
+      "parent_id": "3.1",
+      "label": "施設サービス",
+      "kind": "category"
+    },
+    {
+      "id": "3.1.facilities.tokuyo",
+      "parent_id": "3.1.facilities",
+      "label": "介護老人福祉施設（特養）",
+      "kind": "facility"
+    },
+    {
+      "id": "3.1.facilities.tokuyo.staffing",
+      "parent_id": "3.1.facilities.tokuyo",
+      "label": "人員配置",
+      "kind": "attribute"
+    },
+    {
+      "id": "3.1.facilities.tokuyo.staffing.cm",
+      "parent_id": "3.1.facilities.tokuyo.staffing",
+      "label": "介護支援専門員",
+      "kind": "attribute"
+    },
+    {
+      "id": "3.1.facilities.tokuyo.staffing.nurse",
+      "parent_id": "3.1.facilities.tokuyo.staffing",
+      "label": "看護職員",
+      "kind": "attribute"
+    },
+    {
+      "id": "3.1.facilities.roken",
+      "parent_id": "3.1.facilities",
+      "label": "介護老人保健施設（老健）",
+      "kind": "facility"
+    },
+    {
+      "id": "3.1.facilities.roken.staffing",
+      "parent_id": "3.1.facilities.roken",
+      "label": "人員配置",
+      "kind": "attribute"
+    },
+    {
+      "id": "3.1.facilities.roken.staffing.cm",
+      "parent_id": "3.1.facilities.roken.staffing",
+      "label": "介護支援専門員",
+      "kind": "attribute"
+    },
+    {
+      "id": "3.1.facilities.medical",
+      "parent_id": "3.1.facilities",
+      "label": "介護医療院",
+      "kind": "facility"
+    },
+    {
+      "id": "3.1.home_support",
+      "parent_id": "3.1",
+      "label": "居宅介護支援",
+      "kind": "service"
+    },
+    {
+      "id": "3.1.preventive_support",
+      "parent_id": "3.1",
+      "label": "介護予防支援",
+      "kind": "service"
+    },
+    {
+      "id": "3.1.preventive",
+      "parent_id": "3.1",
+      "label": "介護予防サービス",
+      "kind": "category"
+    },
+    {
+      "id": "3.1.preventive_community",
+      "parent_id": "3.1",
+      "label": "地域密着型介護予防サービス",
+      "kind": "category"
+    },
+    {
+      "id": "3.2",
+      "parent_id": "3",
+      "label": "高齢者の住まい",
+      "kind": "category"
+    },
+    {
+      "id": "3.2.sakoju",
+      "parent_id": "3.2",
+      "label": "サービス付き高齢者向け住宅",
+      "kind": "housing"
+    },
+    {
+      "id": "3.2.paid_home",
+      "parent_id": "3.2",
+      "label": "有料老人ホーム",
+      "kind": "housing"
+    },
+    {
+      "id": "3.3",
+      "parent_id": "3",
+      "label": "専門職",
+      "kind": "category"
+    },
+    {
+      "id": "3.3.care_manager",
+      "parent_id": "3.3",
+      "label": "介護支援専門員",
+      "kind": "profession"
+    },
+    {
+      "id": "3.3.care_manager.registration",
+      "parent_id": "3.3.care_manager",
+      "label": "登録・移転・更新",
+      "kind": "attribute"
+    },
+    {
+      "id": "3.4",
+      "parent_id": "3",
+      "label": "支援機関",
+      "kind": "category"
+    },
+    {
+      "id": "3.4.community_center",
+      "parent_id": "3.4",
+      "label": "地域包括支援センター",
+      "kind": "institution"
+    },
+    {
+      "id": "3.5",
+      "parent_id": "3",
+      "label": "物的・地域資源",
+      "kind": "category"
+    },
+    {
+      "id": "3.5.welfare_equipment",
+      "parent_id": "3.5",
+      "label": "福祉用具・住宅設備",
+      "kind": "resource"
+    },
+    {
+      "id": "3.5.informal",
+      "parent_id": "3.5",
+      "label": "インフォーマルサービス",
+      "kind": "resource"
+    },
+    {
+      "id": "4",
+      "parent_id": null,
+      "label": "社会保障の仕組み",
+      "kind": "category"
+    },
+    {
+      "id": "4.1",
+      "parent_id": "4",
+      "label": "介護保険制度",
+      "kind": "category"
+    },
+    {
+      "id": "4.1.principles",
+      "parent_id": "4.1",
+      "label": "目的・理念・国民の努力義務",
+      "kind": "category"
+    },
+    {
+      "id": "4.1.eligibility",
+      "parent_id": "4.1",
+      "label": "被保険者資格・住所地特例",
+      "kind": "category"
+    },
+    {
+      "id": "4.1.eligibility.exclusion",
+      "parent_id": "4.1.eligibility",
+      "label": "適用除外",
+      "kind": "category"
+    },
+    {
+      "id": "4.1.eligibility.acquire_lose",
+      "parent_id": "4.1.eligibility",
+      "label": "資格取得・喪失",
+      "kind": "category"
+    },
+    {
+      "id": "4.1.certification",
+      "parent_id": "4.1",
+      "label": "要介護・要支援認定",
+      "kind": "category"
+    },
+    {
+      "id": "4.1.benefits",
+      "parent_id": "4.1",
+      "label": "保険給付",
+      "kind": "category"
+    },
+    {
+      "id": "4.1.benefits.home_renovation",
+      "parent_id": "4.1.benefits",
+      "label": "居宅介護住宅改修費",
+      "kind": "category"
+    },
+    {
+      "id": "4.1.benefits.coordination",
+      "parent_id": "4.1.benefits",
+      "label": "他制度との給付調整",
+      "kind": "category"
+    },
+    {
+      "id": "4.1.finance",
+      "parent_id": "4.1",
+      "label": "保険料・財政",
+      "kind": "category"
+    },
+    {
+      "id": "4.1.administration",
+      "parent_id": "4.1",
+      "label": "行政・制度運営",
+      "kind": "category"
+    },
+    {
+      "id": "4.1.administration.authority",
+      "parent_id": "4.1.administration",
+      "label": "国・都道府県・市町村の権限",
+      "kind": "category"
+    },
+    {
+      "id": "4.1.administration.designation",
+      "parent_id": "4.1.administration",
+      "label": "事業者に共通する指定・監督",
+      "kind": "category"
+    },
+    {
+      "id": "4.1.administration.payment",
+      "parent_id": "4.1.administration",
+      "label": "審査支払・国保連",
+      "kind": "category"
+    },
+    {
+      "id": "4.1.community_policy",
+      "parent_id": "4.1",
+      "label": "地域施策・地域支援事業",
+      "kind": "category"
+    },
+    {
+      "id": "4.2",
+      "parent_id": "4",
+      "label": "その他の法律・制度",
+      "kind": "category"
+    },
+    {
+      "id": "4.2.dementia_basic_act",
+      "parent_id": "4.2",
+      "label": "認知症基本法",
+      "kind": "law"
+    },
+    {
+      "id": "4.2.dementia_basic_act.principles",
+      "parent_id": "4.2.dementia_basic_act",
+      "label": "基本理念",
+      "kind": "attribute"
+    },
+    {
+      "id": "4.2.dementia_basic_act.local_duties",
+      "parent_id": "4.2.dementia_basic_act",
+      "label": "地方公共団体等の責務",
+      "kind": "attribute"
+    },
+    {
+      "id": "4.2.dementia_basic_act.plans",
+      "parent_id": "4.2.dementia_basic_act",
+      "label": "認知症施策推進計画",
+      "kind": "attribute"
+    },
+    {
+      "id": "4.2.medical",
+      "parent_id": "4.2",
+      "label": "医療保険",
+      "kind": "category"
+    },
+    {
+      "id": "4.2.disability",
+      "parent_id": "4.2",
+      "label": "障害福祉",
+      "kind": "category"
+    },
+    {
+      "id": "4.2.public_assistance",
+      "parent_id": "4.2",
+      "label": "生活保護",
+      "kind": "category"
+    },
+    {
+      "id": "4.2.elder_welfare",
+      "parent_id": "4.2",
+      "label": "老人福祉",
+      "kind": "category"
+    },
+    {
+      "id": "4.2.guardianship",
+      "parent_id": "4.2",
+      "label": "成年後見",
+      "kind": "category"
+    },
+    {
+      "id": "4.2.abuse",
+      "parent_id": "4.2",
+      "label": "高齢者虐待防止",
+      "kind": "category"
+    }
+  ]
+}
