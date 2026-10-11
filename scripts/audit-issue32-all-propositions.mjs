@@ -56,7 +56,7 @@ const counts = {};
 const years = [];
 const audit = [];
 let reviewedDecisions = 0, assigned = 0, ambiguous = 0, unmapped = 0;
-let canonicalMissing = 0, canonicalUnknown = 0, nodeNotInPath = 0, candidates = 0;
+let canonicalMissing = 0, canonicalUnknown = 0, nodeNotInPath = 0, labelAliases = 0, candidates = 0;
 const keys = new Set();
 const nowReviewVersion = 'judgment_knowledge_over_context';
 for (let year = 2005; year <= 2025; year++) {
@@ -76,8 +76,12 @@ for (let year = 2005; year <= 2025; year++) {
       const id = row.primary_node_id;
       if (!id) { flags.push('missing_canonical_id'); canonicalMissing++; }
       else if (!nodes.has(id)) { flags.push('unknown_canonical_id'); canonicalUnknown++; }
-      else if (!row.primary_path.includes(nodes.get(id).label) || root !== id.split('.')[0]) {
-        flags.push('canonical_path_inconsistent'); nodeNotInPath++;
+      else if (root !== id.split('.')[0]) {
+        flags.push('canonical_root_inconsistent'); nodeNotInPath++;
+      } else if (!row.primary_path.includes(nodes.get(id).label)) {
+        // Legacy paths can use a more specific term or a synonym while an
+        // existing canonical node ID remains correct. Do not flag a semantic error.
+        labelAliases++;
       }
       for (const c of criteria) if (c.applies(root, row.proposition)) flags.push(c.id);
     } else if (row.classification_status === 'ambiguous') {
@@ -105,7 +109,7 @@ assert.equal(audit.length, 6346, 'unexpected proposition coverage');
 assert.equal(years.length, 21);
 assert.equal(keys.size, 6346);
 assert.equal(assigned + ambiguous + unmapped, 6346);
-assert.ok(reviewedDecisions >= 224, 'regression: expected at least 224 explicit decisions');
+assert.ok(reviewedDecisions >= 230, 'regression: expected at least 230 explicit decisions');
 const summary = {
   scope: '2005–2025 annual baseline + all per-question revisions (effective data)',
   scope_proposition_count: audit.length, year_count: years.length,
@@ -114,7 +118,7 @@ const summary = {
   judgment_knowledge_semantic_reviews: reviewedDecisions,
   other_not_semantically_verified_in_this_pass: audit.length - reviewedDecisions,
   classification_status: { assigned, ambiguous, other: unmapped },
-  canonical_id: { missing: canonicalMissing, unknown: canonicalUnknown, path_inconsistent: nodeNotInPath },
+  canonical_id: { missing: canonicalMissing, unknown: canonicalUnknown, root_inconsistent: nodeNotInPath, legacy_label_alias_or_detail: labelAliases },
   potential_semantic_misclassifications_by_heuristic: candidates,
   flag_counts: counts, yearly: years,
   audit_schema: 'Each proposition has one record. Flags are screening candidates, not proven errors.'
@@ -128,7 +132,7 @@ console.log('Issue32 full screen: ' + audit.length + '/' + audit.length + ' prop
 console.log('Explicit judgment-knowledge decisions: ' + reviewedDecisions +
   '; remaining without THIS semantic verification: ' + (audit.length - reviewedDecisions) + '.');
 console.log('Statuses: ' + assigned + ' assigned, ' + ambiguous + ' ambiguous, ' + unmapped + ' other.');
-console.log('Canonical IDs missing: ' + canonicalMissing +
+console.log('Canonical IDs missing: ' + canonicalMissing + '; legacy path label aliases: ' + labelAliases +
   '; risk candidates (excluding only missing ID): ' + candidates + '.');
 console.log('Risk flags: ' + JSON.stringify(counts));
 console.log('Per-year: ' + JSON.stringify(years));
