@@ -78,12 +78,12 @@ for (let year = 2005; year <= 2025; year++) {
 for (const [id, node] of requiredExamples) {
   assert.equal(observed.get(id)?.primary_node_id, node, id + ': decisive knowledge regression');
 }
-assert.ok(reviewed >= 180, 'Expected at least 180 reviewed propositions, got ' + reviewed);
-assert.ok(resolved >= 24, 'Expected at least 24 documented ambiguity resolutions, got ' + resolved);
+assert.ok(reviewed >= 225, 'Expected at least 225 reviewed propositions, got ' + reviewed);
+assert.ok(resolved >= 25, 'Expected at least 25 documented ambiguity resolutions, got ' + resolved);
 if (overlays > 0) {
-  assert.ok(overlays >= 61, 'Expected at least 61 separate question revision files');
-  assert.ok(modified >= 180, 'Expected at least 180 actual proposition changes, got ' + modified);
-  assert.equal(baselineAmbiguous - actualAmbiguous, 24, 'unexpected net ambiguous change');
+  assert.ok(overlays >= 77, 'Expected at least 77 separate question revision files');
+  assert.ok(modified >= 225, 'Expected at least 225 actual proposition changes, got ' + modified);
+  assert.equal(baselineAmbiguous - actualAmbiguous, 25, 'unexpected net ambiguous change');
 }
 console.log('Knowledge-target audit OK: ' + reviewed + ' reviewed propositions, ' + modified +
   ' overlay modifications, ' + overlays + ' question revisions, ' + resolved +
