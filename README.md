@@ -2,7 +2,9 @@
 
 知らない問題を推理で攻略し、知識をつなげるスマホ向けWebゲーム。**2005〜2025年度の過去問1,259問**で、5問ずつ遊べます。
 
-[既存Sites](https://care-manager-quest.kriver2135.chatgpt.site) / GitHubがソースの正本です。mainへのマージは手動です。CloudflareのGitHub連携を一度設定すると、main更新 → Cloudflare側で型チェック・単体テスト・ビルド → 自動デプロイ。**サイトは一般公開・GitHubリポジトリはprivate**です。Cloudflare Accessは使用しません。[初回セットアップ・履歴移行](docs/deployment.md)。
+**[▶ Care Manager Quest をプレイ（本番サイト）](https://care-manager-quest.focusgate-kkawamura.workers.dev/)**
+
+GitHubがソースの正本です。mainへのマージは手動です。CloudflareのGitHub連携により、main更新 → Cloudflare側で型チェック・単体テスト・ビルド → 自動デプロイ。**サイトは一般公開・GitHubリポジトリはprivate**です。Cloudflare Accessは使用しません。以前のChatGPT Sites版からの学習履歴移行は[セットアップ・履歴移行手順](docs/deployment.md)を参照してください。
 
 ## 遊び方
 
