@@ -34,6 +34,7 @@ jobs:
       - run: node scripts/validate-issue32-revisions.mjs
       - run: node scripts/normalize-issue32-ids.mjs --check
       - run: node scripts/test-issue32-ids.mjs
+      - run: node scripts/normalize-issue32-ids.mjs --audit
       - run: node scripts/test-issue32-drawers.mjs
       - name: Generate reusable knowledge drawers and review report
         run: |
