@@ -1,13 +1,8 @@
 [
   {
-    "path": "README.md",
-    "bytes": 11941,
-    "sha256": "6d551b4a364fa0a8847477fdc83cbabaf4035bb0c6468b595aaa031023948690"
-  },
-  {
     "path": "difficult-cases.jsonl",
-    "bytes": 189246,
-    "sha256": "c125235100b4200c8f5926b81836ceb85de51f02a0c75509130806bb3ea8ab8d"
+    "bytes": 176399,
+    "sha256": "6285c14be33077fa6a9393f4a60bbd8f5d7e1dbf3f9b4b32934480b0f9879cf7"
   },
   {
     "path": "existing-concept-crosswalk.csv",
@@ -16,8 +11,8 @@
   },
   {
     "path": "manifest.json",
-    "bytes": 14877,
-    "sha256": "aa485fd17942bbd19d1074cea70739946bdcb91a0bb4403fa688f44dbbac3dcd"
+    "bytes": 16899,
+    "sha256": "fe919491ec6c25575ebea7a240845011cedb1b57db3f0fa6a76918669d54deaa"
   },
   {
     "path": "propositions/2005.jsonl",
@@ -96,32 +91,47 @@
   },
   {
     "path": "propositions/2020.jsonl",
-    "bytes": 548782,
-    "sha256": "840548e8a48c89c9bb4fbb8f20711064fc4a3a05128559e897d8c91858cbc859"
+    "bytes": 772738,
+    "sha256": "fbb947d329191ffd6726a14dfc65f957c6a20ef62bdc5211ab732e27f0048eeb"
   },
   {
     "path": "propositions/2021.jsonl",
-    "bytes": 583428,
-    "sha256": "c5e1b42632c71e5cb8955aed83ae99c1fd5c6a5ed8d77b636a10474a569197a3"
+    "bytes": 773704,
+    "sha256": "7e083eda416d11ebb87e8fa073d6dc5fd43148ab5679e97f705250f78f13c46f"
   },
   {
     "path": "propositions/2022.jsonl",
-    "bytes": 590980,
-    "sha256": "57964fdeccfd8cf1246ba1cfd9c14784700db834f85d722a2eaf0ac95b7dcdd5"
+    "bytes": 774387,
+    "sha256": "4610d226ba1c7c817ed23cffde4dcf303531d8878c8b1246badd9e7765c16972"
   },
   {
     "path": "propositions/2023.jsonl",
-    "bytes": 613997,
-    "sha256": "d71200de76f0c6fe75f4776da92bdade7012a7991d81ab4d3b4bc060d39dede2"
+    "bytes": 860903,
+    "sha256": "588834dd2b96c2e1127321ad49ed7685d1652d39ad64d4c6aac6baeacd2f349c"
   },
   {
     "path": "propositions/2024.jsonl",
-    "bytes": 632778,
-    "sha256": "22f455271c3cc3105995f50506d2abca9f0d7c03e4fa266a531cbbd847584433"
+    "bytes": 779926,
+    "sha256": "6b4d59f9e3f5a0d0d7cb4a09db02af96347fd3901ac454ddbb5ef3105f4a6f23"
   },
   {
     "path": "propositions/2025.jsonl",
     "bytes": 801650,
     "sha256": "b8c355ed3d87e27c4e3afb0967ce9f2a659a6e9bcc9b5b0e8a923bcf5bfa0b10"
+  },
+  {
+    "path": "README.md",
+    "bytes": 13670,
+    "sha256": "dfa2c0b7eb02ef4d5a51b8a45e46ec73fdf2ba2e38fd163a3d2f3b67c4428f73"
+  },
+  {
+    "path": "review-decisions-2024-part1.json",
+    "bytes": 5076,
+    "sha256": "df2b7553cfb770a2ed50ebe967305a77f637d42d3405c0df709ebf00b88bf889"
+  },
+  {
+    "path": "review-decisions-2024-part2.json",
+    "bytes": 11747,
+    "sha256": "aca5b12c14312a4c273311175d332c753f68492ab8b07c877802009ec526b29f"
   }
 ]
