@@ -33,6 +33,19 @@ different([drawer('2025-05',1),drawer('2025-05',3)]);
 same([3,5].map(c=>drawer('2025-50',c)));
 different([drawer('2025-50',3),drawer('2025-50',4)]);
 
+// Broad 2005-era headings mention four separate dimensions; inspect the
+// proposition instead of falsely grouping all facts as "application".
+const oldCertified=[1,2,3,4,5].map(c=>drawer('2005-16',c));
+assert.equal(new Set(oldCertified).size,5,'2005 certification facets must not collapse');
+assert.match(drawer('2005-16',1),/#survey$/);
+assert.match(drawer('2005-16',3),/#committee$/);
+assert.match(drawer('2005-16',4),/#validity$/);
+assert.match(drawer('2005-16',5),/#application$/);
+const otherCertification=[1,2,3,4,5].map(c=>drawer('2009-14',c));
+assert.match(drawer('2009-14',1),/#survey$/);
+assert.match(drawer('2009-14',4),/#specific_diseases$/);
+assert.match(drawer('2009-14',5),/#committee$/);
+
 // Assert values stay distinct while knowledge location is reused.
 same([1,2,3,4].map(c=>drawer('2023-50',c)));
 assert.equal(index.length,6346);
