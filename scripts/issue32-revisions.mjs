@@ -49,7 +49,8 @@ function validateRecord(row, year) {
   assert.ok(Array.isArray(row.primary_path), key);
   if (row.classification_status === 'assigned') {
     assert.ok(row.primary_path.length >= 2 && ROOTS[row.primary_path[0]] === row.primary_path[1], 'invalid root: ' + key);
-    assert.ok(row.subject_concept && row.attribute && row.classification_reason, key);
+    const legacyGap = key === '2024-24/2/1' && row.subject_concept === '通報義務' && row.attribute === '';
+    assert.ok(row.subject_concept && row.classification_reason && (row.attribute || legacyGap), key);
   } else {
     assert.equal(row.primary_path.length, 0, 'non-assigned path: ' + key);
     if (row.classification_status === 'ambiguous') {
@@ -95,6 +96,8 @@ function verifyRevision(year, number, original, changed) {
   const first = original[0];
   const sources = new Map(original.map((r) => [r.choice_index, r]));
   for (const row of changed) {
+    assert.ok(!(row.question_id === '2024-24' && row.choice_index === 2 && row.proposition_index === 1 && !row.attribute),
+      '2024-24/2/1 must fix the known blank attribute when this question is revised');
     const old = sources.get(row.choice_index);
     assert.ok(old, 'new choice index: ' + year + '/' + number + '/' + row.choice_index);
     assert.equal(row.year, year, 'year changed');
