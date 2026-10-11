@@ -54,7 +54,7 @@ export function SwipeStudy({ active, home, onStart, onBack }: { active: boolean;
     catch { setError('○×履歴を保存できません。タブを閉じる前に○×履歴を書き出してください。'); }
   }, [state, blocked]);
   useEffect(() => { setHomeHost(home ? document.getElementById('swipe-home-setup') : null); }, [home]);
-  useEffect(() => { if (!active) return; setNow(Date.now()); const timer = setInterval(() => setNow(Date.now()), 15_000); return () => clearInterval(timer); }, [active]);
+  useEffect(() => { if (!active && !home) return; setNow(Date.now()); const timer = setInterval(() => setNow(Date.now()), 15_000); return () => clearInterval(timer); }, [active, home]);
   const submit = (answer: boolean | null) => {
     if (!card || blocked || result || locked.current) return;
     locked.current = true;
