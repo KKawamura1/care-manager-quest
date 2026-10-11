@@ -32,3 +32,12 @@ jobs:
           node-version: '22'
       - run: node scripts/validate-issue32-classifications.mjs
       - run: node scripts/validate-issue32-revisions.mjs
+      - run: node scripts/validate-issue32-knowledge-target.mjs
+      - run: node scripts/validate-issue32-knowledge-target-all.mjs
+      - run: node scripts/report-issue32-knowledge-suspects.mjs --json --limit=5 > /tmp/issue32-suspects-smoke.json
+      - run: node scripts/audit-issue32-all-propositions.mjs --output-dir=./issue32-audit-output
+      - uses: actions/upload-artifact@v4
+        with:
+          name: issue32-full-classification-screen
+          path: issue32-audit-output/
+          retention-days: 30
