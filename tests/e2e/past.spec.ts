@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { readFileSync } from 'node:fs';
-const key='care-manager-quest:v1';
+const key='care-manager-quest:learning:v3';
 const answers=JSON.parse(readFileSync(new URL('../../src/data/packs/pre2018/2005/answers.json',import.meta.url),'utf8'));
 
 test('historical year, text-only questions, feedback, copy and saved selection work on mobile',async({page})=>{
@@ -40,7 +40,7 @@ test('historical year, text-only questions, feedback, copy and saved selection w
 });
 
 test('accepted alternative answer selections have consistent option feedback',async({page})=>{
-  await page.addInitScript(k=>{if(!localStorage.getItem(k))localStorage.setItem(k,JSON.stringify({schemaVersion:2,attempts:[],concepts:{},externalRecords:[],settings:{sound:false},session:{id:'variant',questionIds:['2006-19','2006-01','2006-02','2006-03','2006-04'],index:0,selectedIds:[],completed:false}}));},key);
+  await page.addInitScript(k=>{if(!localStorage.getItem(k))localStorage.setItem(k,JSON.stringify({schemaVersion:3,learningEvents:[],attempts:[],concepts:{},externalRecords:[],settings:{sound:false},session:{id:'variant',questionIds:['2006-19','2006-01','2006-02','2006-03','2006-04'],index:0,selectedIds:[],completed:false}}));},key);
   await page.goto('/');const options=page.getByRole('group',{name:'解答の選択肢'}).getByRole('button');
   await options.nth(2).click();await options.nth(4).click();
   await page.getByRole('button',{name:'答えを確定する'}).click();

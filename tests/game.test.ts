@@ -27,14 +27,14 @@ describe('quest rules',()=>{
   const q=questions[0];expect(isCorrect(q,[...q.answerIds].reverse())).toBe(true);expect(isCorrect(q,[q.answerIds[0]])).toBe(false);expect(isCorrect(q,[q.answerIds[0],q.answerIds[0]])).toBe(false);expect(isCorrect(q,['1','2','3'])).toBe(false);
  });
  it('rejects premature progression, incomplete choices and double submission',()=>{
-  const p=ready();expect(advance(p)).toBe(p);expect(submitAnswer(p,questions,date)).toBe(p);const a=answered(p);expect(submitAnswer(a,questions,date)).toBe(a);expect(a.attempts).toHaveLength(1);expect(totalXp(a)).toBe(60);
+  const p=ready();expect(advance(p)).toBe(p);expect(submitAnswer(p,questions,date)).toBe(p);const a=answered(p);expect(submitAnswer(a,questions,date)).toBe(a);expect(a.attempts).toHaveLength(1);expect(totalXp(a)).toBe(70);
  });
  it('rewards first correct encounter, resets combos on misses and completes only after five answers',()=>{
-  let p=answered(ready());expect(p.attempts[0].firstSeen).toBe(true);p=answered(advance(p));expect(p.attempts.at(-1)!.combo).toBe(2);p=answered(advance(p),false);expect(p.attempts.at(-1)!.combo).toBe(0);expect(p.attempts.at(-1)!.xp).toBe(10);p=answered(advance(p));expect(p.attempts.at(-1)!.combo).toBe(1);p=advance(answered(advance(p)));expect(p.session!.completed).toBe(true);expect(p.attempts).toHaveLength(5);expect(submitAnswer(p,questions,date)).toBe(p);
-  p={...p,session:buildSession(questions,[],'repeat',()=>0)};p=answered(p);expect(p.attempts.at(-1)!.firstSeen).toBe(false);expect(p.attempts.at(-1)!.xp).toBe(40);expect(levelInfo(200).level).toBe(2);expect(awardXp(questions[0],true,true,5)).toBe(100);
+  let p=answered(ready());expect(p.attempts[0].firstSeen).toBe(true);p=answered(advance(p));expect(p.attempts.at(-1)!.combo).toBe(2);p=answered(advance(p),false);expect(p.attempts.at(-1)!.combo).toBe(0);expect(p.attempts.at(-1)!.xp).toBe(34);p=answered(advance(p));expect(p.attempts.at(-1)!.combo).toBe(1);p=advance(answered(advance(p)));expect(p.session!.completed).toBe(true);expect(p.attempts).toHaveLength(5);expect(submitAnswer(p,questions,date)).toBe(p);
+  p={...p,session:buildSession(questions,[],'repeat',()=>0)};p=answered(p);expect(p.attempts.at(-1)!.firstSeen).toBe(false);expect(p.attempts.at(-1)!.xp).toBe(0);expect(levelInfo(200).level).toBe(2);expect(awardXp(questions[0],true,true,5)).toBe(100);
  });
  it('keeps conceptual evidence distinct and does not master a single repeated question',()=>{
-  let p=answered(ready());const q=questions.find(q=>q.id===p.session!.questionIds[0])!;const id=q.conceptIds[0];p=reflect(p,[id]);expect(conceptStatus(p.concepts[id])).toBe('learning');expect(conceptStatus({...p.concepts[id],correctQuestionIds:['a','b']})).toBe('mastered');expect(totalXp(reflect(p,[id]))).toBe(totalXp(p));expect(conceptStatus()).toBe('unexplored');
+  let p=answered(ready());const q=questions.find(q=>q.id===p.session!.questionIds[0])!;const id=q.conceptIds[0];p=reflect(p,[id]);expect(conceptStatus(p.concepts[id])).toBe('learning');expect(conceptStatus({...p.concepts[id],level:0.85})).toBe('mastered');expect(totalXp(reflect(p,[id]))).toBe(totalXp(p));expect(conceptStatus()).toBe('unexplored');
  });
 });
 describe('portable history',()=>{
@@ -45,7 +45,7 @@ describe('portable history',()=>{
  it.each(['{','{}','{"schemaVersion":2}'])('rejects malformed/unknown schema without replacing history (%s)',s=>expect(()=>parsePlayer(s)).toThrow());
  it('rejects manipulated XP, evidence, stale question versions, duplicate attempts and broken sessions',()=>{
   const p=answered(ready());for(const mutate of [(x:PlayerState)=>x.attempts[0].xp=999,(x:PlayerState)=>x.attempts[0].questionVersion=99,(x:PlayerState)=>x.attempts.push(x.attempts[0]),(x:PlayerState)=>x.session!.index=4,(x:PlayerState)=>x.concepts[x.attempts[0].conceptIds[0]].correctQuestionIds.push('2025-25')]){const copy=structuredClone(p);mutate(copy);expect(()=>parsePlayer(JSON.stringify(copy))).toThrow();}
-  expect(()=>parsePlayer(' '.repeat(MAX_IMPORT_BYTES+1))).toThrow(/2MB/);
+  expect(()=>parsePlayer(' '.repeat(MAX_IMPORT_BYTES+1))).toThrow(/20MB/);
  });
  it('rejects unsafe or noncanonical external links',()=>{
   expect(validExternalUrl('https://keamane.kakomonn.com/questions/123')).toBe(true);
@@ -73,16 +73,12 @@ describe('official answers and stable history',()=>{
   }
   expect(new Set(ids).size).toBe(60);expect(ids.every(id=>id.startsWith('2025-'))).toBe(true);
  });
- it('migrates schema 1, retains legacy XP/reflection/external records, and retires its active session',()=>{
+ it('rejects old schema data after the intentional breaking reset',()=>{
   let p=emptyPlayer();p.session=buildSession(legacyQuestions,[],'legacy',()=>0);
-  const q=legacyQuestions.find(q=>q.id===p.session!.questionIds[0])!;p.session.selectedIds=q.answerIds;
-  p=reflect(submitAnswer(p,legacyQuestions,date),q.conceptIds);
-  const old={...p,schemaVersion:1,attempts:p.attempts.map(({conceptIds,classificationRevision,difficulty,...a})=>a)};
-  const migrated=parsePlayer(JSON.stringify(old));
-  expect(migrated.schemaVersion).toBe(2);expect(totalXp(migrated)).toBe(totalXp(p));expect(migrated.concepts).toEqual(p.concepts);expect(migrated.session).toBeUndefined();
-  expect(parsePlayer(JSON.stringify(migrated))).toEqual(migrated);
+  const old={...p,schemaVersion:2};
+  expect(()=>parsePlayer(JSON.stringify(old))).toThrow();
  });
- it('classification and difficulty revisions cannot invalidate recorded attempts or change XP',()=>{
+  it('classification and difficulty revisions cannot invalidate recorded attempts or change XP',()=>{
   const p=answered(ready());const q=questions.find(q=>q.id===p.attempts[0].questionId)!;
   const original={conceptIds:q.conceptIds,classificationRevision:q.classificationRevision,difficulty:q.difficulty};
   try {q.conceptIds=['changed.classification'];q.classificationRevision=99;q.difficulty=3;expect(parsePlayer(JSON.stringify(p))).toEqual(p);}

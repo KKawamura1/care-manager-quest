@@ -47,8 +47,8 @@ test('swipe copy, paste, wrong-card guard, persistence, replacement and deletion
   // Keep only the original mistaken card in review history; weighted selection
   // deterministically revisits it after the full one-day cooldown.
   await page.evaluate(() => {
-    const key = 'care-manager-quest:swipe:v1', state = JSON.parse(localStorage.getItem(key)!);
-    const ids = Object.keys(state.progress); delete state.progress[ids[1]];
+    const key = 'care-manager-quest:learning:v3', state = JSON.parse(localStorage.getItem(key)!);
+    state.learningEvents = state.learningEvents.slice(0, 1);
     localStorage.setItem(key, JSON.stringify(state));
   });
   await page.clock.fastForward(86_400_001); await page.reload();

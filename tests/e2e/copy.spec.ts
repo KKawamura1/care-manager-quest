@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 const raw = JSON.parse(readFileSync(new URL('../../src/data/packs/2025/questions.json', import.meta.url), 'utf8')) as { id: string; number: number; stem: string }[];
 const answers = JSON.parse(readFileSync(new URL('../../src/data/packs/2025/answers.json', import.meta.url), 'utf8')) as Record<string, { correctChoices: number[] }>;
 const questions = raw.map(question => ({ ...question, title: `2025年度 問${question.number}｜`, answerIds: answers[question.id].correctChoices.map(String) }));
-const key = 'care-manager-quest:v1';
+const key = 'care-manager-quest:learning:v3';
 
 test('copies the current question before answering, then includes answer and choices in feedback and details', async ({ page }) => {
   await page.addInitScript(() => {
@@ -43,7 +43,7 @@ for (const mode of ['denied', 'unavailable'] as const) {
       Object.defineProperty(navigator, 'clipboard', { configurable: true, value: mode === 'unavailable' ? undefined : {
         writeText: async () => { throw new DOMException('Denied', 'NotAllowedError'); },
       } });
-      localStorage.setItem(key, JSON.stringify({ schemaVersion: 2, attempts: [], concepts: {}, externalRecords: [], settings: { sound: false },
+      localStorage.setItem(key, JSON.stringify({ schemaVersion: 3, learningEvents: [], attempts: [], concepts: {}, externalRecords: [], settings: { sound: false },
         session: { id: 'copy', questionIds: ['2025-24', '2025-25', '2025-01', '2025-02', '2025-03'], index: 0, selectedIds: [], completed: false } }));
     }, { mode, key });
     await page.goto('/');
