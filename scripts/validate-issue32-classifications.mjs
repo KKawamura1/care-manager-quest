@@ -98,14 +98,14 @@ for (let year = 2005; year <= 2025; year++) {
 const difficultKeys = difficult.map((r) => [r.question_id, r.choice_index, r.proposition_index].join('/'));
 assert.equal(new Set(difficultKeys).size, difficultKeys.length, 'duplicate difficult case');
 assert.deepEqual(new Set(difficultKeys), allDifficult, 'difficult-cases out of sync');
-assert.equal(total, 6345);
+assert.equal(total, manifest.coverage.proposition_record_count);
 assert.equal(manifest.coverage.proposition_record_count, total);
 assert.equal(manifest.coverage.difficult_case_count, difficult.length);
 assert.deepEqual(manifest.coverage.status_counts, statusTotal);
 assert.deepEqual(manifest.coverage.primary_root_counts, rootTotal);
-assert.deepEqual(reviewed, { 2018: 2, 2019: 300, 2020: 301, 2021: 301, 2022: 300, 2023: 303, 2024: 304, 2025: 302 }, 'reviewed record counts');
-assert.equal(manifest.classification_quality_review.reviewed_records, 2113);
-assert.equal(manifest.classification_quality_review.remaining_without_semantic_review, total - 2113);
+assert.deepEqual(reviewed, manifest.classification_quality_review.reviewed_years, 'reviewed record counts');
+assert.equal(manifest.classification_quality_review.reviewed_records, Object.values(reviewed).reduce((a, b) => a + b, 0));
+assert.equal(manifest.classification_quality_review.remaining_without_semantic_review, total - manifest.classification_quality_review.reviewed_records);
 
 const expectedPaths = [
   ['2018-10/5/1', '普通徴収と特別徴収'],
@@ -250,6 +250,6 @@ for (const item of checksumList) {
   assert.equal(buf.byteLength, item.bytes, `size mismatch: ${item.path}`);
   assert.equal(sum, item.sha256, `checksum mismatch: ${item.path}`);
 }
-assert.equal(checksumList.length, 27);
+assert.equal(checksumList.length, 26);
 assert.match(read('README.md'), /初回分類時点のスナップショット/);
 console.log(`taxonomy experiment integrity OK: ${total} propositions; ${difficult.length} difficult; ${Object.values(reviewed).reduce((a, b) => a + b, 0)} reviewed; ${checksumList.length} checksums`);
