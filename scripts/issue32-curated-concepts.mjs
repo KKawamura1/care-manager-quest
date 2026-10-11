@@ -672,12 +672,6 @@ export const additionalConceptDefinitions = [
   ],
   [
     "4",
-    "4.1",
-    "介護保険制度",
-    ""
-  ],
-  [
-    "4",
     "4.1.principles",
     "介護保険の理念",
     "保険給付の基本原則|介護保険の保険給付の基本的考え方|介護保険法第4条(国民の努力及び義務)|国民の努力及び義務"
@@ -717,12 +711,6 @@ export const additionalConceptDefinitions = [
     "4.1.benefits.home_renovation",
     "居宅介護住宅改修費",
     "住宅改修費|介護保険の住宅改修費"
-  ],
-  [
-    "4",
-    "4.1.benefits.high_cost",
-    "高額介護サービス費",
-    ""
   ],
   [
     "4",
@@ -861,12 +849,6 @@ export const additionalConceptDefinitions = [
     "4.2.disability.certificate",
     "障害者保健福祉手帳",
     "精神障害者保健福祉手帳"
-  ],
-  [
-    "4",
-    "4.1",
-    "介護保険制度",
-    ""
   ],
   [
     "3",
