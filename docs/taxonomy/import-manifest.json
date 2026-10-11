@@ -1,0 +1,44 @@
+{
+  "sourceArchive": "care_manager_taxonomy_2005_2019_v3.zip",
+  "archiveSha256": "ae4d12f12cc0683dda7a84f6c4895244596e209cb729d2c7e495f1015c02ebb8",
+  "sourceRepositoryBase": "e0c05aa144b1d5ee4bf1dccbd8dc12e0f4877899",
+  "pr21Merged": true,
+  "allImportedFilesByteIdentical": true,
+  "files": {
+    "README.md": {
+      "repositoryPath": "docs/taxonomy/import-v3/README.md",
+      "bytes": 3140,
+      "sha256": "7af390da64d1d599016753aaa56e4351b167ea30e980d4edc4b860c9ac2d9b6c"
+    },
+    "WORK_UPLOAD_ONLY.md": {
+      "repositoryPath": "docs/taxonomy/import-v3/WORK_UPLOAD_ONLY.md",
+      "bytes": 2097,
+      "sha256": "0ba8e1eb5ff71ef1d70605e7915c6071a7a5515d131f9adff197820b3b1c7bd9"
+    },
+    "classification-2005-2019.csv": {
+      "repositoryPath": "data/taxonomy/classification-2005-2019.csv",
+      "bytes": 114445,
+      "sha256": "9fa28db1f7d7b5d8b6b0786b3121e482e66cad768b9e0f28605f0a232184d004"
+    },
+    "question-concepts-2005-2019.json": {
+      "repositoryPath": "data/taxonomy/question-concepts-2005-2019.json",
+      "bytes": 405709,
+      "sha256": "e87cf7fc8a4188a5dfb271937e9e472b682b6c1a78aedf2164a9b27d0c394de3"
+    },
+    "question-concepts-2005-2025-combined.json": {
+      "repositoryPath": "data/taxonomy/question-concepts-2005-2025-combined.json",
+      "bytes": 516233,
+      "sha256": "c2d44df740aea832499e5e3d482e58ad89ac034be7a573083b8fd47e8e0dd9b4"
+    },
+    "taxonomy-v2.json": {
+      "repositoryPath": "data/taxonomy/taxonomy-v2.json",
+      "bytes": 47274,
+      "sha256": "03f79ab6ddc10693b1a433c2490ff7891063719b1248d0effeebd1106085f3ac"
+    },
+    "validation.json": {
+      "repositoryPath": "data/taxonomy/validation.json",
+      "bytes": 1265,
+      "sha256": "f54f8521b96aa313674a940a49d1906d0159526b3b4adc0197249459d01ba070"
+    }
+  }
+}
