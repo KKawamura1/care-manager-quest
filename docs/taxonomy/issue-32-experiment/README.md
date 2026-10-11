@@ -1,5 +1,7 @@
 # Issue #32: 選択肢・命題単位の知識分類実験
 
+> **編集時の注意（2005〜2018年度の後続レビュー）**：以下の原命題JSONLと manifest・checksums・difficult-cases はPR #33時点の固定スナップショットです。新しい分類の修正は設問別の \`revisions/YYYY/NN.jsonl\` に記録し、現在の集計はスクリプトで算出します。手順は [REVISION_WORKFLOW.md](REVISION_WORKFLOW.md) を参照してください。
+
 このディレクトリはIssue [#32](https://github.com/KKawamura1/care-manager-quest/issues/32) の仮説分類データです。2005〜2025年度の全問題・全選択肢を、原文に結び付いた命題単位で整理しました。`hypothesis-v1.0` はレビュー用の提案であり、確定済みの分類体系や正誤判定ではありません。
 
 ## 2020〜2024年度の統合分類レビュー（2026-10-11）

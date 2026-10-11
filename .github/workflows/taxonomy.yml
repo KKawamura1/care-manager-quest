@@ -5,6 +5,7 @@ on:
       - 'data/taxonomy/**'
       - 'docs/taxonomy/**'
       - 'scripts/validate-taxonomy.py'
+      - 'scripts/*issue32*.mjs'
       - '.github/workflows/taxonomy.yml'
   push:
     branches: [main]
@@ -12,6 +13,7 @@ on:
       - 'data/taxonomy/**'
       - 'docs/taxonomy/**'
       - 'scripts/validate-taxonomy.py'
+      - 'scripts/*issue32*.mjs'
       - '.github/workflows/taxonomy.yml'
   workflow_dispatch:
 permissions:
@@ -25,3 +27,8 @@ jobs:
         with:
           python-version: '3.12'
       - run: python scripts/validate-taxonomy.py
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/validate-issue32-classifications.mjs
+      - run: node scripts/validate-issue32-revisions.mjs
