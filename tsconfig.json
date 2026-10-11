@@ -27,6 +27,7 @@
     "vite.config.ts",
     "playwright.config.ts",
     "worker",
-    "scripts/**/*.mts"
+    "scripts/**/*.mts",
+    "scripts/prepare-taxonomy.ts"
   ]
 }

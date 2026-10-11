@@ -9,7 +9,7 @@ export function validExternalUrl(value: string): boolean {
     return u.protocol === 'https:' && u.hostname === 'keamane.kakomonn.com' && !u.port && !u.username && !u.password && /^\/questions\/\d+\/?$/.test(u.pathname) && !u.search && !u.hash;
   } catch { return false; }
 }
-const validConceptId = (id:string) => /^[A-Za-z0-9][A-Za-z0-9_.:-]*$/.test(id) && !['constructor','prototype'].includes(id);
+const validConceptId = (id:string) => /^[A-Za-z0-9][A-Za-z0-9_.:#-]*$/.test(id) && !['constructor','prototype'].includes(id);
 const fail = (): never => { throw new Error('履歴の形式が不正、またはこのバージョンと互換性がありません。'); };
 const record = (v: unknown): Record<string, unknown> => v && typeof v === 'object' && !Array.isArray(v) ? v as Record<string, unknown> : fail();
 const str = (v: unknown, max = 200): string => typeof v === 'string' && v.length > 0 && v.length <= max ? v : fail();
@@ -62,6 +62,12 @@ export function parsePlayer(text: string): PlayerState {
     p.reflected = bool(e.reflected);
   }
   if (Object.keys(evidence).length !== Object.keys(player.concepts).length) fail();
+  if (root.knowledgeReflections !== undefined) {
+    const ids = strings(root.knowledgeReflections, 5000);
+    // Retain reflections for retired drawers; future taxonomy edits cannot break history import.
+    if (ids.some(id => !validConceptId(id) || !id.startsWith('drawer32.'))) fail();
+    player.knowledgeReflections = ids;
+  }
   const externalIds = new Set<string>();
   player.externalRecords = arr(root.externalRecords,2000).map(raw => {
     const e = record(raw), url = str(e.url,500), id = str(e.id);

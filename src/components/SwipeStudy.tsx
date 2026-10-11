@@ -44,7 +44,7 @@ export function SwipeStudy({ active }: { active: boolean }) {
   const available = useMemo(() => reviewQueue(candidates, state, now), [candidates, state, now]);
   const counts = useMemo(() => {
     const counts = new Map<string, number>();
-    for (const c of filterSwipeCards(swipeCards, year, 'all')) { const id = c.topicId ?? 'unclassified'; counts.set(id, (counts.get(id) ?? 0) + 1); }
+    for (const c of filterSwipeCards(swipeCards, year, 'all')) { for (const id of c.topicIds.length ? c.topicIds : ['unclassified']) counts.set(id, (counts.get(id) ?? 0) + 1); }
     return counts;
   }, [year]);
   const reviewed = candidates.filter(c => progressFor(state, c)).length;
@@ -118,7 +118,7 @@ export function SwipeStudy({ active }: { active: boolean }) {
           <option value="all">全年度</option>{availableYears.map(y => <option key={y} value={y}>{y}年度</option>)}
         </select></label>
         <label>分野<select aria-label="学ぶ知識分野" value={topic} onChange={e => setTopic(e.target.value)}>
-          <option value="all">全分野</option><option value="unclassified">分類待ち（{counts.get('unclassified') ?? 0}枚）</option>
+          <option value="all">全分野</option>{counts.has('unclassified') && <option value="unclassified">分類待ち（{counts.get('unclassified')}枚）</option>}
           {swipeCategories.map(category => {
             const concepts = swipeConcepts.filter(c => c.categoryId === category.id && counts.has(c.id));
             return concepts.length ? <optgroup key={category.id} label={category.label}>{concepts.map(c => <option key={c.id} value={c.id}>{c.label}（{counts.get(c.id)}枚）</option>)}</optgroup> : null;
@@ -142,7 +142,7 @@ export function SwipeStudy({ active }: { active: boolean }) {
     </> : <>
       <div className="quest-heading"><button className="text-button" onClick={() => { setQueue([]); setResult(undefined); locked.current = false; setNow(Date.now()); }}>分野選択に戻る</button><span>{index + 1} / {queue.length}枚</span></div>
       <div className="question-meta"><span>{card.year}年度 問{card.number}・選択肢{card.choiceId}</span></div>
-      <p className="swipe-topic">{swipeConcepts.find(c => c.id === card.topicId)?.label ?? '分類待ち'}</p>
+      <p className="swipe-topic">{card.topicIds.map(id => swipeConcepts.find(c => c.id === id)?.label).join(' / ') || '分類待ち'}</p>
       <div className="swipe-context"><b>元の設問</b><p>{card.stem}</p></div>
       <div className="swipe-surface" onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={() => { gesture.current = undefined; setDrag({ x: 0, y: 0 }); }} onLostPointerCapture={() => { gesture.current = undefined; setDrag({ x: 0, y: 0 }); }}
         onKeyDown={e => { if (['ArrowRight','ArrowLeft','ArrowUp'].includes(e.key)) { e.preventDefault(); if (e.repeat) return; if (result) next(); else submit(e.key === 'ArrowUp' ? null : e.key === 'ArrowRight'); } }}>
@@ -167,7 +167,7 @@ export function SwipeStudy({ active }: { active: boolean }) {
           <ol>{questionById(card.questionId)?.options.map(o => <li key={o.id}>{o.text}</li>)}</ol>
           {questionById(card.questionId)?.original?.imagePath && <><button className="secondary" onClick={() => setOriginal(!original)}>{original ? '原本を閉じる' : '原本画像を見る'}</button>{original && <OriginalImage question={questionById(card.questionId)!}/>}</>}
           {questionById(card.questionId)?.original?.sourceUrl && <a href={questionById(card.questionId)!.original!.sourceUrl} target="_blank" rel="noopener noreferrer">掲載元で確認 ↗</a>}
-          <p className="fine-print">{card.topicId ? '単一論点の問題から引き継いだ暫定分類です。' : 'この選択肢の知識分類は未確認です。'} 文字の独立した再校正・現行法への適合性確認は未完了です。</p>
+          <p className="fine-print">文字の独立した再校正・現行法への適合性確認は未完了です。</p>
         </details>
       </>}
     </>}

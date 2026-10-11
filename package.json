@@ -12,12 +12,13 @@
     "test": "vitest run",
     "test:e2e": "playwright test",
     "preview": "vite preview --host 0.0.0.0",
-    "prepare:questions": "node scripts/import-2025.mjs && node scripts/import-history.mjs",
+    "prepare:questions": "npm run prepare:taxonomy && node scripts/import-2025.mjs && node scripts/import-history.mjs",
     "predev": "npm run prepare:questions",
     "prebuild": "npm run prepare:questions",
     "pretypecheck": "npm run prepare:questions",
     "pretest": "npm run prepare:questions",
-    "pretest:e2e": "npm run prepare:questions"
+    "pretest:e2e": "npm run prepare:questions",
+    "prepare:taxonomy": "node --experimental-strip-types scripts/prepare-taxonomy.ts"
   },
   "dependencies": {
     "jose": "6.2.12",

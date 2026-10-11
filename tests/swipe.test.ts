@@ -9,9 +9,9 @@ import type { Question } from '../src/domain/models';
 
 const now = Date.parse('2026-10-11T00:00:00Z');
 const question: Question = { ...questions[0], id: 'fixture', original: { ...questions[0].original!, year: 2025, number: 1 }, answerIds: ['1', '2'], answerVariants: undefined };
-const topics: Record<string, TopicRecord> = { fixture: { primaryConceptId: 'topic', relatedConceptIds: [], status: 'provisional_topic_classified', classificationRevision: 3 } };
+const topics: Record<string, TopicRecord> = Object.fromEntries([1,2,3,4,5].map(i => [`2025-01:${i}`, { drawerIds: ['topic'], reviewed: false }]));
 const truth: Record<string, TruthRecord> = { fixture: { mode: 'choice_correctness', correctChoiceTruth: 'true', choiceAnswers: ['○', '○', '×', '×', '×'] } };
-const build = (t = truth, q = question, c = topics) => buildSwipeCards([q], t.fixture ? { '2025-01': t.fixture } : {}, c.fixture ? { '2025-01': c.fixture } : {}, new Set(['topic']));
+const build = (t = truth, q = question, c = topics) => buildSwipeCards([q], t.fixture ? { '2025-01': t.fixture } : {}, c, new Set(['topic']));
 
 describe('safe choice conversion', () => {
   it('uses explicit false-statement polarity, and never inverts merely because the stem contains a negative condition', () => {
@@ -34,12 +34,14 @@ describe('safe choice conversion', () => {
     expect(catalog.cards.map(c => c.choiceId)).toEqual(['1', '4', '5']);
     expect(catalog.excluded.map(i => i.choiceId)).toEqual(['2', '3']);
   });
-  it('does not assign mixed, absent, invalid or review-pending knowledge categories', () => {
-    for (const t of [{ ...topics.fixture, relatedConceptIds: ['other'] }, { ...topics.fixture, status: 'needs_option_level_review' }, { ...topics.fixture, primaryConceptId: 'unknown' }]) {
-      const result = build(truth, question, { fixture: t });
-      expect(result.cards).toHaveLength(5); expect(result.cards.every(c => !c.topicId)).toBe(true); expect(result.unclassified).toHaveLength(5);
-    }
-    expect(build().cards.every(c => c.topicId === 'topic')).toBe(true);
+  it('uses choice-level drawers, including provisional and multiple knowledge assignments', () => {
+    const mixed = { ...topics, '2025-01:1': { drawerIds: ['topic', 'other'], reviewed: false }, '2025-01:2': { drawerIds: ['unknown'], reviewed: false } };
+    const result = buildSwipeCards([question], { '2025-01': truth.fixture }, mixed, new Set(['topic', 'other']));
+    expect(result.cards[0].topicIds).toEqual(['topic', 'other']);
+    expect(result.cards[0].classificationStatus).toBe('provisional');
+    expect(filterSwipeCards(result.cards, 'all', 'other').map(c => c.choiceId)).toEqual(['1']);
+    expect(result.unclassified.map(c => c.choiceId)).toEqual(['2']);
+    expect(build(truth, question, {}).cards.every(c => !c.topicIds.length)).toBe(true);
   });
   it('preserves original stems/options and accepts only variant-consistent registered truth throughout 2005–2025', () => {
     expect(new Set(swipeCards.map(c => c.id)).size).toBe(swipeCards.length);
@@ -57,7 +59,7 @@ describe('safe choice conversion', () => {
     expect(filterSwipeCards(swipeCards, 2025, 'all').every(c => c.year === 2025)).toBe(true);
     expect(filterSwipeCards(swipeCards, 'all', 'unclassified').every(c => !c.topicId)).toBe(true);
     const topicId = swipeCards.find(c => c.topicId)!.topicId!;
-    expect(filterSwipeCards(swipeCards, 'all', topicId).every(c => c.topicId === topicId)).toBe(true);
+    expect(filterSwipeCards(swipeCards, 'all', topicId).every(c => c.topicIds.includes(topicId))).toBe(true);
     console.info('Swipe catalog:', { cards: swipeCards.length, grouped: swipeCards.filter(c => c.topicId).length, pending: swipeCatalog.unclassified.length, excluded: swipeCatalog.excluded });
   });
 });

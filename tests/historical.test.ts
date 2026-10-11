@@ -66,7 +66,7 @@ describe('2020–2024 import',()=>{
   expect(player.attempts.slice(0,5).every(a=>a.questionId.startsWith('2025-'))).toBe(true);
   expect(parsePlayer(JSON.stringify(player))).toEqual(player);
  });
- it('leaves missing knowledge classifications pending instead of making them verified',()=>{
-  expect(questions.filter(q=>q.original?.year===2023||q.original?.year===2024).every(q=>q.classificationStatus==='pending')).toBe(true);
+ it('uses provisional PR33 classifications for 2023 and 2024',()=>{
+  expect(questions.filter(q=>q.original?.year===2023||q.original?.year===2024).every(q=>q.classificationStatus==='provisional'&&q.conceptIds.every(id=>id.startsWith('drawer32.')))).toBe(true);
  });
 });

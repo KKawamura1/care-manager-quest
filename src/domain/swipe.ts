@@ -8,34 +8,28 @@ export interface TruthRecord {
   reason?: string;
 }
 export interface TopicRecord {
-  primaryConceptId: string | null;
-  relatedConceptIds: string[];
-  status: string;
-  classificationRevision?: number;
-  revision?: number;
-  isPlayable?: boolean;
+  drawerIds: string[];
+  reviewed: boolean;
 }
 export interface SwipeCard {
   id: string; questionId: string; questionVersion: number; choiceId: string;
   year: number; number: number; domain: string; stem: string; text: string; truth: boolean;
-  correctChoiceTruth: boolean; explanation: string; topicId?: string;
+  correctChoiceTruth: boolean; explanation: string; topicId?: string; topicIds: string[];
   classificationStatus: string; classificationRevision: number;
   sourceReview?: Record<string, unknown>;
   // A changed truth label invalidates review mastery; taxonomy edits do not.
   revision: string;
 }
 export interface CardIssue { questionId: string; choiceId?: string; reason: string }
-const singleTopicStatuses = new Set(['provisional_topic_classified', 'editorial_draft_from_topic_metadata', 'editorial_draft_from_prior_manual_review']);
-
-export function buildSwipeCards(questions: readonly Question[], truth: Record<string, TruthRecord>, topics: Record<string, TopicRecord>, conceptIds: ReadonlySet<string>) {
+export function buildSwipeCards(questions: readonly Question[], truth: Record<string, TruthRecord>, topics: Record<string, TopicRecord>, conceptIds: ReadonlySet<string>, classificationRevision = 4) {
   const cards: SwipeCard[] = [], excluded: CardIssue[] = [], unclassified: CardIssue[] = [];
   for (const q of questions) {
     // The 2020 pack retains care_manager_2020_NNN IDs for existing history.
     // New taxonomy/truth data uses YYYY-NN; join by the original exam identity.
     const lookupId = q.original ? `${q.original.year}-${String(q.original.number).padStart(2, '0')}` : q.id;
-    const record = truth[lookupId], topic = topics[lookupId];
+    const record = truth[lookupId];
     const reject = (reason: string, choiceId?: string) => excluded.push({ questionId: q.id, choiceId, reason });
-    if (!q.original || !record || record.mode !== 'choice_correctness' || !['true', 'false'].includes(record.correctChoiceTruth) || topic?.isPlayable === false) {
+    if (!q.original || !record || record.mode !== 'choice_correctness' || !['true', 'false'].includes(record.correctChoiceTruth)) {
       reject(record?.reason ?? '有効な○×判定がありません'); continue;
     }
     if (!q.stem.trim() || q.options.length !== 5 || record.choiceAnswers.length !== 5 || q.options.some((o, i) => o.id !== String(i + 1) || !o.text.trim())) {
@@ -43,18 +37,20 @@ export function buildSwipeCards(questions: readonly Question[], truth: Record<st
     }
     const variants = q.answerVariants ?? [q.answerIds];
     const correctChoiceTruth = record.correctChoiceTruth === 'true';
-    const topicId = topic && singleTopicStatuses.has(topic.status) && topic.relatedConceptIds.length === 0 && topic.primaryConceptId && conceptIds.has(topic.primaryConceptId) ? topic.primaryConceptId : undefined;
     for (const [i, option] of q.options.entries()) {
+      const topic = topics[`${lookupId}:${option.id}`];
+      const topicIds = [...new Set(topic?.drawerIds ?? [])].filter(id => conceptIds.has(id));
+      const topicId = topicIds[0];
       const label = record.choiceAnswers[i];
       const truths = new Set(variants.map(ids => ids.includes(option.id) === correctChoiceTruth));
       if (truths.size !== 1) { reject('複数の正答パターンで真偽が一致しません', option.id); continue; }
       if (!['○', '×'].includes(label) || (label === '○') !== [...truths][0]) {
         reject('登録済み○×判定と試験当時の正答が一致しません', option.id); continue;
       }
-      if (!topicId) unclassified.push({ questionId: q.id, choiceId: option.id, reason: '選択肢別分類が未確認、または複数の論点が含まれます' });
+      if (!topicIds.length) unclassified.push({ questionId: q.id, choiceId: option.id, reason: '選択肢の分類がありません' });
       cards.push({ id: `${q.id}:${option.id}`, questionId: q.id, questionVersion: q.version, choiceId: option.id,
         year: q.original.year, number: q.original.number, domain: q.domain ?? '', stem: q.stem, text: option.text, truth: label === '○', correctChoiceTruth,
-        explanation: option.explanation, topicId, classificationStatus: topic?.status ?? 'missing', classificationRevision: topic?.classificationRevision ?? topic?.revision ?? 1,
+        explanation: option.explanation, topicId, topicIds, classificationStatus: !topicIds.length ? 'missing' : topic.reviewed ? 'reviewed' : 'provisional', classificationRevision,
         sourceReview: record.sourceReview, revision: `${q.version}:${label}` });
     }
   }
@@ -101,5 +97,5 @@ export function reviewQueue(cards: readonly SwipeCard[], state: SwipeState, now:
   return groups.flat();
 }
 export function filterSwipeCards(cards: readonly SwipeCard[], year: number | 'all', topic: string) {
-  return cards.filter(c => (year === 'all' || c.year === year) && (topic === 'all' || (topic === 'unclassified' ? !c.topicId : c.topicId === topic)));
+  return cards.filter(c => (year === 'all' || c.year === year) && (topic === 'all' || (topic === 'unclassified' ? !c.topicIds.length : c.topicIds.includes(topic))));
 }

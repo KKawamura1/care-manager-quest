@@ -40,9 +40,7 @@ describe('merged 2005–2025 corpus and portable history', () => {
     const player = completedCorpus();
     expect(player.attempts).toHaveLength(1259);
     expect(player.attempts.every(a => a.correct)).toBe(true);
-    expect(player.concepts.community.seenQuestionIds.length).toBeGreaterThan(250);
-    expect(player.concepts.community.correctQuestionIds.length).toBeGreaterThan(250);
-    expect(player.concepts['medical-opinion'].correctQuestionIds.length).toBeGreaterThan(250);
+    expect(Object.keys(player.concepts).every(id => id.startsWith('drawer32.'))).toBe(true);
     const restored = parsePlayer(JSON.stringify(player));
     expect(restored).toEqual(player);
     expect(totalXp(restored)).toBe(totalXp(player));
@@ -50,14 +48,20 @@ describe('merged 2005–2025 corpus and portable history', () => {
     expect(savePlayer({ setItem: (_, value) => { saved = value; } }, player)).toBeUndefined();
     expect(loadPlayer({ getItem: () => saved })).toEqual({ player, migrated: false });
 
+    // A historical broad-category snapshot remains importable after its catalog is removed.
+    const archive = structuredClone(player);
+    for (const a of archive.attempts) a.conceptIds = ['archive.community'];
+    archive.concepts = { 'archive.community': { seenQuestionIds: questions.map(q => q.id), correctQuestionIds: questions.map(q => q.id), reflected: true } };
+    expect(parsePlayer(JSON.stringify(archive))).toEqual(archive);
+
     // A larger valid evidence list must not weaken duplicate, unsupported-ID, or length checks.
-    for (const invalidId of ['unsupported-question', player.concepts.community.seenQuestionIds[0]]) {
-      const invalid = structuredClone(player);
-      invalid.concepts.community.seenQuestionIds.push(invalidId);
+    for (const invalidId of ['unsupported-question', archive.concepts['archive.community'].seenQuestionIds[0]]) {
+      const invalid = structuredClone(archive);
+      invalid.concepts['archive.community'].seenQuestionIds.push(invalidId);
       expect(() => parsePlayer(JSON.stringify(invalid))).toThrow();
     }
-    const oversized = structuredClone(player);
-    oversized.concepts.community.seenQuestionIds = Array.from({ length: historyQuestions.length + 1 }, (_, i) => `invalid-${i}`);
+    const oversized = structuredClone(archive);
+    oversized.concepts['archive.community'].seenQuestionIds = Array.from({ length: historyQuestions.length + 1 }, (_, i) => `invalid-${i}`);
     expect(() => parsePlayer(JSON.stringify(oversized))).toThrow();
   });
 });

@@ -15,11 +15,10 @@ if (!Array.isArray(rows) || rows.length !== 60) throw Error('Expected exactly 60
 const ids = new Set();
 const root = new URL('../src/data/packs/2025/', import.meta.url);
 const load = name => JSON.parse(readFileSync(new URL(name, root),'utf8'));
-const oldClassification = load('classifications.json');
 const oldQuality = load('quality.json');
 const oldAnswers = load('answers.json');
 if (Object.keys(oldAnswers).length <25) throw Error('Missing inherited answer keys');
-const texts = [], classifications = {}, answers = {}, quality = {};
+const texts = [], answers = {}, quality = {};
 const domains = {'介護支援分野':25,'保健医療サービスの知識等':20,'福祉サービスの知識等':15};
 const domainCounts = Object.fromEntries(Object.keys(domains).map(domain=>[domain,0]));
 for (const q of rows) {
@@ -34,16 +33,10 @@ for (const q of rows) {
  // The ZIP Q16 crop omits the final characters; retain the complete official-PDF recrop already checked into the repository.
  texts.push({id:q.id,version:1,number:q.number,year:2025,domain:q.domain,sourceId:'official-2025',stem:q.stem,choices:q.choices,imagePath:'/assets/questions/2025/q'+String(q.number).padStart(2,'0')+'.png',imageSha256:q.number===16?'3c26abb2931b6104c3aa9bce238a882b93e492e65933eb99f0482488702665d1':q.image_sha256,sourcePageIndex:q.sourcePageIndex});
  answers[q.id]=oldAnswer??{correctChoices:q.correct_choices,selectionCount:q.required_choices,sourceId:'official-2025-answers',verifiedAt:'2026-10-10'};
- // Existing classifications, their revisions and historical IDs must not change.
- const category=q.primary_group==='B4'?'B4':q.primary_group==='B3'?'B3':q.domain==='保健医療サービスの知識等'?'C3':q.topic_title.includes('虐待')?'C5':'C4';
- const conceptAnchors={A:'insurer',A1:'planning',A2:'insured',A3:'supply',A4:'benefits',B1:'eligibility',B2:'certification',B3:'assessment',B4:'coordination',B5:'monitoring',C:'C.dementia_policy'};
- const relatedConceptIds=[...new Set((q.related_groups??[]).map(group=>conceptAnchors[group]).filter(Boolean))];
- if (!relatedConceptIds.length) relatedConceptIds.push('coordination');
- classifications[q.id]=oldClassification[q.id]??{revision:1,title:q.topic_title,primaryCategory:category,primaryConceptId:q.primary_concept_id,relatedConceptIds,difficulty:2,status:'provisional',importedGroups:{primary:q.primary_group,related:q.related_groups}};
  const prior=oldQuality[q.id];
  quality[q.id]={...prior,textStatus:'pending',secondReview:'pending',lawStatus:'not_reviewed',independentExplanation:null,importedImageSha256:q.image_sha256,transcriptionStatus:q.text_status,answerStatus:'inherited_not_independently_reverified',imageReview:prior?.imageReview??'from_uploaded_original_crop'};
 }
 for (const [domain,n] of Object.entries(domains)) if(domainCounts[domain]!==n) throw Error('Domain count mismatch: '+domain);
 const save=(name,data)=>writeFileSync(new URL(name,root),JSON.stringify(data,null,2)+'\n');
-save('questions.json',texts);save('answers.json',answers);save('classifications.json',classifications);save('quality.json',quality);
+save('questions.json',texts);save('answers.json',answers);save('quality.json',quality);
 console.log('Prepared 2025 official questions: 60 text questions; 25 support, 20 medical, 15 welfare; double proofreading pending.');

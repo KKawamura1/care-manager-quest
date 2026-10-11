@@ -47,7 +47,9 @@ test('right/left swipe, feedback, duplicate guard and navigation preserve five-c
 
 test('short/vertical drags do not answer; arrow key and buttons do; narrow topic and 2020 IDs resolve correctly', async ({ page }) => {
   await open(page); await page.getByLabel('○×の年度').selectOption('2020');
-  const option = await page.getByLabel('学ぶ知識分野').locator('optgroup option').first().getAttribute('value');
+  const options = page.getByLabel('学ぶ知識分野').locator('optgroup option');
+  const index = (await options.allTextContents()).findIndex(text => Number(text.match(/（(\d+)枚）/)?.[1]) >= 2);
+  const option = await options.nth(index).getAttribute('value');
   await page.getByLabel('学ぶ知識分野').selectOption(option!); await start(page);
   await expect(page.locator('.swipe-screen .question-meta')).toContainText('2020年度');
   const target = await page.locator('.swipe-topic').textContent(); expect(target).not.toContain('未確認');
@@ -85,7 +87,7 @@ test('due mistakes are prioritized after reload and successful cards are deferre
 
 test('20-card recall, backup preview/cancel/import and invalid input keep review records safe', async ({ page }) => {
   await open(page); await page.getByLabel('○×の年度').selectOption('2025');
-  await page.getByLabel('学ぶ知識分野').selectOption('unclassified'); await start(page);
+  await page.getByLabel('学ぶ知識分野').selectOption('all'); await start(page);
   for (let i = 0; i < 20; i++) {
     const answer = await currentTruth(page);
     await page.getByRole('button', { name: answer ? '○と答える' : '×と答える', exact: true }).click();
