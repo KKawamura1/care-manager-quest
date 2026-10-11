@@ -8,21 +8,21 @@
     ],
     "question_count": 1260,
     "choice_count": 6300,
-    "proposition_record_count": 6335,
-    "choices_split_into_multiple_propositions": 31,
-    "additional_proposition_records_from_splits": 35,
+    "proposition_record_count": 6336,
+    "choices_split_into_multiple_propositions": 32,
+    "additional_proposition_records_from_splits": 36,
     "difficult_case_count": 92,
     "status_counts": {
-      "assigned": 6243,
+      "assigned": 6244,
       "ambiguous": 92,
       "unmapped": 0,
       "needs_source_review": 0
     },
     "primary_root_counts": {
-      "人の健康と生活": 1210,
-      "支援の考え方と方法": 1296,
-      "支援の提供体制": 1921,
-      "社会保障の仕組み": 1816
+      "人の健康と生活": 1200,
+      "支援の考え方と方法": 1302,
+      "支援の提供体制": 1914,
+      "社会保障の仕組み": 1828
     }
   },
   "validation": {
@@ -35,6 +35,7 @@
     "unmapped_rows_have_no_assigned_path": true
   },
   "source_notes": {
+    "2021": "2021年度60問・300選択肢を設問文とともに意味レビューし、301命題として再整理（社会保険方式の並列主張1選択肢を分割）。原文・正誤・法令の校正は未実施。",
     "2025": "Full 60-question compressed source reconstructed by scripts/import-2025.mjs; SHA-256 badd92f316d751be0eb8414cfb4139f533e57a8186a0f53ab07302017de8161a. The 2025 source pack has no option-level classifications.",
     "2005-2016": "Question text compared against repository question pack files.",
     "2017-2024": "Existing source/status metadata retained in each record."
@@ -402,18 +403,18 @@
       "year": 2021,
       "question_count": 60,
       "choice_count": 300,
-      "proposition_record_count": 300,
+      "proposition_record_count": 301,
       "status_counts": {
-        "assigned": 300,
+        "assigned": 301,
         "ambiguous": 0,
         "unmapped": 0,
         "needs_source_review": 0
       },
       "primary_root_counts": {
-        "人の健康と生活": 52,
-        "支援の考え方と方法": 69,
-        "支援の提供体制": 84,
-        "社会保障の仕組み": 95
+        "人の健康と生活": 42,
+        "支援の考え方と方法": 75,
+        "支援の提供体制": 77,
+        "社会保障の仕組み": 107
       },
       "ambiguous_candidate_root_counts": {}
     },
