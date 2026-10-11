@@ -1,28 +1,23 @@
 [
   {
     "path": "README.md",
-    "bytes": 7167,
-    "sha256": "c42da643f0f46a78f422de596c940e2812ce5af26480ee82a26590cfde05c134"
-  },
-  {
-    "path": "checksums.json",
-    "bytes": 3731,
-    "sha256": "aeb714f5b15200f344e85de531f27322b5d8fdc587da93a9c3518991ae4f255c"
+    "bytes": 8829,
+    "sha256": "c1096628582cf55acbb14ad6815caa9d97b70024c4aa07cc8ca1ebd087227389"
   },
   {
     "path": "difficult-cases.jsonl",
-    "bytes": 215501,
-    "sha256": "b0e738f3b4fdc42602cda3fa35f9236f3d1b251600caee0738b722137e20ddd3"
+    "bytes": 203030,
+    "sha256": "14e427ddc6afb38fb9c55719b4585973168e0624d6e98f6c91ffbc4a9476061d"
   },
   {
     "path": "existing-concept-crosswalk.csv",
-    "bytes": 160029,
-    "sha256": "d9882565b31b6ec549e9d2755e95ff77c497d6f1ea1b35173eff8d325b4cdd19"
+    "bytes": 163072,
+    "sha256": "c08c1b9c8e43c5c5e9ad6b27960975931dc0d71b9e9869f23429263169a2d8cc"
   },
   {
     "path": "manifest.json",
-    "bytes": 14087,
-    "sha256": "4a99e4cbb823df6c9cf89b3fcde4b73ddbe863ef249258f67a7e55409850eedd"
+    "bytes": 14523,
+    "sha256": "31a4b0b98d8ba8066fa8dda795d437e25381c03ba2353a965b32c839ed59a20e"
   },
   {
     "path": "propositions/2005.jsonl",
@@ -91,8 +86,8 @@
   },
   {
     "path": "propositions/2018.jsonl",
-    "bytes": 573325,
-    "sha256": "dfdb21da332997f6df67971fc3b36d83f0fffaca9ce0ca7afca585a3495e8213"
+    "bytes": 574081,
+    "sha256": "0117ab550aad353d9892fd52815b3e9ad70fecae77e5574b90ce75a2b7ca19da"
   },
   {
     "path": "propositions/2019.jsonl",
@@ -121,12 +116,12 @@
   },
   {
     "path": "propositions/2024.jsonl",
-    "bytes": 588624,
-    "sha256": "fc1de84b6d25ed0ef5944302d1f1f5b864d0cf8388795a4d2d2176ccb5e9d5e0"
+    "bytes": 632778,
+    "sha256": "22f455271c3cc3105995f50506d2abca9f0d7c03e4fa266a531cbbd847584433"
   },
   {
     "path": "propositions/2025.jsonl",
-    "bytes": 616115,
-    "sha256": "9daaa649cc5fa7bb6fc3d04de1514c9afd68156955e38b0bb02edcc97474aa2b"
+    "bytes": 743326,
+    "sha256": "e4f1eb9271d9c960ca364576e6ee37c3801b0631bd4c1f51dd8e6cb33f389688"
   }
 ]
