@@ -78,6 +78,34 @@ describe('recall scheduling and isolated storage', () => {
     expect(state.progress[a.id].streak).toBe(0); expect(state.progress[a.id].lapses).toBe(2);
     expect(Date.parse(state.progress[a.id].dueAt) - Date.parse(state.progress[a.id].lastReviewedAt)).toBe(60_000);
   });
+  it('shuffles each new set without duplicates while preserving review priority and avoiding input mutation', () => {
+    const [a, b, c, d, ...unseen] = swipeCards.slice(0, 34);
+    let state = recordSwipe(emptySwipe(), a, !a.truth, now - 60_000);
+    state = recordSwipe(state, b, !b.truth, now - 60_000);
+    state = recordSwipe(state, c, c.truth, now - 2 * 86_400_000);
+    state = recordSwipe(state, d, d.truth, now - 2 * 86_400_000);
+    const input = [...unseen, d, b, a, c];
+    const original = input.map(card => card.id);
+    const first = reviewQueue(input, state, now, () => 0);
+    const second = reviewQueue(input, state, now, () => 0.999999);
+    expect(first.map(card => card.id)).not.toEqual(second.map(card => card.id));
+    expect(first.map(card => card.id)).toHaveLength(input.length);
+    expect(new Set(first.map(card => card.id)).size).toBe(input.length);
+    expect(new Set(first.map(card => card.id))).toEqual(new Set(original));
+    expect(input.map(card => card.id)).toEqual(original);
+    for (const result of [first, second]) {
+      expect(new Set(result.slice(0, 2).map(card => card.id))).toEqual(new Set([a.id, b.id]));
+      expect(new Set(result.slice(2, 4).map(card => card.id))).toEqual(new Set([c.id, d.id]));
+      expect(result.slice(4).every(card => !progressFor(state, card))).toBe(true);
+    }
+    // Once a set has been answered, its cards are deferred; the next set is fresh.
+    const selected = first.slice(0, 20);
+    expect(new Set(selected.map(card => card.id)).size).toBe(20);
+    let updated = state;
+    for (const card of selected) updated = recordSwipe(updated, card, card.truth, now);
+    const next = reviewQueue(input, updated, now);
+    expect(next.every(card => !selected.includes(card))).toBe(true);
+  });
   it('resets mastery when a card truth changes while keeping archived evidence', () => {
     const state = recordSwipe(emptySwipe(), a, a.truth, now);
     const changed = { ...a, truth: !a.truth, revision: `${a.questionVersion}:${a.truth ? '×' : '○'}` };

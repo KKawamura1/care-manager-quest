@@ -124,7 +124,7 @@ export function SwipeStudy({ active }: { active: boolean }) {
         <p className="fine-print">分野は単一論点の問題から引き継いだ暫定分類です。複数論点・選択肢レビュー待ちのカードは分類待ちに残しています。</p>
         <div className="record-stats"><div><b>{candidates.length}</b><span>対象カード</span></div><div><b>{reviewed}</b><span>学習したカード</span></div><div><b>{due}</b><span>復習待ち</span></div></div>
         <button className="primary" aria-label="○×学習を始める" disabled={blocked || !available.length} onClick={start}>○×学習を始める<span aria-hidden="true">→</span></button>
-        <p className="mission-note">復習 {due}枚 · 未学習 {available.length - due}枚。期限が来た誤答を優先します。</p>
+        <p className="mission-note">復習 {due}枚 · 未学習 {available.length - due}枚。誤答の復習を優先し、同じ優先度のカードはランダムな順番で出題します。</p>
         {!available.length && <p role="status">今の分野のカードは学習済みです。{nextDue && <>次の復習：{new Date(nextDue).toLocaleString('ja-JP')}</>} 年度・分野を変えると学習を続けられます。</p>}
       </div>
       <details className="panel"><summary>復習と判定について</summary>
