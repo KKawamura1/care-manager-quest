@@ -1,0 +1,126 @@
+/**
+ * Issue #32 taxonomy experiment integrity checks.
+ * Run: node scripts/validate-issue32-classifications.mjs
+ * Classification correctness is NOT established by this script. The tests
+ * only validate references, derived summaries, traceability and known regressions.
+ */
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { fileURLToPath } from 'node:url';
+import { join, dirname } from 'node:path';
+
+const root = dirname(dirname(fileURLToPath(import.meta.url)));
+const dir = join(root, 'docs/taxonomy/issue-32-experiment');
+const read = (path) => readFileSync(join(dir, path), 'utf8');
+const json = (path) => JSON.parse(read(path));
+const jsonl = (path) => read(path).trim().split('\n').map((line) => JSON.parse(line));
+const manifest = json('manifest.json');
+const difficult = jsonl('difficult-cases.jsonl');
+const checksumList = json('checksums.json');
+const roots = { '1': '人の健康と生活', '2': '支援の考え方と方法', '3': '支援の提供体制', '4': '社会保障の仕組み' };
+
+let total = 0;
+const allDifficult = new Set();
+const reviewed = {};
+const lookup = new Map();
+const statusTotal = { assigned: 0, ambiguous: 0, unmapped: 0, needs_source_review: 0 };
+const rootTotal = Object.fromEntries(Object.values(roots).map((label) => [label, 0]));
+
+for (let year = 2005; year <= 2025; year++) {
+  const rows = jsonl(`propositions/${year}.jsonl`);
+  const byQuestion = new Map();
+  const identities = new Set();
+  const perChoice = new Map();
+  const status = { assigned: 0, ambiguous: 0, unmapped: 0, needs_source_review: 0 };
+  const rootCounts = Object.fromEntries(Object.values(roots).map((label) => [label, 0]));
+  const candidates = {};
+  for (const row of rows) {
+    assert.equal(row.year, year);
+    assert.ok(row.question_id && row.source_text && row.proposition && row.question_stem);
+    assert.ok(row.choice_index >= 1 && row.choice_index <= 5);
+    assert.ok(row.proposition_index >= 1);
+    const key = [row.question_id, row.choice_index, row.proposition_index].join('/');
+    assert.ok(!identities.has(key), `duplicate proposition: ${key}`);
+    identities.add(key);
+    lookup.set(key, row);
+    byQuestion.set(row.question_id, (byQuestion.get(row.question_id) ?? new Set()).add(row.choice_index));
+    const choiceKey = [row.question_id, row.choice_index].join('/');
+    (perChoice.get(choiceKey) ?? perChoice.set(choiceKey, []).get(choiceKey)).push(row.proposition_index);
+    assert.ok(Object.hasOwn(status, row.classification_status), key);
+    status[row.classification_status]++;
+    if (row.classification_status === 'assigned') {
+      assert.equal(row.primary_path[0], Object.keys(roots).find((id) => roots[id] === row.primary_path[1]), key);
+      assert.ok(row.subject_concept && row.attribute && row.classification_reason, key);
+      rootCounts[row.primary_path[1]]++;
+    } else {
+      assert.equal(row.primary_path.length, 0, key);
+      if (row.classification_status === 'ambiguous') {
+        assert.ok(row.candidate_paths.length >= 2, key);
+        for (const path of row.candidate_paths) {
+          assert.equal(path[1], roots[path[0]], key);
+          candidates[path[1]] = (candidates[path[1]] || 0) + 1;
+        }
+      }
+      if (['ambiguous', 'unmapped'].includes(row.classification_status)) allDifficult.add(key);
+    }
+    if (row.classification_revision) {
+      reviewed[year] = (reviewed[year] || 0) + 1;
+      assert.ok(row.classification_revision.previous_status);
+      assert.ok(Array.isArray(row.classification_revision.previous_primary_path));
+    }
+  }
+  assert.equal(byQuestion.size, 60, `questions in ${year}`);
+  assert.equal(perChoice.size, 300, `choices in ${year}`);
+  for (const [id, set] of byQuestion) assert.equal(set.size, 5, `choices in ${id}`);
+  for (const [id, indices] of perChoice) {
+    indices.sort((a, b) => a - b);
+    assert.deepEqual(indices, Array.from({ length: indices.length }, (_, i) => i + 1), `indices ${id}`);
+  }
+  const expected = manifest.yearly_coverage.find((item) => item.year === year);
+  assert.ok(expected, year);
+  assert.equal(expected.proposition_record_count, rows.length);
+  assert.deepEqual(expected.status_counts, status, `status in ${year}`);
+  assert.deepEqual(expected.primary_root_counts, rootCounts, `root in ${year}`);
+  assert.deepEqual(expected.ambiguous_candidate_root_counts, candidates, `candidates in ${year}`);
+  for (const key in statusTotal) statusTotal[key] += status[key];
+  for (const key in rootTotal) rootTotal[key] += rootCounts[key];
+  total += rows.length;
+}
+
+const difficultKeys = difficult.map((r) => [r.question_id, r.choice_index, r.proposition_index].join('/'));
+assert.equal(new Set(difficultKeys).size, difficultKeys.length, 'duplicate difficult case');
+assert.deepEqual(new Set(difficultKeys), allDifficult, 'difficult-cases out of sync');
+assert.equal(total, 6335);
+assert.equal(manifest.coverage.proposition_record_count, total);
+assert.equal(manifest.coverage.difficult_case_count, difficult.length);
+assert.deepEqual(manifest.coverage.status_counts, statusTotal);
+assert.deepEqual(manifest.coverage.primary_root_counts, rootTotal);
+assert.deepEqual(reviewed, { 2018: 2, 2024: 105, 2025: 300 }, 'reviewed record counts');
+
+const expectedPaths = [
+  ['2018-10/5/1', '普通徴収と特別徴収'],
+  ['2018-21/1/1', '認定調査票'],
+  ['2024-13/1/1', '認知症総合支援事業'],
+  ['2024-31/1/1', '退院・退所支援'],
+  ['2025-02/5/1', '認知症基本法'],
+  ['2025-27/3/1', '膀胱留置カテーテル'],
+  ['2025-44/1/1', '看護小規模多機能型居宅介護'],
+  ['2025-51/1/1', '基本方針'],
+];
+for (const [id, segment] of expectedPaths) {
+  const row = lookup.get(id);
+  assert.ok(row, `missing regression fixture: ${id}`);
+  assert.ok(row.primary_path.join(' > ').includes(segment), `misclassified ${id}: ${row.primary_path.join(' > ')}`);
+}
+
+assert.ok(!checksumList.some((item) => item.path === 'checksums.json'), 'self-checksum is not stable');
+for (const item of checksumList) {
+  const buf = readFileSync(join(dir, item.path));
+  const sum = createHash('sha256').update(buf).digest('hex');
+  assert.equal(buf.byteLength, item.bytes, `size mismatch: ${item.path}`);
+  assert.equal(sum, item.sha256, `checksum mismatch: ${item.path}`);
+}
+assert.equal(checksumList.length, 25);
+assert.match(read('README.md'), /初回分類時点のスナップショット/);
+console.log(`taxonomy experiment integrity OK: ${total} propositions; ${difficult.length} difficult; 407 reviewed; ${checksumList.length} checksums`);
