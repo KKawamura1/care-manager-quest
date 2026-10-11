@@ -4,6 +4,10 @@ import { questionCopyText } from '../domain/questionCopy';
 
 export function CopyQuestion({ question, includeAnswer = false, selectedIds }: { question: Question; includeAnswer?: boolean; selectedIds?: readonly string[] }) {
   const text = questionCopyText(question, includeAnswer, selectedIds);
+  return <CopyText text={text} includeAnswer={includeAnswer}/>;
+}
+
+export function CopyText({ text, includeAnswer = false }: { text: string; includeAnswer?: boolean }) {
   const [status, setStatus] = useState<'idle' | 'copying' | 'copied' | 'manual'>('idle');
   const textRef = useRef<HTMLTextAreaElement>(null);
   useEffect(() => setStatus('idle'), [text]);

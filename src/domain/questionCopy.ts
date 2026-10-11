@@ -1,7 +1,9 @@
 import type { Question } from './models';
 import { officialNotice, sources } from '../data/sources';
+import type { SwipeCard } from './swipe';
+import { cardTarget, explanationInstructions, questionTarget, type ExplanationTarget } from './appExplanation';
 
-export function questionCopyText(question: Question, includeAnswer = false, selectedIds?: readonly string[]): string {
+export function questionCopyText(question: Question, includeAnswer = false, selectedIds?: readonly string[], target: ExplanationTarget = questionTarget(question)): string {
   const lines = [
     '以下の介護支援専門員試験の問題について、問われている知識と各選択肢の理由をわかりやすく解説してください。',
     '試験当時の制度に基づいて説明し、現行制度との違いがある場合は区別してください。根拠となる一次資料も示してください。',
@@ -31,6 +33,16 @@ export function questionCopyText(question: Question, includeAnswer = false, sele
   });
   if (references.length) lines.push('', '【原典】', ...references);
   lines.push('', question.original ? officialNotice : `作成者：${question.provenance.author}（旧練習問題）`);
+  lines.push('', explanationInstructions(target));
   return lines.join('\n');
+}
+
+export function swipeCopyText(question: Question, card: SwipeCard, includeAnswer = false, answer?: boolean | null): string {
+  const focus = ['○×学習で質問したいのは、次の選択肢です。元の設問の条件に沿って、この選択肢を重点的に解説してください。', `【対象の選択肢】${card.choiceId}. ${card.text}`];
+  if (includeAnswer) {
+    focus.push(`【このカードの試験当時の判定】${card.truth ? '○' : '×'}`);
+    if (answer !== undefined) focus.push(`【自分の○×解答】${answer === null ? 'わからない' : answer ? '○' : '×'}`);
+  }
+  return [...focus, '', questionCopyText(question, includeAnswer, undefined, cardTarget(card))].join('\n');
 }
 
