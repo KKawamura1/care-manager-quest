@@ -67,9 +67,14 @@ const legalRules = [
   [/法第|制度の目的|基本理念|国民の努力|責務|基本方針/, 'principles','法定目的・理念・責務'],
   [/統計|人口|人数|推移|割合|増加|減少|2017年度末/, 'statistics','制度の統計・動向'],
 ];
-const ruleFor = (rules, text) => {
-  const hit=rules.find(([pattern])=>pattern.test(text));
-  return hit ? make(hit[1],hit[2]) : null;
+const ruleFor = (rules, text, highPrecision = false) => {
+  const hits=rules.filter(([pattern])=>pattern.test(text));
+  if(!hits.length)return null;
+  const [pattern,id,label]=hits[0];
+  // A single explicit rule in a narrowly scoped concept is a checked
+  // classification rule. Multiple different cues need semantic review.
+  return {id,label,resolution:highPrecision&&hits.length===1?'curated':'inferred',
+    evidence:'proposition_keyword', matched_rule_count:hits.length};
 };
 
 /**
@@ -88,11 +93,11 @@ export function inferAttributeFromProposition(row, concept) {
     (/^[1-4]\./.test(raw) && raw.split('>').length<=2);
   if (!broad) return null;
   let result=null;
-  if (concept.id==='4.1.certification') result=ruleFor(certificationRules,statement);
-  else if (concept.id==='2.2') result=ruleFor(counsellingRules,statement);
-  else if (concept.id==='2.3') result=ruleFor(careManagementRules,statement);
-  else if (concept.id==='2.4') result=ruleFor(careTechRules,statement);
-  else if (concept.root==='3') result=ruleFor(providerRules,statement);
+  if (concept.id==='4.1.certification') result=ruleFor(certificationRules,statement,true);
+  else if (concept.id==='2.2') result=ruleFor(counsellingRules,statement,true);
+  else if (concept.id==='2.3') result=ruleFor(careManagementRules,statement,true);
+  else if (concept.id==='2.4') result=ruleFor(careTechRules,statement,true);
+  else if (concept.root==='3') result=ruleFor(providerRules,statement,true);
   else if (concept.root==='4') result=ruleFor(legalRules,statement);
   else if (concept.root==='1') {
     const rules=[
@@ -103,7 +108,7 @@ export function inferAttributeFromProposition(row, concept) {
       [/症状|所見|みられる|表れる|疼痛|呼吸困難|障害|状態/, 'symptoms','病態・症状'],
     ];result=ruleFor(rules,statement);
   }
-  return result ? {...result, resolution:'inferred', evidence:'proposition_keyword'} : null;
+  return result ?? null;
 }
 
 /** High confidence named disease mentions recover subjects lost to umbrella subjects. */
