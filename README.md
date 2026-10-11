@@ -2,7 +2,7 @@
 
 知らない問題を推理で攻略し、知識をつなげるスマホ向けWebゲーム。**2005〜2025年度の過去問1,259問**で、5問ずつ遊べます。
 
-[非公開プレビュー](https://care-manager-quest.kriver2135.chatgpt.site) / GitHubがソースの正本です。privateを維持し、mainへのマージは手動です。
+[既存Sites](https://care-manager-quest.kriver2135.chatgpt.site) / GitHubがソースの正本です。mainへのマージは手動です。CloudflareのGitHub連携を一度設定すると、main更新 → Cloudflare側で型チェック・単体テスト・ビルド → 自動デプロイ。本人限定のCloudflare Accessを使用します。[初回セットアップ・履歴移行](docs/deployment.md)。
 
 ## 遊び方
 
