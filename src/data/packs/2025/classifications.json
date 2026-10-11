@@ -440,5 +440,600 @@
         "C"
       ]
     }
+  },
+  "2025-26": {
+    "revision": 1,
+    "title": "フレイル・サルコペニア",
+    "primaryCategory": "C3",
+    "primaryConceptId": "C.aging_frailty",
+    "relatedConceptIds": [
+      "coordination"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "C",
+      "related": [
+        "B4"
+      ]
+    }
+  },
+  "2025-27": {
+    "revision": 1,
+    "title": "口腔・生活機能の支援",
+    "primaryCategory": "C3",
+    "primaryConceptId": "C.oralsupport",
+    "relatedConceptIds": [
+      "coordination"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "C",
+      "related": [
+        "B4"
+      ]
+    }
+  },
+  "2025-28": {
+    "revision": 1,
+    "title": "褥瘡の予防と評価",
+    "primaryCategory": "C3",
+    "primaryConceptId": "C.pressure_ulcers",
+    "relatedConceptIds": [
+      "coordination"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "C",
+      "related": [
+        "B4"
+      ]
+    }
+  },
+  "2025-29": {
+    "revision": 1,
+    "title": "リハビリテーション",
+    "primaryCategory": "C3",
+    "primaryConceptId": "C.rehabilitation",
+    "relatedConceptIds": [
+      "coordination"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "C",
+      "related": [
+        "B4"
+      ]
+    }
+  },
+  "2025-30": {
+    "revision": 1,
+    "title": "認知症の理解とケア",
+    "primaryCategory": "C3",
+    "primaryConceptId": "C.dementia",
+    "relatedConceptIds": [
+      "coordination"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "C",
+      "related": [
+        "B4"
+      ]
+    }
+  },
+  "2025-31": {
+    "revision": 1,
+    "title": "せん妄・精神症状",
+    "primaryCategory": "C3",
+    "primaryConceptId": "C.mental_health",
+    "relatedConceptIds": [
+      "coordination"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "C",
+      "related": [
+        "B4"
+      ]
+    }
+  },
+  "2025-32": {
+    "revision": 1,
+    "title": "診療・治療と医療連携",
+    "primaryCategory": "C3",
+    "primaryConceptId": "C.medical_care",
+    "relatedConceptIds": [
+      "coordination"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "C",
+      "related": [
+        "B4"
+      ]
+    }
+  },
+  "2025-33": {
+    "revision": 1,
+    "title": "栄養・食生活",
+    "primaryCategory": "C3",
+    "primaryConceptId": "C.nutrition",
+    "relatedConceptIds": [
+      "coordination"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "C",
+      "related": [
+        "B4"
+      ]
+    }
+  },
+  "2025-34": {
+    "revision": 1,
+    "title": "在宅医療の基礎",
+    "primaryCategory": "C3",
+    "primaryConceptId": "C.home_medical_care",
+    "relatedConceptIds": [
+      "coordination"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "C",
+      "related": [
+        "B4"
+      ]
+    }
+  },
+  "2025-35": {
+    "revision": 1,
+    "title": "感染症の予防と対応",
+    "primaryCategory": "C3",
+    "primaryConceptId": "C.infection_control",
+    "relatedConceptIds": [
+      "coordination"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "C",
+      "related": [
+        "B4"
+      ]
+    }
+  },
+  "2025-36": {
+    "revision": 1,
+    "title": "医療機器・服薬管理",
+    "primaryCategory": "C3",
+    "primaryConceptId": "C.home_medical_care",
+    "relatedConceptIds": [
+      "coordination"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "C",
+      "related": [
+        "B4"
+      ]
+    }
+  },
+  "2025-37": {
+    "revision": 1,
+    "title": "救急・緊急時対応",
+    "primaryCategory": "C3",
+    "primaryConceptId": "C.emergency_care",
+    "relatedConceptIds": [
+      "coordination"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "C",
+      "related": [
+        "B4"
+      ]
+    }
+  },
+  "2025-38": {
+    "revision": 1,
+    "title": "生活機能・リハビリ",
+    "primaryCategory": "C3",
+    "primaryConceptId": "C.rehabilitation",
+    "relatedConceptIds": [
+      "coordination"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "C",
+      "related": [
+        "B4"
+      ]
+    }
+  },
+  "2025-39": {
+    "revision": 1,
+    "title": "臨死期の徴候",
+    "primaryCategory": "C3",
+    "primaryConceptId": "C.end_of_life",
+    "relatedConceptIds": [
+      "coordination"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "C",
+      "related": [
+        "B4"
+      ]
+    }
+  },
+  "2025-40": {
+    "revision": 1,
+    "title": "アドバンス・ケア・プランニング",
+    "primaryCategory": "C3",
+    "primaryConceptId": "C.advance_care_planning",
+    "relatedConceptIds": [
+      "coordination"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "C",
+      "related": [
+        "B4"
+      ]
+    }
+  },
+  "2025-41": {
+    "revision": 1,
+    "title": "指定訪問看護",
+    "primaryCategory": "B4",
+    "primaryConceptId": "B4.visiting_nursing",
+    "relatedConceptIds": [
+      "C.dementia_policy"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "B4",
+      "related": [
+        "C"
+      ]
+    }
+  },
+  "2025-42": {
+    "revision": 1,
+    "title": "訪問・医療サービスの基礎",
+    "primaryCategory": "C3",
+    "primaryConceptId": "C.medical_care",
+    "relatedConceptIds": [
+      "coordination"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "C",
+      "related": [
+        "B4"
+      ]
+    }
+  },
+  "2025-43": {
+    "revision": 1,
+    "title": "指定通所リハビリテーション",
+    "primaryCategory": "B4",
+    "primaryConceptId": "B4.day_rehabilitation",
+    "relatedConceptIds": [
+      "C.dementia_policy"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "B4",
+      "related": [
+        "C"
+      ]
+    }
+  },
+  "2025-44": {
+    "revision": 1,
+    "title": "看護小規模多機能型居宅介護",
+    "primaryCategory": "B4",
+    "primaryConceptId": "B4.multifunctional_nursing",
+    "relatedConceptIds": [
+      "C.dementia_policy"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "B4",
+      "related": [
+        "C"
+      ]
+    }
+  },
+  "2025-45": {
+    "revision": 1,
+    "title": "介護医療院",
+    "primaryCategory": "B4",
+    "primaryConceptId": "B4.longterm_medical_facility",
+    "relatedConceptIds": [
+      "C.dementia_policy"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "B4",
+      "related": [
+        "C"
+      ]
+    }
+  },
+  "2025-46": {
+    "revision": 1,
+    "title": "面接・コミュニケーション技術",
+    "primaryCategory": "B3",
+    "primaryConceptId": "B3.interview",
+    "relatedConceptIds": [
+      "C.dementia_policy"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "B3",
+      "related": [
+        "C"
+      ]
+    }
+  },
+  "2025-47": {
+    "revision": 1,
+    "title": "ソーシャルワーク",
+    "primaryCategory": "C4",
+    "primaryConceptId": "C.social_work",
+    "relatedConceptIds": [
+      "coordination"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "C",
+      "related": [
+        "B4"
+      ]
+    }
+  },
+  "2025-48": {
+    "revision": 1,
+    "title": "相談援助の基本姿勢",
+    "primaryCategory": "C4",
+    "primaryConceptId": "C.social_work",
+    "relatedConceptIds": [
+      "coordination"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "C",
+      "related": [
+        "B4"
+      ]
+    }
+  },
+  "2025-49": {
+    "revision": 1,
+    "title": "地域援助技術",
+    "primaryCategory": "C4",
+    "primaryConceptId": "C.community_work",
+    "relatedConceptIds": [
+      "coordination"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "C",
+      "related": [
+        "B4"
+      ]
+    }
+  },
+  "2025-50": {
+    "revision": 1,
+    "title": "訪問介護",
+    "primaryCategory": "B4",
+    "primaryConceptId": "B4.home_help",
+    "relatedConceptIds": [
+      "C.dementia_policy"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "B4",
+      "related": [
+        "C"
+      ]
+    }
+  },
+  "2025-51": {
+    "revision": 1,
+    "title": "通所介護",
+    "primaryCategory": "B4",
+    "primaryConceptId": "B4.day_care",
+    "relatedConceptIds": [
+      "C.dementia_policy"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "B4",
+      "related": [
+        "C"
+      ]
+    }
+  },
+  "2025-52": {
+    "revision": 1,
+    "title": "訪問入浴介護",
+    "primaryCategory": "B4",
+    "primaryConceptId": "B4.home_bathing",
+    "relatedConceptIds": [
+      "C.dementia_policy"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "B4",
+      "related": [
+        "C"
+      ]
+    }
+  },
+  "2025-53": {
+    "revision": 1,
+    "title": "短期入所生活介護",
+    "primaryCategory": "B4",
+    "primaryConceptId": "B4.short_stay",
+    "relatedConceptIds": [
+      "C.dementia_policy"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "B4",
+      "related": [
+        "C"
+      ]
+    }
+  },
+  "2025-54": {
+    "revision": 1,
+    "title": "住宅改修",
+    "primaryCategory": "B4",
+    "primaryConceptId": "B4.home_modification",
+    "relatedConceptIds": [
+      "C.dementia_policy"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "B4",
+      "related": [
+        "C"
+      ]
+    }
+  },
+  "2025-55": {
+    "revision": 1,
+    "title": "認知症対応型通所介護",
+    "primaryCategory": "B4",
+    "primaryConceptId": "B4.dementia_day_care",
+    "relatedConceptIds": [
+      "C.dementia_policy"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "B4",
+      "related": [
+        "C"
+      ]
+    }
+  },
+  "2025-56": {
+    "revision": 1,
+    "title": "小規模多機能型居宅介護",
+    "primaryCategory": "B4",
+    "primaryConceptId": "B4.multifunctional_care",
+    "relatedConceptIds": [
+      "C.dementia_policy"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "B4",
+      "related": [
+        "C"
+      ]
+    }
+  },
+  "2025-57": {
+    "revision": 1,
+    "title": "介護老人福祉施設",
+    "primaryCategory": "B4",
+    "primaryConceptId": "B4.special_nursing_home",
+    "relatedConceptIds": [
+      "C.dementia_policy"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "B4",
+      "related": [
+        "C"
+      ]
+    }
+  },
+  "2025-58": {
+    "revision": 1,
+    "title": "生活保護制度",
+    "primaryCategory": "C4",
+    "primaryConceptId": "C.public_assistance",
+    "relatedConceptIds": [
+      "coordination"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "C",
+      "related": [
+        "B4"
+      ]
+    }
+  },
+  "2025-59": {
+    "revision": 1,
+    "title": "成年後見制度",
+    "primaryCategory": "C4",
+    "primaryConceptId": "C.adult_guardianship",
+    "relatedConceptIds": [
+      "coordination"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "C",
+      "related": [
+        "B4"
+      ]
+    }
+  },
+  "2025-60": {
+    "revision": 1,
+    "title": "高齢者虐待防止法",
+    "primaryCategory": "C5",
+    "primaryConceptId": "C.elder_abuse",
+    "relatedConceptIds": [
+      "coordination"
+    ],
+    "difficulty": 2,
+    "status": "provisional",
+    "importedGroups": {
+      "primary": "C",
+      "related": [
+        "B4"
+      ]
+    }
   }
 }

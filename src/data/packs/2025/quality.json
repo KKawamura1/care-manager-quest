@@ -1,233 +1,279 @@
 {
   "2025-01": {
-    "textStatus": "proofread",
+    "textStatus": "pending",
     "reviewedAt": "2026-10-10",
     "reviewer": "single-pass-image-comparison",
     "secondReview": "pending",
     "lawStatus": "not_reviewed",
     "independentExplanation": null,
     "importedImageSha256": "354f602f2d2bb2742cbd29d46d9bf25a35608095a6e0fe3ee799c088ac6b0a74",
-    "imageReview": "question_number_and_five_options_checked"
+    "imageReview": "question_number_and_five_options_checked",
+    "transcriptionStatus": "transcribed_ocr_assisted_proofread_pending",
+    "answerStatus": "inherited_not_independently_reverified"
   },
   "2025-02": {
-    "textStatus": "proofread",
+    "textStatus": "pending",
     "reviewedAt": "2026-10-10",
     "reviewer": "single-pass-image-comparison",
     "secondReview": "pending",
     "lawStatus": "not_reviewed",
     "independentExplanation": null,
     "importedImageSha256": "329c7d9c353c9943f364b1aa0008462d33b3afa5d2b7368c7c8c2b6353283f61",
-    "imageReview": "question_number_and_five_options_checked"
+    "imageReview": "question_number_and_five_options_checked",
+    "transcriptionStatus": "transcribed_ocr_assisted_proofread_pending",
+    "answerStatus": "inherited_not_independently_reverified"
   },
   "2025-03": {
-    "textStatus": "proofread",
+    "textStatus": "pending",
     "reviewedAt": "2026-10-10",
     "reviewer": "single-pass-image-comparison",
     "secondReview": "pending",
     "lawStatus": "not_reviewed",
     "independentExplanation": null,
     "importedImageSha256": "8cf100415ee53cc0b34ae03af665bea69df2fc05045a7ed8cbd4a7ea92d194f1",
-    "imageReview": "question_number_and_five_options_checked"
+    "imageReview": "question_number_and_five_options_checked",
+    "transcriptionStatus": "transcribed_ocr_assisted_proofread_pending",
+    "answerStatus": "inherited_not_independently_reverified"
   },
   "2025-04": {
-    "textStatus": "proofread",
+    "textStatus": "pending",
     "reviewedAt": "2026-10-10",
     "reviewer": "single-pass-image-comparison",
     "secondReview": "pending",
     "lawStatus": "not_reviewed",
     "independentExplanation": null,
     "importedImageSha256": "8af1f157ced600f901aedecb2edd3006115d13e20b18a5680be3c6296c7bfcdc",
-    "imageReview": "question_number_and_five_options_checked"
+    "imageReview": "question_number_and_five_options_checked",
+    "transcriptionStatus": "transcribed_ocr_assisted_proofread_pending",
+    "answerStatus": "inherited_not_independently_reverified"
   },
   "2025-05": {
-    "textStatus": "proofread",
+    "textStatus": "pending",
     "reviewedAt": "2026-10-10",
     "reviewer": "single-pass-image-comparison",
     "secondReview": "pending",
     "lawStatus": "not_reviewed",
     "independentExplanation": null,
     "importedImageSha256": "1df82e12ac558d0676f7cc1776b7b86d78f2a8003ef09963e45af0861d7e4c1d",
-    "imageReview": "question_number_and_five_options_checked"
+    "imageReview": "question_number_and_five_options_checked",
+    "transcriptionStatus": "transcribed_ocr_assisted_proofread_pending",
+    "answerStatus": "inherited_not_independently_reverified"
   },
   "2025-06": {
-    "textStatus": "proofread",
+    "textStatus": "pending",
     "reviewedAt": "2026-10-10",
     "reviewer": "single-pass-image-comparison",
     "secondReview": "pending",
     "lawStatus": "not_reviewed",
     "independentExplanation": null,
     "importedImageSha256": "1e24f097ab4e6f6b94cbffecd36f328a73cc735effc6909a459d282cdd9cc890",
-    "imageReview": "question_number_and_five_options_checked"
+    "imageReview": "question_number_and_five_options_checked",
+    "transcriptionStatus": "transcribed_ocr_assisted_proofread_pending",
+    "answerStatus": "inherited_not_independently_reverified"
   },
   "2025-07": {
-    "textStatus": "proofread",
+    "textStatus": "pending",
     "reviewedAt": "2026-10-10",
     "reviewer": "single-pass-image-comparison",
     "secondReview": "pending",
     "lawStatus": "not_reviewed",
     "independentExplanation": null,
     "importedImageSha256": "60882db47d3ef4085b1d4a2a426ab9a4ba35b121ff2dc1c7f99145712f528319",
-    "imageReview": "question_number_and_five_options_checked"
+    "imageReview": "question_number_and_five_options_checked",
+    "transcriptionStatus": "transcribed_ocr_assisted_proofread_pending",
+    "answerStatus": "inherited_not_independently_reverified"
   },
   "2025-08": {
-    "textStatus": "proofread",
+    "textStatus": "pending",
     "reviewedAt": "2026-10-10",
     "reviewer": "single-pass-image-comparison",
     "secondReview": "pending",
     "lawStatus": "not_reviewed",
     "independentExplanation": null,
     "importedImageSha256": "60dcaa4176580110e42f2fd5632455cd15852e83d0e3d7e83325e84d1efc84f6",
-    "imageReview": "question_number_and_five_options_checked"
+    "imageReview": "question_number_and_five_options_checked",
+    "transcriptionStatus": "transcribed_ocr_assisted_proofread_pending",
+    "answerStatus": "inherited_not_independently_reverified"
   },
   "2025-09": {
-    "textStatus": "proofread",
+    "textStatus": "pending",
     "reviewedAt": "2026-10-10",
     "reviewer": "single-pass-image-comparison",
     "secondReview": "pending",
     "lawStatus": "not_reviewed",
     "independentExplanation": null,
     "importedImageSha256": "1bfed08b571a23d0ae30c2cf067984410cd21da57f3d37f187f86ec924a62098",
-    "imageReview": "question_number_and_five_options_checked"
+    "imageReview": "question_number_and_five_options_checked",
+    "transcriptionStatus": "transcribed_ocr_assisted_proofread_pending",
+    "answerStatus": "inherited_not_independently_reverified"
   },
   "2025-10": {
-    "textStatus": "proofread",
+    "textStatus": "pending",
     "reviewedAt": "2026-10-10",
     "reviewer": "single-pass-image-comparison",
     "secondReview": "pending",
     "lawStatus": "not_reviewed",
     "independentExplanation": null,
     "importedImageSha256": "64646192bb9a2133c63f612d403987302cc933f470ae2942fb5a14fae27a67a4",
-    "imageReview": "question_number_and_five_options_checked"
+    "imageReview": "question_number_and_five_options_checked",
+    "transcriptionStatus": "transcribed_ocr_assisted_proofread_pending",
+    "answerStatus": "inherited_not_independently_reverified"
   },
   "2025-11": {
-    "textStatus": "proofread",
+    "textStatus": "pending",
     "reviewedAt": "2026-10-10",
     "reviewer": "single-pass-image-comparison",
     "secondReview": "pending",
     "lawStatus": "not_reviewed",
     "independentExplanation": null,
     "importedImageSha256": "adfb063310712addee96f9272c4bc3ce21c69123db0b20df4c6523a58a94fb7c",
-    "imageReview": "question_number_and_five_options_checked"
+    "imageReview": "question_number_and_five_options_checked",
+    "transcriptionStatus": "transcribed_ocr_assisted_proofread_pending",
+    "answerStatus": "inherited_not_independently_reverified"
   },
   "2025-12": {
-    "textStatus": "proofread",
+    "textStatus": "pending",
     "reviewedAt": "2026-10-10",
     "reviewer": "single-pass-image-comparison",
     "secondReview": "pending",
     "lawStatus": "not_reviewed",
     "independentExplanation": null,
     "importedImageSha256": "2ee2854e0c792748572362f70c7ee0a14640c17f3e7470393b69af94bdc10fcf",
-    "imageReview": "question_number_and_five_options_checked"
+    "imageReview": "question_number_and_five_options_checked",
+    "transcriptionStatus": "transcribed_ocr_assisted_proofread_pending",
+    "answerStatus": "inherited_not_independently_reverified"
   },
   "2025-13": {
-    "textStatus": "proofread",
+    "textStatus": "pending",
     "reviewedAt": "2026-10-10",
     "reviewer": "single-pass-image-comparison",
     "secondReview": "pending",
     "lawStatus": "not_reviewed",
     "independentExplanation": null,
     "importedImageSha256": "abcc3ddc6ef33d0d94f8c852e561afdf4e51818a460e14805b50bbaf6a21d02d",
-    "imageReview": "question_number_and_five_options_checked"
+    "imageReview": "question_number_and_five_options_checked",
+    "transcriptionStatus": "transcribed_ocr_assisted_proofread_pending",
+    "answerStatus": "inherited_not_independently_reverified"
   },
   "2025-14": {
-    "textStatus": "proofread",
+    "textStatus": "pending",
     "reviewedAt": "2026-10-10",
     "reviewer": "single-pass-image-comparison",
     "secondReview": "pending",
     "lawStatus": "not_reviewed",
     "independentExplanation": null,
     "importedImageSha256": "5c84f2edc7a20bde74bedd33e4cd6acd0faecae70b17e6f53760554f44dfc77f",
-    "imageReview": "question_number_and_five_options_checked"
+    "imageReview": "question_number_and_five_options_checked",
+    "transcriptionStatus": "transcribed_ocr_assisted_proofread_pending",
+    "answerStatus": "inherited_not_independently_reverified"
   },
   "2025-15": {
-    "textStatus": "proofread",
+    "textStatus": "pending",
     "reviewedAt": "2026-10-10",
     "reviewer": "single-pass-image-comparison",
     "secondReview": "pending",
     "lawStatus": "not_reviewed",
     "independentExplanation": null,
     "importedImageSha256": "85a64b4e60ddd6a119bfe3a32387c505920c4e4da75553a48549e89b4c30af02",
-    "imageReview": "question_number_and_five_options_checked"
+    "imageReview": "question_number_and_five_options_checked",
+    "transcriptionStatus": "transcribed_ocr_assisted_proofread_pending",
+    "answerStatus": "inherited_not_independently_reverified"
   },
   "2025-16": {
-    "textStatus": "proofread",
+    "textStatus": "pending",
     "reviewedAt": "2026-10-10",
     "reviewer": "single-pass-image-comparison",
     "secondReview": "pending",
     "lawStatus": "not_reviewed",
     "independentExplanation": null,
     "importedImageSha256": "dd710bbaba53ea13a1f3db12e0fe68043df71bebb65ccff9b8d0177eb6cc2b21",
-    "imageReview": "reextracted_missing_last_line_from_official_pdf"
+    "imageReview": "reextracted_missing_last_line_from_official_pdf",
+    "transcriptionStatus": "transcribed_ocr_assisted_proofread_pending",
+    "answerStatus": "inherited_not_independently_reverified"
   },
   "2025-17": {
-    "textStatus": "proofread",
+    "textStatus": "pending",
     "reviewedAt": "2026-10-10",
     "reviewer": "single-pass-image-comparison",
     "secondReview": "pending",
     "lawStatus": "not_reviewed",
     "independentExplanation": null,
     "importedImageSha256": "2e0d0073396b8d397c0645803e59d416a94bbd6364776fa4f34750972994798d",
-    "imageReview": "question_number_and_five_options_checked"
+    "imageReview": "question_number_and_five_options_checked",
+    "transcriptionStatus": "transcribed_ocr_assisted_proofread_pending",
+    "answerStatus": "inherited_not_independently_reverified"
   },
   "2025-18": {
-    "textStatus": "proofread",
+    "textStatus": "pending",
     "reviewedAt": "2026-10-10",
     "reviewer": "single-pass-image-comparison",
     "secondReview": "pending",
     "lawStatus": "not_reviewed",
     "independentExplanation": null,
     "importedImageSha256": "ee7086260e4ad7a72c35bc337c8208729ccadb4ca81e7ca3640da12f48e7f299",
-    "imageReview": "question_number_and_five_options_checked"
+    "imageReview": "question_number_and_five_options_checked",
+    "transcriptionStatus": "transcribed_ocr_assisted_proofread_pending",
+    "answerStatus": "inherited_not_independently_reverified"
   },
   "2025-19": {
-    "textStatus": "proofread",
+    "textStatus": "pending",
     "reviewedAt": "2026-10-10",
     "reviewer": "single-pass-image-comparison",
     "secondReview": "pending",
     "lawStatus": "not_reviewed",
     "independentExplanation": null,
     "importedImageSha256": "1760e922df8f834bc3274e306d29ea0a0b1e2c811545ed981f28bf4a4117d5cc",
-    "imageReview": "question_number_and_five_options_checked"
+    "imageReview": "question_number_and_five_options_checked",
+    "transcriptionStatus": "transcribed_ocr_assisted_proofread_pending",
+    "answerStatus": "inherited_not_independently_reverified"
   },
   "2025-20": {
-    "textStatus": "proofread",
+    "textStatus": "pending",
     "reviewedAt": "2026-10-10",
     "reviewer": "single-pass-image-comparison",
     "secondReview": "pending",
     "lawStatus": "not_reviewed",
     "independentExplanation": null,
     "importedImageSha256": "9fac4489a762e5fabf6016760ca5058534750f0e260fa70398a27bea0658bd9f",
-    "imageReview": "question_number_and_five_options_checked"
+    "imageReview": "question_number_and_five_options_checked",
+    "transcriptionStatus": "transcribed_ocr_assisted_proofread_pending",
+    "answerStatus": "inherited_not_independently_reverified"
   },
   "2025-21": {
-    "textStatus": "proofread",
+    "textStatus": "pending",
     "reviewedAt": "2026-10-10",
     "reviewer": "single-pass-image-comparison",
     "secondReview": "pending",
     "lawStatus": "not_reviewed",
     "independentExplanation": null,
     "importedImageSha256": "f31f3b8a7d2916137e25389d4eca990dd1d5ac0c51605b2c1917bf36b50d0e90",
-    "imageReview": "question_number_and_five_options_checked"
+    "imageReview": "question_number_and_five_options_checked",
+    "transcriptionStatus": "transcribed_ocr_assisted_proofread_pending",
+    "answerStatus": "inherited_not_independently_reverified"
   },
   "2025-22": {
-    "textStatus": "proofread",
+    "textStatus": "pending",
     "reviewedAt": "2026-10-10",
     "reviewer": "single-pass-image-comparison",
     "secondReview": "pending",
     "lawStatus": "not_reviewed",
     "independentExplanation": null,
     "importedImageSha256": "5eb5d613e09ec38d34bf5ffeb2ec27fa75b81070eb6877b49ce2d2b9dd985b2e",
-    "imageReview": "question_number_and_five_options_checked"
+    "imageReview": "question_number_and_five_options_checked",
+    "transcriptionStatus": "transcribed_ocr_assisted_proofread_pending",
+    "answerStatus": "inherited_not_independently_reverified"
   },
   "2025-23": {
-    "textStatus": "proofread",
+    "textStatus": "pending",
     "reviewedAt": "2026-10-10",
     "reviewer": "single-pass-image-comparison",
     "secondReview": "pending",
     "lawStatus": "not_reviewed",
     "independentExplanation": null,
     "importedImageSha256": "44e5d4c634d33d5f6f9634a8847a2b464cccd0c9b39d569b3ac60411e85c821c",
-    "imageReview": "question_number_and_five_options_checked"
+    "imageReview": "question_number_and_five_options_checked",
+    "transcriptionStatus": "transcribed_ocr_assisted_proofread_pending",
+    "answerStatus": "inherited_not_independently_reverified"
   },
   "2025-24": {
     "textStatus": "pending",
@@ -237,7 +283,9 @@
     "lawStatus": "not_reviewed",
     "independentExplanation": null,
     "importedImageSha256": "7ec4efdc8a2ffaaebb2b27e95344cb05591be75397534f580f3b14990034ba71",
-    "imageReview": "question_number_and_five_options_checked"
+    "imageReview": "question_number_and_five_options_checked",
+    "transcriptionStatus": "transcribed_ocr_assisted_proofread_pending",
+    "answerStatus": "inherited_not_independently_reverified"
   },
   "2025-25": {
     "textStatus": "pending",
@@ -247,6 +295,358 @@
     "lawStatus": "not_reviewed",
     "independentExplanation": null,
     "importedImageSha256": "0377d39dc1bf1d96c017071dac914a18eaf425fe8ee456f54292f326da6378ec",
-    "imageReview": "question_number_and_five_options_checked"
+    "imageReview": "question_number_and_five_options_checked",
+    "transcriptionStatus": "transcribed_ocr_assisted_proofread_pending",
+    "answerStatus": "inherited_not_independently_reverified"
+  },
+  "2025-26": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "08a1cc4a14d799419b319ced1d74a6b7ee9029b173e4019889ca34373b10e360",
+    "transcriptionStatus": "manually_transcribed_from_original_image_one_pass",
+    "answerStatus": "inherited_not_independently_reverified",
+    "imageReview": "from_uploaded_original_crop"
+  },
+  "2025-27": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "8fbbe370115ad6f558645fdbaaee00abbab0dcd272c969b907ca1e15a9fda281",
+    "transcriptionStatus": "manually_transcribed_from_original_image_one_pass",
+    "answerStatus": "inherited_not_independently_reverified",
+    "imageReview": "from_uploaded_original_crop"
+  },
+  "2025-28": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "232b52d063a52b4186d2c3c888c765ea2d0342f216b8cfee1aa19edb1135af38",
+    "transcriptionStatus": "manually_transcribed_from_original_image_one_pass",
+    "answerStatus": "inherited_not_independently_reverified",
+    "imageReview": "from_uploaded_original_crop"
+  },
+  "2025-29": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "47fa8427742932097877e641e58a357a036fc8e63215b540104c6c7da720fcec",
+    "transcriptionStatus": "manually_transcribed_from_original_image_one_pass",
+    "answerStatus": "inherited_not_independently_reverified",
+    "imageReview": "from_uploaded_original_crop"
+  },
+  "2025-30": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "c34f32c35316957c9a16e18b9d85cf867ac8538f7eaa522bbb49e730f4b92615",
+    "transcriptionStatus": "manually_transcribed_from_original_image_one_pass",
+    "answerStatus": "inherited_not_independently_reverified",
+    "imageReview": "from_uploaded_original_crop"
+  },
+  "2025-31": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "1bd098edec5951b275b2fb801fc04d6c34019eadad4985b0a55e0715e367c03a",
+    "transcriptionStatus": "manually_transcribed_from_original_image_one_pass",
+    "answerStatus": "inherited_not_independently_reverified",
+    "imageReview": "from_uploaded_original_crop"
+  },
+  "2025-32": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "927dc07b47eae4ae2a644b4da2270eb43a84d004ed3c15a8bc9a275e8b82b189",
+    "transcriptionStatus": "manually_transcribed_from_original_image_one_pass",
+    "answerStatus": "inherited_not_independently_reverified",
+    "imageReview": "from_uploaded_original_crop"
+  },
+  "2025-33": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "527e52900fb1c71cba390d7e4bf9f70a1a08e37d48d7ab28833f659ba24fe390",
+    "transcriptionStatus": "manually_transcribed_from_original_image_one_pass",
+    "answerStatus": "inherited_not_independently_reverified",
+    "imageReview": "from_uploaded_original_crop"
+  },
+  "2025-34": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "ea21dcd752e66ae882d92d466228f44d73ed1bc44b93e5b881e5a02b707abeb2",
+    "transcriptionStatus": "manually_transcribed_from_original_image_one_pass",
+    "answerStatus": "inherited_not_independently_reverified",
+    "imageReview": "from_uploaded_original_crop"
+  },
+  "2025-35": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "571d9456fc0244f5377f3f96fcda525d37949a46ffbd1d769a16871fa730494c",
+    "transcriptionStatus": "manually_transcribed_from_original_image_one_pass",
+    "answerStatus": "inherited_not_independently_reverified",
+    "imageReview": "from_uploaded_original_crop"
+  },
+  "2025-36": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "75c72f5df279aae129ad6ef8b14a3999839a5f3e55639936c9cd166336140500",
+    "transcriptionStatus": "manually_transcribed_from_original_image_one_pass",
+    "answerStatus": "inherited_not_independently_reverified",
+    "imageReview": "from_uploaded_original_crop"
+  },
+  "2025-37": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "72a09694006a4c0b7683a0313449b33d484f49a636d022ab2e147bcf9cc6c04d",
+    "transcriptionStatus": "manually_transcribed_from_original_image_one_pass",
+    "answerStatus": "inherited_not_independently_reverified",
+    "imageReview": "from_uploaded_original_crop"
+  },
+  "2025-38": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "89c084f1b2709c387293139f04121b950a93ed05c8ce6ea4a244b3fc665d17b0",
+    "transcriptionStatus": "manually_transcribed_from_original_image_one_pass",
+    "answerStatus": "inherited_not_independently_reverified",
+    "imageReview": "from_uploaded_original_crop"
+  },
+  "2025-39": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "61f17b303f4b0788bda8c7a4e286f56bf2457ae65b0d8066964e987db07b2aa4",
+    "transcriptionStatus": "manually_transcribed_from_original_image_one_pass",
+    "answerStatus": "inherited_not_independently_reverified",
+    "imageReview": "from_uploaded_original_crop"
+  },
+  "2025-40": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "22417c3297cf89ae4351b13cfbcce46e4ad6dc6605f1adb155553aecbc6dde22",
+    "transcriptionStatus": "manually_transcribed_from_original_image_one_pass",
+    "answerStatus": "inherited_not_independently_reverified",
+    "imageReview": "from_uploaded_original_crop"
+  },
+  "2025-41": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "3945686d3e6e0f7cc76e436940b87588e7e0aa75635ea9e266b11cb20dcd1ad3",
+    "transcriptionStatus": "manually_transcribed_from_original_image_one_pass",
+    "answerStatus": "inherited_not_independently_reverified",
+    "imageReview": "from_uploaded_original_crop"
+  },
+  "2025-42": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "b77268c0d42aeb4fa16a6fa16a220f94d46e9b6d2de42eb5a0915970aa48c215",
+    "transcriptionStatus": "manually_transcribed_from_original_image_one_pass",
+    "answerStatus": "inherited_not_independently_reverified",
+    "imageReview": "from_uploaded_original_crop"
+  },
+  "2025-43": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "71f3ec8091e564a914dc0c132e5a4ec3f909e827a2602f2f643f0d491cae1229",
+    "transcriptionStatus": "manually_transcribed_from_original_image_one_pass",
+    "answerStatus": "inherited_not_independently_reverified",
+    "imageReview": "from_uploaded_original_crop"
+  },
+  "2025-44": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "80c58dc1982565178836246d2ff1b070d71acbfdd97efe381923175fda00f1b4",
+    "transcriptionStatus": "manually_transcribed_from_original_image_one_pass",
+    "answerStatus": "inherited_not_independently_reverified",
+    "imageReview": "from_uploaded_original_crop"
+  },
+  "2025-45": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "44b5dcce948daa9e6d3dabd0c31ae98d39e23fd416a6b9ebcbc0b3da4e9f81fd",
+    "transcriptionStatus": "manually_transcribed_from_original_image_one_pass",
+    "answerStatus": "inherited_not_independently_reverified",
+    "imageReview": "from_uploaded_original_crop"
+  },
+  "2025-46": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "33da10c3637382c471e1eb3aa8eea826f0eb6b1a6b86bc85dafd4432e4fa175a",
+    "transcriptionStatus": "manually_transcribed_from_original_image_one_pass",
+    "answerStatus": "inherited_not_independently_reverified",
+    "imageReview": "from_uploaded_original_crop"
+  },
+  "2025-47": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "95bdc0fa5d7e0a1a131b206aa72845d018365d877b8fda0ef3f1d86b3fbde729",
+    "transcriptionStatus": "manually_transcribed_from_original_image_one_pass",
+    "answerStatus": "inherited_not_independently_reverified",
+    "imageReview": "from_uploaded_original_crop"
+  },
+  "2025-48": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "72ef3d58491366492556c26301f18047cc09207268c82fefc6fa0554939e39a7",
+    "transcriptionStatus": "manually_transcribed_from_original_image_one_pass",
+    "answerStatus": "inherited_not_independently_reverified",
+    "imageReview": "from_uploaded_original_crop"
+  },
+  "2025-49": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "c49c538d3a26918edc91fb9c0d28bb5118536eb2c86e685fff6898031a4e9e77",
+    "transcriptionStatus": "manually_transcribed_from_original_image_one_pass",
+    "answerStatus": "inherited_not_independently_reverified",
+    "imageReview": "from_uploaded_original_crop"
+  },
+  "2025-50": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "b333f42149100f7162d4153415c99f95e89ed6234684740b358d58d85c08aa91",
+    "transcriptionStatus": "manually_transcribed_from_original_image_one_pass",
+    "answerStatus": "inherited_not_independently_reverified",
+    "imageReview": "from_uploaded_original_crop"
+  },
+  "2025-51": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "91523793220e9562e75527c1e4010a0bbedd0d0618b745dfa159ed01bdfc1823",
+    "transcriptionStatus": "manually_transcribed_from_original_image_one_pass",
+    "answerStatus": "inherited_not_independently_reverified",
+    "imageReview": "from_uploaded_original_crop"
+  },
+  "2025-52": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "422e3df785592aed3f5888c4dcaad52a919404cd38ec36c658720edaa76441c3",
+    "transcriptionStatus": "manually_transcribed_from_original_image_one_pass",
+    "answerStatus": "inherited_not_independently_reverified",
+    "imageReview": "from_uploaded_original_crop"
+  },
+  "2025-53": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "8c49665d540d81af8e7c0218c2e2ccf026bc69ec8c255e0be2b6e22b7ae1acd6",
+    "transcriptionStatus": "manually_transcribed_from_original_image_one_pass",
+    "answerStatus": "inherited_not_independently_reverified",
+    "imageReview": "from_uploaded_original_crop"
+  },
+  "2025-54": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "baaeb44d4c565a5f8d08b197463e022f19edac5b13e03c7537aaa9a90b52ed2e",
+    "transcriptionStatus": "manually_transcribed_from_original_image_one_pass",
+    "answerStatus": "inherited_not_independently_reverified",
+    "imageReview": "from_uploaded_original_crop"
+  },
+  "2025-55": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "153bcd7fe8d4460cd2721ed2326aa1bb621be078a09da95435d6adf06e3695d0",
+    "transcriptionStatus": "manually_transcribed_from_original_image_one_pass",
+    "answerStatus": "inherited_not_independently_reverified",
+    "imageReview": "from_uploaded_original_crop"
+  },
+  "2025-56": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "dd9e95150e687cedafffac850f7dbc5b05ee9e4b1d02b7a41bf69c643bf4a20a",
+    "transcriptionStatus": "manually_transcribed_from_original_image_one_pass",
+    "answerStatus": "inherited_not_independently_reverified",
+    "imageReview": "from_uploaded_original_crop"
+  },
+  "2025-57": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "7d0f7658f1b1f85159097fed9304c7f212d5065bd61ec00cb946cf59ee577363",
+    "transcriptionStatus": "manually_transcribed_from_original_image_one_pass",
+    "answerStatus": "inherited_not_independently_reverified",
+    "imageReview": "from_uploaded_original_crop"
+  },
+  "2025-58": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "34e0366f75c2adf49f86a24fdb9b90b08615126a58bd50ab94cc5775beaf5fb4",
+    "transcriptionStatus": "manually_transcribed_from_original_image_one_pass",
+    "answerStatus": "inherited_not_independently_reverified",
+    "imageReview": "from_uploaded_original_crop"
+  },
+  "2025-59": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "8dc7e4c794b7c6657ae7657f3327c54f95d2581fa462fcff2a797713e55d7f67",
+    "transcriptionStatus": "manually_transcribed_from_original_image_one_pass",
+    "answerStatus": "inherited_not_independently_reverified",
+    "imageReview": "from_uploaded_original_crop"
+  },
+  "2025-60": {
+    "textStatus": "pending",
+    "secondReview": "pending",
+    "lawStatus": "not_reviewed",
+    "independentExplanation": null,
+    "importedImageSha256": "863bc5dc6a280e90626f7064fb06dce377605dc0bd4531e382cb2bdbe2ea1c4f",
+    "transcriptionStatus": "manually_transcribed_from_original_image_one_pass",
+    "answerStatus": "inherited_not_independently_reverified",
+    "imageReview": "from_uploaded_original_crop"
   }
 }
