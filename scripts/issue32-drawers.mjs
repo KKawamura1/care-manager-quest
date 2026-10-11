@@ -205,6 +205,8 @@ function attributeFor(row, path, concept) {
   // In recent reviews a single assertion value is sometimes stored in
   // attribute. Use the path's "applicable services" level instead.
   const allClues = [row.attribute, ...hints].join(' > ');
+  if (concept.id==='3.3.care_manager' && /登録・更新|登録の移転|専門員証の(有効期間|返納)/.test(allClues))
+    return {id:'registration',label:'登録・更新',resolution:'curated'};
   if (concept.id==='4.1.benefits.home_renovation' && /支給対象性|対象工事|支給対象工事|対象となる工事/.test(allClues))
     return {id:'eligible_work',label:'支給対象となる工事',resolution:'curated'};
   if (concept.id==='4.1.benefits.home_renovation' && /支給限度額|支給上限額/.test(allClues))
