@@ -85,18 +85,22 @@ test('due mistakes are prioritized after reload and successful cards are deferre
   expect(Date.parse(p.dueAt) - Date.parse(p.lastReviewedAt)).toBe(86_400_000);
 });
 
-test('20-card recall, backup preview/cancel/import and invalid input keep review records safe', async ({ page }) => {
+test('continuous ○× learning beyond 20 cards, backup preview/cancel/import and invalid input keep review records safe', async ({ page }) => {
   await open(page); await page.getByLabel('○×の年度').selectOption('2025');
   await page.getByLabel('学ぶ知識分野').selectOption('all'); await start(page);
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 21; i++) {
     const answer = await currentTruth(page);
     await page.getByRole('button', { name: answer ? '○と答える' : '×と答える', exact: true }).click();
     await expect(page.locator('.swipe-verdict')).toBeVisible();
-    await page.getByRole('button', { name: i === 19 ? '学習結果を見る' : '次のカードへ', exact: true }).click();
+    await page.getByRole('button', { name: '次のカードへ', exact: true }).click();
   }
-  await expect(page.getByRole('status')).toContainText('20枚中 20枚正解');
+  await expect(page.getByRole('group', { name: '○×カード', exact: true })).toBeVisible();
+  await expect(page.getByRole('button', { name: '学習結果を見る' })).toHaveCount(0);
+  await expect(page.locator('.quest-heading')).toHaveText('分野選択に戻る');
+  await page.getByRole('button', { name: '分野選択に戻る' }).click();
+  await expect(page.getByText(/枚中.*枚正解/)).toHaveCount(0);
   const raw = await page.evaluate(k => localStorage.getItem(k)!, key);
-  expect(Object.keys(await progress(page))).toHaveLength(20);
+  expect(Object.keys(await progress(page))).toHaveLength(21);
   await page.getByText('○×履歴', {exact:true}).click();
   const download = page.waitForEvent('download'); await page.getByRole('button', { name: '○×履歴を書き出す', exact: true }).click();
   expect((await download).suggestedFilename()).toBe('care-manager-swipe-history.json');
