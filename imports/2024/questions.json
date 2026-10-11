@@ -2389,15 +2389,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "面接場面におけるコミュニケーション技術について適切なものはどれか。 3 つ選べ。",
+      "stem": "面接場面におけるコミュニケーション技術について適切なものはどれか。3つ選べ。",
       "choices": [
-        "明稚化とは, 相談援助者がクライエントの利益を考えで, クライエントの代わり に意遇決定することである。    -",
-        "アセスメントには, クライエントの開題状況の把握, 情報の収集と分析が含まれる。",
-        "オープンクエスチョンとは, クライエントが自らの選択や決定により. 符えを見 つけることを促す質問である。 .       ー          .",
-        "面接技術には. ジェスチャー, 表情, 声の抑揚が含まれる。",
-        "林線やクライエント との距離について配慮する ことは施けるべきである。"
+        "明確化とは、相談援助者がクライエントの利益を考えて、クライエントの代わりに意思決定することである。",
+        "アセスメントには、クライエントの問題状況の把握、情報の収集と分析が含まれる。",
+        "オープンクエスチョンとは、クライエントが自らの選択や決定により、答えを見つけることを促す質問である。",
+        "面接技術には、ジェスチャー、表情、声の抑揚が含まれる。",
+        "視線やクライエントとの距離について配慮することは避けるべきである。"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -2418,7 +2418,9 @@
           "kind": "renumber_ocr",
           "line": "\"5 林線やクライエント との距離について配慮する ことは施けるべきである。"
         }
-      ]
+      ],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-47",
@@ -2443,15 +2445,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "ソーシャルワークに関する次の記述のうち, より適切なものはどれか。 3 つ選べ。",
+      "stem": "ソーシャルワークに関する次の記述のうち、より適切なものはどれか。3つ選べ。",
       "choices": [
-        "クライエントと相談授助者が目標達成に向けて取り組むことは, 重要である。",
-        "支援計画は, 具体的に立てるよりは, できる限り抽象的に立てることが望ましい。",
-        "支援を終結する際は、 終結に伴うクライエントの不安に十分尋慮することが重要 である。",
-        "スーパービジョンの主な目的は, クライエントへの支援の向上とサービスの質の 確保のための相談援助者の養成である。                                   -",
-        "アウトリーチとは, 個人情報を導切に管理・保護することである。"
+        "クライエントと相談援助者が目標達成に向けて取り組むことは、重要である。",
+        "支援計画は、具体的に立てるよりは、できる限り抽象的に立てることが望ましい。",
+        "支援を終結する際は、終結に伴うクライエントの不安に十分配慮することが重要である。",
+        "スーパービジョンの主な目的は、クライエントへの支援の向上とサービスの質の確保のための相談援助者の養成である。",
+        "アウトリーチとは、個人情報を適切に管理・保護することである。"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -2466,7 +2468,9 @@
         "concepts": "unclassified"
       },
       "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
-      "ocr_structural_repairs": []
+      "ocr_structural_repairs": [],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-48",
@@ -2491,15 +2495,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "ソーシャルワークの視点から, 支援囲牙事例に関する記述として, より向 切なものはどれか。 3 つ選べ。",
+      "stem": "ソーシャルワークの視点から、支援困難事例に関する記述として、より適切なものはどれか。3つ選べ。",
       "choices": [
-        "高齢者の家族が支援内容に対して何度も不満を訴えたため, 担当の介設支援専門 員が地域包括支援センターへ相談する。",
-        "独居のクライエントが屋外までごみがあふれている家屋に住んでいるので, 直ち に警察へ介入を依頼する。 「",
-        "認知症のために判断能力が著しく低下したクライエントに対して, 成年後見制度 の利用を検討する。       -",
-        "セルフ・ネグレクトには, 配偶者からの身体的虐待が含まれる。      -",
-        "関係する専門職。 関係機関, 地域住民などがチームを組んでアプローチすること が誤ましい。"
+        "高齢者の家族が支援内容に対して何度も不満を訴えたため、担当の介護支援専門員が地域包括支援センターへ相談する。",
+        "独居のクライエントが屋外までごみがあふれている家屋に住んでいるので、直ちに警察へ介入を依頼する。",
+        "認知症のために判断能力が著しく低下したクライエントに対して、成年後見制度の利用を検討する。",
+        "セルフ・ネグレクトには、配偶者からの身体的虐待が含まれる。",
+        "関係する専門職、関係機関、地域住民などがチームを組んでアプローチすることが望ましい。"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -2514,7 +2518,9 @@
         "concepts": "unclassified"
       },
       "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
-      "ocr_structural_repairs": []
+      "ocr_structural_repairs": [],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-49",
@@ -2539,15 +2545,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "ソーシャルワークにおける地域提助として, より適切なものはどれか。 3 つ選べ。",
+      "stem": "ソーシャルワークにおける地域援助として、より適切なものはどれか。3つ選べ。",
       "choices": [
-        "保健医療・福守等の専門職のみによる地域の課是への対応",
-        "地域の商店とNPOの協働による認知症カフェの設置・運党",
+        "保健医療・福祉等の専門職のみによる地域の課題への対応",
+        "地域の商店とNPOの協働による認知症カフェの設置・運営",
         "地域の高齢者が福祉サービスにアクセスしやすくなるための自治体への働きかけ",
-        "梓災者に対する支援のなためのボランティアの組織化",
-        "住民を交えたグループ活動における本人の耳燥を得なたいままの参加者の氏名や顔 写真の公表      -            -"
+        "被災者に対する支援のためのボランティアの組織化",
+        "住民を交えたグループ活動における本人の了解を得ないままの参加者の氏名や顔写真の公表"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -2562,7 +2568,9 @@
         "concepts": "unclassified"
       },
       "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
-      "ocr_structural_repairs": []
+      "ocr_structural_repairs": [],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-50",
@@ -2587,15 +2595,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "介座保険における訪問介護について正しいものはどれか。 3 つ選べ。",
+      "stem": "介護保険における訪問介護について正しいものはどれか。3つ選べ。",
       "choices": [
-        "指定訪問介護事業所の管理者は, 介護福祉士でなければならない。",
-        "サービス提供資任者は, 利用者のサービスに関する意向を定期的に把握するもの とする。                                                ・",
-        "指定訪問介護事業者は, サービス提供中に事故が発生した場合は, 市町村, 利用 者の家族 担当の居宅介護支援事業者等に連絡を行わなければならない。",
-        "居宅サービス計画にないサービスでも, 利用者の要塵があった場合には, 訪問介 護員は直ちに提供しなければならない。",
-        "指定訪問介談事業者は, 定期的に薬継続計画の見直しを行い, 必要に応じて業 務継続計画の変更を行うちのとする。"
+        "指定訪問介護事業所の管理者は、介護福祉士でなければならない。",
+        "サービス提供責任者は、利用者のサービスに関する意向を定期的に把握するものとする。",
+        "指定訪問介護事業者は、サービス提供中に事故が発生した場合は、市町村、利用者の家族、担当の居宅介護支援事業者等に連絡を行わなければならない。",
+        "居宅サービス計画にないサービスでも、利用者の要望があった場合には、訪問介護員は直ちに提供しなければならない。",
+        "指定訪問介護事業者は、定期的に業務継続計画の見直しを行い、必要に応じて業務継続計画の変更を行うものとする。"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -2610,7 +2618,9 @@
         "concepts": "unclassified"
       },
       "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
-      "ocr_structural_repairs": []
+      "ocr_structural_repairs": [],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-51",
@@ -2635,15 +2645,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "-介護保険における通所介護について正しいものはどれか。 3 つ理べ。・",
+      "stem": "介護保険における通所介護について正しいものはどれか。3つ選べ。",
       "choices": [
-        "サービスの所要時間が同じ区分の利用者に対しては, サービス提供開始時刻を同. じにしなければならない。                    .",
-        "指定通所介護事業所の設備を利用し, 宿泊サービスを提供する場合には, その開   - 始前に指定権者に届け出る必要がある。",
-        "通所介護旨の算定の基伏となる所要時間には, 送名に要する時間も含まれる。",
-        "通所介談計画は. サービスの提供に関わる従業者が共同して個々の利用者どとに 作成するものである。                  ーー",
-        "あらかじめ人通所介護計画に位置付けられ, 効果的な機能訓練等のサービスが提供 できる場合は: 事業所の屋外でサービスを提供することができる。  .      ・"
+        "サービスの所要時間が同じ区分の利用者に対しては、サービス提供開始時刻を同じにしなければならない。",
+        "指定通所介護事業所の設備を利用し、宿泊サービスを提供する場合には、その開始前に指定権者に届け出る必要がある。",
+        "通所介護費の算定の基準となる所要時間には、送迎に要する時間も含まれる。",
+        "通所介護計画は、サービスの提供に関わる従業者が共同して個々の利用者ごとに作成するものである。",
+        "あらかじめ通所介護計画に位置付けられ、効果的な機能訓練等のサービスが提供できる場合は、事業所の屋外でサービスを提供することができる。"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -2658,7 +2668,9 @@
         "concepts": "unclassified"
       },
       "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
-      "ocr_structural_repairs": []
+      "ocr_structural_repairs": [],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-52",
@@ -2683,15 +2695,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "介護保険における訪問入浴介護について正しいゃのはどれか。 3 つ選べ。",
+      "stem": "介護保険における訪問入浴介護について正しいものはどれか。3つ選べ。",
       "choices": [
-        "1回の訪問につき, 看護職員 1 人及び介護職員 2 人で行った場合, これらの者の うち 1 人を当該サービスの提供の資任者とする。",
-        "利用者が短期入所生活介談を利用している間も, その必要性が居宅サービス計画 に記載されていれば, 訪問入浴介護費を算定できる。",
-        "心身の状況により, 訪問時に金身入浴が難しい場合, 利用者の希望によって, 清 拭や部分浴に変更することができる。",
-        "利用者の自宅に浴室があっても, 乱問入浴介護を利用することができる。",
-        "終末期にある者は, 利用するととができない。"
+        "1回の訪問につき、看護職員1人及び介護職員2人で行った場合、これらの者のうち1人を当該サービスの提供の責任者とする。",
+        "利用者が短期入所生活介護を利用している間も、その必要性が居宅サービス計画に記載されていれば、訪問入浴介護費を算定できる。",
+        "心身の状況により、訪問時に全身入浴が難しい場合、利用者の希望によって、清拭や部分浴に変更することができる。",
+        "利用者の自宅に浴室があっても、訪問入浴介護を利用することができる。",
+        "終末期にある者は、利用することができない。"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -2706,7 +2718,9 @@
         "concepts": "unclassified"
       },
       "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
-      "ocr_structural_repairs": []
+      "ocr_structural_repairs": [],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-53",
@@ -2731,15 +2745,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "介有保険における短期入所生活介護について正しいものはどれか。 3 つ選べ。.",
+      "stem": "介護保険における短期入所生活介護について正しいものはどれか。3つ選べ。",
       "choices": [
-        "短期入所生活介座計画は, 居宅サービス計画を作成した介護支援専門員が作成し なければならない。",
-        "いかなる場合でも, 静状室において指定短期入所生活介設を行うことはできない。",
-        "利用定員が20 人未満の併設事業所の場合. 生活相談員は非常勤でもよい。",
-        "食事内容は, 当該事業者の医師又は栄差士を含む会議で検討が加えられなければ ならない。                                               ]",
-        "協力医療機関は 此急時等に速やかに対応できるよう, 指定短期入所生活介談事 業所から近試離にあることが型ましいものである。"
+        "短期入所生活介護計画は、居宅サービス計画を作成した介護支援専門員が作成しなければならない。",
+        "いかなる場合でも、静養室において指定短期入所生活介護を行うことはできない。",
+        "利用定員が20人未満の併設事業所の場合、生活相談員は非常勤でもよい。",
+        "食事内容は、当該事業者の医師又は栄養士を含む会議で検討が加えられなければならない。",
+        "協力医療機関は、緊急時等に速やかに対応できるよう、指定短期入所生活介護事業所から近距離にあることが望ましいものである。"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -2754,7 +2768,9 @@
         "concepts": "unclassified"
       },
       "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
-      "ocr_structural_repairs": []
+      "ocr_structural_repairs": [],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-54",
@@ -2779,15 +2795,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "介護保険における福祉用具について正しいものはどれか。 3 つ選べ。",
+      "stem": "介護保険における福祉用具について正しいものはどれか。3つ選べ。",
       "choices": [
-        "福祉用具の使用目的には, 利用者の自立した日常生活の支援と介護者の負担軽減 が含まれる。",
-        "浴村内いすなどの入浴補助用具は, 特定福祉用上販売の対象となる。",
-        "利用者の身体を王らせるスライディングボードは, 特定福祉用具販売の対象とをなる。 ′・.",
-        "人識気式双は折りたたみ式の簡貞浴植は, 福祉用具貸与の対象となる。     ーー",
-        "エアマットなどの床ずれ防止用具は, 福祉用具貸与の対象となる。"
+        "福祉用具の使用目的には、利用者の自立した日常生活の支援と介護者の負担軽減が含まれる。",
+        "浴槽内いすなどの入浴補助用具は、特定福祉用具販売の対象となる。",
+        "利用者の身体を滑らせるスライディングボードは、特定福祉用具販売の対象となる。",
+        "空気式又は折りたたみ式の簡易浴槽は、福祉用具貸与の対象となる。",
+        "エアマットなどの床ずれ防止用具は、福祉用具貸与の対象となる。"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -2808,7 +2824,9 @@
           "kind": "renumber_ocr",
           "line": "、 2 浴村内いすなどの入浴補助用具は, 特定福祉用上販売の対象となる。"
         }
-      ]
+      ],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-55",
@@ -2832,15 +2850,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "介護保険における認知症対応型共同生活介設について正しいものはどれか。 2 つ選べ。",
+      "stem": "介護保険における認知症対応型共同生活介護について正しいものはどれか。2つ選べ。",
       "choices": [
-        "指定認知対応弄共同生活介護事業所の共同生活住居数は, 1 以上 3 以下である。",
-        "1つの共同生活住居の入居定員は, 15 人以上 20 人以下である。",
-        "認知症対応型共同生添当度を利用している場合福祉用大貸与費を算定できない。",
-        "計画作成担当者は. 1つの共同生活住拓ごとに量かなければならない。",
-        "サテライト型指定認知症対応型共同生活介計事業所の管理者は, 管理上支隊がな - い場合であっても, 本体事業所の管理者が務することはできない。         -"
+        "指定認知症対応型共同生活介護事業所の共同生活住居数は、1以上3以下である。",
+        "1つの共同生活住居の入居定員は、15人以上20人以下である。",
+        "認知症対応型共同生活介護を利用している場合、福祉用具貸与費を算定できない。",
+        "計画作成担当者は、1つの共同生活住居ごとに置かなければならない。",
+        "サテライト型指定認知症対応型共同生活介護事業所の管理者は、管理上支障がない場合であっても、本体事業所の管理者が兼務することはできない。"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -2866,7 +2884,9 @@
           "kind": "renumber_ocr",
           "line": ". 5サテライト型指定認知症対応型共同生活介計事業所の管理者は, 管理上支隊がな"
         }
-      ]
+      ],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-56",
@@ -2891,15 +2911,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "介護保険における小規模多機能型居宅介護について正しいものはどれか。 3 つ選べ。",
+      "stem": "介護保険における小規模多機能型居宅介護について正しいものはどれか。3つ選べ。",
       "choices": [
-        "通いを中心として, 利用者の様態や希望に応じて, 須時訪問や宿泊を組み合わせ 。 . てサービスを提供するものである。     ーー",
-        "利用者は, 同時に複数の指定小規模多機能江居宅介護事業所に登録することがで きる。",
-        "1つの本体事業所に係るサテライト事業所の数は 2 か所までとする。",
-        "小規模多機能弄居宅介護従業者として, 理学療法士駐は作業療法士を置かなけれ ばならない。              ーー",
-        "介談支援専門員は, 利用者の処周に支障がない場合は, 管理者と務することが でき る。"
+        "通いを中心として、利用者の様態や希望に応じて、随時訪問や宿泊を組み合わせてサービスを提供するものである。",
+        "利用者は、同時に複数の指定小規模多機能型居宅介護事業所に登録することができる。",
+        "1つの本体事業所に係るサテライト事業所の数は2か所までとする。",
+        "小規模多機能型居宅介護従業者として、理学療法士又は作業療法士を置かなければならない。",
+        "介護支援専門員は、利用者の処遇に支障がない場合は、管理者と兼務することができる。"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -2914,7 +2934,9 @@
         "concepts": "unclassified"
       },
       "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
-      "ocr_structural_repairs": []
+      "ocr_structural_repairs": [],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-57",
@@ -2939,15 +2961,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "指定介護老人福祉施設について正しいものはどれか。 3 つ選べ。    ーー",
+      "stem": "指定介護老人福祉施設について正しいものはどれか。3つ選べ。",
       "choices": [
-        "第三者による施設サービスの質の評価を受けることが, 義務付けられている。",
-        "身体抱束等の適正化のための対策を徐討する委員会を. 3 か月に1 回以上開催し なければならない。",
-        "入所者の処過に支障がな場合, 配時される介護支援専門員は非常勤でもよい。",
-        "看護職員については, 常勤の者を 1 人以上配置しなければならない。",
-        "計画担当旬設壇援専門員は, 特段の事情のない限り, 定期的にモニタリングの結 果を記録しをければならない。     ."
+        "第三者による施設サービスの質の評価を受けることが、義務付けられている。",
+        "身体拘束等の適正化のための対策を検討する委員会を、3か月に1回以上開催しなければならない。",
+        "入所者の処遇に支障がない場合、配置される介護支援専門員は非常勤でもよい。",
+        "看護職員については、常勤の者を1人以上配置しなければならない。",
+        "計画担当介護支援専門員は、特段の事情のない限り、定期的にモニタリングの結果を記録しなければならない。"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -2962,7 +2984,9 @@
         "concepts": "unclassified"
       },
       "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
-      "ocr_structural_repairs": []
+      "ocr_structural_repairs": [],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-58",
@@ -2987,15 +3011,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "生活保談制度について正しいものはどれか。 3 つ選べ。",
+      "stem": "生活保護制度について正しいものはどれか。3つ選べ。",
       "choices": [
-        "65蔵以上の投保護者の介談保険料は, 生活保護から給付される。",
-        "補足性の原理により, 生活保護の介護扶助は, 介護保険の保険給付よりも優先し て給付きれる。",
-        "生活保護の要可判定は, 家庭裁判所が行う。 。",
-        "幕祭扶助には, 火葬又は埋間に必要な連用が含まれる。",
-        "介談予防支援計画に基づいて行われる介記防サービスは, 介酸捧助の対象となる。"
+        "65歳以上の被保護者の介護保険料は、生活保護から給付される。",
+        "補足性の原理により、生活保護の介護扶助は、介護保険の保険給付よりも優先して給付される。",
+        "生活保護の要否判定は、家庭裁判所が行う。",
+        "葬祭扶助には、火葬又は埋葬に必要な費用が含まれる。",
+        "介護予防支援計画に基づいて行われる介護予防サービスは、介護扶助の対象となる。"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -3016,7 +3040,9 @@
           "kind": "renumber_ocr",
           "line": "8 生活保護の要可判定は, 家庭裁判所が行う。 。"
         }
-      ]
+      ],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-59",
@@ -3041,15 +3067,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "成年後見抽度について正しいものはどれか。 3 つ有選べ。",
+      "stem": "成年後見制度について正しいものはどれか。3つ選べ。",
       "choices": [
-        "親族は, 成年後見人になることができない。              。",
-        "後見開始の審判は, 本人も請求することができる。         、",
-        "法人も, 成年後見人に選任されることがある。",
-        "身上保護(遇上務護)とは, 本人に代わって財産を管理することをいう。",
-        "成年邊後見人の法律行為は, 原則として, 取り消すことができる。"
+        "親族は、成年後見人になることができない。",
+        "後見開始の審判は、本人も請求することができる。",
+        "法人も、成年後見人に選任されることがある。",
+        "身上保護(身上監護)とは、本人に代わって財産を管理することをいう。",
+        "成年被後見人の法律行為は、原則として、取り消すことができる。"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -3064,7 +3090,9 @@
         "concepts": "unclassified"
       },
       "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
-      "ocr_structural_repairs": []
+      "ocr_structural_repairs": [],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     },
     {
       "id": "2024-60",
@@ -3089,15 +3117,15 @@
       "primary_group": null,
       "primary_concept_id": null,
       "related_groups": [],
-      "stem": "後期計者医療制度について正しいものはどれか。3う選ぶべ。",
+      "stem": "後期高齢者医療制度について正しいものはどれか。3つ選べ。",
       "choices": [
-        "保険料は, 厚生労竹省令で定める。",
-        "生活保談受給者は, 被保険者にならない。 、 ・",
-        "梓保険者には, 65歳以上 75歳未満であって. 後期高齢者医療広域連合の障害認 定を受けた者も含まれる。",
-        "後期高齢者医療広域連合は, 特別の理由がある者に対し, 保険料を減免すること ができる。",
-        "訪問番療差費の支給は 給付に含まれない。"
+        "保険料は、厚生労働省令で定める。",
+        "生活保護受給者は、被保険者にならない。",
+        "被保険者には、65歳以上75歳未満であって、後期高齢者医療広域連合の障害認定を受けた者も含まれる。",
+        "後期高齢者医療広域連合は、特別の理由がある者に対し、保険料を減免することができる。",
+        "訪問看護療養費の支給は、給付に含まれない。"
       ],
-      "text_status": "transcribed_ocr_assisted_proofread_pending",
+      "text_status": "cross_checked_public_transcription_official_proofread_pending",
       "answer_status": "verified_against_2024_official_answer_table",
       "classification_status": "not_classified",
       "current_law_status": "not_reviewed",
@@ -3112,7 +3140,9 @@
         "concepts": "unclassified"
       },
       "answer_official_url": "https://www.fukushi.metro.tokyo.lg.jp/documents/d/fukushi/r6seitoubangou-pdf",
-      "ocr_structural_repairs": []
+      "ocr_structural_repairs": [],
+      "secondary_text_source": "https://www.kaigojob.com/magazine/job-qualification/care-manager-exam0008",
+      "secondary_text_reviewed_at": "2026-10-11"
     }
   ]
 }
