@@ -68,6 +68,10 @@ for (let year = 2005; year <= 2025; year++) {
       reviewed[year] = (reviewed[year] || 0) + 1;
       assert.ok(row.classification_revision.previous_status);
       assert.ok(Array.isArray(row.classification_revision.previous_primary_path));
+    } else if (row.classification_review?.version === 'taxonomy-v1.1') {
+      // Newly created propositions from a reviewed split have no previous path
+      // to store in classification_revision, but are still reviewed.
+      reviewed[year] = (reviewed[year] || 0) + 1;
     }
   }
   assert.equal(byQuestion.size, 60, `questions in ${year}`);
