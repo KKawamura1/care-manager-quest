@@ -91,12 +91,12 @@ for (let year = 2005; year <= 2025; year++) {
 const difficultKeys = difficult.map((r) => [r.question_id, r.choice_index, r.proposition_index].join('/'));
 assert.equal(new Set(difficultKeys).size, difficultKeys.length, 'duplicate difficult case');
 assert.deepEqual(new Set(difficultKeys), allDifficult, 'difficult-cases out of sync');
-assert.equal(total, 6335);
+assert.equal(total, 6337);
 assert.equal(manifest.coverage.proposition_record_count, total);
 assert.equal(manifest.coverage.difficult_case_count, difficult.length);
 assert.deepEqual(manifest.coverage.status_counts, statusTotal);
 assert.deepEqual(manifest.coverage.primary_root_counts, rootTotal);
-assert.deepEqual(reviewed, { 2018: 2, 2019: 300, 2024: 105, 2025: 300 }, 'reviewed record counts');
+assert.deepEqual(reviewed, { 2018: 2, 2019: 300, 2024: 105, 2025: 302 }, 'reviewed record counts');
 
 const expectedPaths = [
   ['2018-10/5/1', '普通徴収と特別徴収'],
@@ -121,6 +121,30 @@ for (const [id, segment] of expectedPaths) {
   assert.ok(row.primary_path.join(' > ').includes(segment), `misclassified ${id}: ${row.primary_path.join(' > ')}`);
 }
 
+
+const assert2025 = (id) => {
+  const record = lookup.get(id);
+  assert.ok(record, `missing 2025 review fixture: ${id}`);
+  return record;
+};
+assert.match(assert2025('2025-12/1/1').proposition, /一般介護予防事業に含まれる/);
+assert.match(assert2025('2025-13/2/1').proposition, /公表項目に含まれる/);
+assert.match(assert2025('2025-15/3/1').proposition, /国民健康保険団体連合会の業務に含まれる/);
+assert.match(assert2025('2025-19/4/1').proposition, /課題分析標準項目に含まれる/);
+assert.match(assert2025('2025-22/5/1').proposition, /基本チェックリストの質問項目に含まれる/);
+assert.match(assert2025('2025-39/1/1').proposition, /臨死期の徴候である/);
+assert.equal(assert2025('2025-39/1/1').primary_path[0], '1');
+assert.equal(assert2025('2025-30/3/1').primary_path[0], '2');
+assert.ok(assert2025('2025-41/5/1').primary_path.includes('看護師'));
+assert.ok(assert2025('2025-52/3/1').primary_path.includes('提供内容'));
+for (const [question, choice] of [['2025-27', 1], ['2025-47', 1]]) {
+  const a = assert2025(`${question}/${choice}/1`);
+  const b = assert2025(`${question}/${choice}/2`);
+  assert.equal(a.source_text, b.source_text, `split source changed: ${question}`);
+  assert.notEqual(a.proposition, b.proposition, `split propositions are identical: ${question}`);
+  assert.ok(b.proposition_revision, `split revision missing: ${question}`);
+}
+
 assert.ok(!checksumList.some((item) => item.path === 'checksums.json'), 'self-checksum is not stable');
 for (const item of checksumList) {
   const buf = readFileSync(join(dir, item.path));
@@ -130,4 +154,4 @@ for (const item of checksumList) {
 }
 assert.equal(checksumList.length, 25);
 assert.match(read('README.md'), /初回分類時点のスナップショット/);
-console.log(`taxonomy experiment integrity OK: ${total} propositions; ${difficult.length} difficult; 707 reviewed; ${checksumList.length} checksums`);
+console.log(`taxonomy experiment integrity OK: ${total} propositions; ${difficult.length} difficult; 709 reviewed; ${checksumList.length} checksums`);
