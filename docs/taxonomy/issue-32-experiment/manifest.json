@@ -8,19 +8,19 @@
     ],
     "question_count": 1260,
     "choice_count": 6300,
-    "proposition_record_count": 6335,
-    "choices_split_into_multiple_propositions": 31,
-    "additional_proposition_records_from_splits": 35,
+    "proposition_record_count": 6337,
+    "choices_split_into_multiple_propositions": 33,
+    "additional_proposition_records_from_splits": 37,
     "difficult_case_count": 92,
     "status_counts": {
-      "assigned": 6243,
+      "assigned": 6245,
       "ambiguous": 92,
       "unmapped": 0,
       "needs_source_review": 0
     },
     "primary_root_counts": {
-      "人の健康と生活": 1210,
-      "支援の考え方と方法": 1296,
+      "人の健康と生活": 1214,
+      "支援の考え方と方法": 1294,
       "支援の提供体制": 1921,
       "社会保障の仕組み": 1816
     }
@@ -478,16 +478,16 @@
       "year": 2025,
       "question_count": 60,
       "choice_count": 300,
-      "proposition_record_count": 300,
+      "proposition_record_count": 302,
       "status_counts": {
-        "assigned": 300,
+        "assigned": 302,
         "ambiguous": 0,
         "unmapped": 0,
         "needs_source_review": 0
       },
       "primary_root_counts": {
-        "人の健康と生活": 36,
-        "支援の考え方と方法": 75,
+        "人の健康と生活": 40,
+        "支援の考え方と方法": 73,
         "支援の提供体制": 79,
         "社会保障の仕組み": 110
       },
