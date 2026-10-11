@@ -1,8 +1,10 @@
+import { swipeCards } from '../data/swipe-provider';
+import { learningXp, recordLearning } from './learning';
 import type { Attempt, ConceptProgress, PlayerState, Question, Session } from './models';
-export const emptyPlayer = (): PlayerState => ({ schemaVersion: 2, attempts: [], concepts: {}, externalRecords: [], settings: { sound: true } });
-export const totalXp = (p: PlayerState) => p.attempts.reduce((sum, a) => sum + a.xp, 0);
+export const emptyPlayer = (): PlayerState => ({ schemaVersion: 3, learningEvents: [], attempts: [], concepts: {}, externalRecords: [], settings: { sound: true } });
+export const totalXp = (p: PlayerState) => learningXp(p.learningEvents);
 export const levelInfo = (xp: number) => ({ level: Math.floor(xp / 200) + 1, current: xp % 200, next: 200 - xp % 200 });
-export const conceptStatus = (p?: ConceptProgress): 'unexplored' | 'learning' | 'mastered' => !p?.seenQuestionIds.length ? 'unexplored' : p.reflected && p.correctQuestionIds.length >= 2 ? 'mastered' : 'learning';
+export const conceptStatus = (p?: ConceptProgress): 'unexplored' | 'learning' | 'mastered' => !p?.seenQuestionIds.length ? 'unexplored' : (p.level ?? 0) >= 0.8 ? 'mastered' : 'learning';
 export function isCorrect(q: Question, ids: readonly string[]): boolean {
   const keys = q.answerVariants ?? [q.answerIds];
   return ids.length === q.selectionCount && new Set(ids).size === ids.length && keys.some(key => key.length === ids.length && key.every(id => ids.includes(id)));
@@ -39,7 +41,12 @@ export function submitAnswer(p: PlayerState, pool: readonly Question[], at: stri
   const previous = p.attempts.filter(a => a.sessionId === s.id).at(-1);
   const combo = correct ? (previous?.combo ?? 0) + 1 : 0;
   const firstSeen = !p.attempts.some(a => a.questionId === q.id);
-  const attempt: Attempt = { id, questionId: q.id, questionVersion: q.version, sessionId: s.id, selectedIds: [...s.selectedIds], correct, firstSeen, combo, xp: awardXp(q, correct, firstSeen, combo), at, conceptIds:[...q.conceptIds], classificationRevision:q.classificationRevision??1, difficulty:q.difficulty };
+  const cards = swipeCards.filter(card => card.questionId === q.id);
+  const learningEvents = recordLearning(p.learningEvents, cards.map(card => ({
+    card, answer: s.selectedIds.includes(card.choiceId) === card.correctChoiceTruth,
+  })), at, 'five-choice', correct);
+  const gained = learningXp(learningEvents) - learningXp(p.learningEvents);
+  const attempt: Attempt = { id, questionId: q.id, questionVersion: q.version, sessionId: s.id, selectedIds: [...s.selectedIds], correct, firstSeen, combo, xp: gained, at, conceptIds:[...q.conceptIds], classificationRevision:q.classificationRevision??1, difficulty:q.difficulty };
   const evidence = { ...p.concepts };
   for (const conceptId of q.conceptIds) {
     const prior = evidence[conceptId] ?? { seenQuestionIds: [], correctQuestionIds: [], reflected: false };
@@ -49,7 +56,7 @@ export function submitAnswer(p: PlayerState, pool: readonly Question[], at: stri
       correctQuestionIds: [...new Set([...prior.correctQuestionIds, ...(correct ? [q.id] : [])])],
     };
   }
-  return { ...p, attempts: [...p.attempts, attempt], concepts: evidence };
+  return { ...p, learningEvents, attempts: [...p.attempts, attempt], concepts: evidence };
 }
 export function advance(p: PlayerState): PlayerState {
   const s = p.session;

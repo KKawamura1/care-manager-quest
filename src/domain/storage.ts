@@ -1,8 +1,10 @@
+import { swipeCardById } from '../data/swipe-provider';
+import { learningDay, learningXp } from './learning';
 import { historyQuestions, questions } from '../data/provider';
-import { awardXp, emptyPlayer, isCorrect } from './game';
+import { emptyPlayer, isCorrect } from './game';
 import type { PlayerState } from './models';
-export const STORAGE_KEY = 'care-manager-quest:v1';
-export const MAX_IMPORT_BYTES = 2_000_000;
+export const STORAGE_KEY = 'care-manager-quest:learning:v3';
+export const MAX_IMPORT_BYTES = 20_000_000;
 export function validExternalUrl(value: string): boolean {
   try {
     const u = new URL(value);
@@ -19,12 +21,12 @@ const arr = (v: unknown, max = 20_000): unknown[] => Array.isArray(v) && v.lengt
 const strings = (v: unknown, max = 25): string[] => { const a = arr(v, max).map(x => str(x)); if (new Set(a).size !== a.length) fail(); return a; };
 const date = (v: unknown): string => { const d = str(v, 40); if (!Number.isFinite(Date.parse(d))) fail(); return d; };
 export function parsePlayer(text: string): PlayerState {
-  if (new TextEncoder().encode(text).length > MAX_IMPORT_BYTES) throw new Error('履歴ファイルは2MB以内にしてください。');
+  if (new TextEncoder().encode(text).length > MAX_IMPORT_BYTES) throw new Error('履歴ファイルは20MB以内にしてください。');
   let value: unknown;
   try { value = JSON.parse(text); } catch { throw new Error('JSONファイルを読み取れません。'); }
   const root = record(value);
-  if (root.schemaVersion !== 1 && root.schemaVersion !== 2) fail();
-  const legacy = root.schemaVersion === 1;
+  if (root.schemaVersion !== 3) fail();
+  const legacy = false;
   const player = emptyPlayer();
   const settings = record(root.settings);
   player.settings.sound = bool(settings.sound);
@@ -44,14 +46,27 @@ export function parsePlayer(text: string): PlayerState {
     if (!conceptIds.length || conceptIds.some(id=>!validConceptId(id))) fail();
     const classificationRevision = legacy ? 1 : integer(a.classificationRevision,1,10_000);
     const difficulty = (legacy ? q.difficulty : integer(a.difficulty,1,3)) as 1|2|3;
-    const xp = awardXp({...q,difficulty}, correct, firstSeen, combo);
-    if (bool(a.correct) !== correct || bool(a.firstSeen) !== firstSeen || integer(a.combo,0,5) !== combo || integer(a.xp) !== xp) fail();
+    const xp = integer(a.xp,0,100);
+    if (bool(a.correct) !== correct || bool(a.firstSeen) !== firstSeen || integer(a.combo,0,5) !== combo) fail();
     player.attempts.push({ id, sessionId, questionId: q.id, questionVersion: q.version, selectedIds, correct, firstSeen, combo, xp, at: date(a.at), conceptIds, classificationRevision, difficulty });
     for (const conceptId of conceptIds) {
       const p = player.concepts[conceptId] ?? { seenQuestionIds: [], correctQuestionIds: [], reflected: false };
       player.concepts[conceptId] = { ...p, seenQuestionIds: [...new Set([...p.seenQuestionIds,q.id])], correctQuestionIds: [...new Set([...p.correctQuestionIds,...(correct?[q.id]:[])])] };
     }
   }
+  const events = arr(root.learningEvents, 100_000);
+  player.learningEvents = events.map(raw => {
+    const event = record(raw), cardId = str(event.cardId, 100), card = swipeCardById.get(cardId);
+    const revision = str(event.revision, 100), at = date(event.at);
+    if (!card || card.revision !== revision || !Number.isFinite(Date.parse(at))) fail();
+    const mode = event.mode;
+    if (mode !== 'swipe' && mode !== 'five-choice') fail();
+    const answer = event.answer === null ? null : bool(event.answer);
+    learningDay(at);
+    return { cardId, revision, at, mode, answer, xp: integer(event.xp,0,10), bonusXp: integer(event.bonusXp,0,20) };
+  });
+  // XP is a projection of the unified option-event ledger.
+  if (learningXp(player.learningEvents) > 1_000_000) fail();
   const evidence = record(root.concepts);
   for (const [id, raw] of Object.entries(evidence)) {
     if (!validConceptId(id)) fail();
@@ -91,7 +106,7 @@ export function parsePlayer(text: string): PlayerState {
 }
 export function loadPlayer(storage: Pick<Storage,'getItem'>): { player: PlayerState; error?: string; raw?: string; migrated?: boolean } {
   let raw: string | null = null;
-  try { raw = storage.getItem(STORAGE_KEY); return { player: raw ? parsePlayer(raw) : emptyPlayer(), migrated:raw ? JSON.parse(raw).schemaVersion===1 : false, ...(raw && JSON.parse(raw).schemaVersion===1 ? {raw} : {}) };  }
+  try { raw = storage.getItem(STORAGE_KEY); return { player: raw ? parsePlayer(raw) : emptyPlayer(), migrated:false };  }
   catch (error) { return { player: emptyPlayer(), error: error instanceof Error ? error.message : '保存領域を読み取れません。', raw: raw ?? undefined }; }
 }
 export function savePlayer(storage: Pick<Storage,'setItem'>, p: PlayerState): string | undefined {

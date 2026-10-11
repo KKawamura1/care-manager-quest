@@ -1,19 +1,39 @@
 import type { ConceptProgress, PlayerState, Question } from './models';
+import { swipeCards } from '../data/swipe-provider';
+import { firstDailyAnswers, learningLevel, reviewUrgency } from './learning';
 import { reflect } from './game';
 
-// Reproject saved answers onto today's drawers; retain the stored attempts and XP.
-// Old reflections are not inferred to mean mastery of newly split knowledge.
-export function knowledgeProgress(player: PlayerState, questions: readonly Question[]) {
-  const byId = new Map(questions.map(q => [q.id, q]));
+/** Project all current choice cards onto their knowledge drawers. */
+export function knowledgeProgress(player: PlayerState, _questions: readonly Question[], now = Date.now()) {
   const progress: Record<string, ConceptProgress> = {};
-  for (const attempt of player.attempts) {
-    const q = byId.get(attempt.questionId);
-    if (!q || q.version !== attempt.questionVersion) continue;
-    for (const id of q.conceptIds) {
-      const p = progress[id] ??= { seenQuestionIds: [], correctQuestionIds: [], reflected: (player.concepts[id]?.reflected ?? false) || (player.knowledgeReflections?.includes(id) ?? false) };
-      if (!p.seenQuestionIds.includes(q.id)) p.seenQuestionIds.push(q.id);
-      if (attempt.correct && !p.correctQuestionIds.includes(q.id)) p.correctQuestionIds.push(q.id);
+  const totals = new Map<string, { count: number; level: number; due: number }>();
+  const byCard = new Map<string, typeof player.learningEvents>();
+  for (const event of player.learningEvents) {
+    const entries = byCard.get(event.cardId) ?? [];
+    entries.push(event);
+    byCard.set(event.cardId, entries);
+  }
+  for (const card of swipeCards) {
+    const answers = byCard.get(card.id) ?? [];
+    const daily = firstDailyAnswers(answers, card);
+    const level = learningLevel(answers, card);
+    const due = daily.length > 0 && reviewUrgency(answers, card, now) >= 1 ? 1 : 0;
+    for (const id of card.topicIds) {
+      const sum = totals.get(id) ?? { count: 0, level: 0, due: 0 };
+      sum.count++;
+      sum.level += level;
+      sum.due += due;
+      totals.set(id, sum);
+      if (!daily.length) continue;
+      const p = progress[id] ??= { seenQuestionIds: [], correctQuestionIds: [], reflected: false };
+      p.seenQuestionIds.push(card.id);
+      if (daily.some(event => event.answer !== null && event.answer === card.truth)) p.correctQuestionIds.push(card.id);
     }
+  }
+  for (const [id, sum] of totals) {
+    const p = progress[id] ??= { seenQuestionIds: [], correctQuestionIds: [], reflected: false };
+    p.level = sum.level / sum.count;
+    p.review = sum.due / sum.count;
   }
   return progress;
 }
