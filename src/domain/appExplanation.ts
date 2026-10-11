@@ -21,12 +21,10 @@ export const explanationStorageKey = (t: ExplanationTarget) => `care-manager-que
 
 export function explanationInstructions(target: ExplanationTarget): string {
   return [
-    '【回答形式】',
-    'まず、通常の詳しい解説をしてください。',
-    target.choiceId ? 'その後、この選択肢の○×の理由と覚えるポイントを、アプリ用に80〜180字程度でまとめてください。' : 'その後、この問題の正答の理由と覚えるポイントを、アプリ用に150〜300字程度でまとめてください。',
-    '短い解説は詳しい解説と分け、次のJSONのexplanationだけを書き換えて、独立したJSONコードブロックを1つ出力してください。解説は600字以内のプレーンテキストにし、ID・版番号は変更しないでください。',
+    '【最後に：アプリ用の短い解説】',
+    `次のJSONのexplanationだけを${target.choiceId ? '80〜180' : '150〜300'}字程度で書き換え、回答の最後に独立したJSONコードブロックで出してください。他の値は変更しないでください。`,
     '```json', JSON.stringify({ schemaVersion: 1, ...target, explanation: 'ここに短い解説' }, null, 2), '```',
-  ].join('\n');
+  ].join('\\n');
 }
 
 export function parseAppExplanation(raw: string, target: ExplanationTarget): AppExplanation {
