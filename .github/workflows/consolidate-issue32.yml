@@ -1,0 +1,39 @@
+name: One-time Issue 32 revision consolidation
+on:
+  push:
+    branches:
+      - experiment/issue-32-choice-classifications
+    paths:
+      - '.github/workflows/consolidate-issue32.yml'
+      - 'scripts/consolidate-issue32-revisions.mjs'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  consolidate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Consolidate per-question revisions into 2005-2018 annual files
+        run: node scripts/consolidate-issue32-revisions.mjs
+      - name: Verify effective data, summaries, and checksums
+        run: |
+          node scripts/consolidate-issue32-revisions.mjs --check
+          node scripts/validate-issue32-classifications.mjs
+          node scripts/validate-issue32-revisions.mjs
+      - name: Commit clean annual snapshots back to PR 33
+        run: |
+          if [ -z "$(git status --porcelain -- docs/taxonomy/issue-32-experiment)" ]; then
+            echo "Already consolidated"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A docs/taxonomy/issue-32-experiment
+          git commit -m "Consolidate 649 question revisions into 2005-2018 annual JSONL"
+          git push origin HEAD:refs/heads/experiment/issue-32-choice-classifications
