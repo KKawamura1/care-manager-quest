@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { questions } from '../src/data/provider';
 import { swipeCards, swipeCatalog, swipeCardById, swipeConcepts } from '../src/data/swipe-provider';
-import { buildSwipeCards, emptySwipe, filterSwipeCards, progressFor, recordSwipe, reviewQueue, type TruthRecord, type TopicRecord } from '../src/domain/swipe';
+import { buildSwipeCards, emptySwipe, filterSwipeCards, nextSwipeAvailableAt, progressFor, recordSwipe, reviewQueue, type TruthRecord, type TopicRecord } from '../src/domain/swipe';
 import { loadSwipe, parseSwipe, SWIPE_STORAGE_KEY } from '../src/domain/swipeStorage';
 import { emptyPlayer, totalXp } from '../src/domain/game';
 import { parsePlayer } from '../src/domain/storage';
@@ -65,58 +65,99 @@ describe('safe choice conversion', () => {
 });
 
 describe('recall scheduling and isolated storage', () => {
-  const [a, b, c] = swipeCards;
-  it('prioritizes due mistakes over due successes and unseen cards, and spaces recall by mastery', () => {
+  const day = 86_400_000;
+  // Different original exam questions, rather than five sibling choices.
+  const distinct = [...new Map(swipeCards.map(card => [card.questionId, card])).values()];
+  const [a, b, c, d] = distinct;
+
+  it('defers mistakes and unknown answers for a full day and spaces correct recalls by mastery', () => {
     let state = recordSwipe(emptySwipe(), a, !a.truth, now);
-    state = recordSwipe(state, b, b.truth, now - 2 * 86_400_000);
-    expect(reviewQueue([a, b, c], state, now).map(c => c.id)).toEqual([b.id, c.id]);
-    expect(reviewQueue([c, b, a], state, now + 60_000).map(c => c.id)).toEqual([a.id, b.id, c.id]);
+    expect(Date.parse(state.progress[a.id].dueAt) - now).toBe(day);
+    expect(reviewQueue([a], state, now + day - 1)).toHaveLength(0);
+    expect(reviewQueue([a], state, now + day)).toHaveLength(1);
     for (const [i, days] of [1, 3, 7, 14, 30, 60, 60].entries()) {
-      state = recordSwipe(state, a, a.truth, now + i * 86_400_000);
+      state = recordSwipe(state, a, a.truth, now + (i + 1) * day);
       const p = state.progress[a.id];
-      expect(Date.parse(p.dueAt) - Date.parse(p.lastReviewedAt)).toBe(days * 86_400_000);
+      expect(Date.parse(p.dueAt) - Date.parse(p.lastReviewedAt)).toBe(days * day);
     }
-    state = recordSwipe(state, a, !a.truth, now + 8 * 86_400_000);
-    expect(state.progress[a.id].streak).toBe(0); expect(state.progress[a.id].lapses).toBe(2);
-    expect(Date.parse(state.progress[a.id].dueAt) - Date.parse(state.progress[a.id].lastReviewedAt)).toBe(60_000);
+    state = recordSwipe(state, a, !a.truth, now + 9 * day);
+    expect(state.progress[a.id].streak).toBe(0);
+    expect(state.progress[a.id].lapses).toBe(2);
+    expect(Date.parse(state.progress[a.id].dueAt) - Date.parse(state.progress[a.id].lastReviewedAt)).toBe(day);
   });
-  it('shuffles each new set without duplicates while preserving review priority and avoiding input mutation', () => {
-    const [a, b, c, d, ...unseen] = swipeCards.slice(0, 34);
-    let state = recordSwipe(emptySwipe(), a, !a.truth, now - 60_000);
-    state = recordSwipe(state, b, !b.truth, now - 60_000);
-    state = recordSwipe(state, c, c.truth, now - 2 * 86_400_000);
-    state = recordSwipe(state, d, d.truth, now - 2 * 86_400_000);
+
+  it('blocks every sibling choice of an answered original question for 24 hours, even under a different filter', () => {
+    const siblings = swipeCards.filter(card => card.questionId === a.questionId);
+    expect(siblings.length).toBeGreaterThan(1);
+    const state = recordSwipe(emptySwipe(), a, !a.truth, now);
+    expect(reviewQueue(siblings, state, now + day - 1)).toHaveLength(0);
+    expect(reviewQueue([siblings.find(card => card.id !== a.id)!], state, now + day - 1)).toHaveLength(0);
+    expect(nextSwipeAvailableAt(siblings, state, now)).toBe(now + day);
+    expect(reviewQueue(siblings, state, now + day)).toHaveLength(siblings.length);
+    expect(reviewQueue([b, ...siblings], state, now).map(card => card.id)).toEqual([b.id]);
+  });
+
+  it('respects a 24-hour question cooldown for records written by the old one-minute scheduler', () => {
+    const old = recordSwipe(emptySwipe(), a, !a.truth, now);
+    old.progress[a.id].dueAt = new Date(now + 60_000).toISOString();
+    expect(reviewQueue([a], old, now + 60_000)).toHaveLength(0);
+    expect(reviewQueue([a], old, now + day)).toHaveLength(1);
+    expect(nextSwipeAvailableAt([a], old, now + 60_000)).toBe(now + day);
+  });
+
+  it('uses a 70:20:10 weighted draw for new, overdue mistake, and overdue success cards', () => {
+    let state = recordSwipe(emptySwipe(), a, !a.truth, now - 2 * day);
+    state = recordSwipe(state, b, b.truth, now - 2 * day);
+    const cards = [a, b, c];
+    // Each group has one card, so the injected random value selects only the group.
+    expect(reviewQueue(cards, state, now, () => 0.1)[0].id).toBe(c.id);
+    expect(reviewQueue(cards, state, now, () => 0.75)[0].id).toBe(a.id);
+    expect(reviewQueue(cards, state, now, () => 0.95)[0].id).toBe(b.id);
+    expect(reviewQueue([a, b], state, now, () => 0.1)[0].id).toBe(a.id);
+    expect(reviewQueue([a, b], state, now, () => 0.9)[0].id).toBe(b.id);
+    expect(reviewQueue([c], state, now).map(card => card.id)).toEqual([c.id]);
+  });
+
+  it('shuffles without duplicates or input mutation, and suppresses recently answered questions', () => {
+    const [a, b, c, d, ...unseen] = distinct.slice(0, 34);
+    let state = recordSwipe(emptySwipe(), a, !a.truth, now - day);
+    state = recordSwipe(state, b, !b.truth, now - day);
+    state = recordSwipe(state, c, c.truth, now - 2 * day);
+    state = recordSwipe(state, d, d.truth, now - 2 * day);
     const input = [...unseen, d, b, a, c];
     const original = input.map(card => card.id);
     const first = reviewQueue(input, state, now, () => 0);
     const second = reviewQueue(input, state, now, () => 0.999999);
     expect(first.map(card => card.id)).not.toEqual(second.map(card => card.id));
-    expect(first.map(card => card.id)).toHaveLength(input.length);
-    expect(new Set(first.map(card => card.id)).size).toBe(input.length);
-    expect(new Set(first.map(card => card.id))).toEqual(new Set(original));
-    expect(input.map(card => card.id)).toEqual(original);
     for (const result of [first, second]) {
-      expect(new Set(result.slice(0, 2).map(card => card.id))).toEqual(new Set([a.id, b.id]));
-      expect(new Set(result.slice(2, 4).map(card => card.id))).toEqual(new Set([c.id, d.id]));
-      expect(result.slice(4).every(card => !progressFor(state, card))).toBe(true);
+      expect(new Set(result.map(card => card.id))).toEqual(new Set(original));
+      expect(result).toHaveLength(input.length);
     }
-    // Once a set has been answered, its cards are deferred; the next set is fresh.
-    const selected = first.slice(0, 20);
-    expect(new Set(selected.map(card => card.id)).size).toBe(20);
+    expect(input.map(card => card.id)).toEqual(original);
     let updated = state;
+    const selected = first.slice(0, 20);
     for (const card of selected) updated = recordSwipe(updated, card, card.truth, now);
     const next = reviewQueue(input, updated, now);
-    expect(next.every(card => !selected.includes(card))).toBe(true);
+    const answeredQuestions = new Set(selected.map(card => card.questionId));
+    expect(next.every(card => !answeredQuestions.has(card.questionId))).toBe(true);
   });
-  it('resets mastery when a card truth changes while keeping archived evidence', () => {
+
+  it('keeps the cooldown even if the truth revision changes, and computes the actual next available time', () => {
     const state = recordSwipe(emptySwipe(), a, a.truth, now);
     const changed = { ...a, truth: !a.truth, revision: `${a.questionVersion}:${a.truth ? '×' : '○'}` };
     expect(progressFor(state, changed)).toBeUndefined();
-    expect(reviewQueue([changed], state, now)).toHaveLength(1);
-    const next = recordSwipe(state, changed, changed.truth, now);
+    expect(reviewQueue([changed], state, now)).toHaveLength(0);
+    expect(nextSwipeAvailableAt([changed], state, now)).toBe(now + day);
+    expect(reviewQueue([changed], state, now + day)).toHaveLength(1);
+    const next = recordSwipe(state, changed, changed.truth, now + day);
     expect(next.progress[a.id].reviews).toBe(1);
     expect(parseSwipe(JSON.stringify(state), new Map([[changed.id, changed]]))).toEqual(state);
+    expect(nextSwipeAvailableAt([], emptySwipe(), now)).toBeUndefined();
+
+    const twice = recordSwipe(recordSwipe(emptySwipe(), b, b.truth, now), b, b.truth, now + day);
+    expect(nextSwipeAvailableAt([b], twice, now + day)).toBe(now + 4 * day);
   });
+
   it('roundtrips the entire card corpus, validates counters/dates/identity, and leaves five-choice history untouched', () => {
     const state = emptySwipe();
     for (const card of swipeCards) state.progress[card.id] = recordSwipe(emptySwipe(), card, card.truth, now).progress[card.id];
@@ -131,12 +172,14 @@ describe('recall scheduling and isolated storage', () => {
     expect(() => parseSwipe(JSON.stringify({ schemaVersion: 1, progress: { unknown: state.progress[a.id] } }), swipeCardById)).toThrow();
     expect(() => parseSwipe(rawPlayer, swipeCardById)).toThrow();
   });
+
   it('retains corrupt stored data for recovery and reports access errors', () => {
     const loaded = loadSwipe({ getItem: () => '{broken' }, swipeCardById);
     expect(loaded.raw).toBe('{broken'); expect(loaded.error).toBeTruthy(); expect(loaded.state).toEqual(emptySwipe());
     expect(loadSwipe({ getItem: () => { throw new Error('denied'); } }, swipeCardById).error).toBe('denied');
   });
-  it('records unknown as a mistake independently of card truth, and roundtrips both new and prior boolean answers', () => {
+
+  it('records unknown as a mistake and roundtrips both new and prior boolean answers', () => {
     for (const truth of [true, false]) {
       const card = { ...a, truth, revision: `${a.questionVersion}:${truth ? '○' : '×'}` };
       const map = new Map([[card.id, card]]);
@@ -144,9 +187,9 @@ describe('recall scheduling and isolated storage', () => {
       expect(parseSwipe(JSON.stringify(success), map)).toEqual(success);
       const unknown = recordSwipe(success, card, null, now + 1);
       expect(unknown.progress[card.id]).toMatchObject({ reviews: 2, correct: 1, lapses: 1, streak: 0, lastCorrect: false, lastAnswer: null });
-      expect(Date.parse(unknown.progress[card.id].dueAt) - Date.parse(unknown.progress[card.id].lastReviewedAt)).toBe(60_000);
+      expect(Date.parse(unknown.progress[card.id].dueAt) - Date.parse(unknown.progress[card.id].lastReviewedAt)).toBe(day);
       expect(parseSwipe(JSON.stringify(unknown), map)).toEqual(unknown);
-      expect(reviewQueue([card], unknown, now + 60_001)).toHaveLength(1);
+      expect(reviewQueue([card], unknown, now + day + 2)).toHaveLength(1);
       const invalid = structuredClone(unknown); invalid.progress[card.id].lastCorrect = true;
       expect(() => parseSwipe(JSON.stringify(invalid), map)).toThrow();
     }
