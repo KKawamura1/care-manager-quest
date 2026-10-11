@@ -96,9 +96,15 @@ assert.equal(manifest.coverage.proposition_record_count, total);
 assert.equal(manifest.coverage.difficult_case_count, difficult.length);
 assert.deepEqual(manifest.coverage.status_counts, statusTotal);
 assert.deepEqual(manifest.coverage.primary_root_counts, rootTotal);
-assert.deepEqual(reviewed, { 2018: 2, 2024: 105, 2025: 300 }, 'reviewed record counts');
+assert.deepEqual(reviewed, { 2018: 2, 2020: 301, 2024: 105, 2025: 300 }, 'reviewed record counts');
 
 const expectedPaths = [
+  ['care_manager_2020_001/1/1', '要介護・要支援認定者数'],
+  ['care_manager_2020_007/1/1', '高額介護サービス費'],
+  ['care_manager_2020_020/3/1', '居宅介護支援'],
+  ['care_manager_2020_025/5/1', 'ヤングケアラー'],
+  ['care_manager_2020_034/1/1', '認知症初期集中支援チーム'],
+  ['care_manager_2020_052/3/1', '居宅介護支援'],
   ['2018-10/5/1', '普通徴収と特別徴収'],
   ['2018-21/1/1', '認定調査票'],
   ['2024-13/1/1', '認知症総合支援事業'],
@@ -123,4 +129,4 @@ for (const item of checksumList) {
 }
 assert.equal(checksumList.length, 25);
 assert.match(read('README.md'), /初回分類時点のスナップショット/);
-console.log(`taxonomy experiment integrity OK: ${total} propositions; ${difficult.length} difficult; 407 reviewed; ${checksumList.length} checksums`);
+console.log(`taxonomy experiment integrity OK: ${total} propositions; ${difficult.length} difficult; 708 reviewed; ${checksumList.length} checksums`);

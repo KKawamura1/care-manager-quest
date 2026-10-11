@@ -11,18 +11,18 @@
     "proposition_record_count": 6335,
     "choices_split_into_multiple_propositions": 31,
     "additional_proposition_records_from_splits": 35,
-    "difficult_case_count": 92,
+    "difficult_case_count": 86,
     "status_counts": {
-      "assigned": 6243,
-      "ambiguous": 92,
+      "assigned": 6249,
+      "ambiguous": 86,
       "unmapped": 0,
       "needs_source_review": 0
     },
     "primary_root_counts": {
-      "人の健康と生活": 1210,
-      "支援の考え方と方法": 1296,
-      "支援の提供体制": 1921,
-      "社会保障の仕組み": 1816
+      "人の健康と生活": 1195,
+      "支援の考え方と方法": 1320,
+      "支援の提供体制": 1907,
+      "社会保障の仕組み": 1827
     }
   },
   "validation": {
@@ -381,22 +381,18 @@
       "choice_count": 300,
       "proposition_record_count": 301,
       "status_counts": {
-        "assigned": 295,
-        "ambiguous": 6,
+        "assigned": 301,
+        "ambiguous": 0,
         "unmapped": 0,
         "needs_source_review": 0
       },
       "primary_root_counts": {
-        "人の健康と生活": 58,
-        "支援の考え方と方法": 36,
-        "支援の提供体制": 112,
-        "社会保障の仕組み": 89
+        "人の健康と生活": 43,
+        "支援の考え方と方法": 60,
+        "支援の提供体制": 98,
+        "社会保障の仕組み": 100
       },
-      "ambiguous_candidate_root_counts": {
-        "人の健康と生活": 5,
-        "支援の提供体制": 1,
-        "社会保障の仕組み": 6
-      }
+      "ambiguous_candidate_root_counts": {}
     },
     {
       "year": 2021,
@@ -496,15 +492,17 @@
   ],
   "classification_quality_review": {
     "reviewed_on": "2026-10-11",
-    "reclassified_records": 407,
+    "reclassified_records": 708,
     "reviewed_years": {
       "2018": 2,
+      "2020": 301,
       "2024": 105,
       "2025": 300
     },
-    "remaining_without_semantic_review": 5928,
-    "scope": "分類の主語・属性のみ。正誤・法令時点・原文校正は未確認。assignedは品質保証ではない。",
-    "crosswalk": "初回分類から作られた履歴スナップショットであり、修正後の経路件数を反映していない。"
+    "remaining_without_semantic_review": 5627,
+    "scope": "設問・選択肢を併読した概念主語・属性の分類レビュー（2020年度は名詞句選択肢の命題化も含む）。正誤・原文・法令時点は未確認。",
+    "crosswalk": "初回分類から作られた履歴スナップショットであり、修正後の経路件数を反映していない。",
+    "reviewed_records": 708
   },
   "classification_review_overlay": {
     "version": "hypothesis-v1.1",
@@ -518,5 +516,15 @@
     ],
     "total_records": 6335,
     "scope": "incremental semantic review; 2025 fine-grained paths are preserved from newer PR33 base; no OCR or historical-law verification"
+  },
+  "year_2020_review": {
+    "date": "2026-10-11",
+    "reviewed_records": 301,
+    "changed_primary_paths": 301,
+    "reworded_propositions": 35,
+    "resolved_ambiguous": 6,
+    "remaining_ambiguous": 0,
+    "method": "設問と選択肢を併読し2020年度のみ分類と命題を修正。原文は不変。",
+    "base_pull_request": 33
   }
 }
