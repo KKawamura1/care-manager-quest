@@ -215,6 +215,8 @@ function attributeFor(row, path, concept) {
     return {id:'equipment',label:'設備基準',resolution:'curated'};
   const hasApplicable = hints.some(x=>/適用サービス|対象サービス/.test(x));
   if (hasApplicable) return {id:'applicable_services',label:'適用サービス',resolution:'curated'};
+  if (concept.root==='3' && hints.some(x=>/^(運営基準|運営上の義務|法定運営基準)$/.test(norm(x))))
+    return {id:'operations',label:'運営基準',resolution:'curated'};
   // Prefer an informative attribute with a known category; otherwise use
   // the most specific conceptual path evidence.
   const clues = [row.attribute,...hints.slice(-4).reverse()];
