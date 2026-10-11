@@ -10,7 +10,7 @@ const make = (id,label) => ({id,label,resolution:'curated'});
 
 const certificationRules = [
   [/主治医意見書/, 'physician_opinion','主治医意見書の記載・利用'],
-  [/認定調査票|基本調査|特記事項|一次判定|第1次判定|第１次判定|要介護認定等基準時間/, 'survey','認定調査・一次判定'],
+  [/認定調査|認定に係る調査|基本調査|特記事項|一次判定|第1次判定|第１次判定|要介護認定等基準時間/, 'survey','認定調査・一次判定'],
   [/介護認定審査会|認定審査会|審査判定|二次判定|第2次判定/, 'committee','認定審査会・二次判定'],
   [/有効期間|更新認定|更新申請|認定の効力|効力は/, 'validity','認定の有効期間・効力'],
   [/特定疾病|第2号被保険者/, 'specific_diseases','第2号被保険者の特定疾病'],
@@ -81,6 +81,7 @@ export function inferAttributeFromProposition(row, concept) {
   const raw=clean(row.attribute), statement=clean(row.proposition||row.source_text);
   if (!statement) return null;
   const broad = raw===clean(concept.label) || !raw ||
+    (concept.id==='4.1.certification' && /介護保険制度>要介護・要支援認定/.test(raw)) ||
     /^(?:.+>)?(相談援助|支援技術|具体的な支援技術|加齢・疾病・病態|ケアマネジメント|保険給付|介護保険制度|その他の法律・制度)$/.test(raw) ||
     /申請・調査・審査判定・有効期間|アセスメント・計画・調整・評価|疾病・症状・検査・治療|健康状態・生活機能|支援の原則・ケアマネジメント・相談援助|給付の対象・条件・限度・負担/.test(raw) ||
     // Old v1.1 data are broad, without an attribute at all.
