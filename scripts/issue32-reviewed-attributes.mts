@@ -1,6 +1,9 @@
 /** Facets recovered from explicit classification metadata, not truth judgments.
  * Rules are scoped by concept. Multiple possible facets remain review targets. */
-const rules = [
+type AttributeRule = readonly [conceptId: string, pattern: RegExp | null, id: string, label: string];
+type AttributeMetadata = { attribute?: string | null };
+type ConceptRef = { id: string; root: string };
+const rules: AttributeRule[] = [
   ['4.1.certification', /認定調査|基本調査|一次判定|基準時間/, 'survey', '認定調査・一次判定'],
   ['4.1.certification', /主治医意見書|医学的管理の必要性|医学的留意事項/, 'physician_opinion', '主治医意見書の記載・利用'],
   ['4.1.certification', /認定審査会|二次判定|審査判定/, 'committee', '認定審査会・二次判定'],
@@ -16,10 +19,10 @@ const rules = [
 ];
 const broad = /申請・調査・審査判定・有効期間|アセスメント・計画・調整・評価|疾病・症状・検査・治療|給付の対象・条件・限度・負担|目的・主体・対象・手続|目的・対象・給付|対象・人員・提供・運営|施設固有の人員・設備・運営・サービス|対象・提供内容・運営基準|設置・人員・機能・業務|計画・調整・会議・評価/;
 
-export function reviewedAttribute(row, path, concept) {
+export function reviewedAttribute(row: AttributeMetadata, _path: readonly string[], concept: ConceptRef) {
   const metadata = String(row.attribute ?? '').normalize('NFKC').replace(/\s+/g, '');
   if (!metadata || broad.test(metadata)) return null;
-  const hits = rules.filter(([id, pattern]) => id === concept.id && pattern.test(metadata));
+  const hits = rules.filter(([id, pattern]) => id === concept.id && pattern?.test(metadata));
   // Explicit domain facets shared across concepts.
   if (concept.root === '1') {
     if (/感染経路/.test(metadata)) hits.push([concept.id, null, 'transmission', '感染経路']);

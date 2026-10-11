@@ -3,7 +3,8 @@
  * These are concept identities, NOT reviews of the truth of the question.
  * Branch boundaries prevent same-name concepts in different domains merging.
  */
-export const additionalConceptDefinitions = [
+export type ConceptDefinition = readonly [root: string, id: string, label: string, aliases: string];
+export const additionalConceptDefinitions: readonly ConceptDefinition[] = [
   [
     "1",
     "1.1.cancer",

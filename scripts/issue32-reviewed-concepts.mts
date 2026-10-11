@@ -1,6 +1,8 @@
 /** Explicit identity decisions for PR56 continuation. Related topics and
  * subtypes get distinct IDs; a vocabulary match is not a proposition review. */
-export const reviewedConceptDefinitions = [
+import type { ConceptDefinition } from './issue32-curated-concepts.mts';
+
+export const reviewedConceptDefinitions: readonly ConceptDefinition[] = [
   ['1','1.1.urinary_infection','尿路感染','尿路感染|尿路感染症'],
   ['1','1.1.aspiration_pneumonia','誤嚥性肺炎','誤嚥性肺炎'],
   ['1','1.1.cerebral_infarction','脳梗塞','脳梗塞'],
