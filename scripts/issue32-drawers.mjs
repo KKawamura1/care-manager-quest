@@ -7,6 +7,7 @@
  */
 import { createHash } from 'node:crypto';
 import { additionalConceptDefinitions } from './issue32-curated-concepts.mjs';
+import { inferAttributeFromProposition, recoverDiseaseConcept } from './issue32-proposition-inference.mjs';
 
 const norm = (value) => String(value ?? '').normalize('NFKC').replace(/[\s　]+/g, '').replace(/[（]/g, '(').replace(/[）]/g, ')');
 const hash = (str) => createHash('sha256').update(str, 'utf8').digest('hex').slice(0, 16);
@@ -190,6 +191,10 @@ function conceptFor(row, path) {
       if (matched && id!==found?.id) { found=byId.get(root+'|'+id)??found; break; }
     }
   }
+  if (found && root==='1' && ['1.1.health'].includes(found.id)) {
+    const disease = recoverDiseaseConcept(row, aliases);
+    if (disease) return disease;
+  }
   if (found) return {...found, resolution:'curated', source_subject:row.subject_concept};
   if (!raw) return {root,id:'unresolved.'+hash(root+'|'+JSON.stringify(path.slice(0,5))),label:'要概念確認',resolution:'unresolved',source_subject:row.subject_concept};
   // Distinct named concepts never collapse merely because a path label looks
@@ -198,6 +203,8 @@ function conceptFor(row, path) {
 }
 
 function attributeFor(row, path, concept) {
+  const propositionInference = inferAttributeFromProposition(row,concept);
+  if (propositionInference) return propositionInference;
   const all = path.slice(2).filter(x=>typeof x==='string'&&!/^[1-4](?:\.[a-z0-9_]+)+$/.test(x));
   const subject = norm(row.subject_concept), label = norm(concept.label);
   // Strip the subject itself and broad taxonomy labels. Attribute evidence
@@ -250,5 +257,7 @@ export function identifyDrawer(row, path) {
     review_required:concept.resolution!=='curated' || attribute.resolution!=='curated',
     concept_resolution:concept.resolution,
     attribute_resolution:attribute.resolution,
+    attribute_evidence:attribute.evidence??null,
+    concept_evidence:concept.evidence??null,
   };
 }
