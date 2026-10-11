@@ -91,12 +91,12 @@ for (let year = 2005; year <= 2025; year++) {
 const difficultKeys = difficult.map((r) => [r.question_id, r.choice_index, r.proposition_index].join('/'));
 assert.equal(new Set(difficultKeys).size, difficultKeys.length, 'duplicate difficult case');
 assert.deepEqual(new Set(difficultKeys), allDifficult, 'difficult-cases out of sync');
-assert.equal(total, 6337);
+assert.equal(total, 6341);
 assert.equal(manifest.coverage.proposition_record_count, total);
 assert.equal(manifest.coverage.difficult_case_count, difficult.length);
 assert.deepEqual(manifest.coverage.status_counts, statusTotal);
 assert.deepEqual(manifest.coverage.primary_root_counts, rootTotal);
-assert.deepEqual(reviewed, { 2018: 2, 2019: 300, 2024: 105, 2025: 302 }, 'reviewed record counts');
+assert.deepEqual(reviewed, { 2018: 2, 2019: 300, 2024: 304, 2025: 302 }, 'reviewed record counts');
 
 const expectedPaths = [
   ['2018-10/5/1', '普通徴収と特別徴収'],
@@ -145,6 +145,20 @@ for (const [question, choice] of [['2025-27', 1], ['2025-47', 1]]) {
   assert.ok(b.proposition_revision, `split revision missing: ${question}`);
 }
 
+for (const key of ['2024-22/5', '2024-32/5', '2024-35/3', '2024-40/2']) {
+  const [qid, c] = key.split('/');
+  const a = lookup.get(qid + '/' + c + '/1');
+  const b = lookup.get(qid + '/' + c + '/2');
+  assert.ok(a && b, 'missing split ' + key);
+  assert.equal(a.source_text, b.source_text);
+  assert.notEqual(a.proposition, b.proposition);
+}
+for (const n of [6, 7, 13, 17, 19, 39]) {
+  const row = lookup.get('2024-' + String(n).padStart(2, '0') + '/1/1');
+  assert.ok(row.proposition.length > row.source_text.length, 'predicate missing ' + n);
+}
+assert.equal(manifest.classification_review_2024.proposition_records, 304);
+
 assert.ok(!checksumList.some((item) => item.path === 'checksums.json'), 'self-checksum is not stable');
 for (const item of checksumList) {
   const buf = readFileSync(join(dir, item.path));
@@ -154,4 +168,4 @@ for (const item of checksumList) {
 }
 assert.equal(checksumList.length, 25);
 assert.match(read('README.md'), /初回分類時点のスナップショット/);
-console.log(`taxonomy experiment integrity OK: ${total} propositions; ${difficult.length} difficult; 709 reviewed; ${checksumList.length} checksums`);
+console.log(`taxonomy experiment integrity OK: ${total} propositions; ${difficult.length} difficult; 908 reviewed; ${checksumList.length} checksums`);

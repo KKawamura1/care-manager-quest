@@ -1,8 +1,8 @@
 [
   {
     "path": "README.md",
-    "bytes": 11941,
-    "sha256": "6d551b4a364fa0a8847477fdc83cbabaf4035bb0c6468b595aaa031023948690"
+    "bytes": 13293,
+    "sha256": "46c818e9c7cacf449f6d46bde4efbf04de59bc3a33e2f357b1f4cd8a5ff22725"
   },
   {
     "path": "difficult-cases.jsonl",
@@ -16,8 +16,8 @@
   },
   {
     "path": "manifest.json",
-    "bytes": 14877,
-    "sha256": "aa485fd17942bbd19d1074cea70739946bdcb91a0bb4403fa688f44dbbac3dcd"
+    "bytes": 15472,
+    "sha256": "bf5aeff48eb4e600e1bb5333ebda81994d995a83e605a4da57450ea585c537a8"
   },
   {
     "path": "propositions/2005.jsonl",
@@ -116,8 +116,8 @@
   },
   {
     "path": "propositions/2024.jsonl",
-    "bytes": 632778,
-    "sha256": "22f455271c3cc3105995f50506d2abca9f0d7c03e4fa266a531cbbd847584433"
+    "bytes": 779926,
+    "sha256": "6b4d59f9e3f5a0d0d7cb4a09db02af96347fd3901ac454ddbb5ef3105f4a6f23"
   },
   {
     "path": "propositions/2025.jsonl",
