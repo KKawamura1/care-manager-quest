@@ -6,6 +6,7 @@ on:
     paths:
       - '.github/workflows/consolidate-issue32.yml'
       - 'scripts/consolidate-issue32-revisions.mjs'
+      - 'scripts/validate-issue32-classifications.mjs'
   workflow_dispatch:
 permissions:
   contents: write
