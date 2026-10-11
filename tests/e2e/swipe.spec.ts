@@ -71,37 +71,56 @@ test('short/vertical drags do not answer; arrow key and buttons do; narrow topic
   const option = await options.nth(index).getAttribute('value');
   await page.getByLabel('学ぶ知識分野').selectOption(option!); await start(page);
   await expect(page.locator('.swipe-screen .question-meta')).toContainText('2020年度');
-  const target = await page.locator('.swipe-topic').textContent(); expect(target).not.toContain('未確認');
+  expect(await page.locator('.swipe-topic').textContent()).not.toContain('未確認');
   await drag(page, 20); await expect(page.locator('.swipe-verdict')).toHaveCount(0);
   await drag(page, 20, 80); await expect(page.locator('.swipe-verdict')).toHaveCount(0);
   expect(Object.keys(await progress(page))).toHaveLength(0);
   await page.getByRole('group', { name: '○×カード', exact: true }).press('ArrowRight');
   await expect(page.locator('.swipe-verdict')).toContainText('あなた：○');
-  await page.getByRole('button', { name: '次のカードへ' }).click();
-  await expect(page.locator('.swipe-topic')).toHaveText(target!);
+  // A narrow topic may consist of sibling choices from just one exam question.
+  // Return to all topics so the next question is not blocked by the 24-hour cooldown.
+  await page.getByRole('button', { name: '分野選択に戻る' }).click();
+  await page.getByLabel('学ぶ知識分野').selectOption('all');
+  await start(page);
+  await expect(page.locator('.swipe-screen .question-meta')).toContainText('2020年度');
   await page.getByRole('button', { name: '×と答える', exact: true }).click();
   await expect(page.locator('.swipe-verdict')).toContainText('あなた：×');
   expect(Object.keys(await progress(page)).every(id => id.startsWith('care_manager_2020_'))).toBe(true);
 });
 
-test('due mistakes are prioritized after reload and successful cards are deferred', async ({ page }) => {
+test('24-hour question cooldown survives reload and an overdue mistake becomes eligible the next day', async ({ page }) => {
+  // With both unseen cards and a due mistake present, draw from the mistake group.
+  await page.addInitScript(() => { Math.random = () => 0.99; });
   await page.clock.install({ time: new Date('2026-10-11T00:00:00Z') });
-  await open(page); await start(page);
+  await open(page); await page.getByLabel('○×の年度').selectOption('2020'); await start(page);
+  const firstMeta = (await page.locator('.question-meta').textContent())!.replace(/・選択肢\d+/, '');
+  const firstText = await page.locator('.swipe-card p').textContent();
   const expected = await currentTruth(page);
   await page.getByRole('button', { name: expected ? '×と答える' : '○と答える', exact: true }).click();
   await expect(page.locator('.swipe-verdict')).toBeVisible();
-  const firstText = await page.locator('.swipe-card p').textContent();
   const wrongId = Object.keys(await progress(page))[0];
+  const firstProgress = (await progress(page))[wrongId];
+  expect(Date.parse(firstProgress.dueAt) - Date.parse(firstProgress.lastReviewedAt)).toBe(86_400_000);
+  await page.getByRole('button', { name: '次のカードへ', exact: true }).click();
+  expect((await page.locator('.question-meta').textContent())!.replace(/・選択肢\d+/, '')).not.toBe(firstMeta);
   await page.getByRole('button', { name: '分野選択に戻る' }).click();
-  await start(page); expect(await page.locator('.swipe-card p').textContent()).not.toBe(firstText);
+  await page.reload();
+  await page.getByLabel('○×の年度').selectOption('2020');
+  await start(page);
+  await expect(page.locator('.swipe-card p')).not.toHaveText(firstText!);
   await page.getByRole('button', { name: '分野選択に戻る' }).click();
-  await page.clock.runFor(61_000); await page.reload();
-  await page.getByRole('button', { name: '○×学習', exact: true }).click(); await start(page);
+  await page.clock.fastForward(86_400_001);
+  expect(await page.evaluate(() => Date.now())).toBeGreaterThan(Date.parse('2026-10-12T00:00:00Z'));
+  await page.reload();
+  await page.getByLabel('○×の年度').selectOption('2020');
+  await expect(page.locator('.swipe-home-stats')).toContainText('1枚復習待ち');
+  await start(page);
   await expect(page.locator('.swipe-card p')).toHaveText(firstText!);
   await page.getByRole('button', { name: expected ? '○と答える' : '×と答える', exact: true }).click();
   await expect(page.getByRole('heading', { name: '正解！', exact: true })).toBeVisible();
-  const p = (await progress(page))[wrongId]; expect(p.reviews).toBe(2); expect(p.streak).toBe(1);
-  expect(Date.parse(p.dueAt) - Date.parse(p.lastReviewedAt)).toBe(86_400_000);
+  const reviewed = (await progress(page))[wrongId];
+  expect(reviewed.reviews).toBe(2); expect(reviewed.streak).toBe(1);
+  expect(Date.parse(reviewed.dueAt) - Date.parse(reviewed.lastReviewedAt)).toBe(86_400_000);
 });
 
 test('continuous ○× learning beyond 20 cards, backup preview/cancel/import and invalid input keep review records safe', async ({ page }) => {
@@ -198,7 +217,7 @@ test('answer, effect, explanation, then a separate left/right/up gesture advance
   }
   const stored = Object.values(await progress(page)) as { lastAnswer: boolean | null; lastCorrect: boolean; streak: number; lapses: number; dueAt: string; lastReviewedAt: string }[];
   expect(stored[2]).toMatchObject({ lastAnswer: null, lastCorrect: false, streak: 0, lapses: 1 });
-  expect(Date.parse(stored[2].dueAt) - Date.parse(stored[2].lastReviewedAt)).toBe(60_000);
+  expect(Date.parse(stored[2].dueAt) - Date.parse(stored[2].lastReviewedAt)).toBe(86_400_000);
   await page.getByRole('button', { name: '↑ わからない', exact: true }).click();
   await expect(page.locator('.swipe-verdict')).toContainText('あなた：わからない');
   await page.getByRole('button', { name: '次のカードへ' }).press('ArrowUp');

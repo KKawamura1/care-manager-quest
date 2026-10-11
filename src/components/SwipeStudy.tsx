@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState, type PointerEvent } from 'react';
 import { createPortal } from 'react-dom';
 import { availableYears, questionById } from '../data/provider';
 import { swipeCards, swipeCardById, swipeCategories, swipeConcepts, swipeCatalog } from '../data/swipe-provider';
-import { emptySwipe, filterSwipeCards, progressFor, recordSwipe, reviewQueue, type SwipeCard, type SwipeState } from '../domain/swipe';
+import { emptySwipe, filterSwipeCards, nextSwipeAvailableAt, progressFor, recordSwipe, reviewQueue, type SwipeCard, type SwipeState } from '../domain/swipe';
 import { loadSwipe, parseSwipe, SWIPE_IMPORT_BYTES, SWIPE_STORAGE_KEY } from '../domain/swipeStorage';
 import { OriginalImage } from './OriginalImage';
 import { CopyText } from './CopyQuestion';
@@ -47,7 +47,7 @@ export function SwipeStudy({ active, home, onStart, onBack }: { active: boolean;
   }, [year]);
   const reviewed = candidates.filter(c => progressFor(state, c)).length;
   const due = available.filter(c => progressFor(state, c)).length;
-  const nextDue = candidates.map(c => progressFor(state, c)?.dueAt).filter((d): d is string => Boolean(d)).sort()[0];
+  const nextDue = available.length ? undefined : nextSwipeAvailableAt(candidates, state, now);
   useEffect(() => {
     if (blocked) return;
     try { window.localStorage.setItem(SWIPE_STORAGE_KEY, JSON.stringify(state)); setError(undefined); }
@@ -124,10 +124,10 @@ export function SwipeStudy({ active, home, onStart, onBack }: { active: boolean;
         </select></label>
         <p className="swipe-home-stats">{candidates.length}枚対象 · {reviewed}枚学習済み · {due}枚復習待ち</p>
         <button className="primary" aria-label={card ? '○×学習を再開する' : '○×学習を始める'} disabled={blocked || (!card && !available.length)} onClick={() => { if (card) onStart(); else start(); }}>{card ? '学習を再開する' : 'はじめる'}<span aria-hidden="true">→</span></button>
-        {!available.length && !card && <p role="status">今の分野のカードは学習済みです。{nextDue && <>次の復習：{new Date(nextDue).toLocaleString('ja-JP')}</>} 年度・分野を変えると学習を続けられます。</p>}
+        {!available.length && !card && <p role="status">今の条件で出せるカードはありません。{nextDue !== undefined && <>次の出題：{new Date(nextDue).toLocaleString('ja-JP')}</>} 年度・分野を変えると学習を続けられます。</p>}
       </div>
       <details className="swipe-home-detail"><summary>使い方</summary><p>右で○、左で×、上で「わからない」。解説を読んだら、もう一度スワイプで次へ。</p>
-        <p>誤答は1分後、正解は連続正解数に応じて1・3・7・14・30・60日後に復習します。先に誤答、次に期限が来た正解、最後に未学習のカードを出題します。</p>
+        <p>正解・誤答・わからないのいずれも、同じ元問題は24時間空けます。正解したカードは連続正解数に応じて1・3・7・14・30・60日後に復習。出題は未学習を約70%、復習を約30%の割合で混ぜます（候補がある場合）。</p>
         <p>元の設問文脈を保ち、試験当時の正答を使います。現在の法律と一致するかは未確認です。独自解説の登録がないカードでは、判定根拠のみ表示します。</p>
         <p>真偽を確定できない選択肢は出題しません（除外記録 {swipeCatalog.excluded.length}件）。</p>
       </details>

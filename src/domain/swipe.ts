@@ -69,7 +69,7 @@ const intervals = [1, 3, 7, 14, 30, 60];
 export function recordSwipe(state: SwipeState, card: SwipeCard, answer: boolean | null, now: number): SwipeState {
   const old = state.progress[card.id]?.revision === card.revision ? state.progress[card.id] : undefined;
   const correct = answer !== null && answer === card.truth, streak = correct ? (old?.streak ?? 0) + 1 : 0;
-  const delay = correct ? intervals[Math.min(streak - 1, intervals.length - 1)] * DAY : 60_000;
+  const delay = correct ? intervals[Math.min(streak - 1, intervals.length - 1)] * DAY : DAY;
   return { ...state, progress: { ...state.progress, [card.id]: {
     revision: card.revision, reviews: (old?.reviews ?? 0) + 1, correct: (old?.correct ?? 0) + Number(correct),
     streak, lapses: (old?.lapses ?? 0) + Number(!correct), lastCorrect: correct, lastAnswer: answer,
@@ -79,22 +79,75 @@ export function recordSwipe(state: SwipeState, card: SwipeCard, answer: boolean 
 export function progressFor(state: SwipeState, card: SwipeCard): CardProgress | undefined {
   const p = state.progress[card.id]; return p?.revision === card.revision ? p : undefined;
 }
-// Shuffle eligible cards, keeping due mistakes ahead of due successes and unseen cards.
-export function reviewQueue(cards: readonly SwipeCard[], state: SwipeState, now: number, random: () => number = Math.random): SwipeCard[] {
-  const groups: SwipeCard[][] = [[], [], []];
+// Keep every choice from the same original exam question out for 24 hours after
+// any of its choices has been answered. Read all saved progress (not just the
+// selected topic) so switching filters or revising a card cannot bypass it.
+function lastReviewByQuestion(state: SwipeState): Map<string, number> {
+  const latest = new Map<string, number>();
+  for (const [id, progress] of Object.entries(state.progress)) {
+    const separator = id.lastIndexOf(':');
+    if (separator < 0) continue;
+    const questionId = id.slice(0, separator);
+    const reviewedAt = Date.parse(progress.lastReviewedAt);
+    if (Number.isFinite(reviewedAt) && reviewedAt > (latest.get(questionId) ?? -Infinity)) {
+      latest.set(questionId, reviewedAt);
+    }
+  }
+  return latest;
+}
+
+function eligibleAt(card: SwipeCard, state: SwipeState, lastReviewed: ReadonlyMap<string, number>): number {
+  const progress = progressFor(state, card);
+  return Math.max(
+    progress ? Date.parse(progress.dueAt) : -Infinity,
+    (lastReviewed.get(card.questionId) ?? -Infinity) + DAY,
+  );
+}
+
+// Useful when all candidate cards are on cooldown, including unseen sibling choices.
+export function nextSwipeAvailableAt(cards: readonly SwipeCard[], state: SwipeState, now: number): number | undefined {
+  const lastReviewed = lastReviewByQuestion(state);
+  let earliest = Infinity;
   for (const card of cards) {
-    const p = progressFor(state, card);
-    if (p && Date.parse(p.dueAt) > now) continue;
-    groups[!p ? 2 : p.lastCorrect ? 1 : 0].push(card);
+    const at = eligibleAt(card, state, lastReviewed);
+    if (at > now && at < earliest) earliest = at;
+  }
+  return earliest === Infinity ? undefined : earliest;
+}
+
+// Pick each next card from a 70% new / 20% overdue mistake / 10% overdue
+// success lottery (among nonempty pools). Shuffle within pools, and fall back
+// to available types automatically. This prevents overdue cards from starving
+// unseen questions and never mutates the input.
+export function reviewQueue(cards: readonly SwipeCard[], state: SwipeState, now: number, random: () => number = Math.random): SwipeCard[] {
+  const lastReviewed = lastReviewByQuestion(state);
+  const groups: SwipeCard[][] = [[], [], []]; // unseen, due mistakes, due successes
+  const weights = [7, 2, 1];
+  for (const card of cards) {
+    if (eligibleAt(card, state, lastReviewed) > now) continue;
+    const progress = progressFor(state, card);
+    groups[!progress ? 0 : progress.lastCorrect ? 2 : 1].push(card);
   }
   for (const group of groups) {
-    // Fisher–Yates: unbiased random order within each review-priority band.
     for (let i = group.length - 1; i > 0; i--) {
       const j = Math.floor(random() * (i + 1));
       [group[i], group[j]] = [group[j], group[i]];
     }
   }
-  return groups.flat();
+  const result: SwipeCard[] = [];
+  while (groups.some(group => group.length)) {
+    const totalWeight = groups.reduce((sum, group, i) => sum + (group.length ? weights[i] : 0), 0);
+    let ticket = random() * totalWeight;
+    let chosen = 0;
+    for (let i = 0; i < groups.length; i++) {
+      if (!groups[i].length) continue;
+      ticket -= weights[i];
+      chosen = i;
+      if (ticket < 0) break;
+    }
+    result.push(groups[chosen].pop()!);
+  }
+  return result;
 }
 export function filterSwipeCards(cards: readonly SwipeCard[], year: number | 'all', topic: string) {
   return cards.filter(c => (year === 'all' || c.year === year) && (topic === 'all' || (topic === 'unclassified' ? !c.topicIds.length : c.topicIds.includes(topic))));
