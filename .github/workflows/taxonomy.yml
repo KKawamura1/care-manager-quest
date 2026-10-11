@@ -2,22 +2,24 @@ name: Validate taxonomy metadata
 on:
   pull_request:
     paths:
-      - 'data/taxonomy/**'
       - 'docs/taxonomy/**'
-      - 'scripts/validate-taxonomy.py'
       - 'scripts/*issue32*.mjs'
+      - 'scripts/*issue32*.mts'
+      - 'scripts/prepare-taxonomy.ts'
       - 'imports/**'
       - 'src/data/packs/**/questions.json'
+      - 'src/data/packs/knowledge.json'
       - '.github/workflows/taxonomy.yml'
   push:
     branches: [main]
     paths:
-      - 'data/taxonomy/**'
       - 'docs/taxonomy/**'
-      - 'scripts/validate-taxonomy.py'
       - 'scripts/*issue32*.mjs'
+      - 'scripts/*issue32*.mts'
+      - 'scripts/prepare-taxonomy.ts'
       - 'imports/**'
       - 'src/data/packs/**/questions.json'
+      - 'src/data/packs/knowledge.json'
       - '.github/workflows/taxonomy.yml'
   workflow_dispatch:
 permissions:
@@ -30,13 +32,11 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - run: python scripts/validate-taxonomy.py
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - run: node --experimental-strip-types scripts/prepare-taxonomy.ts
+      - run: node --experimental-strip-types scripts/prepare-taxonomy.ts --check
       - name: Verify annual canonical data, summaries and checksums
         run: node scripts/consolidate-issue32-revisions.mjs --check
       - name: Verify repository source text synchronization

@@ -24,6 +24,7 @@ export interface Session { id: string; questionIds: string[]; index: number; sel
 export interface ExternalRecord { id: string; url: string; label: string; correct: boolean; at: string; }
 export interface PlayerState {
   schemaVersion: 2; attempts: Attempt[]; concepts: Record<string, ConceptProgress>;
+  knowledgeReflections?: string[];
   session?: Session; externalRecords: ExternalRecord[]; settings: { sound: boolean };
 }
 export interface QuestionProvider { readonly id: string; list(): readonly Question[]; }
