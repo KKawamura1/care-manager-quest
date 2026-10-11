@@ -68,6 +68,10 @@ for (let year = 2005; year <= 2025; year++) {
       reviewed[year] = (reviewed[year] || 0) + 1;
       assert.ok(row.classification_revision.previous_status);
       assert.ok(Array.isArray(row.classification_revision.previous_primary_path));
+    } else if (row.classification_review?.version === 'taxonomy-v1.1') {
+      // Newly created propositions from a reviewed split have no previous path
+      // to store in classification_revision, but are still reviewed.
+      reviewed[year] = (reviewed[year] || 0) + 1;
     }
   }
   assert.equal(byQuestion.size, 60, `questions in ${year}`);
@@ -91,12 +95,14 @@ for (let year = 2005; year <= 2025; year++) {
 const difficultKeys = difficult.map((r) => [r.question_id, r.choice_index, r.proposition_index].join('/'));
 assert.equal(new Set(difficultKeys).size, difficultKeys.length, 'duplicate difficult case');
 assert.deepEqual(new Set(difficultKeys), allDifficult, 'difficult-cases out of sync');
-assert.equal(total, 6337);
+assert.equal(total, 6345);
 assert.equal(manifest.coverage.proposition_record_count, total);
 assert.equal(manifest.coverage.difficult_case_count, difficult.length);
 assert.deepEqual(manifest.coverage.status_counts, statusTotal);
 assert.deepEqual(manifest.coverage.primary_root_counts, rootTotal);
-assert.deepEqual(reviewed, { 2018: 2, 2019: 300, 2024: 105, 2025: 302 }, 'reviewed record counts');
+assert.deepEqual(reviewed, { 2018: 2, 2019: 300, 2020: 301, 2021: 301, 2022: 300, 2023: 303, 2024: 304, 2025: 302 }, 'reviewed record counts');
+assert.equal(manifest.classification_quality_review.reviewed_records, 2113);
+assert.equal(manifest.classification_quality_review.remaining_without_semantic_review, total - 2113);
 
 const expectedPaths = [
   ['2018-10/5/1', '普通徴収と特別徴収'],
@@ -108,12 +114,31 @@ const expectedPaths = [
   ['2019-24/4/1', '住環境の調整'],
   ['2019-48/2/1', '個別援助'],
   ['2019-54/3/1', '居宅介護住宅改修費'],
+  ['2021-03/1/2', '受給権保障'],
+  ['2021-09/2/1', '指定権者'],
+  ['2021-22/3/1', '施設サービス計画'],
+  ['2021-31/2/1', '認知症疾患医療センター'],
+  ['2021-34/4/1', '褥瘡'],
+  ['2021-41/4/1', '訪問看護'],
+  ['2021-43/2/1', '看護小規模多機能型居宅介護'],
+  ['2021-54/3/1', '居宅介護住宅改修費'],
+  ['2022-07/1/1', '介護老人福祉施設（特養）'],
+  ['2022-10/3/1', '普通徴収'],
+  ['2022-12/3/1', '包括的支援事業'],
+  ['2022-38/4/1', '頭部外傷'],
+  ['2022-54/4/1', '特定福祉用具販売'],
   ['2024-13/1/1', '認知症総合支援事業'],
   ['2024-31/1/1', '退院・退所支援'],
   ['2025-02/5/1', '認知症基本法'],
   ['2025-27/3/1', '膀胱留置カテーテル'],
   ['2025-44/1/1', '看護小規模多機能型居宅介護'],
   ['2025-51/1/1', '基本方針'],
+  ['care_manager_2020_001/1/1', '要介護・要支援認定者数'],
+  ['care_manager_2020_007/1/1', '高額介護サービス費'],
+  ['care_manager_2020_020/3/1', '居宅介護支援'],
+  ['care_manager_2020_025/5/1', 'ヤングケアラー'],
+  ['care_manager_2020_034/1/1', '認知症初期集中支援チーム'],
+  ['care_manager_2020_052/3/1', '居宅介護支援'],
 ];
 for (const [id, segment] of expectedPaths) {
   const row = lookup.get(id);
@@ -145,6 +170,73 @@ for (const [question, choice] of [['2025-27', 1], ['2025-47', 1]]) {
   assert.ok(b.proposition_revision, `split revision missing: ${question}`);
 }
 
+
+// Consolidated 2020–2024 review regression tests.
+assert.equal(manifest.year_2020_review.resolved_ambiguous, 6);
+assert.equal(manifest.yearly_coverage.find((x) => x.year === 2020).status_counts.ambiguous, 0);
+for (const p of [1, 2]) {
+  const row = lookup.get(`2021-03/1/${p}`);
+  assert.ok(row && row.source_review_required, '2021 social-insurance split lost');
+}
+assert.equal(lookup.get('2021-03/1/1').source_text, lookup.get('2021-03/1/2').source_text);
+assert.notEqual(lookup.get('2021-03/1/1').proposition, lookup.get('2021-03/1/2').proposition);
+
+for (const [question, choice, term] of [[12, 3, '包括的支援事業'], [13, 1, '国民健康保険団体連合会'], [16, 4, '主治医意見書'], [17, 1, '特定疾病']]) {
+  const key = `2022-${String(question).padStart(2, '0')}/${choice}/1`;
+  const row = lookup.get(key);
+  assert.ok(row && row.proposition.includes(term), `missing context for truncated proposition ${key}`);
+  assert.ok(row.source_review_required, `source review flag dropped for ${key}`);
+}
+
+// 2023: independent review + proposition segmentation regression cases.
+// These tests verify the revised taxonomy data, not whether the answers are true.
+const reviewed2023 = jsonl('propositions/2023.jsonl');
+assert.equal(reviewed2023.length, 303, '2023 proposition count');
+assert.equal(reviewed2023.filter((r) => r.classification_review?.version === 'taxonomy-v1.1').length, 303);
+const check2023 = (q, choice, segment) => {
+  const found = reviewed2023.filter((r) => r.question_number === q && r.choice_index === choice);
+  assert.ok(found.length && found.every((r) => r.primary_path.join(' > ').includes(segment)), `2023-${q}/${choice}: ${segment}`);
+};
+for (const [q, choice, label] of [
+  [3, 1, '社会保険一般'],
+  [5, 3, '住所地特例'],
+  [6, 4, '適用除外'],
+  [14, 2, '地域ケア会議'],
+  [22, 3, '施設サービス計画'],
+  [31, 1, '認知症施策推進大綱'],
+  [54, 1, '居宅介護住宅改修費'],
+  [57, 3, '介護老人福祉施設（特養）'],
+]) check2023(q, choice, label);
+for (const [q, choice] of [[3, 5], [10, 4], [44, 3]]) {
+  const matches = reviewed2023.filter((r) => r.question_number === q && r.choice_index === choice);
+  assert.deepEqual(matches.map((r) => r.proposition_index), [1, 2]);
+  assert.equal(matches[0].source_text, matches[1].source_text, 'preserve full original choice');
+  assert.notEqual(matches[0].proposition, matches[1].proposition, 'split into distinct claims');
+}
+for (const q of [5, 6, 8, 13, 14, 15, 16, 29, 37]) {
+  for (const row of reviewed2023.filter((r) => r.question_number === q)) {
+    assert.notEqual(row.proposition, row.source_text, `context must be reconstructed: ${row.question_id}/${row.choice_index}`);
+  }
+}
+
+for (const key of ['2024-22/5', '2024-32/5', '2024-35/3', '2024-40/2']) {
+  const [qid, c] = key.split('/');
+  const a = lookup.get(qid + '/' + c + '/1');
+  const b = lookup.get(qid + '/' + c + '/2');
+  assert.ok(a && b, 'missing split ' + key);
+  assert.equal(a.source_text, b.source_text);
+  assert.notEqual(a.proposition, b.proposition);
+}
+for (const n of [6, 7, 13, 17, 19, 39]) {
+  const row = lookup.get('2024-' + String(n).padStart(2, '0') + '/1/1');
+  assert.ok(row.proposition.length > row.source_text.length, 'predicate missing ' + n);
+}
+assert.equal(manifest.classification_review_2024.proposition_records, 304);
+
+for (const f of ['review-decisions-2024-part1.json', 'review-decisions-2024-part2.json']) {
+  assert.ok(json(f).groups.length > 0, `2024 audit record missing: ${f}`);
+}
+
 assert.ok(!checksumList.some((item) => item.path === 'checksums.json'), 'self-checksum is not stable');
 for (const item of checksumList) {
   const buf = readFileSync(join(dir, item.path));
@@ -152,6 +244,6 @@ for (const item of checksumList) {
   assert.equal(buf.byteLength, item.bytes, `size mismatch: ${item.path}`);
   assert.equal(sum, item.sha256, `checksum mismatch: ${item.path}`);
 }
-assert.equal(checksumList.length, 25);
+assert.equal(checksumList.length, 27);
 assert.match(read('README.md'), /初回分類時点のスナップショット/);
-console.log(`taxonomy experiment integrity OK: ${total} propositions; ${difficult.length} difficult; 709 reviewed; ${checksumList.length} checksums`);
+console.log(`taxonomy experiment integrity OK: ${total} propositions; ${difficult.length} difficult; ${Object.values(reviewed).reduce((a, b) => a + b, 0)} reviewed; ${checksumList.length} checksums`);
