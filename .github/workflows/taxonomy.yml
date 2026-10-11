@@ -18,6 +18,9 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: taxonomy-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   validate-taxonomy:
     runs-on: ubuntu-24.04
@@ -32,6 +35,14 @@ jobs:
           node-version: '22'
       - run: node scripts/validate-issue32-classifications.mjs
       - run: node scripts/validate-issue32-revisions.mjs
+      - run: node scripts/test-issue32-ids.mjs
+      - run: node scripts/test-issue32-drawers.mjs
+      - run: node scripts/normalize-issue32-ids.mjs --output-dir=./issue32-normalized-output
+      - uses: actions/upload-artifact@v4
+        with:
+          name: issue32-normalized-drawers
+          path: issue32-normalized-output/
+          retention-days: 30
       - run: node scripts/validate-issue32-knowledge-target.mjs
       - run: node scripts/validate-issue32-knowledge-target-all.mjs
       - run: node scripts/report-issue32-knowledge-suspects.mjs --json --limit=5 > /tmp/issue32-suspects-smoke.json
