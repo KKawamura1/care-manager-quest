@@ -11,7 +11,8 @@ describe('public Cloudflare asset delivery', () => {
       const response = await worker.fetch(req, env);
       expect(response.status).toBe(200);
       expect(await response.text()).toBe('public app');
-      expect(assetsFetch).toHaveBeenCalledExactlyOnceWith(req);
+      expect(assetsFetch).toHaveBeenCalledTimes(1);
+      expect(assetsFetch).toHaveBeenCalledWith(req);
     }
   });
 });
