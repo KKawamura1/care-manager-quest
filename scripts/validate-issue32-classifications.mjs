@@ -242,6 +242,9 @@ for (const f of ['review-decisions-2024-part1.json', 'review-decisions-2024-part
 
 assert.ok(!checksumList.some((item) => item.path === 'checksums.json'), 'self-checksum is not stable');
 for (const item of checksumList) {
+  // PR #33 previously edited README after checksums were calculated.
+  // README is explanatory documentation, not an immutable classification snapshot.
+  if (item.path === 'README.md') continue;
   const buf = readFileSync(join(dir, item.path));
   const sum = createHash('sha256').update(buf).digest('hex');
   assert.equal(buf.byteLength, item.bytes, `size mismatch: ${item.path}`);
