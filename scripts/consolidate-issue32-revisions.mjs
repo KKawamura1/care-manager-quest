@@ -72,6 +72,7 @@ for (const { year, rows } of all) {
   });
 }
 const total = yearly.reduce((n, x) => n + x.proposition_record_count, 0);
+if (!checking && questionOverrides === 0) { console.log('Already consolidated: no revision files'); process.exit(0); }
 const reviewedTotal = Object.values(reviewYears).reduce((a, b) => a + b, 0);
 const manifest = JSON.parse(readFileSync(jsonPath('manifest.json'), 'utf8'));
 manifest.yearly_coverage = yearly;
