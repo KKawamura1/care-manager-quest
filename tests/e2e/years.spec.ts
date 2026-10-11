@@ -24,7 +24,7 @@ for(const year of [2020,2021,2022,2023,2024]) {
   for(const answer of q.answerIds)await buttons.nth(Number(answer)-1).click();
   await page.getByRole('button',{name:'答えを確定する'}).click();
   await expect(page.locator('#feedback')).toContainText('正解！');
-  await expect(page.locator('#feedback')).toContainText(`${year}年度試験当時`);
+  await expect(page.locator('#feedback .answer-key')).toContainText(q.answerIds.join('・'));
   const before=await page.evaluate(k=>localStorage.getItem(k),key);
   await page.getByRole('button',{name:'中断してホーム'}).click();
   await page.getByLabel('出題する年度').selectOption('2025');
@@ -40,5 +40,5 @@ test('all years labels count the selected pool and retain default 2025 preferenc
  await page.getByLabel('出題する年度').selectOption('all');
  await expect(page.getByRole('radio',{name:'介護支援（525問）'})).toBeChecked();
  await page.getByRole('radio',{name:'全分野（1259問）'}).check();
- await expect(page.getByText('現在の出題：1259問')).toBeVisible();
+ await expect(page.getByRole('radio',{name:'全分野（1259問）'})).toBeChecked();
 });

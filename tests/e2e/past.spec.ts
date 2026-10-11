@@ -24,7 +24,7 @@ test('historical year, text-only questions, feedback, copy and saved selection w
   for(const n of answers[id].correctChoices)await page.getByRole('group',{name:'解答の選択肢'}).getByRole('button').nth(n-1).click();
   await page.getByRole('button',{name:'答えを確定する'}).click();
   await expect(page.locator('#feedback')).toContainText('正解！');
-  await expect(page.locator('#feedback')).toContainText('2005年度試験当時の正答');
+  await expect(page.locator('#feedback .answer-key')).toContainText('正答：');
   await page.getByRole('button',{name:'詳しく見る'}).click();
   await expect(page.getByRole('dialog')).toContainText('2005年度試験当時の正答');
   await expect(page.getByRole('dialog').locator('img')).toHaveCount(0);

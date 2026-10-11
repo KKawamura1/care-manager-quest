@@ -68,7 +68,7 @@ export function SwipeStudy({ active }: { active: boolean }) {
     if (!result) return;
     if (!locked.current) return;
     locked.current = false; setResult(undefined); setOriginal(false); setDrag({ x: 0, y: 0 }); setNow(Date.now());
-    if (index + 1 === queue.length) { setSummary(`${queue.length}枚中 ${score}枚正解。間違えたカードは1分後から優先して復習します。`); setQueue([]); setIndex(0); }
+    if (index + 1 === queue.length) { setSummary(`${queue.length}枚中 ${score}枚正解`); setQueue([]); setIndex(0); }
     else { setIndex(i => i + 1); requestAnimationFrame(() => cardRef.current?.focus({ preventScroll: true })); }
     window.scrollTo({ top: 0, behavior: 'instant' });
   };
@@ -105,63 +105,57 @@ export function SwipeStudy({ active }: { active: boolean }) {
   };
   if (!active) return null;
   return <section className="swipe-screen">
-    <div className="eyebrow">QUICK RECALL</div><h1>○×スワイプ学習</h1>
+    {!card && <h1>○×学習</h1>}
     {error && <div className="warning" role="alert"><p>{error}</p>{blocked && <>
       <button onClick={() => download(initial.raw ?? '', 'care-manager-swipe-recovery.json')}>元の○×データを書き出す</button>
       <button onClick={() => { setBlocked(false); setState(emptySwipe()); }}>新しい○×履歴で始める</button>
     </>}</div>}
     {message && <p role="status">{message}</p>}
     {!card ? <>
-      <p className="page-intro">右で○、左で×、上で「わからない」。解説を読んだら、左右・上のスワイプで次へ。1回最大20枚。</p>
       {summary && <p className="notice" role="status">{summary}</p>}
       <div className="panel swipe-settings">
-        <label>○×の年度<select aria-label="○×の年度" value={year} onChange={e => { setYear(e.target.value === 'all' ? 'all' : Number(e.target.value)); setTopic('all'); }}>
-          <option value="all">収録された全年度</option>{availableYears.map(y => <option key={y} value={y}>{y}年度</option>)}
+        <label>年度<select aria-label="○×の年度" value={year} onChange={e => { setYear(e.target.value === 'all' ? 'all' : Number(e.target.value)); setTopic('all'); }}>
+          <option value="all">全年度</option>{availableYears.map(y => <option key={y} value={y}>{y}年度</option>)}
         </select></label>
-        <label>学ぶ知識分野<select aria-label="学ぶ知識分野" value={topic} onChange={e => setTopic(e.target.value)}>
-          <option value="all">全分野（分類待ちを含む）</option><option value="unclassified">分類待ち（{counts.get('unclassified') ?? 0}枚）</option>
+        <label>分野<select aria-label="学ぶ知識分野" value={topic} onChange={e => setTopic(e.target.value)}>
+          <option value="all">全分野</option><option value="unclassified">分類待ち（{counts.get('unclassified') ?? 0}枚）</option>
           {swipeCategories.map(category => {
             const concepts = swipeConcepts.filter(c => c.categoryId === category.id && counts.has(c.id));
             return concepts.length ? <optgroup key={category.id} label={category.label}>{concepts.map(c => <option key={c.id} value={c.id}>{c.label}（{counts.get(c.id)}枚）</option>)}</optgroup> : null;
           })}
         </select></label>
-        <p className="fine-print">分野は単一論点の問題から引き継いだ暫定分類です。複数論点・選択肢レビュー待ちのカードは分類待ちに残しています。</p>
-        <div className="record-stats"><div><b>{candidates.length}</b><span>対象カード</span></div><div><b>{reviewed}</b><span>学習したカード</span></div><div><b>{due}</b><span>復習待ち</span></div></div>
-        <button className="primary" aria-label="○×学習を始める" disabled={blocked || !available.length} onClick={start}>○×学習を始める<span aria-hidden="true">→</span></button>
-        <p className="mission-note">復習 {due}枚 · 未学習 {available.length - due}枚。誤答の復習を優先し、同じ優先度のカードはランダムな順番で出題します。</p>
+        <div className="record-stats"><div><b>{candidates.length}</b><span>対象</span></div><div><b>{reviewed}</b><span>学習済み</span></div><div><b>{due}</b><span>復習待ち</span></div></div>
+        <button className="primary" aria-label="○×学習を始める" disabled={blocked || !available.length} onClick={start}>はじめる<span aria-hidden="true">→</span></button>
+        <p className="mission-note">1回20枚まで</p>
         {!available.length && <p role="status">今の分野のカードは学習済みです。{nextDue && <>次の復習：{new Date(nextDue).toLocaleString('ja-JP')}</>} 年度・分野を変えると学習を続けられます。</p>}
       </div>
-      <details className="panel"><summary>復習と判定について</summary>
+      <details className="panel"><summary>使い方</summary><p>右で○、左で×、上で「わからない」。解説を読んだら、もう一度スワイプで次へ。</p>
         <p>誤答は1分後、正解は連続正解数に応じて1・3・7・14・30・60日後に復習します。先に誤答、次に期限が来た正解、最後に未学習のカードを出題します。</p>
         <p>元の設問文脈を保ち、試験当時の正答を使います。現在の法律と一致するかは未確認です。独自解説の登録がないカードでは、判定根拠のみ表示します。</p>
         <p>真偽を確定できない選択肢は出題しません（除外記録 {swipeCatalog.excluded.length}件）。</p>
       </details>
-      <section className="panel"><h2>○×履歴を持ち出す</h2><p>○×の復習記録を保存・読み込みできます。5択の履歴は「記録」から保存できます。</p>
+      <details className="panel"><summary>○×履歴</summary>
         <button className="secondary" disabled={blocked} onClick={() => download(JSON.stringify(state, null, 2), 'care-manager-swipe-history.json')}>○×履歴を書き出す</button>
         <button className="secondary" onClick={() => fileRef.current?.click()}>○×履歴を読み込む</button>
         <input ref={fileRef} type="file" accept=".json,application/json" hidden onChange={e => void importFile(e.target.files?.[0])}/>
-      </section>
+      </details>
     </> : <>
       <div className="quest-heading"><button className="text-button" onClick={() => { setQueue([]); setResult(undefined); locked.current = false; setNow(Date.now()); }}>分野選択に戻る</button><span>{index + 1} / {queue.length}枚</span></div>
-      <div className="question-meta"><span>{card.year}年度 問{card.number}・選択肢{card.choiceId}</span><span>{card.topicId ? '暫定分類' : '分類待ち'}</span></div>
-      <p className="swipe-topic">{swipeConcepts.find(c => c.id === card.topicId)?.label ?? '選択肢別の分類は未確認'}</p>
+      <div className="question-meta"><span>{card.year}年度 問{card.number}・選択肢{card.choiceId}</span></div>
+      <p className="swipe-topic">{swipeConcepts.find(c => c.id === card.topicId)?.label ?? '分類待ち'}</p>
       <div className="swipe-context"><b>元の設問</b><p>{card.stem}</p></div>
-      <p className="mission-note">この設問の文脈で、選択肢の内容・条件への該当を判定してください。</p>
       <div className="swipe-surface" onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={() => { gesture.current = undefined; setDrag({ x: 0, y: 0 }); }} onLostPointerCapture={() => { gesture.current = undefined; setDrag({ x: 0, y: 0 }); }}
         onKeyDown={e => { if (['ArrowRight','ArrowLeft','ArrowUp'].includes(e.key)) { e.preventDefault(); if (e.repeat) return; if (result) next(); else submit(e.key === 'ArrowUp' ? null : e.key === 'ArrowRight'); } }}>
       <div ref={cardRef} className={`swipe-card ${result ? result.correct ? 'swipe-correct' : 'swipe-wrong' : ''}`} tabIndex={0} role="group" aria-label="○×カード"
         style={{ transform: `translate(${drag.x}px, ${drag.y}px) rotate(${drag.x / 20}deg)` }}>
-        <span className="section-kicker">CHOICE {card.choiceId}</span><p>{card.text}</p>
+        <p>{card.text}</p>
         {(drag.x !== 0 || drag.y !== 0) && <span className={`swipe-stamp ${drag.x > 0 ? 'mint' : 'coral'}`} aria-hidden="true">{drag.y < 0 ? '？' : drag.x > 0 ? '○' : '×'}</span>}
       </div>
       {result && <span key={card.id} className={`swipe-effect ${result.correct ? 'correct' : 'wrong'}`} aria-hidden="true">{result.correct ? '○' : '×'}</span>}
       {!result ? <><div className="swipe-actions"><button className="secondary swipe-no" aria-label="×と答える" disabled={blocked} onClick={() => submit(false)}>← ×</button><button className="primary swipe-yes" aria-label="○と答える" disabled={blocked} onClick={() => submit(true)}>○ →</button></div><button className="secondary" onClick={() => submit(null)} disabled={blocked}>↑ わからない</button></> : <>
         <div id="swipe-feedback" className={`feedback ${result.correct ? 'success' : 'miss'}`} role="status">
-          <h2>{result.correct ? '正解！' : 'もう一度覚えよう'}</h2><p className="swipe-verdict">正答：<b>{card.truth ? '○' : '×'}</b> ／ あなた：{result.answer === null ? 'わからない' : result.answer ? '○' : '×'}</p>
-          <p>{card.explanation || `${card.year}年度の正答キーに${card.truth === card.correctChoiceTruth ? '含まれる' : '含まれない'}選択肢です。${card.correctChoiceTruth ? '' : '誤りを選ぶ設問のため、正答キーの選択肢は×です。'}`}</p>
-          {!card.explanation && <p className="fine-print">独自解説は未登録です。詳しい理由は原問題・原典で確認してください。</p>}
-          <p className="fine-print">次の復習：{new Date(state.progress[card.id].dueAt).toLocaleString('ja-JP')}</p>
-          <p className="mission-note">カード・解説を左右または上へスワイプして次へ</p>
+          <h2>{result.correct ? '正解！' : '不正解'}</h2><p className="swipe-verdict">正答：<b>{card.truth ? '○' : '×'}</b> ／ あなた：{result.answer === null ? 'わからない' : result.answer ? '○' : '×'}</p>
+          <p>{card.explanation || '解説未登録'}</p>
         </div>
         <button className="primary" ref={nextRef} onClick={next}>{index + 1 === queue.length ? '学習結果を見る' : '次のカードへ'}<span aria-hidden="true">→</span></button>
       </>}
@@ -169,7 +163,7 @@ export function SwipeStudy({ active }: { active: boolean }) {
       {questionById(card.questionId) && <CopyText key={`${card.id}:${Boolean(result)}`} text={swipeCopyText(questionById(card.questionId)!, card, Boolean(result), result?.answer)} includeAnswer={Boolean(result)}/>}
       {result && <>
         <AppExplanation key={`${card.id}:${card.revision}`} target={cardTarget(card)}/>
-        <details className="panel"><summary>元の問題・原典を確認</summary>
+        <details className="panel"><summary>問題・出典</summary><p>次の復習：{new Date(state.progress[card.id].dueAt).toLocaleString('ja-JP')}</p>
           <ol>{questionById(card.questionId)?.options.map(o => <li key={o.id}>{o.text}</li>)}</ol>
           {questionById(card.questionId)?.original?.imagePath && <><button className="secondary" onClick={() => setOriginal(!original)}>{original ? '原本を閉じる' : '原本画像を見る'}</button>{original && <OriginalImage question={questionById(card.questionId)!}/>}</>}
           {questionById(card.questionId)?.original?.sourceUrl && <a href={questionById(card.questionId)!.original!.sourceUrl} target="_blank" rel="noopener noreferrer">掲載元で確認 ↗</a>}
