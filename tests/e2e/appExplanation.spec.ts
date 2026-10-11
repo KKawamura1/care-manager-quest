@@ -20,6 +20,8 @@ async function paste(page: Page, text: string) {
 
 test('swipe copy, paste, wrong-card guard, persistence, replacement and deletion', async ({ page }) => {
   await stubClipboard(page);
+  // Make an overdue mistake win over the many unseen cards when revisiting it.
+  await page.addInitScript(() => { Math.random = () => 0.99; });
   await page.clock.install({ time: new Date('2026-10-11T00:00:00Z') });
   await page.goto('/'); await page.getByRole('button', { name: '○×学習', exact: true }).click();
   await page.getByLabel('○×の年度').selectOption('2020');
@@ -42,14 +44,15 @@ test('swipe copy, paste, wrong-card guard, persistence, replacement and deletion
   await expect(page.getByRole('alert')).toContainText('別の問題・選択肢');
   await expect(page.locator('.saved-explanation')).toHaveCount(0);
   await page.getByRole('button', { name: '分野選択に戻る' }).click();
-  // Defer all other cards so a reload deterministically returns to the saved card.
+  // Keep only the original mistaken card in review history; weighted selection
+  // deterministically revisits it after the full one-day cooldown.
   await page.evaluate(() => {
     const key = 'care-manager-quest:swipe:v1', state = JSON.parse(localStorage.getItem(key)!);
     const ids = Object.keys(state.progress); delete state.progress[ids[1]];
     localStorage.setItem(key, JSON.stringify(state));
   });
-  await page.clock.runFor(61_000); await page.reload();
-  await page.getByRole('button', { name: '○×学習', exact: true }).click();
+  await page.clock.fastForward(86_400_001); await page.reload();
+  await page.getByLabel('○×の年度').selectOption('2020');
   await page.getByRole('button', { name: '○×学習を始める', exact: true }).click();
   await expect(page.locator('.swipe-card p')).toHaveText(firstText!);
   await expect(page.locator('.saved-explanation')).toHaveCount(0);

@@ -4,7 +4,7 @@ const truth = JSON.parse(readFileSync(new URL('../../data/choice-tf/choice-answe
 const key = 'care-manager-quest:swipe:v1';
 const playerKey = 'care-manager-quest:v1';
 async function open(page: Page) {
-  await page.goto('/'); await page.getByRole('button', { name: '○×学習', exact: true }).click();
+  await page.goto('/');
 }
 async function start(page: Page) { await page.getByRole('button', { name: '○×学習を始める', exact: true }).click(); }
 async function currentTruth(page: Page) {
@@ -19,6 +19,24 @@ async function drag(page: Page, dx: number, dy = 0, feedback = false) {
   const x = box.x + box.width / 2, y = box.y + box.height / 2;
   await page.mouse.move(x, y); await page.mouse.down(); await page.mouse.move(x + dx, y + dy, { steps: 8 }); await page.mouse.up();
 }
+test('○× filters are on the same home screen as five-choice and launch the first card directly', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.getByRole('heading', { name: '5択クエスト', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: '○×学習', exact: true })).toBeVisible();
+  await expect(page.getByLabel('○×の年度')).toBeVisible();
+  await expect(page.getByLabel('学ぶ知識分野')).toBeVisible();
+  await expect(page.getByRole('button', { name: '○×学習を始める', exact: true })).toBeEnabled();
+  await page.getByLabel('○×の年度').selectOption('2020');
+  await page.getByRole('button', { name: '○×学習を始める', exact: true }).click();
+  await expect(page.getByRole('group', { name: '○×カード', exact: true })).toBeVisible();
+  await expect(page.locator('.swipe-screen .question-meta')).toContainText('2020年度');
+  await expect(page.locator('.swipe-home-card')).toHaveCount(0);
+  await page.getByRole('button', { name: '分野選択に戻る' }).click();
+  await expect(page.getByLabel('○×の年度')).toHaveValue('2020');
+  await expect(page.getByRole('heading', { name: '5択クエスト', exact: true })).toBeVisible();
+  await expect(page.getByRole('button', { name: '○×学習を始める', exact: true })).toBeVisible();
+});
+
 test('right/left swipe, feedback, duplicate guard and navigation preserve five-choice session and XP', async ({ page }) => {
   const errors: string[] = []; page.on('pageerror', e => errors.push(e.message));
   await page.goto('/'); await page.getByRole('button', { name: '5問のクエストを始める' }).click();
@@ -37,6 +55,7 @@ test('right/left swipe, feedback, duplicate guard and navigation preserve five-c
   await expect(page.locator('.swipe-verdict')).toContainText('あなた：×');
   await page.getByRole('button', { name: '冒険', exact: true }).click();
   await page.getByRole('button', { name: '○×学習', exact: true }).click();
+  await page.getByRole('button', { name: '○×学習を再開する', exact: true }).click();
   await expect(page.locator('.swipe-verdict')).toContainText('あなた：×');
   expect(await page.evaluate(k => localStorage.getItem(k), playerKey)).toBe(original);
   await page.reload(); await expect(page.getByRole('group', { name: '解答の選択肢' }).getByRole('button').first()).toHaveAttribute('aria-pressed', 'true');
@@ -52,48 +71,55 @@ test('short/vertical drags do not answer; arrow key and buttons do; narrow topic
   const option = await options.nth(index).getAttribute('value');
   await page.getByLabel('学ぶ知識分野').selectOption(option!); await start(page);
   await expect(page.locator('.swipe-screen .question-meta')).toContainText('2020年度');
-  const target = await page.locator('.swipe-topic').textContent(); expect(target).not.toContain('未確認');
+  expect(await page.locator('.swipe-topic').textContent()).not.toContain('未確認');
   await drag(page, 20); await expect(page.locator('.swipe-verdict')).toHaveCount(0);
   await drag(page, 20, 80); await expect(page.locator('.swipe-verdict')).toHaveCount(0);
   expect(Object.keys(await progress(page))).toHaveLength(0);
   await page.getByRole('group', { name: '○×カード', exact: true }).press('ArrowRight');
   await expect(page.locator('.swipe-verdict')).toContainText('あなた：○');
-  await page.getByRole('button', { name: '次のカードへ' }).click();
-  await expect(page.locator('.swipe-topic')).toHaveText(target!);
+  // A narrow topic may consist of sibling choices from just one exam question.
+  // Return to all topics so the next question is not blocked by the 24-hour cooldown.
+  await page.getByRole('button', { name: '分野選択に戻る' }).click();
+  await page.getByLabel('学ぶ知識分野').selectOption('all');
+  await start(page);
+  await expect(page.locator('.swipe-screen .question-meta')).toContainText('2020年度');
   await page.getByRole('button', { name: '×と答える', exact: true }).click();
   await expect(page.locator('.swipe-verdict')).toContainText('あなた：×');
   expect(Object.keys(await progress(page)).every(id => id.startsWith('care_manager_2020_'))).toBe(true);
 });
 
-test('mistakes and sibling choices remain hidden until the next day; overdue mistakes can be drawn', async ({ page }) => {
-  // When a mistake and unseen cards coexist, 0.99 selects the mistake pool.
+test('24-hour question cooldown survives reload and an overdue mistake becomes eligible the next day', async ({ page }) => {
+  // With both unseen cards and a due mistake present, draw from the mistake group.
   await page.addInitScript(() => { Math.random = () => 0.99; });
   await page.clock.install({ time: new Date('2026-10-11T00:00:00Z') });
-  await open(page); await start(page);
-  const originalQuestion = (await page.locator('.question-meta').textContent())!.replace(/・選択肢\d+/, '');
-  const expected = await currentTruth(page);
+  await open(page); await page.getByLabel('○×の年度').selectOption('2020'); await start(page);
+  const firstMeta = (await page.locator('.question-meta').textContent())!.replace(/・選択肢\d+/, '');
   const firstText = await page.locator('.swipe-card p').textContent();
+  const expected = await currentTruth(page);
   await page.getByRole('button', { name: expected ? '×と答える' : '○と答える', exact: true }).click();
+  await expect(page.locator('.swipe-verdict')).toBeVisible();
   const wrongId = Object.keys(await progress(page))[0];
-  const p = (await progress(page))[wrongId];
-  expect(Date.parse(p.dueAt) - Date.parse(p.lastReviewedAt)).toBe(86_400_000);
+  const firstProgress = (await progress(page))[wrongId];
+  expect(Date.parse(firstProgress.dueAt) - Date.parse(firstProgress.lastReviewedAt)).toBe(86_400_000);
   await page.getByRole('button', { name: '次のカードへ', exact: true }).click();
-  expect((await page.locator('.question-meta').textContent())!.replace(/・選択肢\d+/, '')).not.toBe(originalQuestion);
-
+  expect((await page.locator('.question-meta').textContent())!.replace(/・選択肢\d+/, '')).not.toBe(firstMeta);
   await page.getByRole('button', { name: '分野選択に戻る' }).click();
-  await page.reload(); await page.getByRole('button', { name: '○×学習', exact: true }).click();
+  await page.reload();
+  await page.getByLabel('○×の年度').selectOption('2020');
   await start(page);
   await expect(page.locator('.swipe-card p')).not.toHaveText(firstText!);
   await page.getByRole('button', { name: '分野選択に戻る' }).click();
-
-  await page.clock.setFixedTime(new Date('2026-10-12T00:00:01Z'));
-  await page.reload(); await page.getByRole('button', { name: '○×学習', exact: true }).click();
-  await expect(page.locator('.swipe-settings .record-stats div').nth(2).locator('b')).toHaveText('1');
+  await page.clock.fastForward(86_400_001);
+  expect(await page.evaluate(() => Date.now())).toBeGreaterThan(Date.parse('2026-10-12T00:00:00Z'));
+  await page.reload();
+  await page.getByLabel('○×の年度').selectOption('2020');
+  await expect(page.locator('.swipe-home-stats')).toContainText('1枚復習待ち');
   await start(page);
   await expect(page.locator('.swipe-card p')).toHaveText(firstText!);
   await page.getByRole('button', { name: expected ? '○と答える' : '×と答える', exact: true }).click();
   await expect(page.getByRole('heading', { name: '正解！', exact: true })).toBeVisible();
-  const reviewed = (await progress(page))[wrongId]; expect(reviewed.reviews).toBe(2); expect(reviewed.streak).toBe(1);
+  const reviewed = (await progress(page))[wrongId];
+  expect(reviewed.reviews).toBe(2); expect(reviewed.streak).toBe(1);
   expect(Date.parse(reviewed.dueAt) - Date.parse(reviewed.lastReviewedAt)).toBe(86_400_000);
 });
 
@@ -116,7 +142,7 @@ test('continuous ○× learning beyond 20 cards, backup preview/cancel/import an
   await page.getByText('○×履歴', {exact:true}).click();
   const download = page.waitForEvent('download'); await page.getByRole('button', { name: '○×履歴を書き出す', exact: true }).click();
   expect((await download).suggestedFilename()).toBe('care-manager-swipe-history.json');
-  const file = page.locator('.swipe-screen input[type=file]');
+  const file = page.locator('.swipe-home-card input[type=file]');
   await file.setInputFiles({ name: 'bad.json', mimeType: 'application/json', buffer: Buffer.from('{}') });
   await expect(page.getByRole('status').filter({ hasText: '形式が不正' })).toBeVisible();
   expect(await page.evaluate(k => localStorage.getItem(k), key)).toBe(raw);
@@ -159,7 +185,7 @@ test('denied storage access does not crash the app or overwrite unknown swipe hi
   const errors: string[] = []; page.on('pageerror', e => errors.push(e.message));
   await page.addInitScript(() => Object.defineProperty(window, 'localStorage', { get() { throw new Error('storage denied'); } }));
   await open(page);
-  await expect(page.locator('.swipe-screen [role=alert]')).toContainText('保存領域を利用できません');
+  await expect(page.locator('.swipe-home-card [role=alert]')).toContainText('保存領域を利用できません');
   await expect(page.getByRole('button', { name: '○×学習を始める', exact: true })).toBeDisabled();
   expect(errors).toEqual([]);
 });
