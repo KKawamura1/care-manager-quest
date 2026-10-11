@@ -15,7 +15,7 @@ function download(text: string, name: string) {
   const a = document.createElement('a'); a.href = url; a.download = name; a.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
-export function SwipeStudy({ active, onStart, onBack }: { active: boolean; onStart: () => void; onBack: () => void }) {
+export function SwipeStudy({ active, home, onStart, onBack }: { active: boolean; home: boolean; onStart: () => void; onBack: () => void }) {
   const [initial] = useState(() => {
     try { return loadSwipe(window.localStorage, swipeCardById); }
     catch { return { state: emptySwipe(), raw: undefined, error: 'このブラウザの○×保存領域を利用できません。' }; }
@@ -53,7 +53,7 @@ export function SwipeStudy({ active, onStart, onBack }: { active: boolean; onSta
     try { window.localStorage.setItem(SWIPE_STORAGE_KEY, JSON.stringify(state)); setError(undefined); }
     catch { setError('○×履歴を保存できません。タブを閉じる前に○×履歴を書き出してください。'); }
   }, [state, blocked]);
-  useEffect(() => { setHomeHost(active ? null : document.getElementById('swipe-home-setup')); }, [active]);
+  useEffect(() => { setHomeHost(home ? document.getElementById('swipe-home-setup') : null); }, [home]);
   useEffect(() => { if (!active) return; setNow(Date.now()); const timer = setInterval(() => setNow(Date.now()), 15_000); return () => clearInterval(timer); }, [active]);
   const submit = (answer: boolean | null) => {
     if (!card || blocked || result || locked.current) return;
@@ -143,7 +143,7 @@ export function SwipeStudy({ active, onStart, onBack }: { active: boolean; onSta
       <button className="secondary" onClick={() => setPreview(undefined)}>キャンセル</button>
     </section>}
   </div>;
-  if (!active) return homeHost ? createPortal(setup, homeHost) : null;
+  if (!active) return home && homeHost ? createPortal(setup, homeHost) : null;
   return <section className="swipe-screen">
     {error && <div className="warning" role="alert"><p>{error}</p>{blocked && <>
       <button onClick={() => download(initial.raw ?? '', 'care-manager-swipe-recovery.json')}>元の○×データを書き出す</button>
