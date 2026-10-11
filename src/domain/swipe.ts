@@ -79,7 +79,7 @@ export function recordSwipe(state: SwipeState, card: SwipeCard, answer: boolean 
 export function progressFor(state: SwipeState, card: SwipeCard): CardProgress | undefined {
   const p = state.progress[card.id]; return p?.revision === card.revision ? p : undefined;
 }
-// Shuffle on each set, keeping due mistakes ahead of due successes and unseen cards.
+// Shuffle eligible cards, keeping due mistakes ahead of due successes and unseen cards.
 export function reviewQueue(cards: readonly SwipeCard[], state: SwipeState, now: number, random: () => number = Math.random): SwipeCard[] {
   const groups: SwipeCard[][] = [[], [], []];
   for (const card of cards) {
