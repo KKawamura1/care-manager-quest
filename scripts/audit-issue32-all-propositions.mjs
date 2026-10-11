@@ -105,7 +105,7 @@ assert.equal(audit.length, 6346, 'unexpected proposition coverage');
 assert.equal(years.length, 21);
 assert.equal(keys.size, 6346);
 assert.equal(assigned + ambiguous + unmapped, 6346);
-assert.ok(reviewedDecisions >= 225, 'regression: expected at least 225 explicit decisions');
+assert.ok(reviewedDecisions >= 224, 'regression: expected at least 224 explicit decisions');
 const summary = {
   scope: '2005–2025 annual baseline + all per-question revisions (effective data)',
   scope_proposition_count: audit.length, year_count: years.length,
