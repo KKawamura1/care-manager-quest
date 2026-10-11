@@ -112,6 +112,7 @@ const conceptDefinitions = [
   ['4','4.2.poverty','生活困窮者自立支援制度','生活困窮者自立支援制度'],
   ['4','4.0.social_insurance','社会保険一般','社会保険方式|社会保険一般'],
   ['4','4.1','介護保険制度','介護保険制度'],
+  ...additionalConceptDefinitions,
 ];
 const aliases = new Map();
 for (const [root, id, label, names] of conceptDefinitions) {
