@@ -10,6 +10,7 @@ import { Modal } from './components/Modal';
 import { Emblem } from './components/Emblem';
 import { OriginalImage } from './components/OriginalImage';
 import { CopyQuestion } from './components/CopyQuestion';
+import { SwipeStudy } from './components/SwipeStudy';
 import { filterQuestions, parseYearFilter, YEAR_STORAGE_KEY, type YearFilter } from './domain/questionFilter';
 const DOMAIN_OPTIONS = [
   {value:'介護支援分野',label:'介護支援'},
@@ -49,7 +50,7 @@ export default function App() {
   const [player, setPlayer] = useState<PlayerState>(initial.player);
   const [blocked, setBlocked] = useState(Boolean('raw' in initial && initial.raw && initial.error));
   const [saveError, setSaveError] = useState(initial.error);
-  const [route, setRoute] = useState<'home'|'play'|'map'|'records'>(initial.player.session ? 'play' : 'home');
+  const [route, setRoute] = useState<'home'|'play'|'map'|'records'|'swipe'>(initial.player.session ? 'play' : 'home');
   const [detail, setDetail] = useState<Question>();
   const [conceptId, setConceptId] = useState<string>();
   const [importPreview, setImportPreview] = useState<PlayerState>();
@@ -109,10 +110,12 @@ export default function App() {
     {saveError && <div className="warning" role="alert"><p>{saveError}</p>{blocked && <><button onClick={()=>download(('raw' in initial && initial.raw) || '', 'care-manager-quest-recovery.json')}>元のデータを書き出す</button><button onClick={()=>{setBlocked(false);setPlayer(emptyPlayer());setSaveError(undefined);}}>新しい履歴で始める</button></>}</div>}
     {notice && <p className="notice" role="status">{notice}</p>}
     <main>
+      <SwipeStudy active={route === 'swipe'}/>
       {route === 'home' && <>
         <section className="hero"><div className="eyebrow"><span className="live-dot"/> THE KNOWLEDGE ADVENTURE</div><div className="hero-art"><Emblem/></div><h1>推理が、<br/><span>知識に変わる。</span></h1><p>推理して、介護保険の世界をつなげる。</p><div className="hero-meta"><span>過去問 {questions.length}問</span><span>現在の出題：{activeQuestions.length}問</span></div></section>
         <section className="mission-card"><div className="section-kicker">YOUR NEXT QUEST <span>5 QUESTIONS</span></div><h2>介護保険の世界へ</h2><p>年度と分野を選んで、5問ずつ挑戦できます。</p><label className="year-picker">出題する年度<select aria-label="出題する年度" value={yearFilter} onChange={e=>changeYear(parseYearFilter(e.target.value))}><option value="all">収録された全年度</option>{availableYears.map(year=><option key={year} value={year}>{year}年度</option>)}</select></label><fieldset className="domain-picker"><legend>出題する分野</legend>{DOMAIN_OPTIONS.map(option=><label key={option.value}><input type="radio" name="quest-domain" checked={domainFilter===option.value} onChange={()=>changeDomain(option.value)}/><span>{option.label}（{questions.filter(q=>(yearFilter==='all'||q.original?.year===yearFilter)&&(option.value==='all'||q.domain===option.value)).length}問）</span></label>)}</fieldset>{session&&!session.completed&&<p className="mission-note">年度・分野の変更は次の新しいクエストから反映します。進行中の5問はそのまま再開できます。</p>}<div className="quest-path">{['入口','探索','難問','ひと息','応用'].map((x,i)=><div key={x} className={i===2?'boss':''}><span>{i===2?'✦':i+1}</span><small>{x}</small></div>)}</div><button className="primary" disabled={blocked||activeQuestions.length<5} onClick={session&&!session.completed?()=>go('play'):start}>{session&&!session.completed?`第${session.index+1}問から再開`:'5問のクエストを始める'}<span>→</span></button><div className="mission-note">1回5問 · 複数選択 · 途中でも自動保存</div></section>
         <section className="discovery"><div><span className="section-kicker">YOUR DISCOVERIES</span><h2>知識の地図を広げよう</h2><p>{explored} / {concepts.length} 概念を探索 · {mastered} 習得済み</p></div><button aria-label="知識マップを見る" onClick={()=>go('map')}>↗</button></section>
+        <section className="panel"><span className="section-kicker">QUICK RECALL</span><h2>○×で、素早く覚える。</h2><p>知識分野を選び、選択肢を1枚ずつスワイプ。間違いを優先して復習します。</p><button className="primary" onClick={()=>go('swipe')}>○×スワイプ学習へ<span>→</span></button></section>
         <div className="home-tip"><span>✦</span><p>初見正解で <b>+20 XP</b>。<br/>原本と正答を確かめて、知識マップへ。</p></div>
       </>}
       {route === 'play' && current && session && !session.completed && <section className="play-screen">
@@ -144,7 +147,7 @@ export default function App() {
       </section>}
       <p className="copyright-note">{officialNotice}<br/>各年度の試験当時の正答で採点。現行法への適合性は未確認です。</p>
     </main>
-    <nav className="bottom-nav" aria-label="メインメニュー">{([['home','◇','冒険'],['map','⌘','知識マップ'],['records','≡','記録']] as const).map(([key,icon,label])=><button key={key} aria-label={label} className={(route===key||(key==='home'&&route==='play'))?'active':''} aria-current={(route===key||(key==='home'&&route==='play'))?'page':undefined} onClick={()=>go(key)}><span>{icon}</span>{label}</button>)}</nav>
+    <nav className="bottom-nav" aria-label="メインメニュー">{([['home','◇','冒険'],['swipe','○×','○×学習'],['map','⌘','知識マップ'],['records','≡','記録']] as const).map(([key,icon,label])=><button key={key} aria-label={label} className={(route===key||(key==='home'&&route==='play'))?'active':''} aria-current={(route===key||(key==='home'&&route==='play'))?'page':undefined} onClick={()=>go(key)}><span>{icon}</span>{label}</button>)}</nav>
     {burst && <div className={`burst ${burst}`} aria-hidden="true">{Array.from({length:18},(_,i)=><i key={i} style={{'--angle':`${i*20}deg`,'--distance':`${70+(i%4)*27}px`,'--delay':`${(i%3)*25}ms`} as React.CSSProperties}/>)}<span>{burst==='level'?'LEVEL UP':burst==='correct'?'CLEAR!':'DISCOVER'}</span></div>}
     {detail&&<Modal title="詳しく見る" onClose={()=>setDetail(undefined)}><div className="detail-content"><div className="eyebrow">THE CONNECTION</div><h3>{detail.title}</h3>
       <CopyQuestion key={detail.id} question={detail} includeAnswer selectedIds={player.attempts.slice().reverse().find(a=>a.questionId===detail.id)?.selectedIds}/>
