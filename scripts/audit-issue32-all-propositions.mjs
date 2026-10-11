@@ -56,7 +56,7 @@ const counts = {};
 const years = [];
 const audit = [];
 let reviewedDecisions = 0, assigned = 0, ambiguous = 0, unmapped = 0;
-let canonicalMissing = 0, canonicalUnknown = 0, nodeNotInPath = 0, labelAliases = 0, candidates = 0;
+let canonicalMissing = 0, canonicalUnknown = 0, nodeNotInPath = 0, labelAliases = 0, candidates = 0, reviewedFlagged = 0;
 const keys = new Set();
 const nowReviewVersion = 'judgment_knowledge_over_context';
 for (let year = 2005; year <= 2025; year++) {
@@ -90,7 +90,10 @@ for (let year = 2005; year <= 2025; year++) {
       unmapped++; flags.push('unmapped_or_source_review');
     }
     for (const f of flags) counts[f] = (counts[f] || 0) + 1;
-    if (flags.some((f) => f !== 'missing_canonical_id')) { candidates++; yearCandidates++; }
+    if (flags.some((f) => f !== 'missing_canonical_id')) {
+      if (semanticallyReviewedHere) reviewedFlagged++;
+      else { candidates++; yearCandidates++; }
+    }
     audit.push({
       key, year, question_stem: row.question_stem,
       proposition: row.proposition, status: row.classification_status,
@@ -98,8 +101,9 @@ for (let year = 2005; year <= 2025; year++) {
       primary_node_id: row.primary_node_id ?? null, primary_path: row.primary_path,
       semantic_review_evidence: semanticallyReviewedHere ? 'judgment_knowledge_reviewed' : 'not_verified_by_this_audit',
       legacy_review_annotation_present: Boolean(row.classification_review || row.classification_revision),
-      audit_flags: flags, audit_disposition: flags.some((f) => f !== 'missing_canonical_id') ?
-        'triage_priority_unconfirmed' : 'screened_not_semantically_verified'
+      audit_flags: flags, audit_disposition: semanticallyReviewedHere ? 'semantic_target_reviewed' :
+        (flags.some((f) => f !== 'missing_canonical_id') ?
+          'triage_priority_unconfirmed' : 'screened_not_semantically_verified')
     });
   }
   years.push({ year, propositions: rows.length, assigned: yearAssigned,
@@ -109,7 +113,7 @@ assert.equal(audit.length, 6346, 'unexpected proposition coverage');
 assert.equal(years.length, 21);
 assert.equal(keys.size, 6346);
 assert.equal(assigned + ambiguous + unmapped, 6346);
-assert.ok(reviewedDecisions >= 230, 'regression: expected at least 230 explicit decisions');
+assert.ok(reviewedDecisions >= 236, 'regression: expected at least 236 explicit decisions');
 const summary = {
   scope: '2005–2025 annual baseline + all per-question revisions (effective data)',
   scope_proposition_count: audit.length, year_count: years.length,
@@ -119,7 +123,8 @@ const summary = {
   other_not_semantically_verified_in_this_pass: audit.length - reviewedDecisions,
   classification_status: { assigned, ambiguous, other: unmapped },
   canonical_id: { missing: canonicalMissing, unknown: canonicalUnknown, root_inconsistent: nodeNotInPath, legacy_label_alias_or_detail: labelAliases },
-  potential_semantic_misclassifications_by_heuristic: candidates,
+  unreviewed_semantic_risk_candidates: candidates,
+  previously_reviewed_with_heuristic_flag: reviewedFlagged,
   flag_counts: counts, yearly: years,
   audit_schema: 'Each proposition has one record. Flags are screening candidates, not proven errors.'
 };
@@ -133,6 +138,7 @@ console.log('Explicit judgment-knowledge decisions: ' + reviewedDecisions +
   '; remaining without THIS semantic verification: ' + (audit.length - reviewedDecisions) + '.');
 console.log('Statuses: ' + assigned + ' assigned, ' + ambiguous + ' ambiguous, ' + unmapped + ' other.');
 console.log('Canonical IDs missing: ' + canonicalMissing + '; legacy path label aliases: ' + labelAliases +
-  '; risk candidates (excluding only missing ID): ' + candidates + '.');
+  '; unreviewed semantic-risk candidates: ' + candidates +
+  '; reviewed but heuristic-flagged: ' + reviewedFlagged + '.');
 console.log('Risk flags: ' + JSON.stringify(counts));
 console.log('Per-year: ' + JSON.stringify(years));
