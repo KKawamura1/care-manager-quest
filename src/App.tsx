@@ -113,7 +113,7 @@ export default function App() {
     {saveError && <div className="warning" role="alert"><p>{saveError}</p>{blocked && <><button onClick={()=>download(('raw' in initial && initial.raw) || '', 'care-manager-quest-recovery.json')}>元のデータを書き出す</button><button onClick={()=>{setBlocked(false);setPlayer(emptyPlayer());setSaveError(undefined);}}>新しい履歴で始める</button></>}</div>}
     {notice && <p className="notice" role="status">{notice}</p>}
     <main>
-      <SwipeStudy active={route === 'swipe'} onStart={()=>go('swipe')} onBack={()=>go('home')}/>
+      <SwipeStudy active={route === 'swipe'} home={route === 'home'} onStart={()=>go('swipe')} onBack={()=>go('home')}/>
       {route === 'home' && <>
         <section className="home-screen">
           <section className="mission-card swipe-home-card" id="swipe-home-setup" aria-label="○×学習の設定"/>
