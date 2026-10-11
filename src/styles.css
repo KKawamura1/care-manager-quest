@@ -49,5 +49,12 @@ select:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
 .swipe-screen:has(.swipe-card) { padding-top: 14px; }
 .swipe-screen:has(.swipe-card) h1 { font-size: 22px; }
 .swipe-screen:has(.swipe-card) .quest-heading { margin-top: 15px; }
+.swipe-surface, .swipe-surface .swipe-card { touch-action: none; }
+.swipe-effect { position: fixed; top: 35%; left: 50%; z-index: 30; width: 130px; height: 130px; border-radius: 50%; display: grid; place-items: center; font-size: 90px; line-height: 1; font-weight: 800; pointer-events: none; background: #101b26e8; border: 3px solid currentColor; opacity: 0; }
+.swipe-effect.correct { color: var(--mint); animation: swipe-win .65s ease-out both; }
+.swipe-effect.wrong { color: var(--coral); animation: swipe-miss .65s ease-out both; }
+@keyframes swipe-win { 0% { opacity: 0; transform: translateX(-50%) scale(.5); } 25% { opacity: 1; transform: translateX(-50%) scale(1.08); } 60% { opacity: 1; transform: translateX(-50%) scale(1); } 100% { opacity: 0; transform: translateX(-50%) scale(1.2); } }
+@keyframes swipe-miss { 0% { opacity: 0; transform: translateX(-50%) scale(.8); } 20%, 50% { opacity: 1; transform: translateX(calc(-50% - 7px)); } 35%, 65% { opacity: 1; transform: translateX(calc(-50% + 7px)); } 100% { opacity: 0; transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .swipe-effect { display: none; } }
 
 .question-stem{white-space:pre-line}

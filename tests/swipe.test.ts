@@ -106,4 +106,19 @@ describe('recall scheduling and isolated storage', () => {
     expect(loaded.raw).toBe('{broken'); expect(loaded.error).toBeTruthy(); expect(loaded.state).toEqual(emptySwipe());
     expect(loadSwipe({ getItem: () => { throw new Error('denied'); } }, swipeCardById).error).toBe('denied');
   });
+  it('records unknown as a mistake independently of card truth, and roundtrips both new and prior boolean answers', () => {
+    for (const truth of [true, false]) {
+      const card = { ...a, truth, revision: `${a.questionVersion}:${truth ? '○' : '×'}` };
+      const map = new Map([[card.id, card]]);
+      const success = recordSwipe(emptySwipe(), card, truth, now);
+      expect(parseSwipe(JSON.stringify(success), map)).toEqual(success);
+      const unknown = recordSwipe(success, card, null, now + 1);
+      expect(unknown.progress[card.id]).toMatchObject({ reviews: 2, correct: 1, lapses: 1, streak: 0, lastCorrect: false, lastAnswer: null });
+      expect(Date.parse(unknown.progress[card.id].dueAt) - Date.parse(unknown.progress[card.id].lastReviewedAt)).toBe(60_000);
+      expect(parseSwipe(JSON.stringify(unknown), map)).toEqual(unknown);
+      expect(reviewQueue([card], unknown, now + 60_001)).toHaveLength(1);
+      const invalid = structuredClone(unknown); invalid.progress[card.id].lastCorrect = true;
+      expect(() => parseSwipe(JSON.stringify(invalid), map)).toThrow();
+    }
+  });
 });

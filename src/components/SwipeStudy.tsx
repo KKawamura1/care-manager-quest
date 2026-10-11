@@ -23,15 +23,15 @@ export function SwipeStudy({ active }: { active: boolean }) {
   const [now, setNow] = useState(Date.now());
   const [queue, setQueue] = useState<SwipeCard[]>([]);
   const [index, setIndex] = useState(0);
-  const [result, setResult] = useState<{ answer: boolean; correct: boolean }>();
+  const [result, setResult] = useState<{ answer: boolean | null; correct: boolean }>();
   const [score, setScore] = useState(0);
   const [summary, setSummary] = useState('');
-  const [drag, setDrag] = useState(0);
+  const [drag, setDrag] = useState({ x: 0, y: 0 });
   const [original, setOriginal] = useState(false);
   const [preview, setPreview] = useState<SwipeState>();
   const [message, setMessage] = useState('');
   const fileRef = useRef<HTMLInputElement>(null);
-  const gesture = useRef<{ x: number; y: number; id: number } | undefined>(undefined);
+  const gesture = useRef<{ x: number; y: number; id: number; phase: 'answer' | 'feedback' } | undefined>(undefined);
   const locked = useRef(false);
   const nextRef = useRef<HTMLButtonElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -52,17 +52,18 @@ export function SwipeStudy({ active }: { active: boolean }) {
     catch { setError('○×履歴を保存できません。タブを閉じる前に○×履歴を書き出してください。'); }
   }, [state, blocked]);
   useEffect(() => { if (!active) return; setNow(Date.now()); const timer = setInterval(() => setNow(Date.now()), 15_000); return () => clearInterval(timer); }, [active]);
-  const submit = (answer: boolean) => {
+  const submit = (answer: boolean | null) => {
     if (!card || blocked || result || locked.current) return;
     locked.current = true;
-    const correct = answer === card.truth;
+    const correct = answer !== null && answer === card.truth;
     setState(s => recordSwipe(s, card, answer, Date.now()));
-    setResult({ answer, correct }); setScore(s => s + Number(correct)); setDrag(0);
+    setResult({ answer, correct }); setScore(s => s + Number(correct)); setDrag({ x: 0, y: 0 });
     requestAnimationFrame(() => { nextRef.current?.focus({ preventScroll: true }); document.getElementById('swipe-feedback')?.scrollIntoView({ block: 'start', behavior: 'instant' }); });
   };
   const next = () => {
     if (!result) return;
-    locked.current = false; setResult(undefined); setOriginal(false); setDrag(0); setNow(Date.now());
+    if (!locked.current) return;
+    locked.current = false; setResult(undefined); setOriginal(false); setDrag({ x: 0, y: 0 }); setNow(Date.now());
     if (index + 1 === queue.length) { setSummary(`${queue.length}枚中 ${score}枚正解。間違えたカードは1分後から優先して復習します。`); setQueue([]); setIndex(0); }
     else { setIndex(i => i + 1); requestAnimationFrame(() => cardRef.current?.focus({ preventScroll: true })); }
     window.scrollTo({ top: 0, behavior: 'instant' });
@@ -73,19 +74,24 @@ export function SwipeStudy({ active }: { active: boolean }) {
     locked.current = false; setQueue(next); setIndex(0); setScore(0); setResult(undefined); setSummary(''); setOriginal(false);
   };
   const down = (e: PointerEvent<HTMLDivElement>) => {
-    if (result || !e.isPrimary || (e.pointerType === 'mouse' && e.button !== 0)) return;
-    gesture.current = { x: e.clientX, y: e.clientY, id: e.pointerId }; e.currentTarget.setPointerCapture(e.pointerId);
+    if (!e.isPrimary || (e.pointerType === 'mouse' && e.button !== 0) || (e.target as HTMLElement).closest('button,a,input,summary')) return;
+    gesture.current = { x: e.clientX, y: e.clientY, id: e.pointerId, phase: result ? 'feedback' : 'answer' }; e.currentTarget.setPointerCapture(e.pointerId);
   };
   const move = (e: PointerEvent<HTMLDivElement>) => {
     const g = gesture.current; if (!g || g.id !== e.pointerId) return;
     const dx = e.clientX - g.x, dy = e.clientY - g.y;
-    setDrag(Math.abs(dx) > Math.abs(dy) ? Math.max(-110, Math.min(110, dx)) : 0);
+    if (result) return;
+    setDrag(Math.abs(dx) > Math.abs(dy) * 1.4 ? { x: Math.max(-110, Math.min(110, dx)), y: 0 } : dy < 0 && Math.abs(dy) > Math.abs(dx) * 1.4 ? { x: 0, y: Math.max(-110, dy) } : { x: 0, y: 0 });
   };
   const up = (e: PointerEvent<HTMLDivElement>) => {
-    const g = gesture.current; gesture.current = undefined; setDrag(0);
+    const g = gesture.current; gesture.current = undefined; setDrag({ x: 0, y: 0 });
     if (!g || g.id !== e.pointerId) return;
     const dx = e.clientX - g.x, dy = e.clientY - g.y;
-    if (Math.abs(dx) >= 60 && Math.abs(dx) > Math.abs(dy) * 1.4) submit(dx > 0);
+    const horizontal = Math.abs(dx) >= 60 && Math.abs(dx) > Math.abs(dy) * 1.4;
+    const upward = dy <= -60 && Math.abs(dy) > Math.abs(dx) * 1.4;
+    if (!horizontal && !upward) return;
+    if (g.phase === 'feedback') { if (result) next(); }
+    else if (!result) submit(upward ? null : dx > 0);
   };
   const importFile = async (file?: File) => {
     if (!file) return;
@@ -102,7 +108,7 @@ export function SwipeStudy({ active }: { active: boolean }) {
     </>}</div>}
     {message && <p role="status">{message}</p>}
     {!card ? <>
-      <p className="page-intro">右へスワイプで○、左へスワイプで×。1回最大20枚で、知識を素早く確認。</p>
+      <p className="page-intro">右で○、左で×、上で「わからない」。解説を読んだら、左右・上のスワイプで次へ。1回最大20枚。</p>
       {summary && <p className="notice" role="status">{summary}</p>}
       <div className="panel swipe-settings">
         <label>○×の年度<select aria-label="○×の年度" value={year} onChange={e => { setYear(e.target.value === 'all' ? 'all' : Number(e.target.value)); setTopic('all'); }}>
@@ -137,20 +143,26 @@ export function SwipeStudy({ active }: { active: boolean }) {
       <p className="swipe-topic">{swipeConcepts.find(c => c.id === card.topicId)?.label ?? '選択肢別の分類は未確認'}</p>
       <div className="swipe-context"><b>元の設問</b><p>{card.stem}</p></div>
       <p className="mission-note">この設問の文脈で、選択肢の内容・条件への該当を判定してください。</p>
+      <div className="swipe-surface" onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={() => { gesture.current = undefined; setDrag({ x: 0, y: 0 }); }} onLostPointerCapture={() => { gesture.current = undefined; setDrag({ x: 0, y: 0 }); }}
+        onKeyDown={e => { if (['ArrowRight','ArrowLeft','ArrowUp'].includes(e.key)) { e.preventDefault(); if (e.repeat) return; if (result) next(); else submit(e.key === 'ArrowUp' ? null : e.key === 'ArrowRight'); } }}>
       <div ref={cardRef} className={`swipe-card ${result ? result.correct ? 'swipe-correct' : 'swipe-wrong' : ''}`} tabIndex={0} role="group" aria-label="○×カード"
-        style={{ transform: `translateX(${drag}px) rotate(${drag / 20}deg)` }} onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={() => { gesture.current = undefined; setDrag(0); }} onLostPointerCapture={() => { gesture.current = undefined; setDrag(0); }}
-        onKeyDown={e => { if (result) return; if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); submit(e.key === 'ArrowRight'); } }}>
+        style={{ transform: `translate(${drag.x}px, ${drag.y}px) rotate(${drag.x / 20}deg)` }}>
         <span className="section-kicker">CHOICE {card.choiceId}</span><p>{card.text}</p>
-        {drag !== 0 && <span className={`swipe-stamp ${drag > 0 ? 'mint' : 'coral'}`} aria-hidden="true">{drag > 0 ? '○' : '×'}</span>}
+        {(drag.x !== 0 || drag.y !== 0) && <span className={`swipe-stamp ${drag.x > 0 ? 'mint' : 'coral'}`} aria-hidden="true">{drag.y < 0 ? '？' : drag.x > 0 ? '○' : '×'}</span>}
       </div>
-      {!result ? <div className="swipe-actions"><button className="secondary swipe-no" aria-label="×と答える" disabled={blocked} onClick={() => submit(false)}>← ×</button><button className="primary swipe-yes" aria-label="○と答える" disabled={blocked} onClick={() => submit(true)}>○ →</button></div> : <>
+      {result && <span key={card.id} className={`swipe-effect ${result.correct ? 'correct' : 'wrong'}`} aria-hidden="true">{result.correct ? '○' : '×'}</span>}
+      {!result ? <><div className="swipe-actions"><button className="secondary swipe-no" aria-label="×と答える" disabled={blocked} onClick={() => submit(false)}>← ×</button><button className="primary swipe-yes" aria-label="○と答える" disabled={blocked} onClick={() => submit(true)}>○ →</button></div><button className="secondary" onClick={() => submit(null)} disabled={blocked}>↑ わからない</button></> : <>
         <div id="swipe-feedback" className={`feedback ${result.correct ? 'success' : 'miss'}`} role="status">
-          <h2>{result.correct ? '正解！' : 'もう一度覚えよう'}</h2><p className="swipe-verdict">正答：<b>{card.truth ? '○' : '×'}</b> ／ あなた：{result.answer ? '○' : '×'}</p>
+          <h2>{result.correct ? '正解！' : 'もう一度覚えよう'}</h2><p className="swipe-verdict">正答：<b>{card.truth ? '○' : '×'}</b> ／ あなた：{result.answer === null ? 'わからない' : result.answer ? '○' : '×'}</p>
           <p>{card.explanation || `${card.year}年度の正答キーに${card.truth === card.correctChoiceTruth ? '含まれる' : '含まれない'}選択肢です。${card.correctChoiceTruth ? '' : '誤りを選ぶ設問のため、正答キーの選択肢は×です。'}`}</p>
           {!card.explanation && <p className="fine-print">独自解説は未登録です。詳しい理由は原問題・原典で確認してください。</p>}
           <p className="fine-print">次の復習：{new Date(state.progress[card.id].dueAt).toLocaleString('ja-JP')}</p>
+          <p className="mission-note">カード・解説を左右または上へスワイプして次へ</p>
         </div>
         <button className="primary" ref={nextRef} onClick={next}>{index + 1 === queue.length ? '学習結果を見る' : '次のカードへ'}<span aria-hidden="true">→</span></button>
+      </>}
+      </div>
+      {result && <>
         <details className="panel"><summary>元の問題・原典を確認</summary>
           <ol>{questionById(card.questionId)?.options.map(o => <li key={o.id}>{o.text}</li>)}</ol>
           {questionById(card.questionId)?.original?.imagePath && <><button className="secondary" onClick={() => setOriginal(!original)}>{original ? '原本を閉じる' : '原本画像を見る'}</button>{original && <OriginalImage question={questionById(card.questionId)!}/>}</>}

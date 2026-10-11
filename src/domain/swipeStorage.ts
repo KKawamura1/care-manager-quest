@@ -18,9 +18,10 @@ export function parseSwipe(text: string, cards: ReadonlyMap<string, SwipeCard>):
     const r = object(raw), revision = r.revision;
     if (typeof revision !== 'string' || !/^\d+:[○×]$/.test(revision)) fail();
     const reviews = integer(r.reviews), correct = integer(r.correct), streak = integer(r.streak), lapses = integer(r.lapses);
-    const lastCorrect = boolean(r.lastCorrect), lastAnswer = boolean(r.lastAnswer), lastReviewedAt = date(r.lastReviewedAt), dueAt = date(r.dueAt);
+    const lastCorrect = boolean(r.lastCorrect), lastAnswer = r.lastAnswer === null ? null : boolean(r.lastAnswer), lastReviewedAt = date(r.lastReviewedAt), dueAt = date(r.dueAt);
     if (!reviews || correct > reviews || correct + lapses !== reviews || streak > correct || (lastCorrect ? streak < 1 : streak !== 0) || Date.parse(dueAt) <= Date.parse(lastReviewedAt)) fail();
-    if (revision === cards.get(id)!.revision && lastCorrect !== (lastAnswer === cards.get(id)!.truth)) fail();
+    if (lastAnswer === null && lastCorrect) fail();
+    if (revision === cards.get(id)!.revision && lastCorrect !== (lastAnswer !== null && lastAnswer === cards.get(id)!.truth)) fail();
     result.progress[id] = { revision: revision as string, reviews, correct, streak, lapses, lastCorrect, lastAnswer, lastReviewedAt, dueAt } satisfies CardProgress;
   }
   return result;

@@ -63,16 +63,16 @@ export function buildSwipeCards(questions: readonly Question[], truth: Record<st
 
 export interface CardProgress {
   revision: string; reviews: number; correct: number; streak: number; lapses: number;
-  lastCorrect: boolean; lastAnswer: boolean; lastReviewedAt: string; dueAt: string;
+  lastCorrect: boolean; lastAnswer: boolean | null; lastReviewedAt: string; dueAt: string;
 }
 export interface SwipeState { schemaVersion: 1; progress: Record<string, CardProgress> }
 export const emptySwipe = (): SwipeState => ({ schemaVersion: 1, progress: {} });
 const DAY = 86_400_000;
 // First recall: tomorrow. Subsequent successes: 3, 7, 14, 30, 60 days.
 const intervals = [1, 3, 7, 14, 30, 60];
-export function recordSwipe(state: SwipeState, card: SwipeCard, answer: boolean, now: number): SwipeState {
+export function recordSwipe(state: SwipeState, card: SwipeCard, answer: boolean | null, now: number): SwipeState {
   const old = state.progress[card.id]?.revision === card.revision ? state.progress[card.id] : undefined;
-  const correct = answer === card.truth, streak = correct ? (old?.streak ?? 0) + 1 : 0;
+  const correct = answer !== null && answer === card.truth, streak = correct ? (old?.streak ?? 0) + 1 : 0;
   const delay = correct ? intervals[Math.min(streak - 1, intervals.length - 1)] * DAY : 60_000;
   return { ...state, progress: { ...state.progress, [card.id]: {
     revision: card.revision, reviews: (old?.reviews ?? 0) + 1, correct: (old?.correct ?? 0) + Number(correct),
