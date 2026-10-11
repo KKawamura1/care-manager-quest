@@ -4,6 +4,10 @@ import { swipeCards, swipeCardById, swipeCategories, swipeConcepts, swipeCatalog
 import { emptySwipe, filterSwipeCards, progressFor, recordSwipe, reviewQueue, type SwipeCard, type SwipeState } from '../domain/swipe';
 import { loadSwipe, parseSwipe, SWIPE_IMPORT_BYTES, SWIPE_STORAGE_KEY } from '../domain/swipeStorage';
 import { OriginalImage } from './OriginalImage';
+import { CopyText } from './CopyQuestion';
+import { AppExplanation } from './AppExplanation';
+import { cardTarget } from '../domain/appExplanation';
+import { swipeCopyText } from '../domain/questionCopy';
 
 function download(text: string, name: string) {
   const url = URL.createObjectURL(new Blob([text], { type: 'application/json' }));
@@ -162,7 +166,9 @@ export function SwipeStudy({ active }: { active: boolean }) {
         <button className="primary" ref={nextRef} onClick={next}>{index + 1 === queue.length ? '学習結果を見る' : '次のカードへ'}<span aria-hidden="true">→</span></button>
       </>}
       </div>
+      {questionById(card.questionId) && <CopyText key={`${card.id}:${Boolean(result)}`} text={swipeCopyText(questionById(card.questionId)!, card, Boolean(result), result?.answer)} includeAnswer={Boolean(result)}/>}
       {result && <>
+        <AppExplanation key={`${card.id}:${card.revision}`} target={cardTarget(card)}/>
         <details className="panel"><summary>元の問題・原典を確認</summary>
           <ol>{questionById(card.questionId)?.options.map(o => <li key={o.id}>{o.text}</li>)}</ol>
           {questionById(card.questionId)?.original?.imagePath && <><button className="secondary" onClick={() => setOriginal(!original)}>{original ? '原本を閉じる' : '原本画像を見る'}</button>{original && <OriginalImage question={questionById(card.questionId)!}/>}</>}

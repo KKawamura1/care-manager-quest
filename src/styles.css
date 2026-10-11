@@ -58,3 +58,4 @@ select:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) { .swipe-effect { display: none; } }
 
 .question-stem{white-space:pre-line}
+.app-explanation{margin:16px 0;padding:16px;border:1px solid var(--line);border-radius:12px}.app-explanation .secondary,.app-explanation .primary{width:100%;margin-top:8px}.saved-explanation{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.7}.app-explanation textarea{box-sizing:border-box}.app-explanation [role=alert]{color:var(--coral);overflow-wrap:anywhere}
