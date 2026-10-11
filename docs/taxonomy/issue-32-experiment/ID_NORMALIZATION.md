@@ -1,36 +1,63 @@
-# PR #33: IDの非破壊的な正規化
+# PR #33: 分類パスを共通の知識の引き出しへ統合
 
-## 実態と問題
-- 設問IDは2005〜2019年・2021〜2025年が `YYYY-NN`、2020年だけ元問題パックの `care_manager_2020_NNN`（60問・301命題）。
-- `primary_path` と `candidate_paths` は旧数値IDと日本語ラベルが混在する実験パス。例: v1.0の `1.2 = 生活機能` はv1.1では `1.2 = 症状・徴候・検査` であり、IDだけ置換すると誤対応が生じる。
-- `taxonomy-v1.1.json` は代表ノードのみを登録する仮説ツリー。実験パスのすべての末端概念・属性が載っているわけではない。
+## なぜ必要か
+初期の分類では、独立命題の具体的な判定対象（例: 訪問介護、地域密着型通所介護）まで自由記述の `primary_path` の末端へ格納しており、6,346命題に対し **2,669種類の異なる分類パス**を生んでいた。旧パスへ単にハッシュIDを振るだけでは学習用の知識分類を作れない。
 
-## 正規化の仕様
-`node scripts/normalize-issue32-ids.mjs --jsonl` で、元JSONLを編集せず年度横断の参照インデックスを生成する。
+## 新しい正規化の単位
+**概念（何についての知識か） × 属性（何を知る必要があるか）** を再利用可能な引き出しとする。個別の肯否判定可能な命題は引き出しの内容であって、各命題が新しい分類先を作るわけではない。
 
-| フィールド | 意味 |
+例: 2024年度第6問は次の5命題が元データでは5つの異なるパスだった。
+
+```text
+介護保険制度 → 給付 → 区分支給限度基準額 → 適用サービス → 訪問介護
+介護保険制度 → 給付 → 区分支給限度基準額 → 適用サービス → 地域密着型通所介護
+介護保険制度 → 給付 → 区分支給限度基準額 → 適用サービス → 居宅療養管理指導
+（以下2件も同様）
+```
+
+正規化後は**5命題すべて**が `区分支給限度基準額 → 適用サービス` という1つの分類先 `drawer32.4.4.1.benefits.limit#applicable_services` を参照する。どのサービスを選んだか、原文、正誤は命題側に残る。
+
+他の境界:
+- 特養の人員配置と特養の運営基準は**別の引き出し**。老健の人員配置とも分ける。
+- 特養で求められる介護支援専門員の配置と、介護支援専門員自身の登録・更新も別。
+- 居宅介護住宅改修費の対象工事と支給限度額は別。
+- 専門職の資格登録・更新と業務上の責務は別。
+- 介護保険制度上の給付と、特定の介護サービスの報酬・運営基準は別。
+
+## 出力データ
+`scripts/normalize-issue32-ids.mjs` が21年度の `propositions/YYYY.jsonl` を毎回読み込み、同じ規則で次を生成する。原JSONLを破壊的に書き換えない。
+
+| ファイル（GitHub Actionsのartifact） | 役割 |
 | --- | --- |
-| `canonical_question_id` | 統一した `YYYY-NN`。例: `2020-01` |
-| `source_question_id` | 元の外部参照キー。例: `care_manager_2020_001`（破棄禁止） |
-| `proposition_id` | `YYYY-NN/cN/pN`。年度横断で一意な命題ID |
-| `primary_path_id` | `path32.` + 原パス配列のSHA-256先頭24桁。分類未割当はnull |
-| `candidate_path_ids` | 候補パスのID（元の候補順を維持） |
-| `primary_v1_1_anchor_id` | v1.1ツリー上でID・ラベル・親関係が確認できる最深祖先 |
-| `primary_v1_1_exact_node_id` | 分類パス末端とv1.1正規ノードまで一致する場合のみ値を付与 |
+| `proposition-drawer-index.jsonl` | 6,346命題のID、原問題ID、共通引き出しID、候補引き出しID、要レビュー状態 |
+| `knowledge-drawers.jsonl` | 統合済み引き出しの正規ID、概念・属性、登録された命題数、元のパスID一覧、例文 |
+| `original-path-to-drawers.jsonl` | 元パスから引き出しへの参照表（同一パスが複数の知識主語を含む場合は複数を記録） |
+| `review-required-drawers.jsonl` | 自動確定できない概念・属性のレビュー対象 |
+| `question-id-aliases.json` | 2020年度の元ID→`YYYY-NN` 対応表（60件） |
+| `normalization-report.json` | 集約件数、未整理件数、v1.1との衝突数 |
 
-`path32.*` は**同一の実験パスを指すID**であり、概念の永続的な意味IDではない。表記や分類位置が変われば別IDになる。同音・類似の異なるパスを機械的に同一概念とみなさない。
-`primary_v1_1_anchor_id` は**末端の分類先ではない**。例えば「4 → 社会保障の仕組み → 社会保険一般 → 保険者の主体」はv1.1の末端ノードが未登録で、anchorは `4`、exactは `null`。同じ数字の旧コードが異なる意味なら移行しない。
-分類の妥当性・正誤・当時法令の確認や、既存179概念との統合は行わない。元の `question_id` / `primary_path` / `candidate_paths` / 原文 / 学習履歴 / checksum は変更しない。
+`primary_drawer_id` は **`classification_status=ambiguous` ではnullのまま**。候補は `candidate_drawer_ids` に残す。分類の曖昧さを、ID変換だけで解決済みにしない。
 
-## 実行コマンド
+## 統合判断のルール
+1. 定義済みの概念別名辞書で、旧表記の同義名称を正規化する（例: `介護老人福祉施設` / `介護老人福祉施設（特養）`）。ルールは分野ルートを指定しており、別分野の同名・関連語を勝手に合体しない。
+2. パス・属性を参照して、汎用の属性カテゴリへ正規化する（例: 人員配置、運営基準、費用・報酬、対象・要件、登録・更新、適用サービス）。特定の選択肢に現れる商品名・サービス名・数値を分類ノードにしない。
+3. 概念名を確実に同定できない場合、元の `subject_concept` ごとに別の暫定概念IDを持たせ、`concept_resolution=provisional` にする。属性を確実に同定できない場合は `attribute_resolution=unresolved` にして保留する。
+4. **要レビューの引き出しは確定した意味分類ではない**。同じ概念に複数属性の独立した知識がある場合は維持し、改訂履歴・原文・過去問正誤・歴史的法令の判定とは分離する。
+5. v1.1の既存ノードID・日本語ラベル・親関係に一致する部分だけ、参考の最深祖先IDを付与。`1.2`等のv1.0/v1.1間で意味が変わったコードをそのまま流用しない。`path32.*`は**元パス文字列の識別子**であり、正規化した知識のIDではない。
 
+## 実行
 ```bash
 node scripts/normalize-issue32-ids.mjs --check
 node scripts/test-issue32-ids.mjs
+node scripts/test-issue32-drawers.mjs
 node scripts/normalize-issue32-ids.mjs --report
-node scripts/normalize-issue32-ids.mjs --aliases > /tmp/issue32-question-aliases.json
-node scripts/normalize-issue32-ids.mjs --paths > /tmp/issue32-path-registry.jsonl
-node scripts/normalize-issue32-ids.mjs --jsonl > /tmp/issue32-normalized-ids.jsonl
+node scripts/normalize-issue32-ids.mjs --drawers > /tmp/knowledge-drawers.jsonl
+node scripts/normalize-issue32-ids.mjs --jsonl > /tmp/proposition-drawer-index.jsonl
+node scripts/normalize-issue32-ids.mjs --review > /tmp/review-required-drawers.jsonl
 ```
 
-`--check` は21年度・1,260問・6,346命題・命題ID一意性・5肢・命題番号連番・パスID衝突を検証する。誤分類がないことは保証しない。後続の意味レビューでv1.1末端ノードを追加し、IDマッピングを確定していく。
+CIでは毎回これらを生成して **`issue32-normalized-drawers`** という検証用artifactで公開する。元問題パック・原文・正答・学習履歴・既存179概念・分類レビュー履歴は変更しない。`--check` は重複やID形式、元の命題数、統合結果を検証する。
+
+## 今回の範囲と後続レビュー
+機械的に複数パスを一つの「概念×属性」へ集約するところまではこのPRで実施する。一方、意味的に同一か不明な概念を、語句の類似だけで無理に統合しない。レビュー候補は上記JSONLに保存し、今後の人手・エージェント確認に回す。
+ここでの `curated` は**明示した辞書・属性ルールに合致した**ことを示し、個別命題の意味・正誤を人手で全件検証したことを意味しない。学習アプリへの採用や、恒久的な共通知識ノードへの移行も別に判断する。
