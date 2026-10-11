@@ -91,17 +91,25 @@ for (let year = 2005; year <= 2025; year++) {
 const difficultKeys = difficult.map((r) => [r.question_id, r.choice_index, r.proposition_index].join('/'));
 assert.equal(new Set(difficultKeys).size, difficultKeys.length, 'duplicate difficult case');
 assert.deepEqual(new Set(difficultKeys), allDifficult, 'difficult-cases out of sync');
-assert.equal(total, 6335);
+assert.equal(total, 6336);
 assert.equal(manifest.coverage.proposition_record_count, total);
 assert.equal(manifest.coverage.difficult_case_count, difficult.length);
 assert.deepEqual(manifest.coverage.status_counts, statusTotal);
 assert.deepEqual(manifest.coverage.primary_root_counts, rootTotal);
-assert.deepEqual(reviewed, { 2018: 2, 2024: 105, 2025: 300 }, 'reviewed record counts');
+assert.deepEqual(reviewed, { 2018: 2, 2021: 301, 2024: 105, 2025: 300 }, 'reviewed record counts');
 
 const expectedPaths = [
   ['2018-10/5/1', '普通徴収と特別徴収'],
   ['2018-21/1/1', '認定調査票'],
   ['2024-13/1/1', '認知症総合支援事業'],
+  ['2021-03/1/2', '受給権保障'],
+  ['2021-09/2/1', '指定権者'],
+  ['2021-22/3/1', '施設サービス計画'],
+  ['2021-31/2/1', '認知症疾患医療センター'],
+  ['2021-34/4/1', '褥瘡'],
+  ['2021-41/4/1', '訪問看護'],
+  ['2021-43/2/1', '看護小規模多機能型居宅介護'],
+  ['2021-54/3/1', '居宅介護住宅改修費'],
   ['2024-31/1/1', '退院・退所支援'],
   ['2025-02/5/1', '認知症基本法'],
   ['2025-27/3/1', '膀胱留置カテーテル'],
@@ -123,4 +131,4 @@ for (const item of checksumList) {
 }
 assert.equal(checksumList.length, 25);
 assert.match(read('README.md'), /初回分類時点のスナップショット/);
-console.log(`taxonomy experiment integrity OK: ${total} propositions; ${difficult.length} difficult; 407 reviewed; ${checksumList.length} checksums`);
+console.log(`taxonomy experiment integrity OK: ${total} propositions; ${difficult.length} difficult; 708 reviewed; ${checksumList.length} checksums`);
