@@ -19,10 +19,10 @@
       "needs_source_review": 0
     },
     "primary_root_counts": {
-      "人の健康と生活": 1240,
-      "支援の考え方と方法": 1281,
+      "人の健康と生活": 1235,
+      "支援の考え方と方法": 1279,
       "支援の提供体制": 1931,
-      "社会保障の仕組み": 1787
+      "社会保障の仕組み": 1794
     }
   },
   "validation": {
@@ -35,9 +35,9 @@
     "unmapped_rows_have_no_assigned_path": true
   },
   "source_notes": {
+    "2025": "Full 60-question compressed source reconstructed by scripts/import-2025.mjs; SHA-256 badd92f316d751be0eb8414cfb4139f533e57a8186a0f53ab07302017de8161a. The 2025 source pack has no option-level classifications.",
     "2005-2016": "Question text compared against repository question pack files.",
-    "2017-2024": "Existing source/status metadata retained in each record.",
-    "2025": "Full 60-question compressed source reconstructed by scripts/import-2025.mjs; SHA-256 badd92f316d751be0eb8414cfb4139f533e57a8186a0f53ab07302017de8161a. The 2025 source pack has no option-level classifications."
+    "2017-2024": "Existing source/status metadata retained in each record."
   },
   "status_definitions": {
     "assigned": "A single primary path was selected; this records topical classification, not answer truth.",
@@ -175,9 +175,9 @@
       },
       "primary_root_counts": {
         "人の健康と生活": 59,
-        "支援の考え方と方法": 76,
+        "支援の考え方と方法": 74,
         "支援の提供体制": 111,
-        "社会保障の仕組み": 60
+        "社会保障の仕組み": 62
       },
       "ambiguous_candidate_root_counts": {}
     },
@@ -486,15 +486,26 @@
         "needs_source_review": 0
       },
       "primary_root_counts": {
-        "人の健康と生活": 58,
+        "人の健康と生活": 53,
         "支援の考え方と方法": 57,
         "支援の提供体制": 87,
-        "社会保障の仕組み": 94
+        "社会保障の仕組み": 99
       },
       "ambiguous_candidate_root_counts": {
         "支援の考え方と方法": 5,
         "社会保障の仕組み": 3
       }
     }
-  ]
+  ],
+  "classification_review_overlay": {
+    "version": "hypothesis-v1.1",
+    "source_issue": 36,
+    "reviewed_records": 21,
+    "years": [
+      2010,
+      2025
+    ],
+    "total_records": 6335,
+    "scope": "incremental assistant semantic classification review, not historical-law or source proofreading"
+  }
 }
