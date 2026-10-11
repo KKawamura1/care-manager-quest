@@ -52,10 +52,15 @@ for (let year = 2005; year <= 2025; year++) {
       for (const field of Object.keys(old).filter((k) => k.startsWith('existing_'))) {
         assert.deepEqual(row[field], old[field], key + ': changed existing field ' + field);
       }
-      assert.equal(row.knowledge_target_review.previous.status, old.classification_status, key + ': missing prior status');
-      assert.deepEqual(row.knowledge_target_review.previous.primary_path, old.primary_path, key + ': lost former path');
-      assert.equal(row.knowledge_target_review.previous.subject_concept, old.subject_concept, key + ': lost former subject');
-      assert.equal(row.knowledge_target_review.previous.attribute, old.attribute, key + ': lost former attribute');
+      // Re-reviewing an already corrected row retains the *immediate* predecessor
+      // in knowledge_target_review.previous. The first appended review retains the
+      // original annual snapshot, so use that for a baseline integrity assertion.
+      const firstReview = row.classification_revision?.additional_reviews?.[0];
+      assert.ok(firstReview, key + ': missing first audit trail');
+      assert.equal(firstReview.previous_status, old.classification_status, key + ': lost original status');
+      assert.deepEqual(firstReview.previous_primary_path, old.primary_path, key + ': lost original path');
+      assert.equal(firstReview.previous_subject_concept, old.subject_concept, key + ': lost original subject');
+      assert.equal(firstReview.previous_attribute, old.attribute, key + ': lost original attribute');
     }
     if (row.knowledge_target_review?.principle === 'judgment_knowledge_over_context') {
       reviewed++;
