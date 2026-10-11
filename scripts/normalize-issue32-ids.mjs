@@ -249,7 +249,7 @@ export function buildIndex() {
 
 const command = process.argv[2] ?? '--check';
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
-  assert.ok(['--check', '--jsonl', '--report', '--aliases', '--paths', '--drawers', '--review', '--path-drawers'].includes(command),
+  assert.ok(['--check', '--jsonl', '--report', '--aliases', '--paths', '--drawers', '--review', '--path-drawers', '--audit'].includes(command),
     'Usage: normalize-issue32-ids.mjs [--check|--jsonl|--report|--aliases|--paths|--drawers|--review|--path-drawers]');
   assert.equal(process.argv.length, 3, 'unexpected extra arguments');
   const { index, summary, question_aliases, path_registry, v1_1_conflict_examples, drawer_registry, path_drawer_relations } = buildIndex();
@@ -260,5 +260,8 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   if (command === '--review') for (const entry of drawer_registry) if (entry.review_required) console.log(JSON.stringify(entry));
   if (command === '--path-drawers') for (const entry of path_drawer_relations) console.log(JSON.stringify(entry));
   if (command === '--report') console.log(JSON.stringify({ summary, v1_1_conflict_examples }, null, 2));
+  if (command === '--audit') console.log(JSON.stringify(drawer_registry.filter((d) => d.review_required)
+    .sort((a,b)=>b.proposition_count-a.proposition_count).slice(0,60)
+    .map((d)=>({ concept:d.concept_label, attribute:d.attribute_label, propositions:d.proposition_count, concept_resolution:d.concept_resolution, attribute_resolution:d.attribute_resolution })),null,2));
   if (command === '--check') console.log('ID normalization OK:', JSON.stringify(summary));
 }
