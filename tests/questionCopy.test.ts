@@ -14,6 +14,9 @@ describe('question copy payload', () => {
       expect(text).not.toContain('【試験当時の公式正答】');
       expect(text).not.toContain('正答番号：');
       expect(text).not.toContain('【自分の解答】');
+      expect(text.indexOf('【問題文】')).toBeLessThan(text.indexOf('【選択肢】'));
+      expect(text.indexOf('【選択肢】')).toBeLessThan(text.indexOf('【最後に：アプリ用の短い解説】'));
+      expect(text.trimEnd().endsWith('```')).toBe(true);
     }
   });
   it('includes the official answer and submitted choices only when requested', () => {
@@ -21,15 +24,16 @@ describe('question copy payload', () => {
     const text = questionCopyText(question, true, ['5', '4']);
     expect(text).toContain(`【試験当時の公式正答】\n${question.answerIds.join('・')}`);
     expect(text).toContain('【自分の解答】5・4');
-    expect(text).toContain('アプリの独自解説は未登録です。');
-    expect(text).toContain('現行法への適合性は未確認です。');
+    expect(text).toContain('背景を含めて自由に解説');
+    expect(text).not.toContain('【アプリの解説】');
+    expect(text).not.toContain('【原典】');
   });
-  it('labels unproofread text and retains legacy explanations', () => {
+  it('labels unproofread text and excludes existing explanations to keep the prompt concise', () => {
     for (const question of questions.filter(question => question.original?.textStatus === 'pending')) {
       expect(questionCopyText(question)).toContain('文字校正が未完了');
     }
     const legacy = legacyQuestions[0];
-    expect(questionCopyText(legacy, true)).toContain(legacy.explanation);
+    expect(questionCopyText(legacy, true)).not.toContain(legacy.explanation);
     expect(questionCopyText(legacy)).not.toContain(legacy.explanation);
   });
 });

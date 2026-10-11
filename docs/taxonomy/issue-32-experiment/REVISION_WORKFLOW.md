@@ -1,53 +1,61 @@
-# Issue #32: 競合させずに2005〜2018年度の分類を直す
+# Issue #32: 設問別レビューと正本への統合
 
-> **現在の状態（2026-10-11）**：2005〜2018年度の修正649ファイルは年度別`propositions/YYYY.jsonl`に統合済みです。以下の手順は並列修正を行った際の履歴として残します。現状の分類正本は年度ファイル14個で、`revisions/`配下には設問別ファイルがありません。
->
-> 今後また設問別レビューを並列化する場合は本手順で作業し、全PRを統合後に `node scripts/consolidate-issue32-revisions.mjs` を実行して年度正本へ反映してください。確認は `node scripts/consolidate-issue32-revisions.mjs --check` と既存の2種類の検証スクリプトで行います。
+## 現在の正本
 
-## 方針
+2005〜2025年度の `propositions/YYYY.jsonl`（21ファイル）が唯一の分類正本です。
+以前の2005〜2018年度649ファイルに続き、PR58の88ファイルも統合しました。
+現在 `revisions/` に設問別修正は残っていません。現在の件数は [README](README.md) と `manifest.json` を参照してください。
 
-PR #33の既存 `propositions/YYYY.jsonl` は**初期スナップショット**として固定します。既存の命題ID・原文・知識分類を移行し直す必要はありません。修正したい設問だけ `revisions/YYYY/NN.jsonl` に保存してください。ほかの年度・設問は自動的に初期スナップショットが使われます。
+`classification_revision`・`knowledge_target_review` は過去の分類判断を保持します。
+原文同期の旧設問文・旧選択肢・旧命題は `source_text_revisions` に保持します。
+旧方式を含む分類レビュー履歴と、判定知識による個別意味レビューは別々に集計します。
 
-- 2005年問1は `revisions/2005/01.jsonl`、2005年問2は `revisions/2005/02.jsonl`。それぞれ独立してマージできます。
-- 同じ設問への同時変更だけは通常どおり競合し得ます。設問単位をレビュー／マージの単位としてください。
-- 2005〜2018年度の840問すべてに対応。将来の2019〜2025年度でも同じ仕組みを利用できます。
-- 既存の学習アプリ、問題文、正答、過去問パック、学習履歴は変更しません。これはPR #33の実験データのレビュー手順です。
+## 設問別に作業する場合
 
-## 手順
+設問別ファイルは並列レビュー中の一時的な作業領域です。レビューを統合してから正本を更新します。
+年度ファイル・manifest・難例一覧・checksumsを複数の作業ブランチで同時更新すると競合するため、生成物の更新は統合担当が行います。
 
-まずPR #33をマージするか、未マージの間はPR #33のブランチ `experiment/issue-32-choice-classifications` をベースにします。
+1. PR33の最新ブランチ（マージ後はmain）をベースにする。
+2. `node scripts/create-issue32-revision.mjs 2005 01` で一設問を作成する。
+3. `revisions/2005/01.jsonl` の命題・分類・判断理由・履歴を修正する。設問文と `source_text`、ID、採点・出典メタデータは保持する。
+4. `node scripts/validate-issue32-revisions.mjs` と判定知識の検証スクリプトで実効データを確認する。
+5. 全レビューを集め、下記の統合・同期・再生成を実行する。
 
-1. `node scripts/create-issue32-revision.mjs 2005 01` を実行（初回のみ）。
-2. 生成された `docs/taxonomy/issue-32-experiment/revisions/2005/01.jsonl` を開き、その設問の各命題の `proposition`、`subject_concept`、`attribute`、`primary_path`、`classification_status`、理由／レビュー履歴等を修正します。元の選択肢文 `source_text` と設問文 `question_stem` は変えません。
-3. `node scripts/validate-issue32-classifications.mjs` で固定スナップショットの完全性を、`node scripts/validate-issue32-revisions.mjs` で現在の実効データを検証します。
-4. **修正した設問ファイルだけ**をPRに含めます。別年度・別設問のPRは同時進行可能です。
+最終PRのCIは設問別ファイルが残っていれば失敗します。並列レビュー中は実効データを検査し、統合済み正本を提出する段階で全チェックを通してください。
+設問別ファイルは一設問に属する全5選択肢を含み、各選択肢の命題番号は1から連番にします。
 
-`revisions/YYYY/NN.jsonl` は**一問に属する全5選択肢の命題レコード**を保持します。1選択肢を複数命題に分割する場合も同一ファイル内で `proposition_index` を連番にしてください。削除・追加する際に `question_id`、`choice_index`、`question_number`、出典レビュー用フラグは維持してください。
-
-## 集計・難例一覧は都度生成
-
-従来は別年度の修正でも `manifest.json`・`checksums.json`・`difficult-cases.jsonl` が一緒に書き変わるため競合しました。**これらはPR #33時点の固定スナップショット**として保存し、修正PRから変更しません。
-
-現在の状態は追跡ファイルを編集せずに次のコマンドで得ます。
+## 統合・同期・再生成
 
 ```bash
-node scripts/validate-issue32-revisions.mjs --json > /tmp/issue32-current-summary.json
-node scripts/validate-issue32-revisions.mjs --difficult > /tmp/issue32-current-difficult.jsonl
+node scripts/consolidate-issue32-revisions.mjs
+node scripts/sync-issue32-sources.mjs
+node scripts/consolidate-issue32-revisions.mjs
+node scripts/consolidate-issue32-revisions.mjs --check
+node scripts/sync-issue32-sources.mjs --check
+node scripts/validate-issue32-classifications.mjs
+node scripts/validate-issue32-revisions.mjs
+node scripts/test-issue32-consolidation.mjs
 ```
 
-`--json` は最新の年度別件数と状態別集計を再計算し、`--difficult` は現在の `ambiguous`・`unmapped` を抽出します。集計・SHA変更のために別のPRを直す必要はありません。従来の `existing-concept-crosswalk.csv` は初回分類時のスナップショットのままです。
+最初の統合は全年の設問別ファイルを年度JSONLへ反映して削除します。
+原文同期はリポジトリ入力の設問文・選択肢を反映し、命題の補完文と分割を維持します。
+原文が変更された独立命題で安全に更新できないものは、推測せずエラーにします。
+最後の統合で集計、難例一覧、READMEの現況・年度表、原文入力の指紋、全収録ファイルのチェックサムを再生成します。
+修正がなくても再生成でき、繰り返し実行しても内容は変わりません。
 
-## PRの受入条件
+原文入力は2005〜2017年度の `src/data/packs/pre2018/`、2018・2019年度の年度パック、
+2020〜2024年度の `imports/YYYY/questions.json`、2025年度の圧縮全60問です。
+生成済みの `historical.json` は入力に使いません。
+PR39で保持された公式原文との二重校正未完了・当時法令未確認の制限を引き継ぎます。
+`existing_*`・元の `source_quality` は取り込み時の履歴を残し、同期した文字列の現況・出典は `source_text_sync` に記録します。
 
-- 対象年度・設問以外の分類データに差分がない。
-- 一設問の選択肢は5件揃い、命題番号は各選択肢の1から連番。分類不能や複数候補を無理に`assigned`にしない。
-- 原文と問題IDは保持し、命題表現／分類の変更を追跡できるよう必要なレビュー履歴を残す。
-- CIの固定スナップショット検証と実効データ検証を通過する。
+## CIが検出する不整合
 
-※これは同一ファイルの競合を減らす仕組みであり、同じ分類体系のノード自体を複数のPRが同時に編集する場合は、別途調整が必要です。
+- 全年度の残存設問別ファイル、未対応年度・不正なファイル。
+- 年度正本とmanifestの件数、分類状態、レビュー履歴数、正規化結果の不一致。
+- 難例一覧・READMEの現況・年度表の同期漏れ。
+- 収録ファイル一覧、サイズ、SHA-256の不一致（READMEも対象）。
+- リポジトリ原文入力と全1,260問・6,300選択肢の不一致、原文入力の指紋の変化。
 
-## 既知の初期データ不備
-
-PR #33 の 2024年問24・選択肢2は、`attribute` が空のまま `assigned` になっています。初期スナップショットは変えず、この1件だけ明示的に許容します。将来この設問を `revisions/2024/24.jsonl` で修正する場合は、属性を記入しないと検証に通りません。ほかの `assigned` に空の属性がある場合はエラーです。
-
-固定チェックサムの `README.md` 欄は、PR #33側で文章が追記されたためサイズ欄とハッシュ欄が一致していません。文書の履歴値として残し、分類スナップショットの検証対象からだけ除外しています。分類命題・manifest・難例一覧等の実データについては引き続き完全性を検証します。
+これらはデータの構造と同期状態の検査です。意味分類・正答・法令の正しさを全件証明するものではありません。
+旧 `existing-concept-crosswalk.csv` は初回分類時点の履歴スナップショットで、現在の経路共起表ではありません。

@@ -14,7 +14,7 @@ const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const dir = join(root, 'docs/taxonomy/issue-32-experiment');
 const read = (path) => readFileSync(join(dir, path), 'utf8');
 const json = (path) => JSON.parse(read(path));
-const jsonl = (path) => read(path).trim().split('\n').map((line) => JSON.parse(line));
+const jsonl = (path) => read(path).trim().split('\n').filter(Boolean).map((line) => JSON.parse(line));
 const manifest = json('manifest.json');
 const difficult = jsonl('difficult-cases.jsonl');
 const checksumList = json('checksums.json');
@@ -246,14 +246,14 @@ for (const f of ['review-decisions-2024-part1.json', 'review-decisions-2024-part
 
 assert.ok(!checksumList.some((item) => item.path === 'checksums.json'), 'self-checksum is not stable');
 for (const item of checksumList) {
-  // PR #33 previously edited README after checksums were calculated.
-  // README is explanatory documentation, not an immutable classification snapshot.
-  if (item.path === 'README.md') continue;
   const buf = readFileSync(join(dir, item.path));
   const sum = createHash('sha256').update(buf).digest('hex');
   assert.equal(buf.byteLength, item.bytes, `size mismatch: ${item.path}`);
   assert.equal(sum, item.sha256, `checksum mismatch: ${item.path}`);
 }
-assert.equal(checksumList.length, 26);
+assert.ok(checksumList.some((item) => item.path === 'README.md'), 'README checksum missing');
+for (let year = 2005; year <= 2025; year++) {
+  assert.ok(checksumList.some((item) => item.path === `propositions/${year}.jsonl`), 'annual checksum missing: ' + year);
+}
 assert.match(read('README.md'), /初回分類時点のスナップショット/);
 console.log(`taxonomy experiment integrity OK: ${total} propositions; ${difficult.length} difficult; ${Object.values(reviewed).reduce((a, b) => a + b, 0)} reviewed; ${checksumList.length} checksums`);

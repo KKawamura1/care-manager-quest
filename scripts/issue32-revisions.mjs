@@ -1,6 +1,6 @@
 /**
- * Editable Issue #32 review data: immutable annual snapshots plus per-question revisions.
- * The snapshots and their old manifest/checksums are intentionally not regenerated.
+ * Editable Issue #32 review data: canonical annual files plus temporary question revisions.
+ * Consolidation folds pending revisions into the annual files and rebuilds derived metadata.
  */
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync, readdirSync } from 'node:fs';

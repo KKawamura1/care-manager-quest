@@ -39,7 +39,8 @@ describe('2020–2024 import',()=>{
      expect(isCorrect(q,ids)).toBe(JSON.stringify(ids)===JSON.stringify([...q.answerIds].sort()));
     }
     expect(questionCopyText(q,true)).toContain(`${year}年度`);
-    expect(questionCopyText(q,true)).toContain(q.original!.sourceUrl);
+    expect(q.original?.sourceUrl).toMatch(/^https?:\/\//);
+    expect(questionCopyText(q,true)).not.toContain(q.original!.sourceUrl);
    }
   }
  });

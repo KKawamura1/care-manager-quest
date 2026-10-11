@@ -6,6 +6,8 @@ on:
       - 'docs/taxonomy/**'
       - 'scripts/validate-taxonomy.py'
       - 'scripts/*issue32*.mjs'
+      - 'imports/**'
+      - 'src/data/packs/**/questions.json'
       - '.github/workflows/taxonomy.yml'
   push:
     branches: [main]
@@ -14,6 +16,8 @@ on:
       - 'docs/taxonomy/**'
       - 'scripts/validate-taxonomy.py'
       - 'scripts/*issue32*.mjs'
+      - 'imports/**'
+      - 'src/data/packs/**/questions.json'
       - '.github/workflows/taxonomy.yml'
   workflow_dispatch:
 permissions:
@@ -33,6 +37,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Verify annual canonical data, summaries and checksums
+        run: node scripts/consolidate-issue32-revisions.mjs --check
+      - name: Verify repository source text synchronization
+        run: node scripts/sync-issue32-sources.mjs --check
+      - name: Test consolidation and synchronization regressions
+        run: node scripts/test-issue32-consolidation.mjs
       - run: node scripts/validate-issue32-classifications.mjs
       - run: node scripts/validate-issue32-revisions.mjs
       - run: node scripts/test-issue32-ids.mjs

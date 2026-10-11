@@ -11,18 +11,18 @@
     "proposition_record_count": 6346,
     "choices_split_into_multiple_propositions": 42,
     "additional_proposition_records_from_splits": 46,
-    "difficult_case_count": 25,
+    "difficult_case_count": 0,
     "status_counts": {
-      "assigned": 6321,
-      "ambiguous": 25,
+      "assigned": 6346,
+      "ambiguous": 0,
       "unmapped": 0,
       "needs_source_review": 0
     },
     "primary_root_counts": {
-      "人の健康と生活": 1054,
-      "支援の考え方と方法": 1498,
-      "支援の提供体制": 1758,
-      "社会保障の仕組み": 2011
+      "人の健康と生活": 1019,
+      "支援の考え方と方法": 1433,
+      "支援の提供体制": 1849,
+      "社会保障の仕組み": 2045
     }
   },
   "validation": {
@@ -54,23 +54,18 @@
       "choice_count": 300,
       "proposition_record_count": 302,
       "status_counts": {
-        "assigned": 295,
-        "ambiguous": 7,
+        "assigned": 302,
+        "ambiguous": 0,
         "unmapped": 0,
         "needs_source_review": 0
       },
       "primary_root_counts": {
-        "人の健康と生活": 54,
-        "支援の考え方と方法": 81,
+        "人の健康と生活": 55,
+        "支援の考え方と方法": 86,
         "支援の提供体制": 63,
-        "社会保障の仕組み": 97
+        "社会保障の仕組み": 98
       },
-      "ambiguous_candidate_root_counts": {
-        "支援の考え方と方法": 5,
-        "支援の提供体制": 7,
-        "社会保障の仕組み": 1,
-        "人の健康と生活": 1
-      }
+      "ambiguous_candidate_root_counts": {}
     },
     {
       "year": 2006,
@@ -78,21 +73,18 @@
       "choice_count": 300,
       "proposition_record_count": 300,
       "status_counts": {
-        "assigned": 296,
-        "ambiguous": 4,
+        "assigned": 300,
+        "ambiguous": 0,
         "unmapped": 0,
         "needs_source_review": 0
       },
       "primary_root_counts": {
         "人の健康と生活": 50,
-        "支援の考え方と方法": 71,
-        "支援の提供体制": 74,
-        "社会保障の仕組み": 101
+        "支援の考え方と方法": 69,
+        "支援の提供体制": 79,
+        "社会保障の仕組み": 102
       },
-      "ambiguous_candidate_root_counts": {
-        "支援の考え方と方法": 4,
-        "支援の提供体制": 4
-      }
+      "ambiguous_candidate_root_counts": {}
     },
     {
       "year": 2007,
@@ -100,23 +92,18 @@
       "choice_count": 300,
       "proposition_record_count": 300,
       "status_counts": {
-        "assigned": 290,
-        "ambiguous": 10,
+        "assigned": 300,
+        "ambiguous": 0,
         "unmapped": 0,
         "needs_source_review": 0
       },
       "primary_root_counts": {
-        "人の健康と生活": 49,
-        "支援の考え方と方法": 63,
-        "支援の提供体制": 79,
-        "社会保障の仕組み": 99
+        "人の健康と生活": 46,
+        "支援の考え方と方法": 66,
+        "支援の提供体制": 85,
+        "社会保障の仕組み": 103
       },
-      "ambiguous_candidate_root_counts": {
-        "支援の考え方と方法": 5,
-        "支援の提供体制": 7,
-        "社会保障の仕組み": 1,
-        "人の健康と生活": 7
-      }
+      "ambiguous_candidate_root_counts": {}
     },
     {
       "year": 2008,
@@ -124,23 +111,18 @@
       "choice_count": 300,
       "proposition_record_count": 300,
       "status_counts": {
-        "assigned": 296,
-        "ambiguous": 4,
+        "assigned": 300,
+        "ambiguous": 0,
         "unmapped": 0,
         "needs_source_review": 0
       },
       "primary_root_counts": {
-        "人の健康と生活": 76,
-        "支援の考え方と方法": 58,
-        "支援の提供体制": 63,
-        "社会保障の仕組み": 99
+        "人の健康と生活": 78,
+        "支援の考え方と方法": 49,
+        "支援の提供体制": 73,
+        "社会保障の仕組み": 100
       },
-      "ambiguous_candidate_root_counts": {
-        "人の健康と生活": 2,
-        "社会保障の仕組み": 1,
-        "支援の考え方と方法": 3,
-        "支援の提供体制": 2
-      }
+      "ambiguous_candidate_root_counts": {}
     },
     {
       "year": 2009,
@@ -154,10 +136,10 @@
         "needs_source_review": 0
       },
       "primary_root_counts": {
-        "人の健康と生活": 70,
-        "支援の考え方と方法": 60,
-        "支援の提供体制": 80,
-        "社会保障の仕組み": 91
+        "人の健康と生活": 66,
+        "支援の考え方と方法": 56,
+        "支援の提供体制": 84,
+        "社会保障の仕組み": 95
       },
       "ambiguous_candidate_root_counts": {}
     },
@@ -174,9 +156,9 @@
       },
       "primary_root_counts": {
         "人の健康と生活": 43,
-        "支援の考え方と方法": 107,
-        "支援の提供体制": 66,
-        "社会保障の仕組み": 90
+        "支援の考え方と方法": 99,
+        "支援の提供体制": 72,
+        "社会保障の仕組み": 92
       },
       "ambiguous_candidate_root_counts": {}
     },
@@ -192,10 +174,10 @@
         "needs_source_review": 0
       },
       "primary_root_counts": {
-        "人の健康と生活": 79,
-        "支援の考え方と方法": 81,
-        "支援の提供体制": 62,
-        "社会保障の仕組み": 87
+        "人の健康と生活": 59,
+        "支援の考え方と方法": 73,
+        "支援の提供体制": 87,
+        "社会保障の仕組み": 90
       },
       "ambiguous_candidate_root_counts": {}
     },
@@ -212,9 +194,9 @@
       },
       "primary_root_counts": {
         "人の健康と生活": 45,
-        "支援の考え方と方法": 89,
-        "支援の提供体制": 95,
-        "社会保障の仕組み": 75
+        "支援の考え方と方法": 80,
+        "支援の提供体制": 98,
+        "社会保障の仕組み": 81
       },
       "ambiguous_candidate_root_counts": {}
     },
@@ -230,9 +212,9 @@
         "needs_source_review": 0
       },
       "primary_root_counts": {
-        "人の健康と生活": 66,
-        "支援の考え方と方法": 81,
-        "支援の提供体制": 67,
+        "人の健康と生活": 64,
+        "支援の考え方と方法": 74,
+        "支援の提供体制": 76,
         "社会保障の仕組み": 89
       },
       "ambiguous_candidate_root_counts": {}
@@ -249,10 +231,10 @@
         "needs_source_review": 0
       },
       "primary_root_counts": {
-        "人の健康と生活": 39,
-        "支援の考え方と方法": 76,
-        "支援の提供体制": 91,
-        "社会保障の仕組み": 95
+        "人の健康と生活": 34,
+        "支援の考え方と方法": 63,
+        "支援の提供体制": 106,
+        "社会保障の仕組み": 98
       },
       "ambiguous_candidate_root_counts": {}
     },
@@ -269,9 +251,9 @@
       },
       "primary_root_counts": {
         "人の健康と生活": 40,
-        "支援の考え方と方法": 78,
-        "支援の提供体制": 88,
-        "社会保障の仕組み": 96
+        "支援の考え方と方法": 71,
+        "支援の提供体制": 93,
+        "社会保障の仕組み": 98
       },
       "ambiguous_candidate_root_counts": {}
     },
@@ -287,10 +269,10 @@
         "needs_source_review": 0
       },
       "primary_root_counts": {
-        "人の健康と生活": 48,
-        "支援の考え方と方法": 69,
-        "支援の提供体制": 102,
-        "社会保障の仕組み": 82
+        "人の健康と生活": 45,
+        "支援の考え方と方法": 63,
+        "支援の提供体制": 108,
+        "社会保障の仕組み": 85
       },
       "ambiguous_candidate_root_counts": {}
     },
@@ -306,10 +288,10 @@
         "needs_source_review": 0
       },
       "primary_root_counts": {
-        "人の健康と生活": 61,
+        "人の健康と生活": 60,
         "支援の考え方と方法": 58,
-        "支援の提供体制": 105,
-        "社会保障の仕組み": 81
+        "支援の提供体制": 104,
+        "社会保障の仕組み": 83
       },
       "ambiguous_candidate_root_counts": {}
     },
@@ -327,8 +309,8 @@
       "primary_root_counts": {
         "人の健康と生活": 42,
         "支援の考え方と方法": 46,
-        "支援の提供体制": 113,
-        "社会保障の仕組み": 100
+        "支援の提供体制": 112,
+        "社会保障の仕組み": 101
       },
       "ambiguous_candidate_root_counts": {}
     },
@@ -403,8 +385,8 @@
       "primary_root_counts": {
         "人の健康と生活": 37,
         "支援の考え方と方法": 72,
-        "支援の提供体制": 98,
-        "社会保障の仕組み": 93
+        "支援の提供体制": 97,
+        "社会保障の仕組み": 94
       },
       "ambiguous_candidate_root_counts": {}
     },
@@ -469,10 +451,10 @@
   "classification_quality_review": {
     "reviewed_on": "2026-10-11",
     "reviewed_years": {
-      "2005": 104,
-      "2006": 129,
-      "2007": 140,
-      "2008": 160,
+      "2005": 131,
+      "2006": 144,
+      "2007": 170,
+      "2008": 172,
       "2009": 301,
       "2010": 306,
       "2011": 309,
@@ -480,9 +462,9 @@
       "2013": 303,
       "2014": 301,
       "2015": 302,
-      "2016": 159,
-      "2017": 169,
-      "2018": 149,
+      "2016": 163,
+      "2017": 170,
+      "2018": 150,
       "2019": 300,
       "2020": 301,
       "2021": 301,
@@ -491,20 +473,52 @@
       "2024": 304,
       "2025": 302
     },
-    "remaining_without_semantic_review": 1099,
-    "scope": "2005–2018年度の設問単位レビューを年度正本に統合。過去のレビュー履歴・出典確認フラグは保持。正誤・OCR・当時法令の検証は含まない。",
+    "remaining_without_semantic_review": 1009,
+    "scope": "全年の分類レビュー履歴を年度正本へ統合。履歴件数は旧レビュー方式を含み、判定知識による個別意味レビューの件数とは別。正誤・当時法令の検証完了を意味しない。",
     "crosswalk": "初回分類から作られた履歴スナップショットであり、修正後の経路件数を反映していない。",
-    "reviewed_records": 5247,
+    "reviewed_records": 5337,
     "reclassified_records_note": "Differing definitions across per-year PRs; not totaled here. Per-year revision histories and decisions are retained."
   },
   "classification_review_overlay": {
     "state": "consolidated",
     "years": [
       2005,
-      2018
+      2025
     ],
     "original_question_revisions": 649,
-    "note": "2005–2018年度の設問別修正は年度JSONLへ反映済み。重複したrevisionファイルは削除。"
+    "consolidated_question_revisions": 737,
+    "remaining_question_revisions": 0,
+    "batches": [
+      {
+        "years": [
+          2005,
+          2018
+        ],
+        "question_revisions": 649
+      },
+      {
+        "years": [
+          2005,
+          2006,
+          2007,
+          2008,
+          2009,
+          2010,
+          2011,
+          2012,
+          2013,
+          2014,
+          2015,
+          2016,
+          2017,
+          2018,
+          2022,
+          2023
+        ],
+        "question_revisions": 88
+      }
+    ],
+    "note": "全年の設問別修正は年度JSONLへ反映済み。正本はpropositions/YYYY.jsonlだけ。"
   },
   "year_2020_review": {
     "date": "2026-10-11",
@@ -560,5 +574,174 @@
       "2023-44/3"
     ],
     "source_pr": 43
+  },
+  "judgment_knowledge_review": {
+    "reviewed_records": 236,
+    "remaining_records": 6110,
+    "scope": "判定に必要な知識を個別に記録した命題のみ集計。assignedや旧分類レビュー履歴からは認定しない。"
+  },
+  "source_text_sync": {
+    "method": "repository_text_sync",
+    "checked_questions": 1260,
+    "checked_choices": 6300,
+    "changed_questions": 66,
+    "changed_choices": 306,
+    "changed_records": 310,
+    "changed_propositions": 252,
+    "inputs": [
+      {
+        "path": "src/data/packs/pre2018/2005/questions.json",
+        "bytes": 69595,
+        "sha256": "b67f18b465900687d747cc17916119c0697ee2505193badfd2d431ac5e2a6e1e"
+      },
+      {
+        "path": "src/data/packs/pre2018/2006/questions.json",
+        "bytes": 72247,
+        "sha256": "a1cf3c360ada5f4e5ff66336ce7312419e7d355227b30ecf3ed08b9b6d151dd9"
+      },
+      {
+        "path": "src/data/packs/pre2018/2007/questions.json",
+        "bytes": 71967,
+        "sha256": "a87e81e6ef4054ff370aeed3b62068317f74a8b60706c8ad1e12a5dd9867fc82"
+      },
+      {
+        "path": "src/data/packs/pre2018/2008/questions.json",
+        "bytes": 66963,
+        "sha256": "2863b91562b9dcd0e7524223b7f10c600c211cbcfe5373d9b12020b7181a0ed6"
+      },
+      {
+        "path": "src/data/packs/pre2018/2009/questions.json",
+        "bytes": 64833,
+        "sha256": "46283028050bc4f5966f20714ce9d03d2864fcf37f4de719097ef4f5a127c707"
+      },
+      {
+        "path": "src/data/packs/pre2018/2010/questions.json",
+        "bytes": 61369,
+        "sha256": "506d4a9532cdaf5f8ecf34bf55d9895db96d427fca7d2526a284473d1b0a2a15"
+      },
+      {
+        "path": "src/data/packs/pre2018/2011/questions.json",
+        "bytes": 63846,
+        "sha256": "dd049545ea0966a111761355e0a43c25380b8160af00eb80918fb0c4375c34d4"
+      },
+      {
+        "path": "src/data/packs/pre2018/2012/questions.json",
+        "bytes": 62834,
+        "sha256": "cbdc8133335bb99bd1ea8222e1eb85817484b6fddbc20aab14e52cc98778d3fb"
+      },
+      {
+        "path": "src/data/packs/pre2018/2013/questions.json",
+        "bytes": 58916,
+        "sha256": "4f95c19a83dc03e070d41ca5e8794d60ad566c331dd3a890b7ecb1bff0da9833"
+      },
+      {
+        "path": "src/data/packs/pre2018/2014/questions.json",
+        "bytes": 59456,
+        "sha256": "c8656bfe68754c70650b8e0c93785c4f2a826fb25a7f222a3b4b15d4d7fbe3cc"
+      },
+      {
+        "path": "src/data/packs/pre2018/2015/questions.json",
+        "bytes": 57065,
+        "sha256": "52b5a8f5abe8b5e7241e9de5b4c04da96fb5ae7bf03dcdc7735759048a99e9fd"
+      },
+      {
+        "path": "src/data/packs/pre2018/2016/questions.json",
+        "bytes": 55803,
+        "sha256": "a79b13ac6f40429ddf557f12cc65f4e587004d7ae60a49710b074c1fa55c5a35"
+      },
+      {
+        "path": "src/data/packs/pre2018/2017/questions.json",
+        "bytes": 54803,
+        "sha256": "d75a4552d5fa201866cf9d771af4cc79020e442111b4ab295ee88df8006abc3d"
+      },
+      {
+        "path": "src/data/packs/2018/questions.json",
+        "bytes": 58588,
+        "sha256": "c72d618f4b893767fdc024cd5436a888db090a5ab1eb3da8f444b9df90b420f7"
+      },
+      {
+        "path": "src/data/packs/2019/questions.json",
+        "bytes": 57343,
+        "sha256": "f6a008c3b878e88fc1804312a9e5b6c86eec71c1ae704c398ee36844a28e3d7f"
+      },
+      {
+        "path": "imports/2020/questions.json",
+        "bytes": 124313,
+        "sha256": "9633c2b3539be11b8d79c528f53662baa9aa7481908837536b21683dd040f2b0"
+      },
+      {
+        "path": "imports/2021/questions.json",
+        "bytes": 138285,
+        "sha256": "024fd83348bad89b5955a1438d61377fbab89ecade1042c70773251205b6df66"
+      },
+      {
+        "path": "imports/2022/questions.json",
+        "bytes": 142935,
+        "sha256": "bbef08057bda0a360e7f9ab9844cc8a9c632460c1dc5a4af2dd894a7c6d14291"
+      },
+      {
+        "path": "imports/2023/questions.json",
+        "bytes": 150580,
+        "sha256": "801433cfa5988ae49a0910bfe1bc6ec6f18629d678288e97f65ad17c23ae0565"
+      },
+      {
+        "path": "imports/2024/questions.json",
+        "bytes": 151400,
+        "sha256": "0614c28273eb4700f7a8e8f0b8acf4ee8c8606d74f0749e4cf7d4c4437aef4dd"
+      },
+      {
+        "path": "imports/2025-all60/01.b64",
+        "bytes": 3750,
+        "sha256": "f4cf4466f08d7ce0ea20d44debb4a143c0f23f49dd82c0d23f6a08b96aa415ee"
+      },
+      {
+        "path": "imports/2025-all60/02.b64",
+        "bytes": 3750,
+        "sha256": "1d736801e2f3ace5df834e1e641dfa848e623ed56885ab931079a0b1649443d4"
+      },
+      {
+        "path": "imports/2025-all60/03.b64",
+        "bytes": 3750,
+        "sha256": "3ea4aaacf6c1eda680cd2c8f686b27e733257ff396b5be1b7d8b5e5eca8aa796"
+      },
+      {
+        "path": "imports/2025-all60/04.b64",
+        "bytes": 3750,
+        "sha256": "e6318321ef95f64ccda19f6b7083a9642224d3820c7b322ac7675d56ca0dd55c"
+      },
+      {
+        "path": "imports/2025-all60/05.b64",
+        "bytes": 3748,
+        "sha256": "2a88f3203bda29271e9723fe06ea039601f3f69ab5cdcfc665cd967f9d1021b1"
+      }
+    ],
+    "scope": "PR39の校正文を含むリポジトリ入力と設問文・選択肢を同期。公式原文との二重校正・正誤・法令確認の完了を意味しない。"
+  },
+  "normalization_summary": {
+    "years": [
+      2005,
+      2025
+    ],
+    "question_count": 1260,
+    "proposition_count": 6346,
+    "legacy_source_question_count": 60,
+    "legacy_source_proposition_count": 301,
+    "observed_path_count": 2843,
+    "conflicting_v1_1_path_count": 528,
+    "exact_v1_1_path_count": 42,
+    "normalized_drawer_count": 1159,
+    "concept_count": 487,
+    "unresolved_attribute_drawers": 419,
+    "provisional_concept_drawers": 246,
+    "proposition_inferred_drawers": 270,
+    "classification_semantically_reviewed_propositions": 236,
+    "individually_reviewed_drawer_assignments": 91,
+    "unresolved_attribute_propositions": 2066,
+    "provisional_concept_propositions": 318,
+    "inferred_assignment_propositions": 1007,
+    "reviewed_rule_drawer_count": 486,
+    "normalization_review_required_drawers": 673,
+    "normalization_review_required_propositions": 3168,
+    "collapsed_original_path_count": 2490
   }
 }

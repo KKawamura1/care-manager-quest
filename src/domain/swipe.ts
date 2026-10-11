@@ -83,12 +83,22 @@ export function recordSwipe(state: SwipeState, card: SwipeCard, answer: boolean 
 export function progressFor(state: SwipeState, card: SwipeCard): CardProgress | undefined {
   const p = state.progress[card.id]; return p?.revision === card.revision ? p : undefined;
 }
-export function reviewQueue(cards: readonly SwipeCard[], state: SwipeState, now: number): SwipeCard[] {
-  return cards.filter(card => { const p = progressFor(state, card); return !p || Date.parse(p.dueAt) <= now; }).sort((a, b) => {
-    const x = progressFor(state, a), y = progressFor(state, b);
-    const rank = (p?: CardProgress) => !p ? 2 : p.lastCorrect ? 1 : 0;
-    return rank(x) - rank(y) || (x && y ? Date.parse(x.dueAt) - Date.parse(y.dueAt) : 0) || b.year - a.year || a.id.localeCompare(b.id);
-  });
+// Shuffle on each set, keeping due mistakes ahead of due successes and unseen cards.
+export function reviewQueue(cards: readonly SwipeCard[], state: SwipeState, now: number, random: () => number = Math.random): SwipeCard[] {
+  const groups: SwipeCard[][] = [[], [], []];
+  for (const card of cards) {
+    const p = progressFor(state, card);
+    if (p && Date.parse(p.dueAt) > now) continue;
+    groups[!p ? 2 : p.lastCorrect ? 1 : 0].push(card);
+  }
+  for (const group of groups) {
+    // Fisher–Yates: unbiased random order within each review-priority band.
+    for (let i = group.length - 1; i > 0; i--) {
+      const j = Math.floor(random() * (i + 1));
+      [group[i], group[j]] = [group[j], group[i]];
+    }
+  }
+  return groups.flat();
 }
 export function filterSwipeCards(cards: readonly SwipeCard[], year: number | 'all', topic: string) {
   return cards.filter(c => (year === 'all' || c.year === year) && (topic === 'all' || (topic === 'unclassified' ? !c.topicId : c.topicId === topic)));

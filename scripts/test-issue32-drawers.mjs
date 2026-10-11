@@ -67,14 +67,15 @@ const ambiguous = index.filter(x=>x.classification_status==='ambiguous');
 assert.equal(ambiguous.length,0,'PR58 resolved the 25 prior ambiguities');
 assert.ok(ambiguous.every(x=>x.primary_drawer_id===null && x.candidate_drawer_ids.length>=2));
 const originalAmbiguous=[];
-for(let year=2005;year<=2025;year++) originalAmbiguous.push(...loadYear(year,{baselineOnly:true}).filter(r=>r.classification_status==='ambiguous'));
-assert.equal(originalAmbiguous.length,25,'immutable baseline still preserves the prior ambiguities');
-for(const row of originalAmbiguous) {
-  const normalized=normalizeIds(row);
-  assert.equal(normalized.primary_drawer_id,null);
-  assert.ok(normalized.candidate_drawer_ids.length>=2);
-  assert.equal(normalized.drawer_review_required,true);
-}
+for(let year=2005;year<=2025;year++) originalAmbiguous.push(...loadYear(year).filter(r=>r.knowledge_target_review?.previous.status==='ambiguous'));
+assert.equal(originalAmbiguous.length,25,'consolidation must retain previous ambiguity decisions');
+// Resolved rows are canonical now. Exercise unresolved handling with an explicit fixture.
+const unresolved={...loadYear(2005)[0],classification_status:'ambiguous',primary_path:[],
+  candidate_paths:[['2','支援の考え方と方法','相談援助'],['3','支援の提供体制','訪問看護']]};
+const normalized=normalizeIds(unresolved);
+assert.equal(normalized.primary_drawer_id,null);
+assert.equal(normalized.candidate_drawer_ids.length,2);
+assert.equal(normalized.drawer_review_required,true);
 
 // Both ID/path provenance and drawer roots must reflect reviewed overlays.
 const revised=loadYear(2017).find(r=>r.question_number===29&&r.choice_index===4);
