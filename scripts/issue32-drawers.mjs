@@ -6,6 +6,7 @@
  * NOT a statement that the underlying propositions are correct.
  */
 import { createHash } from 'node:crypto';
+import { additionalConceptDefinitions } from './issue32-curated-concepts.mjs';
 
 const norm = (value) => String(value ?? '').normalize('NFKC').replace(/[\s　]+/g, '').replace(/[（]/g, '(').replace(/[）]/g, ')');
 const hash = (str) => createHash('sha256').update(str, 'utf8').digest('hex').slice(0, 16);
