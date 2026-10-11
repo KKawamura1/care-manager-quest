@@ -16,8 +16,8 @@
   },
   {
     "path": "REVISION_WORKFLOW.md",
-    "bytes": 4351,
-    "sha256": "fff27d39c7c7e7cde13cadcc35b331c3cbd9d12737cfcfc05bda53d545acbe58"
+    "bytes": 4450,
+    "sha256": "47567418a6affc0b493805e7c4211b3fe6d82b000917a3d11fcf33af4918af87"
   },
   {
     "path": "difficult-cases.jsonl",
@@ -131,8 +131,8 @@
   },
   {
     "path": "propositions/2024.jsonl",
-    "bytes": 1052081,
-    "sha256": "98e16ec5a04621ee663689f1920a974f79644e71dbf76cb1a7c5a3b58efe3297"
+    "bytes": 1052624,
+    "sha256": "653ce59ea1f4f893d20336f5a77cf079ceb0761da4a92bf9082d0b94c740e5a3"
   },
   {
     "path": "propositions/2025.jsonl",

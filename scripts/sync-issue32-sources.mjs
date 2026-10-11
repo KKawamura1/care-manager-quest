@@ -41,6 +41,26 @@ let changes = 0;
 for (let year = 2005; year <= 2025; year++) {
   const source = loadSourceYear(year);
   const rows = loadYear(year, { baselineOnly: true });
+  // PR39 also resolves this previously unreadable option label in the classification metadata.
+  for (const row of rows) if (year === 2024 && row.question_number === 39 && row.choice_index === 5) {
+    const oldLabel = '「草人」（原文OCR要確認）';
+    const text = source.questions.get(39).choices[4];
+    if (checking) {
+      assert.ok(![row.attribute, row.classification_reason, ...row.primary_path].some((value) => value.includes(oldLabel)),
+        '2024-39/5: corrected source label is out of sync');
+    } else if (row.attribute === oldLabel) {
+      row.source_label_revisions ??= [];
+      row.source_label_revisions.push({
+        source_path: source.source_path,
+        previous: { attribute: row.attribute, primary_path: row.primary_path, classification_reason: row.classification_reason },
+        reason: 'PR39の校正で判明した選択肢名を反映。知識の主語・正誤・法令は変更しない。',
+      });
+      row.attribute = text;
+      row.primary_path = row.primary_path.map((label) => label === oldLabel ? text : label);
+      row.classification_reason = row.classification_reason.replaceAll(oldLabel, text);
+      changes++;
+    }
+  }
   if (checking) assertSourceRows(year, rows, source);
   else for (const row of rows) {
     const question = source.questions.get(row.question_number);

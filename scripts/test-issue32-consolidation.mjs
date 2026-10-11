@@ -69,9 +69,12 @@ try {
   const rows2024 = readFileSync(join(fixture, data, 'propositions/2024.jsonl'), 'utf8').trim().split('\n').map(JSON.parse);
   const drug = rows2024.find((row) => row.question_number === 39 && row.choice_index === 5);
   assert.equal(drug.source_text, '薬剤師');
+  assert.equal(drug.attribute, '薬剤師');
+  assert.equal(drug.primary_path.at(-1), '薬剤師');
   assert.equal(drug.proposition, '「薬剤師」の資格を持つ者は死亡診断書を交付できる。');
   assert.ok(drug.source_review_required);
   assert.match(drug.source_text_revisions[0].previous.source_text, /草人/);
+  assert.equal(drug.source_label_revisions[0].previous.attribute, '「草人」（原文OCR要確認）');
   for (const [question, choice] of [[22, 5], [32, 5], [35, 3], [40, 2]]) {
     const split = rows2024.filter((row) => row.question_number === question && row.choice_index === choice);
     assert.equal(split.length, 2); assert.equal(split[0].source_text, split[1].source_text);

@@ -8,6 +8,7 @@
 
 `classification_revision`・`knowledge_target_review` は過去の分類判断を保持します。
 原文同期の旧設問文・旧選択肢・旧命題は `source_text_revisions` に保持します。
+OCRで読めなかった分類ラベルの校正は `source_label_revisions` に保持します。
 旧方式を含む分類レビュー履歴と、判定知識による個別意味レビューは別々に集計します。
 
 ## 設問別に作業する場合
