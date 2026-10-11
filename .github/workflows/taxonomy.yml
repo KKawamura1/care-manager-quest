@@ -32,3 +32,4 @@ jobs:
           node-version: '22'
       - run: node scripts/validate-issue32-classifications.mjs
       - run: node scripts/validate-issue32-revisions.mjs
+      - run: node scripts/validate-issue32-knowledge-target.mjs
