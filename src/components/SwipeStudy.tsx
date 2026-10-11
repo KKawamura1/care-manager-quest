@@ -2,27 +2,22 @@ import { useEffect, useMemo, useRef, useState, type PointerEvent } from 'react';
 import { createPortal } from 'react-dom';
 import { availableYears, questionById } from '../data/provider';
 import { swipeCards, swipeCardById, swipeCategories, swipeConcepts, swipeCatalog } from '../data/swipe-provider';
-import { emptySwipe, filterSwipeCards, nextSwipeAvailableAt, progressFor, recordSwipe, reviewQueue, type SwipeCard, type SwipeState } from '../domain/swipe';
-import { loadSwipe, parseSwipe, SWIPE_IMPORT_BYTES, SWIPE_STORAGE_KEY } from '../domain/swipeStorage';
+import { filterSwipeCards, nextSwipeAvailableAt, progressFor, reviewQueue, type SwipeCard } from '../domain/swipe';
+import { swipeProgressFromEvents } from '../domain/learning';
+import type { LearningEvent } from '../domain/models';
 import { OriginalImage } from './OriginalImage';
 import { CopyText } from './CopyQuestion';
 import { AppExplanation } from './AppExplanation';
 import { cardTarget } from '../domain/appExplanation';
 import { swipeCopyText } from '../domain/questionCopy';
 
-function download(text: string, name: string) {
-  const url = URL.createObjectURL(new Blob([text], { type: 'application/json' }));
-  const a = document.createElement('a'); a.href = url; a.download = name; a.click();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
-}
-export function SwipeStudy({ active, home, onStart, onBack }: { active: boolean; home: boolean; onStart: () => void; onBack: () => void }) {
-  const [initial] = useState(() => {
-    try { return loadSwipe(window.localStorage, swipeCardById); }
-    catch { return { state: emptySwipe(), raw: undefined, error: 'このブラウザの○×保存領域を利用できません。' }; }
-  });
-  const [state, setState] = useState(initial.state);
-  const [blocked, setBlocked] = useState(Boolean(initial.error));
-  const [error, setError] = useState(initial.error);
+export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAnswer, blocked }: {
+  active: boolean; home: boolean; onStart: () => void; onBack: () => void;
+  learningEvents: readonly LearningEvent[];
+  onAnswer: (card: SwipeCard, answer: boolean | null, at: string) => void;
+  blocked: boolean;
+}) {
+  const state = useMemo(() => swipeProgressFromEvents(learningEvents, swipeCardById), [learningEvents]);
   const [year, setYear] = useState<number | 'all'>('all');
   const [homeHost, setHomeHost] = useState<HTMLElement | null>(null);
   const [topic, setTopic] = useState('all');
@@ -31,9 +26,6 @@ export function SwipeStudy({ active, home, onStart, onBack }: { active: boolean;
   const [result, setResult] = useState<{ answer: boolean | null; correct: boolean }>();
   const [drag, setDrag] = useState({ x: 0, y: 0 });
   const [original, setOriginal] = useState(false);
-  const [preview, setPreview] = useState<SwipeState>();
-  const [message, setMessage] = useState('');
-  const fileRef = useRef<HTMLInputElement>(null);
   const gesture = useRef<{ x: number; y: number; id: number; phase: 'answer' | 'feedback' } | undefined>(undefined);
   const locked = useRef(false);
   const nextRef = useRef<HTMLButtonElement>(null);
@@ -48,18 +40,13 @@ export function SwipeStudy({ active, home, onStart, onBack }: { active: boolean;
   const reviewed = candidates.filter(c => progressFor(state, c)).length;
   const due = available.filter(c => progressFor(state, c)).length;
   const nextDue = available.length ? undefined : nextSwipeAvailableAt(candidates, state, now);
-  useEffect(() => {
-    if (blocked) return;
-    try { window.localStorage.setItem(SWIPE_STORAGE_KEY, JSON.stringify(state)); setError(undefined); }
-    catch { setError('○×履歴を保存できません。タブを閉じる前に○×履歴を書き出してください。'); }
-  }, [state, blocked]);
   useEffect(() => { setHomeHost(home ? document.getElementById('swipe-home-setup') : null); }, [home]);
   useEffect(() => { if (!active && !home) return; setNow(Date.now()); const timer = setInterval(() => setNow(Date.now()), 15_000); return () => clearInterval(timer); }, [active, home]);
   const submit = (answer: boolean | null) => {
     if (!card || blocked || result || locked.current) return;
     locked.current = true;
     const correct = answer !== null && answer === card.truth;
-    setState(s => recordSwipe(s, card, answer, Date.now()));
+    onAnswer(card, answer, new Date().toISOString());
     setResult({ answer, correct }); setDrag({ x: 0, y: 0 });
     requestAnimationFrame(() => { nextRef.current?.focus({ preventScroll: true }); document.getElementById('swipe-feedback')?.scrollIntoView({ block: 'start', behavior: 'instant' }); });
   };
@@ -98,19 +85,8 @@ export function SwipeStudy({ active, home, onStart, onBack }: { active: boolean;
     if (g.phase === 'feedback') { if (result) next(); }
     else if (!result) submit(upward ? null : dx > 0);
   };
-  const importFile = async (file?: File) => {
-    if (!file) return;
-    try { if (file.size > SWIPE_IMPORT_BYTES) throw new Error('○×履歴は4MB以内にしてください。'); setPreview(parseSwipe(await file.text(), swipeCardById)); setMessage(''); }
-    catch (e) { setMessage(e instanceof Error ? e.message : '○×履歴を読み取れません。'); }
-    if (fileRef.current) fileRef.current.value = '';
-  };
   const setup = <div className="swipe-home-controls">
     <h2>○×学習</h2>
-    {error && <div className="warning" role="alert"><p>{error}</p>{blocked && <>
-      <button onClick={() => download(initial.raw ?? '', 'care-manager-swipe-recovery.json')}>元の○×データを書き出す</button>
-      <button onClick={() => { setBlocked(false); setState(emptySwipe()); }}>新しい○×履歴で始める</button>
-    </>}</div>}
-    {message && <p role="status">{message}</p>}
       <div className="swipe-settings">
         <label>年度<select aria-label="○×の年度" value={year} onChange={e => { setYear(e.target.value === 'all' ? 'all' : Number(e.target.value)); setTopic('all'); setCard(undefined); setResult(undefined); locked.current = false; }}>
           <option value="all">全年度</option>{availableYears.map(y => <option key={y} value={y}>{y}年度</option>)}
@@ -127,29 +103,13 @@ export function SwipeStudy({ active, home, onStart, onBack }: { active: boolean;
         {!available.length && !card && <p role="status">今の条件で出せるカードはありません。{nextDue !== undefined && <>次の出題：{new Date(nextDue).toLocaleString('ja-JP')}</>} 年度・分野を変えると学習を続けられます。</p>}
       </div>
       <details className="swipe-home-detail"><summary>使い方</summary><p>右で○、左で×、上で「わからない」。解説を読んだら、もう一度スワイプで次へ。</p>
-        <p>正解・誤答・わからないのいずれも、同じ元問題は24時間空けます。正解したカードは連続正解数に応じて1・3・7・14・30・60日後に復習。出題は未学習を約70%、復習を約30%の割合で混ぜます（候補がある場合）。</p>
+        <p>正誤評価とXPはカードごとに日本時間で1日最初の回答だけを採用します。要復習度は直近5学習日の初回回答と経過日数から計算します。</p>
         <p>元の設問文脈を保ち、試験当時の正答を使います。現在の法律と一致するかは未確認です。独自解説の登録がないカードでは、判定根拠のみ表示します。</p>
         <p>真偽を確定できない選択肢は出題しません（除外記録 {swipeCatalog.excluded.length}件）。</p>
       </details>
-      <details className="swipe-home-detail"><summary>○×履歴</summary>
-        <button className="secondary" disabled={blocked} onClick={() => download(JSON.stringify(state, null, 2), 'care-manager-swipe-history.json')}>○×履歴を書き出す</button>
-        <button className="secondary" onClick={() => fileRef.current?.click()}>○×履歴を読み込む</button>
-        <input ref={fileRef} type="file" accept=".json,application/json" hidden onChange={e => void importFile(e.target.files?.[0])}/>
-      </details>
-
-    {preview && <section className="panel" aria-label="○×履歴の読み込み確認"><h2>○×履歴の読み込み確認</h2><p>{Object.keys(preview.progress).length}枚の復習記録で、現在の○×履歴を置き換えます。</p>
-      <button className="secondary" onClick={() => download(initial.raw && blocked ? initial.raw : JSON.stringify(state, null, 2), 'care-manager-swipe-before-import.json')}>現在の○×データを書き出す</button>
-      <button className="primary" onClick={() => { setState(preview); setBlocked(false); setPreview(undefined); setCard(undefined); setResult(undefined); setNow(Date.now()); setMessage('○×履歴を読み込みました。'); }}>○×履歴を置き換える</button>
-      <button className="secondary" onClick={() => setPreview(undefined)}>キャンセル</button>
-    </section>}
-  </div>;
+        </div>;
   if (!active) return home && homeHost ? createPortal(setup, homeHost) : null;
   return <section className="swipe-screen">
-    {error && <div className="warning" role="alert"><p>{error}</p>{blocked && <>
-      <button onClick={() => download(initial.raw ?? '', 'care-manager-swipe-recovery.json')}>元の○×データを書き出す</button>
-      <button onClick={() => { setBlocked(false); setState(emptySwipe()); }}>新しい○×履歴で始める</button>
-    </>}</div>}
-    {message && <p role="status">{message}</p>}
     {!card ? <div className="swipe-empty"><p>ホームで年度・分野を選択してください。</p><button className="primary" onClick={onBack}>条件選択に戻る<span aria-hidden="true">→</span></button></div> : <>
       <div className="quest-heading"><button className="text-button" onClick={() => { setCard(undefined); setResult(undefined); locked.current = false; setNow(Date.now()); onBack(); }}>分野選択に戻る</button></div>
       <div className="question-meta"><span>{card.year}年度 問{card.number}・選択肢{card.choiceId}</span></div>
@@ -174,7 +134,7 @@ export function SwipeStudy({ active, home, onStart, onBack }: { active: boolean;
       {questionById(card.questionId) && <CopyText key={`${card.id}:${Boolean(result)}`} text={swipeCopyText(questionById(card.questionId)!, card, Boolean(result), result?.answer)} includeAnswer={Boolean(result)}/>}
       {result && <>
         <AppExplanation key={`${card.id}:${card.revision}`} target={cardTarget(card)}/>
-        <details className="panel"><summary>問題・出典</summary><p>次の復習：{new Date(state.progress[card.id].dueAt).toLocaleString('ja-JP')}</p>
+        <details className="panel"><summary>問題・出典</summary><p>次の復習：{state.progress[card.id] ? new Date(state.progress[card.id].dueAt).toLocaleString('ja-JP') : '未記録'}</p>
           <ol>{questionById(card.questionId)?.options.map(o => <li key={o.id}>{o.text}</li>)}</ol>
           {questionById(card.questionId)?.original?.imagePath && <><button className="secondary" onClick={() => setOriginal(!original)}>{original ? '原本を閉じる' : '原本画像を見る'}</button>{original && <OriginalImage question={questionById(card.questionId)!}/>}</>}
           {questionById(card.questionId)?.original?.sourceUrl && <a href={questionById(card.questionId)!.original!.sourceUrl} target="_blank" rel="noopener noreferrer">掲載元で確認 ↗</a>}
