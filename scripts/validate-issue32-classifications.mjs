@@ -91,12 +91,12 @@ for (let year = 2005; year <= 2025; year++) {
 const difficultKeys = difficult.map((r) => [r.question_id, r.choice_index, r.proposition_index].join('/'));
 assert.equal(new Set(difficultKeys).size, difficultKeys.length, 'duplicate difficult case');
 assert.deepEqual(new Set(difficultKeys), allDifficult, 'difficult-cases out of sync');
-assert.equal(total, 6335);
+assert.equal(total, 6338);
 assert.equal(manifest.coverage.proposition_record_count, total);
 assert.equal(manifest.coverage.difficult_case_count, difficult.length);
 assert.deepEqual(manifest.coverage.status_counts, statusTotal);
 assert.deepEqual(manifest.coverage.primary_root_counts, rootTotal);
-assert.deepEqual(reviewed, { 2018: 2, 2024: 105, 2025: 300 }, 'reviewed record counts');
+assert.deepEqual(reviewed, { 2018: 2, 2023: 300, 2024: 105, 2025: 300 }, 'reviewed record counts');
 
 const expectedPaths = [
   ['2018-10/5/1', '普通徴収と特別徴収'],
@@ -114,6 +114,38 @@ for (const [id, segment] of expectedPaths) {
   assert.ok(row.primary_path.join(' > ').includes(segment), `misclassified ${id}: ${row.primary_path.join(' > ')}`);
 }
 
+
+// 2023: independent review + proposition segmentation regression cases.
+// These tests verify the revised taxonomy data, not whether the answers are true.
+const reviewed2023 = jsonl('propositions/2023.jsonl');
+assert.equal(reviewed2023.length, 303, '2023 proposition count');
+assert.equal(reviewed2023.filter((r) => r.classification_review?.version === 'taxonomy-v1.1').length, 303);
+const check2023 = (q, choice, segment) => {
+  const found = reviewed2023.filter((r) => r.question_number === q && r.choice_index === choice);
+  assert.ok(found.length && found.every((r) => r.primary_path.join(' > ').includes(segment)), `2023-${q}/${choice}: ${segment}`);
+};
+for (const [q, choice, label] of [
+  [3, 1, '社会保険一般'],
+  [5, 3, '住所地特例'],
+  [6, 4, '適用除外'],
+  [14, 2, '地域ケア会議'],
+  [22, 3, '施設サービス計画'],
+  [31, 1, '認知症施策推進大綱'],
+  [54, 1, '居宅介護住宅改修費'],
+  [57, 3, '介護老人福祉施設（特養）'],
+]) check2023(q, choice, label);
+for (const [q, choice] of [[3, 5], [10, 4], [44, 3]]) {
+  const matches = reviewed2023.filter((r) => r.question_number === q && r.choice_index === choice);
+  assert.deepEqual(matches.map((r) => r.proposition_index), [1, 2]);
+  assert.equal(matches[0].source_text, matches[1].source_text, 'preserve full original choice');
+  assert.notEqual(matches[0].proposition, matches[1].proposition, 'split into distinct claims');
+}
+for (const q of [5, 6, 8, 13, 14, 15, 16, 29, 37]) {
+  for (const row of reviewed2023.filter((r) => r.question_number === q)) {
+    assert.notEqual(row.proposition, row.source_text, `context must be reconstructed: ${row.question_id}/${row.choice_index}`);
+  }
+}
+
 assert.ok(!checksumList.some((item) => item.path === 'checksums.json'), 'self-checksum is not stable');
 for (const item of checksumList) {
   const buf = readFileSync(join(dir, item.path));
@@ -123,4 +155,4 @@ for (const item of checksumList) {
 }
 assert.equal(checksumList.length, 25);
 assert.match(read('README.md'), /初回分類時点のスナップショット/);
-console.log(`taxonomy experiment integrity OK: ${total} propositions; ${difficult.length} difficult; 407 reviewed; ${checksumList.length} checksums`);
+console.log(`taxonomy experiment integrity OK: ${total} propositions; ${difficult.length} difficult; 707 revised; ${checksumList.length} checksums`);
