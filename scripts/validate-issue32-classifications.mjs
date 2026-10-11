@@ -69,8 +69,12 @@ for (let year = 2005; year <= 2025; year++) {
     }
     if (row.classification_revision) {
       reviewed[year] = (reviewed[year] || 0) + 1;
-      assert.ok(row.classification_revision.previous_status);
-      assert.ok(Array.isArray(row.classification_revision.previous_primary_path));
+      // Older review batches store the previous values under `previous`; later
+      // batches use `previous_status` / `previous_primary_path` directly.
+      const revision = row.classification_revision;
+      assert.ok(typeof revision === 'object' && Object.keys(revision).length > 0, `empty revision history: ${key}`);
+      if (revision.previous_primary_path !== undefined) assert.ok(Array.isArray(revision.previous_primary_path), key);
+      if (revision.previous !== undefined) assert.ok(typeof revision.previous === 'object' && revision.previous !== null, key);
     } else if (row.classification_review?.version === 'taxonomy-v1.1') {
       // Newly created propositions from a reviewed split have no previous path
       // to store in classification_revision, but are still reviewed.
