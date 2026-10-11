@@ -25,11 +25,8 @@ export function SwipeStudy({ active }: { active: boolean }) {
   const [year, setYear] = useState<number | 'all'>('all');
   const [topic, setTopic] = useState('all');
   const [now, setNow] = useState(Date.now());
-  const [queue, setQueue] = useState<SwipeCard[]>([]);
-  const [index, setIndex] = useState(0);
+  const [card, setCard] = useState<SwipeCard>();
   const [result, setResult] = useState<{ answer: boolean | null; correct: boolean }>();
-  const [score, setScore] = useState(0);
-  const [summary, setSummary] = useState('');
   const [drag, setDrag] = useState({ x: 0, y: 0 });
   const [original, setOriginal] = useState(false);
   const [preview, setPreview] = useState<SwipeState>();
@@ -39,7 +36,6 @@ export function SwipeStudy({ active }: { active: boolean }) {
   const locked = useRef(false);
   const nextRef = useRef<HTMLButtonElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
-  const card = queue[index];
   const candidates = useMemo(() => filterSwipeCards(swipeCards, year, topic), [year, topic]);
   const available = useMemo(() => reviewQueue(candidates, state, now), [candidates, state, now]);
   const counts = useMemo(() => {
@@ -61,21 +57,22 @@ export function SwipeStudy({ active }: { active: boolean }) {
     locked.current = true;
     const correct = answer !== null && answer === card.truth;
     setState(s => recordSwipe(s, card, answer, Date.now()));
-    setResult({ answer, correct }); setScore(s => s + Number(correct)); setDrag({ x: 0, y: 0 });
+    setResult({ answer, correct }); setDrag({ x: 0, y: 0 });
     requestAnimationFrame(() => { nextRef.current?.focus({ preventScroll: true }); document.getElementById('swipe-feedback')?.scrollIntoView({ block: 'start', behavior: 'instant' }); });
   };
   const next = () => {
-    if (!result) return;
-    if (!locked.current) return;
+    if (!result || !locked.current) return;
     locked.current = false; setResult(undefined); setOriginal(false); setDrag({ x: 0, y: 0 }); setNow(Date.now());
-    if (index + 1 === queue.length) { setSummary(`${queue.length}枚中 ${score}枚正解`); setQueue([]); setIndex(0); }
-    else { setIndex(i => i + 1); requestAnimationFrame(() => cardRef.current?.focus({ preventScroll: true })); }
+    // Pick from the latest review state: no artificial 20-card limit or session result.
+    setCard(reviewQueue(candidates, state, Date.now())[0]);
+    requestAnimationFrame(() => cardRef.current?.focus({ preventScroll: true }));
     window.scrollTo({ top: 0, behavior: 'instant' });
   };
   const start = () => {
-    const next = reviewQueue(candidates, state, Date.now()).slice(0, 20);
-    if (!next.length || blocked) return;
-    locked.current = false; setQueue(next); setIndex(0); setScore(0); setResult(undefined); setSummary(''); setOriginal(false);
+    if (blocked) return;
+    const nextCard = reviewQueue(candidates, state, Date.now())[0];
+    if (!nextCard) return;
+    locked.current = false; setCard(nextCard); setResult(undefined); setOriginal(false);
   };
   const down = (e: PointerEvent<HTMLDivElement>) => {
     if (!e.isPrimary || (e.pointerType === 'mouse' && e.button !== 0) || (e.target as HTMLElement).closest('button,a,input,summary')) return;
@@ -112,7 +109,6 @@ export function SwipeStudy({ active }: { active: boolean }) {
     </>}</div>}
     {message && <p role="status">{message}</p>}
     {!card ? <>
-      {summary && <p className="notice" role="status">{summary}</p>}
       <div className="panel swipe-settings">
         <label>年度<select aria-label="○×の年度" value={year} onChange={e => { setYear(e.target.value === 'all' ? 'all' : Number(e.target.value)); setTopic('all'); }}>
           <option value="all">全年度</option>{availableYears.map(y => <option key={y} value={y}>{y}年度</option>)}
@@ -126,7 +122,6 @@ export function SwipeStudy({ active }: { active: boolean }) {
         </select></label>
         <div className="record-stats"><div><b>{candidates.length}</b><span>対象</span></div><div><b>{reviewed}</b><span>学習済み</span></div><div><b>{due}</b><span>復習待ち</span></div></div>
         <button className="primary" aria-label="○×学習を始める" disabled={blocked || !available.length} onClick={start}>はじめる<span aria-hidden="true">→</span></button>
-        <p className="mission-note">1回20枚まで</p>
         {!available.length && <p role="status">今の分野のカードは学習済みです。{nextDue && <>次の復習：{new Date(nextDue).toLocaleString('ja-JP')}</>} 年度・分野を変えると学習を続けられます。</p>}
       </div>
       <details className="panel"><summary>使い方</summary><p>右で○、左で×、上で「わからない」。解説を読んだら、もう一度スワイプで次へ。</p>
@@ -140,7 +135,7 @@ export function SwipeStudy({ active }: { active: boolean }) {
         <input ref={fileRef} type="file" accept=".json,application/json" hidden onChange={e => void importFile(e.target.files?.[0])}/>
       </details>
     </> : <>
-      <div className="quest-heading"><button className="text-button" onClick={() => { setQueue([]); setResult(undefined); locked.current = false; setNow(Date.now()); }}>分野選択に戻る</button><span>{index + 1} / {queue.length}枚</span></div>
+      <div className="quest-heading"><button className="text-button" onClick={() => { setCard(undefined); setResult(undefined); locked.current = false; setNow(Date.now()); }}>分野選択に戻る</button></div>
       <div className="question-meta"><span>{card.year}年度 問{card.number}・選択肢{card.choiceId}</span></div>
       <p className="swipe-topic">{card.topicIds.map(id => swipeConcepts.find(c => c.id === id)?.label).join(' / ') || '分類待ち'}</p>
       <div className="swipe-context"><b>元の設問</b><p>{card.stem}</p></div>
@@ -157,7 +152,7 @@ export function SwipeStudy({ active }: { active: boolean }) {
           <h2>{result.correct ? '正解！' : '不正解'}</h2><p className="swipe-verdict">正答：<b>{card.truth ? '○' : '×'}</b> ／ あなた：{result.answer === null ? 'わからない' : result.answer ? '○' : '×'}</p>
           <p>{card.explanation || '解説未登録'}</p>
         </div>
-        <button className="primary" ref={nextRef} onClick={next}>{index + 1 === queue.length ? '学習結果を見る' : '次のカードへ'}<span aria-hidden="true">→</span></button>
+        <button className="primary" ref={nextRef} onClick={next}>次のカードへ<span aria-hidden="true">→</span></button>
       </>}
       </div>
       {questionById(card.questionId) && <CopyText key={`${card.id}:${Boolean(result)}`} text={swipeCopyText(questionById(card.questionId)!, card, Boolean(result), result?.answer)} includeAnswer={Boolean(result)}/>}
@@ -173,7 +168,7 @@ export function SwipeStudy({ active }: { active: boolean }) {
     </>}
     {preview && <section className="panel" aria-label="○×履歴の読み込み確認"><h2>○×履歴の読み込み確認</h2><p>{Object.keys(preview.progress).length}枚の復習記録で、現在の○×履歴を置き換えます。</p>
       <button className="secondary" onClick={() => download(initial.raw && blocked ? initial.raw : JSON.stringify(state, null, 2), 'care-manager-swipe-before-import.json')}>現在の○×データを書き出す</button>
-      <button className="primary" onClick={() => { setState(preview); setBlocked(false); setPreview(undefined); setQueue([]); setResult(undefined); setNow(Date.now()); setMessage('○×履歴を読み込みました。'); }}>○×履歴を置き換える</button>
+      <button className="primary" onClick={() => { setState(preview); setBlocked(false); setPreview(undefined); setCard(undefined); setResult(undefined); setNow(Date.now()); setMessage('○×履歴を読み込みました。'); }}>○×履歴を置き換える</button>
       <button className="secondary" onClick={() => setPreview(undefined)}>キャンセル</button>
     </section>}
   </section>;
