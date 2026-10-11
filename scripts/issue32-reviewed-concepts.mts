@@ -3,6 +3,21 @@
 import type { ConceptDefinition } from './issue32-curated-concepts.mts';
 
 export const reviewedConceptDefinitions: readonly ConceptDefinition[] = [
+  ['1','1.2.pharmacology','薬剤の作用・代謝・排泄','薬剤の作用・代謝・排泄'],
+  ['1','1.3.contracture','関節拘縮','関節拘縮'],
+  ['2','2.2.intake','インテーク面接','インテーク面接'],
+  ['2','2.3.strengths','ストレングス','ストレングス'],
+  ['2','2.3.supervision','スーパービジョン','スーパービジョン'],
+  ['2','2.4.disaster_support','災害時の生活支援','災害時の生活支援'],
+  ['2','2.4.skin_care','清潔・入浴援助','清潔・入浴援助'],
+  ['2','2.4.ventilation','人工呼吸療法の支援','人工呼吸療法の支援'],
+  ['2','2.4.suction','喀痰吸引の支援','喀痰吸引の支援'],
+  ['2','2.4.self_catheter','自己導尿の支援','自己導尿の支援'],
+  ['2','2.4.pain_management','疼痛緩和の支援','疼痛緩和の支援'],
+  ['3','3.1.preventive.short_stay_medical','介護予防短期入所療養介護','介護予防短期入所療養介護'],
+  ['1','1.2.diagnosis','診断・治療の基本','診断・治療の基本'],
+  ['2','2.4.acp','アドバンス・ケア・プランニング（ACP）','アドバンス・ケア・プランニング（ACP）'],
+  ['4','4.1.community_policy.general_prevention','一般介護予防事業','一般介護予防事業'],
   ['1','1.1.urinary_infection','尿路感染','尿路感染|尿路感染症'],
   ['1','1.1.aspiration_pneumonia','誤嚥性肺炎','誤嚥性肺炎'],
   ['1','1.1.cerebral_infarction','脳梗塞','脳梗塞'],
