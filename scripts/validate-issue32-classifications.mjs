@@ -96,11 +96,16 @@ assert.equal(manifest.coverage.proposition_record_count, total);
 assert.equal(manifest.coverage.difficult_case_count, difficult.length);
 assert.deepEqual(manifest.coverage.status_counts, statusTotal);
 assert.deepEqual(manifest.coverage.primary_root_counts, rootTotal);
-assert.deepEqual(reviewed, { 2018: 2, 2024: 105, 2025: 300 }, 'reviewed record counts');
+assert.deepEqual(reviewed, { 2018: 2, 2022: 300, 2024: 105, 2025: 300 }, 'reviewed record counts');
 
 const expectedPaths = [
   ['2018-10/5/1', '普通徴収と特別徴収'],
   ['2018-21/1/1', '認定調査票'],
+  ['2022-07/1/1', '介護老人福祉施設（特養）'],
+  ['2022-10/3/1', '普通徴収'],
+  ['2022-12/3/1', '包括的支援事業'],
+  ['2022-38/4/1', '頭部外傷'],
+  ['2022-54/4/1', '特定福祉用具販売'],
   ['2024-13/1/1', '認知症総合支援事業'],
   ['2024-31/1/1', '退院・退所支援'],
   ['2025-02/5/1', '認知症基本法'],
@@ -114,6 +119,13 @@ for (const [id, segment] of expectedPaths) {
   assert.ok(row.primary_path.join(' > ').includes(segment), `misclassified ${id}: ${row.primary_path.join(' > ')}`);
 }
 
+for (const [question, choice, term] of [[12, 3, '包括的支援事業'], [13, 1, '国民健康保険団体連合会'], [16, 4, '主治医意見書'], [17, 1, '特定疾病']]) {
+  const key = `2022-${String(question).padStart(2, '0')}/${choice}/1`;
+  const row = lookup.get(key);
+  assert.ok(row && row.proposition.includes(term), `missing context for truncated proposition ${key}`);
+  assert.ok(row.source_review_required, `source review flag dropped for ${key}`);
+}
+
 assert.ok(!checksumList.some((item) => item.path === 'checksums.json'), 'self-checksum is not stable');
 for (const item of checksumList) {
   const buf = readFileSync(join(dir, item.path));
@@ -123,4 +135,4 @@ for (const item of checksumList) {
 }
 assert.equal(checksumList.length, 25);
 assert.match(read('README.md'), /初回分類時点のスナップショット/);
-console.log(`taxonomy experiment integrity OK: ${total} propositions; ${difficult.length} difficult; 407 reviewed; ${checksumList.length} checksums`);
+console.log(`taxonomy experiment integrity OK: ${total} propositions; ${difficult.length} difficult; ${Object.values(reviewed).reduce((a, b) => a + b, 0)} reviewed; ${checksumList.length} checksums`);
