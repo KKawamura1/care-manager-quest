@@ -67,14 +67,15 @@ const legalRules = [
   [/法第|制度の目的|基本理念|国民の努力|責務|基本方針/, 'principles','法定目的・理念・責務'],
   [/統計|人口|人数|推移|割合|増加|減少|2017年度末/, 'statistics','制度の統計・動向'],
 ];
-const ruleFor = (rules, text, highPrecision = false) => {
+const ruleFor = (rules, text) => {
   const hits=rules.filter(([pattern])=>pattern.test(text));
   if(!hits.length)return null;
-  const [pattern,id,label]=hits[0];
-  // A single explicit rule in a narrowly scoped concept is a checked
-  // classification rule. Multiple different cues need semantic review.
-  return {id,label,resolution:highPrecision&&hits.length===1?'curated':'inferred',
-    evidence:'proposition_keyword', matched_rule_count:hits.length};
+  const [,id,label]=hits[0];
+  // Keyword detection suggests a facet; even one hit is not an individual
+  // semantic review. Preserve every competing facet for later inspection.
+  return {id,label,resolution:'inferred',
+    evidence:'proposition_keyword', matched_rule_count:hits.length,
+    candidate_attribute_ids:[...new Set(hits.map(([,candidate])=>candidate))]};
 };
 
 /**
@@ -90,14 +91,18 @@ export function inferAttributeFromProposition(row, concept) {
     /^(?:.+>)?(相談援助|支援技術|具体的な支援技術|加齢・疾病・病態|ケアマネジメント|保険給付|介護保険制度|その他の法律・制度)$/.test(raw) ||
     /申請・調査・審査判定・有効期間|アセスメント・計画・調整・評価|疾病・症状・検査・治療|健康状態・生活機能|支援の原則・ケアマネジメント・相談援助|給付の対象・条件・限度・負担/.test(raw) ||
     // Old v1.1 data are broad, without an attribute at all.
-    (/^[1-4]\./.test(raw) && raw.split('>').length<=2);
+    (/^[1-4]\./.test(raw) && raw.split('>').length<=2) ||
+    // Annual snapshots often store an entire taxonomy heading as the attribute.
+    /^(介護保険サービス・施設|その他の法律・制度|支援技術|具体的な支援技術|加齢・疾病・病態|支援機関)>/.test(raw) ||
+    /^(目的・主体・対象・手続|目的・対象・給付|対象・人員・提供・運営基準|施設固有の人員・設備・運営・サービス|設置・人員・機能・業務|計画・調整・会議・評価)$/.test(raw) ||
+    /^介護保険制度>(行政・制度運営|地域施策・地域支援事業)/.test(raw);
   if (!broad) return null;
   let result=null;
-  if (concept.id==='4.1.certification') result=ruleFor(certificationRules,statement,true);
-  else if (concept.id==='2.2') result=ruleFor(counsellingRules,statement,true);
-  else if (concept.id==='2.3') result=ruleFor(careManagementRules,statement,true);
-  else if (concept.id==='2.4') result=ruleFor(careTechRules,statement,true);
-  else if (concept.root==='3') result=ruleFor(providerRules,statement,true);
+  if (concept.id==='4.1.certification') result=ruleFor(certificationRules,statement);
+  else if (concept.id==='2.2') result=ruleFor(counsellingRules,statement);
+  else if (concept.id==='2.3') result=ruleFor(careManagementRules,statement);
+  else if (concept.id==='2.4') result=ruleFor(careTechRules,statement);
+  else if (concept.root==='3') result=ruleFor(providerRules,statement);
   else if (concept.root==='4') result=ruleFor(legalRules,statement);
   else if (concept.root==='1') {
     const rules=[
@@ -112,15 +117,20 @@ export function inferAttributeFromProposition(row, concept) {
 }
 
 /** High confidence named disease mentions recover subjects lost to umbrella subjects. */
-export function recoverDiseaseConcept(row,aliases) {
-  if(row.primary_path?.[0]!=='1')return null;
+export function recoverDiseaseConcept(row,aliases,path=row.primary_path) {
+  if(path?.[0]!=='1')return null;
   const text=clean(row.proposition||row.source_text);
   const found=new Map();
-  for(const [key,record] of aliases){
+  // Match a specific name before its contained parent name. A mention of
+  // aspiration pneumonia must not also count as an independent pneumonia hit.
+  const matched=[];
+  for(const [key,record] of [...aliases].sort((a,b)=>b[0].length-a[0].length)){
     if(!key.startsWith('1|') || !record.id.startsWith('1.1.'))continue;
     const name=key.slice(2);
     if(name.length<3 || name.includes('健康') || name.includes('疾患') || name.includes('状態')||name.includes('栄養'))continue;
-    if(text.includes(name)) found.set(record.id,record);
+    if(text.includes(name) && !matched.some(longer=>longer.includes(name))) {
+      matched.push(name); found.set(record.id,record);
+    }
   }
   if(found.size!==1)return null;
   return {...[...found.values()][0],resolution:'inferred',source_subject:row.subject_concept,evidence:'one_named_disease'};

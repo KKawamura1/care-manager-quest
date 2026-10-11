@@ -1,7 +1,15 @@
 import assert from 'node:assert/strict';
 import { buildIndex } from './normalize-issue32-ids.mjs';
+import { normalizeIds, observedPathId } from './normalize-issue32-ids.mjs';
+import { identifyDrawer } from './issue32-drawers.mjs';
+import { loadYear } from './issue32-revisions.mjs';
+import { mkdtempSync, readFileSync, readdirSync, rmSync } from 'node:fs';
+import { join } from 'node:path';
+import { tmpdir } from 'node:os';
+import { writeArtifacts } from './normalize-issue32-ids.mjs';
 
-const {index, summary, drawer_registry, path_drawer_relations} = buildIndex();
+const result = buildIndex();
+const {index, summary, drawer_registry, path_drawer_relations} = result;
 const lookup = new Map(index.map(x=>[x.canonical_question_id+'/c'+x.choice_index+'/p'+x.proposition_index,x]));
 const drawer = (q,c,p=1) => {
   const record = lookup.get(q+'/c'+c+'/p'+p);
@@ -56,8 +64,74 @@ assert.ok(summary.normalized_drawer_count < summary.observed_path_count);
 assert.ok(summary.normalization_review_required_drawers > 0,'unreviewed cases must remain flagged');
 assert.ok(summary.reviewed_rule_drawer_count > 0,'curated taxonomy drawers should exist');
 const ambiguous = index.filter(x=>x.classification_status==='ambiguous');
-assert.equal(ambiguous.length,25);
+assert.equal(ambiguous.length,0,'PR58 resolved the 25 prior ambiguities');
 assert.ok(ambiguous.every(x=>x.primary_drawer_id===null && x.candidate_drawer_ids.length>=2));
+const originalAmbiguous=[];
+for(let year=2005;year<=2025;year++) originalAmbiguous.push(...loadYear(year,{baselineOnly:true}).filter(r=>r.classification_status==='ambiguous'));
+assert.equal(originalAmbiguous.length,25,'immutable baseline still preserves the prior ambiguities');
+for(const row of originalAmbiguous) {
+  const normalized=normalizeIds(row);
+  assert.equal(normalized.primary_drawer_id,null);
+  assert.ok(normalized.candidate_drawer_ids.length>=2);
+  assert.equal(normalized.drawer_review_required,true);
+}
+
+// Both ID/path provenance and drawer roots must reflect reviewed overlays.
+const revised=loadYear(2017).find(r=>r.question_number===29&&r.choice_index===4);
+assert.equal(lookup.get('2017-29/c4/p1').primary_path_id,observedPathId(revised.primary_path));
+assert.match(drawer('2017-29',4),/^drawer32\.4\./,'COPD as a statutory special disease is not a clinical drawer');
+assert.match(drawer('2005-53',2),/^drawer32\.2\./,'group-home context must not override ADL assessment knowledge');
+
+// Identical aliases merge; parent/subtype and related concepts stay separate.
+const example=(root,subject)=>({year:2025,question_number:60,choice_index:5,proposition_index:99,
+  subject_concept:subject,attribute:'定義',classification_status:'assigned',proposition:'定義についての命題',
+  primary_path:[root,root==='1'?'人の健康と生活':root==='2'?'支援の考え方と方法':root==='3'?'支援の提供体制':'社会保障の仕組み',subject,'定義']});
+const idFor=(root,subject)=>{const row=example(root,subject);return identifyDrawer(row,row.primary_path).id;};
+for(const [root,a,b]of [
+  ['1','尿閉','尿路感染'],['1','肺炎','誤嚥性肺炎'],['1','脳血管疾患','脳梗塞'],
+  ['1','腎不全','慢性腎不全'],['1','精神障害','気分障害'],
+  ['1','血清アルブミン','クレアチニン'],['1','クレアチニン','骨密度'],
+  ['2','相談援助','回想法'],['2','排泄援助','膀胱留置カテーテル'],
+  ['3','福祉用具貸与','特定福祉用具販売'],['3','福祉用具貸与','福祉用具貸与・販売'],
+  ['3','介護予防サービス','介護予防通所介護'],
+  ['4','国民健康保険団体連合会','社会保険診療報酬支払基金'],
+  ['4','保険料・財政','財政安定化基金'],
+  ['4','市町村介護保険事業計画','都道府県介護保険事業支援計画'],
+]) assert.notEqual(idFor(root,a),idFor(root,b),'distinct concepts: '+a+' / '+b);
+for(const [root,a,b]of [['1','高血圧','高血圧症'],['1','加齢黄斑変性','加齢黄斑変性症'],
+  ['3','訪問看護','指定訪問看護事業者'],['4','医療保険','医療保険制度']]) assert.equal(idFor(root,a),idFor(root,b));
+
+// Vocabulary-prefix and statement-keyword guesses remain reviewable.
+const prefix=example('3','訪問看護の未知の属性');
+assert.equal(identifyDrawer(prefix,prefix.primary_path).concept_resolution,'inferred');
+const broad=example('4','要介護認定');broad.attribute='申請・調査・審査判定・有効期間';broad.proposition='認定調査を実施する。';
+assert.equal(identifyDrawer(broad,broad.primary_path).attribute_resolution,'inferred');
+
+// Individual normalization reviews cover actual knowledge, including pronouns
+// whose meaning cannot be recovered from the proposition string alone.
+assert.equal(summary.individually_reviewed_drawer_assignments,91);
+same([1,2,3,4,5].map(c=>drawer('2014-14',c)));
+assert.match(drawer('2014-14',1),/#survey$/,'basic-survey fields must not map to application');
+assert.match(drawer('2014-15',5),/#survey$/,'mention of physician opinion does not override the tested calculation method');
+assert.match(drawer('2013-16',1),/#committee$/,'committee establishment must not map to application');
+assert.match(drawer('2011-14',3),/3\.1\.preventive_support#designation$/);
+const reviewed=loadYear(2014).find(r=>r.question_number===14&&r.choice_index===1);
+assert.throws(()=>identifyDrawer({...reviewed,proposition:reviewed.proposition+'変更'},reviewed.primary_path),/stale drawer decision/);
+assert.equal(summary.classification_semantically_reviewed_propositions,236,'normalization review must not inflate PR58 semantic approvals');
+const mixed=drawer_registry.find(d=>d.id==='drawer32.4.4.1.certification#survey');
+assert.ok(mixed.attribute_evidences.includes('individual_drawer_review'));
+assert.ok(mixed.attribute_evidences.includes('proposition_keyword'));
+assert.ok(mixed.review_required,'one reviewed occurrence cannot approve other inferred occurrences');
+
+const dir=mkdtempSync(join(tmpdir(),'issue32-drawer-artifacts-'));
+try {
+  writeArtifacts(dir,result);
+  assert.equal(readdirSync(dir).length,8);
+  const report=JSON.parse(readFileSync(join(dir,'normalization-report.json'),'utf8'));
+  assert.equal(report.summary.proposition_count,index.length);
+  const records=readFileSync(join(dir,'review-required-propositions.jsonl'),'utf8').trim().split('\n');
+  assert.equal(records.length,summary.normalization_review_required_propositions);
+} finally {rmSync(dir,{recursive:true,force:true});}
 const old2020 = lookup.get('2020-01/c1/p1');
 assert.equal(old2020.source_question_id,'care_manager_2020_001');
 assert.equal(old2020.canonical_question_id,'2020-01');

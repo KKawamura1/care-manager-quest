@@ -26,7 +26,7 @@ export const additionalConceptDefinitions = [
     "1",
     "1.1.pneumonia",
     "肺炎",
-    "肺炎|誤嚥性肺炎"
+    "肺炎"
   ],
   [
     "1",
@@ -38,7 +38,7 @@ export const additionalConceptDefinitions = [
     "1",
     "1.1.cerebrovascular",
     "脳血管疾患・脳卒中",
-    "脳血管疾患|脳卒中|脳梗塞"
+    "脳血管疾患|脳卒中"
   ],
   [
     "1",
@@ -80,7 +80,7 @@ export const additionalConceptDefinitions = [
     "1",
     "1.1.mental",
     "高齢者の精神疾患",
-    "高齢者の精神疾患|精神障害|気分障害"
+    "高齢者の精神疾患|精神障害"
   ],
   [
     "1",
@@ -92,7 +92,7 @@ export const additionalConceptDefinitions = [
     "1",
     "1.1.alcohol",
     "アルコール依存症",
-    "アルコール依存症|アルコール関連問題"
+    "アルコール依存症"
   ],
   [
     "1",
@@ -134,13 +134,13 @@ export const additionalConceptDefinitions = [
     "1",
     "1.1.kidney",
     "腎不全",
-    "腎不全|慢性腎不全"
+    "腎不全"
   ],
   [
     "1",
-    "1.1.urinary",
-    "尿閉・尿路感染",
-    "尿閉|尿路感染"
+    "1.1.urinary_retention",
+    "尿閉",
+    "尿閉"
   ],
   [
     "1",
@@ -302,13 +302,13 @@ export const additionalConceptDefinitions = [
     "1",
     "1.2.lab",
     "検査・検査値",
-    "検査項目・検査値|検査指標|検査値|血清アルブミン|クレアチニン|骨密度"
+    "検査項目・検査値|検査指標|検査値"
   ],
   [
     "1",
     "1.2.vitals",
     "バイタルサイン",
-    "血圧測定|バイタルサイン・意識の評価|症状・徴候・検査"
+    "バイタルサイン・意識の評価"
   ],
   [
     "1",
@@ -320,7 +320,7 @@ export const additionalConceptDefinitions = [
     "1",
     "1.3.swallowing",
     "摂食・嚥下機能",
-    "摂食|摂食・嚥下機能|摂食・嚥下障害|口腔機能|口腔・摂食嚥下機能|嚥下|嚥下反射と誤嚥"
+    "摂食・嚥下機能|嚥下"
   ],
   [
     "1",
@@ -350,7 +350,7 @@ export const additionalConceptDefinitions = [
     "2",
     "2.2",
     "相談援助",
-    "面接・コミュニケーション技術|面接場面のコミュニケーション技術|相談援助者の基本姿勢|ソーシャルワークの基本概念|回想法"
+    "面接・コミュニケーション技術|面接場面のコミュニケーション技術|相談援助者の基本姿勢|ソーシャルワークの基本概念"
   ],
   [
     "2",
@@ -362,7 +362,7 @@ export const additionalConceptDefinitions = [
     "2",
     "2.2.community",
     "地域援助",
-    "マクロ・ソーシャルワーク|ソーシャルワークにおける地域援助|ソーシャルワークの地域援助技術|ソーシャルワークの地域援助|地域援助・集団援助"
+    "マクロ・ソーシャルワーク|ソーシャルワークにおける地域援助|ソーシャルワークの地域援助技術|ソーシャルワークの地域援助"
   ],
   [
     "2",
@@ -446,7 +446,7 @@ export const additionalConceptDefinitions = [
     "2",
     "2.4.excretion",
     "排泄援助",
-    "排泄援助|膀胱留置カテーテル"
+    "排泄援助"
   ],
   [
     "2",
@@ -486,7 +486,7 @@ export const additionalConceptDefinitions = [
   ],
   [
     "3",
-    "3.1.home.welfare_equipment",
+    "3.1.home.welfare_equipment_combined",
     "福祉用具貸与・販売",
     "福祉用具貸与・購入|福祉用具貸与・特定福祉用具販売|介護保険の福祉用具サービス|福祉用具貸与・販売"
   ],
@@ -728,7 +728,7 @@ export const additionalConceptDefinitions = [
     "4",
     "4.1.finance",
     "保険料・財政",
-    "介護保険料|介護保険の財源・保険料|介護保険の財源・公費負担|介護給付・予防給付の財源|介護保険の調整交付金|普通調整交付金"
+    "介護保険料|介護保険の財源・保険料|介護保険の財源・公費負担|介護給付・予防給付の財源"
   ],
   [
     "4",
@@ -770,19 +770,19 @@ export const additionalConceptDefinitions = [
     "4",
     "4.1.administration.payment",
     "審査支払・国保連",
-    "国民健康保険団体連合会の業務|社会保険診療報酬支払基金の介護保険関係業務|医療保険者の介護保険関連事務"
+    "国民健康保険団体連合会の業務"
   ],
   [
     "4",
     "4.1.community_policy",
     "地域施策・地域支援事業",
-    "介護保険の保健福祉事業|地域支援事業・一般介護予防事業|生活支援体制整備事業|認知症総合支援事業|地域医療介護総合確保基金"
+    "地域支援事業・一般介護予防事業"
   ],
   [
     "4",
     "4.1.community_policy.plans",
     "介護保険事業計画",
-    "介護保険事業計画の基本指針|都道府県介護保険事業支援計画"
+    "介護保険事業計画の基本指針"
   ],
   [
     "4",

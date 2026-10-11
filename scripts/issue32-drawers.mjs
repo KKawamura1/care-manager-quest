@@ -6,11 +6,23 @@
  * NOT a statement that the underlying propositions are correct.
  */
 import { createHash } from 'node:crypto';
+import { reviewedConceptDefinitions } from './issue32-reviewed-concepts.mjs';
 import { additionalConceptDefinitions } from './issue32-curated-concepts.mjs';
 import { inferAttributeFromProposition, recoverDiseaseConcept } from './issue32-proposition-inference.mjs';
+import { reviewedAttribute } from './issue32-reviewed-attributes.mjs';
+import { reviewedDrawerAssignment } from './issue32-reviewed-drawers.mjs';
 
 const norm = (value) => String(value ?? '').normalize('NFKC').replace(/[\s　]+/g, '').replace(/[（]/g, '(').replace(/[）]/g, ')');
 const hash = (str) => createHash('sha256').update(str, 'utf8').digest('hex').slice(0, 16);
+const attributeLabels = {
+  tests:'検査・評価', symptoms:'病態・症状', treatment:'治療・ケア', prevention:'予防',
+  fees:'費用・報酬', equipment:'設備基準', staffing:'人員配置', operations:'運営基準',
+  services:'提供内容', eligibility:'対象・要件', care_plan:'計画作成', assessment:'アセスメント',
+  monitoring:'モニタリング・評価', coordination:'連携・調整', authority:'役割・権限・責務',
+  principles:'目的・理念・基本方針', ethical:'支援原則・倫理', interview:'面接・コミュニケーション',
+  documentation:'記録・情報管理', benefits:'給付内容・条件', risk:'原因・危険因子',
+  designation:'指定・監督',
+};
 
 /** Curated aliases are restricted to the indicated branch, avoiding cross-domain homonyms. */
 const conceptDefinitions = [
@@ -23,11 +35,11 @@ const conceptDefinitions = [
   ['1','1.1.delirium','せん妄','せん妄'],
   ['1','1.1.infections','感染症','感染症'],
   ['1','1.1.pressure_ulcer','褥瘡','褥瘡'],
-  ['1','1.1.nutrition','低栄養・栄養障害','低栄養|高齢者の栄養・摂食嚥下機能'],
+  ['1','1.1.nutrition','低栄養・栄養障害','低栄養'],
   ['1','1.1.health','加齢・疾病・病態','加齢・疾病・病態|高齢者の健康状態|健康状態・生活機能'],
   ['1','1.2.lab','検査・検査値','検査・検査値|検査項目・検査値の意味'],
   ['1','1.2.vitals','バイタルサイン','バイタルサイン|血圧'],
-  ['1','1.3','生活機能','高齢者の生活機能・身体機能|生活機能|嚥下機能'],
+  ['1','1.3','生活機能','高齢者の生活機能・身体機能|生活機能'],
   ['1','1.4','生活背景','生活背景|高齢者の生活背景・家族環境'],
   // Generic care skills (separate from service-specific operating standards).
   ['2','2.1','支援原則・倫理','支援原則・倫理|支援の原則・方法|自立支援・権利尊重'],
@@ -37,7 +49,7 @@ const conceptDefinitions = [
   ['2','2.3.care_plan','ケアプラン','ケアプラン|居宅サービス計画|介護予防サービス計画|介護予防サービス・支援計画書|居宅サービス計画原案'],
   ['2','2.3.service_meeting','サービス担当者会議','サービス担当者会議'],
   ['2','2.3.monitoring','モニタリング','モニタリング'],
-  ['2','2.4','支援技術','支援技術|具体的な支援技術|日常生活援助・終末期ケア|医療・看護の共通技術|リハビリテーション|在宅医療管理|在宅酸素療法|食事介助のアセスメント'],
+  ['2','2.4','支援技術','支援技術|具体的な支援技術|医療・看護の共通技術|在宅医療管理|食事介助のアセスメント'],
   ['2','2.4.family_support','家族支援','家族支援'],
   ['2','2.4.end_of_life','終末期ケア','終末期ケア|臨死期のケア'],
   ['2','2.4.oral','口腔ケア','口腔ケア'],
@@ -68,7 +80,7 @@ const conceptDefinitions = [
   ['3','3.1.facilities.old_medical','介護療養型医療施設','介護療養型医療施設'],
   ['3','3.1.home_support','居宅介護支援','居宅介護支援|指定居宅介護支援|指定居宅介護支援事業者'],
   ['3','3.1.preventive_support','介護予防支援','介護予防支援|指定介護予防支援'],
-  ['3','3.1.preventive','介護予防サービス','介護予防サービス|介護予防通所介護'],
+  ['3','3.1.preventive','介護予防サービス','介護予防サービス'],
   ['3','3.1.community','地域密着型サービス','地域密着型サービス'],
   ['3','3.1.home','居宅サービス','居宅サービス|居宅介護サービス'],
   ['3','3.2.sakoju','サービス付き高齢者向け住宅','サービス付き高齢者向け住宅|サ高住'],
@@ -88,18 +100,18 @@ const conceptDefinitions = [
   ['4','4.1.benefits.high_cost','高額介護サービス費','高額介護サービス費'],
   ['4','4.1.benefits.supplementary','特定入所者介護サービス費','特定入所者介護サービス費'],
   ['4','4.1.benefits.coordination','他制度との給付調整','介護保険と他制度の給付調整|介護保険と生活保護(介護扶助)'],
-  ['4','4.1.finance','保険料・財政','保険料・財政|保険料・公費・財政|介護保険財政|介護保険の財政・保険料|財政安定化基金'],
+  ['4','4.1.finance','保険料・財政','保険料・財政|保険料・公費・財政|介護保険財政|介護保険の財政・保険料'],
   ['4','4.1.finance.first','第1号被保険者保険料','第1号被保険者保険料|第1号被保険者の保険料|第1号被保険者の保険料滞納'],
   ['4','4.1.finance.second','第2号被保険者保険料','第2号被保険者保険料'],
   ['4','4.1.administration','行政・制度運営','行政・制度運営|介護保険制度の管理運営|介護保険法令・条例基準'],
   ['4','4.1.administration.authority','国・都道府県・市町村の権限','国・都道府県・市町村の権限|市町村の権限|市町村の介護保険事務'],
   ['4','4.1.administration.designation','事業者に共通する指定・監督','事業者に共通する指定・監督|介護保険サービス事業者の指定・監督'],
-  ['4','4.1.administration.payment','審査支払・国保連','審査支払・国保連|国民健康保険団体連合会|社会保険診療報酬支払基金'],
+  ['4','4.1.administration.payment','審査支払・国保連','審査支払・国保連|国民健康保険団体連合会'],
   ['4','4.1.administration.appeals','介護保険の審査請求','介護保険審査会|介護保険審査会への審査請求|介護保険の審査請求'],
   ['4','4.1.administration.disclosure','介護サービス情報公表制度','介護サービス情報公表制度|介護サービス情報の公表制度'],
   ['4','4.1.community_policy','地域施策・地域支援事業','地域施策・地域支援事業|地域支援事業|地域支援事業・介護予防事業|一般介護予防事業'],
   ['4','4.1.community_policy.comprehensive','包括的支援事業','包括的支援事業'],
-  ['4','4.1.community_policy.support','介護予防・日常生活支援総合事業','介護予防・日常生活支援総合事業|第1号介護予防支援事業'],
+  ['4','4.1.community_policy.support','介護予防・日常生活支援総合事業','介護予防・日常生活支援総合事業'],
   ['4','4.1.community_policy.plans','介護保険事業計画','介護保険事業計画|市町村介護保険事業計画|市町村の介護保険事業計画'],
   ['4','4.1.community_policy.meeting','地域ケア会議','地域ケア会議'],
   ['4','4.2.dementia_basic_act','認知症基本法','認知症基本法|認知症施策'],
@@ -114,14 +126,20 @@ const conceptDefinitions = [
   ['4','4.0.social_insurance','社会保険一般','社会保険方式|社会保険一般'],
   ['4','4.1','介護保険制度','介護保険制度'],
   ...additionalConceptDefinitions,
+  ...reviewedConceptDefinitions,
 ];
+// One stable display label per ID, independent of which alias matched.
+const byId = new Map();
+for (const [root, id, label] of conceptDefinitions) {
+  if (!byId.has(root + '|' + id)) byId.set(root + '|' + id, { root, id, label });
+}
 const aliases = new Map();
 for (const [root, id, label, names] of conceptDefinitions) {
   for (const alias of names.split('|')) {
     const k = root + '|' + norm(alias);
     const old = aliases.get(k);
     if (old && old.id !== id) throw new Error('conflicting concept alias: ' + k);
-    aliases.set(k, { root, id, label });
+    aliases.set(k, byId.get(root + '|' + id));
   }
 }
 const attributeDefinitions = [
@@ -178,11 +196,11 @@ const pathConceptHints = [
   ['2', '2.3.care_plan', ['ケアプラン']],
   ['2', '2.3.monitoring', ['モニタリング']],
 ];
-const byId = new Map(conceptDefinitions.map(([root,id,label])=>[root+'|'+id,{root,id,label}]));
 function conceptFor(row, path) {
   const root = path[0];
   const raw = norm(row.subject_concept);
   let found = aliases.get(root+'|'+raw);
+  let resolution = 'curated';
   if (!found) {
     // Accept an explicit subject followed by grammatical suffix, never a
     // keyword merely appearing somewhere in the original statement.
@@ -192,7 +210,7 @@ function conceptFor(row, path) {
       .filter(({alias})=>alias.length >= 4 && (raw.startsWith(alias+'の') || raw.startsWith(alias+'における')))
       .sort((a,b)=>b.alias.length-a.alias.length);
     if (candidates.length && (candidates.length===1 || candidates[0].alias.length>candidates[1].alias.length))
-      found=candidates[0].value;
+      { found=candidates[0].value; resolution='inferred'; }
   }
   if (genericSubjects.has(raw)) {
     // Only explicit, branch-appropriate path components; never the very
@@ -204,10 +222,10 @@ function conceptFor(row, path) {
     }
   }
   if (found && root==='1' && ['1.1.health'].includes(found.id)) {
-    const disease = recoverDiseaseConcept(row, aliases);
+    const disease = recoverDiseaseConcept(row, aliases, path);
     if (disease) return disease;
   }
-  if (found) return {...found, resolution:'curated', source_subject:row.subject_concept};
+  if (found) return {...found, resolution, source_subject:row.subject_concept};
   if (!raw) return {root,id:'unresolved.'+hash(root+'|'+JSON.stringify(path.slice(0,5))),label:'要概念確認',resolution:'unresolved',source_subject:row.subject_concept};
   // Distinct named concepts never collapse merely because a path label looks
   // similar. They form a provisional registry that can be reviewed explicitly.
@@ -215,6 +233,8 @@ function conceptFor(row, path) {
 }
 
 function attributeFor(row, path, concept) {
+  const explicitFacet = reviewedAttribute(row, path, concept);
+  if (explicitFacet) return explicitFacet;
   const propositionInference = inferAttributeFromProposition(row,concept);
   if (propositionInference) return propositionInference;
   const all = path.slice(2).filter(x=>typeof x==='string'&&!/^[1-4](?:\.[a-z0-9_]+)+$/.test(x));
@@ -222,7 +242,6 @@ function attributeFor(row, path, concept) {
   // Strip the subject itself and broad taxonomy labels. Attribute evidence
   // comes from the topic path, not an assertion's object alone.
   const hints = all.filter((segment,i)=>norm(segment)!==subject && norm(segment)!==label);
-  let explicit = norm(row.attribute);
   // In recent reviews a single assertion value is sometimes stored in
   // attribute. Use the path's "applicable services" level instead.
   const allClues = [row.attribute, ...hints].join(' > ');
@@ -258,19 +277,26 @@ function attributeFor(row, path, concept) {
 
 export function identifyDrawer(row, path) {
   if (!path || path.length < 2) return null;
-  const concept = conceptFor(row,path);
-  const attribute = attributeFor(row,path,concept);
+  const decision = reviewedDrawerAssignment(row, path);
+  const reviewedConcept = decision ? byId.get(path[0] + '|' + decision.concept_id) : null;
+  if (decision && !reviewedConcept) throw new Error('unknown reviewed concept: ' + decision.concept_id);
+  const concept = decision ? { ...reviewedConcept, resolution:'curated', evidence:'individual_drawer_review' } : conceptFor(row,path);
+  const attribute = decision ? {id:decision.attribute_id, label:decision.attribute_label,
+    resolution:'curated', evidence:'individual_drawer_review'} : attributeFor(row,path,concept);
   return {
     id:'drawer32.'+concept.root+'.'+concept.id+'#'+attribute.id,
     root:concept.root,
     concept_id:concept.id,
     concept_label:concept.label,
     attribute_id:attribute.id,
-    attribute_label:attribute.label,
+    attribute_label:attributeLabels[attribute.id]??attribute.label,
     review_required:concept.resolution!=='curated' || attribute.resolution!=='curated',
     concept_resolution:concept.resolution,
     attribute_resolution:attribute.resolution,
     attribute_evidence:attribute.evidence??null,
     concept_evidence:concept.evidence??null,
+    candidate_attribute_ids:attribute.candidate_attribute_ids??[attribute.id],
+    individually_reviewed:!!decision,
+    review_reason:decision?.reason??null,
   };
 }

@@ -11,8 +11,9 @@
  */
 import assert from 'node:assert/strict';
 import { identifyDrawer } from './issue32-drawers.mjs';
+import { loadYear } from './issue32-revisions.mjs';
 import { createHash } from 'node:crypto';
-import { readFileSync } from 'node:fs';
+import { readFileSync, mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -127,15 +128,20 @@ export function normalizeIds(row) {
     candidate_v1_1_anchor_ids: candidates.map((c) => c.taxonomy_v1_1_anchor_id),
     primary_drawer_id: drawer?.id ?? null,
     candidate_drawer_ids: candidateDrawers.map((d) => d.id),
+    candidate_attribute_ids: drawer?.candidate_attribute_ids ?? [],
+    drawer_assignment_reviewed: drawer?.individually_reviewed ?? false,
+    drawer_review_reason: drawer?.review_reason ?? null,
+    classification_semantic_reviewed: row.knowledge_target_review?.principle === 'judgment_knowledge_over_context',
     drawer_review_required: row.classification_status !== 'assigned' ||
       (drawer?.review_required ?? candidateDrawers.some((d) => d.review_required)),
   };
 }
 
-export function buildIndex() {
+export function buildIndex(options = {}) {
   const index = [], seenPropositions = new Set(), seenPaths = new Map();
   const mismatched = new Map(), conflicts = new Map(), v11Exact = new Map();
   const drawers = new Map(), pathToDrawers = new Map(), concepts = new Set();
+  const propositionReview = [];
   const summary = {
     years: [2005, 2025],
     question_count: 0,
@@ -150,21 +156,38 @@ export function buildIndex() {
     unresolved_attribute_drawers: 0,
     provisional_concept_drawers: 0,
     proposition_inferred_drawers: 0,
+    classification_semantically_reviewed_propositions: 0,
+    individually_reviewed_drawer_assignments: 0,
+    unresolved_attribute_propositions: 0,
+    provisional_concept_propositions: 0,
+    inferred_assignment_propositions: 0,
     reviewed_rule_drawer_count: 0,
     normalization_review_required_drawers: 0,
     normalization_review_required_propositions: 0,
     collapsed_original_path_count: 0,
   };
   for (let year = 2005; year <= 2025; year++) {
-    const lines = read('propositions/' + year + '.jsonl').trim().split(/\r?\n/);
+    const rows = loadYear(year, { baselineOnly: options.baselineOnly ?? false });
     const questions = new Map(), choices = new Map();
-    for (const line of lines) {
-      const row = JSON.parse(line);
+    for (const row of rows) {
       assert.equal(row.year, year, 'file-year mismatch');
       const output = normalizeIds(row);
       assert.ok(!seenPropositions.has(output.proposition_id), 'duplicate ID: ' + output.proposition_id);
       seenPropositions.add(output.proposition_id);
       index.push(output);
+      if (output.classification_semantic_reviewed) summary.classification_semantically_reviewed_propositions++;
+      if (output.drawer_assignment_reviewed) summary.individually_reviewed_drawer_assignments++;
+      const primaryDrawer = row.primary_path.length ? identifyDrawer(row, row.primary_path) : null;
+      if (primaryDrawer?.attribute_resolution === 'unresolved') summary.unresolved_attribute_propositions++;
+      if (primaryDrawer?.concept_resolution === 'provisional') summary.provisional_concept_propositions++;
+      if (primaryDrawer?.attribute_resolution === 'inferred' || primaryDrawer?.concept_resolution === 'inferred') summary.inferred_assignment_propositions++;
+      if (output.drawer_review_required) propositionReview.push({
+        ...output, proposition:row.proposition, question_stem:row.question_stem,
+        subject_concept:row.subject_concept, attribute:row.attribute,
+        source_primary_path:row.primary_path, source_candidate_paths:row.candidate_paths??[],
+        concept_resolution:primaryDrawer?.concept_resolution??null,
+        attribute_resolution:primaryDrawer?.attribute_resolution??null,
+      });
       if (output.drawer_review_required) summary.normalization_review_required_propositions++;
       for (const path of [row.primary_path, ...(row.candidate_paths || [])]) {
         if (!path.length) continue;
@@ -173,8 +196,16 @@ export function buildIndex() {
         concepts.add(drawer.root + '/' + drawer.concept_id);
         if (!drawers.has(drawer.id)) drawers.set(drawer.id, {
           ...drawer, proposition_count: 0, original_path_ids: new Set(), examples: [], source_subjects: new Set(),
+          attribute_evidence_set:new Set(), concept_evidence_set:new Set(), candidate_attribute_ids_set:new Set(),
         });
         const group = drawers.get(drawer.id);
+        assert.equal(group.concept_label, drawer.concept_label, 'inconsistent concept label: '+drawer.id);
+        assert.equal(group.attribute_label, drawer.attribute_label, 'inconsistent attribute label: '+drawer.id);
+        if (drawer.attribute_evidence) group.attribute_evidence_set.add(drawer.attribute_evidence);
+        if (drawer.concept_evidence) group.concept_evidence_set.add(drawer.concept_evidence);
+        for (const candidate of drawer.candidate_attribute_ids) group.candidate_attribute_ids_set.add(candidate);
+        group.individually_reviewed &&= drawer.individually_reviewed;
+        if (group.review_reason !== drawer.review_reason) group.review_reason = null;
         // An existing drawer can be reached by many years and by rules with
         // different confidence. Aggregate conservatively: one uncertain
         // occurrence makes the shared drawer a review target.
@@ -230,7 +261,7 @@ export function buildIndex() {
   summary.provisional_concept_drawers = [...drawers.values()]
     .filter((d) => ['provisional','mixed','unresolved'].includes(d.concept_resolution)).length;
   summary.proposition_inferred_drawers = [...drawers.values()]
-    .filter((d) => d.attribute_evidence === 'proposition_keyword' || d.concept_evidence === 'one_named_disease').length;
+    .filter((d) => d.attribute_evidence_set.has('proposition_keyword') || d.concept_evidence_set.has('one_named_disease')).length;
   summary.reviewed_rule_drawer_count = [...drawers.values()].filter((d) => !d.review_required).length;
   summary.normalization_review_required_drawers = drawers.size - summary.reviewed_rule_drawer_count;
   summary.collapsed_original_path_count = [...drawers.values()]
@@ -246,25 +277,51 @@ export function buildIndex() {
   assert.equal(mismatched.get('care_manager_2020_060'), '2020-60');
   return {
     index,
+    proposition_review:propositionReview,
     summary,
     question_aliases: [...mismatched].sort((a, b) => a[0].localeCompare(b[0])).map(([source, canonical]) => ({ source, canonical })),
     path_registry: [...seenPaths].sort((a, b) => a[0].localeCompare(b[0]))
       .map(([id, path]) => ({ id, path: JSON.parse(path) })),
     v1_1_conflict_examples: [...conflicts.values()].slice(0, 15),
-    drawer_registry: [...drawers.values()].map((d) => ({
-      ...d,
+    drawer_registry: [...drawers.values()].map((d) => {
+      const {attribute_evidence_set,concept_evidence_set,candidate_attribute_ids_set,...entry}=d;
+      return ({
+      ...entry,
+      attribute_evidences:[...attribute_evidence_set].sort(),
+      concept_evidences:[...concept_evidence_set].sort(),
+      candidate_attribute_ids:[...candidate_attribute_ids_set].sort(),
       original_path_ids: [...d.original_path_ids].sort(),
       original_path_count: d.original_path_ids.size,
       source_subjects: [...d.source_subjects].sort(),
-    })).sort((a, b) => a.id.localeCompare(b.id)),
+    }); }).sort((a, b) => a.id.localeCompare(b.id)),
     path_drawer_relations: [...pathToDrawers].map(([path_id, ids]) => ({
       path_id, drawer_ids: [...ids].sort(),
     })).sort((a, b) => a.path_id.localeCompare(b.path_id)),
   };
 }
 
+export function writeArtifacts(outputDir, result = buildIndex()) {
+  mkdirSync(outputDir, {recursive:true});
+  const jsonl = (name, entries) => writeFileSync(join(outputDir,name), entries.map(entry=>JSON.stringify(entry)).join('\n')+'\n');
+  jsonl('proposition-drawer-index.jsonl',result.index);
+  jsonl('knowledge-drawers.jsonl',result.drawer_registry);
+  jsonl('original-path-to-drawers.jsonl',result.path_drawer_relations);
+  jsonl('review-required-drawers.jsonl',result.drawer_registry.filter(d=>d.review_required));
+  jsonl('review-required-propositions.jsonl',result.proposition_review);
+  jsonl('original-paths.jsonl',result.path_registry);
+  writeFileSync(join(outputDir,'question-id-aliases.json'),JSON.stringify(result.question_aliases,null,2)+'\n');
+  writeFileSync(join(outputDir,'normalization-report.json'),JSON.stringify({summary:result.summary,v1_1_conflict_examples:result.v1_1_conflict_examples},null,2)+'\n');
+}
+
 const command = process.argv[2] ?? '--check';
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
+  if (command.startsWith('--output-dir=')) {
+    assert.equal(process.argv.length,3,'unexpected extra arguments');
+    assert.ok(command.slice('--output-dir='.length),'empty output directory');
+    writeArtifacts(command.slice('--output-dir='.length));
+    console.log('Normalized drawer artifacts written');
+    process.exit(0);
+  }
   assert.ok(['--check', '--jsonl', '--report', '--aliases', '--paths', '--drawers', '--review', '--path-drawers', '--audit'].includes(command),
     'Usage: normalize-issue32-ids.mjs [--check|--jsonl|--report|--aliases|--paths|--drawers|--review|--path-drawers]');
   assert.equal(process.argv.length, 3, 'unexpected extra arguments');
