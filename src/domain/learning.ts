@@ -7,7 +7,15 @@ const JST = 9 * 3_600_000;
 export const LEARNING_WINDOW = 5;
 
 /** Calendar date in Japan, independent of browser locale and timezone. */
-export const learningDay = (at: string): string => new Date(Date.parse(at) + JST).toISOString().slice(0, 10);
+const dayCache = new Map<string, string>();
+export const learningDay = (at: string): string => {
+  const cached = dayCache.get(at);
+  if (cached) return cached;
+  const day = new Date(Date.parse(at) + JST).toISOString().slice(0, 10);
+  if (dayCache.size > 20000) dayCache.clear();
+  dayCache.set(at, day);
+  return day;
+};
 
 export function firstDailyAnswers(events: readonly LearningEvent[], card?: SwipeCard): LearningEvent[] {
   const seen = new Set<string>();
@@ -46,7 +54,7 @@ export function recordLearning(
   perfect = false,
 ): LearningEvent[] {
   const day = learningDay(at);
-  const existing = new Set(firstDailyAnswers(current).filter(event => learningDay(event.at) === day).map(event => event.cardId));
+  const existing = new Set(current.filter(event => learningDay(event.at) === day).map(event => event.cardId));
   const eligible = choices.filter(({card}) => !existing.has(card.id));
   const bonus = mode === 'five-choice' && perfect && choices.length === 5 && eligible.length === 5 ? 20 : 0;
   return [

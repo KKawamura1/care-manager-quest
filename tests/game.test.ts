@@ -45,7 +45,7 @@ describe('portable history',()=>{
  it.each(['{','{}','{"schemaVersion":2}'])('rejects malformed/unknown schema without replacing history (%s)',s=>expect(()=>parsePlayer(s)).toThrow());
  it('rejects manipulated XP, evidence, stale question versions, duplicate attempts and broken sessions',()=>{
   const p=answered(ready());for(const mutate of [(x:PlayerState)=>x.attempts[0].xp=999,(x:PlayerState)=>x.attempts[0].questionVersion=99,(x:PlayerState)=>x.attempts.push(x.attempts[0]),(x:PlayerState)=>x.session!.index=4,(x:PlayerState)=>x.concepts[x.attempts[0].conceptIds[0]].correctQuestionIds.push('2025-25')]){const copy=structuredClone(p);mutate(copy);expect(()=>parsePlayer(JSON.stringify(copy))).toThrow();}
-  expect(()=>parsePlayer(' '.repeat(MAX_IMPORT_BYTES+1))).toThrow(/2MB/);
+  expect(()=>parsePlayer(' '.repeat(MAX_IMPORT_BYTES+1))).toThrow(/20MB/);
  });
  it('rejects unsafe or noncanonical external links',()=>{
   expect(validExternalUrl('https://keamane.kakomonn.com/questions/123')).toBe(true);

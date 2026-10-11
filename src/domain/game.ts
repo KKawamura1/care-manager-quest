@@ -45,7 +45,7 @@ export function submitAnswer(p: PlayerState, pool: readonly Question[], at: stri
   const learningEvents = recordLearning(p.learningEvents, cards.map(card => ({
     card, answer: s.selectedIds.includes(card.choiceId) === card.correctChoiceTruth,
   })), at, 'five-choice', correct);
-  const gained = learningXp(learningEvents) - learningXp(p.learningEvents);
+  const gained = learningEvents.slice(p.learningEvents.length).reduce((sum,event)=>sum+event.xp+event.bonusXp,0);
   const attempt: Attempt = { id, questionId: q.id, questionVersion: q.version, sessionId: s.id, selectedIds: [...s.selectedIds], correct, firstSeen, combo, xp: gained, at, conceptIds:[...q.conceptIds], classificationRevision:q.classificationRevision??1, difficulty:q.difficulty };
   const evidence = { ...p.concepts };
   for (const conceptId of q.conceptIds) {

@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { availableYears, questionById } from '../data/provider';
 import { swipeCards, swipeCardById, swipeCategories, swipeConcepts, swipeCatalog } from '../data/swipe-provider';
 import { filterSwipeCards, nextSwipeAvailableAt, progressFor, reviewQueue, type SwipeCard } from '../domain/swipe';
-import { swipeProgressFromEvents } from '../domain/learning';
+import { learningXp, recordLearning, swipeProgressFromEvents } from '../domain/learning';
 import type { LearningEvent } from '../domain/models';
 import { OriginalImage } from './OriginalImage';
 import { CopyText } from './CopyQuestion';
@@ -23,7 +23,7 @@ export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAn
   const [topic, setTopic] = useState('all');
   const [now, setNow] = useState(Date.now());
   const [card, setCard] = useState<SwipeCard>();
-  const [result, setResult] = useState<{ answer: boolean | null; correct: boolean }>();
+  const [result, setResult] = useState<{ answer: boolean | null; correct: boolean; xp: number }>();
   const [drag, setDrag] = useState({ x: 0, y: 0 });
   const [original, setOriginal] = useState(false);
   const gesture = useRef<{ x: number; y: number; id: number; phase: 'answer' | 'feedback' } | undefined>(undefined);
@@ -46,8 +46,11 @@ export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAn
     if (!card || blocked || result || locked.current) return;
     locked.current = true;
     const correct = answer !== null && answer === card.truth;
-    onAnswer(card, answer, new Date().toISOString());
-    setResult({ answer, correct }); setDrag({ x: 0, y: 0 });
+    const at = new Date().toISOString();
+    const updated = recordLearning(learningEvents, [{card, answer}], at, 'swipe');
+    const xp = learningXp(updated) - learningXp(learningEvents);
+    onAnswer(card, answer, at);
+    setResult({ answer, correct, xp }); setDrag({ x: 0, y: 0 });
     requestAnimationFrame(() => { nextRef.current?.focus({ preventScroll: true }); document.getElementById('swipe-feedback')?.scrollIntoView({ block: 'start', behavior: 'instant' }); });
   };
   const next = () => {
@@ -125,7 +128,7 @@ export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAn
       {result && <span key={card.id} className={`swipe-effect ${result.correct ? 'correct' : 'wrong'}`} aria-hidden="true">{result.correct ? '○' : '×'}</span>}
       {!result ? <><div className="swipe-actions"><button className="secondary swipe-no" aria-label="×と答える" disabled={blocked} onClick={() => submit(false)}>← ×</button><button className="primary swipe-yes" aria-label="○と答える" disabled={blocked} onClick={() => submit(true)}>○ →</button></div><button className="secondary" onClick={() => submit(null)} disabled={blocked}>↑ わからない</button></> : <>
         <div id="swipe-feedback" className={`feedback ${result.correct ? 'success' : 'miss'}`} role="status">
-          <h2>{result.correct ? '正解！' : '不正解'}</h2><p className="swipe-verdict">正答：<b>{card.truth ? '○' : '×'}</b> ／ あなた：{result.answer === null ? 'わからない' : result.answer ? '○' : '×'}</p>
+          <h2>{result.correct ? '正解！' : '不正解'} <small>+{result.xp} XP</small></h2><p className="swipe-verdict">正答：<b>{card.truth ? '○' : '×'}</b> ／ あなた：{result.answer === null ? 'わからない' : result.answer ? '○' : '×'}</p>
           <p>{card.explanation || '解説未登録'}</p>
         </div>
         <button className="primary" ref={nextRef} onClick={next}>次のカードへ<span aria-hidden="true">→</span></button>
