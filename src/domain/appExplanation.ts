@@ -24,7 +24,7 @@ export function explanationInstructions(target: ExplanationTarget): string {
     '【最後に：アプリ用の短い解説】',
     `次のJSONのexplanationだけを${target.choiceId ? '80〜180' : '150〜300'}字程度で書き換え、回答の最後に独立したJSONコードブロックで出してください。他の値は変更しないでください。`,
     '```json', JSON.stringify({ schemaVersion: 1, ...target, explanation: 'ここに短い解説' }, null, 2), '```',
-  ].join('\\n');
+  ].join('\n');
 }
 
 export function parseAppExplanation(raw: string, target: ExplanationTarget): AppExplanation {
