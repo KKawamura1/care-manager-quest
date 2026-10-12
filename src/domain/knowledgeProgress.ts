@@ -3,6 +3,11 @@ import { swipeCards } from '../data/swipe-provider';
 import { firstDailyAnswers, learningLevel, reviewUrgency } from './learning';
 import { reflect } from './game';
 
+/** Include unlearned drawers so a category reflects its entire knowledge scope. */
+export function aggregateKnowledgeLevel(ids: readonly string[], progress: Record<string, ConceptProgress>): number {
+  return ids.length ? ids.reduce((sum, id) => sum + (progress[id]?.level ?? 0), 0) / ids.length : 0;
+}
+
 /** Project all current choice cards onto their knowledge drawers. */
 export function knowledgeProgress(player: PlayerState, _questions: readonly Question[], now = Date.now()) {
   const progress: Record<string, ConceptProgress> = {};

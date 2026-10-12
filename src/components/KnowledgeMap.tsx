@@ -2,6 +2,8 @@ import { useMemo } from 'react';
 import { categories, concepts } from '../data/knowledge';
 import { conceptStatus } from '../domain/game';
 import type { ConceptProgress } from '../domain/models';
+import { aggregateKnowledgeLevel } from '../domain/knowledgeProgress';
+import { KnowledgeLevel } from './KnowledgeLevel';
 
 export function KnowledgeMap({ progress, onSelect }: {
   progress: Record<string, ConceptProgress>; onSelect: (id:string) => void;
@@ -24,19 +26,19 @@ export function KnowledgeMap({ progress, onSelect }: {
     const nodes = tree.descendants(id);
     const leaves = tree.drawers.get(id) ?? [];
     return <details key={id} className={id.startsWith('concept5.') ? 'knowledge-small' : 'knowledge-middle'}>
-      <summary><span>{category.label}</span><small>{nodes.filter(c => conceptStatus(progress[c.id]) === 'mastered').length} / {nodes.length || '—'}</small></summary>
+      <summary><span>{category.label}</span><KnowledgeLevel level={aggregateKnowledgeLevel(nodes.map(c => c.id), progress)} label={category.label}/></summary>
       {(tree.children.get(id) ?? []).map(c => branch(c.id))}
       {leaves.length > 0 && <div className="concept-grid">{leaves.map(c => {
         const status = conceptStatus(progress[c.id]);
         return <button className={`concept-node ${status}`} key={c.id} onClick={() => onSelect(c.id)}>
           <span>{status === 'mastered' ? '●' : status === 'learning' ? '◐' : '○'}</span>
-          <span>{c.label.split('｜').slice(1).join('｜')}</span><span>›</span>
+          <span>{c.label.split('｜').slice(1).join('｜')}</span><KnowledgeLevel level={progress[c.id]?.level ?? 0} label={c.label}/><span>›</span>
         </button>;
       })}</div>}
     </details>;
   }
   return <>{(tree.children.get('') ?? []).map(root => <section key={root.id} className="map-region">
-    <div className="region-heading"><span>{root.id}</span><div><h2>{root.label}</h2></div></div>
+    <div className="region-heading"><span>{root.id}</span><div><h2>{root.label}</h2></div><KnowledgeLevel level={aggregateKnowledgeLevel(tree.descendants(root.id).map(c => c.id), progress)} label={root.label}/></div>
     {(tree.children.get(root.id) ?? []).map(c => branch(c.id))}
   </section>)}</>;
 }
