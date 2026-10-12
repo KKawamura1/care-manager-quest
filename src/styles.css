@@ -315,3 +315,30 @@ dialog::backdrop { background: #030910c7; backdrop-filter: blur(5px); }
 @keyframes xp-pop { from { opacity: 0; transform: translateY(5px) scale(.85); } to { opacity: 1; transform: none; } }
 @keyframes swipe-spark { 0% { opacity: 0; transform: rotate(var(--angle)) translateY(-38px) scale(.6); } 25% { opacity: 1; } 100% { opacity: 0; transform: rotate(var(--angle)) translateY(-115px) scale(.2); } }
 @media (prefers-reduced-motion: reduce) { .swipe-celebration { display: none; } }
+
+.field-stats { margin-top: 24px; }
+.field-breadcrumbs { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0; }
+.field-breadcrumbs button { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; font-size: 12px; min-height: 44px; overflow-wrap: anywhere; }
+.field-breadcrumbs button[aria-current] { color: var(--mint); border-color: #52766b; }
+.field-overview, .field-row { padding: 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); min-width: 0; }
+.field-overview { background: linear-gradient(135deg, #243a33, var(--panel)); border-color: #52766b; }
+.field-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+.field-heading h3, .field-heading button { min-width: 0; overflow-wrap: anywhere; }
+.field-heading button { display: flex; align-items: center; justify-content: space-between; flex: 1; gap: 8px; padding: 0; min-height: 44px; background: none; text-align: left; font-weight: 700; line-height: 1.5; }
+.field-heading button > span { color: var(--mint); font-size: 22px; }
+.field-status { flex-shrink: 0; font-size: 11px; border-radius: 5px; padding: 3px 7px; background: #33404d; color: var(--muted); }
+.field-status.strong { color: var(--mint); background: #2c493d; }
+.field-status.weak { color: var(--coral); background: #493135; }
+.field-status.developing { color: var(--gold); }
+.field-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 14px 0 12px; }
+.field-metrics > div { display: flex; flex-direction: column; }
+.field-metrics b { font-size: 23px; line-height: 1.4; font-variant-numeric: tabular-nums; }
+.field-metrics span { color: var(--muted); font-size: 11px; }
+.field-coverage { height: 4px; border-radius: 4px; background: var(--line); overflow: hidden; }
+.field-coverage > span { display: block; height: 100%; background: var(--mint); }
+.field-counts { margin-top: 8px; color: var(--muted); font-size: 11px; }
+.field-empty { margin: 14px 0; font-size: 13px; color: var(--muted); }
+.field-sort { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 16px; margin: 16px 0; font-size: 12px; color: var(--muted); }
+.field-sort select { padding: 10px; font-size: 14px; }
+.field-list { display: grid; gap: 10px; }
+.field-stats .help-details p { margin-top: 12px; }
