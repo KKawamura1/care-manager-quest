@@ -146,6 +146,13 @@ input[type=radio] { accent-color: var(--mint); width: 17px; height: 17px; flex-s
 .concept-node > span:first-child { color: var(--muted); }
 .concept-node.learning > span:first-child { color: var(--gold); }
 .concept-node.mastered > span:first-child { color: var(--mint); }
+.knowledge-level { display: inline-flex; flex: 0 0 76px !important; flex-direction: column; gap: 5px; text-align: right; }
+.knowledge-level-value { color: var(--mint); font-size: 11px; white-space: nowrap; }
+.knowledge-level-track { display: block; width: 76px; height: 5px; overflow: hidden; border-radius: 3px; background: var(--line); }
+.knowledge-level-track > span { display: block; height: 100%; border-radius: inherit; background: var(--mint); }
+.region-heading > .knowledge-level { margin-left: auto; }
+.region-heading > div, .map-region summary > span:first-of-type, .concept-node > span:nth-child(2) { min-width: 0; overflow-wrap: anywhere; }
+.map-level-summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 20px; font-size: 12px; }
 .future-note, .fine-print { font-size: 11px; color: var(--muted); }
 .panel { padding: 20px; margin-top: 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); }
 .panel h2 { font-size: 17px; margin-bottom: 12px; }
