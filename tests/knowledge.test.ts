@@ -5,9 +5,24 @@ import { swipeCards, swipeCatalog } from '../src/data/swipe-provider';
 import { emptyPlayer, submitAnswer, totalXp, conceptStatus } from '../src/domain/game';
 import { knowledgeProgress } from '../src/domain/knowledgeProgress';
 import { parsePlayer } from '../src/domain/storage';
+import { recordLearning } from '../src/domain/learning';
 import migrationSummary from '../docs/taxonomy/issue-32-experiment/migration-5x28-summary.json';
 
 describe('production choice taxonomy and knowledge progress', () => {
+  it('fills a drawer after two correct daily answers on every card and preserves it through import', () => {
+    const id = swipeCards[0].topicIds[0];
+    const cards = swipeCards.filter(card => card.topicIds.includes(id));
+    let player = emptyPlayer();
+    const choices = cards.map(card => ({ card, answer: card.truth }));
+    player.learningEvents = recordLearning([], choices, '2026-10-11T10:00:00+09:00', 'swipe');
+    expect(knowledgeProgress(player, questions)[id].level).toBeCloseTo(2/3);
+    player.learningEvents = recordLearning(player.learningEvents, choices, '2026-10-13T10:00:00+09:00', 'five-choice');
+    player = parsePlayer(JSON.stringify(player));
+    const progress = knowledgeProgress(player, questions)[id];
+    expect(progress.level).toBe(1);
+    expect(conceptStatus(progress)).toBe('mastered');
+  });
+
   it('uses fixed five roots, 28 middles and option-specific drawers in both learning modes', () => {
     expect(categories.filter(c => !c.parentId).map(c => c.label)).toEqual([
       '介護保険制度', 'ケアマネジメント', '介護保険サービス', '高齢者保健医療', '高齢者福祉',

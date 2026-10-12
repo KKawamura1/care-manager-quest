@@ -128,7 +128,7 @@ export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAn
          {!available.length && !card && <p role="status">今の条件で出せるカードはありません。{nextDue !== undefined && <>次の出題：{new Date(nextDue).toLocaleString('ja-JP')}</>} 年度・分野を変えると学習を続けられます。</p>}
       </div>
       <details className="swipe-home-detail"><summary>使い方</summary><p>右で○、左で×、上で「わからない」。解答後は上下にスクロールして解説を読めます。次へ進むには左右スワイプか「次のカードへ」ボタンを使ってください。</p>
-        <p>正誤評価とXPはカードごとに日本時間で1日最初の回答だけを採用します。要復習度は直近5学習日の初回回答と経過日数から計算します。</p>
+        <p>正誤評価とXPはカードごとに日本時間で1日最初の回答だけを採用します。学習レベルは1回正解で約67%、別の日に2連続正解で100%。要復習度は直近2学習日の初回回答と経過日数から計算します。</p>
         <p>元の設問文脈を保ち、試験当時の正答を使います。現在の法律と一致するかは未確認です。独自解説の登録がないカードでは、判定根拠のみ表示します。</p>
         <p>真偽を確定できない選択肢は出題しません（除外記録 {swipeCatalog.excluded.length}件）。</p>
       </details>
