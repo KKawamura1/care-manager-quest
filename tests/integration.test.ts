@@ -40,7 +40,8 @@ describe('merged 2005–2025 corpus and portable history', () => {
     const player = completedCorpus();
     expect(player.attempts).toHaveLength(1259);
     expect(player.attempts.every(a => a.correct)).toBe(true);
-    expect(Object.keys(player.concepts).every(id => id.startsWith('drawer32.'))).toBe(true);
+    expect(Object.keys(player.concepts).every(id => id.startsWith('drawer5.'))).toBe(true);
+    player.knowledgeReflections=[Object.keys(player.concepts)[0]];
     const restored = parsePlayer(JSON.stringify(player));
     expect(restored).toEqual(player);
     expect(totalXp(restored)).toBe(totalXp(player));

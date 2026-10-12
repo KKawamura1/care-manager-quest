@@ -1576,6 +1576,12 @@
           "label": "地域密着型サービス固有の共通原則",
           "attribute_examples": "地域との関係、利用範囲、運営推進",
           "sample_pattern": "地域密着型サービス|地域密着型介護予防サービス"
+        },
+        {
+          "id": "3.7.medical_day",
+          "label": "療養通所介護（地域密着型移行後）",
+          "attribute_examples": "対象、医療連携、人員、計画、移行時点",
+          "sample_pattern": "療養通所介護"
         }
       ],
       "sources": [
@@ -1594,6 +1600,10 @@
         {
           "title": "厚生労働省：介護サービスの種類",
           "url": "https://www.kaigokensaku.mhlw.go.jp/commentary/service.html"
+        },
+        {
+          "title": "厚生労働省：2016年地域密着型への移行",
+          "url": "https://www.mhlw.go.jp/file/05-Shingikai-12301000-Roukenkyoku-Soumuka/0000108003.pdf"
         }
       ],
       "comparison": "法定サービス別に分け、地域密着型に固有の共通原則を別にする。訪問／通所／入居はタグにして親分類を重複させない。",
@@ -1650,7 +1660,8 @@
           "legacy_attribute": "グループホームで本人のできる家事を活かす支援方法"
         }
       ],
-      "sample_comparison": "夜間、看護小規模多機能、グループホームは提供形態が違っても法定の地域密着型へ集約できる。"
+      "sample_comparison": "夜間、看護小規模多機能、グループホームは提供形態が違っても法定の地域密着型へ集約できる。",
+      "migration_amendment": "命題移行で2016年以降の療養通所介護を発見。一般の地域密着型通所介護とは医療的提供基準が異なるため、地域密着型側にも別概念を追加。大分類・中分類は不変。"
     },
     {
       "id": "3.8",
