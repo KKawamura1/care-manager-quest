@@ -3,8 +3,14 @@ import { readFileSync } from 'node:fs';
 
 test('first correct answer visibly fills drawers and their ancestors and survives reload', async ({page}) => {
   const truth = JSON.parse(readFileSync(new URL('../../data/choice-tf/choice-answers-2005-2025.json', import.meta.url), 'utf8')).questions;
+  await page.setViewportSize({width:320,height:720});
   await page.goto('/');
-  await page.getByRole('button', {name:'知識マップ', exact:true}).click();
+  await page.getByRole('button', {name:'記録', exact:true}).click();
+  await page.getByRole('link', {name:'知識マップ', exact:true}).click();
+  await expect(page.getByRole('navigation',{name:'メインメニュー'}).getByRole('button')).toHaveCount(3);
+  await expect(page.getByRole('region',{name:'日々の積み上げ'})).toHaveCount(1);
+  await expect(page.getByRole('region',{name:'分野別の得意・苦手'})).toHaveCount(1);
+  await expect(page.getByRole('heading',{name:'履歴を持ち出す',exact:true})).toHaveCount(1);
   expect(await page.getByRole('progressbar', {name:'全体の学習レベル', exact:true}).getAttribute('aria-valuenow')).toBe('0');
   await page.getByRole('button', {name:'冒険', exact:true}).click();
   await page.getByRole('button', {name:'○×学習を始める', exact:true}).click();
@@ -12,7 +18,8 @@ test('first correct answer visibly fills drawers and their ancestors and survive
   const correct = truth[`${meta[1]}-${meta[2].padStart(2,'0')}`].choiceAnswers[Number(meta[3])-1] === '○';
   await page.getByRole('button', {name: correct ? '○と答える' : '×と答える', exact:true}).click();
   await expect(page.locator('.swipe-verdict')).toBeVisible();
-  await page.getByRole('button', {name:'知識マップ', exact:true}).click();
+  await page.getByRole('button', {name:'記録', exact:true}).click();
+  await page.getByRole('link', {name:'知識マップ', exact:true}).click();
   const global = page.getByRole('progressbar', {name:'全体の学習レベル', exact:true});
   const value = Number(await global.getAttribute('aria-valuenow'));
   expect(value).toBeGreaterThan(0);
@@ -30,13 +37,15 @@ test('first correct answer visibly fills drawers and their ancestors and survive
   expect(Number(await drawer.getByRole('progressbar').getAttribute('aria-valuenow'))).toBeGreaterThan(0);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
   await page.reload();
-  await page.getByRole('button', {name:'知識マップ', exact:true}).click();
+  await page.getByRole('button', {name:'記録', exact:true}).click();
+  await page.getByRole('link', {name:'知識マップ', exact:true}).click();
   expect(Number(await global.getAttribute('aria-valuenow'))).toBe(value);
 });
 
 test('shows root, middle, small concept and attribute as four navigable levels', async ({page}) => {
   await page.goto('/');
-  await page.getByRole('button',{name:'知識マップ',exact:true}).click();
+  await page.getByRole('button',{name:'記録',exact:true}).click();
+  await page.getByRole('link',{name:'知識マップ',exact:true}).click();
   await expect(page.locator('.map-region')).toHaveCount(5);
   await expect(page.locator('.knowledge-middle')).toHaveCount(28);
   await expect(page.getByRole('heading',{name:'介護保険制度',exact:true})).toBeVisible();

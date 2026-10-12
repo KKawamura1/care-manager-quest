@@ -43,7 +43,8 @@ test('swipe answer earns XP and populates unified history and map; reload persis
   expect(events[0]).toMatchObject({mode:'swipe',xp:10});
   await page.reload();
   expect((await ledger(page))[0]).toEqual(events[0]);
-  await page.getByRole('button',{name:'知識マップ',exact:true}).click();
+  await page.getByRole('button',{name:'記録',exact:true}).click();
+  await page.getByRole('link',{name:'知識マップ',exact:true}).click();
   await expect(page.locator('.map-summary')).not.toContainText('0 / 1159');
   await page.getByRole('button',{name:'記録',exact:true}).click();
   await expect(page.locator('.record-stats')).toContainText('10');

@@ -39,7 +39,7 @@ small { font-size: 12px; }
 .meter { height: 3px; overflow: hidden; border-radius: 8px; background: var(--line); }
 .meter i { display: block; height: 100%; background: var(--mint); transition: width .4s; }
 .xp-value { color: var(--muted); font-size: 10px; }
-.home-screen, .map-screen, .records-screen, .swipe-screen { padding-top: 26px; }
+.home-screen, .records-screen, .swipe-screen { padding-top: 26px; }
 .home-screen { padding-top: 18px; }
 .home-screen h1 { margin-bottom: 16px; }
 .mission-card { background: var(--panel); padding: 18px 20px; margin-top: 16px; border: 1px solid var(--line); border-radius: 14px; }
@@ -69,7 +69,7 @@ input[type=radio] { accent-color: var(--mint); width: 17px; height: 17px; flex-s
 .secondary:disabled { opacity: .5; }
 .text-button { background: none; color: var(--muted); min-height: 44px; padding: 0 4px; font-size: 12px; }
 .mission-note { margin-top: 10px; font-size: 11px; text-align: center; color: var(--muted); }
-.bottom-nav { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: min(100%, 560px); z-index: 20; display: grid; grid-template-columns: repeat(4, 1fr); padding: 8px 8px calc(8px + env(safe-area-inset-bottom)); border-top: 1px solid var(--line); background: #111820f5; backdrop-filter: blur(12px); }
+.bottom-nav { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: min(100%, 560px); z-index: 20; display: grid; grid-template-columns: repeat(3, 1fr); padding: 8px 8px calc(8px + env(safe-area-inset-bottom)); border-top: 1px solid var(--line); background: #111820f5; backdrop-filter: blur(12px); }
 .bottom-nav button { display: flex; flex-direction: column; align-items: center; gap: 2px; min-height: 52px; min-width: 0; background: none; color: var(--muted); font-size: 10px; }
 .bottom-nav button > span { font-size: 22px; line-height: 1.5; }
 .bottom-nav .active { color: var(--mint); }
@@ -393,3 +393,9 @@ dialog::backdrop { background: #030910c7; backdrop-filter: blur(5px); }
 .progress-preview-caption { display: flex; align-items: center; justify-content: space-between; padding: 0 5px; font-size: 9px; color: var(--muted); }
 .progress-preview-caption > span { color: var(--mint); font-size: 16px; line-height: 1; }
 @media (max-width: 360px) { .progress-preview { grid-template-columns: minmax(0, 1fr) 88px; padding: 12px; gap: 6px; } .progress-preview-total strong { font-size: 24px; } }
+
+.record-shortcuts { display: flex; gap: 8px; margin: 16px 0; }
+.record-shortcuts a { display: flex; align-items: center; justify-content: center; flex: 1; min-width: 0; min-height: 44px; padding: 8px 4px; border: 1px solid var(--line); border-radius: 10px; color: var(--muted); font-size: 12px; text-decoration: none; }
+.record-shortcuts a:active { background: var(--panel); color: var(--mint); }
+#record-progress, #record-map, #record-fields { scroll-margin-top: 16px; }
+.record-map { margin: 28px 0; }
