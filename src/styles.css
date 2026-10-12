@@ -229,6 +229,7 @@ dialog::backdrop { background: #030910c7; backdrop-filter: blur(5px); }
 .swipe-screen:has(.swipe-card) { padding-top: max(8px, env(safe-area-inset-top)); }
 .play-screen { padding-top: env(safe-area-inset-top); }
 .swipe-surface, .swipe-card { touch-action: none; }
+.swipe-surface-feedback, .swipe-surface-feedback .swipe-card { touch-action: pan-y pinch-zoom; }
 .swipe-effect { position: fixed; top: 35%; left: 50%; z-index: 30; width: 130px; height: 130px; border-radius: 50%; display: grid; place-items: center; font-size: 90px; line-height: 1; font-weight: 800; pointer-events: none; background: #111820e8; border: 3px solid currentColor; opacity: 0; }
 .swipe-effect.correct { color: var(--mint); animation: swipe-win .65s ease-out both; }
 .swipe-effect.wrong { color: var(--coral); animation: swipe-miss .65s ease-out both; }
