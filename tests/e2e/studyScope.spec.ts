@@ -3,6 +3,17 @@ import catalog from '../../src/data/packs/knowledge.json' with {type:'json'};
 import answers from '../../src/data/packs/2025/answers.json' with {type:'json'};
 
 const historyKey = 'care-manager-quest:learning:v3';
+async function expectNoOverflow(page: Page) {
+  const layout = await page.evaluate(() => ({
+    width: document.documentElement.scrollWidth, viewport: innerWidth,
+    overflowing: Array.from(document.querySelectorAll('body *')).map(element => {
+      const rect = element.getBoundingClientRect();
+      return {tag:element.tagName, className:element.className, right:rect.right, width:rect.width};
+    }).filter(rect => rect.right > innerWidth + 1),
+  }));
+  expect(layout.width, JSON.stringify(layout)).toBeLessThanOrEqual(layout.viewport);
+}
+
 const categories = catalog.categories;
 const concepts = catalog.concepts;
 const disease = categories.find(c => c.label === '身体疾患・感染症')!;
@@ -51,7 +62,7 @@ test('○× selects a middle category, only draws its cards, restores scope and 
   await expect(page.getByLabel('○×の小分類')).toBeDisabled();
   await expect(drawer).toBeDisabled();
   await expect(page.getByLabel('5択の大分類')).toHaveValue('all');
-  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await expectNoOverflow(page);
 });
 
 test('five-choice draws middle-category questions across exam fields and preserves the running quest when filters become empty', async ({page}) => {
@@ -94,7 +105,7 @@ test('a single-drawer one-question quest completes, reloads and retains its save
   await page.getByRole('button',{name:'冒険ホームへ'}).click();
   await expect(page.getByLabel('5択の引き出し')).toHaveValue(drawer.id);
   await page.screenshot({path:`test-results/${test.info().project.name}-study-scope.png`,fullPage:true});
-  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await expectNoOverflow(page);
 });
 
 test('unknown saved scopes reset safely to all categories',async ({page}) => {
