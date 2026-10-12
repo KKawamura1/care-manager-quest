@@ -12,7 +12,7 @@ export function StudyScopePicker({ value, onChange, counts, mode, unit }: {
   });
   return <fieldset className="study-scope-picker">
     <legend>学ぶ分類</legend>
-    {levels.map((level, depth) => {
+    <div className="study-scope-levels">{levels.map((level, depth) => {
       const parent = depth ? path[depth - 1] : undefined;
       const enabled = depth === 0 || Boolean(parent);
       const options = depth === 3
@@ -27,7 +27,7 @@ export function StudyScopePicker({ value, onChange, counts, mode, unit }: {
           </option>)}
         </select>
       </label>;
-    })}
+    })}</div>
     <p className="study-scope-selection">{path.length ? selectedLabels.join(' → ') : 'すべての分類から出題'}</p>
   </fieldset>;
 }
