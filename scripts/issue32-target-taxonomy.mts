@@ -13,6 +13,11 @@ export interface TargetAssignment {
   reason: string; source_fingerprint: string; legacy_drawer_id: string;
   candidate_concept_ids: string[]; review_required: boolean;
   scope_qualifier?: string;
+  classification_audit?: {
+    id: string; reviewer: 'codex'; needed_knowledge: string;
+    disposition: 'resolved' | 'placement_only';
+    previous_assignment: { concept_id: string; attribute_id: string; attribute_label: string; review_required: boolean };
+  };
 }
 export interface Proposition {
   year: number; question_number: number; question_id: string;
@@ -68,6 +73,16 @@ export function validateTargetAssignment(r: Proposition): TargetAssignment {
   assert.ok(Array.isArray(a.candidate_concept_ids));
   assert.equal(new Set(a.candidate_concept_ids).size, a.candidate_concept_ids.length, 'duplicate candidates: ' + id);
   for (const c of a.candidate_concept_ids) assert.ok(smallConcepts.has(c), 'unknown candidate: ' + id);
+  if (a.classification_audit) {
+    const audit = a.classification_audit;
+    assert.ok(audit.id.trim() && audit.needed_knowledge.trim(), 'missing classification audit evidence: ' + id);
+    assert.equal(audit.reviewer, 'codex', 'invalid classification audit reviewer: ' + id);
+    assert.equal(a.method, 'individual_review', 'audited assignment must be individual: ' + id);
+    assert.ok(['resolved', 'placement_only'].includes(audit.disposition), 'invalid classification audit disposition: ' + id);
+    assert.equal(a.review_required, audit.disposition === 'placement_only', 'audit/review flag mismatch: ' + id);
+    assert.ok(smallConcepts.has(audit.previous_assignment.concept_id), 'invalid pre-audit concept: ' + id);
+    assert.equal(typeof audit.previous_assignment.review_required, 'boolean');
+  }
   return a;
 }
 export function loadTargetRows(): Proposition[] {

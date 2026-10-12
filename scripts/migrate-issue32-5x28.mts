@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { buildIndex } from './normalize-issue32-ids.mjs';
-import { dataUrl, loadTargetRows, propositionId, type Proposition } from './issue32-target-taxonomy.mts';
+import { dataUrl, loadTargetRows, propositionId, validateTargetAssignment, type Proposition } from './issue32-target-taxonomy.mts';
 import { suggestTarget, type LegacyDrawer } from './issue32-small-category-rules.mts';
 
 export function suggestAll(rows: Proposition[] = loadTargetRows()) {
@@ -12,6 +12,11 @@ export function suggestAll(rows: Proposition[] = loadTargetRows()) {
   const errors: { id: string; error: string }[] = [];
   const output = rows.map(row => {
     try {
+      // A second migration must preserve subsequent audited decisions on the canonical row.
+      if (row.taxonomy_assignment?.classification_audit) {
+        validateTargetAssignment(row);
+        return row;
+      }
       const oldEntry = index.get(propositionId(row));
       const oldId = oldEntry?.primary_drawer_id;
       assert.ok(oldId && drawers.has(oldId), 'missing legacy primary drawer');

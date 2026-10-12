@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { buildTargetIndex, validateTargetAssignment, targetTaxonomy, smallConcepts, dataUrl, type Proposition } from './issue32-target-taxonomy.mts';
+import { suggestAll } from './migrate-issue32-5x28.mts';
 
 // Compare every fixed ID, label and parent with PR68's adopted design table.
 const specification=readFileSync(new URL('TARGET_TAXONOMY_5X28.md',dataUrl),'utf8');
@@ -26,6 +27,26 @@ assert.equal(target('2005-26/c4/p1'),'4.2.parkinsons','a disease comparison must
 assert.equal(target('2018-04/c5/p1'),'1.5.provider_designation');
 assert.equal(target('2025-22/c1/p1'),'1.6.checklist');
 assert.equal(target('2025-44/c4/p1'),'3.7.nursing_multi');
+// Regression examples where the old label, a keyword or the case setting obscured the judgment target.
+assert.equal(target('2013-30/c2/p1'),'4.6.food_care','meal assistance is not terminal care');
+assert.equal(target('2006-33/c2/p1'),'4.4.pharmacology','drug excretion is not toileting care');
+assert.equal(target('2012-29/c1/p1'),'4.4.adverse_effects','drug adverse effects are not medication assistance');
+assert.equal(target('2020-24/c4/p1'),'3.6.tokuyo','a facility fee condition is not clinical terminal care');
+assert.equal(target('2020-10/c3/p1'),'1.6.total_services','municipal program scope is not professional authority');
+assert.equal(byId.get('2018-39/c1/p1')!.taxonomy_assignment!.attribute_id,'authority','unflagged legacy evaluation facet missed professional authority');
+assert.equal(byId.get('2014-33/c4/p1')!.taxonomy_assignment!.attribute_id,'scope_care_worker_authority','professional authority is not staffing');
+const audited=byId.get('2013-30/c2/p1')!;
+const preserved=suggestAll([audited]);
+assert.equal(preserved.errors.length,0);
+assert.deepEqual(preserved.output[0],audited,'migration must not overwrite subsequent individual audits');
+const stale=suggestAll([{...audited,proposition:audited.proposition+' changed'}]);
+assert.equal(stale.errors.length,1,'a stale individual audit must fail instead of being overwritten');
+const invalidAudit=structuredClone(audited) as Proposition;
+invalidAudit.taxonomy_assignment!.classification_audit!.needed_knowledge='';
+assert.throws(()=>validateTargetAssignment(invalidAudit),/audit evidence/);
+invalidAudit.taxonomy_assignment!.classification_audit!.needed_knowledge='食事介助';
+invalidAudit.taxonomy_assignment!.review_required=true;
+assert.throws(()=>validateTargetAssignment(invalidAudit),/audit\/review flag mismatch/);
 const row=byId.get('2009-33/c3/p1')!;
 assert.throws(()=>validateTargetAssignment({...row,proposition:row.proposition+'変更'}),/stale/);
 assert.throws(()=>validateTargetAssignment({...row,taxonomy_assignment:undefined}),/missing/);

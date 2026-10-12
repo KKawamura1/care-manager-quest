@@ -3,12 +3,12 @@
   "middle_category_count": 28,
   "proposed_concept_count": 215,
   "active_concept_count": 210,
-  "drawer_count": 1234,
+  "drawer_count": 1239,
   "proposition_count": 6346,
-  "migration_review_required": 2048,
+  "migration_review_required": 1970,
   "semantic_reviewed": 1774,
   "legacy_concept_count": 490,
-  "split_legacy_concept_count": 61,
+  "split_legacy_concept_count": 70,
   "unreviewed_semantic_propositions": 4572,
   "categories": [
     {
@@ -59,10 +59,10 @@
     {
       "id": "1.6",
       "label": "地域支援事業・事業計画",
-      "propositions": 292,
+      "propositions": 293,
       "active_concepts": 11,
       "proposed_concepts": 11,
-      "drawers": 42,
+      "drawers": 43,
       "review_required": 175
     },
     {
@@ -86,7 +86,7 @@
     {
       "id": "2.3",
       "label": "ケアプラン・実施・評価",
-      "propositions": 227,
+      "propositions": 229,
       "active_concepts": 6,
       "proposed_concepts": 6,
       "drawers": 36,
@@ -104,11 +104,11 @@
     {
       "id": "3.2",
       "label": "訪問サービス",
-      "propositions": 358,
+      "propositions": 359,
       "active_concepts": 5,
       "proposed_concepts": 5,
       "drawers": 72,
-      "review_required": 49
+      "review_required": 50
     },
     {
       "id": "3.3",
@@ -140,7 +140,7 @@
     {
       "id": "3.6",
       "label": "入居・施設サービス",
-      "propositions": 342,
+      "propositions": 343,
       "active_concepts": 6,
       "proposed_concepts": 6,
       "drawers": 55,
@@ -167,7 +167,7 @@
     {
       "id": "4.1",
       "label": "加齢・老年症候群",
-      "propositions": 215,
+      "propositions": 217,
       "active_concepts": 10,
       "proposed_concepts": 10,
       "drawers": 41,
@@ -176,10 +176,10 @@
     {
       "id": "4.2",
       "label": "身体疾患・感染症",
-      "propositions": 346,
+      "propositions": 351,
       "active_concepts": 16,
       "proposed_concepts": 16,
-      "drawers": 150,
+      "drawers": 152,
       "review_required": 230
     },
     {
@@ -194,29 +194,29 @@
     {
       "id": "4.4",
       "label": "症状・検査・薬剤",
-      "propositions": 175,
+      "propositions": 188,
       "active_concepts": 8,
       "proposed_concepts": 8,
-      "drawers": 32,
+      "drawers": 33,
       "review_required": 64
     },
     {
       "id": "4.5",
       "label": "生活機能・栄養・リハビリ",
-      "propositions": 127,
+      "propositions": 135,
       "active_concepts": 8,
       "proposed_concepts": 8,
-      "drawers": 35,
+      "drawers": 37,
       "review_required": 98
     },
     {
       "id": "4.6",
       "label": "医療・介護の実践",
-      "propositions": 446,
+      "propositions": 411,
       "active_concepts": 16,
       "proposed_concepts": 16,
-      "drawers": 127,
-      "review_required": 265
+      "drawers": 125,
+      "review_required": 186
     },
     {
       "id": "5.1",
@@ -230,10 +230,10 @@
     {
       "id": "5.2",
       "label": "家族・集団・地域援助",
-      "propositions": 159,
+      "propositions": 161,
       "active_concepts": 4,
       "proposed_concepts": 5,
-      "drawers": 19,
+      "drawers": 20,
       "review_required": 64
     },
     {
@@ -263,5 +263,12 @@
       "drawers": 22,
       "review_required": 51
     }
-  ]
+  ],
+  "classification_audit": {
+    "changed_propositions": 90,
+    "concept_changes": 70,
+    "originally_unflagged": 11,
+    "resolved_from_queue": 78,
+    "placement_only": 1
+  }
 }
