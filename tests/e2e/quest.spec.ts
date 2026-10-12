@@ -57,7 +57,7 @@ test('all 25 official questions play across five quests, each original image map
    }
    await page.getByRole('button',{name:'原本画像を見る ↗'}).click();const img=page.getByRole('dialog').locator('img');
    await expect(img).toHaveAttribute('src',`/assets/questions/2025/q${id.split('-')[1]}.png`);await expect(img).toBeVisible();
-   expect(await img.evaluate((e:HTMLImageElement)=>e.complete&&e.naturalWidth>0)).toBe(true);
+   await expect.poll(()=>img.evaluate((e:HTMLImageElement)=>e.complete&&e.naturalWidth>0)).toBe(true);
    await page.getByRole('button',{name:'元の画面へ戻る'}).click();await chooseAnswer(page);
    await expect(page.locator('#feedback')).toContainText('解説未登録');
    if(index<4)await page.getByRole('button',{name:'次の問題へ'}).click();

@@ -83,7 +83,7 @@ export function parsePlayer(text: string): PlayerState {
   if (root.knowledgeReflections !== undefined) {
     const ids = strings(root.knowledgeReflections, 5000);
     // Retain reflections for retired drawers; future taxonomy edits cannot break history import.
-    if (ids.some(id => !validConceptId(id) || !id.startsWith('drawer32.'))) fail();
+    if (ids.some(id => !validConceptId(id) || !/^drawer(?:32|5)\./.test(id))) fail();
     player.knowledgeReflections = ids;
   }
   const externalIds = new Set<string>();

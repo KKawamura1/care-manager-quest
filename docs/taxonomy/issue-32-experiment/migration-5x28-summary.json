@@ -1,0 +1,323 @@
+{
+  "root_count": 5,
+  "middle_category_count": 28,
+  "proposed_concept_count": 221,
+  "active_concept_count": 216,
+  "drawer_count": 1312,
+  "proposition_count": 6346,
+  "migration_review_required": 1382,
+  "semantic_reviewed": 1774,
+  "legacy_concept_count": 490,
+  "split_legacy_concept_count": 86,
+  "unreviewed_semantic_propositions": 4572,
+  "categories": [
+    {
+      "id": "1.1",
+      "label": "制度総論・被保険者",
+      "propositions": 224,
+      "active_concepts": 7,
+      "proposed_concepts": 8,
+      "drawers": 28,
+      "review_required": 37
+    },
+    {
+      "id": "1.2",
+      "label": "保険料・財政",
+      "propositions": 183,
+      "active_concepts": 7,
+      "proposed_concepts": 7,
+      "drawers": 30,
+      "review_required": 22
+    },
+    {
+      "id": "1.3",
+      "label": "要介護・要支援認定",
+      "propositions": 326,
+      "active_concepts": 9,
+      "proposed_concepts": 9,
+      "drawers": 43,
+      "review_required": 12
+    },
+    {
+      "id": "1.4",
+      "label": "保険給付・利用者負担",
+      "propositions": 310,
+      "active_concepts": 10,
+      "proposed_concepts": 10,
+      "drawers": 61,
+      "review_required": 16
+    },
+    {
+      "id": "1.5",
+      "label": "行政運営・指定監督",
+      "propositions": 394,
+      "active_concepts": 10,
+      "proposed_concepts": 10,
+      "drawers": 54,
+      "review_required": 1
+    },
+    {
+      "id": "1.6",
+      "label": "地域支援事業・事業計画",
+      "propositions": 290,
+      "active_concepts": 16,
+      "proposed_concepts": 16,
+      "drawers": 73,
+      "review_required": 0
+    },
+    {
+      "id": "2.1",
+      "label": "基本理念・役割・倫理",
+      "propositions": 86,
+      "active_concepts": 6,
+      "proposed_concepts": 6,
+      "drawers": 18,
+      "review_required": 24
+    },
+    {
+      "id": "2.2",
+      "label": "アセスメント・課題分析",
+      "propositions": 91,
+      "active_concepts": 5,
+      "proposed_concepts": 5,
+      "drawers": 13,
+      "review_required": 24
+    },
+    {
+      "id": "2.3",
+      "label": "ケアプラン・実施・評価",
+      "propositions": 229,
+      "active_concepts": 6,
+      "proposed_concepts": 6,
+      "drawers": 36,
+      "review_required": 43
+    },
+    {
+      "id": "3.1",
+      "label": "サービス総論・共通基準",
+      "propositions": 16,
+      "active_concepts": 4,
+      "proposed_concepts": 6,
+      "drawers": 11,
+      "review_required": 15
+    },
+    {
+      "id": "3.2",
+      "label": "訪問サービス",
+      "propositions": 367,
+      "active_concepts": 5,
+      "proposed_concepts": 5,
+      "drawers": 72,
+      "review_required": 50
+    },
+    {
+      "id": "3.3",
+      "label": "通所サービス",
+      "propositions": 185,
+      "active_concepts": 3,
+      "proposed_concepts": 3,
+      "drawers": 39,
+      "review_required": 21
+    },
+    {
+      "id": "3.4",
+      "label": "短期入所サービス",
+      "propositions": 128,
+      "active_concepts": 2,
+      "proposed_concepts": 2,
+      "drawers": 22,
+      "review_required": 0
+    },
+    {
+      "id": "3.5",
+      "label": "福祉用具サービス",
+      "propositions": 62,
+      "active_concepts": 2,
+      "proposed_concepts": 3,
+      "drawers": 12,
+      "review_required": 50
+    },
+    {
+      "id": "3.6",
+      "label": "入居・施設サービス",
+      "propositions": 347,
+      "active_concepts": 6,
+      "proposed_concepts": 6,
+      "drawers": 56,
+      "review_required": 38
+    },
+    {
+      "id": "3.7",
+      "label": "地域密着型サービス",
+      "propositions": 261,
+      "active_concepts": 11,
+      "proposed_concepts": 11,
+      "drawers": 74,
+      "review_required": 42
+    },
+    {
+      "id": "3.8",
+      "label": "居宅介護支援・介護予防支援",
+      "propositions": 330,
+      "active_concepts": 6,
+      "proposed_concepts": 6,
+      "drawers": 27,
+      "review_required": 28
+    },
+    {
+      "id": "4.1",
+      "label": "加齢・老年症候群",
+      "propositions": 217,
+      "active_concepts": 10,
+      "proposed_concepts": 10,
+      "drawers": 41,
+      "review_required": 117
+    },
+    {
+      "id": "4.2",
+      "label": "身体疾患・感染症",
+      "propositions": 289,
+      "active_concepts": 16,
+      "proposed_concepts": 16,
+      "drawers": 152,
+      "review_required": 3
+    },
+    {
+      "id": "4.3",
+      "label": "認知症・精神疾患",
+      "propositions": 199,
+      "active_concepts": 8,
+      "proposed_concepts": 8,
+      "drawers": 44,
+      "review_required": 107
+    },
+    {
+      "id": "4.4",
+      "label": "症状・検査・薬剤",
+      "propositions": 206,
+      "active_concepts": 8,
+      "proposed_concepts": 8,
+      "drawers": 41,
+      "review_required": 64
+    },
+    {
+      "id": "4.5",
+      "label": "生活機能・栄養・リハビリ",
+      "propositions": 142,
+      "active_concepts": 8,
+      "proposed_concepts": 8,
+      "drawers": 39,
+      "review_required": 98
+    },
+    {
+      "id": "4.6",
+      "label": "医療・介護の実践",
+      "propositions": 436,
+      "active_concepts": 16,
+      "proposed_concepts": 16,
+      "drawers": 131,
+      "review_required": 187
+    },
+    {
+      "id": "5.1",
+      "label": "個別相談援助・面接技術",
+      "propositions": 357,
+      "active_concepts": 7,
+      "proposed_concepts": 7,
+      "drawers": 44,
+      "review_required": 87
+    },
+    {
+      "id": "5.2",
+      "label": "家族・集団・地域援助",
+      "propositions": 161,
+      "active_concepts": 4,
+      "proposed_concepts": 5,
+      "drawers": 20,
+      "review_required": 64
+    },
+    {
+      "id": "5.3",
+      "label": "権利擁護・虐待防止",
+      "propositions": 202,
+      "active_concepts": 8,
+      "proposed_concepts": 8,
+      "drawers": 45,
+      "review_required": 62
+    },
+    {
+      "id": "5.4",
+      "label": "福祉・生活保障制度",
+      "propositions": 237,
+      "active_concepts": 9,
+      "proposed_concepts": 9,
+      "drawers": 64,
+      "review_required": 120
+    },
+    {
+      "id": "5.5",
+      "label": "生活環境・住まい・地域資源",
+      "propositions": 71,
+      "active_concepts": 7,
+      "proposed_concepts": 7,
+      "drawers": 22,
+      "review_required": 50
+    }
+  ],
+  "classification_audit": {
+    "changed_propositions": 1098,
+    "concept_changes": 353,
+    "attribute_changes": 958,
+    "originally_unflagged": 425,
+    "resolved_from_queue": 668,
+    "newly_flagged": 2,
+    "pending": 7,
+    "placement_only": 1,
+    "batches": [
+      {
+        "id": "pr70-admin-2026-10-12",
+        "changed_propositions": 438,
+        "concept_changes": 135,
+        "attribute_changes": 388,
+        "originally_unflagged": 250,
+        "resolved_from_queue": 188,
+        "newly_flagged": 1,
+        "pending": 1,
+        "placement_only": 0
+      },
+      {
+        "id": "pr70-community-2026-10-12",
+        "changed_propositions": 294,
+        "concept_changes": 78,
+        "attribute_changes": 265,
+        "originally_unflagged": 118,
+        "resolved_from_queue": 176,
+        "newly_flagged": 0,
+        "pending": 0,
+        "placement_only": 0
+      },
+      {
+        "id": "pr70-disease-2026-10-12",
+        "changed_propositions": 276,
+        "concept_changes": 70,
+        "attribute_changes": 220,
+        "originally_unflagged": 46,
+        "resolved_from_queue": 226,
+        "newly_flagged": 1,
+        "pending": 5,
+        "placement_only": 0
+      },
+      {
+        "id": "pr70-practice-2026-10-12",
+        "changed_propositions": 90,
+        "concept_changes": 70,
+        "attribute_changes": 85,
+        "originally_unflagged": 11,
+        "resolved_from_queue": 78,
+        "newly_flagged": 0,
+        "pending": 1,
+        "placement_only": 1
+      }
+    ]
+  }
+}

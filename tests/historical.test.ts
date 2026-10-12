@@ -66,7 +66,7 @@ describe('2020–2024 import',()=>{
   expect(player.attempts.slice(0,5).every(a=>a.questionId.startsWith('2025-'))).toBe(true);
   expect(parsePlayer(JSON.stringify(player))).toEqual(player);
  });
- it('uses provisional PR33 classifications for 2023 and 2024',()=>{
-  expect(questions.filter(q=>q.original?.year===2023||q.original?.year===2024).every(q=>q.classificationStatus==='provisional'&&q.conceptIds.every(id=>id.startsWith('drawer32.')))).toBe(true);
+ it('uses provisional 5x28 classifications for 2023 and 2024',()=>{
+  expect(questions.filter(q=>q.original?.year===2023||q.original?.year===2024).every(q=>q.classificationStatus==='provisional'&&q.conceptIds.every(id=>id.startsWith('drawer5.')))).toBe(true);
  });
 });

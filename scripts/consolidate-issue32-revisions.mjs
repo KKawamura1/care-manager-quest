@@ -121,15 +121,15 @@ manifest.source_text_sync = sourceSyncSummary(all);
 manifest.normalization_summary = buildIndex().summary;
 const summaryBlock = [
   '<!-- issue32-summary:start -->',
-  '## 現在の正本と集計',
+  '## 移行前分類の監査集計',
   '',
   '`propositions/YYYY.jsonl`（2005〜2025年度）が唯一の分類正本です。設問別修正は全年度で統合し、`revisions/`には残していません。',
-  '個別の概念ID・属性ID・レビュー状態・理由・入力フィンガープリントは、同じ命題内の `drawer_assignment` に保持します。分類と引き出し判断を別ファイルへ二重に記録する必要はありません。',
+  '移行前の個別レビュー判断は `drawer_assignment` に保存します。このブランチの現行5×28分類は、同じ年度正本内の `taxonomy_assignment` が正本です。現在の所属・概念・属性・要確認件数は [再分類結果](./RECLASSIFICATION_5X28.md) を参照してください。以下は旧分類と既存レビューの保持を確認する監査集計です。',
   '',
   `- ${manifest.coverage.question_count.toLocaleString('en-US')}問・${manifest.coverage.choice_count.toLocaleString('en-US')}選択肢・${total.toLocaleString('en-US')}命題。assigned ${statusTotals.assigned.toLocaleString('en-US')}件、ambiguous ${statusTotals.ambiguous}件、unmapped ${statusTotals.unmapped}件。`,
   `- 判定知識の個別レビュー：${judgmentReviewed.toLocaleString('en-US')}命題。未レビュー：${(total - judgmentReviewed).toLocaleString('en-US')}命題。`,
   `- 旧方式を含む分類レビュー履歴：${reviewedTotal.toLocaleString('en-US')}命題。履歴の存在は意味・真偽・原文・法令の検証完了を意味しません。`,
-  `- 正規化：${manifest.normalization_summary.normalized_drawer_count.toLocaleString('en-US')}引き出し・${manifest.normalization_summary.concept_count}概念。要レビュー命題 ${manifest.normalization_summary.normalization_review_required_propositions.toLocaleString('en-US')}件、属性未整理 ${manifest.normalization_summary.unresolved_attribute_propositions.toLocaleString('en-US')}件、要レビュー引き出し ${manifest.normalization_summary.normalization_review_required_drawers}件（重複あり）。`,
+  `- 移行前ID正規化：${manifest.normalization_summary.normalized_drawer_count.toLocaleString('en-US')}引き出し・${manifest.normalization_summary.concept_count}概念。要レビュー命題 ${manifest.normalization_summary.normalization_review_required_propositions.toLocaleString('en-US')}件、属性未整理 ${manifest.normalization_summary.unresolved_attribute_propositions.toLocaleString('en-US')}件、要レビュー引き出し ${manifest.normalization_summary.normalization_review_required_drawers}件（重複あり）。`,
   `- 原文同期：全1,260問・6,300選択肢をリポジトリ入力と照合。同期履歴は${manifest.source_text_sync.changed_questions}問・${manifest.source_text_sync.changed_choices}選択肢。PR39の校正を継承し、公式原本との二重校正は未完了として保持。`,
   '',
   '集計・難例一覧・文書・SHA-256は `node scripts/consolidate-issue32-revisions.mjs` で再生成します。CIは同スクリプトの `--check` と `node scripts/sync-issue32-sources.mjs --check` で、残存修正・集計・チェックサム・原文の同期漏れを検出します。',
