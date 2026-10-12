@@ -4,7 +4,6 @@ import { concepts } from './data/knowledge';
 import { studyScope } from './data/study-scope';
 import { parseStudyScope } from './domain/studyScope';
 import { StudyScopePicker } from './components/StudyScopePicker';
-import { Emblem } from './components/Emblem';
 import { questions, questionById, availableYears } from './data/provider';
 import { sources, officialNotice } from './data/sources';
 import { advance, buildSession, conceptStatus, emptyPlayer, levelInfo, submitAnswer, totalXp } from './domain/game';
@@ -130,13 +129,8 @@ export default function App() {
       <SwipeStudy active={route === 'swipe'} home={route === 'home'} onStart={()=>go('swipe')} onBack={()=>go('home')} learningEvents={player.learningEvents} blocked={blocked} onAnswer={(card, answer, at)=>setPlayer(p=>({...p, learningEvents:recordLearning(p.learningEvents,[{card,answer}],at,'swipe')}))}/>
       {route === 'home' && <>
         <section className="home-screen">
-          <section className="title-scene" aria-labelledby="home-title">
-            <div className="title-copy"><p className="scene-eyebrow">KNOWLEDGE QUEST</p><h1 id="home-title">知識を、力に。</h1><p className="title-caption">一枚ずつ、確かな理解へ。</p></div>
-            <div className="title-emblem" aria-hidden="true"><Emblem/><span className="orbit-spark"/><span className="orbit-spark second"/></div>
-          </section>
           <section className="mission-card swipe-home-card" id="swipe-home-setup" aria-label="○×学習の設定"/>
           <section className="mission-card">
-            <p className="mission-eyebrow" aria-hidden="true">02 / QUEST</p>
             <h2>5択クエスト</h2>
             <label className="year-picker">年度<select aria-label="出題する年度" value={yearFilter} onChange={e=>changeYear(parseYearFilter(e.target.value))}><option value="all">全年度</option>{availableYears.map(year=><option key={year} value={year}>{year}年度</option>)}</select></label>
             <StudyScopePicker value={scope} onChange={changeScope} counts={scopeCounts} mode="5択" unit="問"/>
