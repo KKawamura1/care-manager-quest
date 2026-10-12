@@ -69,7 +69,7 @@ input[type=radio] { accent-color: var(--mint); width: 17px; height: 17px; flex-s
 .secondary:disabled { opacity: .5; }
 .text-button { background: none; color: var(--muted); min-height: 44px; padding: 0 4px; font-size: 12px; }
 .mission-note { margin-top: 10px; font-size: 11px; text-align: center; color: var(--muted); }
-.bottom-nav { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: min(100%, 560px); z-index: 20; display: grid; grid-template-columns: repeat(3, 1fr); padding: 8px 8px calc(8px + env(safe-area-inset-bottom)); border-top: 1px solid var(--line); background: #111820f5; backdrop-filter: blur(12px); }
+.bottom-nav { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: min(100%, 560px); z-index: 20; display: grid; grid-template-columns: repeat(4, 1fr); padding: 8px 8px calc(8px + env(safe-area-inset-bottom)); border-top: 1px solid var(--line); background: #111820f5; backdrop-filter: blur(12px); }
 .bottom-nav button { display: flex; flex-direction: column; align-items: center; gap: 2px; min-height: 52px; min-width: 0; background: none; color: var(--muted); font-size: 10px; }
 .bottom-nav button > span { font-size: 22px; line-height: 1.5; }
 .bottom-nav .active { color: var(--mint); }
