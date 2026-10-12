@@ -116,7 +116,6 @@ export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAn
     else if (!result) submit(upward ? null : dx > 0);
   };
   const setup = <div className="swipe-home-controls">
-    <p className="mission-eyebrow" aria-hidden="true">01 / QUICK STUDY</p>
     <h2>○×学習</h2>
       <div className="swipe-settings">
         <label>年度<select aria-label="○×の年度" value={year} onChange={e => { setYear(e.target.value === 'all' ? 'all' : Number(e.target.value)); setCard(undefined); setResult(undefined); locked.current = false; }}>
