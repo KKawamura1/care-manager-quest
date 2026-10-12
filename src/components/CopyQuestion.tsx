@@ -26,7 +26,13 @@ export function CopyText({ text }: { text: string; includeAnswer?: boolean }) {
     }
   }
   return <div className="copy-question">
-    <button type="button" className="secondary" disabled={status === 'copying'} onClick={() => void copy()}>問題をコピー</button>
+    <button type="button" className="secondary copy-question-button" disabled={status === 'copying'} onClick={() => void copy()}>
+      <svg className="copy-question-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="8" y="8" width="12" height="13" rx="2"/>
+        <path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h3"/>
+      </svg>
+      問題をコピー
+    </button>
     {(status === 'copied' || status === 'manual') && <p className="fine-print" role="status">{status === 'copied' ? 'コピーしました' : '下の文章を選択してコピーしてください'}</p>}
     {status === 'manual' && <div className="manual-copy">
       <label>ChatGPTに貼り付ける文章<textarea ref={textRef} readOnly value={text} onFocus={selectText} /></label>
