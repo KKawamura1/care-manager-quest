@@ -17,7 +17,7 @@ for(const year of [2020,2021,2022,2023,2024]) {
   const img=page.getByRole('dialog').locator('img');
   if(existsSync(new URL(`../../public${q.original.imagePath}`,import.meta.url))) {
    await expect(img).toHaveAttribute('src',q.original.imagePath);
-   expect(await img.evaluate((e:HTMLImageElement)=>e.complete&&e.naturalWidth>0)).toBe(true);
+   await expect.poll(()=>img.evaluate((e:HTMLImageElement)=>e.complete&&e.naturalWidth>0)).toBe(true);
   } else await expect(page.getByRole('dialog').getByRole('alert')).toContainText('公式PDF');
   await expect(page.getByRole('dialog').getByRole('link',{name:'公式問題PDFで原本を確認する ↗'})).toHaveAttribute('href',q.original.sourceUrl);
   await page.getByRole('button',{name:'元の画面へ戻る'}).click();

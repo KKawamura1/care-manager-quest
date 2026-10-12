@@ -38,8 +38,9 @@ same([3,4].map(c=>drawer('2025-05',c)));
 different([drawer('2025-05',1),drawer('2025-05',3)]);
 
 // Provider-specific rules should not leak into generic care methodology.
-same([3,5].map(c=>drawer('2025-50',c)));
-different([drawer('2025-50',3),drawer('2025-50',4)]);
+// A provider's plan obligation and its liaison duties are separate facets.
+different([drawer('2025-50',3),drawer('2025-50',4),drawer('2025-50',5)]);
+assert.match(drawer('2025-50',3),/3\.1\.home\.visiting_care#care_plan$/);
 
 // Broad 2005-era headings mention four separate dimensions; inspect the
 // proposition instead of falsely grouping all facts as "application".
@@ -110,7 +111,7 @@ assert.equal(identifyDrawer(broad,broad.primary_path).attribute_resolution,'infe
 
 // Individual normalization reviews cover actual knowledge, including pronouns
 // whose meaning cannot be recovered from the proposition string alone.
-assert.equal(summary.individually_reviewed_drawer_assignments,91);
+assert.ok(summary.individually_reviewed_drawer_assignments>=393);
 same([1,2,3,4,5].map(c=>drawer('2014-14',c)));
 assert.match(drawer('2014-14',1),/#survey$/,'basic-survey fields must not map to application');
 assert.match(drawer('2014-15',5),/#survey$/,'mention of physician opinion does not override the tested calculation method');
@@ -118,11 +119,39 @@ assert.match(drawer('2013-16',1),/#committee$/,'committee establishment must not
 assert.match(drawer('2011-14',3),/3\.1\.preventive_support#designation$/);
 const reviewed=loadYear(2014).find(r=>r.question_number===14&&r.choice_index===1);
 assert.throws(()=>identifyDrawer({...reviewed,proposition:reviewed.proposition+'変更'},reviewed.primary_path),/stale drawer decision/);
-assert.equal(summary.classification_semantically_reviewed_propositions,236,'normalization review must not inflate PR58 semantic approvals');
-const mixed=drawer_registry.find(d=>d.id==='drawer32.4.4.1.certification#survey');
-assert.ok(mixed.attribute_evidences.includes('individual_drawer_review'));
-assert.ok(mixed.attribute_evidences.includes('proposition_keyword'));
-assert.ok(mixed.review_required,'one reviewed occurrence cannot approve other inferred occurrences');
+// Decisions travel with the row: editing a revision for the same ID takes effect
+// immediately, without updating a global sidecar or approving other occurrences.
+assert.equal(reviewed.drawer_assignment.review_status,'reviewed');
+const changedDecision={...reviewed,drawer_assignment:{...reviewed.drawer_assignment,
+  attribute_id:'application',attribute_label:'認定申請・変更手続',reason:'fixture: reviewed a different attribute'}};
+assert.match(identifyDrawer(changedDecision,changedDecision.primary_path).id,/#application$/);
+assert.match(identifyDrawer(reviewed,reviewed.primary_path).id,/#survey$/);
+const {drawer_assignment:omittedDecision,...withoutReview}=reviewed;
+assert.equal(identifyDrawer(withoutReview,withoutReview.primary_path).individually_reviewed,false);
+assert.equal(identifyDrawer(reviewed,['4','社会保障の仕組み','別候補']).individually_reviewed,false);
+for(const field of ['question_stem','subject_concept','attribute']) {
+  assert.throws(()=>identifyDrawer({...reviewed,[field]:reviewed[field]+'変更'},reviewed.primary_path),/stale drawer decision/);
+}
+const changedPath={...reviewed,primary_path:[...reviewed.primary_path,'変更']};
+assert.throws(()=>identifyDrawer(changedPath,changedPath.primary_path),/stale drawer decision/);
+assert.throws(()=>identifyDrawer({...reviewed,classification_status:'ambiguous'},reviewed.primary_path),/requires assigned classification/);
+assert.throws(()=>identifyDrawer({...reviewed,choice_index:5},reviewed.primary_path),/belongs to another proposition/);
+for(const [field,value,pattern]of [
+  ['reason','',/reason missing/],['attribute_id','',/attribute_id missing/],
+  ['attribute_label','',/attribute_label missing/],['review_status','pending',/invalid drawer review status/],
+  ['concept_id','4.unknown_concept',/unknown reviewed concept/],
+]) assert.throws(()=>identifyDrawer({...reviewed,drawer_assignment:{...reviewed.drawer_assignment,[field]:value}},reviewed.primary_path),pattern);
+const semanticReviewCount=Array.from({length:21},(_,i)=>loadYear(2005+i)).flat()
+  .filter(r=>r.knowledge_target_review?.principle==='judgment_knowledge_over_context').length;
+assert.equal(summary.classification_semantically_reviewed_propositions,semanticReviewCount,
+  'normalization reviews alone must not inflate semantic approvals');
+assert.ok(semanticReviewCount>=538);
+// Review progress can eliminate an old mixed-confidence example. Check every
+// current shared drawer: reviewing one occurrence never approves another.
+const uncertainDrawers=new Set(index.filter(r=>r.drawer_review_required)
+  .flatMap(r=>[r.primary_drawer_id,...r.candidate_drawer_ids]).filter(Boolean));
+for(const group of drawer_registry) assert.equal(group.review_required,
+  uncertainDrawers.has(group.id),'shared-drawer review status: '+group.id);
 
 const dir=mkdtempSync(join(tmpdir(),'issue32-drawer-artifacts-'));
 try {

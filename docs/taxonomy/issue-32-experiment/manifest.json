@@ -19,10 +19,10 @@
       "needs_source_review": 0
     },
     "primary_root_counts": {
-      "人の健康と生活": 1019,
-      "支援の考え方と方法": 1433,
-      "支援の提供体制": 1849,
-      "社会保障の仕組み": 2045
+      "人の健康と生活": 1077,
+      "支援の考え方と方法": 1347,
+      "支援の提供体制": 1862,
+      "社会保障の仕組み": 2060
     }
   },
   "validation": {
@@ -61,8 +61,8 @@
       },
       "primary_root_counts": {
         "人の健康と生活": 55,
-        "支援の考え方と方法": 86,
-        "支援の提供体制": 63,
+        "支援の考え方と方法": 85,
+        "支援の提供体制": 64,
         "社会保障の仕組み": 98
       },
       "ambiguous_candidate_root_counts": {}
@@ -81,8 +81,8 @@
       "primary_root_counts": {
         "人の健康と生活": 50,
         "支援の考え方と方法": 69,
-        "支援の提供体制": 79,
-        "社会保障の仕組み": 102
+        "支援の提供体制": 77,
+        "社会保障の仕組み": 104
       },
       "ambiguous_candidate_root_counts": {}
     },
@@ -100,8 +100,8 @@
       "primary_root_counts": {
         "人の健康と生活": 46,
         "支援の考え方と方法": 66,
-        "支援の提供体制": 85,
-        "社会保障の仕組み": 103
+        "支援の提供体制": 86,
+        "社会保障の仕組み": 102
       },
       "ambiguous_candidate_root_counts": {}
     },
@@ -118,8 +118,8 @@
       },
       "primary_root_counts": {
         "人の健康と生活": 78,
-        "支援の考え方と方法": 49,
-        "支援の提供体制": 73,
+        "支援の考え方と方法": 46,
+        "支援の提供体制": 76,
         "社会保障の仕組み": 100
       },
       "ambiguous_candidate_root_counts": {}
@@ -136,10 +136,10 @@
         "needs_source_review": 0
       },
       "primary_root_counts": {
-        "人の健康と生活": 66,
-        "支援の考え方と方法": 56,
-        "支援の提供体制": 84,
-        "社会保障の仕組み": 95
+        "人の健康と生活": 72,
+        "支援の考え方と方法": 49,
+        "支援の提供体制": 89,
+        "社会保障の仕組み": 91
       },
       "ambiguous_candidate_root_counts": {}
     },
@@ -155,10 +155,10 @@
         "needs_source_review": 0
       },
       "primary_root_counts": {
-        "人の健康と生活": 43,
-        "支援の考え方と方法": 99,
-        "支援の提供体制": 72,
-        "社会保障の仕組み": 92
+        "人の健康と生活": 64,
+        "支援の考え方と方法": 72,
+        "支援の提供体制": 73,
+        "社会保障の仕組み": 97
       },
       "ambiguous_candidate_root_counts": {}
     },
@@ -174,10 +174,10 @@
         "needs_source_review": 0
       },
       "primary_root_counts": {
-        "人の健康と生活": 59,
-        "支援の考え方と方法": 73,
-        "支援の提供体制": 87,
-        "社会保障の仕組み": 90
+        "人の健康と生活": 63,
+        "支援の考え方と方法": 68,
+        "支援の提供体制": 86,
+        "社会保障の仕組み": 92
       },
       "ambiguous_candidate_root_counts": {}
     },
@@ -193,10 +193,10 @@
         "needs_source_review": 0
       },
       "primary_root_counts": {
-        "人の健康と生活": 45,
-        "支援の考え方と方法": 80,
-        "支援の提供体制": 98,
-        "社会保障の仕組み": 81
+        "人の健康と生活": 49,
+        "支援の考え方と方法": 74,
+        "支援の提供体制": 97,
+        "社会保障の仕組み": 84
       },
       "ambiguous_candidate_root_counts": {}
     },
@@ -212,10 +212,10 @@
         "needs_source_review": 0
       },
       "primary_root_counts": {
-        "人の健康と生活": 64,
-        "支援の考え方と方法": 74,
-        "支援の提供体制": 76,
-        "社会保障の仕組み": 89
+        "人の健康と生活": 65,
+        "支援の考え方と方法": 71,
+        "支援の提供体制": 77,
+        "社会保障の仕組み": 90
       },
       "ambiguous_candidate_root_counts": {}
     },
@@ -231,9 +231,9 @@
         "needs_source_review": 0
       },
       "primary_root_counts": {
-        "人の健康と生活": 34,
-        "支援の考え方と方法": 63,
-        "支援の提供体制": 106,
+        "人の健康と生活": 37,
+        "支援の考え方と方法": 58,
+        "支援の提供体制": 108,
         "社会保障の仕組み": 98
       },
       "ambiguous_candidate_root_counts": {}
@@ -250,9 +250,9 @@
         "needs_source_review": 0
       },
       "primary_root_counts": {
-        "人の健康と生活": 40,
-        "支援の考え方と方法": 71,
-        "支援の提供体制": 93,
+        "人の健康と生活": 44,
+        "支援の考え方と方法": 66,
+        "支援の提供体制": 94,
         "社会保障の仕組み": 98
       },
       "ambiguous_candidate_root_counts": {}
@@ -269,8 +269,8 @@
         "needs_source_review": 0
       },
       "primary_root_counts": {
-        "人の健康と生活": 45,
-        "支援の考え方と方法": 63,
+        "人の健康と生活": 50,
+        "支援の考え方と方法": 58,
         "支援の提供体制": 108,
         "社会保障の仕組み": 85
       },
@@ -307,10 +307,10 @@
         "needs_source_review": 0
       },
       "primary_root_counts": {
-        "人の健康と生活": 42,
-        "支援の考え方と方法": 46,
-        "支援の提供体制": 112,
-        "社会保障の仕組み": 101
+        "人の健康と生活": 45,
+        "支援の考え方と方法": 42,
+        "支援の提供体制": 114,
+        "社会保障の仕組み": 100
       },
       "ambiguous_candidate_root_counts": {}
     },
@@ -347,8 +347,8 @@
       "primary_root_counts": {
         "人の健康と生活": 43,
         "支援の考え方と方法": 60,
-        "支援の提供体制": 98,
-        "社会保障の仕組み": 100
+        "支援の提供体制": 97,
+        "社会保障の仕組み": 101
       },
       "ambiguous_candidate_root_counts": {}
     },
@@ -364,10 +364,10 @@
         "needs_source_review": 0
       },
       "primary_root_counts": {
-        "人の健康と生活": 42,
-        "支援の考え方と方法": 75,
-        "支援の提供体制": 77,
-        "社会保障の仕組み": 107
+        "人の健康と生活": 43,
+        "支援の考え方と方法": 71,
+        "支援の提供体制": 78,
+        "社会保障の仕組み": 109
       },
       "ambiguous_candidate_root_counts": {}
     },
@@ -383,8 +383,8 @@
         "needs_source_review": 0
       },
       "primary_root_counts": {
-        "人の健康と生活": 37,
-        "支援の考え方と方法": 72,
+        "人の健康と生活": 38,
+        "支援の考え方と方法": 71,
         "支援の提供体制": 97,
         "社会保障の仕組み": 94
       },
@@ -403,9 +403,9 @@
       },
       "primary_root_counts": {
         "人の健康と生活": 46,
-        "支援の考え方と方法": 66,
+        "支援の考え方と方法": 67,
         "支援の提供体制": 81,
-        "社会保障の仕組み": 110
+        "社会保障の仕組み": 109
       },
       "ambiguous_candidate_root_counts": {}
     },
@@ -421,10 +421,10 @@
         "needs_source_review": 0
       },
       "primary_root_counts": {
-        "人の健康と生活": 35,
-        "支援の考え方と方法": 67,
-        "支援の提供体制": 94,
-        "社会保障の仕組み": 108
+        "人の健康と生活": 36,
+        "支援の考え方と方法": 62,
+        "支援の提供体制": 93,
+        "社会保障の仕組み": 113
       },
       "ambiguous_candidate_root_counts": {}
     },
@@ -440,10 +440,10 @@
         "needs_source_review": 0
       },
       "primary_root_counts": {
-        "人の健康と生活": 40,
-        "支援の考え方と方法": 73,
-        "支援の提供体制": 79,
-        "社会保障の仕組み": 110
+        "人の健康と生活": 44,
+        "支援の考え方と方法": 67,
+        "支援の提供体制": 80,
+        "社会保障の仕組み": 111
       },
       "ambiguous_candidate_root_counts": {}
     }
@@ -451,10 +451,10 @@
   "classification_quality_review": {
     "reviewed_on": "2026-10-11",
     "reviewed_years": {
-      "2005": 131,
-      "2006": 144,
-      "2007": 170,
-      "2008": 172,
+      "2005": 155,
+      "2006": 156,
+      "2007": 182,
+      "2008": 175,
       "2009": 301,
       "2010": 306,
       "2011": 309,
@@ -462,9 +462,9 @@
       "2013": 303,
       "2014": 301,
       "2015": 302,
-      "2016": 163,
-      "2017": 170,
-      "2018": 150,
+      "2016": 203,
+      "2017": 177,
+      "2018": 163,
       "2019": 300,
       "2020": 301,
       "2021": 301,
@@ -473,10 +473,10 @@
       "2024": 304,
       "2025": 302
     },
-    "remaining_without_semantic_review": 1009,
+    "remaining_without_semantic_review": 898,
     "scope": "全年の分類レビュー履歴を年度正本へ統合。履歴件数は旧レビュー方式を含み、判定知識による個別意味レビューの件数とは別。正誤・当時法令の検証完了を意味しない。",
     "crosswalk": "初回分類から作られた履歴スナップショットであり、修正後の経路件数を反映していない。",
-    "reviewed_records": 5337,
+    "reviewed_records": 5448,
     "reclassified_records_note": "Differing definitions across per-year PRs; not totaled here. Per-year revision histories and decisions are retained."
   },
   "classification_review_overlay": {
@@ -576,8 +576,8 @@
     "source_pr": 43
   },
   "judgment_knowledge_review": {
-    "reviewed_records": 236,
-    "remaining_records": 6110,
+    "reviewed_records": 1774,
+    "remaining_records": 4572,
     "scope": "判定に必要な知識を個別に記録した命題のみ集計。assignedや旧分類レビュー履歴からは認定しない。"
   },
   "source_text_sync": {
@@ -726,22 +726,22 @@
     "proposition_count": 6346,
     "legacy_source_question_count": 60,
     "legacy_source_proposition_count": 301,
-    "observed_path_count": 2843,
-    "conflicting_v1_1_path_count": 528,
-    "exact_v1_1_path_count": 42,
-    "normalized_drawer_count": 1159,
-    "concept_count": 487,
-    "unresolved_attribute_drawers": 419,
-    "provisional_concept_drawers": 246,
-    "proposition_inferred_drawers": 270,
-    "classification_semantically_reviewed_propositions": 236,
-    "individually_reviewed_drawer_assignments": 91,
-    "unresolved_attribute_propositions": 2066,
-    "provisional_concept_propositions": 318,
-    "inferred_assignment_propositions": 1007,
-    "reviewed_rule_drawer_count": 486,
-    "normalization_review_required_drawers": 673,
-    "normalization_review_required_propositions": 3168,
-    "collapsed_original_path_count": 2490
+    "observed_path_count": 2715,
+    "conflicting_v1_1_path_count": 371,
+    "exact_v1_1_path_count": 35,
+    "normalized_drawer_count": 1341,
+    "concept_count": 490,
+    "unresolved_attribute_drawers": 336,
+    "provisional_concept_drawers": 230,
+    "proposition_inferred_drawers": 173,
+    "classification_semantically_reviewed_propositions": 1774,
+    "individually_reviewed_drawer_assignments": 1629,
+    "unresolved_attribute_propositions": 1284,
+    "provisional_concept_propositions": 302,
+    "inferred_assignment_propositions": 435,
+    "reviewed_rule_drawer_count": 798,
+    "normalization_review_required_drawers": 543,
+    "normalization_review_required_propositions": 1814,
+    "collapsed_original_path_count": 2018
   }
 }

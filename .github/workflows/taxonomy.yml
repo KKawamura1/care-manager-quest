@@ -37,6 +37,10 @@ jobs:
           node-version: '22'
       - run: node --experimental-strip-types scripts/prepare-taxonomy.ts
       - run: node --experimental-strip-types scripts/prepare-taxonomy.ts --check
+      - name: Verify current fixed 5x28 hierarchy, coverage and input fingerprints
+        run: node --experimental-strip-types scripts/test-issue32-5x28.mts
+      - name: Verify current migration reports and review queue
+        run: node --experimental-strip-types scripts/report-issue32-5x28.mts --check
       - name: Verify annual canonical data, summaries and checksums
         run: node scripts/consolidate-issue32-revisions.mjs --check
       - name: Verify repository source text synchronization

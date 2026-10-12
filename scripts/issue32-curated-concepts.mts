@@ -471,7 +471,7 @@ export const additionalConceptDefinitions: readonly ConceptDefinition[] = [
     "2",
     "2.4.end_of_life",
     "終末期ケア",
-    "終末期ケア・ACP|終末期ケア・看取り|アドバンス・ケア・プランニング(ACP)"
+    "終末期ケア・ACP|終末期ケア・看取り"
   ],
   [
     "2",

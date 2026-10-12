@@ -134,6 +134,7 @@ input[type=radio] { accent-color: var(--mint); width: 17px; height: 17px; flex-s
 .region-heading h2 { font-size: 16px; }
 .region-heading > small { margin-left: auto; color: var(--muted); white-space: nowrap; }
 .map-region details { border-top: 1px solid var(--line); }
+.knowledge-middle > .knowledge-small { margin: 0 10px 8px; border: 1px solid var(--line); border-radius: 8px; }
 .map-region summary { display: flex; align-items: center; gap: 8px; padding: 14px 16px; min-height: 48px; font-size: 13px; list-style: none; }
 .map-region summary::before { content: '›'; color: var(--mint); }
 .map-region details[open] > summary::before { transform: rotate(90deg); }

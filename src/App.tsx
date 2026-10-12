@@ -1,6 +1,6 @@
 import { knowledgeProgress } from './domain/knowledgeProgress';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { categories, concepts } from './data/knowledge';
+import { concepts } from './data/knowledge';
 import { questions, questionById, availableYears } from './data/provider';
 import { sources, officialNotice } from './data/sources';
 import { advance, buildSession, conceptStatus, emptyPlayer, levelInfo, submitAnswer, totalXp } from './domain/game';
@@ -13,6 +13,7 @@ import { CopyQuestion } from './components/CopyQuestion';
 import { AppExplanation } from './components/AppExplanation';
 import { questionTarget } from './domain/appExplanation';
 import { SwipeStudy } from './components/SwipeStudy';
+import { KnowledgeMap } from './components/KnowledgeMap';
 import { recordLearning } from './domain/learning';
 import { swipeCardById } from './data/swipe-provider';
 import { filterQuestions, parseYearFilter, YEAR_STORAGE_KEY, type YearFilter } from './domain/questionFilter';
@@ -146,7 +147,7 @@ export default function App() {
       </section>}
       {route === 'play' && session?.completed && <section className="result-screen"><h1>{inSession.filter(a=>a.correct).length===5?'完全攻略！':'クエスト完了'}</h1><div className="result-score"><strong>{inSession.filter(a=>a.correct).length}<small>/ 5</small></strong><span>正解</span></div><div className="result-stats"><div><b>+{inSession.reduce((n,a)=>n+a.xp,0)}</b><span>獲得XP</span></div><div><b>{Math.max(...inSession.map(a=>a.combo),0)}</b><span>最大コンボ</span></div><div><b>{inSession.filter(a=>a.correct&&a.firstSeen).length}</b><span>初見突破</span></div></div><div className="result-list">{inSession.map(a=><button key={a.id} onClick={()=>setDetail(questionById(a.questionId))}><span className={a.correct?'mint':'coral'}>{a.correct?'✓':'↗'}</span><span>{questionById(a.questionId)?.title}</span><small>+{a.xp} XP</small></button>)}</div><button className="primary" onClick={start} disabled={blocked} aria-label="もう5問、探索する">もう5問<span>→</span></button><button className="secondary" onClick={()=>go('map')} aria-label="広がった知識マップを見る">知識マップ</button></section>}
       {route === 'map' && <section className="map-screen"><h1>知識マップ</h1><div className="map-summary"><b>{explored}<small> / {concepts.length}</small></b><span>探索した知識</span><b>{mastered}<small> 習得</small></b></div><div className="map-legend"><span>○ 未探索</span><span className="gold">◐ 学習中</span><span className="mint">● 習得済み</span></div>
-        {categories.filter(c=>!c.parentId).map(root=><section key={root.id} className={`map-region ${root.available?'':'future'}`}><div className="region-heading"><span>{root.id}</span><div><h2>{root.label}</h2></div>{!root.available&&<small>追加予定</small>}</div>{categories.filter(c=>c.parentId===root.id).map(cat=>{const nodes=concepts.filter(c=>c.categoryId===cat.id);return <details key={cat.id}><summary><span>{cat.label}</span><small>{nodes.filter(c=>conceptStatus(mapProgress[c.id])==='mastered').length} / {nodes.length||'—'}</small></summary><div className="concept-grid">{nodes.map(c=>{const status=conceptStatus(mapProgress[c.id]);return <button className={`concept-node ${status}`} key={c.id} onClick={()=>setConceptId(c.id)}><span>{status==='mastered'?'●':status==='learning'?'◐':'○'}</span><span>{c.label}</span><span>›</span></button>;})}{!nodes.length&&<p className="future-note">この領域の問題は今後追加します。</p>}</div></details>;})}</section>)}
+        <KnowledgeMap progress={mapProgress} onSelect={setConceptId}/>
         <details className="help-details"><summary>習得の目安</summary><p>関連する選択肢の直近5学習日の初回正答率を集約します。学習レベル80%以上で習得済み。時間経過は要復習度に反映します。</p></details>
       </section>}
       {route === 'records' && <section className="records-screen"><h1>記録</h1><div className="record-stats"><div><b>{player.learningEvents.length}</b><span>回答した選択肢</span></div><div><b>{xp}</b><span>合計XP</span></div><div><b>{player.learningEvents.filter(e=>e.answer!==null&&e.answer===swipeCardById.get(e.cardId)?.truth).length}</b><span>正解</span></div></div><section className="panel"><h2>履歴を持ち出す</h2><button className="primary" onClick={()=>download(JSON.stringify(player,null,2),'care-manager-quest-history.json')}>JSONを書き出す <span>↓</span></button><button className="secondary" onClick={()=>fileRef.current?.click()}>JSONを読み込む</button><input type="file" accept=".json,application/json" ref={fileRef} hidden onChange={e=>void readImport(e.target.files?.[0])}/></section>
