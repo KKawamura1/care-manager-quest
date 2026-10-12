@@ -244,3 +244,12 @@ dialog::backdrop { background: #030910c7; backdrop-filter: blur(5px); }
 @media (min-width: 620px) { body { background: #0c1218; } .app-shell { background: var(--bg); border-inline: 1px solid #25313d; } }
 @media (max-width: 360px) { .app-shell { padding-inline: 16px; } .mission-card { padding: 18px 14px; } .domain-picker label { padding: 8px; font-size: 11px; gap: 6px; } .question-title { font-size: 20px; } .swipe-card { padding: 20px; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } .burst, .swipe-effect { display: none; } }
+
+.study-scope-picker { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 12px; min-width: 0; margin: 16px 0; padding: 0; border: 0; }
+.study-scope-picker legend { padding: 0; margin-bottom: 10px; color: var(--muted); font-size: 12px; }
+.study-scope-picker label, .swipe-settings .study-scope-picker label { display: grid; gap: 6px; min-width: 0; margin: 0; color: var(--muted); font-size: 12px; }
+.swipe-settings .study-scope-picker select { margin-top: 0; }
+.study-scope-picker select { text-overflow: ellipsis; }
+.study-scope-picker select:disabled { opacity: .5; }
+.study-scope-selection { grid-column: 1 / -1; margin: 0; color: var(--muted); font-size: 12px; overflow-wrap: anywhere; }
+.exam-field-filter { margin: 16px 0; font-size: 12px; color: var(--muted); }

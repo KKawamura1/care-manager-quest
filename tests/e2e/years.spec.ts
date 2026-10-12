@@ -38,7 +38,8 @@ for(const year of [2020,2021,2022,2023,2024]) {
 test('all years labels count the selected pool and retain default 2025 preference',async({page})=>{
  await page.goto('/');await expect(page.getByLabel('出題する年度')).toHaveValue('2025');
  await page.getByLabel('出題する年度').selectOption('all');
- await expect(page.getByRole('radio',{name:'介護支援（525問）'})).toBeChecked();
+ await page.getByText('試験分野でさらに絞る',{exact:true}).click();
+ await expect(page.getByRole('radio',{name:'全分野（1259問）'})).toBeChecked();
  await page.getByRole('radio',{name:'全分野（1259問）'}).check();
  await expect(page.getByRole('radio',{name:'全分野（1259問）'})).toBeChecked();
 });

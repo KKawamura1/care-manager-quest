@@ -13,7 +13,8 @@ export function awardXp(q: Question, correct: boolean, first: boolean, combo: nu
   return correct ? 30 + q.difficulty * 10 + (first ? 20 : 0) + Math.min(Math.max(combo - 1, 0), 4) * 10 : 10;
 }
 export function buildSession(pool: readonly Question[], attempts: readonly Attempt[], id: string, random = Math.random): Session {
-  const rhythm = [1, 2, 3, 1, 2];
+  if (!pool.length) throw new Error('出題対象の問題がありません。');
+  const rhythm = [1, 2, 3, 1, 2].slice(0, pool.length);
   const selected: string[] = [];
   for (const difficulty of rhythm) {
     const unused = pool.filter(q => !selected.includes(q.id));
@@ -21,7 +22,7 @@ export function buildSession(pool: readonly Question[], attempts: readonly Attem
     const leastSeen = unused.filter(q=>attempts.filter(a=>a.questionId===q.id).length===minimumSeen);
     const matching = leastSeen.filter(q => q.difficulty === difficulty);
     const candidates = matching.length ? matching : leastSeen;
-    if (!candidates.length) throw new Error('5問以上の問題が必要です。');
+    if (!candidates.length) throw new Error('出題対象の問題がありません。');
     const counts = candidates.map(q => attempts.filter(a => a.questionId === q.id).length);
     const minimum = Math.min(...counts);
     const preferred = candidates.filter((_, i) => counts[i] === minimum);
@@ -61,7 +62,7 @@ export function submitAnswer(p: PlayerState, pool: readonly Question[], at: stri
 export function advance(p: PlayerState): PlayerState {
   const s = p.session;
   if (!s || s.completed || !p.attempts.some(a => a.id === `${s.id}:${s.index}`)) return p;
-  return { ...p, session: s.index === 4 ? { ...s, completed: true } : { ...s, index: s.index + 1, selectedIds: [] } };
+  return { ...p, session: s.index === s.questionIds.length - 1 ? { ...s, completed: true } : { ...s, index: s.index + 1, selectedIds: [] } };
 }
 export function reflect(p: PlayerState, conceptIds: string[]): PlayerState {
   const evidence = { ...p.concepts };
