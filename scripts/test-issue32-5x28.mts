@@ -57,6 +57,16 @@ assert.equal(target('2005-16/c3/p1'),'1.3.review_board','a certification judgmen
 assert.equal(byId.get('2014-04/c1/p1')!.taxonomy_assignment!.attribute_id,'appeal_scope','scope of appeal is not a time limit');
 assert.equal(byId.get('2025-06/c4/p1')!.taxonomy_assignment!.attribute_id,'validity','renewal periods have their own facet');
 assert.equal(byId.get('2008-13/c3/p1')!.taxonomy_assignment!.review_required,true,'compound complaint/investigation authority remains uncertain');
+assert.equal(target('2006-12/c1/p1'),'1.6.legacy_prevention','historical prevention is not comprehensive support or modern general prevention');
+assert.equal(target('2010-11/c1/p1'),'1.6.municipal_plan','a plan question must not inherit an old community-policy catch-all');
+assert.equal(target('2020-13/c2/p1'),'1.6.plan_framework','national basic policy is distinct from the municipal plan');
+assert.equal(target('2015-01/c5/p1'),'1.6.health_welfare','health and welfare programs are distinct from optional community-support projects');
+assert.equal(target('2017-59/c4/p2'),'5.4.disability','the second proposition about disability law must not inherit the first proposition about care insurance');
+assert.equal(target('2017-03/c5/p1'),'1.6.life_support','statutory coordinator placement is distinct from choosing a support agency');
+assert.equal(target('2023-11/c3/p1'),'5.4.health_policy','the regional medical-care fund is not the municipal medical-linkage project');
+assert.equal(target('2020-14/c4/p1'),'1.6.optional_projects','a membership question is organized by the system being tested, not the candidate meeting name');
+assert.equal(byId.get('2025-22/c1/p1')!.taxonomy_assignment!.attribute_id,'questions','statutory checklist items are not individual assessment results');
+assert.equal(byId.get('2010-20/c1/p1')!.taxonomy_assignment!.scope_qualifier,'旧介護予防事業','historical preventive care management must retain its era');
 const audited=byId.get('2013-30/c2/p1')!;
 const preserved=suggestAll([audited]);
 assert.equal(preserved.errors.length,0);

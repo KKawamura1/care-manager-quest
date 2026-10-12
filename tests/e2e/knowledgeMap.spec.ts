@@ -14,6 +14,15 @@ test('shows root, middle, small concept and attribute as four navigable levels',
   await expect(federation.getByRole('button',{name:/第三者行為求償事務/})).toBeVisible();
   await expect(administration.locator('.knowledge-small').filter({has:page.getByText('介護給付費の審査・支払',{exact:true})})).toHaveCount(1);
   await expect(administration.locator('.knowledge-small').filter({has:page.getByText('介護サービスの苦情処理制度',{exact:true})})).toHaveCount(1);
+  const community=page.locator('.knowledge-middle').filter({has:page.getByText('地域支援事業・事業計画',{exact:true})});
+  await community.locator(':scope > summary').click();
+  const legacy=community.locator('.knowledge-small').filter({has:page.getByText('旧介護予防事業（特定高齢者・一次／二次予防）',{exact:true})});
+  await legacy.locator(':scope > summary').click();
+  await legacy.getByRole('button',{name:/対象・要件/}).click();
+  await expect(page.getByRole('dialog')).toContainText('旧介護予防事業（特定高齢者・一次／二次予防）');
+  await page.getByRole('dialog').getByRole('button',{name:'閉じる',exact:true}).click();
+  await expect(community.locator('.knowledge-small').filter({has:page.getByText('一般介護予防事業',{exact:true})})).toHaveCount(1);
+  await expect(community.locator('.knowledge-small').filter({has:page.getByText('介護保険法の保健福祉事業',{exact:true})})).toHaveCount(1);
   const middle=page.locator('.knowledge-middle').filter({has:page.getByText('保険料・財政',{exact:true})});
   await middle.locator(':scope > summary').click();
   const small=middle.locator('.knowledge-small').filter({has:page.getByText('第1号被保険者保険料',{exact:true})});
