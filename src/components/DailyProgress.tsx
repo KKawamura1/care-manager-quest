@@ -5,9 +5,7 @@ import { dailyProgress, type ProgressPeriod } from '../domain/dailyProgress';
 const number = (value: number) => value.toLocaleString('ja-JP');
 const dateLabel = (day: string) => `${Number(day.slice(5, 7))}/${Number(day.slice(8))}`;
 
-export function DailyProgress({ events }: { events: readonly LearningEvent[] }) {
-  const [period, setPeriod] = useState<ProgressPeriod>(30);
-  const [selected, setSelected] = useState(period - 1);
+function useDailyProgress(events: readonly LearningEvent[], period: ProgressPeriod) {
   const [now, setNow] = useState(Date.now);
   useEffect(() => {
     const refresh = () => setNow(Date.now());
@@ -15,7 +13,34 @@ export function DailyProgress({ events }: { events: readonly LearningEvent[] }) 
     window.addEventListener('focus', refresh);
     return () => { window.clearInterval(timer); window.removeEventListener('focus', refresh); };
   }, []);
-  const stats = useMemo(() => dailyProgress(events, period, now), [events, period, now]);
+  return useMemo(() => dailyProgress(events, period, now), [events, period, now]);
+}
+
+export function DailyProgressPreview({ events, onOpen }: { events: readonly LearningEvent[]; onOpen: () => void }) {
+  const stats = useDailyProgress(events, 30);
+  const id = useId().replace(/:/g, '');
+  const today = stats.days.at(-1)!;
+  const ceiling = Math.max(100, Math.ceil(stats.totalXp / 100) * 100);
+  const points = stats.days.map((day, i) => `${6 + i / 29 * 108},${64 - day.cumulativeXp / ceiling * 54}`).join(' ');
+  return <button className="progress-preview" aria-label="学習の積み上げを詳しく見る" onClick={onOpen}>
+    <span className="progress-preview-stats"><span className="progress-preview-total"><strong>{number(stats.totalXp)}</strong><small>累積XP</small></span><span className="progress-preview-today">今日 <b>+{number(today.xp)} XP</b><span> · {stats.streak}日連続</span></span></span>
+    <span className="progress-preview-visual">
+      <svg viewBox="0 0 120 74" role="img" aria-label="直近30日間の累積XP">
+        <defs><linearGradient id={`${id}-preview`} x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#a5e5c3" stopOpacity=".25"/><stop offset="100%" stopColor="#a5e5c3" stopOpacity="0"/></linearGradient></defs>
+        <polygon points={`6,68 ${points} 114,68`} fill={`url(#${id}-preview)`}/>
+        <polyline points={points} className="progress-glow"/>
+        <polyline points={points} className="progress-line" pathLength="1"/>
+        <circle cx="114" cy={64 - stats.totalXp / ceiling * 54} r="3" fill="#a5e5c3"/>
+      </svg>
+      <span className="progress-preview-caption">30日間<span aria-hidden="true">↗</span></span>
+    </span>
+  </button>;
+}
+
+export function DailyProgress({ events }: { events: readonly LearningEvent[] }) {
+  const [period, setPeriod] = useState<ProgressPeriod>(30);
+  const [selected, setSelected] = useState(period - 1);
+  const stats = useDailyProgress(events, period);
   const id = useId().replace(/:/g, '');
   const { days } = stats;
   const current = days[selected];
