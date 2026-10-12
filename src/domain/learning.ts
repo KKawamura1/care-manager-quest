@@ -4,7 +4,7 @@ import { emptySwipe, recordSwipe } from './swipe';
 
 const DAY = 86_400_000;
 const JST = 9 * 3_600_000;
-export const LEARNING_WINDOW = 5;
+export const LEARNING_WINDOW = 2;
 
 /** Calendar date in Japan, independent of browser locale and timezone. */
 const dayCache = new Map<string, string>();
