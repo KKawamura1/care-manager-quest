@@ -17,7 +17,7 @@ import { AppExplanation } from './components/AppExplanation';
 import { questionTarget } from './domain/appExplanation';
 import { SwipeStudy } from './components/SwipeStudy';
 import { FieldStats } from './components/FieldStats';
-import { DailyProgress } from './components/DailyProgress';
+import { DailyProgress, DailyProgressPreview } from './components/DailyProgress';
 import { KnowledgeMap } from './components/KnowledgeMap';
 import { KnowledgeLevel, formatKnowledgeLevel } from './components/KnowledgeLevel';
 import { recordLearning } from './domain/learning';
@@ -131,6 +131,7 @@ export default function App() {
       <SwipeStudy active={route === 'swipe'} home={route === 'home'} onStart={()=>go('swipe')} onBack={()=>go('home')} learningEvents={player.learningEvents} blocked={blocked} onAnswer={(card, answer, at)=>setPlayer(p=>({...p, learningEvents:recordLearning(p.learningEvents,[{card,answer}],at,'swipe')}))}/>
       {route === 'home' && <>
         <section className="home-screen">
+          <DailyProgressPreview events={player.learningEvents} onOpen={()=>go('records')}/>
           <section className="mission-card swipe-home-card" id="swipe-home-setup" aria-label="○×学習の設定"/>
           <section className="mission-card">
             <h2>5択クエスト</h2>
