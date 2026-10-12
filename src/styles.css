@@ -245,13 +245,14 @@ dialog::backdrop { background: #030910c7; backdrop-filter: blur(5px); }
 @media (max-width: 360px) { .app-shell { padding-inline: 16px; } .mission-card { padding: 18px 14px; } .domain-picker label { padding: 8px; font-size: 11px; gap: 6px; } .question-title { font-size: 20px; } .swipe-card { padding: 20px; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } .burst, .swipe-effect { display: none; } }
 
-.study-scope-picker { overflow: hidden; display: block; width: 100%; max-width: 100%; min-width: 0; margin: 16px 0; padding: 0; border: 0; }
+.study-scope-picker { display: block; width: 100%; max-width: 100%; min-width: 0; margin: 16px 0; padding: 0; border: 0; }
 .study-scope-levels { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 12px; min-width: 0; }
 .study-scope-picker legend { padding: 0; margin-bottom: 10px; color: var(--muted); font-size: 12px; }
-.study-scope-picker label, .swipe-settings .study-scope-picker label { display: grid; gap: 6px; min-width: 0; margin: 0; color: var(--muted); font-size: 12px; }
-.swipe-settings .study-scope-picker select { margin-top: 0; }
-.study-scope-picker select { width: 0; min-width: 100%; max-width: 100%; text-overflow: ellipsis; }
+.study-scope-picker label, .swipe-settings .study-scope-picker label { display: block; min-width: 0; margin: 0; color: var(--muted); font-size: 12px; }
+/* Native iOS selects can retain their option's intrinsic width inside a grid. */
+.study-scope-picker select { appearance: none; -webkit-appearance: none; display: block; box-sizing: border-box; width: 100%; min-width: 0; max-width: 100%; min-height: 48px; margin-top: 6px; padding-right: 36px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='m4 6 4 4 4-4' fill='none' stroke='%23a8b5c3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; }
 .study-scope-picker select:disabled { opacity: .5; }
 .study-scope-picker select:focus-visible { outline-offset: -3px; }
 .study-scope-selection { margin: 12px 0 0; color: var(--muted); font-size: 12px; overflow-wrap: anywhere; }
 .exam-field-filter { margin: 16px 0; font-size: 12px; color: var(--muted); }
+@media (max-width: 480px) { .study-scope-levels { grid-template-columns: minmax(0,1fr); } }
