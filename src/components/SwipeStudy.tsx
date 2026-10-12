@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState, type PointerEvent } from 'react';
 import { createPortal } from 'react-dom';
 import { availableYears, questionById } from '../data/provider';
-import { swipeCards, swipeCardById, swipeCategories, swipeConcepts, swipeCatalog } from '../data/swipe-provider';
+import { swipeCards, swipeCardById, swipeConcepts, swipeCatalog } from '../data/swipe-provider';
 import { filterSwipeCards, nextSwipeAvailableAt, progressFor, reviewQueue, type SwipeCard } from '../domain/swipe';
 import { learningXp, recordLearning, swipeProgressFromEvents } from '../domain/learning';
 import type { LearningEvent } from '../domain/models';
@@ -10,6 +10,10 @@ import { CopyText } from './CopyQuestion';
 import { AppExplanation } from './AppExplanation';
 import { cardTarget } from '../domain/appExplanation';
 import { swipeCopyText } from '../domain/questionCopy';
+import { studyScope } from '../data/study-scope';
+import { parseStudyScope } from '../domain/studyScope';
+import { StudyScopePicker } from './StudyScopePicker';
+const SCOPE_STORAGE_KEY = 'care-manager-quest:swipe-scope';
 
 export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAnswer, blocked }: {
   active: boolean; home: boolean; onStart: () => void; onBack: () => void;
@@ -20,7 +24,7 @@ export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAn
   const state = useMemo(() => swipeProgressFromEvents(learningEvents, swipeCardById), [learningEvents]);
   const [year, setYear] = useState<number | 'all'>('all');
   const [homeHost, setHomeHost] = useState<HTMLElement | null>(null);
-  const [topic, setTopic] = useState('all');
+  const [topic, setTopic] = useState(() => {try{return parseStudyScope(window.localStorage.getItem(SCOPE_STORAGE_KEY),studyScope);}catch{return 'all';}});
   const [now, setNow] = useState(Date.now());
   const [card, setCard] = useState<SwipeCard>();
   const [result, setResult] = useState<{ answer: boolean | null; correct: boolean; xp: number }>();
@@ -30,13 +34,14 @@ export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAn
   const locked = useRef(false);
   const nextRef = useRef<HTMLButtonElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
-  const candidates = useMemo(() => filterSwipeCards(swipeCards, year, topic), [year, topic]);
+  const yearCards = useMemo(() => filterSwipeCards(swipeCards, year, 'all'), [year]);
+  const candidates = useMemo(() => yearCards.filter(c => studyScope.matches(c.topicIds, topic)), [yearCards, topic]);
   const available = useMemo(() => reviewQueue(candidates, state, now), [candidates, state, now]);
-  const counts = useMemo(() => {
-    const counts = new Map<string, number>();
-    for (const c of filterSwipeCards(swipeCards, year, 'all')) { for (const id of c.topicIds.length ? c.topicIds : ['unclassified']) counts.set(id, (counts.get(id) ?? 0) + 1); }
-    return counts;
-  }, [year]);
+  const counts = useMemo(() => studyScope.counts(yearCards), [yearCards]);
+  const changeTopic = (next: string) => {
+    setTopic(next); setCard(undefined); setResult(undefined); locked.current = false;
+    try {window.localStorage.setItem(SCOPE_STORAGE_KEY,next);}catch{/* continue without persistence */}
+  };
   const reviewed = candidates.filter(c => progressFor(state, c)).length;
   const due = available.filter(c => progressFor(state, c)).length;
   const nextDue = available.length ? undefined : nextSwipeAvailableAt(candidates, state, now);
@@ -107,16 +112,10 @@ export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAn
   const setup = <div className="swipe-home-controls">
     <h2>○×学習</h2>
       <div className="swipe-settings">
-        <label>年度<select aria-label="○×の年度" value={year} onChange={e => { setYear(e.target.value === 'all' ? 'all' : Number(e.target.value)); setTopic('all'); setCard(undefined); setResult(undefined); locked.current = false; }}>
+        <label>年度<select aria-label="○×の年度" value={year} onChange={e => { setYear(e.target.value === 'all' ? 'all' : Number(e.target.value)); setCard(undefined); setResult(undefined); locked.current = false; }}>
           <option value="all">全年度</option>{availableYears.map(y => <option key={y} value={y}>{y}年度</option>)}
         </select></label>
-        <label>分野<select aria-label="学ぶ知識分野" value={topic} onChange={e => { setTopic(e.target.value); setCard(undefined); setResult(undefined); locked.current = false; }}>
-          <option value="all">全分野</option>{counts.has('unclassified') && <option value="unclassified">分類待ち（{counts.get('unclassified')}枚）</option>}
-          {swipeCategories.map(category => {
-            const concepts = swipeConcepts.filter(c => c.categoryId === category.id && counts.has(c.id));
-            return concepts.length ? <optgroup key={category.id} label={category.label}>{concepts.map(c => <option key={c.id} value={c.id}>{c.label}（{counts.get(c.id)}枚）</option>)}</optgroup> : null;
-          })}
-        </select></label>
+        <StudyScopePicker value={topic} onChange={changeTopic} counts={counts} mode="○×" unit="枚"/>
         <p className="swipe-home-stats">{candidates.length}枚対象 · {reviewed}枚学習済み · {due}枚復習待ち</p>
         <button className="primary" aria-label={card ? '○×学習を再開する' : '○×学習を始める'} disabled={blocked || (!card && !available.length)} onClick={() => { if (card) onStart(); else start(); }}>{card ? '学習を再開する' : 'はじめる'}<span aria-hidden="true">→</span></button>
         {!available.length && !card && reviewed > 0 && <button className="secondary" disabled={blocked} onClick={practice}>解いたカードを再練習（XPなし）</button>}

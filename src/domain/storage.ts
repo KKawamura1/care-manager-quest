@@ -95,12 +95,12 @@ export function parsePlayer(text: string): PlayerState {
   });
   if (root.session !== undefined) {
     const s = record(root.session), questionIds = strings(s.questionIds,5), index = integer(s.index,0,4), id = str(s.id);
-    if (questionIds.length !== 5 || questionIds.some(id => !historyQuestions.some(q => q.id === id))) fail();
+    if (!questionIds.length || index >= questionIds.length || questionIds.some(id => !historyQuestions.some(q => q.id === id))) fail();
     const selectedIds = strings(s.selectedIds,5), completed = bool(s.completed);
     const q = historyQuestions.find(q => q.id === questionIds[index])!;
     if (selectedIds.length > q.selectionCount || selectedIds.some(id => !q.options.some(o => o.id === id))) fail();
     const attempts = player.attempts.filter(a => a.sessionId === id);
-    if (attempts.some((a,i) => a.questionId !== questionIds[i]) || attempts.length < index || attempts.length > index+1 || (completed && (index !== 4 || attempts.length !== 5))) fail();
+    if (attempts.some((a,i) => a.questionId !== questionIds[i]) || attempts.length < index || attempts.length > index+1 || (completed && (index !== questionIds.length-1 || attempts.length !== questionIds.length))) fail();
     const current = attempts[index];
     if (current && (current.selectedIds.length !== selectedIds.length || current.selectedIds.some(x=>!selectedIds.includes(x)))) fail();
     if (questionIds.every(id=>questions.some(q=>q.id===id))) player.session = { id, questionIds, index, selectedIds, completed };

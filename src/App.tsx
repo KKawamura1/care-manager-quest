@@ -1,6 +1,9 @@
 import { knowledgeProgress } from './domain/knowledgeProgress';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { concepts } from './data/knowledge';
+import { studyScope } from './data/study-scope';
+import { parseStudyScope } from './domain/studyScope';
+import { StudyScopePicker } from './components/StudyScopePicker';
 import { questions, questionById, availableYears } from './data/provider';
 import { sources, officialNotice } from './data/sources';
 import { advance, buildSession, conceptStatus, emptyPlayer, levelInfo, submitAnswer, totalXp } from './domain/game';
@@ -25,6 +28,7 @@ const DOMAIN_OPTIONS = [
 ] as const;
 type DomainFilter = typeof DOMAIN_OPTIONS[number]['value'];
 const DOMAIN_STORAGE_KEY = 'care-manager-quest:domain-filter';
+const SCOPE_STORAGE_KEY = 'care-manager-quest:quest-scope';
 const statusLabel = { unexplored: '未探索', learning: '学習中', mastered: '習得済み' };
 function download(text: string, name: string) {
   const url = URL.createObjectURL(new Blob([text], { type: 'application/json' }));
@@ -44,11 +48,16 @@ function initiallyLoad() {
 
 export default function App() {
   const [domainFilter,setDomainFilter] = useState<DomainFilter>(()=>{
-    try {const stored=window.localStorage.getItem(DOMAIN_STORAGE_KEY); return DOMAIN_OPTIONS.some(option=>option.value===stored)?stored as DomainFilter:'介護支援分野';}
-    catch {return '介護支援分野';}
+    try {const stored=window.localStorage.getItem(DOMAIN_STORAGE_KEY); return DOMAIN_OPTIONS.some(option=>option.value===stored)?stored as DomainFilter:'all';}
+    catch {return 'all';}
   });
   const [yearFilter,setYearFilter] = useState<YearFilter>(()=>{try{return parseYearFilter(window.localStorage.getItem(YEAR_STORAGE_KEY));}catch{return 2025;}});
-  const activeQuestions = filterQuestions(questions,yearFilter,domainFilter);
+  const [scope, setScope] = useState(() => {try{return parseStudyScope(window.localStorage.getItem(SCOPE_STORAGE_KEY),studyScope);}catch{return 'all';}});
+  const baseQuestions = useMemo(() => filterQuestions(questions,yearFilter,domainFilter),[yearFilter,domainFilter]);
+  const scopeCounts = useMemo(() => studyScope.counts(baseQuestions.map(q => ({topicIds:q.conceptIds}))),[baseQuestions]);
+  const activeQuestions = useMemo(() => baseQuestions.filter(q => studyScope.matches(q.conceptIds,scope)),[baseQuestions,scope]);
+  const questSize = Math.min(5,activeQuestions.length);
+  const changeScope = (next:string) => {setScope(next);try{window.localStorage.setItem(SCOPE_STORAGE_KEY,next);}catch{/* continue without persistence */}};
   const changeYear=(next:YearFilter)=>{setYearFilter(next);try{window.localStorage.setItem(YEAR_STORAGE_KEY,String(next));}catch{/* continue without persistence */}};
   const changeDomain = (next: DomainFilter) => {setDomainFilter(next);try{window.localStorage.setItem(DOMAIN_STORAGE_KEY,next);}catch{/* continue without persistence */}};
   const [initial] = useState(initiallyLoad);
@@ -81,7 +90,7 @@ export default function App() {
   useEffect(()=>{ if (!burst) return; const timer = setTimeout(()=>setBurst(undefined),900); return ()=>clearTimeout(timer); },[burst]);
   const go = (next: typeof route) => { setRoute(next); window.scrollTo({top:0,behavior:'instant'}); };
   const start = () => {
-    if (blocked) return;
+    if (blocked || !activeQuestions.length) return;
     setPlayer(p=>({ ...p, session: buildSession(activeQuestions,p.attempts,crypto.randomUUID()) })); go('play'); setNotice('');
   };
   const choose = (id: string) => {
@@ -123,14 +132,17 @@ export default function App() {
           <section className="mission-card">
             <h2>5択クエスト</h2>
             <label className="year-picker">年度<select aria-label="出題する年度" value={yearFilter} onChange={e=>changeYear(parseYearFilter(e.target.value))}><option value="all">全年度</option>{availableYears.map(year=><option key={year} value={year}>{year}年度</option>)}</select></label>
-            <fieldset className="domain-picker"><legend>分野</legend>{DOMAIN_OPTIONS.map(option=><label key={option.value}><input type="radio" name="quest-domain" aria-label={`${option.label}（${questions.filter(q=>(yearFilter==='all'||q.original?.year===yearFilter)&&(option.value==='all'||q.domain===option.value)).length}問）`} checked={domainFilter===option.value} onChange={()=>changeDomain(option.value)}/><span>{option.label}</span></label>)}</fieldset>
+            <StudyScopePicker value={scope} onChange={changeScope} counts={scopeCounts} mode="5択" unit="問"/>
+            <details className="exam-field-filter"><summary>試験分野でさらに絞る</summary><fieldset className="domain-picker"><legend>試験分野</legend>{DOMAIN_OPTIONS.map(option=><label key={option.value}><input type="radio" name="quest-domain" aria-label={`${option.label}（${questions.filter(q=>(yearFilter==='all'||q.original?.year===yearFilter)&&(option.value==='all'||q.domain===option.value)).length}問）`} checked={domainFilter===option.value} onChange={()=>changeDomain(option.value)}/><span>{option.label}</span></label>)}</fieldset></details>
+            <p className="mission-note">{activeQuestions.length}問対象 · 1回{questSize}問</p>
+            {!activeQuestions.length && <p role="status">今の条件に該当する問題はありません。年度・分類・試験分野を変更してください。</p>}
             {session&&!session.completed&&<p className="mission-note">設定は次のクエストから反映</p>}
-            <button className="primary" aria-label={session&&!session.completed?`第${session.index+1}問から再開`:'5問のクエストを始める'} disabled={blocked||activeQuestions.length<5} onClick={session&&!session.completed?()=>go('play'):start}>{session&&!session.completed?`第${session.index+1}問から再開`:'5問はじめる'}<span aria-hidden="true">→</span></button>
+            <button className="primary" aria-label={session&&!session.completed?`第${session.index+1}問から再開`:`${questSize}問のクエストを始める`} disabled={blocked||(!(session&&!session.completed)&&!activeQuestions.length)} onClick={session&&!session.completed?()=>go('play'):start}>{session&&!session.completed?`第${session.index+1}問から再開`:`${questSize}問はじめる`}<span aria-hidden="true">→</span></button>
           </section>
         </section>
       </>}
       {route === 'play' && current && session && !session.completed && <section className="play-screen">
-        <div className="quest-heading"><button className="text-button" onClick={()=>go('home')} aria-label="中断してホーム">‹ ホーム</button><span>{session.index+1} / 5</span></div>
+        <div className="quest-heading"><button className="text-button" onClick={()=>go('home')} aria-label="中断してホーム">‹ ホーム</button><span>{session.index+1} / {session.questionIds.length}</span></div>
         <div className="question-progress">{session.questionIds.map((id,i)=>{const a=inSession[i];return <span key={id} className={i===session.index?'current':a?a.correct?'won':'lost':''}>{a?(a.correct?'✓':'·'):i+1}</span>;})}</div>
         <h1 className="question-title">{current.title}</h1><p className="question-stem">{current.stem}</p>
         <div className="selection-instruction"><b>{current.selectionCount}つ選択</b><span>{attempt?'解答済み':`${selected.length} / ${current.selectionCount} 選択中`}</span></div>
@@ -143,9 +155,9 @@ export default function App() {
         {attempt && <section id="feedback" className={`feedback ${attempt.correct?'success':'miss'}`} role="status"><div className="feedback-top"><div><h2>{attempt.correct?'正解！':'不正解'}</h2></div><b className="xp-award">+{attempt.xp}<small>XP</small></b></div><div className="reward-tags">{attempt.correct&&attempt.xp>=70&&<span>✦ 5択完全正解ボーナス +20</span>}{attempt.combo>1&&<span>🔥 {attempt.combo} COMBO</span>}{burst==='level'&&<span>LEVEL UP → {level.level}</span>}</div><p>{current.explanation || '解説未登録'}</p><p className="answer-key">正答：{(current.answerVariants??[current.answerIds]).map(ids=>ids.join('・')).join(' または ')} ／ あなたの選択：{attempt.selectedIds.join('・')}</p></section>}
         {attempt&&<CopyQuestion key={current.id} question={current} includeAnswer selectedIds={attempt.selectedIds}/>}
         {attempt&&<AppExplanation key={`${current.id}:${current.version}`} target={questionTarget(current)}/>}
-        <div className="answer-dock">{attempt?<><button className="primary" onClick={nextQuestion}>{session.index===4?'リザルトを見る':'次の問題へ'}<span>→</span></button><button className="secondary" onClick={()=>setDetail(current)}>詳しく見る</button></>:<button className="primary" disabled={selected.length!==current.selectionCount||blocked} onClick={answer}>{selected.length===current.selectionCount?'答えを確定する':`あと${current.selectionCount-selected.length}つ選んでください`}<span>→</span></button>}</div>
+        <div className="answer-dock">{attempt?<><button className="primary" onClick={nextQuestion}>{session.index===session.questionIds.length-1?'リザルトを見る':'次の問題へ'}<span>→</span></button><button className="secondary" onClick={()=>setDetail(current)}>詳しく見る</button></>:<button className="primary" disabled={selected.length!==current.selectionCount||blocked} onClick={answer}>{selected.length===current.selectionCount?'答えを確定する':`あと${current.selectionCount-selected.length}つ選んでください`}<span>→</span></button>}</div>
       </section>}
-      {route === 'play' && session?.completed && <section className="result-screen"><h1>{inSession.filter(a=>a.correct).length===5?'完全攻略！':'クエスト完了'}</h1><div className="result-score"><strong>{inSession.filter(a=>a.correct).length}<small>/ 5</small></strong><span>正解</span></div><div className="result-stats"><div><b>+{inSession.reduce((n,a)=>n+a.xp,0)}</b><span>獲得XP</span></div><div><b>{Math.max(...inSession.map(a=>a.combo),0)}</b><span>最大コンボ</span></div><div><b>{inSession.filter(a=>a.correct&&a.firstSeen).length}</b><span>初見突破</span></div></div><div className="result-list">{inSession.map(a=><button key={a.id} onClick={()=>setDetail(questionById(a.questionId))}><span className={a.correct?'mint':'coral'}>{a.correct?'✓':'↗'}</span><span>{questionById(a.questionId)?.title}</span><small>+{a.xp} XP</small></button>)}</div><button className="primary" onClick={start} disabled={blocked} aria-label="もう5問、探索する">もう5問<span>→</span></button><button className="secondary" onClick={()=>go('map')} aria-label="広がった知識マップを見る">知識マップ</button></section>}
+      {route === 'play' && session?.completed && <section className="result-screen"><h1>{inSession.filter(a=>a.correct).length===session.questionIds.length?'完全攻略！':'クエスト完了'}</h1><div className="result-score"><strong>{inSession.filter(a=>a.correct).length}<small>/ {session.questionIds.length}</small></strong><span>正解</span></div><div className="result-stats"><div><b>+{inSession.reduce((n,a)=>n+a.xp,0)}</b><span>獲得XP</span></div><div><b>{Math.max(...inSession.map(a=>a.combo),0)}</b><span>最大コンボ</span></div><div><b>{inSession.filter(a=>a.correct&&a.firstSeen).length}</b><span>初見突破</span></div></div><div className="result-list">{inSession.map(a=><button key={a.id} onClick={()=>setDetail(questionById(a.questionId))}><span className={a.correct?'mint':'coral'}>{a.correct?'✓':'↗'}</span><span>{questionById(a.questionId)?.title}</span><small>+{a.xp} XP</small></button>)}</div><button className="primary" onClick={start} disabled={blocked||!activeQuestions.length} aria-label={`もう${questSize}問、探索する`}>もう{questSize}問<span>→</span></button><button className="secondary" onClick={()=>go('map')} aria-label="広がった知識マップを見る">知識マップ</button></section>}
       {route === 'map' && <section className="map-screen"><h1>知識マップ</h1><div className="map-summary"><b>{explored}<small> / {concepts.length}</small></b><span>探索した知識</span><b>{mastered}<small> 習得</small></b></div><div className="map-legend"><span>○ 未探索</span><span className="gold">◐ 学習中</span><span className="mint">● 習得済み</span></div>
         <KnowledgeMap progress={mapProgress} onSelect={setConceptId}/>
         <details className="help-details"><summary>習得の目安</summary><p>関連する選択肢の直近5学習日の初回正答率を集約します。学習レベル80%以上で習得済み。時間経過は要復習度に反映します。</p></details>

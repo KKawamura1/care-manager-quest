@@ -8,6 +8,7 @@ test('historical year, text-only questions, feedback, copy and saved selection w
   await page.addInitScript(()=>Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:async(text:string)=>{(window as unknown as {copied:string}).copied=text;}}}));
   await page.goto('/');
   await page.getByRole('combobox',{name:'出題する年度'}).selectOption('2005');
+  await page.getByText('試験分野でさらに絞る',{exact:true}).click();
   await page.getByRole('radio',{name:'保健医療（19問）'}).check();
   await page.getByRole('button',{name:'5問のクエストを始める'}).click();
   const state=await page.evaluate(k=>JSON.parse(localStorage.getItem(k)!),key);
@@ -58,6 +59,7 @@ test('2018 and 2019 are selectable as text-only sixty-question years',async({pag
     await page.evaluate(()=>localStorage.clear());
     await page.reload();
     await page.getByRole('combobox',{name:'出題する年度'}).selectOption(year);
+    await page.getByText('試験分野でさらに絞る',{exact:true}).click();
     await expect(page.getByRole('radio',{name:'全分野（60問）'})).toBeVisible();
     await page.getByRole('button',{name:'5問のクエストを始める'}).click();
     await expect(page.locator('.question-title')).toContainText(`${year}年度`);

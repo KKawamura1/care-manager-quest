@@ -45,7 +45,7 @@ test('corrupt stored data remains intact until explicit recovery',async({page})=
 });
 
 test('all 25 official questions play across five quests, each original image maps to the same number',async({page})=>{
- test.setTimeout(120_000);await page.goto('/');await page.getByRole('button',{name:'5問のクエストを始める'}).click();
+ test.setTimeout(120_000);await page.goto('/');await page.getByText('試験分野でさらに絞る',{exact:true}).click();await page.getByRole('radio',{name:'介護支援（25問）'}).check();await page.getByRole('button',{name:'5問のクエストを始める'}).click();
  const seen:string[]=[];
  for(let session=0;session<5;session++){
   for(let index=0;index<5;index++){
@@ -80,6 +80,7 @@ test('old history is intentionally ignored under the new storage key',async({pag
 test('domain setting offers all 60 as text while preserving the existing history',async({page})=>{
  await page.goto('/');
  await expect(page.getByRole('heading',{name:'5択クエスト',exact:true})).toBeVisible();
+ await page.getByText('試験分野でさらに絞る',{exact:true}).click();
  await page.getByRole('radio',{name:'保健医療（20問）'}).check();
  await page.getByRole('button',{name:'5問のクエストを始める'}).click();
  let id=await page.evaluate(k=>JSON.parse(localStorage.getItem(k)!).session.questionIds[0],key);
@@ -91,11 +92,13 @@ test('domain setting offers all 60 as text while preserving the existing history
  expect(firstOptionWidth).toBeGreaterThan(230);
  await chooseAnswer(page);
  await page.getByRole('button',{name:'中断してホーム'}).click();
+ await page.getByText('試験分野でさらに絞る',{exact:true}).click();
  await page.getByRole('radio',{name:'福祉（15問）'}).check();
  await expect(page.getByRole('button',{name:/第1問から再開/})).toBeVisible();
  await page.reload();
  // An in-progress session opens straight in play after reload; go home to inspect the persisted domain setting.
  await page.getByRole('button',{name:'中断してホーム'}).click();
+ await page.getByText('試験分野でさらに絞る',{exact:true}).click();
  await expect(page.getByRole('radio',{name:'福祉（15問）'})).toBeChecked();
  await page.getByRole('button',{name:/第1問から再開/}).click();
  await expect(page.locator('.question-title')).toContainText('問'+Number(id.split('-')[1]));
