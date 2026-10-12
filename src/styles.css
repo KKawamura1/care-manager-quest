@@ -266,3 +266,63 @@ dialog::backdrop { background: #030910c7; backdrop-filter: blur(5px); }
 .study-scope-selection { margin: 12px 0 0; color: var(--muted); font-size: 12px; overflow-wrap: anywhere; }
 .exam-field-filter { margin: 16px 0; font-size: 12px; color: var(--muted); }
 @media (max-width: 480px) { .study-scope-levels { grid-template-columns: minmax(0,1fr); } }
+
+/* Title and quick-study motion: animate decoration, leave reading surfaces still. */
+.title-scene { position: relative; isolation: isolate; display: flex; align-items: center; min-height: 154px; padding: 22px 20px; overflow: hidden; border: 1px solid #40665d; border-radius: 18px; background: radial-gradient(ellipse at 95% 20%, #2a5549 0, transparent 65%), linear-gradient(135deg, #1c302e, #141f29); }
+.title-scene::before { content: ''; position: absolute; z-index: -1; inset: 0; opacity: .16; background-image: linear-gradient(#a5e5c3 1px, transparent 1px), linear-gradient(90deg, #a5e5c3 1px, transparent 1px); background-size: 28px 28px; mask-image: linear-gradient(90deg, transparent, #000); }
+.title-scene::after { content: ''; position: absolute; inset: -60% -20%; pointer-events: none; background: linear-gradient(110deg, transparent 44%, #b7f4da12 50%, transparent 56%); animation: title-light 10s ease-in-out infinite; }
+.title-copy { position: relative; z-index: 1; flex: 1; min-width: 0; }
+.scene-eyebrow, .mission-eyebrow, .card-eyebrow { font-size: 9px; font-weight: 650; letter-spacing: .18em; color: var(--mint); }
+.title-scene h1 { margin: 9px 0; font-size: clamp(23px, 6vw, 30px); letter-spacing: -.045em; white-space: nowrap; }
+.title-caption { font-size: 11px; color: #c2d5ce; }
+.title-emblem { position: relative; flex: 0 0 108px; height: 108px; margin-left: 4px; color: var(--mint); }
+.title-emblem .emblem { width: 100%; height: 100%; overflow: visible; filter: drop-shadow(0 0 9px #a5e5c330); animation: emblem-float 6s ease-in-out infinite; }
+.title-emblem svg circle:nth-child(2) { transform-origin: 120px 99px; animation: emblem-orbit 36s linear infinite; }
+.orbit-spark { position: absolute; inset: 5px; border-radius: 50%; animation: emblem-orbit 18s linear infinite; }
+.orbit-spark::before { content: ''; position: absolute; left: 50%; top: 0; width: 4px; height: 4px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 9px #e6c88caa; }
+.orbit-spark.second { inset: 15px; animation-direction: reverse; animation-duration: 24s; opacity: .5; }
+.home-screen .title-scene { animation: scene-enter .55s ease-out both; }
+.home-screen .mission-card { position: relative; animation: scene-enter .55s .09s backwards; background: linear-gradient(145deg, #1e2e32, var(--panel) 65%); }
+.home-screen .mission-card:last-child { animation-delay: .18s; }
+.mission-eyebrow { margin-bottom: 7px; color: #a9c4bf; }
+.home-screen .swipe-home-card { border-color: #527b70; box-shadow: 0 6px 28px #00000018; }
+.home-screen .primary, .swipe-screen .primary, .swipe-screen .secondary { position: relative; overflow: hidden; transition: transform .16s ease-out, background-color .2s, border-color .2s, box-shadow .2s; }
+.home-screen .primary::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(110deg, transparent 30%, #ffffff45 48%, transparent 65%); transform: translateX(-140%); animation: button-glint 4.5s 1s 2; }
+.home-screen .primary:disabled::before { display: none; }
+.home-screen .primary:active:not(:disabled), .swipe-screen button:active:not(:disabled) { transform: scale(.97); }
+@media (hover: hover) { .home-screen .primary:hover:not(:disabled), .swipe-screen .primary:hover:not(:disabled) { box-shadow: 0 4px 20px #a5e5c326; } }
+.swipe-screen > .quest-heading { animation: scene-enter .3s ease-out; }
+.swipe-card-deal { position: relative; isolation: isolate; margin: 16px 0 20px; animation: card-deal .38s cubic-bezier(.16,1,.3,1); }
+.swipe-card-deal::before, .swipe-card-deal::after { content: ''; position: absolute; z-index: -1; inset: 3px 6px -5px; border: 1px solid #395149; border-radius: 16px; background: #192824; transform: rotate(-1.5deg); pointer-events: none; transition: opacity .2s; }
+.swipe-card-deal::after { inset: 3px 3px -3px; transform: rotate(1deg); background: #1c2b2c; }
+.swipe-surface-feedback .swipe-card-deal::before, .swipe-surface-feedback .swipe-card-deal::after { opacity: 0; }
+.swipe-screen .swipe-card { margin: 0; padding-top: 42px; padding-bottom: 28px; border-color: #52766b; background: radial-gradient(ellipse at 100% 0%, #284238, transparent 70%), var(--panel); box-shadow: 0 12px 28px #00000024; transition: transform .2s ease-out, border-color .16s, box-shadow .16s; }
+.swipe-card.is-dragging { transition: border-color .12s, box-shadow .12s; }
+.card-eyebrow { position: absolute; left: 24px; top: 15px; color: #94b0a7; }
+.swipe-card[data-intent=yes] { border-color: var(--mint); box-shadow: 0 0 25px #a5e5c333; }
+.swipe-card[data-intent=no] { border-color: var(--coral); box-shadow: 0 0 25px #f4afa733; }
+.swipe-card[data-intent=unknown] { border-color: var(--gold); box-shadow: 0 0 25px #e6c88c33; }
+.swipe-screen .swipe-correct { border-color: var(--mint); animation: card-success .5s ease-out; }
+.swipe-screen .swipe-wrong { border-color: var(--coral); animation: card-miss .4s ease-out; }
+.card-verdict { position: absolute; right: 15px; top: 10px; font-size: 24px; line-height: 1; animation: verdict-stamp .32s cubic-bezier(.16,1,.3,1); }
+.swipe-actions .swipe-no { background: linear-gradient(145deg, #392d30, #29252b); color: #ffc4bd; border-color: #88615f; }
+.swipe-actions .swipe-yes { background: linear-gradient(135deg, #bcefd8, #83ccaf); box-shadow: 0 4px 16px #a5e5c318; }
+.swipe-screen .feedback { animation: feedback-enter .28s ease-out; }
+.swipe-screen .feedback h2 small { display: inline-block; color: var(--gold); animation: xp-pop .4s ease-out; }
+.swipe-celebration { position: fixed; left: 50%; top: 35%; width: 0; height: 0; z-index: 30; pointer-events: none; color: var(--mint); }
+.swipe-celebration .swipe-effect { position: absolute; top: -65px; left: 0; }
+.swipe-celebration > i { position: absolute; left: -2px; top: -6px; width: 4px; height: 12px; border-radius: 3px; background: var(--mint); animation: swipe-spark .65s ease-out both; }
+@keyframes scene-enter { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes title-light { 0%, 25% { transform: translateX(-65%); opacity: 0; } 40% { opacity: 1; } 65%, 100% { transform: translateX(65%); opacity: 0; } }
+@keyframes emblem-float { 0%, 100% { transform: translateY(2px); opacity: .8; } 50% { transform: translateY(-4px); opacity: 1; } }
+@keyframes emblem-orbit { to { transform: rotate(360deg); } }
+@keyframes button-glint { 0%, 65% { transform: translateX(-140%); } 100% { transform: translateX(140%); } }
+@keyframes card-deal { from { opacity: 0; transform: translateY(18px) scale(.96) rotate(-1.2deg); } to { opacity: 1; transform: none; } }
+@keyframes card-success { 30% { box-shadow: 0 0 0 4px #a5e5c31a, 0 0 35px #a5e5c333; } }
+@keyframes card-miss { 30% { box-shadow: 0 0 0 3px #f4afa71a, 0 0 24px #f4afa733; } }
+@keyframes verdict-stamp { from { opacity: 0; transform: scale(1.8) rotate(-15deg); } to { opacity: 1; transform: none; } }
+@keyframes feedback-enter { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes xp-pop { from { opacity: 0; transform: translateY(5px) scale(.85); } to { opacity: 1; transform: none; } }
+@keyframes swipe-spark { 0% { opacity: 0; transform: rotate(var(--angle)) translateY(-38px) scale(.6); } 25% { opacity: 1; } 100% { opacity: 0; transform: rotate(var(--angle)) translateY(-115px) scale(.2); } }
+@media (max-width: 360px) { .title-scene { padding-inline: 14px; } .title-emblem { flex-basis: 82px; height: 92px; } .title-caption { font-size: 10px; } }
+@media (prefers-reduced-motion: reduce) { .swipe-celebration { display: none; } }
