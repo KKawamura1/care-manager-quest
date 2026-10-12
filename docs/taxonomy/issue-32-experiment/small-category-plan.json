@@ -1,0 +1,3180 @@
+{
+  "version": "draft-5x28-v1",
+  "status": "proposed",
+  "method": "top_down_then_limited_PR68_samples",
+  "source_commit": "ead4a906cb72a3464f51b9130e6a11b2f8307626",
+  "categories": [
+    {
+      "id": "1.1",
+      "label": "制度総論・被保険者",
+      "concepts": [
+        {
+          "id": "1.1.purpose",
+          "label": "介護保険の目的・基本理念",
+          "attribute_examples": "目的、自立・尊厳、国民の努力義務",
+          "sample_pattern": "目的・理念|国民の努力|介護保険法第[124]条"
+        },
+        {
+          "id": "1.1.insurer",
+          "label": "介護保険の保険者",
+          "attribute_examples": "保険者、共同処理、特別区",
+          "sample_pattern": "保険者|市町村.*実施"
+        },
+        {
+          "id": "1.1.first_insured",
+          "label": "第1号被保険者資格",
+          "attribute_examples": "年齢、住所、取得・喪失",
+          "sample_pattern": "第1号|65歳|被保険者資格"
+        },
+        {
+          "id": "1.1.second_insured",
+          "label": "第2号被保険者資格",
+          "attribute_examples": "年齢、医療保険加入、取得・喪失",
+          "sample_pattern": "第2号|40歳|医療保険加入"
+        },
+        {
+          "id": "1.1.address",
+          "label": "住所地特例",
+          "attribute_examples": "対象施設、保険者、転入転出",
+          "sample_pattern": "住所地特例"
+        },
+        {
+          "id": "1.1.exclusion",
+          "label": "適用除外",
+          "attribute_examples": "対象施設、資格の扱い",
+          "sample_pattern": "適用除外"
+        },
+        {
+          "id": "1.1.reform",
+          "label": "介護保険制度改正",
+          "attribute_examples": "改正の内容、施行時期、経過措置",
+          "sample_pattern": "制度改正|改正"
+        },
+        {
+          "id": "1.1.statistics",
+          "label": "介護保険制度の統計",
+          "attribute_examples": "認定者数、利用者数、給付費の推移",
+          "sample_pattern": "統計|事業状況報告|認定者数|利用者数"
+        }
+      ],
+      "sources": [
+        {
+          "title": "厚生労働省：介護保険法",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82998034&dataType=0"
+        },
+        {
+          "title": "厚生労働省：介護保険給付・地域支援事業の全体像",
+          "url": "https://www.mhlw.go.jp/content/001505093.pdf"
+        }
+      ],
+      "comparison": "被保険者資格を第1号・第2号に分ける。制度改正・統計は年度を概念IDにせず属性に保持する。",
+      "boundary": "保険料賦課・徴収は1.2、認定時の原因疾病要件は1.3。認定者数等の集計統計は行政手続そのものと区別してここに集約する。",
+      "sampled_legacy_concepts": [
+        {
+          "id": "4.1.principles",
+          "label": "介護保険の目的・理念",
+          "legacy_proposition_count": 40
+        },
+        {
+          "id": "4.1.administration.medical_insurer",
+          "label": "医療保険者の介護保険関連事務",
+          "legacy_proposition_count": 5
+        },
+        {
+          "id": "4.1.community_policy.first_support",
+          "label": "第1号介護予防支援事業",
+          "legacy_proposition_count": 6
+        },
+        {
+          "id": "4.1.finance.second",
+          "label": "第2号被保険者保険料",
+          "legacy_proposition_count": 13
+        },
+        {
+          "id": "4.1.eligibility.address",
+          "label": "住所地特例",
+          "legacy_proposition_count": 22
+        },
+        {
+          "id": "4.1.eligibility.exclusion",
+          "label": "適用除外",
+          "legacy_proposition_count": 11
+        }
+      ],
+      "sampled_propositions": [
+        {
+          "id": "2025-03/c1/p1",
+          "proposition": "介護保険法第4条は、国民の努力及び義務として「高齢者の福祉の増進のため、その生活を支える事業を営むよう努める」ことを定めている。",
+          "legacy_concept": "介護保険の目的・理念",
+          "legacy_attribute": "役割・権限・責務"
+        },
+        {
+          "id": "2005-17/c1/p1",
+          "proposition": "被保険者は，転出した市町村に被保険者証を返還する。",
+          "legacy_concept": "被保険者資格",
+          "legacy_attribute": "申請・手続"
+        },
+        {
+          "id": "2006-02/c1/p1",
+          "proposition": "住所地特例は，介護保険施設等の所在市町村に入所者が集中し，その市町村における保険料負担が急増することを防止するために設けられており，住所地主義を原則とする介護保険制度の例外的な仕組みである。",
+          "legacy_concept": "住所地特例",
+          "legacy_attribute": "対象施設と保険者の決定"
+        }
+      ],
+      "sample_comparison": "資格と住所地特例を別の対象にする。制度統計は認定・給付の「手続」と混ぜない。"
+    },
+    {
+      "id": "1.2",
+      "label": "保険料・財政",
+      "concepts": [
+        {
+          "id": "1.2.funding",
+          "label": "介護保険の財源構成",
+          "attribute_examples": "公費と保険料の割合、国・地方の負担、施設等給付の違い",
+          "sample_pattern": "介護保険の財源構成"
+        },
+        {
+          "id": "1.2.first_premium",
+          "label": "第1号被保険者保険料",
+          "attribute_examples": "賦課主体、算定、所得段階、普通・特別徴収、減免、滞納",
+          "sample_pattern": "第1号被保険者保険料"
+        },
+        {
+          "id": "1.2.second_premium",
+          "label": "第2号被保険者保険料・介護納付金",
+          "attribute_examples": "医療保険者の徴収、総報酬割、納付・交付経路",
+          "sample_pattern": "第2号被保険者保険料・介護納付金"
+        },
+        {
+          "id": "1.2.adjustment_grant",
+          "label": "調整交付金",
+          "attribute_examples": "普通・特別の区分、交付理由、算定要素、交付主体",
+          "sample_pattern": "調整交付金"
+        },
+        {
+          "id": "1.2.stabilization_fund",
+          "label": "財政安定化基金",
+          "attribute_examples": "設置、負担、貸付／交付、財政不足要件",
+          "sample_pattern": "財政安定化基金"
+        },
+        {
+          "id": "1.2.accounting",
+          "label": "介護保険特別会計・財政運営",
+          "attribute_examples": "特別会計、収支・予算、積立・基金",
+          "sample_pattern": "介護保険特別会計・財政運営"
+        },
+        {
+          "id": "1.2.community_funding",
+          "label": "地域支援事業の財源",
+          "attribute_examples": "総合事業／包括的支援事業等の費用負担",
+          "sample_pattern": "地域支援事業の財源"
+        }
+      ],
+      "sources": [
+        {
+          "title": "厚生労働省：介護保険財政",
+          "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/zaisei/index.html"
+        },
+        {
+          "title": "厚生労働省：介護保険法",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82998034&dataType=0"
+        },
+        {
+          "title": "厚生労働省：介護保険給付・地域支援事業の全体像",
+          "url": "https://www.mhlw.go.jp/content/001505093.pdf"
+        }
+      ],
+      "comparison": "PR68の既存案をそのまま継承する。",
+      "boundary": "詳細はPR68の個別仮案参照。",
+      "sampled_legacy_concepts": [
+        {
+          "id": "4.1.finance.first",
+          "label": "第1号被保険者保険料",
+          "legacy_proposition_count": 29
+        },
+        {
+          "id": "4.1.finance.adjustment",
+          "label": "調整交付金",
+          "legacy_proposition_count": 7
+        },
+        {
+          "id": "4.1.finance.stabilization",
+          "label": "財政安定化基金",
+          "legacy_proposition_count": 16
+        }
+      ],
+      "sampled_propositions": [
+        {
+          "id": "2025-04/c5/p1",
+          "proposition": "市町村は、普通徴収の方法によって徴収する保険料の納期は、条例で定める。",
+          "legacy_concept": "第1号被保険者保険料",
+          "legacy_attribute": "保険料・財源"
+        },
+        {
+          "id": "2025-10/c4/p1",
+          "proposition": "市町村の区域内に住所を有する者の保険料は、介護保険の保険者である当該市町村が徴収する。",
+          "legacy_concept": "第2号被保険者保険料",
+          "legacy_attribute": "保険料・財源"
+        },
+        {
+          "id": "2025-11/c1/p1",
+          "proposition": "介護保険の財政安定化基金は、都道府県が設置する。",
+          "legacy_concept": "財政安定化基金",
+          "legacy_attribute": "役割・権限・責務"
+        }
+      ]
+    },
+    {
+      "id": "1.3",
+      "label": "要介護・要支援認定",
+      "concepts": [
+        {
+          "id": "1.3.care_levels",
+          "label": "要介護・要支援状態と認定区分",
+          "attribute_examples": "目的・基準、区分、要支援2／要介護1の境界",
+          "sample_pattern": "要介護・要支援状態と認定区分"
+        },
+        {
+          "id": "1.3.application",
+          "label": "要介護・要支援認定の申請",
+          "attribute_examples": "申請先、申請代行、添付書類、転入時手続",
+          "sample_pattern": "要介護・要支援認定の申請"
+        },
+        {
+          "id": "1.3.assessment_survey",
+          "label": "認定調査",
+          "attribute_examples": "基本調査、特記事項、実施主体、委託・調査員",
+          "sample_pattern": "認定調査"
+        },
+        {
+          "id": "1.3.physician_opinion",
+          "label": "主治医意見書",
+          "attribute_examples": "意見書の内容、依頼主体、作成・利用、主治医不在",
+          "sample_pattern": "主治医意見書"
+        },
+        {
+          "id": "1.3.primary_judgment",
+          "label": "要介護認定等基準時間・一次判定",
+          "attribute_examples": "対象行為、時間算定、判定材料・方法",
+          "sample_pattern": "要介護認定等基準時間・一次判定"
+        },
+        {
+          "id": "1.3.review_board",
+          "label": "介護認定審査会・二次判定",
+          "attribute_examples": "委員・合議体、判定・変更、付帯意見",
+          "sample_pattern": "介護認定審査会・二次判定"
+        },
+        {
+          "id": "1.3.validity",
+          "label": "認定の効力・有効期間",
+          "attribute_examples": "結果通知、効力発生、期間、期間設定",
+          "sample_pattern": "認定の効力・有効期間"
+        },
+        {
+          "id": "1.3.renewal_change",
+          "label": "認定の更新・区分変更・取消し",
+          "attribute_examples": "更新申請、変更・取消し、例外・職権",
+          "sample_pattern": "認定の更新・区分変更・取消し"
+        },
+        {
+          "id": "1.3.specified_diseases",
+          "label": "第2号被保険者の特定疾病と認定要件",
+          "attribute_examples": "特定疾病該当性、原因疾病の条件、確認手続",
+          "sample_pattern": "第2号被保険者の特定疾病と認定要件"
+        }
+      ],
+      "sources": [
+        {
+          "title": "厚生労働省：要介護認定",
+          "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/nintei/index.html"
+        },
+        {
+          "title": "厚生労働省：介護保険法",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82998034&dataType=0"
+        },
+        {
+          "title": "厚生労働省：介護保険給付・地域支援事業の全体像",
+          "url": "https://www.mhlw.go.jp/content/001505093.pdf"
+        }
+      ],
+      "comparison": "PR68の既存案をそのまま継承する。",
+      "boundary": "詳細はPR68の個別仮案参照。",
+      "sampled_legacy_concepts": [
+        {
+          "id": "4.1.certification.opinion",
+          "label": "主治医意見書",
+          "legacy_proposition_count": 14
+        }
+      ],
+      "sampled_propositions": [
+        {
+          "id": "2005-15/c3/p1",
+          "proposition": "介護認定審査会は，第 2 次判定を行う場合には，第 1 次判定結果よりも重度に変更することはできるが，軽度に変更することはできない。",
+          "legacy_concept": "要介護・要支援認定",
+          "legacy_attribute": "認定審査会・二次判定"
+        },
+        {
+          "id": "2024-19/c1/p1",
+          "proposition": "「栄養・食生活」は要介護認定の主治医意見書の項目に含まれる。",
+          "legacy_concept": "主治医意見書",
+          "legacy_attribute": "記録・情報管理"
+        },
+        {
+          "id": "2005-16/c1/p1",
+          "proposition": "第 1 次判定で用いられる「間接生活介助」とは，呼吸の管理，褥瘡処置の実施等の診療の補助等をいう。",
+          "legacy_concept": "要介護・要支援認定",
+          "legacy_attribute": "認定調査・一次判定"
+        }
+      ]
+    },
+    {
+      "id": "1.4",
+      "label": "保険給付・利用者負担",
+      "concepts": [
+        {
+          "id": "1.4.benefit_types",
+          "label": "介護給付・予防給付の体系",
+          "attribute_examples": "給付の区分、対象、給付形態",
+          "sample_pattern": "介護給付|予防給付|保険給付|給付対象"
+        },
+        {
+          "id": "1.4.benefit_payment",
+          "label": "保険給付の支給・請求",
+          "attribute_examples": "現物・償還払い、請求、特例給付",
+          "sample_pattern": "現物|償還|給付方法|特例.*サービス費"
+        },
+        {
+          "id": "1.4.copayment",
+          "label": "利用者負担",
+          "attribute_examples": "負担割合、費用範囲、負担軽減",
+          "sample_pattern": "利用者負担|自己負担|食費|居住費"
+        },
+        {
+          "id": "1.4.limit",
+          "label": "支給限度額",
+          "attribute_examples": "対象サービス、限度の適用、上乗せ",
+          "sample_pattern": "限度基準額|支給限度"
+        },
+        {
+          "id": "1.4.high_cost",
+          "label": "高額介護サービス費",
+          "attribute_examples": "対象、合算、支給条件",
+          "sample_pattern": "高額介護サービス費"
+        },
+        {
+          "id": "1.4.medical_total",
+          "label": "高額医療合算介護サービス費",
+          "attribute_examples": "医療介護合算、対象期間、支給条件",
+          "sample_pattern": "高額医療合算"
+        },
+        {
+          "id": "1.4.supplementary",
+          "label": "特定入所者介護サービス費",
+          "attribute_examples": "負担限度、所得・資産要件、対象",
+          "sample_pattern": "特定入所者|補足給付"
+        },
+        {
+          "id": "1.4.home_renovation",
+          "label": "住宅改修費の給付",
+          "attribute_examples": "工事種目、限度、申請・再支給",
+          "sample_pattern": "住宅改修|改修費"
+        },
+        {
+          "id": "1.4.coordination",
+          "label": "他制度との給付調整",
+          "attribute_examples": "介護・医療・労災・生活保護の優先",
+          "sample_pattern": "給付調整|優先関係|介護扶助.*優先"
+        },
+        {
+          "id": "1.4.restriction",
+          "label": "保険料滞納に伴う給付制限",
+          "attribute_examples": "支払方法変更、差止め、給付減額",
+          "sample_pattern": "給付制限|給付.*差止|給付.*減額"
+        }
+      ],
+      "sources": [
+        {
+          "title": "厚生労働省：介護保険法",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82998034&dataType=0"
+        },
+        {
+          "title": "厚生労働省：介護保険給付・地域支援事業の全体像",
+          "url": "https://www.mhlw.go.jp/content/001505093.pdf"
+        }
+      ],
+      "comparison": "保険給付という広い旧概念を、給付体系・支給請求・負担・限度・個別の費用制度へ解体する。",
+      "boundary": "給付・支給の要件と効果を扱う。保険料の徴収は1.2、用具事業者の提供基準は3.5、住宅の安全な使い方は5.5。",
+      "sampled_legacy_concepts": [
+        {
+          "id": "4.1.benefits",
+          "label": "保険給付",
+          "legacy_proposition_count": 126
+        },
+        {
+          "id": "4.1.benefits.social_welfare_discount",
+          "label": "社会福祉法人等の利用者負担軽減制度",
+          "legacy_proposition_count": 8
+        },
+        {
+          "id": "4.1.benefits.limit",
+          "label": "区分支給限度基準額",
+          "legacy_proposition_count": 28
+        },
+        {
+          "id": "4.1.benefits.high_cost",
+          "label": "高額介護サービス費",
+          "legacy_proposition_count": 24
+        },
+        {
+          "id": "4.1.benefits.medical_total",
+          "label": "高額医療合算介護サービス費",
+          "legacy_proposition_count": 4
+        },
+        {
+          "id": "4.1.benefits.supplementary",
+          "label": "特定入所者介護サービス費",
+          "legacy_proposition_count": 17
+        }
+      ],
+      "sampled_propositions": [
+        {
+          "id": "2005-08/c1/p1",
+          "proposition": "福祉用具貸与費，福祉用具購入費，住宅改修費は，高額介護サービス費の支給対象とならない。",
+          "legacy_concept": "高額介護サービス費",
+          "legacy_attribute": "適用サービス"
+        },
+        {
+          "id": "2005-05/c1/p1",
+          "proposition": "居宅介護福祉用具購入費については，居宅介護サービス費等区分支給限度基準額とは異なる支給限度基準額が設けられている。",
+          "legacy_concept": "区分支給限度基準額",
+          "legacy_attribute": "給付内容・条件"
+        },
+        {
+          "id": "2005-07/c1/p1",
+          "proposition": "市町村から利用者に給付されるべき額は，一定の要件に該当する場合には，事業者に対して支払われる。",
+          "legacy_concept": "保険給付",
+          "legacy_attribute": "給付方法"
+        }
+      ],
+      "sample_comparison": "高額費・支給限度・支給方法という異なる対象が実際に出題されている。財源構成とは分ける。"
+    },
+    {
+      "id": "1.5",
+      "label": "行政運営・指定監督",
+      "concepts": [
+        {
+          "id": "1.5.authority",
+          "label": "介護保険行政の法定権限",
+          "attribute_examples": "国・都道府県・市町村、条例、委任",
+          "sample_pattern": "行政・制度運営|権限|条例"
+        },
+        {
+          "id": "1.5.provider_designation",
+          "label": "介護サービス事業者の指定・監督",
+          "attribute_examples": "指定権者、取消し、更新、みなし指定",
+          "sample_pattern": "指定|監督|取消|立入検査"
+        },
+        {
+          "id": "1.5.care_manager_registration",
+          "label": "介護支援専門員の登録・資格管理",
+          "attribute_examples": "試験・研修、登録、専門員証、取消し",
+          "sample_pattern": "介護支援専門員.*登録|資格|専門員証|研修"
+        },
+        {
+          "id": "1.5.payment_review",
+          "label": "介護給付費の審査・支払",
+          "attribute_examples": "国保連、審査委員会、請求事務",
+          "sample_pattern": "国保連|国民健康保険団体連合会|審査支払|介護給付費.*審査"
+        },
+        {
+          "id": "1.5.appeals",
+          "label": "介護保険の審査請求",
+          "attribute_examples": "処分、不服申立て、介護保険審査会",
+          "sample_pattern": "審査請求|介護保険審査会"
+        },
+        {
+          "id": "1.5.disclosure",
+          "label": "介護サービス情報公表制度",
+          "attribute_examples": "報告、公表、調査、対象情報",
+          "sample_pattern": "情報公表|情報の公表"
+        },
+        {
+          "id": "1.5.complaints",
+          "label": "介護サービスの苦情処理制度",
+          "attribute_examples": "受付、調査、改善、機関の役割",
+          "sample_pattern": "苦情処理|苦情.*国保|苦情対応"
+        },
+        {
+          "id": "1.5.limitation",
+          "label": "介護保険の消滅時効・不正受給",
+          "attribute_examples": "徴収・返還、時効、加算金",
+          "sample_pattern": "消滅時効|不正受給|徴収権限"
+        },
+        {
+          "id": "1.5.fund_agencies",
+          "label": "支払基金・医療保険者の法定業務",
+          "attribute_examples": "機関の業務、交付、権限",
+          "sample_pattern": "支払基金|医療保険者"
+        }
+      ],
+      "sources": [
+        {
+          "title": "厚生労働省：介護保険法",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82998034&dataType=0"
+        },
+        {
+          "title": "厚生労働省：介護保険給付・地域支援事業の全体像",
+          "url": "https://www.mhlw.go.jp/content/001505093.pdf"
+        }
+      ],
+      "comparison": "指定監督・登録・審査支払・審査請求を別の制度的対象として分ける。国・都道府県・市町村は権限属性で比較する。",
+      "boundary": "指定権者・行政監督・資格登録を扱う。指定を受けた事業所の提供義務は3、認定審査会の二次判定は1.3、支払基金の資金経路は1.2。",
+      "sampled_legacy_concepts": [
+        {
+          "id": "4.1.administration.authority",
+          "label": "国・都道府県・市町村の権限",
+          "legacy_proposition_count": 42
+        },
+        {
+          "id": "provisional.81507354910b3db8",
+          "label": "指定居宅介護支援のケアマネジメント",
+          "legacy_proposition_count": 3
+        },
+        {
+          "id": "3.3.death_certificate",
+          "label": "死亡診断書の交付資格",
+          "legacy_proposition_count": 10
+        },
+        {
+          "id": "4.1.administration.payment",
+          "label": "審査支払・国保連",
+          "legacy_proposition_count": 52
+        },
+        {
+          "id": "4.1.administration.appeals",
+          "label": "介護保険の審査請求",
+          "legacy_proposition_count": 49
+        },
+        {
+          "id": "4.1.administration.disclosure",
+          "label": "介護サービス情報公表制度",
+          "legacy_proposition_count": 45
+        }
+      ],
+      "sampled_propositions": [
+        {
+          "id": "2025-04/c1/p1",
+          "proposition": "市町村は、地域における医療及び介護を総合的に確保するための基本的な方針（総合確保方針）を定めなければならない。",
+          "legacy_concept": "国・都道府県・市町村の権限",
+          "legacy_attribute": "役割・権限・責務"
+        },
+        {
+          "id": "2005-40/c4/p1",
+          "proposition": "指定介護療養型医療施設の指定の申請があった場合に，その区域内の指定介護療養型医療施設の入所定員の総数が地域医療計画上の必要入所定員総数を上回るときは，都道府県知事は，指定しないことができる。",
+          "legacy_concept": "事業者に共通する指定・監督",
+          "legacy_attribute": "介護療養型医療施設の指定の可否を定める制度上の権限"
+        },
+        {
+          "id": "2005-18/c5/p1",
+          "proposition": "A さんは，認定結果に不服があったため，B 市が設置した介護保険審査会に審査請求を行った。",
+          "legacy_concept": "介護保険の審査請求",
+          "legacy_attribute": "申請・手続"
+        }
+      ],
+      "sample_comparison": "行政の権限、事業者指定、不服申立てを別概念とする必要がサンプルで確認できる。"
+    },
+    {
+      "id": "1.6",
+      "label": "地域支援事業・事業計画",
+      "concepts": [
+        {
+          "id": "1.6.total_services",
+          "label": "介護予防・日常生活支援総合事業",
+          "attribute_examples": "対象者、事業構成、訪問・通所型",
+          "sample_pattern": "総合事業|総合.*通所型"
+        },
+        {
+          "id": "1.6.checklist",
+          "label": "基本チェックリストと事業対象者",
+          "attribute_examples": "項目、判定、対象確認",
+          "sample_pattern": "基本チェックリスト"
+        },
+        {
+          "id": "1.6.prevention",
+          "label": "一般介護予防事業",
+          "attribute_examples": "対象、事業内容、実施",
+          "sample_pattern": "一般介護予防|介護予防事業"
+        },
+        {
+          "id": "1.6.comprehensive",
+          "label": "包括的支援事業",
+          "attribute_examples": "事業構成、実施・委託、対象",
+          "sample_pattern": "包括的支援事業"
+        },
+        {
+          "id": "1.6.community_center",
+          "label": "地域包括支援センターの制度",
+          "attribute_examples": "設置、配置、法定業務、委託",
+          "sample_pattern": "地域包括支援センター"
+        },
+        {
+          "id": "1.6.care_meeting",
+          "label": "地域ケア会議",
+          "attribute_examples": "目的、参加、協力、地域課題",
+          "sample_pattern": "地域ケア会議"
+        },
+        {
+          "id": "1.6.municipal_plan",
+          "label": "市町村介護保険事業計画",
+          "attribute_examples": "策定、記載、期間、住民参加",
+          "sample_pattern": "市町村.*事業計画|介護保険事業計画"
+        },
+        {
+          "id": "1.6.prefecture_plan",
+          "label": "都道府県介護保険事業支援計画",
+          "attribute_examples": "策定、記載、市町村支援",
+          "sample_pattern": "事業支援計画"
+        },
+        {
+          "id": "1.6.optional_projects",
+          "label": "地域支援事業の任意事業・関連事業",
+          "attribute_examples": "家族介護支援、権利擁護利用支援、保健福祉事業",
+          "sample_pattern": "任意事業|保健福祉事業|成年後見制度利用支援"
+        },
+        {
+          "id": "1.6.medical_dementia_policy",
+          "label": "在宅医療介護連携・認知症地域施策",
+          "attribute_examples": "連携推進、認知症支援チーム、生活支援体制",
+          "sample_pattern": "認知症総合|初期集中|認知症地域|生活支援体制|地域医療介護総合確保基金"
+        },
+        {
+          "id": "1.6.preventive_cm",
+          "label": "総合事業の介護予防ケアマネジメント",
+          "attribute_examples": "第1号介護予防支援、類型、実施",
+          "sample_pattern": "第1号介護予防支援|介護予防ケアマネジメント"
+        }
+      ],
+      "sources": [
+        {
+          "title": "厚生労働省：介護保険法",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82998034&dataType=0"
+        },
+        {
+          "title": "厚生労働省：介護保険給付・地域支援事業の全体像",
+          "url": "https://www.mhlw.go.jp/content/001505093.pdf"
+        }
+      ],
+      "comparison": "センター・会議・事業計画・総合事業を分ける。訪問型／通所型は総合事業内の提供類型属性とする。",
+      "boundary": "事業の内容・実施体制・計画策定を扱う。財源は1.2、個々のケアプラン技法は2、機関を生活資源として選ぶ知識は5.5。",
+      "sampled_legacy_concepts": [
+        {
+          "id": "4.1.community_policy.preventive_cm",
+          "label": "総合事業の介護予防ケアマネジメント",
+          "legacy_proposition_count": 10
+        },
+        {
+          "id": "4.1.community_policy.basic_checklist",
+          "label": "介護予防の基本チェックリスト",
+          "legacy_proposition_count": 10
+        },
+        {
+          "id": "4.1.community_policy.general_prevention",
+          "label": "一般介護予防事業",
+          "legacy_proposition_count": 10
+        },
+        {
+          "id": "4.1.community_policy.comprehensive",
+          "label": "包括的支援事業",
+          "legacy_proposition_count": 30
+        },
+        {
+          "id": "3.4.community_center",
+          "label": "地域包括支援センター",
+          "legacy_proposition_count": 38
+        },
+        {
+          "id": "4.1.community_policy.meeting",
+          "label": "地域ケア会議",
+          "legacy_proposition_count": 12
+        }
+      ],
+      "sampled_propositions": [
+        {
+          "id": "2013-11/c1/p1",
+          "proposition": "市町村の判断により実施する。",
+          "legacy_concept": "介護予防・日常生活支援総合事業",
+          "legacy_attribute": "地域支援事業・政策構成"
+        },
+        {
+          "id": "2007-14/c5/p1",
+          "proposition": "地域包括支援センター運営協議会は，地域包括支援センターの適切，公正及び中立な運営を確保することを目的に，原則として，市町村ごとに設置される。",
+          "legacy_concept": "地域包括支援センター",
+          "legacy_attribute": "運営協議会の設置・目的"
+        },
+        {
+          "id": "2007-10/c1/p1",
+          "proposition": "都道府県介護保険事業支援計画及び市町村介護保険事業計画は，条例で定めなければならない。",
+          "legacy_concept": "介護保険事業計画",
+          "legacy_attribute": "計画策定・計画事項"
+        }
+      ],
+      "sample_comparison": "総合事業、センター運営、計画策定は別の対象。センター職員の配置等は属性へ。"
+    },
+    {
+      "id": "2.1",
+      "label": "基本理念・役割・倫理",
+      "concepts": [
+        {
+          "id": "2.1.independence",
+          "label": "ケアマネジメントの自立支援・尊厳",
+          "attribute_examples": "本人中心、残存能力、社会参加",
+          "sample_pattern": "自立支援|尊厳|残存能力|社会参加"
+        },
+        {
+          "id": "2.1.self_determination",
+          "label": "ケアマネジメントの意思決定支援",
+          "attribute_examples": "意向、説明・同意、選択",
+          "sample_pattern": "意思決定|自己決定|説明と同意"
+        },
+        {
+          "id": "2.1.fairness",
+          "label": "ケアマネジメントの公正中立",
+          "attribute_examples": "利益相反、公平、サービス選択",
+          "sample_pattern": "公正|中立|公平|同一法人"
+        },
+        {
+          "id": "2.1.privacy",
+          "label": "ケアマネジメントの情報倫理",
+          "attribute_examples": "守秘、同意、情報共有",
+          "sample_pattern": "個人情報|守秘|秘密保持"
+        },
+        {
+          "id": "2.1.role",
+          "label": "介護支援専門員の専門的役割",
+          "attribute_examples": "職務、守備範囲、連携責任",
+          "sample_pattern": "介護支援専門員|役割|ケアマネジメント"
+        },
+        {
+          "id": "2.1.team",
+          "label": "ケアマネジメントのチーム支援",
+          "attribute_examples": "多職種、協働、スーパービジョン",
+          "sample_pattern": "チーム|多職種|スーパービジョン"
+        }
+      ],
+      "sources": [
+        {
+          "title": "厚生労働省：介護支援専門員実務研修カリキュラム",
+          "url": "https://www.mhlw.go.jp/content/12300000/001586130.pdf"
+        },
+        {
+          "title": "厚生労働省：適切なケアマネジメント手法",
+          "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/hoken/jissi_00006.html"
+        }
+      ],
+      "comparison": "自立・意思決定・公正・情報倫理を分け、一般の相談援助との文脈を境界で定める。登録・更新は候補から除外。",
+      "boundary": "ケアマネの職務に結び付く原則に限定する。一般の相談援助原則は5.1、介護支援専門員の試験・登録制度は1.5。",
+      "sampled_legacy_concepts": [
+        {
+          "id": "provisional.5950e6d090d0347f",
+          "label": "尊厳を重視した食事支援",
+          "legacy_proposition_count": 1
+        },
+        {
+          "id": "2.1.consent",
+          "label": "説明と同意",
+          "legacy_proposition_count": 3
+        },
+        {
+          "id": "2.1.fairness",
+          "label": "公正・差別禁止",
+          "legacy_proposition_count": 1
+        },
+        {
+          "id": "2.1.privacy",
+          "label": "個人情報保護・守秘義務",
+          "legacy_proposition_count": 10
+        },
+        {
+          "id": "2.3",
+          "label": "ケアマネジメント",
+          "legacy_proposition_count": 91
+        },
+        {
+          "id": "2.3.supervision",
+          "label": "スーパービジョン",
+          "legacy_proposition_count": 2
+        }
+      ],
+      "sampled_propositions": [
+        {
+          "id": "2005-22/c1/p1",
+          "proposition": "C さんが疲れきっていることを重視し，認知症である A さんの話す内容にかかわらず，C さんの負担軽減を優先して，特別養護老人ホームへの入所を提案する。",
+          "legacy_concept": "意思決定支援",
+          "legacy_attribute": "支援原則・倫理"
+        },
+        {
+          "id": "2005-23/c5/p1",
+          "proposition": "介護支援専門員の判断により，認知症であることを近所に伝え，見守りを依頼した。",
+          "legacy_concept": "個人情報保護・守秘義務",
+          "legacy_attribute": "支援原則・倫理"
+        },
+        {
+          "id": "2005-19/c2/p1",
+          "proposition": "要介護者を擁護する立場にあるが，介護者等の立場にもできる限り配慮する必要がある。",
+          "legacy_concept": "支援原則・倫理",
+          "legacy_attribute": "本人・介護者双方への配慮"
+        }
+      ],
+      "sample_comparison": "自己決定・情報共有・ケアマネの立場を別の論点にする。旧意思決定支援の一般相談事例は5.1との境界を確認する。"
+    },
+    {
+      "id": "2.2",
+      "label": "アセスメント・課題分析",
+      "concepts": [
+        {
+          "id": "2.2.assessment",
+          "label": "ケアマネジメントのアセスメント",
+          "attribute_examples": "目的、情報収集、総合評価",
+          "sample_pattern": "アセスメント|課題分析"
+        },
+        {
+          "id": "2.2.standard_items",
+          "label": "課題分析標準項目",
+          "attribute_examples": "項目、健康・生活・環境情報",
+          "sample_pattern": "課題分析標準項目"
+        },
+        {
+          "id": "2.2.needs",
+          "label": "生活課題・ニーズ",
+          "attribute_examples": "意向とニーズ、優先順位、課題の関連",
+          "sample_pattern": "ニーズ|生活課題|主訴"
+        },
+        {
+          "id": "2.2.strengths",
+          "label": "ストレングス・本人の能力",
+          "attribute_examples": "強み、資産、意欲、環境との関係",
+          "sample_pattern": "ストレングス|強み|能力|意欲"
+        },
+        {
+          "id": "2.2.preventive_assessment",
+          "label": "介護予防の課題分析",
+          "attribute_examples": "活動・参加、予防領域、本人の意欲",
+          "sample_pattern": "介護予防.*アセスメント|介護予防.*課題分析"
+        }
+      ],
+      "sources": [
+        {
+          "title": "厚生労働省：介護支援専門員実務研修カリキュラム",
+          "url": "https://www.mhlw.go.jp/content/12300000/001586130.pdf"
+        },
+        {
+          "title": "厚生労働省：適切なケアマネジメント手法",
+          "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/hoken/jissi_00006.html"
+        }
+      ],
+      "comparison": "アセスメント全体と標準項目・ニーズ・強み・予防の課題分析を分ける。疾患名ごとのケース小分類は増やさない。",
+      "boundary": "生活課題のアセスメントを扱う。行政の認定調査は1.3、医学的機能評価は4、指定事業所の法定実施方法は3.8。",
+      "sampled_legacy_concepts": [
+        {
+          "id": "2.3.assessment",
+          "label": "アセスメント",
+          "legacy_proposition_count": 79
+        },
+        {
+          "id": "2.3.strengths",
+          "label": "ストレングス",
+          "legacy_proposition_count": 4
+        }
+      ],
+      "sampled_propositions": [
+        {
+          "id": "2005-25/c1/p1",
+          "proposition": "連絡の内容から B さんの入院が 2 日から 3 日程度で済むのではないかと考えたため，当面様子をみることにする。",
+          "legacy_concept": "アセスメント",
+          "legacy_attribute": "アセスメント"
+        },
+        {
+          "id": "2011-19/c1/p1",
+          "proposition": "ケアプランに反映していくことが重要である。",
+          "legacy_concept": "ストレングス",
+          "legacy_attribute": "計画作成"
+        },
+        {
+          "id": "2005-53/c2/p1",
+          "proposition": "自立を促進するために，利用者の日常生活動作のできる部分，できない部分を理解することが有効である。",
+          "legacy_concept": "アセスメント",
+          "legacy_attribute": "ADL・残存能力の把握"
+        }
+      ],
+      "sample_comparison": "旧アセスメントには事例判断や生活機能の把握がある。標準項目・ニーズ・強みの仮案を用意し、法定頻度等は3.8へ分離する。"
+    },
+    {
+      "id": "2.3",
+      "label": "ケアプラン・実施・評価",
+      "concepts": [
+        {
+          "id": "2.3.care_plan",
+          "label": "ケアプランの構成・目標",
+          "attribute_examples": "目標、課題との整合、計画書",
+          "sample_pattern": "ケアプラン|居宅サービス計画|介護予防サービス計画"
+        },
+        {
+          "id": "2.3.planning",
+          "label": "ケアプラン作成の過程",
+          "attribute_examples": "原案、説明・同意、確定、変更",
+          "sample_pattern": "計画作成|原案|説明.*計画|計画.*同意"
+        },
+        {
+          "id": "2.3.service_meeting",
+          "label": "サービス担当者会議",
+          "attribute_examples": "目的、参加、開催、意見調整",
+          "sample_pattern": "サービス担当者会議"
+        },
+        {
+          "id": "2.3.coordination",
+          "label": "サービス・社会資源の調整",
+          "attribute_examples": "資源選択、役割分担、連携",
+          "sample_pattern": "社会資源の選択|サービス調整|資源.*調整|連携・調整"
+        },
+        {
+          "id": "2.3.monitoring",
+          "label": "モニタリング・再評価",
+          "attribute_examples": "実施状況、達成度、再アセスメント",
+          "sample_pattern": "モニタリング|再評価|再アセスメント"
+        },
+        {
+          "id": "2.3.transition",
+          "label": "退院・退所・生活移行支援",
+          "attribute_examples": "引継ぎ、医療との連携、切れ目ない支援",
+          "sample_pattern": "退院|退所|移行|主治医.*連携"
+        }
+      ],
+      "sources": [
+        {
+          "title": "厚生労働省：介護支援専門員実務研修カリキュラム",
+          "url": "https://www.mhlw.go.jp/content/12300000/001586130.pdf"
+        },
+        {
+          "title": "厚生労働省：適切なケアマネジメント手法",
+          "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/hoken/jissi_00006.html"
+        }
+      ],
+      "comparison": "計画の対象・作成過程・会議・調整・評価・生活移行を分ける。担当職種や実施頻度は属性にする。",
+      "boundary": "汎用的な計画・調整・評価技法を扱う。訪問頻度・会議省略条件など法定作成基準は3.8、各サービスの個別計画は当該3.x。",
+      "sampled_legacy_concepts": [
+        {
+          "id": "2.3.care_plan",
+          "label": "ケアプラン",
+          "legacy_proposition_count": 72
+        },
+        {
+          "id": "2.3.service_meeting",
+          "label": "サービス担当者会議",
+          "legacy_proposition_count": 8
+        },
+        {
+          "id": "2.3.resources",
+          "label": "社会資源の選択・調整",
+          "legacy_proposition_count": 47
+        },
+        {
+          "id": "2.3.monitoring",
+          "label": "モニタリング",
+          "legacy_proposition_count": 12
+        },
+        {
+          "id": "2.3.discharge",
+          "label": "退院・退所支援",
+          "legacy_proposition_count": 13
+        }
+      ],
+      "sampled_propositions": [
+        {
+          "id": "2005-19/c1/p1",
+          "proposition": "支給限度基準額の上限額までサービスが提供されるよう配慮しなければならない。",
+          "legacy_concept": "ケアプラン",
+          "legacy_attribute": "支給限度額と必要量の見極め"
+        },
+        {
+          "id": "2005-48/c4/p1",
+          "proposition": "問題の複雑な事例について，サービス担当者会議を開いてお互いの持っている情報を交換し，目標や役割を確認した。",
+          "legacy_concept": "サービス担当者会議",
+          "legacy_attribute": "連携・調整"
+        },
+        {
+          "id": "2007-24/c4/p1",
+          "proposition": "息子も含めた家庭の状況が気になったので，モニタリングの頻度を通常よりも多くすることとした。",
+          "legacy_concept": "モニタリング",
+          "legacy_attribute": "モニタリング・評価"
+        }
+      ],
+      "sample_comparison": "会議・モニタリングを分離できる。2005問19-1は支給限度額自体が判定対象か、計画の適切性が判定対象かを移行時に再確認する。"
+    },
+    {
+      "id": "3.1",
+      "label": "サービス総論・共通基準",
+      "concepts": [
+        {
+          "id": "3.1.classification",
+          "label": "介護保険サービスの法定区分",
+          "attribute_examples": "居宅・施設・地域密着・予防、共生型",
+          "sample_pattern": "介護保険サービス・施設|居宅サービス|施設サービス|介護予防サービス|共生型"
+        },
+        {
+          "id": "3.1.contract",
+          "label": "介護サービスの契約・利用開始",
+          "attribute_examples": "説明・同意、重要事項、提供拒否",
+          "sample_pattern": "契約|重要事項|提供拒否"
+        },
+        {
+          "id": "3.1.records",
+          "label": "介護サービスの記録・情報保護",
+          "attribute_examples": "保存、共有、守秘",
+          "sample_pattern": "記録|情報管理|秘密保持"
+        },
+        {
+          "id": "3.1.quality",
+          "label": "介護サービスの安全・質管理",
+          "attribute_examples": "事故、衛生、虐待防止、業務継続",
+          "sample_pattern": "事故|衛生|安全|業務継続|感染|虐待防止"
+        },
+        {
+          "id": "3.1.staff_equipment",
+          "label": "共通の人員・設備の考え方",
+          "attribute_examples": "常勤換算、兼務、共用、適用範囲",
+          "sample_pattern": "常勤換算|共通.*人員|共通.*設備"
+        },
+        {
+          "id": "3.1.fee_rules",
+          "label": "介護報酬の共通ルール",
+          "attribute_examples": "加算・減算の考え方、請求単位",
+          "sample_pattern": "共通.*報酬|介護報酬.*基準"
+        }
+      ],
+      "sources": [
+        {
+          "title": "厚生労働省：指定居宅サービス等の人員・設備・運営基準",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404"
+        },
+        {
+          "title": "厚生労働省：介護サービスの種類",
+          "url": "https://www.kaigokensaku.mhlw.go.jp/commentary/service.html"
+        }
+      ],
+      "comparison": "共通の契約・記録・安全・人員設備・報酬を候補にする。各命題の横断適用を確認してから割り当てる。",
+      "boundary": "複数サービスに実際に共通する知識のみ。サービス名不明の命題をここへ入れない。指定監督は1.5、給付対象は1.4。",
+      "sampled_legacy_concepts": [
+        {
+          "id": "provisional.41323d9967f9265e",
+          "label": "居宅サービス",
+          "legacy_proposition_count": 4
+        },
+        {
+          "id": "1.1.covid",
+          "label": "新型コロナウイルス感染症",
+          "legacy_proposition_count": 1
+        }
+      ],
+      "sampled_propositions": [
+        {
+          "id": "2008-58/c5/p1",
+          "proposition": "介護保険によるフォーマルなサービスには，株式会社や有限会社といった企業が提供する介護サービスは含まれない。",
+          "legacy_concept": "介護保険サービス・施設",
+          "legacy_attribute": "営利法人による介護保険サービスの提供が含まれるか"
+        },
+        {
+          "id": "2005-38/c1/p1",
+          "proposition": "通所リハビリテーション計画は，既に居宅サービス計画が作成されている場合には，その計画の内容に沿って作成しなければならない。",
+          "legacy_concept": "居宅サービス",
+          "legacy_attribute": "通所リハビリテーション計画の居宅計画との整合"
+        },
+        {
+          "id": "2005-40/c2/p1",
+          "proposition": "施設サービス計画は，医師の治療の方針だけではなく，入院患者の希望やアセスメントの結果に基づき作成される必要がある。",
+          "legacy_concept": "施設サービス",
+          "legacy_attribute": "介護療養型医療施設の施設サービス計画作成基準"
+        }
+      ],
+      "sample_comparison": "2005問38-1は旧「居宅サービス」でも通所リハ固有の計画基準なので3.3候補。2005問40-2は施設計画の知識なので3.6候補。旧の広い分類をそのまま共通基準へ移さない。"
+    },
+    {
+      "id": "3.2",
+      "label": "訪問サービス",
+      "concepts": [
+        {
+          "id": "3.2.visiting_care",
+          "label": "訪問介護",
+          "attribute_examples": "対象、身体介護・生活援助、人員、計画、運営",
+          "sample_pattern": "訪問介護|介護予防訪問介護"
+        },
+        {
+          "id": "3.2.visiting_bath",
+          "label": "訪問入浴介護",
+          "attribute_examples": "対象、入浴方法、人員、設備、運営",
+          "sample_pattern": "訪問入浴|介護予防訪問入浴"
+        },
+        {
+          "id": "3.2.visiting_nurse",
+          "label": "訪問看護",
+          "attribute_examples": "医師の指示、看護内容、人員、計画、運営",
+          "sample_pattern": "訪問看護|介護予防訪問看護"
+        },
+        {
+          "id": "3.2.visiting_rehab",
+          "label": "訪問リハビリテーション",
+          "attribute_examples": "対象、内容、人員、計画、運営",
+          "sample_pattern": "訪問リハビリテーション"
+        },
+        {
+          "id": "3.2.home_medical",
+          "label": "居宅療養管理指導",
+          "attribute_examples": "職種別提供内容、情報提供、運営",
+          "sample_pattern": "居宅療養管理指導"
+        }
+      ],
+      "sources": [
+        {
+          "title": "厚生労働省：指定居宅サービス等の人員・設備・運営基準",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404"
+        },
+        {
+          "title": "厚生労働省：介護サービスの種類",
+          "url": "https://www.kaigokensaku.mhlw.go.jp/commentary/service.html"
+        }
+      ],
+      "comparison": "サービスは制度上別の対象なので分ける。人員・設備・提供内容ごとに小分類を増やさず各サービスの属性とする。",
+      "boundary": "一般の訪問サービスに限定。夜間対応・定期巡回・小規模多機能は3.7、直接的な看護・介護技術は4.6。予防型は同概念の制度区分属性で区別。",
+      "sampled_legacy_concepts": [
+        {
+          "id": "3.1.community.night",
+          "label": "夜間対応型訪問介護",
+          "legacy_proposition_count": 31
+        },
+        {
+          "id": "3.1.home.visiting_bath",
+          "label": "訪問入浴介護",
+          "legacy_proposition_count": 70
+        },
+        {
+          "id": "3.1.home.visiting_nurse",
+          "label": "訪問看護",
+          "legacy_proposition_count": 77
+        },
+        {
+          "id": "3.1.home.visiting_rehab",
+          "label": "訪問リハビリテーション",
+          "legacy_proposition_count": 15
+        },
+        {
+          "id": "3.1.home.home_medical",
+          "label": "居宅療養管理指導",
+          "legacy_proposition_count": 36
+        }
+      ],
+      "sampled_propositions": [
+        {
+          "id": "2009-35/c1/p1",
+          "proposition": "一般的な調理は訪問介護の身体介護として介護保険で認められる。",
+          "legacy_concept": "訪問介護",
+          "legacy_attribute": "提供内容"
+        },
+        {
+          "id": "2009-52/c1/p1",
+          "proposition": "訪問入浴介護の提供には，看護職員 1 人と介護職員 2 人で行う場合のほか，介護職員3 人で行う場合がある。",
+          "legacy_concept": "訪問入浴介護",
+          "legacy_attribute": "人員配置"
+        },
+        {
+          "id": "2005-37/c1/p1",
+          "proposition": "訪問看護では，家族の介護負担の軽減を図るため，必要に応じて家族関係の調整等を行う家族支援もサービスの 1 つである。",
+          "legacy_concept": "訪問看護",
+          "legacy_attribute": "サービス提供内容・家族支援"
+        }
+      ],
+      "sample_comparison": "身体介護／生活援助、訪問入浴の職員体制、訪問看護の提供内容を各サービスの属性にできる。"
+    },
+    {
+      "id": "3.3",
+      "label": "通所サービス",
+      "concepts": [
+        {
+          "id": "3.3.day_care",
+          "label": "通所介護",
+          "attribute_examples": "対象、提供内容、人員、設備、計画",
+          "sample_pattern": "通所介護|介護予防通所介護"
+        },
+        {
+          "id": "3.3.day_rehab",
+          "label": "通所リハビリテーション",
+          "attribute_examples": "対象、内容、人員、設備、計画",
+          "sample_pattern": "通所リハビリテーション"
+        },
+        {
+          "id": "3.3.medical_day",
+          "label": "療養通所介護",
+          "attribute_examples": "対象、体制、医療連携、出題当時区分",
+          "sample_pattern": "療養通所介護"
+        }
+      ],
+      "sources": [
+        {
+          "title": "厚生労働省：指定居宅サービス等の人員・設備・運営基準",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404"
+        },
+        {
+          "title": "厚生労働省：介護サービスの種類",
+          "url": "https://www.kaigokensaku.mhlw.go.jp/commentary/service.html"
+        }
+      ],
+      "comparison": "通所介護と通所リハを分ける。療養通所の年代差は独立の境界事例として残す。",
+      "boundary": "地域密着型通所・認知症対応型通所は3.7。療養通所介護は2016年前後で法定区分が変わるため出題時点で3.3と3.7を判断する。",
+      "sampled_legacy_concepts": [
+        {
+          "id": "3.1.community.day",
+          "label": "地域密着型通所介護",
+          "legacy_proposition_count": 6
+        },
+        {
+          "id": "3.1.home.day_rehab",
+          "label": "通所リハビリテーション",
+          "legacy_proposition_count": 34
+        },
+        {
+          "id": "3.1.home.day_care.medical",
+          "label": "療養通所介護",
+          "legacy_proposition_count": 10
+        }
+      ],
+      "sampled_propositions": [
+        {
+          "id": "2010-51/c1/p1",
+          "proposition": "通所介護は、社会的孤独感の解消、心身の機能の維持、家族の介護負担の軽減を目的としており、入浴や食事等のサービスの提供のみを目的とするものではない。",
+          "legacy_concept": "通所介護",
+          "legacy_attribute": "目的・理念・基本方針"
+        },
+        {
+          "id": "2025-43/c1/p1",
+          "proposition": "リハビリテーション会議は、利用者やその家族の参加が基本とされている。",
+          "legacy_concept": "通所リハビリテーション",
+          "legacy_attribute": "運営基準"
+        },
+        {
+          "id": "2010-51/c4/p1",
+          "proposition": "療養通所介護計画は、訪問看護計画書が作成されている場合には、その訪問看護計画との調整を図りつつ、作成しなければならない。",
+          "legacy_concept": "療養通所介護",
+          "legacy_attribute": "計画作成"
+        }
+      ],
+      "sample_comparison": "通所介護の目的、通所リハの会議、療養通所の計画を別サービスの属性にできる。療養通所は出題時区分を保持。"
+    },
+    {
+      "id": "3.4",
+      "label": "短期入所サービス",
+      "concepts": [
+        {
+          "id": "3.4.short_stay_life",
+          "label": "短期入所生活介護",
+          "attribute_examples": "対象、生活支援、人員、設備、計画",
+          "sample_pattern": "短期入所生活介護"
+        },
+        {
+          "id": "3.4.short_stay_medical",
+          "label": "短期入所療養介護",
+          "attribute_examples": "対象、療養内容、人員、設備、計画",
+          "sample_pattern": "短期入所療養介護"
+        }
+      ],
+      "sources": [
+        {
+          "title": "厚生労働省：指定居宅サービス等の人員・設備・運営基準",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404"
+        },
+        {
+          "title": "厚生労働省：介護サービスの種類",
+          "url": "https://www.kaigokensaku.mhlw.go.jp/commentary/service.html"
+        }
+      ],
+      "comparison": "生活介護と療養介護の対象を分け、予防型・空床型等の提供類型は属性で区別する。",
+      "boundary": "短期入所というサービスの固有基準を扱う。宿泊を含む小規模多機能は3.7、入所施設一般の基準は3.6。",
+      "sampled_legacy_concepts": [
+        {
+          "id": "3.1.home.short_stay_life",
+          "label": "短期入所生活介護",
+          "legacy_proposition_count": 71
+        },
+        {
+          "id": "3.1.home.short_stay_medical",
+          "label": "短期入所療養介護",
+          "legacy_proposition_count": 53
+        }
+      ],
+      "sampled_propositions": [
+        {
+          "id": "2009-53/c1/p1",
+          "proposition": "同居家族の休養をサービスの目的としており，一人暮らしの高齢者は原則利用できない。",
+          "legacy_concept": "短期入所生活介護",
+          "legacy_attribute": "対象・要件"
+        },
+        {
+          "id": "2010-43/c1/p1",
+          "proposition": "日常生活の自立を助けるため、必要なリハビリテーションを行わなければならない。",
+          "legacy_concept": "短期入所療養介護",
+          "legacy_attribute": "提供内容"
+        },
+        {
+          "id": "2009-53/c2/p1",
+          "proposition": "利用申込者や家族に対し重要事項に関する文書を交付して説明を行い，サービス内容や利用期間等について同意を得なければならない。",
+          "legacy_concept": "短期入所生活介護",
+          "legacy_attribute": "運営基準"
+        }
+      ],
+      "sample_comparison": "生活／療養の対象と内容が異なる。短期利用の期間・契約は各サービスの属性。"
+    },
+    {
+      "id": "3.5",
+      "label": "福祉用具サービス",
+      "concepts": [
+        {
+          "id": "3.5.rental",
+          "label": "福祉用具貸与",
+          "attribute_examples": "種目、人員、選定・計画、点検",
+          "sample_pattern": "福祉用具貸与"
+        },
+        {
+          "id": "3.5.sale",
+          "label": "特定福祉用具販売",
+          "attribute_examples": "種目、人員、販売・計画、説明",
+          "sample_pattern": "特定福祉用具販売|福祉用具販売"
+        },
+        {
+          "id": "3.5.selection_system",
+          "label": "福祉用具の貸与・販売選択制度",
+          "attribute_examples": "対象種目、選択支援、説明、制度時点",
+          "sample_pattern": "貸与.*販売|選択制"
+        }
+      ],
+      "sources": [
+        {
+          "title": "厚生労働省：福祉用具・住宅改修",
+          "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000212398.html"
+        },
+        {
+          "title": "厚生労働省：指定居宅サービス等の人員・設備・運営基準",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404"
+        },
+        {
+          "title": "厚生労働省：介護サービスの種類",
+          "url": "https://www.kaigokensaku.mhlw.go.jp/commentary/service.html"
+        }
+      ],
+      "comparison": "貸与・販売・選択制度を分ける。製品種目や人員配置は属性として保持する。",
+      "boundary": "貸与・販売の事業基準と種目を扱う。支給限度・給付請求全般は1.4、身体に合う用具の使用・選択は4.5。住宅改修費は1.4。",
+      "sampled_legacy_concepts": [
+        {
+          "id": "3.1.home.welfare_equipment_combined",
+          "label": "福祉用具貸与・販売",
+          "legacy_proposition_count": 24
+        },
+        {
+          "id": "3.1.home.welfare_sale",
+          "label": "特定福祉用具販売",
+          "legacy_proposition_count": 9
+        }
+      ],
+      "sampled_propositions": [
+        {
+          "id": "2009-50/c1/p1",
+          "proposition": "取付工事を伴わないスロープは，福祉用具貸与の対象となるは介護保険の給付対象となる福祉用具である。",
+          "legacy_concept": "福祉用具貸与",
+          "legacy_attribute": "対象・要件"
+        },
+        {
+          "id": "2009-50/c3/p1",
+          "proposition": "入浴用いすなどの入浴補助用具は，特定福祉用具販売の対象となるは介護保険の給付対象となる福祉用具である。",
+          "legacy_concept": "特定福祉用具販売",
+          "legacy_attribute": "対象・要件"
+        },
+        {
+          "id": "2018-35/c5/p1",
+          "proposition": "痰の吸引器は、介護保険の給付の対象となる。",
+          "legacy_concept": "福祉用具貸与・販売",
+          "legacy_attribute": "対象・要件"
+        }
+      ],
+      "sample_comparison": "種目の貸与／販売区分はサービス属性にできる。吸引器の例は用具種目の給付対象性と一般の給付条件の境界事例。"
+    },
+    {
+      "id": "3.6",
+      "label": "入居・施設サービス",
+      "concepts": [
+        {
+          "id": "3.6.tokuyo",
+          "label": "介護老人福祉施設（特養）",
+          "attribute_examples": "対象、人員、設備、生活援助、運営",
+          "sample_pattern": "介護老人福祉施設|特養"
+        },
+        {
+          "id": "3.6.roken",
+          "label": "介護老人保健施設（老健）",
+          "attribute_examples": "対象、人員、設備、療養・リハ、運営",
+          "sample_pattern": "介護老人保健施設|老健"
+        },
+        {
+          "id": "3.6.medical",
+          "label": "介護医療院",
+          "attribute_examples": "対象、類型、人員、設備、療養・生活支援",
+          "sample_pattern": "介護医療院"
+        },
+        {
+          "id": "3.6.old_medical",
+          "label": "介護療養型医療施設",
+          "attribute_examples": "出題当時の対象、人員、設備、運営",
+          "sample_pattern": "介護療養型医療施設"
+        },
+        {
+          "id": "3.6.specific_facility",
+          "label": "特定施設入居者生活介護",
+          "attribute_examples": "対象、一般・外部利用型、人員、計画",
+          "sample_pattern": "特定施設入居者生活介護|特定施設サービス計画"
+        },
+        {
+          "id": "3.6.facility_plan",
+          "label": "施設サービス計画の法定作成基準",
+          "attribute_examples": "担当、作成・変更、施設内連携",
+          "sample_pattern": "施設サービス計画"
+        }
+      ],
+      "sources": [
+        {
+          "title": "厚生労働省：介護老人保健施設の基準",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999407&dataType=0"
+        },
+        {
+          "title": "厚生労働省：介護医療院",
+          "url": "https://www.mhlw.go.jp/kaigoiryouin/about/"
+        },
+        {
+          "title": "厚生労働省：指定居宅サービス等の人員・設備・運営基準",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404"
+        },
+        {
+          "title": "厚生労働省：介護サービスの種類",
+          "url": "https://www.kaigokensaku.mhlw.go.jp/commentary/service.html"
+        }
+      ],
+      "comparison": "施設種別を分ける。各施設内の人員・設備・運営は属性。施設サービス計画の法定作成は独立の計画対象として試す。",
+      "boundary": "地域密着型特養・特定施設は3.7。一般の高齢者住宅制度は5.5、施設内での医療保険との給付調整は1.4。",
+      "sampled_legacy_concepts": [
+        {
+          "id": "3.1.community.small_facility",
+          "label": "地域密着型介護老人福祉施設",
+          "legacy_proposition_count": 8
+        },
+        {
+          "id": "3.1.facilities.roken",
+          "label": "介護老人保健施設（老健）",
+          "legacy_proposition_count": 108
+        },
+        {
+          "id": "3.1.facilities.medical",
+          "label": "介護医療院",
+          "legacy_proposition_count": 41
+        },
+        {
+          "id": "3.1.facilities.old_medical",
+          "label": "介護療養型医療施設",
+          "legacy_proposition_count": 13
+        },
+        {
+          "id": "3.1.community.specific_facility",
+          "label": "地域密着型特定施設入居者生活介護",
+          "legacy_proposition_count": 1
+        }
+      ],
+      "sampled_propositions": [
+        {
+          "id": "2005-55/c1/p1",
+          "proposition": "入所定員が 20 人以上の介護老人福祉施設は，少なくとも 1 名以上の常勤の介護支援専門員を置かなければならない。",
+          "legacy_concept": "介護老人福祉施設（特養）",
+          "legacy_attribute": "人員配置"
+        },
+        {
+          "id": "2005-45/c1/p1",
+          "proposition": "サービスの提供にあたって，その施設入所者又は他の入所者等の生命又は身体を保護するため緊急やむを得ない場合を除き，身体的拘束その他入所者の行動を制限する行為を行ってはならない。",
+          "legacy_concept": "介護老人保健施設（老健）",
+          "legacy_attribute": "運営基準"
+        },
+        {
+          "id": "2025-45/c1/p1",
+          "proposition": "要介護者が居宅において生活を営むことができるようにするための支援を行う施設と定義されている。",
+          "legacy_concept": "介護医療院",
+          "legacy_attribute": "目的・理念・基本方針"
+        }
+      ],
+      "sample_comparison": "特養の配置、老健の運営、医療院の機能という独立対象がある。身体拘束は施設固有の運営基準を問うなら3.6、権利侵害防止の一般論なら5.3。"
+    },
+    {
+      "id": "3.7",
+      "label": "地域密着型サービス",
+      "concepts": [
+        {
+          "id": "3.7.night",
+          "label": "夜間対応型訪問介護",
+          "attribute_examples": "対象、夜間対応、体制、運営",
+          "sample_pattern": "夜間対応型訪問介護"
+        },
+        {
+          "id": "3.7.regular_round",
+          "label": "定期巡回・随時対応型訪問介護看護",
+          "attribute_examples": "対象、一体・連携型、体制、運営",
+          "sample_pattern": "定期巡回|随時対応型訪問介護看護"
+        },
+        {
+          "id": "3.7.small_multi",
+          "label": "小規模多機能型居宅介護",
+          "attribute_examples": "登録、通い・訪問・泊まり、人員、計画",
+          "sample_pattern": "小規模多機能型居宅介護"
+        },
+        {
+          "id": "3.7.nursing_multi",
+          "label": "看護小規模多機能型居宅介護",
+          "attribute_examples": "登録、看護・介護、医療連携、人員",
+          "sample_pattern": "看護小規模多機能|複合型サービス"
+        },
+        {
+          "id": "3.7.group_home",
+          "label": "認知症対応型共同生活介護",
+          "attribute_examples": "対象、共同生活、人員、設備、計画",
+          "sample_pattern": "認知症対応型共同生活介護|グループホーム"
+        },
+        {
+          "id": "3.7.dementia_day",
+          "label": "認知症対応型通所介護",
+          "attribute_examples": "対象、単独・併設・共用型、人員、設備",
+          "sample_pattern": "認知症対応型通所介護"
+        },
+        {
+          "id": "3.7.community_day",
+          "label": "地域密着型通所介護",
+          "attribute_examples": "定員、人員、設備、運営",
+          "sample_pattern": "地域密着型通所介護"
+        },
+        {
+          "id": "3.7.community_facility",
+          "label": "地域密着型介護老人福祉施設",
+          "attribute_examples": "対象、定員、人員、設備、計画",
+          "sample_pattern": "地域密着型介護老人福祉施設"
+        },
+        {
+          "id": "3.7.community_specific",
+          "label": "地域密着型特定施設入居者生活介護",
+          "attribute_examples": "対象、定員、人員、運営",
+          "sample_pattern": "地域密着型特定施設"
+        },
+        {
+          "id": "3.7.community_rules",
+          "label": "地域密着型サービス固有の共通原則",
+          "attribute_examples": "地域との関係、利用範囲、運営推進",
+          "sample_pattern": "地域密着型サービス|地域密着型介護予防サービス"
+        }
+      ],
+      "sources": [
+        {
+          "title": "厚生労働省：指定地域密着型サービスの基準",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7858&dataType=0"
+        },
+        {
+          "title": "厚生労働省：指定地域密着型介護予防サービスの基準",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7860&dataType=0"
+        },
+        {
+          "title": "厚生労働省：指定居宅サービス等の人員・設備・運営基準",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404"
+        },
+        {
+          "title": "厚生労働省：介護サービスの種類",
+          "url": "https://www.kaigokensaku.mhlw.go.jp/commentary/service.html"
+        }
+      ],
+      "comparison": "法定サービス別に分け、地域密着型に固有の共通原則を別にする。訪問／通所／入居はタグにして親分類を重複させない。",
+      "boundary": "法定の地域密着型を訪問・通所・入居より優先。行政上の指定監督は1.5、地域支援事業は1.6。介護予防型は制度区分属性で保持。",
+      "sampled_legacy_concepts": [
+        {
+          "id": "3.1.community.night",
+          "label": "夜間対応型訪問介護",
+          "legacy_proposition_count": 31
+        },
+        {
+          "id": "3.1.community.regular_round",
+          "label": "定期巡回・随時対応型訪問介護看護",
+          "legacy_proposition_count": 28
+        },
+        {
+          "id": "3.1.community.nursing_multi",
+          "label": "看護小規模多機能型居宅介護",
+          "legacy_proposition_count": 31
+        },
+        {
+          "id": "3.1.community.group_home",
+          "label": "認知症対応型共同生活介護",
+          "legacy_proposition_count": 41
+        },
+        {
+          "id": "3.1.community.dementia_day",
+          "label": "認知症対応型通所介護",
+          "legacy_proposition_count": 31
+        },
+        {
+          "id": "3.1.community.day",
+          "label": "地域密着型通所介護",
+          "legacy_proposition_count": 6
+        }
+      ],
+      "sampled_propositions": [
+        {
+          "id": "2010-54/c1/p1",
+          "proposition": "夜間対応型訪問介護では、定期巡回サービス、オペレーションセンターサービス及び随時訪問サービスが一括して提供される。",
+          "legacy_concept": "夜間対応型訪問介護",
+          "legacy_attribute": "提供内容"
+        },
+        {
+          "id": "2025-44/c1/p1",
+          "proposition": "訪問看護と小規模多機能型居宅介護を組み合わせたサービスである。",
+          "legacy_concept": "看護小規模多機能型居宅介護",
+          "legacy_attribute": "定義・仕組み"
+        },
+        {
+          "id": "2007-53/c2/p1",
+          "proposition": "一人ひとりの好みや力を活かしながら，利用者と職員が，一緒に，食事，片付けなどの家事をすることが望ましい。",
+          "legacy_concept": "認知症対応型共同生活介護",
+          "legacy_attribute": "グループホームで本人のできる家事を活かす支援方法"
+        }
+      ],
+      "sample_comparison": "夜間、看護小規模多機能、グループホームは提供形態が違っても法定の地域密着型へ集約できる。"
+    },
+    {
+      "id": "3.8",
+      "label": "居宅介護支援・介護予防支援",
+      "concepts": [
+        {
+          "id": "3.8.home_support_office",
+          "label": "居宅介護支援事業所",
+          "attribute_examples": "基本方針、人員、管理者、運営",
+          "sample_pattern": "居宅介護支援"
+        },
+        {
+          "id": "3.8.home_plan_rules",
+          "label": "居宅サービス計画の法定作成基準",
+          "attribute_examples": "訪問、面接、会議、同意、交付、見直し",
+          "sample_pattern": "居宅サービス計画|居宅介護支援.*計画|指定居宅介護支援のケアマネジメント"
+        },
+        {
+          "id": "3.8.home_records",
+          "label": "居宅介護支援の記録・契約",
+          "attribute_examples": "説明、契約、情報提供、保存",
+          "sample_pattern": "居宅介護支援.*記録|居宅介護支援.*契約"
+        },
+        {
+          "id": "3.8.home_fees",
+          "label": "居宅介護支援費",
+          "attribute_examples": "算定、加減算、利用料、請求",
+          "sample_pattern": "居宅介護支援費|居宅介護支援.*費用|居宅介護支援.*報酬"
+        },
+        {
+          "id": "3.8.preventive_office",
+          "label": "介護予防支援事業所",
+          "attribute_examples": "配置、委託、運営、基本方針",
+          "sample_pattern": "介護予防支援"
+        },
+        {
+          "id": "3.8.preventive_plan_rules",
+          "label": "介護予防サービス計画の法定作成基準",
+          "attribute_examples": "作成、評価、会議、同意、記録",
+          "sample_pattern": "介護予防サービス計画|介護予防支援.*計画"
+        }
+      ],
+      "sources": [
+        {
+          "title": "厚生労働省：指定居宅介護支援の基準",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999405&dataType=0&pageNo=1"
+        },
+        {
+          "title": "厚生労働省：指定居宅サービス等の人員・設備・運営基準",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82999404"
+        },
+        {
+          "title": "厚生労働省：介護サービスの種類",
+          "url": "https://www.kaigokensaku.mhlw.go.jp/commentary/service.html"
+        }
+      ],
+      "comparison": "230命題を持つ旧居宅介護支援を一つに残さず、事業所・法定計画・記録契約・報酬という対象へ分ける。",
+      "boundary": "事業所・法定計画・契約記録・報酬を対象として分け、人員や期間は属性にする。汎用アセスメント・計画技法は2、指定権者は1.5。",
+      "sampled_legacy_concepts": [
+        {
+          "id": "provisional.81507354910b3db8",
+          "label": "指定居宅介護支援のケアマネジメント",
+          "legacy_proposition_count": 3
+        },
+        {
+          "id": "provisional.9139a93f06041264",
+          "label": "介護予防支援",
+          "legacy_proposition_count": 5
+        },
+        {
+          "id": "provisional.2083afd19eac0099",
+          "label": "介護予防サービス計画",
+          "legacy_proposition_count": 5
+        }
+      ],
+      "sampled_propositions": [
+        {
+          "id": "2005-15/c2/p2",
+          "proposition": "居宅介護支援事業者は，その記載に配慮して居宅サービス計画を作成するよう努めなければならない。",
+          "legacy_concept": "居宅介護支援",
+          "legacy_attribute": "居宅介護支援の認定情報を踏まえたケアプラン作成義務"
+        },
+        {
+          "id": "2008-21/c1/p1",
+          "proposition": "指定介護予防支援事業者は，介護予防の効果を最大限に発揮するよう，主として筋力向上を目指した介護予防サービス計画を策定しなければならない。",
+          "legacy_concept": "介護予防支援",
+          "legacy_attribute": "介護予防支援の計画策定方針・サービス選択"
+        },
+        {
+          "id": "2005-20/c3/p1",
+          "proposition": "要介護認定が更新された場合には，居宅サービス計画の変更の必要性について検討するため，サービス担当者会議の開催，計画に位置づけられたサービス等の担当者に対する照会等により，専門的な意見を求めることとされている。",
+          "legacy_concept": "居宅介護支援",
+          "legacy_attribute": "計画作成"
+        }
+      ],
+      "sample_comparison": "法定計画作成の基準が旧事業所概念に多く含まれる。事業所・計画・記録契約・報酬へ対象を分ける。"
+    },
+    {
+      "id": "4.1",
+      "label": "加齢・老年症候群",
+      "concepts": [
+        {
+          "id": "4.1.aging",
+          "label": "加齢による身体・心理の変化",
+          "attribute_examples": "予備力、感覚、恒常性、適応",
+          "sample_pattern": "加齢|老化|高齢者の健康|加齢・疾病・病態"
+        },
+        {
+          "id": "4.1.gerontology",
+          "label": "高齢者の疾病・老年症候群の特徴",
+          "attribute_examples": "多病、非典型、生活への影響",
+          "sample_pattern": "老年症候群|非典型|高齢者の疾病"
+        },
+        {
+          "id": "4.1.frailty",
+          "label": "フレイル・サルコペニア",
+          "attribute_examples": "定義、危険因子、評価、予防",
+          "sample_pattern": "フレイル|サルコペニア|ロコモティブ"
+        },
+        {
+          "id": "4.1.disuse",
+          "label": "廃用症候群",
+          "attribute_examples": "原因、機能低下、予防",
+          "sample_pattern": "廃用|生活不活発"
+        },
+        {
+          "id": "4.1.falls",
+          "label": "転倒・転落",
+          "attribute_examples": "危険因子、環境、予防",
+          "sample_pattern": "転倒|転落"
+        },
+        {
+          "id": "4.1.pressure_ulcer",
+          "label": "褥瘡",
+          "attribute_examples": "原因、病態、評価、予防・ケア",
+          "sample_pattern": "褥瘡"
+        },
+        {
+          "id": "4.1.dehydration",
+          "label": "脱水・電解質異常",
+          "attribute_examples": "原因、所見、水分管理",
+          "sample_pattern": "脱水|ナトリウム欠乏|口渇"
+        },
+        {
+          "id": "4.1.malnutrition",
+          "label": "低栄養・栄養障害",
+          "attribute_examples": "原因、病態、栄養不良の兆候",
+          "sample_pattern": "低栄養|栄養障害|ビタミン.*欠乏"
+        },
+        {
+          "id": "4.1.continence",
+          "label": "高齢者の排尿・排便障害",
+          "attribute_examples": "失禁、便秘、原因、排泄機能",
+          "sample_pattern": "尿失禁|便失禁|便秘|尿閉"
+        },
+        {
+          "id": "4.1.sleep",
+          "label": "高齢者の睡眠障害",
+          "attribute_examples": "加齢、睡眠リズム、環境、予防",
+          "sample_pattern": "睡眠障害|睡眠|生活リズム"
+        }
+      ],
+      "sources": [
+        {
+          "title": "厚生労働省：介護予防マニュアル第4版",
+          "url": "https://www.mhlw.go.jp/stf/newpage_25277.html"
+        },
+        {
+          "title": "厚生労働省：高齢者の医薬品適正使用の指針",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00tc3422&dataType=1"
+        }
+      ],
+      "comparison": "老化一般に加え、原因・予防・ケアがまとまる症候群を分ける。脱水と電解質、フレイルとサルコペニアは当面まとめて種類を属性化。",
+      "boundary": "身体の老化・症候群を扱う。認知症・せん妄・うつは4.3、栄養摂取の一般知識は4.5、薬剤が原因であることを問うなら4.4。",
+      "sampled_legacy_concepts": [
+        {
+          "id": "1.1.health",
+          "label": "加齢・疾病・病態",
+          "legacy_proposition_count": 166
+        },
+        {
+          "id": "1.1.geriatric",
+          "label": "高齢者の疾病・老年症候群",
+          "legacy_proposition_count": 22
+        },
+        {
+          "id": "1.1.frailty",
+          "label": "フレイル",
+          "legacy_proposition_count": 8
+        },
+        {
+          "id": "1.1.disuse",
+          "label": "生活不活発病",
+          "legacy_proposition_count": 1
+        },
+        {
+          "id": "1.1.falls",
+          "label": "転倒",
+          "legacy_proposition_count": 8
+        },
+        {
+          "id": "1.1.pressure_ulcer",
+          "label": "褥瘡",
+          "legacy_proposition_count": 31
+        }
+      ],
+      "sampled_propositions": [
+        {
+          "id": "2025-26/c2/p1",
+          "proposition": "体重減少は、身体的フレイルの目安になる。",
+          "legacy_concept": "フレイル",
+          "legacy_attribute": "検査・評価"
+        },
+        {
+          "id": "2025-28/c1/p1",
+          "proposition": "褥瘡は、感染を伴って敗血症の原因となることがある。",
+          "legacy_concept": "褥瘡",
+          "legacy_attribute": "病態・症状"
+        },
+        {
+          "id": "2025-37/c5/p1",
+          "proposition": "手の甲の皮膚をつまみ上げて離したとき、すぐには元に戻らない場合は、脱水も疑う。",
+          "legacy_concept": "脱水",
+          "legacy_attribute": "病態・症状"
+        }
+      ],
+      "sample_comparison": "フレイル、褥瘡、脱水は原因・所見・予防等を持つまとまりとして独立させる。"
+    },
+    {
+      "id": "4.2",
+      "label": "身体疾患・感染症",
+      "concepts": [
+        {
+          "id": "4.2.heart_failure",
+          "label": "心不全",
+          "attribute_examples": "病態、徴候、治療、生活上の注意",
+          "sample_pattern": "心不全"
+        },
+        {
+          "id": "4.2.ischemic_heart",
+          "label": "虚血性心疾患",
+          "attribute_examples": "狭心症・心筋梗塞、症状、治療",
+          "sample_pattern": "狭心症|心筋梗塞"
+        },
+        {
+          "id": "4.2.arrhythmia",
+          "label": "不整脈",
+          "attribute_examples": "種類、脈拍、危険性、治療",
+          "sample_pattern": "不整脈|心房細動|期外収縮|心室細動"
+        },
+        {
+          "id": "4.2.vascular",
+          "label": "高血圧・血管疾患",
+          "attribute_examples": "病態、危険因子、治療",
+          "sample_pattern": "高血圧|動脈硬化|循環器疾患|血栓"
+        },
+        {
+          "id": "4.2.stroke",
+          "label": "脳血管疾患・高次脳機能障害",
+          "attribute_examples": "病態、麻痺・失語、後遺症",
+          "sample_pattern": "脳血管|脳卒中|脳梗塞|高次脳機能|失語|片麻痺"
+        },
+        {
+          "id": "4.2.parkinsons",
+          "label": "パーキンソン病",
+          "attribute_examples": "症状、経過、治療",
+          "sample_pattern": "パーキンソン"
+        },
+        {
+          "id": "4.2.neurological",
+          "label": "神経難病・神経系疾患",
+          "attribute_examples": "ALS、脊髄小脳変性、進行性核上性麻痺、てんかん",
+          "sample_pattern": "ALS|筋萎縮|神経難病|難病|脊髄小脳|進行性核上|てんかん"
+        },
+        {
+          "id": "4.2.respiratory",
+          "label": "呼吸器疾患",
+          "attribute_examples": "COPD、喘息、呼吸不全、治療",
+          "sample_pattern": "COPD|閉塞性肺|喘息|呼吸器疾患|呼吸不全"
+        },
+        {
+          "id": "4.2.metabolic",
+          "label": "糖尿病・代謝性疾患",
+          "attribute_examples": "病態、合併症、治療、低血糖",
+          "sample_pattern": "糖尿病|ケトアシドーシス|メタボリック"
+        },
+        {
+          "id": "4.2.kidney_urinary",
+          "label": "腎・泌尿器疾患",
+          "attribute_examples": "腎不全、前立腺疾患、病態、治療",
+          "sample_pattern": "腎不全|腎機能|前立腺|泌尿器"
+        },
+        {
+          "id": "4.2.liver_digestive",
+          "label": "肝・消化器疾患",
+          "attribute_examples": "肝不全、肝硬変、消化器病態",
+          "sample_pattern": "肝不全|肝硬変|消化器"
+        },
+        {
+          "id": "4.2.cancer",
+          "label": "悪性腫瘍",
+          "attribute_examples": "種類、病態、治療、予後",
+          "sample_pattern": "がん|癌|白血病"
+        },
+        {
+          "id": "4.2.musculoskeletal",
+          "label": "骨・関節疾患",
+          "attribute_examples": "骨粗鬆症、骨折、関節疾患、治療",
+          "sample_pattern": "骨粗鬆|骨折|関節|脊柱|頸髄|脊髄損傷"
+        },
+        {
+          "id": "4.2.infection",
+          "label": "感染症",
+          "attribute_examples": "病原体、感染経路、症状、治療",
+          "sample_pattern": "感染症|肺炎|結核|インフルエンザ|MRSA|ノロ|疥癬|帯状疱疹|肝炎|敗血症|コロナ"
+        },
+        {
+          "id": "4.2.skin",
+          "label": "皮膚疾患",
+          "attribute_examples": "皮膚所見、原因、治療",
+          "sample_pattern": "皮膚疾患"
+        },
+        {
+          "id": "4.2.sensory",
+          "label": "眼・耳の疾患",
+          "attribute_examples": "白内障、緑内障、黄斑変性、難聴",
+          "sample_pattern": "白内障|緑内障|黄斑|難聴|眼疾患"
+        }
+      ],
+      "sources": [
+        {
+          "title": "厚生労働省：研修における高齢者に多い疾患の範囲",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=82aa7996&dataType=0"
+        },
+        {
+          "title": "厚生労働省：介護予防マニュアル第4版",
+          "url": "https://www.mhlw.go.jp/stf/newpage_25277.html"
+        },
+        {
+          "title": "厚生労働省：高齢者の医薬品適正使用の指針",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00tc3422&dataType=1"
+        }
+      ],
+      "comparison": "希少な疾患の1命題だけで概念を増やさず、関連疾患群に整理する。心不全・虚血性心疾患・不整脈など判定対象が独立するものは分ける。疾患名は属性の限定・タグに保持。",
+      "boundary": "疾患固有の病態を扱う。疾患を横断する検査・薬理は4.4、具体的な介助・機器管理は4.6。認知症・精神疾患は4.3。",
+      "sampled_legacy_concepts": [
+        {
+          "id": "1.1.heart_failure",
+          "label": "心不全",
+          "legacy_proposition_count": 11
+        },
+        {
+          "id": "1.1.angina",
+          "label": "狭心症",
+          "legacy_proposition_count": 4
+        },
+        {
+          "id": "1.1.afib",
+          "label": "心房細動",
+          "legacy_proposition_count": 3
+        },
+        {
+          "id": "1.1.cardiovascular",
+          "label": "循環器疾患",
+          "legacy_proposition_count": 6
+        },
+        {
+          "id": "1.1.cerebral_infarction",
+          "label": "脳梗塞",
+          "legacy_proposition_count": 2
+        },
+        {
+          "id": "1.1.parkinsons",
+          "label": "パーキンソン病",
+          "legacy_proposition_count": 16
+        }
+      ],
+      "sampled_propositions": [
+        {
+          "id": "2006-28/c1/p1",
+          "proposition": "体重は，栄養状態が不良な場合であっても，浮腫性疾患（心不全，ネフローゼ，肝硬変）では増加することがある。",
+          "legacy_concept": "心不全",
+          "legacy_attribute": "健康状態 > 疾病・症状・検査・治療・固有の注意点"
+        },
+        {
+          "id": "2010-27/c3/p1",
+          "proposition": "糖尿病の罹患年数が長いと、下肢末梢の知覚障害等を呈する。",
+          "legacy_concept": "糖尿病",
+          "legacy_attribute": "病態・症状"
+        },
+        {
+          "id": "2025-38/c2/p1",
+          "proposition": "パーキンソン病では、転倒しやすいため、運動療法は禁忌である。",
+          "legacy_concept": "パーキンソン病",
+          "legacy_attribute": "治療・ケア"
+        }
+      ],
+      "sample_comparison": "心不全等を例示する体重の命題は複数疾患を横断した評価知識である可能性があり、4.4／4.5との境界を確認する。疾患名を含むだけで4.2に確定しない。"
+    },
+    {
+      "id": "4.3",
+      "label": "認知症・精神疾患",
+      "concepts": [
+        {
+          "id": "4.3.dementia",
+          "label": "認知症の病態・症状",
+          "attribute_examples": "原因疾患、中核症状、BPSD、経過",
+          "sample_pattern": "認知症|アルツハイマー|レビー|前頭側頭"
+        },
+        {
+          "id": "4.3.mci",
+          "label": "軽度認知障害（MCI）",
+          "attribute_examples": "定義、評価、経過",
+          "sample_pattern": "MCI|軽度認知障害"
+        },
+        {
+          "id": "4.3.dementia_care",
+          "label": "認知症に固有のケア",
+          "attribute_examples": "本人理解、環境、BPSDへの対応",
+          "sample_pattern": "認知症.*ケア|認知症.*環境|パーソン・センタード"
+        },
+        {
+          "id": "4.3.delirium",
+          "label": "せん妄",
+          "attribute_examples": "急性経過、原因、鑑別、対応",
+          "sample_pattern": "せん妄"
+        },
+        {
+          "id": "4.3.depression",
+          "label": "うつ病・気分障害",
+          "attribute_examples": "症状、鑑別、治療",
+          "sample_pattern": "うつ|抑うつ|気分障害"
+        },
+        {
+          "id": "4.3.psychosis",
+          "label": "統合失調症・妄想性障害",
+          "attribute_examples": "症状、治療、生活支援",
+          "sample_pattern": "統合失調|妄想性|精神疾患"
+        },
+        {
+          "id": "4.3.addiction",
+          "label": "アルコール関連障害",
+          "attribute_examples": "依存、離脱、支援",
+          "sample_pattern": "アルコール"
+        },
+        {
+          "id": "4.3.neurosis",
+          "label": "神経症・不安関連障害",
+          "attribute_examples": "不安、身体症状、対応",
+          "sample_pattern": "神経症|不安障害"
+        }
+      ],
+      "sources": [
+        {
+          "title": "厚生労働省：認知症の理解",
+          "url": "https://www.mhlw.go.jp/seisaku/19.html"
+        },
+        {
+          "title": "厚生労働省：介護予防マニュアル第4版",
+          "url": "https://www.mhlw.go.jp/stf/newpage_25277.html"
+        },
+        {
+          "title": "厚生労働省：高齢者の医薬品適正使用の指針",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00tc3422&dataType=1"
+        }
+      ],
+      "comparison": "認知症の病態と認知症に固有のケアを分け、MCI・せん妄・うつを独立させる。認知症の原因疾患名は病型属性として保持。",
+      "boundary": "認知症等に固有の病態・ケアを扱う。成年後見・虐待法は5.3、認知症地域事業の制度は1.6、一般的意思決定技法は2.1／5.1。",
+      "sampled_legacy_concepts": [
+        {
+          "id": "1.1.dementia.alzheimer",
+          "label": "アルツハイマー型認知症",
+          "legacy_proposition_count": 1
+        },
+        {
+          "id": "1.1.mci",
+          "label": "軽度認知障害（MCI）",
+          "legacy_proposition_count": 1
+        },
+        {
+          "id": "provisional.b59add959e146078",
+          "label": "認知症の人への個別ケア",
+          "legacy_proposition_count": 1
+        },
+        {
+          "id": "1.1.delirium",
+          "label": "せん妄",
+          "legacy_proposition_count": 17
+        },
+        {
+          "id": "1.1.depression",
+          "label": "うつ病",
+          "legacy_proposition_count": 25
+        },
+        {
+          "id": "1.1.delusional",
+          "label": "妄想性障害",
+          "legacy_proposition_count": 2
+        }
+      ],
+      "sampled_propositions": [
+        {
+          "id": "2012-31/c1/p1",
+          "proposition": "認知症治療薬には、錠剤以外にも経皮吸収型製剤や内服ゼリー剤があり、経口内服が困難な高齢者でも使用が可能である。",
+          "legacy_concept": "認知症",
+          "legacy_attribute": "治療"
+        },
+        {
+          "id": "2025-31/c1/p1",
+          "proposition": "せん妄の発症の誘因の一つとして、入院や施設入所などの環境の変化がある。",
+          "legacy_concept": "せん妄",
+          "legacy_attribute": "原因・危険因子"
+        },
+        {
+          "id": "2025-31/c5/p1",
+          "proposition": "老年期うつ病では、妄想の症状が生じることはない。",
+          "legacy_concept": "うつ病",
+          "legacy_attribute": "病態・症状"
+        }
+      ],
+      "sample_comparison": "せん妄とうつは認知症から分離できる。2012問31-1は薬剤の剤形を判定するため、認知症の題材でも4.4へ移す候補。"
+    },
+    {
+      "id": "4.4",
+      "label": "症状・検査・薬剤",
+      "concepts": [
+        {
+          "id": "4.4.vitals",
+          "label": "バイタルサイン",
+          "attribute_examples": "体温、脈拍、血圧、呼吸、測定",
+          "sample_pattern": "バイタル|血圧|体温|発熱|徐脈|頻呼吸|脈拍"
+        },
+        {
+          "id": "4.4.consciousness",
+          "label": "意識・神経症状の評価",
+          "attribute_examples": "意識状態、JCS、観察",
+          "sample_pattern": "意識状態|JCS|傾眠"
+        },
+        {
+          "id": "4.4.respiratory_signs",
+          "label": "呼吸・循環の徴候",
+          "attribute_examples": "チアノーゼ、酸素飽和度、呼吸型",
+          "sample_pattern": "チアノーゼ|パルスオキシ|酸素飽和|チェーンストークス|下顎呼吸|死前喘鳴"
+        },
+        {
+          "id": "4.4.symptoms",
+          "label": "疾患横断の自覚・他覚症状",
+          "attribute_examples": "痛み、めまい、食欲不振、症状の意味",
+          "sample_pattern": "症状・徴候・検査|食欲不振|めまい|症状・病態"
+        },
+        {
+          "id": "4.4.lab",
+          "label": "臨床検査・検査値",
+          "attribute_examples": "血液・尿検査、画像・生理検査、評価",
+          "sample_pattern": "検査|検査値|クレアチニン|BUN|CRP|血糖|ホルター|身体計測|骨密度"
+        },
+        {
+          "id": "4.4.pharmacology",
+          "label": "薬剤の作用・代謝・排泄",
+          "attribute_examples": "薬効、薬物動態、相互作用",
+          "sample_pattern": "薬剤の作用|薬物|薬理|代謝|排泄"
+        },
+        {
+          "id": "4.4.adverse_effects",
+          "label": "薬剤の副作用・多剤併用",
+          "attribute_examples": "薬剤性症状、ポリファーマシー、適正使用",
+          "sample_pattern": "副作用|薬剤性|多剤|薬疹|薬剤影響"
+        },
+        {
+          "id": "4.4.clinical_reasoning",
+          "label": "診断・医療の根拠",
+          "attribute_examples": "診断、予後、EBM・NBM",
+          "sample_pattern": "診断・治療の基本|予後|EBM|NBM|エビデンス|ナラティブ"
+        }
+      ],
+      "sources": [
+        {
+          "title": "厚生労働省：介護予防マニュアル第4版",
+          "url": "https://www.mhlw.go.jp/stf/newpage_25277.html"
+        },
+        {
+          "title": "厚生労働省：高齢者の医薬品適正使用の指針",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00tc3422&dataType=1"
+        }
+      ],
+      "comparison": "血液検査値や薬剤名ごとに小分類を増やさず、検査・薬物動態・副作用の対象を分ける。",
+      "boundary": "疾患横断の症状・検査・薬剤を扱う。疾患固有の症状は4.2／4.3、服薬の実際の援助は4.6。死亡診断書の交付行為は4.6。",
+      "sampled_legacy_concepts": [
+        {
+          "id": "1.1.hypertension",
+          "label": "高血圧",
+          "legacy_proposition_count": 2
+        },
+        {
+          "id": "1.2.consciousness",
+          "label": "意識状態",
+          "legacy_proposition_count": 1
+        },
+        {
+          "id": "1.2.cheyne_stokes",
+          "label": "チェーンストークス呼吸",
+          "legacy_proposition_count": 2
+        },
+        {
+          "id": "1.1.anorexia",
+          "label": "食欲不振",
+          "legacy_proposition_count": 2
+        },
+        {
+          "id": "1.2.lab.bone_density",
+          "label": "骨密度",
+          "legacy_proposition_count": 1
+        },
+        {
+          "id": "1.2.pharmacology",
+          "label": "薬剤の作用・代謝・排泄",
+          "legacy_proposition_count": 8
+        }
+      ],
+      "sampled_propositions": [
+        {
+          "id": "2009-30/c1/p1",
+          "proposition": "血液の生化学検査は，体重測定が困難な場合の栄養評価の唯一の方法である。",
+          "legacy_concept": "検査・検査値",
+          "legacy_attribute": "栄養状態の客観的評価方法"
+        },
+        {
+          "id": "2009-33/c3/p1",
+          "proposition": "高齢者は腎機能が低下しているため，薬物の代謝や排泄が早くなる。",
+          "legacy_concept": "薬剤の作用・代謝・排泄",
+          "legacy_attribute": "薬物の吸収・代謝・排泄"
+        },
+        {
+          "id": "2009-33/c4/p1",
+          "proposition": "抗うつ薬を服用している場合には，口渇，排尿困難，嚥下障害などの副作用に注意する。",
+          "legacy_concept": "薬剤の副作用",
+          "legacy_attribute": "病態・症状"
+        }
+      ],
+      "sample_comparison": "栄養評価の検査、薬物動態、副作用は相互に別の対象。服薬の援助行為と薬理も区別する。"
+    },
+    {
+      "id": "4.5",
+      "label": "生活機能・栄養・リハビリ",
+      "concepts": [
+        {
+          "id": "4.5.icf",
+          "label": "国際生活機能分類（ICF）",
+          "attribute_examples": "心身機能、活動、参加、環境",
+          "sample_pattern": "ICF|国際生活機能"
+        },
+        {
+          "id": "4.5.adl",
+          "label": "ADL・IADL",
+          "attribute_examples": "定義、動作、機能評価",
+          "sample_pattern": "ADL|IADL|生活機能|日常生活動作"
+        },
+        {
+          "id": "4.5.nutrition",
+          "label": "高齢者の栄養",
+          "attribute_examples": "栄養素、必要量、食事、栄養評価",
+          "sample_pattern": "栄養|摂食"
+        },
+        {
+          "id": "4.5.swallowing",
+          "label": "摂食・嚥下機能",
+          "attribute_examples": "過程、反射、障害、評価・訓練",
+          "sample_pattern": "嚥下|誤嚥|摂食"
+        },
+        {
+          "id": "4.5.oral_function",
+          "label": "口腔機能",
+          "attribute_examples": "咀嚼、唾液、口腔乾燥、オーラルフレイル",
+          "sample_pattern": "口腔機能|口腔乾燥|味覚|オーラルフレイル"
+        },
+        {
+          "id": "4.5.rehab",
+          "label": "リハビリテーション・機能訓練",
+          "attribute_examples": "目的、方法、専門職、運動",
+          "sample_pattern": "リハビリ|機能訓練|運動"
+        },
+        {
+          "id": "4.5.movement",
+          "label": "姿勢・移動・関節機能",
+          "attribute_examples": "拘縮、バランス、動作、ボディメカニクス",
+          "sample_pattern": "拘縮|姿勢|バランス|ボディメカニクス"
+        },
+        {
+          "id": "4.5.assistive_fit",
+          "label": "福祉用具の適合・使用",
+          "attribute_examples": "身体機能との適合、移動補助、使用",
+          "sample_pattern": "福祉用具の適合|移動補助具|福祉用具・住宅設備"
+        }
+      ],
+      "sources": [
+        {
+          "title": "厚生労働省：リハビリ・口腔・栄養の一体的取組",
+          "url": "https://www.mhlw.go.jp/content/12300000/001221656.pdf"
+        },
+        {
+          "title": "厚生労働省：介護予防マニュアル第4版",
+          "url": "https://www.mhlw.go.jp/stf/newpage_25277.html"
+        },
+        {
+          "title": "厚生労働省：高齢者の医薬品適正使用の指針",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00tc3422&dataType=1"
+        }
+      ],
+      "comparison": "ADL・ICF・栄養・嚥下・口腔・リハ・移動・用具適合を対象別に分ける。個別の動作や栄養素は属性で保持。",
+      "boundary": "機能・栄養・リハビリを扱う。低栄養という病態は4.1、食事介助・経管栄養管理は4.6、サービスの通所リハ基準は3.3。",
+      "sampled_legacy_concepts": [
+        {
+          "id": "1.3.icf",
+          "label": "国際生活機能分類（ICF）",
+          "legacy_proposition_count": 2
+        },
+        {
+          "id": "1.1.nutrition",
+          "label": "低栄養・栄養障害",
+          "legacy_proposition_count": 21
+        },
+        {
+          "id": "1.1.aspiration_pneumonia",
+          "label": "誤嚥性肺炎",
+          "legacy_proposition_count": 4
+        },
+        {
+          "id": "1.1.oral_frailty",
+          "label": "オーラルフレイル",
+          "legacy_proposition_count": 2
+        },
+        {
+          "id": "1.1.skeleton",
+          "label": "骨折・運動器疾患",
+          "legacy_proposition_count": 4
+        },
+        {
+          "id": "1.3.contracture",
+          "label": "関節拘縮",
+          "legacy_proposition_count": 1
+        }
+      ],
+      "sampled_propositions": [
+        {
+          "id": "2005-26/c4/p1",
+          "proposition": "パーキンソン病は，徐々に全身の骨格筋が萎縮して，四肢の筋力低下による運動や歩行等の生活機能低下，嚥下障害，言語障害等の症状がみられる。",
+          "legacy_concept": "国際生活機能分類（ICF）",
+          "legacy_attribute": "生活機能 > 心身機能・活動・参加"
+        },
+        {
+          "id": "2011-35/c1/p1",
+          "proposition": "高齢者の食生活指針は、疾病や介護の二次予防を目的に作成されている。",
+          "legacy_concept": "高齢者の栄養",
+          "legacy_attribute": "目的・理念・基本方針"
+        },
+        {
+          "id": "2006-33/c3/p1",
+          "proposition": "嚥下障害等により食事の経口摂取ができない状態では，医療機関への入院が必須である。",
+          "legacy_concept": "摂食・嚥下機能",
+          "legacy_attribute": "健康状態 > 疾病・症状・検査・治療・固有の注意点"
+        }
+      ],
+      "sample_comparison": "2005問26-4は旧ICF概念にいるが、実際はパーキンソン病の症状の比較であり4.2候補。ICFの用語が原命題にあるかを確認し、旧IDに引きずられない。"
+    },
+    {
+      "id": "4.6",
+      "label": "医療・介護の実践",
+      "concepts": [
+        {
+          "id": "4.6.food_care",
+          "label": "食事介助",
+          "attribute_examples": "姿勢、観察、誤嚥予防、本人尊重",
+          "sample_pattern": "食事援助|食事介助|食事支援"
+        },
+        {
+          "id": "4.6.oral_care",
+          "label": "口腔ケア",
+          "attribute_examples": "清掃、義歯、誤嚥予防",
+          "sample_pattern": "口腔ケア"
+        },
+        {
+          "id": "4.6.excretion_care",
+          "label": "排泄援助",
+          "attribute_examples": "排尿排便、カテーテル、ストーマ、自己導尿",
+          "sample_pattern": "排泄援助|カテーテル|ストーマ|自己導尿"
+        },
+        {
+          "id": "4.6.skin_care",
+          "label": "清潔・入浴・皮膚ケア",
+          "attribute_examples": "清拭、入浴、皮膚保護",
+          "sample_pattern": "清潔|入浴援助|皮膚.*ケア"
+        },
+        {
+          "id": "4.6.medication_support",
+          "label": "服薬支援",
+          "attribute_examples": "管理、服用、能力評価、誤飲予防",
+          "sample_pattern": "服薬|食事・服薬|PTP"
+        },
+        {
+          "id": "4.6.enteral",
+          "label": "経管栄養・胃ろう",
+          "attribute_examples": "投与、管理、合併症、ケア",
+          "sample_pattern": "経管栄養|胃ろう|胃瘻"
+        },
+        {
+          "id": "4.6.parenteral",
+          "label": "在宅中心静脈栄養",
+          "attribute_examples": "適応、管理、感染予防",
+          "sample_pattern": "中心静脈栄養"
+        },
+        {
+          "id": "4.6.respiratory_care",
+          "label": "酸素療法・人工呼吸・吸引",
+          "attribute_examples": "在宅酸素、人工呼吸、吸引、ネブライザー",
+          "sample_pattern": "酸素療法|人工呼吸|喀痰吸引|吸引|ネブライザー|口すぼめ呼吸"
+        },
+        {
+          "id": "4.6.dialysis_care",
+          "label": "透析のケア",
+          "attribute_examples": "血液・腹膜透析、管理、食事",
+          "sample_pattern": "透析|腹膜灌流"
+        },
+        {
+          "id": "4.6.emergency",
+          "label": "救命・急変時対応",
+          "attribute_examples": "観察、窒息、一次救命、連絡",
+          "sample_pattern": "安全管理|急変|救命|窒息|緊急時"
+        },
+        {
+          "id": "4.6.infection_control",
+          "label": "感染予防の実践",
+          "attribute_examples": "標準予防策、手洗い、消毒、曝露",
+          "sample_pattern": "感染予防|ワクチン|予防接種"
+        },
+        {
+          "id": "4.6.end_of_life",
+          "label": "終末期・看取りケア",
+          "attribute_examples": "臨死徴候、症状緩和、本人・家族ケア",
+          "sample_pattern": "終末期|看取り|臨死|グリーフ"
+        },
+        {
+          "id": "4.6.acp",
+          "label": "アドバンス・ケア・プランニング（ACP）",
+          "attribute_examples": "意思共有、記録、話し合い、見直し",
+          "sample_pattern": "ACP|アドバンス・ケア|終末期の意思決定"
+        },
+        {
+          "id": "4.6.pain",
+          "label": "疼痛緩和",
+          "attribute_examples": "評価、鎮痛、オピオイド、生活支援",
+          "sample_pattern": "疼痛|オピオイド"
+        },
+        {
+          "id": "4.6.professional_practice",
+          "label": "医療・介護職の行為・役割",
+          "attribute_examples": "医師・看護師・介護職・薬剤師、行為範囲",
+          "sample_pattern": "看護師|介護職員|医師・歯科医師|薬剤師|専門職|医療従事者の免許"
+        },
+        {
+          "id": "4.6.death_certificate",
+          "label": "死亡診断・死体検案",
+          "attribute_examples": "医師の役割、診断、交付",
+          "sample_pattern": "死亡診断書|死体検案"
+        }
+      ],
+      "sources": [
+        {
+          "title": "厚生労働省：介護現場の感染症対策",
+          "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/kaigo_koureisha/taisakumatome_13635.html"
+        },
+        {
+          "title": "厚生労働省：在宅医療・介護連携",
+          "url": "https://zaitakupf.mhlw.go.jp/"
+        },
+        {
+          "title": "厚生労働省：介護予防マニュアル第4版",
+          "url": "https://www.mhlw.go.jp/stf/newpage_25277.html"
+        },
+        {
+          "title": "厚生労働省：高齢者の医薬品適正使用の指針",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00tc3422&dataType=1"
+        }
+      ],
+      "comparison": "経管・中心静脈・呼吸・透析など管理対象が異なるものを分ける。職種名だけの大きな受け皿は作らず行為・権限に限る。",
+      "boundary": "実際の行為・ケア・職種の役割を扱う。サービス固有の配置基準は3、薬理は4.4、家族介護の負担援助は5.2。",
+      "sampled_legacy_concepts": [
+        {
+          "id": "2.4.food",
+          "label": "食事援助",
+          "legacy_proposition_count": 22
+        },
+        {
+          "id": "2.4.oral",
+          "label": "口腔ケア",
+          "legacy_proposition_count": 28
+        },
+        {
+          "id": "2.4.catheter",
+          "label": "膀胱留置カテーテルのケア",
+          "legacy_proposition_count": 6
+        },
+        {
+          "id": "2.4.skin_care",
+          "label": "清潔・入浴援助",
+          "legacy_proposition_count": 3
+        },
+        {
+          "id": "2.4.medication",
+          "label": "服薬支援",
+          "legacy_proposition_count": 30
+        },
+        {
+          "id": "provisional.b13500f3e2376985",
+          "label": "在宅経管栄養",
+          "legacy_proposition_count": 1
+        }
+      ],
+      "sampled_propositions": [
+        {
+          "id": "2010-32/c1/p1",
+          "proposition": "むせるからといって口からの飲食を拒否する人には、経口摂取を中止し、経管栄養にする。",
+          "legacy_concept": "食事援助",
+          "legacy_attribute": "支援原則・倫理"
+        },
+        {
+          "id": "2009-33/c1/p1",
+          "proposition": "複数の薬剤を継続して服用し，薬剤の副作用が生じた場合には，自分が副作用の原因であると思う薬剤をただちに減量する。",
+          "legacy_concept": "服薬支援",
+          "legacy_attribute": "介護・療養上の注意"
+        },
+        {
+          "id": "2012-36/c1/p1",
+          "proposition": "長期療養で気管切開や気管挿管を受けている者では、自力で気道内の分泌物を喀出できない場合も多いので、気道確保のために吸引が必要である。",
+          "legacy_concept": "喀痰吸引の支援",
+          "legacy_attribute": "対象・要件"
+        }
+      ],
+      "sample_comparison": "食事介助・服薬支援・吸引は異なる管理・援助対象として独立させる。"
+    },
+    {
+      "id": "5.1",
+      "label": "個別相談援助・面接技術",
+      "concepts": [
+        {
+          "id": "5.1.principles",
+          "label": "個別相談援助の原則",
+          "attribute_examples": "自己決定、個別化、非審判、受容",
+          "sample_pattern": "個別化|非審判|支援原則|アドボカシー|意思決定|説明と同意"
+        },
+        {
+          "id": "5.1.relationship",
+          "label": "援助関係と専門職の姿勢",
+          "attribute_examples": "信頼、共感、自己覚知、境界",
+          "sample_pattern": "援助関係|共感|自己覚知|個別援助"
+        },
+        {
+          "id": "5.1.intake",
+          "label": "インテーク",
+          "attribute_examples": "主訴、対象確認、契約、初回面接",
+          "sample_pattern": "インテーク"
+        },
+        {
+          "id": "5.1.interview",
+          "label": "面接・コミュニケーション技術",
+          "attribute_examples": "質問、傾聴、観察、非言語、直面化",
+          "sample_pattern": "相談援助|面接|コミュニケーション|質問技法|回想法"
+        },
+        {
+          "id": "5.1.process",
+          "label": "個別援助過程",
+          "attribute_examples": "問題把握、計画、介入、評価、終結",
+          "sample_pattern": "援助過程|相談援助過程"
+        },
+        {
+          "id": "5.1.privacy",
+          "label": "相談援助の守秘・情報倫理",
+          "attribute_examples": "秘密保持、同意、記録、情報共有",
+          "sample_pattern": "守秘|個人情報|情報管理"
+        },
+        {
+          "id": "5.1.difficult_cases",
+          "label": "支援困難事例・アウトリーチ",
+          "attribute_examples": "拒否、多問題、関係形成、訪問",
+          "sample_pattern": "支援困難|アウトリーチ|セルフ・ネグレクト"
+        }
+      ],
+      "sources": [
+        {
+          "title": "厚生労働省：社会福祉士養成の教育内容",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00tc2421&dataType=1&pageNo=1"
+        },
+        {
+          "title": "厚生労働省：福祉・介護の政策体系",
+          "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/index.html"
+        }
+      ],
+      "comparison": "援助原則・関係・インテーク・面接・援助過程・情報倫理・困難事例を分ける。個々の質問形式は面接の属性にする。",
+      "boundary": "個別援助の技法・原則を扱う。ケアマネの職務に固有の原則は2.1、集団・地域援助は5.2、虐待通報の法的要件は5.3。",
+      "sampled_legacy_concepts": [
+        {
+          "id": "2.1.advocacy",
+          "label": "アドボカシー",
+          "legacy_proposition_count": 2
+        },
+        {
+          "id": "2.2.empathy",
+          "label": "面接における共感",
+          "legacy_proposition_count": 4
+        },
+        {
+          "id": "2.2.intake",
+          "label": "インテーク面接",
+          "legacy_proposition_count": 7
+        },
+        {
+          "id": "2.2.process",
+          "label": "援助過程",
+          "legacy_proposition_count": 12
+        },
+        {
+          "id": "2.1.privacy",
+          "label": "個人情報保護・守秘義務",
+          "legacy_proposition_count": 10
+        },
+        {
+          "id": "1.4.self_neglect",
+          "label": "セルフ・ネグレクト",
+          "legacy_proposition_count": 1
+        }
+      ],
+      "sampled_propositions": [
+        {
+          "id": "2010-46/c1/p1",
+          "proposition": "インテーク面接は、利用者と面接者との相談目的のために設定された面接であるため、原則として1回の面接で終わらせる。",
+          "legacy_concept": "インテーク面接",
+          "legacy_attribute": "面接・コミュニケーション"
+        },
+        {
+          "id": "2008-48/c2/p1",
+          "proposition": "「B さんに虐待されているのですか。」と A さんに尋ねた。",
+          "legacy_concept": "面接の質問技法",
+          "legacy_attribute": "面接・コミュニケーション"
+        },
+        {
+          "id": "2008-18/c1/p1",
+          "proposition": "介護支援専門員は，サービス利用者とその世帯のプライバシーに深く関与するので，家族や友人と同様の立場で活動しなければならない。",
+          "legacy_concept": "援助関係",
+          "legacy_attribute": "支援原則・倫理"
+        }
+      ],
+      "sample_comparison": "インテーク、面接の質問、援助関係を分ける。ケアマネの職務の例は2.1との境界を確認する。"
+    },
+    {
+      "id": "5.2",
+      "label": "家族・集団・地域援助",
+      "concepts": [
+        {
+          "id": "5.2.family",
+          "label": "家族介護者への支援",
+          "attribute_examples": "負担、意思、関係調整、レスパイト",
+          "sample_pattern": "家族支援|家族介護|ヤングケアラー|養護者支援"
+        },
+        {
+          "id": "5.2.family_issues",
+          "label": "家族の生活課題",
+          "attribute_examples": "老々介護、8050、ダブルケア、介護離職",
+          "sample_pattern": "老々介護|8050|ダブルケア|介護離職"
+        },
+        {
+          "id": "5.2.group",
+          "label": "集団援助",
+          "attribute_examples": "目的、対象、過程、グループ相互作用",
+          "sample_pattern": "集団援助|グループワーク"
+        },
+        {
+          "id": "5.2.community",
+          "label": "地域援助・コミュニティワーク",
+          "attribute_examples": "地域課題、住民参加、資源開発",
+          "sample_pattern": "地域援助|社会資源開発|地域の見守り"
+        },
+        {
+          "id": "5.2.networks",
+          "label": "地域の支援ネットワーク",
+          "attribute_examples": "機関連携、住民、ボランティア、協働",
+          "sample_pattern": "ネットワーク|地域.*連携|地域.*見守り"
+        }
+      ],
+      "sources": [
+        {
+          "title": "厚生労働省：社会福祉士養成の教育内容",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00tc2421&dataType=1&pageNo=1"
+        },
+        {
+          "title": "厚生労働省：福祉・介護の政策体系",
+          "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/index.html"
+        }
+      ],
+      "comparison": "家族への援助と家族が抱える課題を分ける。集団・地域の働きかけとネットワークも対象別に整理する。",
+      "boundary": "家族・集団・地域への働きかけを扱う。地域支援事業の法定実施は1.6、利用可能な資源自体の知識は5.5。",
+      "sampled_legacy_concepts": [
+        {
+          "id": "2.4.family_support",
+          "label": "家族支援",
+          "legacy_proposition_count": 45
+        },
+        {
+          "id": "provisional.15fb23d62f408be2",
+          "label": "8050問題",
+          "legacy_proposition_count": 1
+        },
+        {
+          "id": "2.2.group",
+          "label": "集団援助",
+          "legacy_proposition_count": 45
+        },
+        {
+          "id": "2.2.community",
+          "label": "地域援助",
+          "legacy_proposition_count": 53
+        },
+        {
+          "id": "provisional.087641471790a09c",
+          "label": "地域の見守り体制",
+          "legacy_proposition_count": 1
+        }
+      ],
+      "sampled_propositions": [
+        {
+          "id": "2005-22/c3/p1",
+          "proposition": "A さんの希望が最優先されるべきであるので，C さんの考えにかかわらず，これまでと同様に C さんが介護を継続することを前提として，居宅サービス計画を作成する。",
+          "legacy_concept": "家族支援",
+          "legacy_attribute": "アセスメント"
+        },
+        {
+          "id": "2009-48/c1/p1",
+          "proposition": "集団援助技術とは，ワーカーが集団におけるメンバーの相互関係のダイナミックな動きを意図的に活用するものである。",
+          "legacy_concept": "集団援助",
+          "legacy_attribute": "定義・仕組み"
+        },
+        {
+          "id": "2006-19/c1/p1",
+          "proposition": "アセスメントを踏まえて居宅サービス計画原案を検討したが，必要と考えられるインフォーマルなサービスが地域になかった。このため，社会福祉協議会や老人クラブに対して，サービスの必要性と開発を働きかけた。",
+          "legacy_concept": "地域援助",
+          "legacy_attribute": "実践方法"
+        }
+      ],
+      "sample_comparison": "家族負担、グループの相互作用、地域の資源開発をそれぞれ独立させる。個人に既存サービスを調整する技法は2.3。"
+    },
+    {
+      "id": "5.3",
+      "label": "権利擁護・虐待防止",
+      "concepts": [
+        {
+          "id": "5.3.legal_guardianship",
+          "label": "法定後見（後見・保佐・補助）",
+          "attribute_examples": "対象、類型、代理・同意・取消権",
+          "sample_pattern": "成年後見|被保佐|保佐人|補助人|後見人"
+        },
+        {
+          "id": "5.3.voluntary_guardianship",
+          "label": "任意後見",
+          "attribute_examples": "契約、開始、監督、権限",
+          "sample_pattern": "任意後見"
+        },
+        {
+          "id": "5.3.guardianship_procedure",
+          "label": "成年後見の申立て・監督",
+          "attribute_examples": "請求者、家裁、選任、報告",
+          "sample_pattern": "後見.*審判|後見.*請求|後見.*申立|後見.*監督"
+        },
+        {
+          "id": "5.3.rights_support",
+          "label": "日常生活自立支援事業",
+          "attribute_examples": "対象、契約、援助内容、実施主体",
+          "sample_pattern": "日常生活自立支援|地域福祉権利擁護"
+        },
+        {
+          "id": "5.3.abuse_definition",
+          "label": "高齢者虐待の類型・発見",
+          "attribute_examples": "身体・心理・経済、放棄、発見",
+          "sample_pattern": "高齢者虐待|虐待.*類型"
+        },
+        {
+          "id": "5.3.abuse_response",
+          "label": "高齢者虐待の通報・対応",
+          "attribute_examples": "通報、市町村調査、保護、養護者支援",
+          "sample_pattern": "通報義務|虐待.*権限|虐待.*対応|養介護施設"
+        },
+        {
+          "id": "5.3.restraint",
+          "label": "身体拘束の防止",
+          "attribute_examples": "例外要件、代替、記録",
+          "sample_pattern": "身体拘束|拘束.*防止"
+        },
+        {
+          "id": "5.3.rights_policy",
+          "label": "権利擁護の推進制度",
+          "attribute_examples": "成年後見利用促進、認知症基本法",
+          "sample_pattern": "成年後見制度利用促進|認知症基本法"
+        }
+      ],
+      "sources": [
+        {
+          "title": "法務省：成年後見制度Q&A",
+          "url": "https://www.moj.go.jp/MINJI/a02.html"
+        },
+        {
+          "title": "厚生労働省：高齢者虐待対応マニュアル",
+          "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000200478_00004.html"
+        },
+        {
+          "title": "厚生労働省：日常生活自立支援事業",
+          "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/seikatsuhogo/chiiki-fukusi-yougo/index.html"
+        },
+        {
+          "title": "厚生労働省：社会福祉士養成の教育内容",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00tc2421&dataType=1&pageNo=1"
+        },
+        {
+          "title": "厚生労働省：福祉・介護の政策体系",
+          "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/index.html"
+        }
+      ],
+      "comparison": "法定後見・任意後見・手続・日常生活自立支援・虐待の類型と対応を分ける。後見・保佐・補助や虐待類型は属性に保持。",
+      "boundary": "権利を支える法制度と虐待対応を扱う。一般の援助倫理は5.1、地域支援事業としての後見利用支援は1.6。法定後見の3類型は属性で比較。",
+      "sampled_legacy_concepts": [
+        {
+          "id": "4.1.community_policy.guardianship_support",
+          "label": "成年後見制度利用支援事業",
+          "legacy_proposition_count": 2
+        },
+        {
+          "id": "4.2.daily_life_support",
+          "label": "日常生活自立支援事業",
+          "legacy_proposition_count": 20
+        },
+        {
+          "id": "4.2.abuse",
+          "label": "高齢者虐待防止制度",
+          "legacy_proposition_count": 68
+        },
+        {
+          "id": "provisional.0e96209bc9742a0f",
+          "label": "虐待対応の市町村権限",
+          "legacy_proposition_count": 1
+        },
+        {
+          "id": "2.4.restraint",
+          "label": "身体拘束の防止",
+          "legacy_proposition_count": 6
+        },
+        {
+          "id": "4.2.dementia_basic_act",
+          "label": "認知症基本法",
+          "legacy_proposition_count": 15
+        }
+      ],
+      "sampled_propositions": [
+        {
+          "id": "2009-58/c1/p1",
+          "proposition": "後見開始等の審判は，本人も請求することができる。",
+          "legacy_concept": "成年後見制度",
+          "legacy_attribute": "申請・手続"
+        },
+        {
+          "id": "2007-25/c1/p1",
+          "proposition": "虐待を受けている高齢者を発見した場合は，通報義務があるため，直ちに警察と地域包括支援センターの職員へ通報した。",
+          "legacy_concept": "高齢者虐待防止制度",
+          "legacy_attribute": "高齢者虐待に関する通報先と義務"
+        },
+        {
+          "id": "2005-60/c1/p1",
+          "proposition": "判断能力の不十分な者が，事業を実地している社会福祉協議会等と契約を結び，生活支援員によるサービスを受ける。",
+          "legacy_concept": "日常生活自立支援事業",
+          "legacy_attribute": "目的・対象・主体・手続・給付"
+        }
+      ],
+      "sample_comparison": "後見開始の請求は後見手続、虐待発見時の通報は虐待対応、契約による生活支援は日常生活自立支援。"
+    },
+    {
+      "id": "5.4",
+      "label": "福祉・生活保障制度",
+      "concepts": [
+        {
+          "id": "5.4.social_insurance",
+          "label": "社会保障・社会保険の基本",
+          "attribute_examples": "仕組み、保険者、社会扶助との区別",
+          "sample_pattern": "社会保険一般|社会保険方式|社会保障"
+        },
+        {
+          "id": "5.4.public_assistance",
+          "label": "生活保護制度",
+          "attribute_examples": "原則、対象、扶助、申請・実施",
+          "sample_pattern": "生活保護|介護扶助"
+        },
+        {
+          "id": "5.4.poverty",
+          "label": "生活困窮者自立支援制度",
+          "attribute_examples": "対象、相談、給付・事業",
+          "sample_pattern": "生活困窮"
+        },
+        {
+          "id": "5.4.elder_welfare",
+          "label": "老人福祉法・措置制度",
+          "attribute_examples": "対象、事業、措置、実施主体",
+          "sample_pattern": "老人福祉制度|老人福祉法"
+        },
+        {
+          "id": "5.4.disability",
+          "label": "障害福祉制度",
+          "attribute_examples": "対象、障害福祉サービス、支給決定",
+          "sample_pattern": "障害福祉|障害者総合支援|手帳"
+        },
+        {
+          "id": "5.4.medical_insurance",
+          "label": "医療保険・後期高齢者医療制度",
+          "attribute_examples": "対象、保険者、給付・負担",
+          "sample_pattern": "後期高齢者医療|医療保険制度"
+        },
+        {
+          "id": "5.4.pension_employment",
+          "label": "年金・介護と就労の両立制度",
+          "attribute_examples": "年金、介護休業、就労支援",
+          "sample_pattern": "年金保険|両立支援|介護休業"
+        },
+        {
+          "id": "5.4.health_policy",
+          "label": "保健・医療関連制度",
+          "attribute_examples": "健康増進、難病・公費助成、副作用救済",
+          "sample_pattern": "健康日本|公的助成|副作用被害救済|感染症.*法的|看取り.*法制度"
+        },
+        {
+          "id": "5.4.community_welfare",
+          "label": "地域福祉・地域共生の制度",
+          "attribute_examples": "社会福祉法、地域福祉計画、重層支援",
+          "sample_pattern": "地域福祉|地域共生|その他の法律・制度"
+        }
+      ],
+      "sources": [
+        {
+          "title": "厚生労働省：生活保護制度",
+          "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/seikatsuhogo/seikatuhogo/index.html"
+        },
+        {
+          "title": "厚生労働省：社会福祉士養成の教育内容",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00tc2421&dataType=1&pageNo=1"
+        },
+        {
+          "title": "厚生労働省：福祉・介護の政策体系",
+          "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/index.html"
+        }
+      ],
+      "comparison": "異なる根拠制度を概念にする。扶助種類・給付・申請・実施主体は属性。年金・両立支援は小さい母数を踏まえ当面同群。",
+      "boundary": "介護保険以外の社会保障制度を扱う。医療保険との給付優先は1.4、成年後見・虐待法は5.3。生活保護法による指定はここ。",
+      "sampled_legacy_concepts": [
+        {
+          "id": "4.0.social_insurance",
+          "label": "社会保険一般",
+          "legacy_proposition_count": 13
+        },
+        {
+          "id": "4.2.public_assistance",
+          "label": "生活保護制度",
+          "legacy_proposition_count": 76
+        },
+        {
+          "id": "4.2.poverty",
+          "label": "生活困窮者自立支援制度",
+          "legacy_proposition_count": 10
+        },
+        {
+          "id": "4.2.elder_welfare",
+          "label": "老人福祉制度",
+          "legacy_proposition_count": 10
+        },
+        {
+          "id": "4.2.disability.certificate",
+          "label": "障害者保健福祉手帳",
+          "legacy_proposition_count": 1
+        },
+        {
+          "id": "4.2.medical.late",
+          "label": "後期高齢者医療制度",
+          "legacy_proposition_count": 21
+        }
+      ],
+      "sampled_propositions": [
+        {
+          "id": "2025-01/c1/p1",
+          "proposition": "営利企業が保険者となる。",
+          "legacy_concept": "社会保険一般",
+          "legacy_attribute": "役割・権限・責務"
+        },
+        {
+          "id": "2009-59/c1/p1",
+          "proposition": "介護保険の被保険者である生活保護受給者が介護扶助を申請する場合には，要介護状態等の審査判定は福祉事務所が自ら行う。",
+          "legacy_concept": "生活保護制度",
+          "legacy_attribute": "申請・手続"
+        },
+        {
+          "id": "2011-38/c3/p1",
+          "proposition": "若年性認知症の者は、精神障害者保健福祉手帳の取得や障害基礎年金等の受給はできない。",
+          "legacy_concept": "障害福祉制度",
+          "legacy_attribute": "若年性認知症に関連する障害者手帳・障害年金の利用可否"
+        }
+      ],
+      "sample_comparison": "保険方式、介護扶助、障害者手帳等は根拠制度が異なる。介護保険との優先関係自体を問う命題は1.4へ。"
+    },
+    {
+      "id": "5.5",
+      "label": "生活環境・住まい・地域資源",
+      "concepts": [
+        {
+          "id": "5.5.population",
+          "label": "高齢者の人口・世帯・生活背景",
+          "attribute_examples": "統計、独居、世帯、社会経済状況",
+          "sample_pattern": "人口|世帯|生活背景|限界集落"
+        },
+        {
+          "id": "5.5.housing",
+          "label": "高齢者向け住まい",
+          "attribute_examples": "有料老人ホーム、サ高住、養護・軽費、契約",
+          "sample_pattern": "高齢者の住まい|有料老人ホーム|サービス付き|養護老人|軽費老人"
+        },
+        {
+          "id": "5.5.home_environment",
+          "label": "住環境の調整",
+          "attribute_examples": "バリアフリー、住宅設備、安全な生活",
+          "sample_pattern": "住環境|住環境整備"
+        },
+        {
+          "id": "5.5.informal",
+          "label": "インフォーマル資源",
+          "attribute_examples": "住民、家族、ボランティア、本人の資源",
+          "sample_pattern": "インフォーマル|物的・地域資源"
+        },
+        {
+          "id": "5.5.community_services",
+          "label": "介護保険外の生活支援資源",
+          "attribute_examples": "配食、見守り、地域サービス",
+          "sample_pattern": "配食|支援資源|認知症カフェ"
+        },
+        {
+          "id": "5.5.support_agencies",
+          "label": "相談・医療・福祉の地域機関",
+          "attribute_examples": "窓口、医療機関、支援機関、紹介",
+          "sample_pattern": "支援機関|医療機関|救急相談|支援コーディネーター|医療センター"
+        },
+        {
+          "id": "5.5.disaster",
+          "label": "災害時の地域生活支援",
+          "attribute_examples": "避難、福祉避難所、要配慮者、生活継続",
+          "sample_pattern": "災害|福祉避難所"
+        }
+      ],
+      "sources": [
+        {
+          "title": "厚生労働省：高齢者向け住まい",
+          "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/shougaishahukushi/gyakutaiboushi/index_00003.html"
+        },
+        {
+          "title": "厚生労働省：社会福祉士養成の教育内容",
+          "url": "https://www.mhlw.go.jp/web/t_doc?dataId=00tc2421&dataType=1&pageNo=1"
+        },
+        {
+          "title": "厚生労働省：福祉・介護の政策体系",
+          "url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/index.html"
+        }
+      ],
+      "comparison": "人口生活背景・住まい・住環境・非制度資源・生活支援・窓口・災害資源を分ける。住まい種別・機関種別は属性に保持。",
+      "boundary": "生活背景・住まい・資源の知識を扱う。資源を選んで調整する技法は2.3／5.2、特定施設の介護サービス基準は3.6。",
+      "sampled_legacy_concepts": [
+        {
+          "id": "1.4.demographics",
+          "label": "人口・世帯統計",
+          "legacy_proposition_count": 8
+        },
+        {
+          "id": "3.2",
+          "label": "高齢者の住まい",
+          "legacy_proposition_count": 6
+        },
+        {
+          "id": "2.4.home_environment",
+          "label": "住環境の調整",
+          "legacy_proposition_count": 8
+        },
+        {
+          "id": "3.5.informal",
+          "label": "インフォーマルサービス",
+          "legacy_proposition_count": 2
+        },
+        {
+          "id": "3.5.meal_delivery",
+          "label": "配食サービス",
+          "legacy_proposition_count": 2
+        },
+        {
+          "id": "provisional.b30ba1afb4fef86d",
+          "label": "医療機関",
+          "legacy_proposition_count": 1
+        }
+      ],
+      "sampled_propositions": [
+        {
+          "id": "2023-01/c1/p1",
+          "proposition": "2025（令和7）年には、いわゆる団塊の世代が85歳に到達する。",
+          "legacy_concept": "人口・世帯統計",
+          "legacy_attribute": "高齢人口"
+        },
+        {
+          "id": "2006-53/c4/p1",
+          "proposition": "特定施設入居者生活介護の指定を受けている施設には，要介護又は要支援認定を受けている場合に限り入居できる。",
+          "legacy_concept": "高齢者の住まい",
+          "legacy_attribute": "特定施設入居者生活介護の指定を受けた住まいへの入居要件"
+        },
+        {
+          "id": "2008-58/c2/p1",
+          "proposition": "要介護者の別居中の子どもや親戚，近隣等の資源は，介護支援専門員が活用すべきインフォーマルサポートに含まれない。",
+          "legacy_concept": "インフォーマルサービス",
+          "legacy_attribute": "別居親族・近隣がインフォーマル資源に含まれるか"
+        }
+      ],
+      "sample_comparison": "人口と非制度資源を扱える。一方2006問53-4は特定施設の指定を受ける住まいの入居対象の知識で、5.5／3.6の境界を確認する。"
+    }
+  ]
+}
