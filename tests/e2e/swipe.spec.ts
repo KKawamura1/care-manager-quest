@@ -79,6 +79,54 @@ test('short gesture does not answer; arrow keys and second swipe advance',async(
   expect(await ledger(page)).toHaveLength(1);
 });
 
+for (const outcome of ['correct', 'incorrect', 'unknown'] as const) {
+  test(`upward feedback gestures do not advance after ${outcome} answers`, async ({page}) => {
+    await page.goto('/'); await start(page);
+    const correct = await currentTruth(page);
+    const answer = outcome === 'unknown' ? '↑ わからない' : (outcome === 'correct' ? correct : !correct) ? '○と答える' : '×と答える';
+    await page.getByRole('button', {name: answer, exact: true}).click();
+    const firstMeta = await page.locator('.question-meta').textContent();
+    const events = await ledger(page);
+    await expect(page.locator('.swipe-surface')).toHaveCSS('touch-action', 'pan-y pinch-zoom');
+    await expect(page.locator('.swipe-card')).toHaveCSS('touch-action', 'pan-y pinch-zoom');
+    await drag(page, 0, -90, true);
+    await expect(page.locator('.question-meta')).toHaveText(firstMeta!);
+    await expect(page.locator('#swipe-feedback')).toBeVisible();
+    expect(await ledger(page)).toEqual(events);
+    await page.getByRole('button', {name: '次のカードへ'}).click();
+    await expect(page.locator('.question-meta')).not.toHaveText(firstMeta!);
+    await expect(page.locator('.swipe-surface')).toHaveCSS('touch-action', 'none');
+  });
+
+  test(`native upward feedback swipe scrolls after ${outcome} answers`, async ({page, browserName}) => {
+    test.skip(browserName !== 'chromium', 'CDP touch events require chromium');
+    await page.goto('/'); await start(page);
+    const correct = await currentTruth(page);
+    const answer = outcome === 'unknown' ? '↑ わからない' : (outcome === 'correct' ? correct : !correct) ? '○と答える' : '×と答える';
+    await page.getByRole('button', {name: answer, exact: true}).click();
+    const feedback = page.locator('#swipe-feedback');
+    await expect(feedback).toBeVisible();
+    await page.evaluate(async () => {
+      await new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve())));
+      document.getElementById('swipe-feedback')!.scrollIntoView({block: 'center', behavior: 'instant'});
+    });
+    const firstMeta = await page.locator('.question-meta').textContent();
+    const events = await ledger(page);
+    const rect = (await feedback.boundingBox())!, x = rect.x + rect.width / 2, y = rect.y + rect.height / 2;
+    const before = await page.evaluate(() => window.scrollY);
+    const client = await page.context().newCDPSession(page);
+    await client.send('Input.dispatchTouchEvent', {type: 'touchStart', touchPoints: [{x, y}]});
+    for (let dy = 15; dy <= 90; dy += 15) {
+      await client.send('Input.dispatchTouchEvent', {type: 'touchMove', touchPoints: [{x, y: y - dy}]});
+      await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => resolve())));
+    }
+    await client.send('Input.dispatchTouchEvent', {type: 'touchEnd', touchPoints: []});
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(before);
+    await expect(page.locator('.question-meta')).toHaveText(firstMeta!);
+    expect(await ledger(page)).toEqual(events);
+  });
+}
+
 test('broken unified history cannot be silently overwritten',async({page})=>{
   await page.addInitScript(key=>localStorage.setItem(key,'{broken'),key);
   await page.goto('/');

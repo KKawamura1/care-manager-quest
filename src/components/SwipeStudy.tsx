@@ -106,7 +106,7 @@ export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAn
     const horizontal = Math.abs(dx) >= 60 && Math.abs(dx) > Math.abs(dy) * 1.4;
     const upward = dy <= -60 && Math.abs(dy) > Math.abs(dx) * 1.4;
     if (!horizontal && !upward) return;
-    if (g.phase === 'feedback') { if (result) next(); }
+    if (g.phase === 'feedback') { if (result && horizontal) next(); }
     else if (!result) submit(upward ? null : dx > 0);
   };
   const setup = <div className="swipe-home-controls">
@@ -121,7 +121,7 @@ export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAn
         {!available.length && !card && reviewed > 0 && <button className="secondary" disabled={blocked} onClick={practice}>解いたカードを再練習（XPなし）</button>}
          {!available.length && !card && <p role="status">今の条件で出せるカードはありません。{nextDue !== undefined && <>次の出題：{new Date(nextDue).toLocaleString('ja-JP')}</>} 年度・分野を変えると学習を続けられます。</p>}
       </div>
-      <details className="swipe-home-detail"><summary>使い方</summary><p>右で○、左で×、上で「わからない」。解説を読んだら、もう一度スワイプで次へ。</p>
+      <details className="swipe-home-detail"><summary>使い方</summary><p>右で○、左で×、上で「わからない」。解答後は上下にスクロールして解説を読めます。次へ進むには左右スワイプか「次のカードへ」ボタンを使ってください。</p>
         <p>正誤評価とXPはカードごとに日本時間で1日最初の回答だけを採用します。要復習度は直近5学習日の初回回答と経過日数から計算します。</p>
         <p>元の設問文脈を保ち、試験当時の正答を使います。現在の法律と一致するかは未確認です。独自解説の登録がないカードでは、判定根拠のみ表示します。</p>
         <p>真偽を確定できない選択肢は出題しません（除外記録 {swipeCatalog.excluded.length}件）。</p>
@@ -134,7 +134,7 @@ export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAn
       <div className="question-meta"><span>{card.year}年度 問{card.number}・選択肢{card.choiceId}</span></div>
       <p className="swipe-topic">{card.topicIds.map(id => swipeConcepts.find(c => c.id === id)?.label).join(' / ') || '分類待ち'}</p>
       <div className="swipe-context"><b>元の設問</b><p>{card.stem}</p></div>
-      <div className="swipe-surface" onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={() => { gesture.current = undefined; setDrag({ x: 0, y: 0 }); }} onLostPointerCapture={() => { gesture.current = undefined; setDrag({ x: 0, y: 0 }); }}
+      <div className={`swipe-surface${result ? ' swipe-surface-feedback' : ''}`} onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={() => { gesture.current = undefined; setDrag({ x: 0, y: 0 }); }} onLostPointerCapture={() => { gesture.current = undefined; setDrag({ x: 0, y: 0 }); }}
         onKeyDown={e => { if (['ArrowRight','ArrowLeft','ArrowUp'].includes(e.key)) { e.preventDefault(); if (e.repeat) return; if (result) next(); else submit(e.key === 'ArrowUp' ? null : e.key === 'ArrowRight'); } }}>
       <div ref={cardRef} className={`swipe-card ${result ? result.correct ? 'swipe-correct' : 'swipe-wrong' : ''}`} tabIndex={0} role="group" aria-label="○×カード"
         style={{ transform: `translate(${drag.x}px, ${drag.y}px) rotate(${drag.x / 20}deg)` }}>
