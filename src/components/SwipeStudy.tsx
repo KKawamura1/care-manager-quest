@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState, type PointerEvent } from 'react';
+import { useEffect, useMemo, useRef, useState, type CSSProperties, type PointerEvent } from 'react';
 import { createPortal } from 'react-dom';
 import { availableYears, questionById } from '../data/provider';
 import { swipeCards, swipeCardById, swipeConcepts, swipeCatalog } from '../data/swipe-provider';
@@ -29,6 +29,8 @@ export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAn
   const [card, setCard] = useState<SwipeCard>();
   const [result, setResult] = useState<{ answer: boolean | null; correct: boolean; xp: number }>();
   const [drag, setDrag] = useState({ x: 0, y: 0 });
+  // A fresh deal also plays when practicing the same card again.
+  const [deal, setDeal] = useState(0);
   const [original, setOriginal] = useState(false);
   const gesture = useRef<{ x: number; y: number; id: number; phase: 'answer' | 'feedback' } | undefined>(undefined);
   const locked = useRef(false);
@@ -60,6 +62,7 @@ export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAn
   };
   const next = () => {
     if (!result || !locked.current) return;
+    setDeal(n => n + 1);
     locked.current = false; setResult(undefined); setOriginal(false); setDrag({ x: 0, y: 0 }); setNow(Date.now());
     // Pick from the latest review state: no artificial 20-card limit or session result.
     setCard(reviewQueue(candidates, state, Date.now())[0]);
@@ -71,12 +74,14 @@ export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAn
     const alreadyStudied = candidates.filter(candidate => progressFor(state, candidate));
     if (!alreadyStudied.length) return;
     const nextCard = alreadyStudied[Math.floor(Math.random() * alreadyStudied.length)];
+    setDeal(n => n + 1);
     locked.current = false;
     setCard(nextCard); setResult(undefined); setOriginal(false);
     onStart();
   };
   const retry = () => {
     if (!result) return;
+    setDeal(n => n + 1);
     locked.current = false;
     setResult(undefined); setOriginal(false); setDrag({x:0,y:0});
     requestAnimationFrame(() => cardRef.current?.focus({preventScroll:true}));
@@ -86,6 +91,7 @@ export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAn
     if (blocked) return;
     const nextCard = reviewQueue(candidates, state, Date.now())[0];
     if (!nextCard) return;
+    setDeal(n => n + 1);
     locked.current = false; setCard(nextCard); setResult(undefined); setOriginal(false);
     onStart();
   };
@@ -110,6 +116,7 @@ export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAn
     else if (!result) submit(upward ? null : dx > 0);
   };
   const setup = <div className="swipe-home-controls">
+    <p className="mission-eyebrow" aria-hidden="true">01 / QUICK STUDY</p>
     <h2>○×学習</h2>
       <div className="swipe-settings">
         <label>年度<select aria-label="○×の年度" value={year} onChange={e => { setYear(e.target.value === 'all' ? 'all' : Number(e.target.value)); setCard(undefined); setResult(undefined); locked.current = false; }}>
@@ -136,12 +143,17 @@ export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAn
       <div className="swipe-context"><b>元の設問</b><p>{card.stem}</p></div>
       <div className={`swipe-surface${result ? ' swipe-surface-feedback' : ''}`} onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={() => { gesture.current = undefined; setDrag({ x: 0, y: 0 }); }} onLostPointerCapture={() => { gesture.current = undefined; setDrag({ x: 0, y: 0 }); }}
         onKeyDown={e => { if (['ArrowRight','ArrowLeft','ArrowUp'].includes(e.key)) { e.preventDefault(); if (e.repeat) return; if (result) next(); else submit(e.key === 'ArrowUp' ? null : e.key === 'ArrowRight'); } }}>
-      <div ref={cardRef} className={`swipe-card ${result ? result.correct ? 'swipe-correct' : 'swipe-wrong' : ''}`} tabIndex={0} role="group" aria-label="○×カード"
+      <div className="swipe-card-deal" key={`${card.id}:${deal}`}>
+      <div ref={cardRef} className={`swipe-card ${drag.x || drag.y ? 'is-dragging' : ''} ${result ? result.correct ? 'swipe-correct' : 'swipe-wrong' : ''}`} tabIndex={0} role="group" aria-label="○×カード"
+        data-intent={drag.y < 0 ? 'unknown' : drag.x > 0 ? 'yes' : drag.x < 0 ? 'no' : undefined}
         style={{ transform: `translate(${drag.x}px, ${drag.y}px) rotate(${drag.x / 20}deg)` }}>
+        <span className="card-eyebrow" aria-hidden="true">TRUE / FALSE</span>
         <p>{card.text}</p>
+        {result && <span className={`card-verdict ${result.correct ? 'mint' : 'coral'}`} aria-hidden="true">{result.correct ? '✓' : '×'}</span>}
         {(drag.x !== 0 || drag.y !== 0) && <span className={`swipe-stamp ${drag.x > 0 ? 'mint' : 'coral'}`} aria-hidden="true">{drag.y < 0 ? '？' : drag.x > 0 ? '○' : '×'}</span>}
       </div>
-      {result && <span key={card.id} className={`swipe-effect ${result.correct ? 'correct' : 'wrong'}`} aria-hidden="true">{result.correct ? '○' : '×'}</span>}
+      </div>
+      {result && <div key={`${card.id}:${deal}:result`} className={`swipe-celebration ${result.correct ? 'correct' : 'wrong'}`} aria-hidden="true"><span className={`swipe-effect ${result.correct ? 'correct' : 'wrong'}`}>{result.correct ? '○' : '×'}</span>{result.correct && Array.from({length:8}, (_,i) => <i key={i} style={{'--angle':`${i * 45}deg`} as CSSProperties}/>)}</div>}
       {!result ? <><div className="swipe-actions"><button className="secondary swipe-no" aria-label="×と答える" disabled={blocked} onClick={() => submit(false)}>← ×</button><button className="primary swipe-yes" aria-label="○と答える" disabled={blocked} onClick={() => submit(true)}>○ →</button></div><button className="secondary" onClick={() => submit(null)} disabled={blocked}>↑ わからない</button></> : <>
         <div id="swipe-feedback" className={`feedback ${result.correct ? 'success' : 'miss'}`} role="status">
           <h2>{result.correct ? '正解！' : '不正解'} <small>+{result.xp} XP</small></h2><p className="swipe-verdict">正答：<b>{card.truth ? '○' : '×'}</b> ／ あなた：{result.answer === null ? 'わからない' : result.answer ? '○' : '×'}</p>
