@@ -2,6 +2,8 @@
 
 このディレクトリはIssue [#32](https://github.com/KKawamura1/care-manager-quest/issues/32) の仮説分類データです。2005〜2025年度の全問題・全選択肢を、原文に結び付いた命題単位で整理しました。`hypothesis-v1.0` はレビュー用の提案であり、確定済みの分類体系や正誤判定ではありません。
 
+**移行先の分類設計（5大分類・28中分類）:** [TARGET_TAXONOMY_5X28.md](TARGET_TAXONOMY_5X28.md)。ここに記載する分類は今後の移行目標であり、現在の命題データ・アプリは未移行です。
+
 個別レビューの変更内容は [2025年度](SEMANTIC_REVIEW_2025.md) と [年度横断](SEMANTIC_REVIEW_CROSSYEAR.md) の報告を参照してください。
 
 <!-- issue32-summary:start -->
