@@ -6,7 +6,7 @@
 - 現行分類：年度正本の `taxonomy_assignment` と `scripts/issue32-target-taxonomy.mts`
 - 移行前の監査：`scripts/normalize-issue32-ids.mjs`
 - 本番用生成：`scripts/prepare-taxonomy.ts` → `src/data/packs/knowledge.json`
-- 5大分類・28中分類・210使用概念・1,261引き出し・6,300選択肢
+- 5大分類・28中分類・211使用概念・1,279引き出し・6,300選択肢
 - 演習対象：5択1,259問、○×6,289枚。採点中止・真偽が一意でない選択肢の除外は維持
 
 `npm run prepare:questions` は正本から毎回再生成します。生成JSONはGit管理外で、直接編集しません。CIで `prepare-taxonomy.ts --check` による同期検査を実行します。

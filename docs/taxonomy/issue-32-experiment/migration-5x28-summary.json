@@ -1,20 +1,20 @@
 {
   "root_count": 5,
   "middle_category_count": 28,
-  "proposed_concept_count": 215,
-  "active_concept_count": 210,
-  "drawer_count": 1261,
+  "proposed_concept_count": 216,
+  "active_concept_count": 211,
+  "drawer_count": 1279,
   "proposition_count": 6346,
-  "migration_review_required": 1745,
+  "migration_review_required": 1558,
   "semantic_reviewed": 1774,
   "legacy_concept_count": 490,
-  "split_legacy_concept_count": 81,
+  "split_legacy_concept_count": 83,
   "unreviewed_semantic_propositions": 4572,
   "categories": [
     {
       "id": "1.1",
       "label": "制度総論・被保険者",
-      "propositions": 223,
+      "propositions": 224,
       "active_concepts": 7,
       "proposed_concepts": 8,
       "drawers": 28,
@@ -23,16 +23,16 @@
     {
       "id": "1.2",
       "label": "保険料・財政",
-      "propositions": 172,
+      "propositions": 181,
       "active_concepts": 7,
       "proposed_concepts": 7,
-      "drawers": 24,
+      "drawers": 28,
       "review_required": 22
     },
     {
       "id": "1.3",
       "label": "要介護・要支援認定",
-      "propositions": 325,
+      "propositions": 326,
       "active_concepts": 9,
       "proposed_concepts": 9,
       "drawers": 43,
@@ -41,37 +41,37 @@
     {
       "id": "1.4",
       "label": "保険給付・利用者負担",
-      "propositions": 302,
+      "propositions": 310,
       "active_concepts": 10,
       "proposed_concepts": 10,
-      "drawers": 56,
+      "drawers": 61,
       "review_required": 16
     },
     {
       "id": "1.5",
       "label": "行政運営・指定監督",
-      "propositions": 443,
-      "active_concepts": 9,
-      "proposed_concepts": 9,
-      "drawers": 50,
-      "review_required": 188
+      "propositions": 394,
+      "active_concepts": 10,
+      "proposed_concepts": 10,
+      "drawers": 54,
+      "review_required": 1
     },
     {
       "id": "1.6",
       "label": "地域支援事業・事業計画",
-      "propositions": 293,
+      "propositions": 296,
       "active_concepts": 11,
       "proposed_concepts": 11,
-      "drawers": 43,
+      "drawers": 44,
       "review_required": 175
     },
     {
       "id": "2.1",
       "label": "基本理念・役割・倫理",
-      "propositions": 85,
+      "propositions": 86,
       "active_concepts": 6,
       "proposed_concepts": 6,
-      "drawers": 17,
+      "drawers": 18,
       "review_required": 24
     },
     {
@@ -104,7 +104,7 @@
     {
       "id": "3.2",
       "label": "訪問サービス",
-      "propositions": 359,
+      "propositions": 367,
       "active_concepts": 5,
       "proposed_concepts": 5,
       "drawers": 72,
@@ -113,16 +113,16 @@
     {
       "id": "3.3",
       "label": "通所サービス",
-      "propositions": 180,
+      "propositions": 185,
       "active_concepts": 3,
       "proposed_concepts": 3,
-      "drawers": 38,
+      "drawers": 39,
       "review_required": 21
     },
     {
       "id": "3.4",
       "label": "短期入所サービス",
-      "propositions": 126,
+      "propositions": 128,
       "active_concepts": 2,
       "proposed_concepts": 2,
       "drawers": 22,
@@ -140,25 +140,25 @@
     {
       "id": "3.6",
       "label": "入居・施設サービス",
-      "propositions": 343,
+      "propositions": 347,
       "active_concepts": 6,
       "proposed_concepts": 6,
-      "drawers": 55,
+      "drawers": 56,
       "review_required": 38
     },
     {
       "id": "3.7",
       "label": "地域密着型サービス",
-      "propositions": 260,
+      "propositions": 261,
       "active_concepts": 11,
       "proposed_concepts": 11,
-      "drawers": 73,
+      "drawers": 74,
       "review_required": 42
     },
     {
       "id": "3.8",
       "label": "居宅介護支援・介護予防支援",
-      "propositions": 323,
+      "propositions": 329,
       "active_concepts": 6,
       "proposed_concepts": 6,
       "drawers": 27,
@@ -265,15 +265,26 @@
     }
   ],
   "classification_audit": {
-    "changed_propositions": 366,
-    "concept_changes": 140,
-    "attribute_changes": 305,
-    "originally_unflagged": 57,
-    "resolved_from_queue": 304,
-    "newly_flagged": 1,
-    "pending": 6,
+    "changed_propositions": 804,
+    "concept_changes": 275,
+    "attribute_changes": 693,
+    "originally_unflagged": 307,
+    "resolved_from_queue": 492,
+    "newly_flagged": 2,
+    "pending": 7,
     "placement_only": 1,
     "batches": [
+      {
+        "id": "pr70-admin-2026-10-12",
+        "changed_propositions": 438,
+        "concept_changes": 135,
+        "attribute_changes": 388,
+        "originally_unflagged": 250,
+        "resolved_from_queue": 188,
+        "newly_flagged": 1,
+        "pending": 1,
+        "placement_only": 0
+      },
       {
         "id": "pr70-disease-2026-10-12",
         "changed_propositions": 276,

@@ -48,6 +48,15 @@ assert.equal(pendingAudit.taxonomy_assignment!.classification_audit!.previous_as
 assert.ok(pendingAudit.taxonomy_assignment!.candidate_concept_ids.length>1);
 pendingAudit.taxonomy_assignment!.review_required=false;
 assert.throws(()=>validateTargetAssignment(pendingAudit),/audit\/review flag mismatch/);
+assert.equal(target('2010-10/c1/p1'),'1.5.complaints','complaint handling is not payment review');
+assert.equal(target('2009-11/c1/p1'),'1.5.disclosure','public disclosure must not inherit a generic authority label');
+assert.equal(target('2007-34/c4/p1'),'3.2.visiting_rehab','a service fee condition is not provider designation');
+assert.equal(target('2012-23/c3/p1'),'3.8.preventive_office','provider staffing is not an administrative designation action');
+assert.equal(target('2010-10/c4/p1'),'1.5.nhi_federation','general NHI-federation duties need a separate concept');
+assert.equal(target('2005-16/c3/p1'),'1.3.review_board','a certification judgment must not become an appeal just because an appeal board is mentioned');
+assert.equal(byId.get('2014-04/c1/p1')!.taxonomy_assignment!.attribute_id,'appeal_scope','scope of appeal is not a time limit');
+assert.equal(byId.get('2025-06/c4/p1')!.taxonomy_assignment!.attribute_id,'validity','renewal periods have their own facet');
+assert.equal(byId.get('2008-13/c3/p1')!.taxonomy_assignment!.review_required,true,'compound complaint/investigation authority remains uncertain');
 const audited=byId.get('2013-30/c2/p1')!;
 const preserved=suggestAll([audited]);
 assert.equal(preserved.errors.length,0);
