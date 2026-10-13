@@ -7,7 +7,11 @@ test('first correct answer visibly fills drawers and their ancestors and survive
   await page.goto('/');
   await page.getByRole('button', {name:'記録', exact:true}).click();
   await page.getByRole('link', {name:'知識マップ', exact:true}).click();
-  await expect(page.getByRole('navigation',{name:'メインメニュー'}).getByRole('button')).toHaveCount(3);
+  const mainMenu = page.getByRole('navigation',{name:'メインメニュー'});
+  await expect(mainMenu.getByRole('button')).toHaveCount(4);
+  for (const name of ['冒険', '○×学習', '5択クエスト', '記録']) {
+    await expect(mainMenu.getByRole('button',{name,exact:true})).toBeVisible();
+  }
   await expect(page.getByRole('region',{name:'日々の積み上げ'})).toHaveCount(1);
   await expect(page.getByRole('region',{name:'分野別の得意・苦手'})).toHaveCount(1);
   await expect(page.getByRole('heading',{name:'履歴を持ち出す',exact:true})).toHaveCount(1);
