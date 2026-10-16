@@ -584,10 +584,10 @@
     "method": "repository_text_sync",
     "checked_questions": 1260,
     "checked_choices": 6300,
-    "changed_questions": 66,
-    "changed_choices": 306,
-    "changed_records": 310,
-    "changed_propositions": 252,
+    "changed_questions": 94,
+    "changed_choices": 348,
+    "changed_records": 352,
+    "changed_propositions": 277,
     "inputs": [
       {
         "path": "src/data/packs/pre2018/2005/questions.json",
@@ -676,13 +676,13 @@
       },
       {
         "path": "imports/2022/questions.json",
-        "bytes": 142935,
-        "sha256": "bbef08057bda0a360e7f9ab9844cc8a9c632460c1dc5a4af2dd894a7c6d14291"
+        "bytes": 142854,
+        "sha256": "2efb1b5c235d6c215307d1e9c30e2fa796cf0cfdd803da4257b592459fd422c3"
       },
       {
         "path": "imports/2023/questions.json",
-        "bytes": 150580,
-        "sha256": "801433cfa5988ae49a0910bfe1bc6ec6f18629d678288e97f65ad17c23ae0565"
+        "bytes": 150568,
+        "sha256": "a1d05a6aa94adbcf049e3919e1f04bfced5443e1a3e4a1dc5abe6df16f32025a"
       },
       {
         "path": "imports/2024/questions.json",
@@ -713,6 +713,11 @@
         "path": "imports/2025-all60/05.b64",
         "bytes": 3748,
         "sha256": "2a88f3203bda29271e9723fe06ea039601f3f69ab5cdcfc665cd967f9d1021b1"
+      },
+      {
+        "path": "imports/2025-all60/text-corrections.json",
+        "bytes": 379,
+        "sha256": "0056185de2193ce6cb3cfe15243c694206203a7de8929ce14979beef9af0afd6"
       }
     ],
     "scope": "PR39の校正文を含むリポジトリ入力と設問文・選択肢を同期。公式原文との二重校正・正誤・法令確認の完了を意味しない。"

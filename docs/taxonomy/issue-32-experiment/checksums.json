@@ -31,8 +31,8 @@
   },
   {
     "path": "MIGRATION_5X28_AUDIT_CHANGES.csv",
-    "bytes": 703148,
-    "sha256": "da94a2f483cac42a2fe1526c15539e3f6e9e34236c43144efd0effb0cc7654ce"
+    "bytes": 703133,
+    "sha256": "885bc7edc3be1c892b5a638502df7059042c9c8a312c1265dbfaad90f5b99f0a"
   },
   {
     "path": "MIGRATION_5X28_CONCEPT_COUNTS.csv",
@@ -46,8 +46,8 @@
   },
   {
     "path": "MIGRATION_5X28_REVIEW_QUEUE.csv",
-    "bytes": 898374,
-    "sha256": "cdd10c350516bd506527abb7882e3d9b2d07128c395f57dfe88607032f642a0e"
+    "bytes": 898336,
+    "sha256": "62e2bbd4783662f8fedd0482fa7dbb578be51e72bc82bae94d9de5765f85c8da"
   },
   {
     "path": "PR68_CONCEPT_COUNT_SUMMARY.md",
@@ -82,7 +82,7 @@
   {
     "path": "README.md",
     "bytes": 14779,
-    "sha256": "70915c47ec85269868eeac5a5d6d17916726b7f018247ef2ffce84db26747958"
+    "sha256": "a6c63be4d4bf3f574de7befe9b9a33170d6fa287084056bbdac419cbf57d405b"
   },
   {
     "path": "RECLASSIFICATION_5X28.md",
@@ -121,8 +121,8 @@
   },
   {
     "path": "manifest.json",
-    "bytes": 22621,
-    "sha256": "e7aea3805112b1af29535e36c67cbf6b5ba0119995ecdccbcc1ff9def614fa0a"
+    "bytes": 22805,
+    "sha256": "7fb2c3c4a512a4baf11ede453b94e30b73d42e261061f18ea77445d02814f3bb"
   },
   {
     "path": "migration-5x28-summary.json",
@@ -216,13 +216,13 @@
   },
   {
     "path": "propositions/2022.jsonl",
-    "bytes": 1036582,
-    "sha256": "93aa343fb32a2823c5210fa4707039f31c57ca3644a4866e772dfe4bced15c65"
+    "bytes": 1069755,
+    "sha256": "040c964070953d32f1f0fa9aa378841963a8bf8589bdd46f8d883c741f266a40"
   },
   {
     "path": "propositions/2023.jsonl",
-    "bytes": 1176190,
-    "sha256": "f11624ed04687738f72d63336a2d10a52d2b79c679ab7098125ff237b6f6631f"
+    "bytes": 1185560,
+    "sha256": "dab928f99d4f148527a3f4f42ce48befa75e5e0f9bb4b23cf68531f557412624"
   },
   {
     "path": "propositions/2024.jsonl",
@@ -231,8 +231,8 @@
   },
   {
     "path": "propositions/2025.jsonl",
-    "bytes": 1533762,
-    "sha256": "14c4a3a8dfbc6dfef5fdb41b05b4e9c015205cd78dc8673c89c02d54260f0450"
+    "bytes": 1534777,
+    "sha256": "a881dcc6d481b8275817173c9c760a2a771774bdb50f79ff7906973837bbe545"
   },
   {
     "path": "review-decisions-2024-part1.json",
