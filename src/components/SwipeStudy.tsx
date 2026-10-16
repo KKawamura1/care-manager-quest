@@ -13,6 +13,7 @@ import { swipeCopyText } from '../domain/questionCopy';
 import { studyScope } from '../data/study-scope';
 import { parseStudyScope } from '../domain/studyScope';
 import { StudyScopePicker } from './StudyScopePicker';
+import { GlossaryText } from './GlossaryText';
 const SCOPE_STORAGE_KEY = 'care-manager-quest:swipe-scope';
 
 export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAnswer, blocked }: {
@@ -139,7 +140,7 @@ export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAn
       <div className="quest-heading"><button className="text-button" onClick={() => { setCard(undefined); setResult(undefined); locked.current = false; setNow(Date.now()); onBack(); }}>分野選択に戻る</button></div>
       <div className="question-meta"><span>{card.year}年度 問{card.number}・選択肢{card.choiceId}</span></div>
       <p className="swipe-topic">{card.topicIds.map(id => swipeConcepts.find(c => c.id === id)?.label).join(' / ') || '分類待ち'}</p>
-      <div className="swipe-context"><b>元の設問</b><p>{card.stem}</p></div>
+      <div className="swipe-context"><b>元の設問</b><p><GlossaryText key={`${card.id}:${deal}:stem`} text={card.stem}/></p></div>
       <div className={`swipe-surface${result ? ' swipe-surface-feedback' : ''}`} onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={() => { gesture.current = undefined; setDrag({ x: 0, y: 0 }); }} onLostPointerCapture={() => { gesture.current = undefined; setDrag({ x: 0, y: 0 }); }}
         onKeyDown={e => { if (['ArrowRight','ArrowLeft','ArrowUp'].includes(e.key)) { e.preventDefault(); if (e.repeat) return; if (result) next(); else submit(e.key === 'ArrowUp' ? null : e.key === 'ArrowRight'); } }}>
       <div className="swipe-card-deal" key={`${card.id}:${deal}`}>
@@ -147,7 +148,7 @@ export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAn
         data-intent={drag.y < 0 ? 'unknown' : drag.x > 0 ? 'yes' : drag.x < 0 ? 'no' : undefined}
         style={{ transform: `translate(${drag.x}px, ${drag.y}px) rotate(${drag.x / 20}deg)` }}>
         <span className="card-eyebrow" aria-hidden="true">TRUE / FALSE</span>
-        <p>{card.text}</p>
+        <p><GlossaryText text={card.text}/></p>
         {result && <span className={`card-verdict ${result.correct ? 'mint' : 'coral'}`} aria-hidden="true">{result.correct ? '✓' : '×'}</span>}
         {(drag.x !== 0 || drag.y !== 0) && <span className={`swipe-stamp ${drag.x > 0 ? 'mint' : 'coral'}`} aria-hidden="true">{drag.y < 0 ? '？' : drag.x > 0 ? '○' : '×'}</span>}
       </div>

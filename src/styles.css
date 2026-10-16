@@ -224,6 +224,9 @@ dialog::backdrop { background: #030910c7; backdrop-filter: blur(5px); }
 .swipe-context p { margin-top: 4px; white-space: pre-line; }
 .swipe-card { position: relative; display: flex; flex-direction: column; justify-content: center; min-height: 180px; padding: 24px; margin: 16px 0 20px; border: 1px solid var(--line); border-radius: 16px; background: var(--panel); user-select: none; cursor: grab; }
 .swipe-card p { font-size: 19px; font-weight: 600; line-height: 1.85; overflow-wrap: anywhere; }
+.glossary-term { display: inline; margin: 0; padding: 0; border: 0; border-radius: 2px; background: none; color: inherit; font: inherit; line-height: inherit; text-align: inherit; text-decoration: underline dotted var(--mint); text-underline-offset: 5px; text-decoration-thickness: 1px; overflow-wrap: anywhere; cursor: help; }
+.glossary-term:hover { color: var(--mint); }
+.glossary-definition { padding: 20px; display: grid; gap: 18px; }
 .swipe-correct { border-color: var(--mint); }
 .swipe-wrong { border-color: var(--coral); }
 .swipe-stamp { position: absolute; right: 16px; top: 8px; font-size: 46px; font-weight: 800; }
