@@ -1,4 +1,4 @@
-/** Repository text inputs for the Issue #32 experiment; no generated app packs. */
+/** Canonical text inputs shared by question generation and the Issue #32 experiment. */
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
@@ -12,10 +12,26 @@ export function loadSourceYear(year) {
   if (year === 2025) {
     inputs = Array.from({ length: 5 }, (_, i) => 'imports/2025-all60/' + String(i + 1).padStart(2, '0') + '.b64');
     const encoded = inputs.map((path) => readFileSync(join(root, path), 'utf8')).join('');
+    assert.equal(encoded.length, 18748, '2025 source projection encoded length changed');
     const bytes = brotliDecompressSync(Buffer.from(encoded, 'base64'));
     assert.equal(createHash('sha256').update(bytes).digest('hex'),
       'badd92f316d751be0eb8414cfb4139f533e57a8186a0f53ab07302017de8161a', '2025 source projection changed');
     rows = JSON.parse(bytes.toString('utf8'));
+    // Keep the uploaded projection intact; apply only explicitly verified corrections.
+    const correctionPath = 'imports/2025-all60/text-corrections.json';
+    inputs.push(correctionPath);
+    const correctedFields = new Set();
+    for (const correction of JSON.parse(readFileSync(join(root, correctionPath), 'utf8'))) {
+      const { question_id, field, before, after } = correction;
+      const row = rows.find((question) => question.id === question_id);
+      const key = question_id + '/' + field;
+      assert.ok(row && /^choice[1-5]$/.test(field) && !correctedFields.has(key), 'Invalid/duplicate text correction: ' + key);
+      assert.ok(typeof after === 'string' && after.trim() && after !== before && correction.official_source, 'Unverified text correction: ' + key);
+      const index = Number(field.slice(6)) - 1;
+      assert.equal(row.choices[index], before, 'Text correction no longer matches source: ' + key);
+      row.choices[index] = after;
+      correctedFields.add(key);
+    }
   } else {
     const path = year <= 2017 ? 'src/data/packs/pre2018/' + year + '/questions.json'
       : year <= 2019 ? 'src/data/packs/' + year + '/questions.json' : 'imports/' + year + '/questions.json';

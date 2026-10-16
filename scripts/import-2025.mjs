@@ -1,16 +1,7 @@
-// Decode the verbatim problem fields projected from the user-provided 2025 all-60 ZIP.
-// The projection is a deterministic, checksum-protected subset. Never auto-correct the exam text.
+// Decode the checksum-protected 2025 ZIP projection and its verified text corrections.
 import { readFileSync, writeFileSync } from 'node:fs';
-import { brotliDecompressSync } from 'node:zlib';
-import { createHash } from 'node:crypto';
-const base64=Array.from({length:5},(_,i)=>readFileSync(new URL('../imports/2025-all60/'+String(i+1).padStart(2,'0')+'.b64', import.meta.url),'utf8')).join('');
-if (base64.length!==18748) throw Error('Corrupt 2025 data: encoded length mismatch');
-const bytes = brotliDecompressSync(Buffer.from(base64,'base64'));
-
-const sha = createHash('sha256').update(bytes).digest('hex');
-if (sha !== 'badd92f316d751be0eb8414cfb4139f533e57a8186a0f53ab07302017de8161a') throw Error('2025 ZIP projection checksum mismatch');
-const imported = JSON.parse(bytes.toString('utf8'));
-const rows = imported;
+import { loadSourceYear } from './issue32-sources.mjs';
+const rows = [...loadSourceYear(2025).questions.values()];
 if (!Array.isArray(rows) || rows.length !== 60) throw Error('Expected exactly 60 questions');
 const ids = new Set();
 const root = new URL('../src/data/packs/2025/', import.meta.url);

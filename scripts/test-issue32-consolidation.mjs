@@ -35,6 +35,20 @@ try {
   }
   run('consolidate-issue32-revisions.mjs', ['--check']);
   run('sync-issue32-sources.mjs', ['--check']);
+  // Runtime packs and classification inputs must apply the same verified 2025 correction.
+  run('import-2025.mjs');
+  const texts2025 = JSON.parse(readFileSync(join(fixture, 'src/data/packs/2025/questions.json'), 'utf8'));
+  const rows2025 = readFileSync(join(fixture, data, 'propositions/2025.jsonl'), 'utf8').trim().split('\n').map(JSON.parse);
+  const corrected2025 = texts2025.find(row => row.number === 33).choices[2];
+  assert.match(corrected2025, /頭部後屈/);
+  assert.equal(rows2025.find(row => row.question_number === 33 && row.choice_index === 3).source_text, corrected2025);
+  // A stale correction must fail closed in both generators, not replace arbitrary new text.
+  changeFile('imports/2025-all60/text-corrections.json', (text) => {
+    const corrections = JSON.parse(text); corrections[0].before = '一致しない旧文面'; return JSON.stringify(corrections);
+  }, () => {
+    run('import-2025.mjs', [], false, /Text correction no longer matches source/);
+    run('sync-issue32-sources.mjs', ['--check'], false, /Text correction no longer matches source/);
+  });
   // Annual validation catches a stale inline review even when primary-path
   // normalization would otherwise skip a non-assigned record.
   changeFile(data + '/propositions/2025.jsonl', (text) => {
