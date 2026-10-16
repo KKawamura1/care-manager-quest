@@ -10,7 +10,7 @@ test('historical year, text-only questions, feedback, copy and saved selection w
   await page.getByRole('combobox',{name:'出題する年度'}).selectOption('2005');
   await page.getByText('試験分野でさらに絞る',{exact:true}).click();
   await page.getByRole('radio',{name:'保健医療（19問）'}).check();
-  await page.getByRole('button',{name:'5問のクエストを始める'}).click();
+  await page.getByRole('button',{name:'5問の演習を始める'}).click();
   const state=await page.evaluate(k=>JSON.parse(localStorage.getItem(k)!),key);
   expect(state.session.questionIds.every((id:string)=>id.startsWith('2005-')&&Number(id.split('-')[1])>=26&&Number(id.split('-')[1])<=45&&id!=='2005-28')).toBe(true);
   const id=state.session.questionIds[0];
@@ -61,7 +61,7 @@ test('2018 and 2019 are selectable as text-only sixty-question years',async({pag
     await page.getByRole('combobox',{name:'出題する年度'}).selectOption(year);
     await page.getByText('試験分野でさらに絞る',{exact:true}).click();
     await expect(page.getByRole('radio',{name:'全分野（60問）'})).toBeVisible();
-    await page.getByRole('button',{name:'5問のクエストを始める'}).click();
+    await page.getByRole('button',{name:'5問の演習を始める'}).click();
     await expect(page.locator('.question-title')).toContainText(`${year}年度`);
     await expect(page.getByRole('button',{name:'原本画像を見る ↗'})).toHaveCount(0);
   }

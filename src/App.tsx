@@ -8,7 +8,6 @@ import { questions, questionById, availableYears } from './data/provider';
 import { sources, officialNotice } from './data/sources';
 import { advance, buildSession, conceptStatus, emptyPlayer, levelInfo, submitAnswer, totalXp } from './domain/game';
 import { loadPlayer, MAX_IMPORT_BYTES, parsePlayer, savePlayer, STORAGE_KEY, validExternalUrl } from './domain/storage';
-import { playSound } from './domain/sound';
 import type { PlayerState, Question } from './domain/models';
 import { Modal } from './components/Modal';
 import { OriginalImage } from './components/OriginalImage';
@@ -74,7 +73,6 @@ export default function App() {
   const [notice, setNotice] = useState(initial.migrated?'以前の履歴・XPを引き継ぎました。旧問題の途中クエストを終了し、2025年度の公式過去問に切り替えました。':'');
   const [originalQuestion,setOriginalQuestion]=useState<Question>();
   const [returnDetail,setReturnDetail]=useState<Question>();
-  const [burst, setBurst] = useState<'correct'|'wrong'|'level'>();
   const fileRef = useRef<HTMLInputElement>(null);
   const xp = totalXp(player), level = levelInfo(xp), session = player.session;
   const current = session ? questionById(session.questionIds[session.index]) : undefined;
@@ -90,7 +88,6 @@ export default function App() {
     try { setSaveError(savePlayer(window.localStorage, player)); }
     catch { setSaveError('履歴を保存できません。JSONを書き出してください。'); }
   }, [player, blocked]);
-  useEffect(()=>{ if (!burst) return; const timer = setTimeout(()=>setBurst(undefined),900); return ()=>clearTimeout(timer); },[burst]);
   const go = (next: typeof route) => { setRoute(next); window.scrollTo({top:0,behavior:'instant'}); };
   const start = () => {
     if (blocked || !activeQuestions.length) return;
@@ -107,9 +104,7 @@ export default function App() {
   const answer = () => {
     const next = submitAnswer(player,questions,new Date().toISOString());
     if (next === player) return;
-    const result = next.attempts.at(-1)!;
-    const kind = levelInfo(totalXp(next)).level > level.level ? 'level' : result.correct ? 'correct' : 'wrong';
-    setPlayer(next); setBurst(kind); playSound(kind,player.settings.sound);
+    setPlayer(next);
     requestAnimationFrame(()=>document.getElementById('feedback')?.scrollIntoView({block:'start',behavior:'instant'}));
   };
   const nextQuestion = () => { setPlayer(advance); window.scrollTo({top:0,behavior:'instant'}); };
@@ -124,7 +119,7 @@ export default function App() {
   const headline = <>Care Manager Quest</>;
   return <div className="app-shell">
     <header className="app-header"><button className="brand" aria-label="冒険ホームへ" onClick={()=>go('home')}>{headline}</button><button className="sound-button" aria-label={`効果音を${player.settings.sound?'オフ':'オン'}にする`} aria-pressed={player.settings.sound} onClick={()=>setPlayer(p=>({...p,settings:{sound:!p.settings.sound}}))}>{player.settings.sound?'♪':'♪̸'}<span>{player.settings.sound?'ON':'OFF'}</span></button></header>
-    {<div className="player-bar"><span className="level-chip">Lv. <b>{level.level}</b></span><div className="xp-track"><div className="meter" aria-label={`次のレベルまで ${level.next} XP`}><i style={{width:`${level.current/2}%`}}/></div></div><span className="xp-value">{level.current} / 200 XP</span></div>}
+    {route !== 'quest' && route !== 'play' && <div className="player-bar"><span className="level-chip">Lv. <b>{level.level}</b></span><div className="xp-track"><div className="meter" aria-label={`次のレベルまで ${level.next} XP`}><i style={{width:`${level.current/2}%`}}/></div></div><span className="xp-value">{level.current} / 200 XP</span></div>}
     {saveError && <div className="warning" role="alert"><p>{saveError}</p>{blocked && <><button onClick={()=>download(('raw' in initial && initial.raw) || '', 'care-manager-quest-recovery.json')}>元のデータを書き出す</button><button onClick={()=>{setBlocked(false);setPlayer(emptyPlayer());setSaveError(undefined);}}>新しい履歴で始める</button></>}</div>}
     {notice && <p className="notice" role="status">{notice}</p>}
     <main>
@@ -134,14 +129,14 @@ export default function App() {
           {route === 'home' && <DailyProgressPreview events={player.learningEvents} onOpen={()=>go('records')}/>}
           {route !== 'quest' && <section className="mission-card swipe-home-card" id="swipe-home-setup" aria-label="○×学習の設定"/>}
           {route !== 'swipe-setup' && <section className="mission-card">
-            <h2>5択クエスト</h2>
+            <h2>過去問演習</h2>
             <label className="year-picker">年度<select aria-label="出題する年度" value={yearFilter} onChange={e=>changeYear(parseYearFilter(e.target.value))}><option value="all">全年度</option>{availableYears.map(year=><option key={year} value={year}>{year}年度</option>)}</select></label>
             <StudyScopePicker value={scope} onChange={changeScope} counts={scopeCounts} mode="5択" unit="問"/>
             <details className="exam-field-filter"><summary>試験分野でさらに絞る</summary><fieldset className="domain-picker"><legend>試験分野</legend>{DOMAIN_OPTIONS.map(option=><label key={option.value}><input type="radio" name="quest-domain" aria-label={`${option.label}（${questions.filter(q=>(yearFilter==='all'||q.original?.year===yearFilter)&&(option.value==='all'||q.domain===option.value)).length}問）`} checked={domainFilter===option.value} onChange={()=>changeDomain(option.value)}/><span>{option.label}</span></label>)}</fieldset></details>
             <p className="mission-note">{activeQuestions.length}問対象 · 1回{questSize}問</p>
             {!activeQuestions.length && <p role="status">今の条件に該当する問題はありません。年度・分類・試験分野を変更してください。</p>}
-            {session&&!session.completed&&<p className="mission-note">設定は次のクエストから反映</p>}
-            <button className="primary" aria-label={session&&!session.completed?`第${session.index+1}問から再開`:`${questSize}問のクエストを始める`} disabled={blocked||(!(session&&!session.completed)&&!activeQuestions.length)} onClick={session&&!session.completed?()=>go('play'):start}>{session&&!session.completed?`第${session.index+1}問から再開`:`${questSize}問はじめる`}<span aria-hidden="true">→</span></button>
+            {session&&!session.completed&&<p className="mission-note">設定は次の演習から反映</p>}
+            <button className="primary" aria-label={session&&!session.completed?`第${session.index+1}問から再開`:`${questSize}問の演習を始める`} disabled={blocked||(!(session&&!session.completed)&&!activeQuestions.length)} onClick={session&&!session.completed?()=>go('play'):start}>{session&&!session.completed?`第${session.index+1}問から再開`:`${questSize}問の演習を始める`}<span aria-hidden="true">→</span></button>
           </section>}
         </section>
       </>}
@@ -156,12 +151,12 @@ export default function App() {
         })}</div>
         {!attempt&&<CopyQuestion key={current.id} question={current}/>}
         {current.original&&<div className="question-tools">{current.original.imagePath?<button className="text-button" onClick={()=>setOriginalQuestion(current)}>原本画像を見る ↗</button>:<a href={current.provenance.pastExamUrl??current.original.sourceUrl} target="_blank" rel="noopener noreferrer">掲載元で問題を確認 ↗</a>}</div>}
-        {attempt && <section id="feedback" className={`feedback ${attempt.correct?'success':'miss'}`} role="status"><div className="feedback-top"><div><h2>{attempt.correct?'正解！':'不正解'}</h2></div><b className="xp-award">+{attempt.xp}<small>XP</small></b></div><div className="reward-tags">{attempt.correct&&attempt.xp>=70&&<span>✦ 5択完全正解ボーナス +20</span>}{attempt.combo>1&&<span>🔥 {attempt.combo} COMBO</span>}{burst==='level'&&<span>LEVEL UP → {level.level}</span>}</div><p>{current.explanation || '解説未登録'}</p><p className="answer-key">正答：{(current.answerVariants??[current.answerIds]).map(ids=>ids.join('・')).join(' または ')} ／ あなたの選択：{attempt.selectedIds.join('・')}</p></section>}
+        {attempt && <section id="feedback" className={`feedback ${attempt.correct?'success':'miss'}`} role="status"><div className="feedback-top"><h2>{attempt.correct?'正解':'不正解'}</h2></div><p>{current.explanation || '解説未登録'}</p><p className="answer-key">正答：{(current.answerVariants??[current.answerIds]).map(ids=>ids.join('・')).join(' または ')} ／ あなたの選択：{attempt.selectedIds.join('・')}</p></section>}
         {attempt&&<CopyQuestion key={current.id} question={current} includeAnswer selectedIds={attempt.selectedIds}/>}
         {attempt&&<AppExplanation key={`${current.id}:${current.version}`} target={questionTarget(current)}/>}
-        <div className="answer-dock">{attempt?<><button className="primary" onClick={nextQuestion}>{session.index===session.questionIds.length-1?'リザルトを見る':'次の問題へ'}<span>→</span></button><button className="secondary" onClick={()=>setDetail(current)}>詳しく見る</button></>:<button className="primary" disabled={selected.length!==current.selectionCount||blocked} onClick={answer}>{selected.length===current.selectionCount?'答えを確定する':`あと${current.selectionCount-selected.length}つ選んでください`}<span>→</span></button>}</div>
+        <div className="answer-dock">{attempt?<><button className="primary" onClick={nextQuestion}>{session.index===session.questionIds.length-1?'結果を見る':'次の問題へ'}<span>→</span></button><button className="secondary" onClick={()=>setDetail(current)}>詳しく見る</button></>:<button className="primary" disabled={selected.length!==current.selectionCount||blocked} onClick={answer}>{selected.length===current.selectionCount?'答えを確定する':`あと${current.selectionCount-selected.length}つ選んでください`}<span>→</span></button>}</div>
       </section>}
-      {route === 'play' && session?.completed && <section className="result-screen"><h1>{inSession.filter(a=>a.correct).length===session.questionIds.length?'完全攻略！':'クエスト完了'}</h1><div className="result-score"><strong>{inSession.filter(a=>a.correct).length}<small>/ {session.questionIds.length}</small></strong><span>正解</span></div><div className="result-stats"><div><b>+{inSession.reduce((n,a)=>n+a.xp,0)}</b><span>獲得XP</span></div><div><b>{Math.max(...inSession.map(a=>a.combo),0)}</b><span>最大コンボ</span></div><div><b>{inSession.filter(a=>a.correct&&a.firstSeen).length}</b><span>初見突破</span></div></div><div className="result-list">{inSession.map(a=><button key={a.id} onClick={()=>setDetail(questionById(a.questionId))}><span className={a.correct?'mint':'coral'}>{a.correct?'✓':'↗'}</span><span>{questionById(a.questionId)?.title}</span><small>+{a.xp} XP</small></button>)}</div><button className="primary" onClick={start} disabled={blocked||!activeQuestions.length} aria-label={`もう${questSize}問、探索する`}>もう{questSize}問<span>→</span></button><button className="secondary" onClick={()=>{go('records');requestAnimationFrame(()=>document.getElementById('record-map')?.scrollIntoView({block:'start',behavior:'instant'}));}} aria-label="広がった知識マップを見る">知識マップ</button></section>}
+      {route === 'play' && session?.completed && <section className="result-screen"><h1>演習結果</h1><div className="result-score"><strong>{inSession.filter(a=>a.correct).length}<small>/ {session.questionIds.length}</small></strong><span>正答率 {Math.round(inSession.filter(a=>a.correct).length / session.questionIds.length * 100)}%</span></div><div className="result-list">{inSession.map(a=><button key={a.id} onClick={()=>setDetail(questionById(a.questionId))}><span className={a.correct?'mint':'coral'}>{a.correct?'✓':'×'}</span><span>{questionById(a.questionId)?.title}</span><small>{a.correct?'正解':'不正解'}</small></button>)}</div><button className="primary" onClick={start} disabled={blocked||!activeQuestions.length} aria-label={`もう${questSize}問解く`}>もう{questSize}問解く<span>→</span></button><button className="secondary" onClick={()=>{go('records');requestAnimationFrame(()=>document.getElementById('record-map')?.scrollIntoView({block:'start',behavior:'instant'}));}} aria-label="知識マップを見る">知識マップ</button></section>}
       {route === 'records' && <section className="records-screen"><h1>記録</h1>
         <nav className="record-shortcuts" aria-label="記録のセクション"><a href="#record-progress">積み上げ</a><a href="#record-map">知識マップ</a><a href="#record-fields">得意・苦手</a></nav>
         <div id="record-progress"><DailyProgress events={player.learningEvents}/></div>
@@ -176,11 +171,10 @@ export default function App() {
         <section className="panel"><h2>最近の探索</h2>{player.attempts.length===0?<p>まだ記録はありません。</p>:<div className="log-list">{player.attempts.slice(-10).reverse().map(a=><button key={a.id} onClick={()=>setDetail(questionById(a.questionId))}><span className={a.correct?'mint':'coral'}>{a.correct?'✓':'×'}</span><span>{questionById(a.questionId)?.title}</span><small>+{a.xp} XP</small></button>)}</div>}</section><details className="help-details"><summary>このアプリについて</summary><p>{officialNotice}</p><p>各年度の試験当時の正答で採点します。現行法・文字の再校正は確認未了、知識分類は暫定です。</p><a href="https://www.sssc.or.jp/pastissues/index.html" target="_blank" rel="noopener noreferrer">過去問題の利用条件 ↗</a></details>
       </section>}
     </main>
-    <nav className="bottom-nav" aria-label="メインメニュー">{([['home','◇','冒険'],['swipe-setup','○×','○×学習'],['quest','⚔','5択クエスト'],['records','≡','記録']] as const).map(([key,icon,label])=>{
+    <nav className="bottom-nav" aria-label="メインメニュー">{([['home','◇','冒険'],['swipe-setup','○×','○×学習'],['quest','▤','過去問演習'],['records','≡','記録']] as const).map(([key,icon,label])=>{
       const active = route === key || (key === 'quest' && route === 'play') || (key === 'swipe-setup' && route === 'swipe');
       return <button key={key} aria-label={label} className={active?'active':''} aria-current={active?'page':undefined} onClick={()=>{if(!active)go(key);}}><span aria-hidden="true">{icon}</span>{label}</button>;
     })}</nav>
-    {burst && <div className={`burst ${burst}`} aria-hidden="true">{Array.from({length:18},(_,i)=><i key={i} style={{'--angle':`${i*20}deg`,'--distance':`${70+(i%4)*27}px`,'--delay':`${(i%3)*25}ms`} as React.CSSProperties}/>)}<span>{burst==='level'?'LEVEL UP':burst==='correct'?'CLEAR!':'DISCOVER'}</span></div>}
     {detail&&<Modal title="詳しく見る" onClose={()=>setDetail(undefined)}><div className="detail-content"><h3>{detail.title}</h3>
       <CopyQuestion key={detail.id} question={detail} includeAnswer selectedIds={player.attempts.slice().reverse().find(a=>a.questionId===detail.id)?.selectedIds}/>
       <AppExplanation key={`${detail.id}:${detail.version}`} target={questionTarget(detail)}/>

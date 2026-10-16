@@ -70,7 +70,7 @@ test('five-choice draws middle-category questions across exam fields and preserv
   await selectPath(page,'5択',disease.id);
   const expected = matching(disease.id);
   await expect(page.locator('.mission-note').first()).toContainText(`${expected.length}問対象`);
-  await page.getByRole('button',{name:`${Math.min(5,expected.length)}問のクエストを始める`}).click();
+  await page.getByRole('button',{name:`${Math.min(5,expected.length)}問の演習を始める`}).click();
   const ids = await page.evaluate(key => JSON.parse(localStorage.getItem(key)!).session.questionIds as string[], historyKey);
   expect(ids.every(id => expected.includes(id))).toBe(true);
   await page.getByRole('button',{name:'中断してホーム'}).click();
@@ -90,15 +90,15 @@ test('a single-drawer one-question quest completes, reloads and retains its save
   await page.goto('/');
   const drawer = concepts.find(c => matching(c.id).length === 1)!;
   await selectPath(page,'5択',drawer.id);
-  await page.getByRole('button',{name:'1問のクエストを始める'}).click();
+  await page.getByRole('button',{name:'1問の演習を始める'}).click();
   await expect(page.locator('.quest-heading')).toContainText('1 / 1');
   const id = matching(drawer.id)[0];
   const key = answers as Record<string,{correctChoices:number[]}>;
   for (const choice of key[id].correctChoices) await page.getByRole('group',{name:'解答の選択肢'}).getByRole('button').nth(choice-1).click();
   await page.getByRole('button',{name:'答えを確定する'}).click();
   await page.reload();
-  await page.getByRole('button',{name:'リザルトを見る'}).click();
-  await expect(page.getByRole('heading',{name:'完全攻略！'})).toBeVisible();
+  await page.getByRole('button',{name:'結果を見る'}).click();
+  await expect(page.getByRole('heading',{name:'演習結果'})).toBeVisible();
   await expect(page.locator('.result-score')).toContainText('/ 1');
   await page.reload();
   await expect(page.locator('.result-score')).toContainText('/ 1');
@@ -116,5 +116,5 @@ test('unknown saved scopes reset safely to all categories',async ({page}) => {
   await page.goto('/');
   await expect(page.getByLabel('○×の大分類')).toHaveValue('all');
   await expect(page.getByLabel('5択の大分類')).toHaveValue('all');
-  await expect(page.getByRole('button',{name:'5問のクエストを始める'})).toBeEnabled();
+  await expect(page.getByRole('button',{name:'5問の演習を始める'})).toBeEnabled();
 });

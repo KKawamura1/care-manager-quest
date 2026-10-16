@@ -67,7 +67,7 @@ test('swipe copy, paste, wrong-card guard, persistence, replacement and deletion
 
 test('normal mode short explanation stays with its problem and is visible in details', async ({ page }) => {
   await stubClipboard(page); await page.goto('/');
-  await page.getByRole('button', { name: '5問のクエストを始める' }).click();
+  await page.getByRole('button', { name: '5問の演習を始める' }).click();
   await page.getByRole('button', { name: '問題をコピー', exact: true }).click();
   const prompt = await copied(page);
   const options = page.getByRole('group', { name: '解答の選択肢' }).getByRole('button');

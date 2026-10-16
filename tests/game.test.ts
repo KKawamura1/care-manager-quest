@@ -19,8 +19,11 @@ describe('question pack contract',()=>{
  });
 });
 describe('quest rules',()=>{
- it('creates five unique questions in a paced rhythm and prefers unseen items',()=>{
-  let p=ready();expect(p.session!.questionIds.map(id=>questions.find(q=>q.id===id)!.difficulty)).toEqual([1,2,3,1,2]);expect(new Set(p.session!.questionIds).size).toBe(5);
+ it('draws five unique, least-seen questions without difficulty stages',()=>{
+  let p=ready();expect(p.session!.questionIds).toEqual(questions.slice(0,5).map(q=>q.id));
+  const hardFirst=[...questions].sort((a,b)=>b.difficulty-a.difficulty);
+  expect(buildSession(hardFirst,[],'hard-first',()=>0).questionIds).toEqual(hardFirst.slice(0,5).map(q=>q.id));
+  expect(new Set(p.session!.questionIds).size).toBe(5);
   for(let i=0;i<5;i++)p=advance(answered(p));const next=buildSession(questions,p.attempts,'session-2',()=>0);expect(next.questionIds.every(id=>!p.session!.questionIds.includes(id))).toBe(true);
  });
  it('matches a complete set, without order sensitivity or duplicates',()=>{
