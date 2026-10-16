@@ -14,20 +14,16 @@ export function awardXp(q: Question, correct: boolean, first: boolean, combo: nu
 }
 export function buildSession(pool: readonly Question[], attempts: readonly Attempt[], id: string, random = Math.random): Session {
   if (!pool.length) throw new Error('出題対象の問題がありません。');
-  const rhythm = [1, 2, 3, 1, 2].slice(0, pool.length);
+  // No difficulty stages: sample up to five questions evenly from the least-attempted pool.
+  const seen = new Map(pool.map(q => [q.id, attempts.filter(a => a.questionId === q.id).length]));
+  const remaining = [...pool];
   const selected: string[] = [];
-  for (const difficulty of rhythm) {
-    const unused = pool.filter(q => !selected.includes(q.id));
-    const minimumSeen = Math.min(...unused.map(q=>attempts.filter(a=>a.questionId===q.id).length));
-    const leastSeen = unused.filter(q=>attempts.filter(a=>a.questionId===q.id).length===minimumSeen);
-    const matching = leastSeen.filter(q => q.difficulty === difficulty);
-    const candidates = matching.length ? matching : leastSeen;
-    if (!candidates.length) throw new Error('出題対象の問題がありません。');
-    const counts = candidates.map(q => attempts.filter(a => a.questionId === q.id).length);
-    const minimum = Math.min(...counts);
-    const preferred = candidates.filter((_, i) => counts[i] === minimum);
-    const chosen = preferred[Math.min(Math.floor(random() * preferred.length), preferred.length - 1)];
+  while (remaining.length && selected.length < 5) {
+    const minimum = Math.min(...remaining.map(q => seen.get(q.id)!));
+    const candidates = remaining.filter(q => seen.get(q.id) === minimum);
+    const chosen = candidates[Math.min(Math.floor(random() * candidates.length), candidates.length - 1)];
     selected.push(chosen.id);
+    remaining.splice(remaining.findIndex(q => q.id === chosen.id), 1);
   }
   return { id, questionIds: selected, index: 0, selectedIds: [], completed: false };
 }

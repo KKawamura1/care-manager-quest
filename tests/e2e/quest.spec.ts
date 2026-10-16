@@ -14,38 +14,38 @@ async function chooseAnswer(page: import('@playwright/test').Page, wrong=false) 
  return q;
 }
 test('five questions, feedback, deep dive, persistence, result and knowledge map',async({page})=>{
- const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('/');await expect(page.getByRole('heading',{name:'5択クエスト',exact:true})).toBeVisible();
+ const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('/');await expect(page.getByRole('heading',{name:'過去問演習',exact:true})).toBeVisible();
  await page.screenshot({path:`test-results/${test.info().project.name}-home.png`,fullPage:false});
- await page.getByRole('button',{name:'5問のクエストを始める'}).click();await expect(page.getByRole('button',{name:/あと.*選んでください/})).toBeDisabled();
- const first=await chooseAnswer(page);await expect(page.getByText('✦ 5択完全正解ボーナス +20')).toBeVisible();
+ await page.getByRole('button',{name:'5問の演習を始める'}).click();await expect(page.locator('.player-bar')).toHaveCount(0);await expect(page.getByRole('button',{name:/あと.*選んでください/})).toBeDisabled();
+ const first=await chooseAnswer(page);await expect(page.locator('#feedback')).toContainText('正解');await expect(page.locator('.xp-award')).toHaveCount(0);
   await expect(page.locator('#feedback > p').first()).toBeInViewport();
   await page.screenshot({path:`test-results/${test.info().project.name}-feedback-viewport.png`});await page.screenshot({path:`test-results/${test.info().project.name}-feedback.png`,fullPage:true});
  await page.getByRole('button',{name:'詳しく見る'}).click();await expect(page.getByRole('dialog')).toBeVisible();await page.getByRole('dialog').locator('.related-list button').first().click();await expect(page.getByRole('dialog').locator('.status-pill')).toBeVisible();await page.getByRole('button',{name:'閉じる'}).click();await expect(page.getByRole('dialog')).toContainText('2025年度試験当時の正答');await page.getByRole('button',{name:'元の画面へ戻る'}).click();
  await expect(page.locator('.question-title')).toContainText(`問${Number(first.id.split('-')[1])}｜`);await page.reload();await expect(page.getByRole('button',{name:'次の問題へ'})).toBeVisible();
  const before=await page.evaluate(k=>JSON.parse(localStorage.getItem(k)!).attempts.length,key);expect(before).toBe(1);
  for(let i=1;i<5;i++){await page.getByRole('button',{name:'次の問題へ'}).click();await chooseAnswer(page,i===2);}
- await page.getByRole('button',{name:'リザルトを見る'}).click();await expect(page.getByText('クエスト完了', {exact:true})).toBeVisible();await page.screenshot({path:`test-results/${test.info().project.name}-result.png`,fullPage:true});
- await page.getByRole('button',{name:'広がった知識マップを見る'}).click();await expect(page.getByRole('heading',{name:'知識マップ',exact:true})).toBeVisible();await page.screenshot({path:`test-results/${test.info().project.name}-map.png`,fullPage:false});
+ await page.getByRole('button',{name:'結果を見る'}).click();await expect(page.getByText('演習結果', {exact:true})).toBeVisible();await page.screenshot({path:`test-results/${test.info().project.name}-result.png`,fullPage:true});
+ await page.getByRole('button',{name:'知識マップを見る'}).click();await expect(page.getByRole('heading',{name:'知識マップ',exact:true})).toBeVisible();await page.screenshot({path:`test-results/${test.info().project.name}-map.png`,fullPage:false});
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);expect(errors).toEqual([]);
 });
 test('selection limit, pause and reload before answering',async({page})=>{
- await page.goto('/');await page.getByRole('button',{name:'5問のクエストを始める'}).click();const options=page.getByRole('group',{name:'解答の選択肢'}).getByRole('button');await options.nth(0).click();await options.nth(1).click();
+ await page.goto('/');await page.getByRole('button',{name:'5問の演習を始める'}).click();const options=page.getByRole('group',{name:'解答の選択肢'}).getByRole('button');await options.nth(0).click();await options.nth(1).click();
  const count=await page.evaluate(k=>JSON.parse(localStorage.getItem(k)!).session.selectedIds.length,key);await options.nth(4).click();const after=await page.evaluate(k=>JSON.parse(localStorage.getItem(k)!).session.selectedIds.length,key);expect(after).toBeLessThanOrEqual(3);expect(after).toBeGreaterThanOrEqual(count);
  await page.getByRole('button',{name:'中断してホーム'}).click();await page.getByRole('button',{name:/第1問から再開/}).click();await page.reload();await expect(options.nth(0)).toHaveAttribute('aria-pressed','true');
 });
 test('JSON export/import is staged; invalid imports leave history intact; external record persists',async({page})=>{
- await page.goto('/');await page.getByRole('button',{name:'5問のクエストを始める'}).click();await chooseAnswer(page);await page.getByRole('button',{name:'記録',exact:true}).click();
+ await page.goto('/');await page.getByRole('button',{name:'5問の演習を始める'}).click();await chooseAnswer(page);await page.getByRole('button',{name:'記録',exact:true}).click();
  const original=await page.evaluate(k=>localStorage.getItem(k)!,key);const downloadPromise=page.waitForEvent('download');await page.getByRole('button',{name:'JSONを書き出す'}).click();expect((await downloadPromise).suggestedFilename()).toBe('care-manager-quest-history.json');
  await page.locator('input[type=file]').setInputFiles({name:'bad.json',mimeType:'application/json',buffer:Buffer.from('{}')});await expect(page.getByRole('status')).toContainText('形式が不正');expect(await page.evaluate(k=>localStorage.getItem(k),key)).toBe(original);
  await page.locator('input[type=file]').setInputFiles({name:'history.json',mimeType:'application/json',buffer:Buffer.from(original)});await expect(page.getByRole('dialog')).toContainText('1件');await page.getByRole('button',{name:'読み込んで置き換える'}).click();await expect(page.getByRole('button',{name:'次の問題へ'})).toBeVisible();
  await page.getByRole('button',{name:'記録',exact:true}).click();await page.getByLabel('問題の固定URL').fill('https://keamane.kakomonn.com/questions/12345');await page.getByLabel('表示名（任意）').fill('外部テスト');await page.getByRole('button',{name:'結果を記録する'}).click();await page.reload();await page.getByRole('button',{name:'記録',exact:true}).click();await expect(page.getByRole('link',{name:'外部テスト ↗'})).toBeVisible();
 });
 test('corrupt stored data remains intact until explicit recovery',async({page})=>{
- await page.addInitScript(k=>localStorage.setItem(k,'{broken'),key);await page.goto('/');await expect(page.getByRole('alert')).toBeVisible();expect(await page.evaluate(k=>localStorage.getItem(k),key)).toBe('{broken');await expect(page.getByRole('button',{name:'5問のクエストを始める'})).toBeDisabled();await page.getByRole('button',{name:'新しい履歴で始める'}).click();await expect(page.getByRole('button',{name:'5問のクエストを始める'})).toBeEnabled();
+ await page.addInitScript(k=>localStorage.setItem(k,'{broken'),key);await page.goto('/');await expect(page.getByRole('alert')).toBeVisible();expect(await page.evaluate(k=>localStorage.getItem(k),key)).toBe('{broken');await expect(page.getByRole('button',{name:'5問の演習を始める'})).toBeDisabled();await page.getByRole('button',{name:'新しい履歴で始める'}).click();await expect(page.getByRole('button',{name:'5問の演習を始める'})).toBeEnabled();
 });
 
 test('all 25 official questions play across five quests, each original image maps to the same number',async({page})=>{
- test.setTimeout(120_000);await page.goto('/');await page.getByText('試験分野でさらに絞る',{exact:true}).click();await page.getByRole('radio',{name:'介護支援（25問）'}).check();await page.getByRole('button',{name:'5問のクエストを始める'}).click();
+ test.setTimeout(120_000);await page.goto('/');await page.getByText('試験分野でさらに絞る',{exact:true}).click();await page.getByRole('radio',{name:'介護支援（25問）'}).check();await page.getByRole('button',{name:'5問の演習を始める'}).click();
  const seen:string[]=[];
  for(let session=0;session<5;session++){
   for(let index=0;index<5;index++){
@@ -62,8 +62,8 @@ test('all 25 official questions play across five quests, each original image map
    await expect(page.locator('#feedback')).toContainText('解説未登録');
    if(index<4)await page.getByRole('button',{name:'次の問題へ'}).click();
   }
-  await page.getByRole('button',{name:'リザルトを見る'}).click();await expect(page.getByText('完全攻略！',{exact:true})).toBeVisible();
-  if(session<4)await page.getByRole('button',{name:'もう5問、探索する'}).click();
+  await page.getByRole('button',{name:'結果を見る'}).click();await expect(page.getByText('演習結果',{exact:true})).toBeVisible();
+  if(session<4)await page.getByRole('button',{name:'もう5問解く'}).click();
  }
  expect(new Set(seen).size).toBe(25);expect(seen.every(id=>id.startsWith('2025-'))).toBe(true);
  expect(await page.evaluate(k=>JSON.parse(localStorage.getItem(k)!).attempts.every((a:{correct:boolean})=>a.correct),key)).toBe(true);
@@ -73,16 +73,16 @@ test('all 25 official questions play across five quests, each original image map
 test('old history is intentionally ignored under the new storage key',async({page})=>{
   await page.addInitScript(()=>localStorage.setItem('care-manager-quest:v1','{"old":true}'));
   await page.goto('/');
-  await page.getByRole('button',{name:'5問のクエストを始める'}).click();
+  await page.getByRole('button',{name:'5問の演習を始める'}).click();
   expect(await page.evaluate(k=>JSON.parse(localStorage.getItem(k)!).schemaVersion,key)).toBe(3);
 });
 
 test('domain setting offers all 60 as text while preserving the existing history',async({page})=>{
  await page.goto('/');
- await expect(page.getByRole('heading',{name:'5択クエスト',exact:true})).toBeVisible();
+ await expect(page.getByRole('heading',{name:'過去問演習',exact:true})).toBeVisible();
  await page.getByText('試験分野でさらに絞る',{exact:true}).click();
  await page.getByRole('radio',{name:'保健医療（20問）'}).check();
- await page.getByRole('button',{name:'5問のクエストを始める'}).click();
+ await page.getByRole('button',{name:'5問の演習を始める'}).click();
  let id=await page.evaluate(k=>JSON.parse(localStorage.getItem(k)!).session.questionIds[0],key);
  expect(Number(id.split('-')[1])).toBeGreaterThanOrEqual(26);
  expect(Number(id.split('-')[1])).toBeLessThanOrEqual(45);

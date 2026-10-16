@@ -6,7 +6,7 @@ for(const year of [2020,2021,2022,2023,2024]) {
  test(`${year}: year filter, text UI, exact grading, original image, reload and history`,async({page})=>{
   await page.goto('/');
   await page.getByLabel('出題する年度').selectOption(String(year));
-  await page.getByRole('button',{name:'5問のクエストを始める'}).click();
+  await page.getByRole('button',{name:'5問の演習を始める'}).click();
   const id=await page.evaluate(k=>{const p=JSON.parse(localStorage.getItem(k)!);return p.session.questionIds[0];},key);
   const q=historical.find(q=>q.id===id)!;
   expect(q.original.year).toBe(year);

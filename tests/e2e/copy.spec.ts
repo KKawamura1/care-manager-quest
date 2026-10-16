@@ -12,7 +12,7 @@ test('copies the current question before answering, then includes answer and cho
     } });
   });
   await page.goto('/');
-  await page.getByRole('button', { name: '5問のクエストを始める' }).click();
+  await page.getByRole('button', { name: '5問の演習を始める' }).click();
   const id = await page.evaluate(k => { const session = JSON.parse(localStorage.getItem(k)!).session; return session.questionIds[session.index]; }, key);
   const question = questions.find(question => question.id === id)!;
   const copyButton = page.getByRole('button', { name: '問題をコピー', exact: true });

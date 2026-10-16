@@ -9,7 +9,7 @@ test('first correct answer visibly fills drawers and their ancestors and survive
   await page.getByRole('link', {name:'知識マップ', exact:true}).click();
   const mainMenu = page.getByRole('navigation',{name:'メインメニュー'});
   await expect(mainMenu.getByRole('button')).toHaveCount(4);
-  for (const name of ['冒険', '○×学習', '5択クエスト', '記録']) {
+  for (const name of ['冒険', '○×学習', '過去問演習', '記録']) {
     await expect(mainMenu.getByRole('button',{name,exact:true})).toBeVisible();
   }
   await expect(page.getByRole('region',{name:'日々の積み上げ'})).toHaveCount(1);

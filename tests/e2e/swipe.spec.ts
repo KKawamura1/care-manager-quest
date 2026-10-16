@@ -22,7 +22,7 @@ async function drag(page: Page, dx: number, dy = 0, feedback = false) {
 
 test('○× is available on home with year/category filters', async ({page})=>{
   await page.goto('/');
-  await expect(page.getByRole('heading',{name:'5択クエスト',exact:true})).toBeVisible();
+  await expect(page.getByRole('heading',{name:'過去問演習',exact:true})).toBeVisible();
   await expect(page.getByRole('heading',{name:'○×学習',exact:true})).toBeVisible();
   await page.getByLabel('○×の年度').selectOption('2020');
   await start(page);
@@ -52,7 +52,7 @@ test('swipe answer earns XP and populates unified history and map; reload persis
 
 test('five-choice converts into five daily choice events and shares XP with ○×',async({page})=>{
   await page.goto('/');
-  await page.getByRole('button',{name:'5問のクエストを始める'}).click();
+  await page.getByRole('button',{name:'5問の演習を始める'}).click();
   const instructions=await page.locator('.selection-instruction b').textContent();
   const count=Number(instructions!.match(/\d/)![0]);
   for(let i=0;i<count;i++)await page.getByRole('group',{name:'解答の選択肢'}).getByRole('button').nth(i).click();
