@@ -50,6 +50,22 @@ function initiallyLoad() {
 }
 
 export default function App() {
+  useEffect(() => {
+    // Dialogs restore focus programmatically, which can leave :focus-visible
+    // active after a tap in WebKit. Keep rings for keyboard navigation only.
+    const root = document.documentElement;
+    const pointer = () => { root.dataset.inputMethod = 'pointer'; };
+    const keyboard = (event: KeyboardEvent) => {
+      if (!['Shift', 'Control', 'Alt', 'Meta'].includes(event.key)) delete root.dataset.inputMethod;
+    };
+    document.addEventListener('pointerdown', pointer, true);
+    document.addEventListener('keydown', keyboard, true);
+    return () => {
+      document.removeEventListener('pointerdown', pointer, true);
+      document.removeEventListener('keydown', keyboard, true);
+      delete root.dataset.inputMethod;
+    };
+  }, []);
   const [domainFilter,setDomainFilter] = useState<DomainFilter>(()=>{
     try {const stored=window.localStorage.getItem(DOMAIN_STORAGE_KEY); return DOMAIN_OPTIONS.some(option=>option.value===stored)?stored as DomainFilter:'all';}
     catch {return 'all';}
