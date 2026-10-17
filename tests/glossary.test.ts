@@ -37,4 +37,10 @@ describe('inline glossary', () => {
       expect(new URL(term.sourceUrl).protocol).toBe('https:');
     }
   });
+  it('includes every requested addition and preserves longer compound terms', () => {
+    const requested = ['保険者','被保険者','第1号被保険者','第2号被保険者','指定','許可','条例','人員基準','設備基準','運営基準','地域支援事業','総合事業','事業対象者','嚥下','誤嚥','褥瘡','せん妄','廃用症候群','拘縮','普通徴収','特別徴収','区分支給限度基準額','高額介護サービス費','認知症','BPSD','パーキンソン病','筋萎縮性側索硬化症','成年後見制度','法定後見','任意後見','日常生活自立支援事業','介護扶助'];
+    for (const word of requested) expect(split(word)).toMatchObject([{text:word,term:{description:expect.any(String)}}]);
+    expect(split('被保険者').map(part => part.term?.label)).toEqual(['被保険者']);
+    expect(split('認知症対応型共同生活介護').map(part => part.term?.label)).toEqual(['認知症対応型共同生活介護']);
+  });
 });

@@ -20,9 +20,11 @@ export interface Attempt {
 }
 // Concept evidence is separate from question correctness. This is a transparent MVP rule, not a mastery estimator.
 export interface ConceptProgress { seenQuestionIds: string[]; correctQuestionIds: string[]; reflected: boolean; level?: number; review?: number; }
-export interface Session { id: string; questionIds: string[]; index: number; selectedIds: string[]; completed: boolean; }
+export interface Session { id: string; questionIds: string[]; index: number; selectedIds: string[]; completed: boolean; previousSessionIds?: string[]; }
 export interface ExternalRecord { id: string; url: string; label: string; correct: boolean; at: string; }
 export interface LearningEvent {
+  /** Viewing a hint before answering scores as incorrect; preserve the actual answer. */
+  hintUsed?: true;
   cardId: string; revision: string; answer: boolean | null;
   at: string; mode: 'swipe' | 'five-choice'; xp: number; bonusXp: number;
 }

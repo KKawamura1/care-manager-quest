@@ -65,8 +65,9 @@ export function parsePlayer(text: string): PlayerState {
     const mode = event.mode;
     if (mode !== 'swipe' && mode !== 'five-choice') fail();
     const answer = event.answer === null ? null : bool(event.answer);
+    if (event.hintUsed !== undefined && event.hintUsed !== true) fail();
     learningDay(at);
-    return { cardId, revision, at, mode: mode as 'swipe' | 'five-choice', answer, xp: integer(event.xp,0,10), bonusXp: integer(event.bonusXp,0,20) };
+    return { cardId, revision, at, mode: mode as 'swipe' | 'five-choice', answer, ...(event.hintUsed ? {hintUsed: true as const} : {}), xp: integer(event.xp,0,10), bonusXp: integer(event.bonusXp,0,20) };
   });
   // XP is a projection of the unified option-event ledger.
   if (learningXp(player.learningEvents) > 1_000_000) fail();
@@ -103,7 +104,24 @@ export function parsePlayer(text: string): PlayerState {
     if (attempts.some((a,i) => a.questionId !== questionIds[i]) || attempts.length < index || attempts.length > index+1 || (completed && (index !== questionIds.length-1 || attempts.length !== questionIds.length))) fail();
     const current = attempts[index];
     if (current && (current.selectedIds.length !== selectedIds.length || current.selectedIds.some(x=>!selectedIds.includes(x)))) fail();
-    if (questionIds.every(id=>questions.some(q=>q.id===id))) player.session = { id, questionIds, index, selectedIds, completed };
+    const previousSessionIds = s.previousSessionIds === undefined ? undefined : strings(s.previousSessionIds,20_000);
+    if (previousSessionIds !== undefined) {
+      if (!previousSessionIds.length || previousSessionIds.includes(id)) fail();
+      // Only consecutive, completed batches immediately preceding this batch count.
+      const currentStart = player.attempts.findIndex(a => a.sessionId === id);
+      const past = player.attempts.slice(0,currentStart === -1 ? player.attempts.length : currentStart);
+      if (currentStart !== -1 && player.attempts.slice(currentStart).some(a => a.sessionId !== id)) fail();
+      let cursor = past.length;
+      for (const previousId of [...previousSessionIds].reverse()) {
+        const end = cursor;
+        while (cursor > 0 && past[cursor-1].sessionId === previousId) cursor--;
+        if (end === cursor || end - cursor > 5) fail();
+      }
+    }
+    if (questionIds.every(id=>questions.some(q=>q.id===id))) player.session = {
+      id, questionIds, index, selectedIds, completed,
+      ...(previousSessionIds === undefined ? {} : { previousSessionIds }),
+    };
   }
   return player;
 }

@@ -1,6 +1,6 @@
 import type { ConceptProgress, PlayerState, Question } from './models';
 import { swipeCards } from '../data/swipe-provider';
-import { firstDailyAnswers, learningLevel, reviewUrgency } from './learning';
+import { firstDailyAnswers, learningCorrect, learningLevel, reviewUrgency } from './learning';
 import { reflect } from './game';
 
 /** Include unlearned drawers so a category reflects its entire knowledge scope. */
@@ -32,7 +32,7 @@ export function knowledgeProgress(player: PlayerState, _questions: readonly Ques
       if (!daily.length) continue;
       const p = progress[id] ??= { seenQuestionIds: [], correctQuestionIds: [], reflected: false };
       p.seenQuestionIds.push(card.id);
-      if (daily.some(event => event.answer !== null && event.answer === card.truth)) p.correctQuestionIds.push(card.id);
+      if (daily.some(event => learningCorrect(event, card))) p.correctQuestionIds.push(card.id);
     }
   }
   for (const [id, sum] of totals) {

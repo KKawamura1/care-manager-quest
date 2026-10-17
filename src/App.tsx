@@ -6,7 +6,7 @@ import { parseStudyScope } from './domain/studyScope';
 import { StudyScopePicker } from './components/StudyScopePicker';
 import { questions, questionById, availableYears } from './data/provider';
 import { sources, officialNotice } from './data/sources';
-import { advance, buildSession, conceptStatus, emptyPlayer, levelInfo, submitAnswer, totalXp } from './domain/game';
+import { advance, buildSession, conceptStatus, continueSession, emptyPlayer, levelInfo, practiceScore, submitAnswer, totalXp } from './domain/game';
 import { loadPlayer, MAX_IMPORT_BYTES, parsePlayer, savePlayer, STORAGE_KEY, validExternalUrl } from './domain/storage';
 import type { PlayerState, Question } from './domain/models';
 import { Modal } from './components/Modal';
@@ -19,7 +19,7 @@ import { FieldStats } from './components/FieldStats';
 import { DailyProgress, DailyProgressPreview } from './components/DailyProgress';
 import { KnowledgeMap } from './components/KnowledgeMap';
 import { KnowledgeLevel, formatKnowledgeLevel } from './components/KnowledgeLevel';
-import { recordLearning } from './domain/learning';
+import { learningCorrect, recordLearning } from './domain/learning';
 import { swipeCardById } from './data/swipe-provider';
 import { filterQuestions, parseYearFilter, YEAR_STORAGE_KEY, type YearFilter } from './domain/questionFilter';
 const DOMAIN_OPTIONS = [
@@ -78,6 +78,7 @@ export default function App() {
   const current = session ? questionById(session.questionIds[session.index]) : undefined;
   const attempt = session ? player.attempts.find(a => a.id === `${session.id}:${session.index}`) : undefined;
   const inSession = session ? player.attempts.filter(a => a.sessionId === session.id) : [];
+  const resultScore = session ? practiceScore(session, player.attempts) : { correct: 0, total: 0 };
   const selected = session?.selectedIds ?? [];
   const mapProgress = useMemo(() => knowledgeProgress(player, questions), [player]);
   const explored = concepts.filter(c => conceptStatus(mapProgress[c.id]) !== 'unexplored').length;
@@ -89,9 +90,15 @@ export default function App() {
     catch { setSaveError('履歴を保存できません。JSONを書き出してください。'); }
   }, [player, blocked]);
   const go = (next: typeof route) => { setRoute(next); window.scrollTo({top:0,behavior:'instant'}); };
-  const start = () => {
+  const start = (continueRun = false) => {
     if (blocked || !activeQuestions.length) return;
-    setPlayer(p=>({ ...p, session: buildSession(activeQuestions,p.attempts,crypto.randomUUID()) })); go('play'); setNotice('');
+    setPlayer(p=>({
+      ...p,
+      session: continueRun
+        ? continueSession(activeQuestions,p,crypto.randomUUID())
+        : buildSession(activeQuestions,p.attempts,crypto.randomUUID()),
+    }));
+    go('play'); setNotice('');
   };
   const choose = (id: string) => {
     if (!session || attempt) return;
@@ -123,7 +130,7 @@ export default function App() {
     {saveError && <div className="warning" role="alert"><p>{saveError}</p>{blocked && <><button onClick={()=>download(('raw' in initial && initial.raw) || '', 'care-manager-quest-recovery.json')}>元のデータを書き出す</button><button onClick={()=>{setBlocked(false);setPlayer(emptyPlayer());setSaveError(undefined);}}>新しい履歴で始める</button></>}</div>}
     {notice && <p className="notice" role="status">{notice}</p>}
     <main>
-      <SwipeStudy active={route === 'swipe'} home={route === 'home' || route === 'swipe-setup'} onStart={()=>go('swipe')} onBack={()=>go('swipe-setup')} learningEvents={player.learningEvents} blocked={blocked} onAnswer={(card, answer, at)=>setPlayer(p=>({...p, learningEvents:recordLearning(p.learningEvents,[{card,answer}],at,'swipe')}))}/>
+      <SwipeStudy active={route === 'swipe'} home={route === 'home' || route === 'swipe-setup'} onStart={()=>go('swipe')} onBack={()=>go('swipe-setup')} learningEvents={player.learningEvents} blocked={blocked} onAnswer={(card, answer, at, hintUsed)=>setPlayer(p=>({...p, learningEvents:recordLearning(p.learningEvents,[{card,answer,hintUsed}],at,'swipe')}))}/>
       {(route === 'home' || route === 'quest' || route === 'swipe-setup') && <>
         <section className="home-screen">
           {route === 'home' && <DailyProgressPreview events={player.learningEvents} onOpen={()=>go('records')}/>}
@@ -136,7 +143,7 @@ export default function App() {
             <p className="mission-note">{activeQuestions.length}問対象 · 1回{questSize}問</p>
             {!activeQuestions.length && <p role="status">今の条件に該当する問題はありません。年度・分類・試験分野を変更してください。</p>}
             {session&&!session.completed&&<p className="mission-note">設定は次の演習から反映</p>}
-            <button className="primary" aria-label={session&&!session.completed?`第${session.index+1}問から再開`:`${questSize}問の演習を始める`} disabled={blocked||(!(session&&!session.completed)&&!activeQuestions.length)} onClick={session&&!session.completed?()=>go('play'):start}>{session&&!session.completed?`第${session.index+1}問から再開`:`${questSize}問の演習を始める`}<span aria-hidden="true">→</span></button>
+            <button className="primary" aria-label={session&&!session.completed?`第${session.index+1}問から再開`:`${questSize}問の演習を始める`} disabled={blocked||(!(session&&!session.completed)&&!activeQuestions.length)} onClick={session&&!session.completed?()=>go('play'):()=>start()}>{session&&!session.completed?`第${session.index+1}問から再開`:`${questSize}問の演習を始める`}<span aria-hidden="true">→</span></button>
           </section>}
         </section>
       </>}
@@ -156,7 +163,7 @@ export default function App() {
         {attempt&&<AppExplanation key={`${current.id}:${current.version}`} target={questionTarget(current)}/>}
         <div className="answer-dock">{attempt?<><button className="primary" onClick={nextQuestion}>{session.index===session.questionIds.length-1?'結果を見る':'次の問題へ'}<span>→</span></button><button className="secondary" onClick={()=>setDetail(current)}>詳しく見る</button></>:<button className="primary" disabled={selected.length!==current.selectionCount||blocked} onClick={answer}>{selected.length===current.selectionCount?'答えを確定する':`あと${current.selectionCount-selected.length}つ選んでください`}<span>→</span></button>}</div>
       </section>}
-      {route === 'play' && session?.completed && <section className="result-screen"><h1>演習結果</h1><div className="result-score"><strong>{inSession.filter(a=>a.correct).length}<small>/ {session.questionIds.length}</small></strong><span>正答率 {Math.round(inSession.filter(a=>a.correct).length / session.questionIds.length * 100)}%</span></div><div className="result-list">{inSession.map(a=><button key={a.id} onClick={()=>setDetail(questionById(a.questionId))}><span className={a.correct?'mint':'coral'}>{a.correct?'✓':'×'}</span><span>{questionById(a.questionId)?.title}</span><small>{a.correct?'正解':'不正解'}</small></button>)}</div><button className="primary" onClick={start} disabled={blocked||!activeQuestions.length} aria-label={`もう${questSize}問解く`}>もう{questSize}問解く<span>→</span></button><button className="secondary" onClick={()=>{go('records');requestAnimationFrame(()=>document.getElementById('record-map')?.scrollIntoView({block:'start',behavior:'instant'}));}} aria-label="知識マップを見る">知識マップ</button></section>}
+      {route === 'play' && session?.completed && <section className="result-screen"><h1>演習結果</h1><div className="result-score"><strong>{resultScore.correct}<small>/ {resultScore.total}</small></strong><span>累計正答率 {Math.round(resultScore.correct / resultScore.total * 100)}%</span></div><p className="result-batch-label">直近{inSession.length}問の結果</p><div className="result-list">{inSession.map(a=><button key={a.id} onClick={()=>setDetail(questionById(a.questionId))}><span className={a.correct?'mint':'coral'}>{a.correct?'✓':'×'}</span><span>{questionById(a.questionId)?.title}</span><small>{a.correct?'正解':'不正解'}</small></button>)}</div><button className="primary" onClick={()=>start(true)} disabled={blocked||!activeQuestions.length} aria-label={`もう${questSize}問解く`}>もう{questSize}問解く<span>→</span></button><button className="secondary" onClick={()=>{go('records');requestAnimationFrame(()=>document.getElementById('record-map')?.scrollIntoView({block:'start',behavior:'instant'}));}} aria-label="知識マップを見る">知識マップ</button></section>}
       {route === 'records' && <section className="records-screen"><h1>記録</h1>
         <nav className="record-shortcuts" aria-label="記録のセクション"><a href="#record-progress">積み上げ</a><a href="#record-map">知識マップ</a><a href="#record-fields">得意・苦手</a></nav>
         <div id="record-progress"><DailyProgress events={player.learningEvents}/></div>
@@ -165,7 +172,7 @@ export default function App() {
         <KnowledgeMap progress={mapProgress} onSelect={setConceptId}/>
         <details className="help-details"><summary>習得の目安</summary><p>各選択肢は1回正解で約67%、別の日に2連続正解で100%になり、各階層のゲージに反映されます。直近2学習日の初回回答を重み付きで評価し、未回答分は0として集約します。上位分類は配下の引き出しの平均です。学習レベル80%以上で習得済み。同日の再練習は加算せず、時間経過は要復習度に反映します。</p></details>
         </section>
-        <div id="record-fields"><FieldStats events={player.learningEvents}/></div><div className="record-stats"><div><b>{player.learningEvents.length}</b><span>回答した選択肢</span></div><div><b>{xp}</b><span>合計XP</span></div><div><b>{player.learningEvents.filter(e=>e.answer!==null&&e.answer===swipeCardById.get(e.cardId)?.truth).length}</b><span>正解</span></div></div><section className="panel"><h2>履歴を持ち出す</h2><button className="primary" onClick={()=>download(JSON.stringify(player,null,2),'care-manager-quest-history.json')}>JSONを書き出す <span>↓</span></button><button className="secondary" onClick={()=>fileRef.current?.click()}>JSONを読み込む</button><input type="file" accept=".json,application/json" ref={fileRef} hidden onChange={e=>void readImport(e.target.files?.[0])}/></section>
+        <div id="record-fields"><FieldStats events={player.learningEvents}/></div><div className="record-stats"><div><b>{player.learningEvents.length}</b><span>回答した選択肢</span></div><div><b>{xp}</b><span>合計XP</span></div><div><b>{player.learningEvents.filter(e=>learningCorrect(e,swipeCardById.get(e.cardId))).length}</b><span>正解</span></div></div><section className="panel"><h2>履歴を持ち出す</h2><button className="primary" onClick={()=>download(JSON.stringify(player,null,2),'care-manager-quest-history.json')}>JSONを書き出す <span>↓</span></button><button className="secondary" onClick={()=>fileRef.current?.click()}>JSONを読み込む</button><input type="file" accept=".json,application/json" ref={fileRef} hidden onChange={e=>void readImport(e.target.files?.[0])}/></section>
         <ExternalForm onSave={(url,label,correct)=>{setPlayer(p=>({...p,externalRecords:[...p.externalRecords,{id:crypto.randomUUID(),url,label,correct,at:new Date().toISOString()}]}));setNotice('外部サイトの結果を記録しました。');}} disabled={blocked}/>
         {player.externalRecords.length>0&&<section className="panel"><h2>外部サイトの記録</h2><div className="log-list">{player.externalRecords.slice(-10).reverse().map(e=><div key={e.id}><span className={e.correct?'mint':'coral'}>{e.correct?'✓':'×'}</span><a href={e.url} target="_blank" rel="noopener noreferrer">{e.label} ↗</a><small>{new Date(e.at).toLocaleDateString('ja-JP')}</small></div>)}</div></section>}
         <section className="panel"><h2>最近の探索</h2>{player.attempts.length===0?<p>まだ記録はありません。</p>:<div className="log-list">{player.attempts.slice(-10).reverse().map(a=><button key={a.id} onClick={()=>setDetail(questionById(a.questionId))}><span className={a.correct?'mint':'coral'}>{a.correct?'✓':'×'}</span><span>{questionById(a.questionId)?.title}</span><small>+{a.xp} XP</small></button>)}</div>}</section><details className="help-details"><summary>このアプリについて</summary><p>{officialNotice}</p><p>各年度の試験当時の正答で採点します。現行法・文字の再校正は確認未了、知識分類は暫定です。</p><a href="https://www.sssc.or.jp/pastissues/index.html" target="_blank" rel="noopener noreferrer">過去問題の利用条件 ↗</a></details>

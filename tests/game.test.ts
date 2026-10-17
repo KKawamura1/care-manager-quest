@@ -4,7 +4,7 @@ import { createHash } from 'node:crypto';
 import { categories, concepts } from '../src/data/knowledge';
 import { officialProvider, legacyQuestions } from '../src/data/provider';
 import { sources } from '../src/data/sources';
-import { advance, awardXp, buildSession, conceptStatus, emptyPlayer, isCorrect, levelInfo, reflect, submitAnswer, totalXp } from '../src/domain/game';
+import { advance, awardXp, buildSession, conceptStatus, continueSession, emptyPlayer, isCorrect, levelInfo, practiceScore, reflect, submitAnswer, totalXp } from '../src/domain/game';
 import { loadPlayer, MAX_IMPORT_BYTES, parsePlayer, savePlayer, validExternalUrl } from '../src/domain/storage';
 import type { PlayerState } from '../src/domain/models';
 const date='2026-10-10T10:00:00.000Z';
@@ -38,6 +38,37 @@ describe('quest rules',()=>{
  });
  it('keeps conceptual evidence distinct and does not master a single repeated question',()=>{
   let p=answered(ready());const q=questions.find(q=>q.id===p.session!.questionIds[0])!;const id=q.conceptIds[0];p=reflect(p,[id]);expect(conceptStatus(p.concepts[id])).toBe('learning');expect(conceptStatus({...p.concepts[id],level:0.85})).toBe('mastered');expect(totalXp(reflect(p,[id]))).toBe(totalXp(p));expect(conceptStatus()).toBe('unexplored');
+ });
+});
+describe('continued past-exam practice',()=>{
+ it('shows 3/5, 8/10, 12/15 while continuing, and resets when started from home',()=>{
+  let p=ready();
+  for(let i=0;i<5;i++)p=advance(answered(p,i<3));
+  expect(practiceScore(p.session!,p.attempts)).toEqual({correct:3,total:5});
+  p={...p,session:continueSession(questions,p,'session-2',()=>0)};
+  expect(p.session!.previousSessionIds).toEqual(['session-1']);
+  expect(parsePlayer(JSON.stringify(p))).toEqual(p);
+  for(let i=0;i<5;i++)p=advance(answered(p));
+  expect(practiceScore(p.session!,p.attempts)).toEqual({correct:8,total:10});
+  expect(parsePlayer(JSON.stringify(p))).toEqual(p);
+  p={...p,session:continueSession(questions,p,'session-3',()=>0)};
+  for(let i=0;i<5;i++)p=advance(answered(p,i<4));
+  expect(practiceScore(p.session!,p.attempts)).toEqual({correct:12,total:15});
+  expect(parsePlayer(JSON.stringify(p))).toEqual(p);
+  p={...p,session:buildSession(questions,p.attempts,'fresh',()=>0)};
+  for(let i=0;i<5;i++)p=advance(answered(p));
+  expect(p.session!.previousSessionIds).toBeUndefined();
+  expect(practiceScore(p.session!,p.attempts)).toEqual({correct:5,total:5});
+  expect(parsePlayer(JSON.stringify(p))).toEqual(p);
+ });
+ it('rejects fabricated, duplicate or nonconsecutive history in a continued session',()=>{
+  let p=ready();
+  for(let i=0;i<5;i++)p=advance(answered(p));
+  p={...p,session:continueSession(questions,p,'session-2',()=>0)};
+  for(const ids of [['unknown'],['session-1','session-1'],['session-2']]) {
+   const bad=structuredClone(p);bad.session!.previousSessionIds=ids;
+   expect(()=>parsePlayer(JSON.stringify(bad))).toThrow();
+  }
  });
 });
 describe('portable history',()=>{

@@ -1,7 +1,7 @@
 import type { LearningEvent } from './models';
 import type { SwipeCard } from './swipe';
 import type { StudyScope } from './studyScope';
-import { firstDailyAnswers } from './learning';
+import { firstDailyAnswers, learningCorrect } from './learning';
 
 const RECENT_ACCURACY_WINDOW = 5;
 
@@ -33,9 +33,9 @@ export function fieldStats(cards: readonly SwipeCard[], events: readonly Learnin
   const recentTotals = new Map<string, number>();
   for (const card of cards) {
     const daily = (byCard.get(card.id) ?? []).filter(event => event.revision === card.revision);
-    const correct = daily.filter(event => event.answer !== null && event.answer === card.truth).length;
+    const correct = daily.filter(event => learningCorrect(event, card)).length;
     const recent = daily.slice(-RECENT_ACCURACY_WINDOW);
-    const recentRate = recent.length ? recent.filter(event => event.answer !== null && event.answer === card.truth).length / recent.length : 0;
+    const recentRate = recent.length ? recent.filter(event => learningCorrect(event, card)).length / recent.length : 0;
     const ids = new Set(['all', ...card.topicIds.flatMap(id => scope.path(id))]);
     for (const id of ids) {
       const stats = result.get(id)!;
