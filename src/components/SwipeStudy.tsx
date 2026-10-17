@@ -13,12 +13,13 @@ import { swipeCopyText } from '../domain/questionCopy';
 import { studyScope } from '../data/study-scope';
 import { parseStudyScope } from '../domain/studyScope';
 import { StudyScopePicker } from './StudyScopePicker';
+import { GlossaryText } from './GlossaryText';
 const SCOPE_STORAGE_KEY = 'care-manager-quest:swipe-scope';
 
 export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAnswer, blocked }: {
   active: boolean; home: boolean; onStart: () => void; onBack: () => void;
   learningEvents: readonly LearningEvent[];
-  onAnswer: (card: SwipeCard, answer: boolean | null, at: string) => void;
+  onAnswer: (card: SwipeCard, answer: boolean | null, at: string, hintUsed?: boolean) => void;
   blocked: boolean;
 }) {
   const state = useMemo(() => swipeProgressFromEvents(learningEvents, swipeCardById), [learningEvents]);
@@ -32,6 +33,11 @@ export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAn
   // A fresh deal also plays when practicing the same card again.
   const [deal, setDeal] = useState(0);
   const [original, setOriginal] = useState(false);
+  const [hintUsed, setHintUsed] = useState(false);
+  // Shared between the stem and option; confirmation applies to this attempt.
+  const hintUsedRef = useRef(false);
+  const resetHint = () => { hintUsedRef.current = false; setHintUsed(false); };
+  const useHint = () => { if (!result && !locked.current) { hintUsedRef.current = true; setHintUsed(true); } };
   const gesture = useRef<{ x: number; y: number; id: number; phase: 'answer' | 'feedback' } | undefined>(undefined);
   const locked = useRef(false);
   const nextRef = useRef<HTMLButtonElement>(null);
@@ -54,14 +60,15 @@ export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAn
     locked.current = true;
     const correct = answer !== null && answer === card.truth;
     const at = new Date().toISOString();
-    const updated = recordLearning(learningEvents, [{card, answer}], at, 'swipe');
+    const updated = recordLearning(learningEvents, [{card, answer, hintUsed: hintUsedRef.current}], at, 'swipe');
     const xp = learningXp(updated) - learningXp(learningEvents);
-    onAnswer(card, answer, at);
+    onAnswer(card, answer, at, hintUsedRef.current);
     setResult({ answer, correct, xp }); setDrag({ x: 0, y: 0 });
     requestAnimationFrame(() => { nextRef.current?.focus({ preventScroll: true }); document.getElementById('swipe-feedback')?.scrollIntoView({ block: 'start', behavior: 'instant' }); });
   };
   const next = () => {
     if (!result || !locked.current) return;
+    resetHint();
     setDeal(n => n + 1);
     locked.current = false; setResult(undefined); setOriginal(false); setDrag({ x: 0, y: 0 }); setNow(Date.now());
     // Pick from the latest review state: no artificial 20-card limit or session result.
@@ -73,6 +80,7 @@ export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAn
     if (blocked) return;
     const alreadyStudied = candidates.filter(candidate => progressFor(state, candidate));
     if (!alreadyStudied.length) return;
+    resetHint();
     const nextCard = alreadyStudied[Math.floor(Math.random() * alreadyStudied.length)];
     setDeal(n => n + 1);
     locked.current = false;
@@ -81,6 +89,7 @@ export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAn
   };
   const retry = () => {
     if (!result) return;
+    resetHint();
     setDeal(n => n + 1);
     locked.current = false;
     setResult(undefined); setOriginal(false); setDrag({x:0,y:0});
@@ -91,6 +100,7 @@ export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAn
     if (blocked) return;
     const nextCard = reviewQueue(candidates, state, Date.now())[0];
     if (!nextCard) return;
+    resetHint();
     setDeal(n => n + 1);
     locked.current = false; setCard(nextCard); setResult(undefined); setOriginal(false);
     onStart();
@@ -139,7 +149,8 @@ export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAn
       <div className="quest-heading"><button className="text-button" onClick={() => { setCard(undefined); setResult(undefined); locked.current = false; setNow(Date.now()); onBack(); }}>分野選択に戻る</button></div>
       <div className="question-meta"><span>{card.year}年度 問{card.number}・選択肢{card.choiceId}</span></div>
       <p className="swipe-topic">{card.topicIds.map(id => swipeConcepts.find(c => c.id === id)?.label).join(' / ') || '分類待ち'}</p>
-      <div className="swipe-context"><b>元の設問</b><p>{card.stem}</p></div>
+      <div className="swipe-context"><b>元の設問</b><p><GlossaryText key={`${card.id}:${deal}:stem`} text={card.stem} requireConfirmation={!result && !hintUsed} onHintUsed={useHint}/></p></div>
+      {!result && hintUsed && <p className="hint-record-note" role="status">用語解説を閲覧済み：今回は不正解として記録します。</p>}
       <div className={`swipe-surface${result ? ' swipe-surface-feedback' : ''}`} onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={() => { gesture.current = undefined; setDrag({ x: 0, y: 0 }); }} onLostPointerCapture={() => { gesture.current = undefined; setDrag({ x: 0, y: 0 }); }}
         onKeyDown={e => { if (['ArrowRight','ArrowLeft','ArrowUp'].includes(e.key)) { e.preventDefault(); if (e.repeat) return; if (result) next(); else submit(e.key === 'ArrowUp' ? null : e.key === 'ArrowRight'); } }}>
       <div className="swipe-card-deal" key={`${card.id}:${deal}`}>
@@ -147,7 +158,7 @@ export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAn
         data-intent={drag.y < 0 ? 'unknown' : drag.x > 0 ? 'yes' : drag.x < 0 ? 'no' : undefined}
         style={{ transform: `translate(${drag.x}px, ${drag.y}px) rotate(${drag.x / 20}deg)` }}>
         <span className="card-eyebrow" aria-hidden="true">TRUE / FALSE</span>
-        <p>{card.text}</p>
+        <p><GlossaryText text={card.text} requireConfirmation={!result && !hintUsed} onHintUsed={useHint}/></p>
         {result && <span className={`card-verdict ${result.correct ? 'mint' : 'coral'}`} aria-hidden="true">{result.correct ? '✓' : '×'}</span>}
         {(drag.x !== 0 || drag.y !== 0) && <span className={`swipe-stamp ${drag.x > 0 ? 'mint' : 'coral'}`} aria-hidden="true">{drag.y < 0 ? '？' : drag.x > 0 ? '○' : '×'}</span>}
       </div>
@@ -157,6 +168,7 @@ export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAn
         <div id="swipe-feedback" className={`feedback ${result.correct ? 'success' : 'miss'}`} role="status">
           <h2>{result.correct ? '正解！' : '不正解'} <small>+{result.xp} XP</small></h2><p className="swipe-verdict">正答：<b>{card.truth ? '○' : '×'}</b> ／ あなた：{result.answer === null ? 'わからない' : result.answer ? '○' : '×'}</p>
           <p>{card.explanation || '解説未登録'}</p>
+          {hintUsed && <p className="hint-record-note">回答前に用語解説を見たため、学習記録は不正解扱いです。</p>}
         </div>
         <button className="primary" ref={nextRef} onClick={next}>次のカードへ<span aria-hidden="true">→</span></button>
          <button className="secondary" onClick={retry}>同じカードを再練習（XPなし）</button>

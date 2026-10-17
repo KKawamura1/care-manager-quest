@@ -6,6 +6,9 @@ const DAY = 86_400_000;
 const JST = 9 * 3_600_000;
 export const LEARNING_WINDOW = 2;
 
+export const learningCorrect = (event: Pick<LearningEvent, 'answer' | 'hintUsed'>, card: Pick<SwipeCard, 'truth'> | undefined): boolean =>
+  card !== undefined && !event.hintUsed && event.answer !== null && event.answer === card.truth;
+
 /** Calendar date in Japan, independent of browser locale and timezone. */
 const dayCache = new Map<string, string>();
 export const learningDay = (at: string): string => {
@@ -32,7 +35,7 @@ export function learningLevel(events: readonly LearningEvent[], card: SwipeCard,
   const recent = firstDailyAnswers(events, card).slice(-count);
   const denominator = count * (count + 1) / 2;
   return recent.reduce((sum, event, i) =>
-    sum + (event.answer !== null && event.answer === card.truth ? count - recent.length + i + 1 : 0), 0) / denominator;
+    sum + (learningCorrect(event, card) ? count - recent.length + i + 1 : 0), 0) / denominator;
 }
 
 export function reviewIntervalDays(level: number): number {
@@ -48,7 +51,7 @@ export function reviewUrgency(events: readonly LearningEvent[], card: SwipeCard,
 
 export function recordLearning(
   current: readonly LearningEvent[],
-  choices: readonly { card: SwipeCard; answer: boolean | null }[],
+  choices: readonly { card: SwipeCard; answer: boolean | null; hintUsed?: boolean }[],
   at: string,
   mode: LearningEvent['mode'],
   perfect = false,
@@ -56,16 +59,17 @@ export function recordLearning(
   const day = learningDay(at);
   const existing = new Set(current.filter(event => learningDay(event.at) === day).map(event => event.cardId));
   const eligible = choices.filter(({card}) => !existing.has(card.id));
-  const bonus = mode === 'five-choice' && perfect && choices.length === 5 && eligible.length === 5 ? 20 : 0;
+  const bonus = mode === 'five-choice' && perfect && choices.length === 5 && eligible.length === 5 && !choices.some(choice => choice.hintUsed) ? 20 : 0;
   return [
     ...current,
-    ...choices.map(({card, answer}, i) => ({
+    ...choices.map(({card, answer, hintUsed}, i) => ({
       cardId: card.id,
       revision: card.revision,
       answer,
+      ...(hintUsed ? { hintUsed: true as const } : {}),
       at,
       mode,
-      xp: existing.has(card.id) ? 0 : answer !== null && answer === card.truth ? 10 : 2,
+      xp: existing.has(card.id) ? 0 : !hintUsed && answer !== null && answer === card.truth ? 10 : 2,
       bonusXp: i === 0 ? bonus : 0,
     })),
   ];
@@ -81,7 +85,7 @@ export function swipeProgressFromEvents(events: readonly LearningEvent[], cards:
     const old = state.progress[card.id];
     state.progress[card.id] = recordSwipe(
       { schemaVersion: 1, progress: old ? { [card.id]: old } : {} },
-      card, event.answer, Date.parse(event.at)
+      card, event.hintUsed ? null : event.answer, Date.parse(event.at)
     ).progress[card.id];
   }
   // Scheduling uses evidence-based retention, not short-term repeated practice.

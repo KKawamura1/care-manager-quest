@@ -19,7 +19,7 @@ import { FieldStats } from './components/FieldStats';
 import { DailyProgress, DailyProgressPreview } from './components/DailyProgress';
 import { KnowledgeMap } from './components/KnowledgeMap';
 import { KnowledgeLevel, formatKnowledgeLevel } from './components/KnowledgeLevel';
-import { recordLearning } from './domain/learning';
+import { learningCorrect, recordLearning } from './domain/learning';
 import { swipeCardById } from './data/swipe-provider';
 import { filterQuestions, parseYearFilter, YEAR_STORAGE_KEY, type YearFilter } from './domain/questionFilter';
 const DOMAIN_OPTIONS = [
@@ -130,7 +130,7 @@ export default function App() {
     {saveError && <div className="warning" role="alert"><p>{saveError}</p>{blocked && <><button onClick={()=>download(('raw' in initial && initial.raw) || '', 'care-manager-quest-recovery.json')}>元のデータを書き出す</button><button onClick={()=>{setBlocked(false);setPlayer(emptyPlayer());setSaveError(undefined);}}>新しい履歴で始める</button></>}</div>}
     {notice && <p className="notice" role="status">{notice}</p>}
     <main>
-      <SwipeStudy active={route === 'swipe'} home={route === 'home' || route === 'swipe-setup'} onStart={()=>go('swipe')} onBack={()=>go('swipe-setup')} learningEvents={player.learningEvents} blocked={blocked} onAnswer={(card, answer, at)=>setPlayer(p=>({...p, learningEvents:recordLearning(p.learningEvents,[{card,answer}],at,'swipe')}))}/>
+      <SwipeStudy active={route === 'swipe'} home={route === 'home' || route === 'swipe-setup'} onStart={()=>go('swipe')} onBack={()=>go('swipe-setup')} learningEvents={player.learningEvents} blocked={blocked} onAnswer={(card, answer, at, hintUsed)=>setPlayer(p=>({...p, learningEvents:recordLearning(p.learningEvents,[{card,answer,hintUsed}],at,'swipe')}))}/>
       {(route === 'home' || route === 'quest' || route === 'swipe-setup') && <>
         <section className="home-screen">
           {route === 'home' && <DailyProgressPreview events={player.learningEvents} onOpen={()=>go('records')}/>}
@@ -172,7 +172,7 @@ export default function App() {
         <KnowledgeMap progress={mapProgress} onSelect={setConceptId}/>
         <details className="help-details"><summary>習得の目安</summary><p>各選択肢は1回正解で約67%、別の日に2連続正解で100%になり、各階層のゲージに反映されます。直近2学習日の初回回答を重み付きで評価し、未回答分は0として集約します。上位分類は配下の引き出しの平均です。学習レベル80%以上で習得済み。同日の再練習は加算せず、時間経過は要復習度に反映します。</p></details>
         </section>
-        <div id="record-fields"><FieldStats events={player.learningEvents}/></div><div className="record-stats"><div><b>{player.learningEvents.length}</b><span>回答した選択肢</span></div><div><b>{xp}</b><span>合計XP</span></div><div><b>{player.learningEvents.filter(e=>e.answer!==null&&e.answer===swipeCardById.get(e.cardId)?.truth).length}</b><span>正解</span></div></div><section className="panel"><h2>履歴を持ち出す</h2><button className="primary" onClick={()=>download(JSON.stringify(player,null,2),'care-manager-quest-history.json')}>JSONを書き出す <span>↓</span></button><button className="secondary" onClick={()=>fileRef.current?.click()}>JSONを読み込む</button><input type="file" accept=".json,application/json" ref={fileRef} hidden onChange={e=>void readImport(e.target.files?.[0])}/></section>
+        <div id="record-fields"><FieldStats events={player.learningEvents}/></div><div className="record-stats"><div><b>{player.learningEvents.length}</b><span>回答した選択肢</span></div><div><b>{xp}</b><span>合計XP</span></div><div><b>{player.learningEvents.filter(e=>learningCorrect(e,swipeCardById.get(e.cardId))).length}</b><span>正解</span></div></div><section className="panel"><h2>履歴を持ち出す</h2><button className="primary" onClick={()=>download(JSON.stringify(player,null,2),'care-manager-quest-history.json')}>JSONを書き出す <span>↓</span></button><button className="secondary" onClick={()=>fileRef.current?.click()}>JSONを読み込む</button><input type="file" accept=".json,application/json" ref={fileRef} hidden onChange={e=>void readImport(e.target.files?.[0])}/></section>
         <ExternalForm onSave={(url,label,correct)=>{setPlayer(p=>({...p,externalRecords:[...p.externalRecords,{id:crypto.randomUUID(),url,label,correct,at:new Date().toISOString()}]}));setNotice('外部サイトの結果を記録しました。');}} disabled={blocked}/>
         {player.externalRecords.length>0&&<section className="panel"><h2>外部サイトの記録</h2><div className="log-list">{player.externalRecords.slice(-10).reverse().map(e=><div key={e.id}><span className={e.correct?'mint':'coral'}>{e.correct?'✓':'×'}</span><a href={e.url} target="_blank" rel="noopener noreferrer">{e.label} ↗</a><small>{new Date(e.at).toLocaleDateString('ja-JP')}</small></div>)}</div></section>}
         <section className="panel"><h2>最近の探索</h2>{player.attempts.length===0?<p>まだ記録はありません。</p>:<div className="log-list">{player.attempts.slice(-10).reverse().map(a=><button key={a.id} onClick={()=>setDetail(questionById(a.questionId))}><span className={a.correct?'mint':'coral'}>{a.correct?'✓':'×'}</span><span>{questionById(a.questionId)?.title}</span><small>+{a.xp} XP</small></button>)}</div>}</section><details className="help-details"><summary>このアプリについて</summary><p>{officialNotice}</p><p>各年度の試験当時の正答で採点します。現行法・文字の再校正は確認未了、知識分類は暫定です。</p><a href="https://www.sssc.or.jp/pastissues/index.html" target="_blank" rel="noopener noreferrer">過去問題の利用条件 ↗</a></details>
