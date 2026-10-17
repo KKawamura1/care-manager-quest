@@ -36,8 +36,13 @@ export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAn
   const [hintUsed, setHintUsed] = useState(false);
   // Shared between the stem and option; confirmation applies to this attempt.
   const hintUsedRef = useRef(false);
+  const confirmedHints = useRef(new Set<string>());
+  const hintKey = card ? `${card.id}@${card.revision}` : '';
+  const previouslyConfirmed = confirmedHints.current.has(hintKey) || learningEvents.some(event =>
+    event.cardId === card?.id && event.revision === card?.revision && event.hintUsed);
+  const requireHintConfirmation = !result && !hintUsed && !previouslyConfirmed;
   const resetHint = () => { hintUsedRef.current = false; setHintUsed(false); };
-  const useHint = () => { if (!result && !locked.current) { hintUsedRef.current = true; setHintUsed(true); } };
+  const useHint = () => { if (card && !result && !locked.current) { confirmedHints.current.add(hintKey); hintUsedRef.current = true; setHintUsed(true); } };
   const gesture = useRef<{ x: number; y: number; id: number; phase: 'answer' | 'feedback' } | undefined>(undefined);
   const locked = useRef(false);
   const nextRef = useRef<HTMLButtonElement>(null);
@@ -149,7 +154,7 @@ export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAn
       <div className="quest-heading"><button className="text-button" onClick={() => { setCard(undefined); setResult(undefined); locked.current = false; setNow(Date.now()); onBack(); }}>分野選択に戻る</button></div>
       <div className="question-meta"><span>{card.year}年度 問{card.number}・選択肢{card.choiceId}</span></div>
       <p className="swipe-topic">{card.topicIds.map(id => swipeConcepts.find(c => c.id === id)?.label).join(' / ') || '分類待ち'}</p>
-      <div className="swipe-context"><b>元の設問</b><p><GlossaryText key={`${card.id}:${deal}:stem`} text={card.stem} requireConfirmation={!result && !hintUsed} onHintUsed={useHint}/></p></div>
+      <div className="swipe-context"><b>元の設問</b><p><GlossaryText key={`${card.id}:${deal}:stem`} text={card.stem} requireConfirmation={requireHintConfirmation} onHintUsed={useHint}/></p></div>
       {!result && hintUsed && <p className="hint-record-note" role="status">用語解説を閲覧済み：今回は不正解として記録します。</p>}
       <div className={`swipe-surface${result ? ' swipe-surface-feedback' : ''}`} onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={() => { gesture.current = undefined; setDrag({ x: 0, y: 0 }); }} onLostPointerCapture={() => { gesture.current = undefined; setDrag({ x: 0, y: 0 }); }}
         onKeyDown={e => { if (['ArrowRight','ArrowLeft','ArrowUp'].includes(e.key)) { e.preventDefault(); if (e.repeat) return; if (result) next(); else submit(e.key === 'ArrowUp' ? null : e.key === 'ArrowRight'); } }}>
@@ -158,7 +163,7 @@ export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAn
         data-intent={drag.y < 0 ? 'unknown' : drag.x > 0 ? 'yes' : drag.x < 0 ? 'no' : undefined}
         style={{ transform: `translate(${drag.x}px, ${drag.y}px) rotate(${drag.x / 20}deg)` }}>
         <span className="card-eyebrow" aria-hidden="true">TRUE / FALSE</span>
-        <p><GlossaryText text={card.text} requireConfirmation={!result && !hintUsed} onHintUsed={useHint}/></p>
+        <p><GlossaryText text={card.text} requireConfirmation={requireHintConfirmation} onHintUsed={useHint}/></p>
         {result && <span className={`card-verdict ${result.correct ? 'mint' : 'coral'}`} aria-hidden="true">{result.correct ? '✓' : '×'}</span>}
         {(drag.x !== 0 || drag.y !== 0) && <span className={`swipe-stamp ${drag.x > 0 ? 'mint' : 'coral'}`} aria-hidden="true">{drag.y < 0 ? '？' : drag.x > 0 ? '○' : '×'}</span>}
       </div>
