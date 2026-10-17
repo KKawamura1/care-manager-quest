@@ -21,6 +21,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 button { border: 0; cursor: pointer; touch-action: manipulation; }
 button:disabled { cursor: default; }
 button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+:root[data-input-method="pointer"] :focus-visible { outline: none; }
 a { color: var(--mint); text-underline-offset: 4px; }
 h1, h2, h3, p { margin: 0; }
 h1 { font-size: 28px; line-height: 1.45; letter-spacing: -.025em; }
