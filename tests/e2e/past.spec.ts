@@ -24,7 +24,7 @@ test('historical year, text-only questions, feedback, copy and saved selection w
   await page.screenshot({path:`test-results/${test.info().project.name}-past-question.png`,fullPage:true});
   for(const n of answers[id].correctChoices)await page.getByRole('group',{name:'解答の選択肢'}).getByRole('button').nth(n-1).click();
   await page.getByRole('button',{name:'答えを確定する'}).click();
-  await expect(page.locator('#feedback')).toContainText('正解！');
+  await expect(page.locator('#feedback h2')).toHaveText('正解');
   await expect(page.locator('#feedback .answer-key')).toContainText('正答：');
   await page.getByRole('button',{name:'詳しく見る'}).click();
   await expect(page.getByRole('dialog')).toContainText('2005年度試験当時の正答');
@@ -45,12 +45,12 @@ test('accepted alternative answer selections have consistent option feedback',as
   await page.goto('/');const options=page.getByRole('group',{name:'解答の選択肢'}).getByRole('button');
   await options.nth(2).click();await options.nth(4).click();
   await page.getByRole('button',{name:'答えを確定する'}).click();
-  await expect(page.locator('#feedback')).toContainText('正解！');
+  await expect(page.locator('#feedback h2')).toHaveText('正解');
   await expect(page.locator('#feedback')).toContainText('1・3 または 1・5 または 3・5');
   await expect(options.nth(4)).toHaveClass(/correct/);
   await expect(options.nth(4)).not.toHaveClass(/wrong/);
   await expect(options.nth(0)).toContainText('他の正答の組合せに含まれる');
-  await page.reload();await expect(page.locator('#feedback')).toContainText('正解！');
+  await page.reload();await expect(page.locator('#feedback h2')).toHaveText('正解');
 });
 
 test('2018 and 2019 are selectable as text-only sixty-question years',async({page})=>{

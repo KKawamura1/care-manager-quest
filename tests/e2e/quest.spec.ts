@@ -28,6 +28,37 @@ test('five questions, feedback, deep dive, persistence, result and knowledge map
  await page.getByRole('button',{name:'知識マップを見る'}).click();await expect(page.getByRole('heading',{name:'知識マップ',exact:true})).toBeVisible();await page.screenshot({path:`test-results/${test.info().project.name}-map.png`,fullPage:false});
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);expect(errors).toEqual([]);
 });
+test('continues the cumulative score across sets and reload, but resets for a new run',async({page})=>{
+ await page.goto('/');
+ await page.getByRole('button',{name:'5問の演習を始める'}).click();
+ const answerBatch=async(wrongIndices:number[])=>{
+  for(let i=0;i<5;i++){
+   await chooseAnswer(page,wrongIndices.includes(i));
+   await page.getByRole('button',{name:i===4?'結果を見る':'次の問題へ'}).click();
+  }
+ };
+ const score=page.locator('.result-score');
+ await answerBatch([3,4]);
+ await expect(score.locator('strong')).toHaveText(/3\s*\/\s*5/);
+ await expect(score).toContainText('累計正答率 60%');
+ await page.getByRole('button',{name:'もう5問解く'}).click();
+ await page.reload();
+ await answerBatch([]);
+ await expect(score.locator('strong')).toHaveText(/8\s*\/\s*10/);
+ await expect(score).toContainText('累計正答率 80%');
+ await expect(page.locator('.result-list button')).toHaveCount(5);
+ await page.getByRole('button',{name:'もう5問解く'}).click();
+ await answerBatch([4]);
+ await expect(score.locator('strong')).toHaveText(/12\s*\/\s*15/);
+ await expect(score).toContainText('累計正答率 80%');
+ await page.reload();
+ await expect(score.locator('strong')).toHaveText(/12\s*\/\s*15/);
+ await page.getByRole('button',{name:'冒険ホームへ'}).click();
+ await page.getByRole('button',{name:'5問の演習を始める'}).click();
+ await answerBatch([]);
+ await expect(score.locator('strong')).toHaveText(/5\s*\/\s*5/);
+ await expect(score).toContainText('累計正答率 100%');
+});
 test('selection limit, pause and reload before answering',async({page})=>{
  await page.goto('/');await page.getByRole('button',{name:'5問の演習を始める'}).click();const options=page.getByRole('group',{name:'解答の選択肢'}).getByRole('button');await options.nth(0).click();await options.nth(1).click();
  const count=await page.evaluate(k=>JSON.parse(localStorage.getItem(k)!).session.selectedIds.length,key);await options.nth(4).click();const after=await page.evaluate(k=>JSON.parse(localStorage.getItem(k)!).session.selectedIds.length,key);expect(after).toBeLessThanOrEqual(3);expect(after).toBeGreaterThanOrEqual(count);

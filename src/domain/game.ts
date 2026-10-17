@@ -27,6 +27,18 @@ export function buildSession(pool: readonly Question[], attempts: readonly Attem
   }
   return { id, questionIds: selected, index: 0, selectedIds: [], completed: false };
 }
+// An explicit "もう5問解く" keeps the current practice run; starting from home uses buildSession.
+export function continueSession(pool: readonly Question[], p: PlayerState, id: string, random = Math.random): Session {
+  const next = buildSession(pool, p.attempts, id, random);
+  return p.session?.completed
+    ? { ...next, previousSessionIds: [...(p.session.previousSessionIds ?? []), p.session.id] }
+    : next;
+}
+export function practiceScore(session: Session, attempts: readonly Attempt[]): { correct: number; total: number } {
+  const sessionIds = new Set([...(session.previousSessionIds ?? []), session.id]);
+  const answered = attempts.filter(a => sessionIds.has(a.sessionId));
+  return { correct: answered.filter(a => a.correct).length, total: answered.length };
+}
 export function submitAnswer(p: PlayerState, pool: readonly Question[], at: string): PlayerState {
   const s = p.session;
   if (!s || s.completed) return p;

@@ -23,7 +23,7 @@ for(const year of [2020,2021,2022,2023,2024]) {
   await page.getByRole('button',{name:'元の画面へ戻る'}).click();
   for(const answer of q.answerIds)await buttons.nth(Number(answer)-1).click();
   await page.getByRole('button',{name:'答えを確定する'}).click();
-  await expect(page.locator('#feedback')).toContainText('正解！');
+  await expect(page.locator('#feedback h2')).toHaveText('正解');
   await expect(page.locator('#feedback .answer-key')).toContainText(q.answerIds.join('・'));
   const before=await page.evaluate(k=>localStorage.getItem(k),key);
   await page.getByRole('button',{name:'中断してホーム'}).click();
