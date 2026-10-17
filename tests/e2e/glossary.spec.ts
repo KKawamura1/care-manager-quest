@@ -9,6 +9,7 @@ const key = 'care-manager-quest:learning:v3';
 const termsIn = (text: string) => splitGlossaryText(text, glossaryTerms).filter(part => part.term);
 const swipeCards = questions.flatMap(question => question.choices.map((text, index) => ({
   year: 2025, stem: question.stem, text, id: `${question.id}:${index + 1}`,
+  revision: `${question.version}:${(truth.questions as Record<string,{choiceAnswers:string[]}>)[question.id].choiceAnswers[index]}`,
   truth: (truth.questions as Record<string,{choiceAnswers:string[]}>)[question.id].choiceAnswers[index] === '○',
   topicIds: (catalog.choices as Record<string,{drawerIds:string[]}>)[`${question.id}:${index + 1}`].drawerIds,
 })));
@@ -86,8 +87,9 @@ for (const outcome of ['correct','incorrect','unknown'] as const) {
     expect(recorded[0]).toMatchObject({cardId:fixture.first.id,answer:value,hintUsed:true,xp:2});
     await page.getByRole('button',{name:'同じカードを再練習（XPなし）',exact:true}).click();
     await page.locator('.swipe-card .glossary-term').first().click();
-    await expect(dialog).toHaveAccessibleName('用語解説を見ますか？');
+    await expect(dialog.getByRole('link',{name:'出典を確認 ↗'})).toBeVisible();
     await page.keyboard.press('Escape');
+    await expect(page.getByText('用語解説を閲覧済み：今回は不正解として記録します。')).toBeVisible();
     await page.getByRole('button',{name:'記録',exact:true}).click();
     await expect(page.locator('.record-stats > div').nth(2).locator('b')).toHaveText('0');
     await page.reload();
@@ -113,4 +115,23 @@ test('confirmation and definition fit a narrow touch screen; closing returns foc
   await page.screenshot({path:`test-results/glossary-${test.info().project.name}.png`});
   await page.keyboard.press('Escape');
   await expect(button).toBeFocused();
+});
+
+test('saved hint consent bypasses confirmation on another day, still records hinted failures and leaves unviewed attempts normal', async ({page}) => {
+  const previous = swipeCards.filter(card => card.topicIds.includes(fixture.scope)).map(card => ({cardId:card.id,revision:card.revision,answer:card.truth,hintUsed:true,xp:2,bonusXp:0,mode:'swipe',at:'2020-01-01T00:00:00Z'}));
+  await page.addInitScript(({key,previous}) => {
+    if (!localStorage.getItem(key)) localStorage.setItem(key,JSON.stringify({schemaVersion:3,learningEvents:previous,attempts:[],concepts:{},externalRecords:[],settings:{sound:false}}));
+  },{key,previous});
+  await start(page);
+  await page.locator('.swipe-card .glossary-term').first().click();
+  const dialog = page.getByRole('dialog');
+  await expect(dialog.getByRole('link',{name:'出典を確認 ↗'})).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(page.getByText('用語解説を閲覧済み：今回は不正解として記録します。')).toBeVisible();
+  await answer(page,fixture.first.truth);
+  expect((await ledger(page)).at(-1)).toMatchObject({answer:fixture.first.truth,hintUsed:true,xp:2});
+  await page.getByRole('button',{name:'同じカードを再練習（XPなし）',exact:true}).click();
+  await answer(page,fixture.first.truth);
+  expect((await ledger(page)).at(-1)).not.toHaveProperty('hintUsed');
+  await expect(page.locator('#swipe-feedback')).not.toContainText('学習記録は不正解扱い');
 });

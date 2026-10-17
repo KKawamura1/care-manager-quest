@@ -10,7 +10,7 @@ export function GlossaryText({ text, requireConfirmation = false, onHintUsed }: 
   return <>
     {parts.map((part, index) => part.term ? <button key={index} type="button" className="glossary-term" aria-label={`${part.text}の用語解説`} aria-haspopup="dialog"
       onPointerDown={e => e.stopPropagation()} onKeyDown={e => e.stopPropagation()}
-      onClick={e => { e.stopPropagation(); setSelected({term: part.term!, confirmed: !requireConfirmation}); }}>{part.text}</button> : part.text)}
+      onClick={e => { e.stopPropagation(); if (!requireConfirmation) onHintUsed?.(); setSelected({term: part.term!, confirmed: !requireConfirmation}); }}>{part.text}</button> : part.text)}
     {selected && createPortal(<div onPointerDown={e => e.stopPropagation()} onPointerUp={e => e.stopPropagation()} onKeyDown={e => e.stopPropagation()} onClick={e => e.stopPropagation()}>
       <Modal key={selected.confirmed ? 'definition' : 'confirmation'} title={selected.confirmed ? selected.term.label : '用語解説を見ますか？'} onClose={() => setSelected(undefined)}>
         {selected.confirmed ? <div className="glossary-definition"><p>{selected.term.description}</p><a href={selected.term.sourceUrl} target="_blank" rel="noopener noreferrer">出典を確認 ↗</a><p className="fine-print">用語の一般的な意味です。設問の正誤や試験当時の制度とは分けて確認してください。</p></div> :

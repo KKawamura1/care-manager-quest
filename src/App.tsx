@@ -10,6 +10,7 @@ import { advance, buildSession, conceptStatus, continueSession, emptyPlayer, lev
 import { loadPlayer, MAX_IMPORT_BYTES, parsePlayer, savePlayer, STORAGE_KEY, validExternalUrl } from './domain/storage';
 import type { PlayerState, Question } from './domain/models';
 import { Modal } from './components/Modal';
+import { GlossaryText } from './components/GlossaryText';
 import { OriginalImage } from './components/OriginalImage';
 import { CopyQuestion } from './components/CopyQuestion';
 import { AppExplanation } from './components/AppExplanation';
@@ -77,6 +78,8 @@ export default function App() {
   const xp = totalXp(player), level = levelInfo(xp), session = player.session;
   const current = session ? questionById(session.questionIds[session.index]) : undefined;
   const attempt = session ? player.attempts.find(a => a.id === `${session.id}:${session.index}`) : undefined;
+  const detailAnswered = Boolean(detail && player.attempts.some(a => a.questionId === detail.id && a.questionVersion === detail.version));
+  const detailText = (text: string) => detailAnswered ? <GlossaryText text={text}/> : text;
   const inSession = session ? player.attempts.filter(a => a.sessionId === session.id) : [];
   const resultScore = session ? practiceScore(session, player.attempts) : { correct: 0, total: 0 };
   const selected = session?.selectedIds ?? [];
@@ -150,11 +153,14 @@ export default function App() {
       {route === 'play' && current && session && !session.completed && <section className="play-screen">
         <div className="quest-heading"><button className="text-button" onClick={()=>go('home')} aria-label="中断してホーム">‹ ホーム</button><span>{session.index+1} / {session.questionIds.length}</span></div>
         <div className="question-progress">{session.questionIds.map((id,i)=>{const a=inSession[i];return <span key={id} className={i===session.index?'current':a?a.correct?'won':'lost':''}>{a?(a.correct?'✓':'·'):i+1}</span>;})}</div>
-        <h1 className="question-title">{current.title}</h1><p className="question-stem">{current.stem}</p>
+        <h1 className="question-title">{current.title}</h1><p className="question-stem">{attempt ? <GlossaryText key={current.id} text={current.stem}/> : current.stem}</p>
         <div className="selection-instruction"><b>{current.selectionCount}つ選択</b><span>{attempt?'解答済み':`${selected.length} / ${current.selectionCount} 選択中`}</span></div>
         <div className="options" role="group" aria-label="解答の選択肢">{current.options.map((o,i)=>{
           const chosen=selected.includes(o.id), correct=attempt&&(current.answerVariants??[current.answerIds]).some(ids=>ids.includes(o.id)), wrong=attempt&&chosen&&!correct;
-          return <button key={o.id} className={`option ${chosen?'selected':''} ${correct?'correct':''} ${wrong?'wrong':''}`} aria-pressed={chosen} disabled={Boolean(attempt)} onClick={()=>choose(o.id)}><span className="option-number">{attempt?(correct?'✓':wrong?'×':i+1):i+1}</span><span>{o.text}{attempt&&<small>{correct?(current.answerVariants&&!chosen?'他の正答の組合せに含まれる':'正答'):wrong?'選択した誤答':chosen?'あなたの選択':'不正解の選択肢'}</small>}</span><span className="check-box" aria-hidden="true">{chosen?'✓':''}</span></button>;
+          const className = `option ${chosen?'selected':''} ${correct?'correct':''} ${wrong?'wrong':''}`;
+          const content = <><span className="option-number">{attempt?(correct?'✓':wrong?'×':i+1):i+1}</span><span>{attempt ? <GlossaryText text={o.text}/> : o.text}{attempt&&<small>{correct?(current.answerVariants&&!chosen?'他の正答の組合せに含まれる':'正答'):wrong?'選択した誤答':chosen?'あなたの選択':'不正解の選択肢'}</small>}</span><span className="check-box" aria-hidden="true">{chosen?'✓':''}</span></>;
+          return attempt ? <div key={o.id} className={className} role="group" aria-label={`選択肢${o.id}${chosen ? '：あなたの選択' : ''}`}>{content}</div> :
+            <button key={o.id} className={className} aria-pressed={chosen} onClick={()=>choose(o.id)}>{content}</button>;
         })}</div>
         {!attempt&&<CopyQuestion key={current.id} question={current}/>}
         {current.original&&<div className="question-tools">{current.original.imagePath?<button className="text-button" onClick={()=>setOriginalQuestion(current)}>原本画像を見る ↗</button>:<a href={current.provenance.pastExamUrl??current.original.sourceUrl} target="_blank" rel="noopener noreferrer">掲載元で問題を確認 ↗</a>}</div>}
@@ -185,7 +191,7 @@ export default function App() {
     {detail&&<Modal title="詳しく見る" onClose={()=>setDetail(undefined)}><div className="detail-content"><h3>{detail.title}</h3>
       <CopyQuestion key={detail.id} question={detail} includeAnswer selectedIds={player.attempts.slice().reverse().find(a=>a.questionId===detail.id)?.selectedIds}/>
       <AppExplanation key={`${detail.id}:${detail.version}`} target={questionTarget(detail)}/>
-      {detail.original?<><p>{detail.original.year}年度試験当時の正答：<b className="mint">{(detail.answerVariants??[detail.answerIds]).map(ids=>ids.join('・')).join(' または ')}</b></p><p className="question-stem">{detail.stem}</p>{detail.options.map(o=><p key={o.id}>{o.id}. {o.text}</p>)}{detail.original.imagePath&&<OriginalImage key={detail.id} question={detail}/>}<p className="fine-print">文字校正：{detail.original.textStatus==='proofread'?'原本との初回照合済み（再校正待ち）':'独立した二重校正は未完了（疑義があれば取得元で確認）'}</p></>:<><p className="fine-print">旧練習問題の履歴。本番の出題対象外です。</p><p className="reasoning">{detail.reasoning}</p>{detail.options.map(o=><div className="option-explanation" key={o.id}><b className={detail.answerIds.includes(o.id)?'mint':'coral'}>{o.id} · {detail.answerIds.includes(o.id)?'正しい':'誤り'}</b><p>{o.text}</p><small>{o.explanation}</small></div>)}</>}
+      {detail.original?<><p>{detail.original.year}年度試験当時の正答：<b className="mint">{(detail.answerVariants??[detail.answerIds]).map(ids=>ids.join('・')).join(' または ')}</b></p><p className="question-stem">{detailText(detail.stem)}</p>{detail.options.map(o=><p key={o.id}>{o.id}. {detailText(o.text)}</p>)}{detail.original.imagePath&&<OriginalImage key={detail.id} question={detail}/>}<p className="fine-print">文字校正：{detail.original.textStatus==='proofread'?'原本との初回照合済み（再校正待ち）':'独立した二重校正は未完了（疑義があれば取得元で確認）'}</p></>:<><p className="fine-print">旧練習問題の履歴。本番の出題対象外です。</p><p className="reasoning">{detail.reasoning}</p>{detail.options.map(o=><div className="option-explanation" key={o.id}><b className={detail.answerIds.includes(o.id)?'mint':'coral'}>{o.id} · {detail.answerIds.includes(o.id)?'正しい':'誤り'}</b><p>{detailText(o.text)}</p><small>{o.explanation}</small></div>)}</>}
       {detail.original&&<><h3>知識マップの論点</h3><div className="related-list">{detail.conceptIds.map(id=><button key={id} onClick={()=>{setReturnDetail(detail);setDetail(undefined);setConceptId(id);}}>{concepts.find(c=>c.id===id)?.label??id}<span>→</span></button>)}</div>
       </>}<h3>原典</h3>{detail.provenance.sources.map(s=>{const source=sources.find(x=>x.id===s.sourceId);return source&&<p className="source-link" key={`${s.sourceId}:${s.locator}`}><a target="_blank" rel="noopener noreferrer" href={source.url}>{source.title} ↗</a><small>{s.locator}</small></p>;})}<p className="fine-print">{officialNotice}</p><a href="https://www.sssc.or.jp/pastissues/index.html" target="_blank" rel="noopener noreferrer">過去問題の利用条件 ↗</a><button className="primary" onClick={()=>setDetail(undefined)}>元の画面へ戻る<span>↩</span></button></div></Modal>}
     {originalQuestion&&<Modal title="公式問題の原本" onClose={()=>setOriginalQuestion(undefined)}><div className="detail-content"><OriginalImage key={originalQuestion.id} question={originalQuestion} expanded/><p className="fine-print">{officialNotice}</p><button className="primary" onClick={()=>setOriginalQuestion(undefined)}>元の画面へ戻る<span>↩</span></button></div></Modal>}

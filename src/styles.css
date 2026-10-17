@@ -87,7 +87,7 @@ input[type=radio] { accent-color: var(--mint); width: 17px; height: 17px; flex-s
 .options { display: grid; gap: 10px; }
 .option { display: flex; align-items: center; gap: 12px; min-height: 70px; padding: 16px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); text-align: left; font-size: 14px; line-height: 1.75; }
 .option-number { display: grid; place-items: center; width: 22px; flex: 0 0 22px; align-self: flex-start; color: var(--muted); font-size: 12px; }
-.option > span:nth-child(2) { flex: 1; }
+.option > span:nth-child(2) { flex: 1; min-width: 0; overflow-wrap: anywhere; }
 .option small { display: block; margin-top: 5px; font-size: 10px; color: var(--muted); }
 .check-box { display: grid; place-items: center; flex: 0 0 16px; height: 16px; border: 1px solid #6b7e8c; border-radius: 4px; font-size: 11px; }
 .option.selected, .option.correct { background: #21372e; border-color: #88baa0; }

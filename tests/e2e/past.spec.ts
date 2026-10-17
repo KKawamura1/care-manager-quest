@@ -47,9 +47,10 @@ test('accepted alternative answer selections have consistent option feedback',as
   await page.getByRole('button',{name:'答えを確定する'}).click();
   await expect(page.locator('#feedback h2')).toHaveText('正解');
   await expect(page.locator('#feedback')).toContainText('1・3 または 1・5 または 3・5');
-  await expect(options.nth(4)).toHaveClass(/correct/);
-  await expect(options.nth(4)).not.toHaveClass(/wrong/);
-  await expect(options.nth(0)).toContainText('他の正答の組合せに含まれる');
+  const gradedOptions = page.locator('.options > .option');
+  await expect(gradedOptions.nth(4)).toHaveClass(/correct/);
+  await expect(gradedOptions.nth(4)).not.toHaveClass(/wrong/);
+  await expect(gradedOptions.nth(0)).toContainText('他の正答の組合せに含まれる');
   await page.reload();await expect(page.locator('#feedback h2')).toHaveText('正解');
 });
 
