@@ -1,0 +1,32 @@
+name: Validate registered explanations
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/explanations/entries/**/*.json'
+      - 'src/domain/registeredExplanation.ts'
+      - 'src/data/registered-explanations.ts'
+      - 'tests/registeredExplanation.test.ts'
+      - '.github/workflows/explanation-entries.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: explanation-entries-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run prepare:questions
+      - run: npx --no-install vitest run tests/registeredExplanation.test.ts
+        env:
+          VALIDATE_REGISTERED_ADDITIONS: '1'

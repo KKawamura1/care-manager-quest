@@ -4,7 +4,7 @@
 
 **[▶ Care Manager Quest をプレイ（本番サイト）](https://care-manager-quest.focusgate-kkawamura.workers.dev/)**
 
-GitHubがソースの正本です。mainへのマージは手動です。CloudflareのGitHub連携により、main更新 → Cloudflare側で型チェック・単体テスト・ビルド → 自動デプロイ。**サイトは一般公開・GitHubリポジトリはprivate**です。Cloudflare Accessは使用しません。以前のChatGPT Sites版からの学習履歴移行は[セットアップ・履歴移行手順](docs/deployment.md)を参照してください。
+GitHubがソースの正本です。通常のコード変更はPRで扱います。ユーザーが依頼した解説登録は、[登録手順](docs/register-explanation.md)に従い1ファイルだけmainへ直接追加できます（PR・追加承認不要）。CloudflareのGitHub連携により、main更新 → Cloudflare側で型チェック・単体テスト・ビルド → 自動デプロイ。**サイトは一般公開・GitHubリポジトリはprivate**です。Cloudflare Accessは使用しません。以前のChatGPT Sites版からの学習履歴移行は[セットアップ・履歴移行手順](docs/deployment.md)を参照してください。
 
 ## 過去問演習
 
@@ -20,7 +20,7 @@ GitHubがソースの正本です。mainへのマージは手動です。Cloudfl
 
 全年度の本文・5選択肢を通常のテキストUIで表示します。初期設定は2025年度・全分類。ホームで年度と「大分類→中分類→小分類→引き出し」を選び、上位分類の配下全体でも学習できます。5択は該当する選択肢を含む設問を重複なく出題し、該当設問が5問未満なら1〜4問で終了します。試験分野は追加の絞り込みとして利用できます。原本画像が未同梱の問題は公式PDFまたは問題掲載元から確認できます。
 
-独自解説は全問未登録です。未検証の説明を生成して埋め込むことはありません。正答は**各年度の試験当時**のものとして採点します。現行法への適合性は未確認です。
+ChatGPTに個別解説をお願いした後、「登録しといて」と依頼すると、その要約を登録できます。アプリの「問題をコピー」には対象IDと[登録手順](docs/register-explanation.md)が含まれます。登録は `data/explanations/entries/<UUID>.json` の追加だけで、回答後に解説を表示します。正答は**各年度の試験当時**のものとして採点します。現行法への適合性は未確認です。
 
 ## ○×スワイプ学習
 

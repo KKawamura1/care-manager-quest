@@ -31,6 +31,8 @@ describe('ChatGPT short explanations', () => {
   it('requests separately copyable short explanations for every normal question', () => {
     for (const q of questions) {
       const text = questionCopyText(q);
+      expect(text).toContain('docs/register-explanation.md');
+      expect(text).toContain('PRと追加承認の省略');
       const json = text.match(/```json\n([\s\S]*?)\n```/)![1];
       expect(parseAppExplanation(json, questionTarget(q)).questionId).toBe(q.id);
     }

@@ -406,3 +406,9 @@ dialog::backdrop { background: #030910c7; backdrop-filter: blur(5px); }
 .record-shortcuts a:active { background: var(--panel); color: var(--mint); }
 #record-progress, #record-map, #record-fields { scroll-margin-top: 16px; }
 .record-map { margin: 28px 0; }
+
+.registered-explanation { margin: 16px 0; overflow-wrap: anywhere; }
+.registered-explanation-text { padding: 16px; background: var(--panel); border-radius: 10px; white-space: pre-wrap; font-size: 14px; }
+.registered-explanation summary { cursor: pointer; min-height: 44px; padding: 10px 0; font-size: 13px; }
+.registered-explanation a { overflow-wrap: anywhere; }
+.registered-explanation time { color: var(--muted); font-size: 12px; }

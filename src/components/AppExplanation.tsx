@@ -1,5 +1,6 @@
 import { useEffect, useId, useState } from 'react';
 import { explanationStorageKey, parseAppExplanation, type AppExplanation as SavedExplanation, type ExplanationTarget } from '../domain/appExplanation';
+import { RegisteredExplanation } from './RegisteredExplanation';
 
 // Mount with a target-specific key so drafts never carry over to another card.
 export function AppExplanation({ target }: { target: ExplanationTarget }) {
@@ -25,7 +26,7 @@ export function AppExplanation({ target }: { target: ExplanationTarget }) {
     window.addEventListener('app-explanation-change', refresh);
     window.addEventListener('storage', refresh);
     return () => { window.removeEventListener('app-explanation-change', refresh); window.removeEventListener('storage', refresh); };
-  }, [target.questionId, target.questionVersion, target.choiceId, target.cardRevision]);
+  }, [target.questionId, target.questionVersion, target.choiceId, target.cardRevision, target.questionRevision]);
   function save() {
     setMessage('');
     try {
@@ -42,7 +43,8 @@ export function AppExplanation({ target }: { target: ExplanationTarget }) {
     } catch { setError('解説を削除できません。'); }
   }
   return <section className="app-explanation" aria-label="アプリ用の短い解説">
-    {saved && <><h3>解説</h3><p className="saved-explanation">{saved.explanation}</p></>}
+    <RegisteredExplanation key={JSON.stringify(target)} target={target}/>
+    {saved && <><h3>自分用の解説</h3><p className="saved-explanation">{saved.explanation}</p></>}
     <button type="button" className="secondary" onClick={() => { setEditing(!editing); setMessage(''); }}>{editing ? '貼り付けを閉じる' : saved ? '短い解説を貼り替える' : '短い解説を貼り付ける'}</button>
     {editing && <div className="manual-copy">
       <p className="fine-print">ChatGPTの解説ブロックを貼り付けてください。</p>

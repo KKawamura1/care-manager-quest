@@ -1,3 +1,4 @@
+import { registeredExplanationFor } from '../data/registered-explanations';
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type PointerEvent } from 'react';
 import { createPortal } from 'react-dom';
 import { availableYears, questionById } from '../data/provider';
@@ -172,7 +173,7 @@ export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAn
       {!result ? <><div className="swipe-actions"><button className="secondary swipe-no" aria-label="×と答える" disabled={blocked} onClick={() => submit(false)}>← ×</button><button className="primary swipe-yes" aria-label="○と答える" disabled={blocked} onClick={() => submit(true)}>○ →</button></div><button className="secondary" onClick={() => submit(null)} disabled={blocked}>↑ わからない</button></> : <>
         <div id="swipe-feedback" className={`feedback ${result.correct ? 'success' : 'miss'}`} role="status">
           <h2>{result.correct ? '正解！' : '不正解'} <small>+{result.xp} XP</small></h2><p className="swipe-verdict">正答：<b>{card.truth ? '○' : '×'}</b> ／ あなた：{result.answer === null ? 'わからない' : result.answer ? '○' : '×'}</p>
-          <p>{card.explanation || '解説未登録'}</p>
+          {!registeredExplanationFor(cardTarget(card)) && <p>{card.explanation || '解説未登録'}</p>}
           {hintUsed && <p className="hint-record-note">回答前に用語解説を見たため、学習記録は不正解扱いです。</p>}
         </div>
         <button className="primary" ref={nextRef} onClick={next}>次のカードへ<span aria-hidden="true">→</span></button>
