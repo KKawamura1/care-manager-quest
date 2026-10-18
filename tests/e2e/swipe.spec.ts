@@ -16,7 +16,8 @@ async function drag(page: Page, dx: number, dy = 0, feedback = false) {
   const target = feedback ? page.locator('#swipe-feedback') : page.getByRole('group',{name:'○×カード',exact:true});
   await target.scrollIntoViewIfNeeded();
   const box = (await target.boundingBox())!;
-  const x=box.x+box.width/2,y=box.y+box.height/2;
+  // Start on padding: the card center may be an interactive glossary term.
+  const x=box.x+8,y=box.y+8;
   await page.mouse.move(x,y);await page.mouse.down();await page.mouse.move(x+dx,y+dy,{steps:8});await page.mouse.up();
 }
 
