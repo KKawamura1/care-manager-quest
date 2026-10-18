@@ -1,3 +1,4 @@
+import { registeredExplanationFor, registeredQuestionChoices } from './data/registered-explanations';
 import { aggregateKnowledgeLevel, knowledgeProgress } from './domain/knowledgeProgress';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { concepts } from './data/knowledge';
@@ -180,7 +181,7 @@ export default function App() {
         })}</div>
         {!attempt&&<CopyQuestion key={current.id} question={current}/>}
         {current.original&&<div className="question-tools">{current.original.imagePath?<button className="text-button" onClick={()=>setOriginalQuestion(current)}>原本画像を見る ↗</button>:<a href={current.provenance.pastExamUrl??current.original.sourceUrl} target="_blank" rel="noopener noreferrer">掲載元で問題を確認 ↗</a>}</div>}
-        {attempt && <section id="feedback" className={`feedback ${attempt.correct?'success':'miss'}`} role="status"><div className="feedback-top"><h2>{attempt.correct?'正解':'不正解'}</h2></div><p>{current.explanation || '解説未登録'}</p><p className="answer-key">正答：{(current.answerVariants??[current.answerIds]).map(ids=>ids.join('・')).join(' または ')} ／ あなたの選択：{attempt.selectedIds.join('・')}</p></section>}
+        {attempt && <section id="feedback" className={`feedback ${attempt.correct?'success':'miss'}`} role="status"><div className="feedback-top"><h2>{attempt.correct?'正解':'不正解'}</h2></div>{!registeredExplanationFor(questionTarget(current)) && !registeredQuestionChoices(current.id).length && <p>{current.explanation || '解説未登録'}</p>}<p className="answer-key">正答：{(current.answerVariants??[current.answerIds]).map(ids=>ids.join('・')).join(' または ')} ／ あなたの選択：{attempt.selectedIds.join('・')}</p></section>}
         {attempt&&<CopyQuestion key={current.id} question={current} includeAnswer selectedIds={attempt.selectedIds}/>}
         {attempt&&<AppExplanation key={`${current.id}:${current.version}`} target={questionTarget(current)}/>}
         <div className="answer-dock">{attempt?<><button className="primary" onClick={nextQuestion}>{session.index===session.questionIds.length-1?'結果を見る':'次の問題へ'}<span>→</span></button><button className="secondary" onClick={()=>setDetail(current)}>詳しく見る</button></>:<button className="primary" disabled={selected.length!==current.selectionCount||blocked} onClick={answer}>{selected.length===current.selectionCount?'答えを確定する':`あと${current.selectionCount-selected.length}つ選んでください`}<span>→</span></button>}</div>

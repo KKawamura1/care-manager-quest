@@ -6,7 +6,7 @@ GitHub `KKawamura1/care-manager-quest` のmainがソースの正本。GitHubリ�
 
 Cloudflare Workers Buildsがmainへのマージ・pushを検知し、型チェック・単体テスト・本番ビルドが成功した場合にWorkerと静的アセットを自動配信する。ChatGPT自動タスクやGitHub Actionsのdeploy jobは使用しない。
 
-GitHub ActionsのValidate MVPはPRと手動実行の検証用。Chromium/WebKit E2EはPR上で実施するが、CloudflareはGitHub Actionsの結果を待たないため、PRの検証成功を確認してから手動でmainへマージすること。mainへの直接pushにはE2Eのゲートがない。
+GitHub ActionsのValidate MVPはPRと手動実行の検証用。Chromium/WebKit E2EはPR上で実施するが、CloudflareはGitHub Actionsの結果を待たないため、PRの検証成功を確認してから手動でmainへマージすること。mainへの直接pushにはE2Eのゲートがない。ただし、ユーザーが登録を依頼した解説JSONの新規追加は、[解説登録手順](register-explanation.md)の例外としてPR・人のレビューなしでmainへ直接コミットしてよい。この場合は登録用の軽量CIとCloudflareの自動検証に任せる。この例外を通常のコード変更に拡張しない。
 
 ## 無料枠
 
