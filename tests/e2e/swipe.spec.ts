@@ -144,7 +144,7 @@ test('native mobile touch swipes still answer',async({page,browserName})=>{
   await page.goto('/');await start(page);
   const card=page.getByRole('group',{name:'○×カード',exact:true});
   await card.scrollIntoViewIfNeeded();
-  const rect=(await card.boundingBox())!,x=rect.x+rect.width/2,y=rect.y+rect.height/2;
+  const rect=(await card.boundingBox())!,x=rect.x+8,y=rect.y+8;
   const client=await page.context().newCDPSession(page);
   await client.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x,y}]});
   for(let dx=15;dx<=90;dx+=15)await client.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:x+dx,y}]});
