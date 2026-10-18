@@ -34,7 +34,7 @@ describe('one-file explanation registrations', () => {
       expect(matchingRegisteredExplanations([entry],current),`${path}: 改訂印が一致しません。問題をコピーし直してください`).toHaveLength(1);
     }
   });
-  it('accepts the existing copied choice JSON plus registration metadata', () => {
+  it('accepts choice registration records and orders their history', () => {
     const entry = parseRegisteredExplanation(value,path);
     expect(matchingRegisteredExplanations([entry],target)[0].explanation).toBe(value.explanation);
     const olderId = '5f87b431-616d-42bd-ae39-c531ab2de055';
@@ -53,7 +53,7 @@ describe('one-file explanation registrations', () => {
     }
     expect(matchingRegisteredExplanations([entry],questionTarget(questionById(card.questionId)!))).toEqual([]);
   });
-  it('stamps question-level text, options and answers while keeping legacy personal JSON compatible', () => {
+  it('stamps question-level text, options and answers', () => {
     const q = questionById('2021-10')!;
     const qt = questionTarget(q);
     const entry = parseRegisteredExplanation({...value,...qt,choiceId:undefined,cardRevision:undefined},path);
@@ -64,7 +64,7 @@ describe('one-file explanation registrations', () => {
     expect(() => parseRegisteredExplanation({...entry,questionRevision:undefined},path)).toThrow();
   });
   it('rejects mismatched IDs, invalid metadata, unsafe sources and oversized explanations', () => {
-    for (const patch of [{registrationId:'not-a-uuid'},{questionId:'../x'},{questionVersion:0},{choiceId:'6'},
+    for (const patch of [{schemaVersion:2},{explanation:''},{explanation:null},{registrationId:'not-a-uuid'},{questionId:'../x'},{questionVersion:0},{choiceId:'6'},
       {registeredAt:'2026-02-30T00:00:00Z'},{registeredAt:'invalid'}, {explanation:'x'.repeat(601)},
       {sources:[{title:'bad',url:'javascript:alert(1)'}]},{sources:[{title:'bad',url:'https://user:pass@example.com'}]}]) {
       expect(() => parseRegisteredExplanation({...value,...patch},path)).toThrow();

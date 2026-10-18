@@ -1,6 +1,8 @@
-import { parseAppExplanation, type AppExplanation, type ExplanationTarget } from './appExplanation';
+import { EXPLANATION_MAX_LENGTH, type ExplanationTarget } from './appExplanation';
 
-export interface RegisteredExplanation extends AppExplanation {
+export interface RegisteredExplanation extends ExplanationTarget {
+  schemaVersion: 1;
+  explanation: string;
   registrationId: string;
   registeredAt: string;
   questionRevision?: string;
@@ -12,6 +14,8 @@ const stamp = /^[0-9a-f]{1,8}$/;
 export function parseRegisteredExplanation(value: unknown, path: string): RegisteredExplanation {
   if (!value || typeof value !== 'object' || Array.isArray(value)) throw new Error('登録JSONはオブジェクトにしてください');
   const d = value as Record<string, unknown>;
+  if (JSON.stringify(d).length > 16_000 || d.schemaVersion !== 1) throw new Error('登録解説の形式・サイズが不正です');
+  if (typeof d.explanation !== 'string' || !d.explanation.trim() || d.explanation.trim().length > EXPLANATION_MAX_LENGTH) throw new Error('登録解説は1〜600字で指定してください');
   if (typeof d.registrationId !== 'string' || !uuid.test(d.registrationId)
     || !path.endsWith(`/${d.registrationId}.json`)) throw new Error('UUIDとファイル名が一致しません');
   if (typeof d.registeredAt !== 'string' || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/.test(d.registeredAt)
@@ -27,8 +31,7 @@ export function parseRegisteredExplanation(value: unknown, path: string): Regist
   }))) throw new Error('出典はタイトルとHTTPSのURLで指定してください');
   const target = { questionId:d.questionId, questionVersion:d.questionVersion as number, choiceId:d.choiceId as string | undefined,
     cardRevision:d.cardRevision as string | undefined, questionRevision:d.questionRevision as string | undefined };
-  const parsed = parseAppExplanation(JSON.stringify(d), target);
-  return { ...parsed, registrationId:d.registrationId, registeredAt:d.registeredAt, sources:d.sources as RegisteredExplanation['sources'] };
+  return { schemaVersion:1, ...target, explanation:d.explanation.trim(), registrationId:d.registrationId, registeredAt:d.registeredAt, sources:d.sources as RegisteredExplanation['sources'] };
 }
 
 // Filter before sorting: a stale correction must never hide a still-valid entry.

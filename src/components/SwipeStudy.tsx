@@ -8,7 +8,7 @@ import { learningXp, recordLearning, swipeProgressFromEvents } from '../domain/l
 import type { LearningEvent } from '../domain/models';
 import { OriginalImage } from './OriginalImage';
 import { CopyText } from './CopyQuestion';
-import { AppExplanation } from './AppExplanation';
+import { RegisteredExplanation } from './RegisteredExplanation';
 import { cardTarget } from '../domain/appExplanation';
 import { swipeCopyText } from '../domain/questionCopy';
 import { studyScope } from '../data/study-scope';
@@ -182,7 +182,7 @@ export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAn
       </div>
       {questionById(card.questionId) && <CopyText key={`${card.id}:${Boolean(result)}`} text={swipeCopyText(questionById(card.questionId)!, card, Boolean(result), result?.answer)} includeAnswer={Boolean(result)}/>}
       {result && <>
-        <AppExplanation key={`${card.id}:${card.revision}`} target={cardTarget(card)}/>
+        <RegisteredExplanation key={`${card.id}:${card.revision}`} target={cardTarget(card)}/>
         <details className="panel"><summary>問題・出典</summary><p>次の復習：{state.progress[card.id] ? new Date(state.progress[card.id].dueAt).toLocaleString('ja-JP') : '未記録'}</p>
           <ol>{questionById(card.questionId)?.options.map(o => <li key={o.id}>{o.text}</li>)}</ol>
           {questionById(card.questionId)?.original?.imagePath && <><button className="secondary" onClick={() => setOriginal(!original)}>{original ? '原本を閉じる' : '原本画像を見る'}</button>{original && <OriginalImage question={questionById(card.questionId)!}/>}</>}

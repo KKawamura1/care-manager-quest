@@ -15,7 +15,7 @@ describe('question copy payload', () => {
       expect(text).not.toContain('正答番号：');
       expect(text).not.toContain('【自分の解答】');
       expect(text.indexOf('【問題文】')).toBeLessThan(text.indexOf('【選択肢】'));
-      expect(text.indexOf('【選択肢】')).toBeLessThan(text.indexOf('【最後に：アプリ用の短い解説】'));
+      expect(text.indexOf('【選択肢】')).toBeLessThan(text.indexOf('【登録先の対象情報（回答への再出力不要）】'));
       expect(text.trimEnd().endsWith('```')).toBe(true);
     }
   });
