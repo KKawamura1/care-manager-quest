@@ -42,7 +42,7 @@ export function AppExplanation({ target }: { target: ExplanationTarget }) {
     } catch { setError('解説を削除できません。'); }
   }
   return <section className="app-explanation" aria-label="アプリ用の短い解説">
-    {saved && <><h3>解説</h3><p className="saved-explanation">{saved.explanation}</p></>}
+    {saved && <><h3>自分用の解説</h3><p className="saved-explanation">{saved.explanation}</p></>}
     <button type="button" className="secondary" onClick={() => { setEditing(!editing); setMessage(''); }}>{editing ? '貼り付けを閉じる' : saved ? '短い解説を貼り替える' : '短い解説を貼り付ける'}</button>
     {editing && <div className="manual-copy">
       <p className="fine-print">ChatGPTの解説ブロックを貼り付けてください。</p>

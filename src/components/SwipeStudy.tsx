@@ -1,3 +1,4 @@
+import { BundledExplanation } from './BundledExplanation';
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type PointerEvent } from 'react';
 import { createPortal } from 'react-dom';
 import { availableYears, questionById } from '../data/provider';
@@ -144,7 +145,7 @@ export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAn
       </div>
       <details className="swipe-home-detail"><summary>使い方</summary><p>右で○、左で×、上で「わからない」。解答後は上下にスクロールして解説を読めます。次へ進むには左右スワイプか「次のカードへ」ボタンを使ってください。</p>
         <p>正誤評価とXPはカードごとに日本時間で1日最初の回答だけを採用します。学習レベルは1回正解で約67%、別の日に2連続正解で100%。要復習度は直近2学習日の初回回答と経過日数から計算します。</p>
-        <p>元の設問文脈を保ち、試験当時の正答を使います。現在の法律と一致するかは未確認です。独自解説の登録がないカードでは、判定根拠のみ表示します。</p>
+        <p>元の設問文脈を保ち、試験当時の正答を使います。現在の法律と一致するかは未確認です。2025年度は全選択肢に独自解説があります。ほかの年度の解説は準備中です。</p>
         <p>真偽を確定できない選択肢は出題しません（除外記録 {swipeCatalog.excluded.length}件）。</p>
       </details>
         </div>;
@@ -157,7 +158,7 @@ export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAn
       <div className="swipe-context"><b>元の設問</b><p><GlossaryText key={`${card.id}:${deal}:stem`} text={card.stem} requireConfirmation={requireHintConfirmation} onHintUsed={useHint}/></p></div>
       {!result && hintUsed && <p className="hint-record-note" role="status">用語解説を閲覧済み：今回は不正解として記録します。</p>}
       <div className={`swipe-surface${result ? ' swipe-surface-feedback' : ''}`} onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={() => { gesture.current = undefined; setDrag({ x: 0, y: 0 }); }} onLostPointerCapture={() => { gesture.current = undefined; setDrag({ x: 0, y: 0 }); }}
-        onKeyDown={e => { if (['ArrowRight','ArrowLeft','ArrowUp'].includes(e.key)) { e.preventDefault(); if (e.repeat) return; if (result) next(); else submit(e.key === 'ArrowUp' ? null : e.key === 'ArrowRight'); } }}>
+        onKeyDown={e => { if ((e.target as HTMLElement).closest('button,a,input,textarea,select,summary')) return; if (['ArrowRight','ArrowLeft','ArrowUp'].includes(e.key)) { e.preventDefault(); if (e.repeat) return; if (result) next(); else submit(e.key === 'ArrowUp' ? null : e.key === 'ArrowRight'); } }}>
       <div className="swipe-card-deal" key={`${card.id}:${deal}`}>
       <div ref={cardRef} className={`swipe-card ${drag.x || drag.y ? 'is-dragging' : ''} ${result ? result.correct ? 'swipe-correct' : 'swipe-wrong' : ''}`} tabIndex={0} role="group" aria-label="○×カード"
         data-intent={drag.y < 0 ? 'unknown' : drag.x > 0 ? 'yes' : drag.x < 0 ? 'no' : undefined}
@@ -172,7 +173,7 @@ export function SwipeStudy({ active, home, onStart, onBack, learningEvents, onAn
       {!result ? <><div className="swipe-actions"><button className="secondary swipe-no" aria-label="×と答える" disabled={blocked} onClick={() => submit(false)}>← ×</button><button className="primary swipe-yes" aria-label="○と答える" disabled={blocked} onClick={() => submit(true)}>○ →</button></div><button className="secondary" onClick={() => submit(null)} disabled={blocked}>↑ わからない</button></> : <>
         <div id="swipe-feedback" className={`feedback ${result.correct ? 'success' : 'miss'}`} role="status">
           <h2>{result.correct ? '正解！' : '不正解'} <small>+{result.xp} XP</small></h2><p className="swipe-verdict">正答：<b>{card.truth ? '○' : '×'}</b> ／ あなた：{result.answer === null ? 'わからない' : result.answer ? '○' : '×'}</p>
-          <p>{card.explanation || '解説未登録'}</p>
+          <BundledExplanation key={card.id} question={questionById(card.questionId)} choiceId={card.choiceId} truth={card.truth} fallback={card.explanation}/>
           {hintUsed && <p className="hint-record-note">回答前に用語解説を見たため、学習記録は不正解扱いです。</p>}
         </div>
         <button className="primary" ref={nextRef} onClick={next}>次のカードへ<span aria-hidden="true">→</span></button>
