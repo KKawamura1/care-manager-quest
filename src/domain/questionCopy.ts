@@ -5,7 +5,7 @@ import { cardTarget, explanationInstructions, questionTarget, type ExplanationTa
 
 export function questionCopyText(question: Question, includeAnswer = false, selectedIds?: readonly string[], target: ExplanationTarget = questionTarget(question)): string {
   const lines = [
-    '以下の問題について、①問題文と選択肢を再掲し、②背景を含めて自由に解説し、③最後にアプリ用の短い解説を出してください。',
+    '以下の問題について、問題文と選択肢を再掲し、背景を含めて自由に解説してください。',
     '制度が変わっている場合は、試験当時と現在を区別してください。',
     '',
     question.title, `選択する正答の数：${question.selectionCount}つ`,
