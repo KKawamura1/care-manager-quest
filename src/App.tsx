@@ -155,7 +155,6 @@ export default function App() {
       <SwipeStudy active={route === 'swipe'} home={route === 'home' || route === 'swipe-setup'} onStart={()=>go('swipe')} onBack={()=>go('swipe-setup')} learningEvents={player.learningEvents} blocked={blocked} onAnswer={(card, answer, at, hintUsed)=>setPlayer(p=>({...p, learningEvents:recordLearning(p.learningEvents,[{card,answer,hintUsed}],at,'swipe')}))}/>
       {(route === 'home' || route === 'quest' || route === 'swipe-setup') && <>
         <section className="home-screen">
-          {route === 'home' && <section className="mission-card"><h2>対戦PoC</h2><p className="mission-note">知識と速さで、10問勝負。テスト用ゴーストに挑戦。</p><button className="primary" onClick={()=>go('battle')}>対戦へ</button></section>}
           {route === 'home' && <DailyProgressPreview events={player.learningEvents} onOpen={()=>go('records')}/>}
           {route !== 'quest' && <section className="mission-card swipe-home-card" id="swipe-home-setup" aria-label="○×学習の設定"/>}
           {route !== 'swipe-setup' && <section className="mission-card">
@@ -168,6 +167,7 @@ export default function App() {
             {session&&!session.completed&&<p className="mission-note">設定は次の演習から反映</p>}
             <button className="primary" aria-label={session&&!session.completed?`第${session.index+1}問から再開`:`${questSize}問の演習を始める`} disabled={blocked||(!(session&&!session.completed)&&!activeQuestions.length)} onClick={session&&!session.completed?()=>go('play'):()=>start()}>{session&&!session.completed?`第${session.index+1}問から再開`:`${questSize}問の演習を始める`}<span aria-hidden="true">→</span></button>
           </section>}
+          {route === 'home' && <section className="mission-card"><h2>対戦PoC</h2><p className="mission-note">知識と速さで、10問勝負。テスト用ゴーストに挑戦。</p><button className="primary" onClick={()=>go('battle')}>対戦へ</button></section>}
         </section>
       </>}
       {route === 'play' && current && session && !session.completed && <section className="play-screen">
