@@ -1,3 +1,4 @@
+import { Battle } from './components/Battle';
 import { registeredExplanationFor, registeredQuestionChoices } from './data/registered-explanations';
 import { aggregateKnowledgeLevel, knowledgeProgress } from './domain/knowledgeProgress';
 import { useEffect, useMemo, useRef, useState } from 'react';
@@ -84,7 +85,7 @@ export default function App() {
   const [player, setPlayer] = useState<PlayerState>(initial.player);
   const [blocked, setBlocked] = useState(Boolean('raw' in initial && initial.raw && initial.error));
   const [saveError, setSaveError] = useState(initial.error);
-  const [route, setRoute] = useState<'home'|'quest'|'play'|'records'|'swipe-setup'|'swipe'>(initial.player.session ? 'play' : 'home');
+  const [route, setRoute] = useState<'home'|'quest'|'play'|'records'|'swipe-setup'|'swipe'|'battle'>(initial.player.session ? 'play' : 'home');
   const [detail, setDetail] = useState<Question>();
   const [conceptId, setConceptId] = useState<string>();
   const [importPreview, setImportPreview] = useState<PlayerState>();
@@ -146,13 +147,15 @@ export default function App() {
   const headline = <>Care Manager Quest</>;
   return <div className="app-shell">
     <header className="app-header"><button className="brand" aria-label="冒険ホームへ" onClick={()=>go('home')}>{headline}</button><button className="sound-button" aria-label={`効果音を${player.settings.sound?'オフ':'オン'}にする`} aria-pressed={player.settings.sound} onClick={()=>setPlayer(p=>({...p,settings:{sound:!p.settings.sound}}))}>{player.settings.sound?'♪':'♪̸'}<span>{player.settings.sound?'ON':'OFF'}</span></button></header>
-    {route !== 'quest' && route !== 'play' && <div className="player-bar"><span className="level-chip">Lv. <b>{level.level}</b></span><div className="xp-track"><div className="meter" aria-label={`次のレベルまで ${level.next} XP`}><i style={{width:`${level.current/2}%`}}/></div></div><span className="xp-value">{level.current} / 200 XP</span></div>}
+    {route !== 'quest' && route !== 'play' && route !== 'battle' && <div className="player-bar"><span className="level-chip">Lv. <b>{level.level}</b></span><div className="xp-track"><div className="meter" aria-label={`次のレベルまで ${level.next} XP`}><i style={{width:`${level.current/2}%`}}/></div></div><span className="xp-value">{level.current} / 200 XP</span></div>}
     {saveError && <div className="warning" role="alert"><p>{saveError}</p>{blocked && <><button onClick={()=>download(('raw' in initial && initial.raw) || '', 'care-manager-quest-recovery.json')}>元のデータを書き出す</button><button onClick={()=>{setBlocked(false);setPlayer(emptyPlayer());setSaveError(undefined);}}>新しい履歴で始める</button></>}</div>}
     {notice && <p className="notice" role="status">{notice}</p>}
     <main>
+      {route === 'battle' && <Battle pool={activeQuestions} seen={new Set([...player.attempts.map(a=>a.questionId),...player.learningEvents.flatMap(e=>{const card=swipeCardById.get(e.cardId);return card?[card.questionId]:[];})])} onBack={()=>go('home')}/>}
       <SwipeStudy active={route === 'swipe'} home={route === 'home' || route === 'swipe-setup'} onStart={()=>go('swipe')} onBack={()=>go('swipe-setup')} learningEvents={player.learningEvents} blocked={blocked} onAnswer={(card, answer, at, hintUsed)=>setPlayer(p=>({...p, learningEvents:recordLearning(p.learningEvents,[{card,answer,hintUsed}],at,'swipe')}))}/>
       {(route === 'home' || route === 'quest' || route === 'swipe-setup') && <>
         <section className="home-screen">
+          {route === 'home' && <section className="mission-card"><h2>対戦PoC</h2><p className="mission-note">知識と速さで、10問勝負。テスト用ゴーストに挑戦。</p><button className="primary" onClick={()=>go('battle')}>対戦へ</button></section>}
           {route === 'home' && <DailyProgressPreview events={player.learningEvents} onOpen={()=>go('records')}/>}
           {route !== 'quest' && <section className="mission-card swipe-home-card" id="swipe-home-setup" aria-label="○×学習の設定"/>}
           {route !== 'swipe-setup' && <section className="mission-card">
