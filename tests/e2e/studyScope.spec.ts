@@ -69,7 +69,8 @@ test('five-choice draws middle-category questions across exam fields and preserv
   await page.goto('/');
   await selectPath(page,'5択',disease.id);
   const expected = matching(disease.id);
-  await expect(page.locator('.mission-note').first()).toContainText(`${expected.length}問対象`);
+  // Scope the assertion to the five-choice setup card, not the battle PoC card above it.
+  await expect(page.locator('.mission-card').filter({has:page.getByRole('heading',{name:'過去問演習',exact:true})}).locator('.mission-note').first()).toContainText(`${expected.length}問対象`);
   await page.getByRole('button',{name:`${Math.min(5,expected.length)}問の演習を始める`}).click();
   const ids = await page.evaluate(key => JSON.parse(localStorage.getItem(key)!).session.questionIds as string[], historyKey);
   expect(ids.every(id => expected.includes(id))).toBe(true);
