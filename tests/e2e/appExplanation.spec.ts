@@ -11,6 +11,7 @@ async function stubClipboard(page: Page, denied = false) {
 function checkPrompt(prompt: string) {
   expect(prompt).toContain('docs/register-explanation.md');
   expect(prompt).toContain('登録しといて');
+  expect(prompt).toContain('解説の回答の最後に、必ず「この解説をアプリに登録しますか？」と尋ねてください。');
   expect(prompt).toContain('回答への再出力不要');
   expect(prompt).not.toContain('アプリ用の短い解説');
   const target = JSON.parse(prompt.match(/```json\n([\s\S]*?)\n```/)![1]);
