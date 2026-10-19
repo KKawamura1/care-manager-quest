@@ -13,6 +13,8 @@ describe('ChatGPT short explanations', () => {
       const text = questionCopyText(q);
       expect(text).toContain('docs/register-explanation.md');
       expect(text).toContain('PRと追加承認の省略');
+      expect(text).toContain('解説の回答の最後に、必ず「この解説をアプリに登録しますか？」と尋ねてください。');
+      expect(text).toContain('「はい」「お願いします」などの肯定も登録依頼として扱い');
       const json = text.match(/```json\n([\s\S]*?)\n```/)![1];
       expect(JSON.parse(json)).toEqual({ schemaVersion:1, ...questionTarget(q) });
       expect(JSON.parse(json)).not.toHaveProperty('explanation');
